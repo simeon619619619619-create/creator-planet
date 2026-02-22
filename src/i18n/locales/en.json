@@ -1,0 +1,4063 @@
+{
+  "common": {
+    "getStarted": "Get Started",
+    "startFreeTrial": "Start Free Trial",
+    "watchDemo": "Watch Demo",
+    "learnMore": "Learn More",
+    "signUp": "Sign Up",
+    "logIn": "Log In",
+    "logout": "Logout",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "uploading": "Uploading...",
+    "error": "Error",
+    "success": "Success",
+    "settings": "Settings",
+    "profile": "Profile",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and",
+    "add": "Add",
+    "optional": "optional",
+    "confirm": "Confirm"
+  },
+
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "documentation": "Documentation",
+    "helpCenter": "Help Center",
+    "blog": "Blog",
+    "community": "Community",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "badge": "The All-in-One Platform for Course Creators",
+    "title": "Replace 5+ Tools with One",
+    "titleHighlight": "Powerful Platform",
+    "subtitle": "Stop juggling Discord, Kajabi, Calendly, Skool, and Zapier. Creator Club combines community, courses, scheduling, and AI-powered student success tracking in one place.",
+    "noCreditCard": "No credit card required",
+    "freeTrial": "14-day free trial",
+    "cancelAnytime": "Cancel anytime"
+  },
+
+  "painPoints": {
+    "title": "Tired of the Tool Chaos?",
+    "subtitle": "Course creators face real challenges every day",
+    "multipleTools": {
+      "title": "Juggling Multiple Tools",
+      "description": "Switching between Discord, Kajabi, Calendly, and more wastes hours every week. Each tool has its own login, interface, and billing."
+    },
+    "losingStudents": {
+      "title": "Losing Students to Silence",
+      "description": "Without visibility into student progress, at-risk learners slip through the cracks. By the time you notice, they've already churned."
+    },
+    "manualTracking": {
+      "title": "Manual Tracking & Admin Work",
+      "description": "Manually tracking progress, engagement, and student health eats into your time. You should be creating, not doing admin work."
+    }
+  },
+
+  "solution": {
+    "title": "One Platform. Everything You Need.",
+    "subtitle": "Creator Club replaces your entire tech stack with a unified, AI-powered solution",
+    "communityHub": {
+      "title": "Community Hub",
+      "description": "Built-in forums, channels, and real-time chat. Replace Discord and Skool."
+    },
+    "courseLms": {
+      "title": "Course LMS",
+      "description": "Complete learning platform with modules, lessons, and progress tracking. Replace Kajabi."
+    },
+    "events": {
+      "title": "Events & Scheduling",
+      "description": "Group events and 1:1 booking built-in. Replace Calendly and Cal.com."
+    },
+    "aiManager": {
+      "title": "AI Success Manager",
+      "description": "AI tracks every student, identifies at-risk learners, and suggests interventions."
+    }
+  },
+
+  "features": {
+    "title": "Features That Scale With You",
+    "subtitle": "Everything you need to run a successful creator business",
+    "memberManagement": {
+      "title": "Member Management",
+      "description": "Organize students, track engagement, and manage access all in one place."
+    },
+    "analytics": {
+      "title": "Analytics Dashboard",
+      "description": "Real-time insights into course completion, engagement, and revenue."
+    },
+    "payments": {
+      "title": "Payments & Subscriptions",
+      "description": "Stripe integration for one-time purchases and recurring memberships."
+    },
+    "contentProtection": {
+      "title": "Content Protection",
+      "description": "Secure your courses with access controls and member-only content."
+    },
+    "fastSetup": {
+      "title": "Fast Setup",
+      "description": "Launch your creator business in minutes, not weeks. No technical skills needed."
+    },
+    "aiInsights": {
+      "title": "AI-Powered Insights",
+      "description": "Let AI identify struggling students and suggest personalized interventions."
+    }
+  },
+
+  "testimonials": {
+    "title": "Loved by Creators Worldwide",
+    "subtitle": "See what course creators are saying about Creator Club",
+    "testimonial1": {
+      "quote": "Creator Club saved me 15+ hours a week. No more switching between tools. Everything I need is right here, and the AI Success Manager is a game-changer.",
+      "name": "Sarah Mitchell",
+      "role": "Fitness Coach"
+    },
+    "testimonial2": {
+      "quote": "I was paying $400/month for 5 different tools. Now I pay a fraction of that and have everything in one place. My students love the integrated experience.",
+      "name": "James Chen",
+      "role": "Marketing Mentor"
+    },
+    "testimonial3": {
+      "quote": "The AI Success Manager helped me reduce churn by 40%. It identifies at-risk students before they disappear. This alone paid for the platform 10x over.",
+      "name": "Emily Rodriguez",
+      "role": "Design Course Creator"
+    }
+  },
+
+  "pricing": {
+    "title": "Clear Pricing. No Surprises.",
+    "subtitle": "Start free. Pay for growth only when you see results.",
+    "allPlansInclude": "* One-time €9.90 activation fee on registration",
+    "mostPopular": "MOST POPULAR",
+    "perMonth": "/month",
+    "platformFee": "platform fee",
+    "feeOnSale": "fee on sale",
+    "choosePlan": "Choose Plan",
+    "startFree": "Start Free",
+    "starter": {
+      "name": "STARTER",
+      "price": "€0",
+      "fee": "6.9%",
+      "description": "Perfect for getting started",
+      "features": {
+        "students": "Up to 50 students",
+        "courses": "2 courses",
+        "community": "1 community",
+        "aiManager": "AI Success Manager",
+        "payments": "Stripe payments"
+      }
+    },
+    "pro": {
+      "name": "PRO",
+      "price": "€30",
+      "fee": "3.9%",
+      "description": "For growing businesses",
+      "features": {
+        "students": "Up to 500 students",
+        "courses": "10 courses",
+        "communities": "3 communities",
+        "branding": "Custom branding",
+        "support": "Priority support",
+        "analytics": "Advanced analytics"
+      }
+    },
+    "scale": {
+      "name": "SCALE",
+      "price": "€99",
+      "fee": "1.9%",
+      "description": "For established businesses",
+      "features": {
+        "students": "Unlimited students",
+        "courses": "Unlimited courses",
+        "communities": "Unlimited communities",
+        "whiteLabel": "White-label",
+        "api": "API access",
+        "accountManager": "Dedicated manager"
+      }
+    }
+  },
+
+  "cta": {
+    "title": "Ready to Simplify Your Creator Business?",
+    "subtitle": "Join thousands of creators who've ditched the tool chaos and built thriving communities with Creator Club.",
+    "trialInfo": "14-day free trial • No credit card required • Cancel anytime"
+  },
+
+  "footer": {
+    "tagline": "The all-in-one platform for course creators, coaches, and mentors.",
+    "product": "Product",
+    "resources": "Resources",
+    "company": "Company",
+    "roadmap": "Roadmap",
+    "changelog": "Changelog",
+    "copyright": "© 2025 Creator Club. All rights reserved."
+  },
+
+  "auth": {
+    "loginTitle": "Log In",
+    "loginSubtitle": "Sign in to Creator Club",
+    "email": "Email",
+    "welcomeBack": "Welcome Back",
+    "signInTo": "Sign in to Creator Club",
+    "joinCreatorClub": "Join Creator Club",
+    "createAccountToStart": "Create your account to get started",
+    "emailAddress": "Email Address",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Doe",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signingIn": "Signing in...",
+    "creatingAccount": "Creating account...",
+    "createAccount": "Create Account",
+    "noAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "iAmA": "I am a...",
+    "creator": "Creator",
+    "creatorDesc": "Build & manage courses",
+    "student": "Student",
+    "studentDesc": "Learn & engage",
+    "accountCreated": "Account created successfully!",
+    "checkEmail": "Your account has been created. You can now sign in.",
+    "forgotPassword": "Forgot password?",
+    "forgotPasswordTitle": "Reset your password",
+    "forgotPasswordSubtitle": "Enter your email address and we'll send you a link to reset your password.",
+    "sendResetLink": "Send Reset Link",
+    "checkYourEmail": "Check your email",
+    "resetEmailSent": "We've sent a password reset link to {{email}}. Click the link to create a new password.",
+    "backToLogin": "Back to login",
+    "resetPasswordTitle": "Create new password",
+    "resetPasswordSubtitle": "Enter your new password below.",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "resetPassword": "Reset Password",
+    "passwordResetSuccess": "Your password has been reset successfully. You can now log in with your new password.",
+    "passwordsDoNotMatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 6 characters.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "invalidRecoveryLink": "This password reset link is invalid or has expired. Please request a new one.",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "rememberMe": "Remember me",
+    "signupTitle": "Create Account",
+    "signupSubtitle": "Join Creator Club and start your journey",
+    "hasAccount": "Already have an account?",
+    "creatorDescShort": "Build & teach",
+    "marketingOptIn": "Send me special offers, personalized recommendations, and learning tips.",
+    "termsAgreement": "By signing up, you agree to our"
+  },
+
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "community": "Community",
+    "courses": "Courses",
+    "homework": "Homework",
+    "aiChat": "AI Chat",
+    "calendar": "Calendar",
+    "aiManager": "AI Manager",
+    "studentManager": "Student Manager",
+    "surveys": "Surveys",
+    "discounts": "Discounts",
+    "settings": "Settings",
+    "messages": "Messages",
+    "members": "Members",
+    "browseCommunities": "Browse Communities",
+    "createCommunity": "Create Community",
+    "yourCommunity": "Your Community"
+  },
+
+  "teamDashboard": {
+    "welcome": "Welcome back, {{name}}!",
+    "roleAt": "You're a {{role}} at {{community}}",
+    "messages": "Messages",
+    "viewAll": "View All",
+    "noMessages": "No messages yet",
+    "noMessageYet": "No messages yet",
+    "yourCourses": "Your Courses",
+    "noCourses": "No courses yet",
+    "upcomingEvents": "Upcoming Events",
+    "noEvents": "No upcoming events",
+    "viewCalendar": "View Calendar",
+    "yourProfile": "Your Profile",
+    "editProfile": "Edit Profile",
+    "atRiskStudents": "At-Risk Students",
+    "noAtRiskStudents": "No at-risk students right now"
+  },
+
+  "teamInbox": {
+    "title": "Messages",
+    "search": "Search conversations...",
+    "noConversations": "No conversations yet",
+    "startConversation": "Start a conversation",
+    "student": "Student",
+    "noMessages": "No messages",
+    "startConversationHint": "Send a message to start the conversation",
+    "typeMessage": "Type a message...",
+    "selectConversation": "Select a conversation",
+    "selectConversationHint": "Choose a conversation from the list to view messages"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "totalStudents": "Total Students",
+    "activeCourses": "Active Courses",
+    "monthlyRevenue": "Monthly Revenue",
+    "completionRate": "Completion Rate",
+    "recentActivity": "Recent Activity",
+    "upcomingEvents": "Upcoming Events",
+    "quickActions": "Quick Actions"
+  },
+
+  "courses": {
+    "title": "Courses",
+    "myCourses": "My Courses",
+    "allCourses": "All Courses",
+    "createCourse": "Create Course",
+    "editCourse": "Edit Course",
+    "courseName": "Course Name",
+    "courseDescription": "Course Description",
+    "modules": "Modules",
+    "lessons": "Lessons",
+    "progress": "Progress",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started",
+    "duration": "Duration",
+    "students": "Students",
+    "startCourse": "Start Course",
+    "continueLearning": "Continue Learning",
+    "viewCourse": "View Course"
+  },
+
+  "community": {
+    "title": "Community",
+    "channels": "Channels",
+    "members": "Members",
+    "discussions": "Discussions",
+    "createChannel": "Create Channel",
+    "createPost": "Create Post",
+    "newPost": "New Post",
+    "reply": "Reply",
+    "likes": "Likes",
+    "comments": "Comments",
+    "share": "Share",
+    "pin": "Pin",
+    "announcement": "Announcement",
+    "general": "General",
+    "introductions": "Introductions",
+    "questions": "Questions",
+    "leaveCommunity": "Leave Community",
+    "joinCommunity": "Join Community",
+    "leave": {
+      "title": "Leave Community",
+      "warningTitle": "Are you sure?",
+      "warningMessage": "You are about to leave \"{{community}}\". This action cannot be undone.",
+      "whatHappens": "What will happen:",
+      "loseAccess": "You will lose access to all community content",
+      "pointsLost": "Your points and level in this community will be lost",
+      "postsRemain": "Your posts and comments will remain visible",
+      "noRefund": "No refund will be issued for past payments",
+      "activeSubscription": "You have an active subscription",
+      "cancelFirst": "Please cancel your subscription first before leaving the community.",
+      "manageSubscription": "Manage Subscription",
+      "cancelSubscriptionFirst": "Please cancel your subscription through the billing portal first.",
+      "confirmButton": "Leave Community",
+      "leaving": "Leaving...",
+      "errorLoading": "Failed to load membership details",
+      "errorLeaving": "Failed to leave community. Please try again.",
+      "errorPortal": "Failed to open billing portal"
+    }
+  },
+
+  "calendar": {
+    "title": "Calendar",
+    "today": "Today",
+    "week": "Week",
+    "month": "Month",
+    "createEvent": "Create Event",
+    "editEvent": "Edit Event",
+    "eventTitle": "Event Title",
+    "eventDescription": "Event Description",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "allDay": "All Day",
+    "recurring": "Recurring",
+    "attendees": "Attendees",
+    "location": "Location",
+    "reminder": "Reminder",
+    "noEvents": "No events scheduled"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "account": "Account",
+    "notifications": "Notifications",
+    "billing": "Billing",
+    "integrations": "Integrations",
+    "security": "Security",
+    "preferences": "Preferences",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "saveChanges": "Save Changes",
+    "changePassword": "Change Password",
+    "deleteAccount": "Delete Account",
+    "exportData": "Export Data"
+  },
+
+  "languages": {
+    "en": "English",
+    "bg": "Bulgarian"
+  },
+
+  "loading": {
+    "creatorClub": "Loading Creator Club..."
+  },
+
+  "errors": {
+    "selectCommunity": "Please select a community first.",
+    "accessRestricted": "Access restricted to community creators.",
+    "accessRestrictedCreators": "Access restricted to creators.",
+    "underConstruction": "Section under construction for MVP."
+  },
+
+  "onboarding": {
+    "settingUp": "Setting up your account...",
+    "selectAllThatApply": "Select all that apply",
+    "continue": "Continue",
+    "selected": "selected",
+    "typeYourAnswer": "Type your answer...",
+    "pleaseSpecify": "Please specify...",
+    "specifyYourOwn": "Enter your own option",
+    "other": "Other",
+    "select": "Select",
+    "questionProgress": "Question {{current}} of {{total}}",
+    "questions": {
+      "niche": {
+        "title": "What do you teach or coach?",
+        "subtitle": "This helps us personalize your experience",
+        "options": {
+          "fitness": "Fitness & Health",
+          "business": "Business & Marketing",
+          "design": "Design & Creative",
+          "tech": "Tech & Development",
+          "personal_development": "Personal Development",
+          "lifestyle": "Lifestyle & Hobbies"
+        }
+      },
+      "stage": {
+        "title": "Where are you in your creator journey?",
+        "subtitle": "Be honest - there's no wrong answer",
+        "options": {
+          "idea_stage": {
+            "label": "Just getting started",
+            "description": "Idea stage, planning my first offering"
+          },
+          "side_hustle": {
+            "label": "Side hustle",
+            "description": "Making < €1K/month"
+          },
+          "going_fulltime": {
+            "label": "Going full-time",
+            "description": "Making €1K-5K/month"
+          },
+          "established": {
+            "label": "Established business",
+            "description": "Making €5K+/month"
+          }
+        }
+      },
+      "audienceSize": {
+        "title": "How many students or followers do you have?",
+        "subtitle": "Across all platforms",
+        "options": {
+          "0_100": "0 - 100",
+          "100_1000": "100 - 1,000",
+          "1000_10000": "1,000 - 10,000",
+          "10000_plus": "10,000+"
+        }
+      },
+      "painPoint": {
+        "title": "What's your biggest frustration right now?",
+        "subtitle": "The thing that keeps you up at night",
+        "options": {
+          "too_many_tools": {
+            "label": "Too many tools to manage",
+            "description": "Juggling Discord, Kajabi, Calendly..."
+          },
+          "losing_students": {
+            "label": "Losing students / high churn",
+            "description": "Students disappear and I don't know why"
+          },
+          "no_time": {
+            "label": "No time - stuck doing admin",
+            "description": "More admin work than creating"
+          },
+          "tech_overwhelm": {
+            "label": "Tech overwhelm",
+            "description": "Too complicated to set up and maintain"
+          },
+          "hard_to_track": {
+            "label": "Hard to track student progress",
+            "description": "Can't see who's struggling"
+          }
+        }
+      },
+      "goal": {
+        "title": "What do you most want to achieve?",
+        "subtitle": "Your #1 priority right now",
+        "options": {
+          "launch_course": "Launch my first course",
+          "build_community": "Build an engaged community",
+          "scale_business": "Scale my existing business",
+          "automate": "Automate & save time",
+          "increase_success": "Increase student success rates"
+        }
+      },
+      "currentTools": {
+        "title": "What tools are you currently using?",
+        "subtitle": "Select all that apply",
+        "options": {
+          "none": "None yet",
+          "discord": "Discord",
+          "kajabi": "Kajabi / Teachable / Thinkific",
+          "skool": "Skool",
+          "calendly": "Calendly / Cal.com",
+          "circle": "Circle",
+          "notion": "Notion",
+          "other": "Other"
+        }
+      },
+      "tools": {
+        "title": "Current Tools"
+      },
+      "revenueGoal": {
+        "title": "What's your monthly revenue goal?",
+        "subtitle": "Where do you want to be in 12 months?",
+        "options": {
+          "under_1k": "< €1K",
+          "1k_5k": "€1K - €5K",
+          "5k_10k": "€5K - €10K",
+          "10k_25k": "€10K - €25K",
+          "25k_plus": "€25K+"
+        }
+      }
+    },
+    "preview": {
+      "ready": "Ready",
+      "title": "Here's what your creator hub could look like...",
+      "subtitle": "Your all-in-one platform for growing your {{niche}} business",
+      "dashboard": "Dashboard",
+      "community": "Community",
+      "courses": "Courses",
+      "calendar": "Calendar",
+      "aiManager": "AI Manager",
+      "welcomeBack": "Welcome back!",
+      "businessDoingToday": "Here's how your {{niche}} business is doing today",
+      "monthlyRevenue": "Monthly Revenue",
+      "activeStudents": "Active Students",
+      "thisWeek": "+3 this week",
+      "coursesCount": "Courses",
+      "publishedDraft": "1 published, 1 draft",
+      "yourCommunity": "Your Community",
+      "newPostsToday": "5 new posts today",
+      "aiInsightTitle": "AI Success Manager",
+      "aiSuccessInsight": "AI Success Insight",
+      "aiInsightMessage": "3 students haven't logged in for 5 days. Consider sending them a check-in message to boost engagement.",
+      "justPreview": "This is just a preview of what's possible"
+    },
+    "summary": {
+      "basedOnShared": "Based on what you shared...",
+      "youreA": "You're a",
+      "lookingTo": "looking to",
+      "butStruggling": "but struggling with",
+      "creatorClubOffers": "Creator Club offers you:",
+      "yourCreatorProfile": "Your Creator Profile",
+      "personalizedForYou": "Personalized just for you based on your answers",
+      "creatorClubReplaces": "Creator Club replaces",
+      "withOnePlatform": "with one platform - plus an AI that tracks student progress so you",
+      "neverLoseStudent": "never lose another student",
+      "benefits": {
+        "allInOne": "All-in-one: courses, community, and calendar",
+        "aiTracking": "AI Success Manager tracks at-risk students automatically",
+        "payments": "Built-in payments with instant payouts"
+      },
+      "createFreeAccount": "Create your free account",
+      "noCreditCard": "No credit card required",
+      "freeTrial": "Free 14-day trial"
+    },
+    "signup": {
+      "back": "Back",
+      "title": "Create your account",
+      "subtitle": "Start building your creator business today",
+      "successTitle": "Account created successfully!",
+      "successMessage": "Your account has been created. Signing you in...",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Min. 6 characters",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "createAccount": "Create Account",
+      "creatingAccount": "Creating account...",
+      "accountCreated": "Account Created",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "securePrivate": "Secure & Private",
+      "getStartedFree": "Get Started Free",
+      "joinCreators": "Join 1000+ Creators",
+      "errors": {
+        "passwordsDontMatch": "Passwords do not match",
+        "passwordTooShort": "Password must be at least 6 characters long",
+        "enterFullName": "Please enter your full name",
+        "unexpectedError": "An unexpected error occurred. Please try again."
+      }
+    },
+    "niches": {
+      "fitness": "Fitness Coaching",
+      "business": "Business & Marketing",
+      "design": "Design & Creative",
+      "tech": "Tech & Development",
+      "personal_development": "Personal Development",
+      "lifestyle": "Lifestyle & Hobbies",
+      "default": "Creator"
+    },
+    "nicheTitles": {
+      "fitness": "Fitness Coach",
+      "business": "Business Mentor",
+      "design": "Design Educator",
+      "tech": "Tech Instructor",
+      "personal_development": "Life Coach",
+      "lifestyle": "Lifestyle Creator",
+      "default": "Creator"
+    },
+    "painPoints": {
+      "too_many_tools": "too many tools to manage",
+      "losing_students": "losing students to churn",
+      "no_time": "being stuck doing admin work",
+      "tech_overwhelm": "tech overwhelm",
+      "hard_to_track": "tracking student progress",
+      "default": "building your business"
+    },
+    "goals": {
+      "launch_course": "launch your first course",
+      "build_community": "build an engaged community",
+      "scale_business": "scale your existing business",
+      "automate": "automate and save time",
+      "increase_success": "increase student success rates",
+      "default": "grow your creator business"
+    },
+    "tools": {
+      "discord": "Discord",
+      "kajabi": "Kajabi",
+      "skool": "Skool",
+      "calendly": "Calendly",
+      "circle": "Circle",
+      "notion": "Notion",
+      "other": "your current tools",
+      "none": "all the separate tools you would need",
+      "default": "multiple scattered tools"
+    }
+  },
+
+  "studentOnboarding": {
+    "settingUp": "Setting up your learning profile...",
+    "continue": "Continue",
+    "typeYourAnswer": "Type your answer...",
+    "pleaseSpecify": "Please specify...",
+    "other": "Other",
+    "select": "Select",
+    "questions": {
+      "interest": {
+        "title": "What do you want to learn?",
+        "subtitle": "Choose the area that excites you most",
+        "options": {
+          "fitness": "Fitness & Health",
+          "business": "Business & Marketing",
+          "design": "Design & Creative",
+          "tech": "Tech & Development",
+          "personal_development": "Personal Development",
+          "lifestyle": "Lifestyle & Hobbies"
+        }
+      },
+      "goal": {
+        "title": "What's driving you to learn?",
+        "subtitle": "Your main motivation",
+        "options": {
+          "new_career": {
+            "label": "Start a new career",
+            "description": "I want to switch fields or land my first job"
+          },
+          "level_up": {
+            "label": "Level up my skills",
+            "description": "Advance in my current career path"
+          },
+          "hobby": {
+            "label": "Pursue a passion",
+            "description": "Learn something I've always wanted to"
+          },
+          "certification": {
+            "label": "Get certified",
+            "description": "Earn credentials and certifications"
+          },
+          "personal_growth": {
+            "label": "Personal growth",
+            "description": "Become the best version of myself"
+          }
+        }
+      },
+      "experience": {
+        "title": "How much experience do you have?",
+        "subtitle": "In the area you want to learn",
+        "options": {
+          "beginner": {
+            "label": "Complete beginner",
+            "description": "Just starting out, everything is new"
+          },
+          "some": {
+            "label": "Some knowledge",
+            "description": "I know the basics but need guidance"
+          },
+          "intermediate": {
+            "label": "Intermediate",
+            "description": "I have experience but want to go deeper"
+          },
+          "advanced": {
+            "label": "Advanced",
+            "description": "Looking to master advanced topics"
+          }
+        }
+      },
+      "learningStyle": {
+        "title": "How do you learn best?",
+        "subtitle": "Your ideal learning environment",
+        "options": {
+          "self_paced": {
+            "label": "Self-paced courses",
+            "description": "Learn on my own schedule"
+          },
+          "community": {
+            "label": "Learning community",
+            "description": "Grow alongside other students"
+          },
+          "mentorship": {
+            "label": "Direct mentorship",
+            "description": "1-on-1 guidance from experts"
+          },
+          "hands_on": {
+            "label": "Hands-on projects",
+            "description": "Learn by doing real projects"
+          },
+          "mix": {
+            "label": "Mix of everything",
+            "description": "I like variety in my learning"
+          }
+        }
+      },
+      "timeCommitment": {
+        "title": "How much time can you dedicate?",
+        "subtitle": "Per week, on average",
+        "options": {
+          "minimal": "1-2 hours per week",
+          "moderate": "3-5 hours per week",
+          "dedicated": "6-10 hours per week",
+          "intensive": "10+ hours per week"
+        }
+      },
+      "challenge": {
+        "title": "What's held you back from learning before?",
+        "subtitle": "The biggest obstacle you've faced",
+        "options": {
+          "no_time": {
+            "label": "Not enough time",
+            "description": "Too busy with work or life"
+          },
+          "motivation": {
+            "label": "Staying motivated",
+            "description": "I start but don't finish courses"
+          },
+          "overwhelm": {
+            "label": "Information overwhelm",
+            "description": "Too many options, don't know where to start"
+          },
+          "cost": {
+            "label": "Cost of education",
+            "description": "Quality learning is expensive"
+          },
+          "support": {
+            "label": "Lack of support",
+            "description": "No one to help when I get stuck"
+          }
+        }
+      }
+    },
+    "preview": {
+      "ready": "Ready",
+      "title": "Your personalized learning dashboard...",
+      "subtitle": "Track progress, earn rewards, and join communities",
+      "myLearning": "My Learning",
+      "dashboard": "My Learning",
+      "courses": "My Courses",
+      "community": "Community",
+      "rewards": "Rewards",
+      "welcomeBack": "Welcome back!",
+      "continueJourney": "Continue your {{interest}} learning journey",
+      "enrolled": "Enrolled",
+      "enrolledCourses": "Enrolled Courses",
+      "coursesLabel": "courses",
+      "progress": "Progress",
+      "avgProgress": "Avg. Progress",
+      "across": "across all courses",
+      "pointsEarned": "Points Earned",
+      "keepLearning": "keep learning!",
+      "continueLearning": "Continue Learning",
+      "resumeLesson": "Resume where you left off",
+      "lesson5of12": "Lesson 5 of 12",
+      "lessonsRemaining": "5 lessons remaining",
+      "playButton": "Play",
+      "justPreview": "This is just a preview of what awaits you"
+    },
+    "summary": {
+      "basedOnShared": "Based on what you shared...",
+      "youWantToLearn": "You want to learn",
+      "toAchieve": "to achieve",
+      "butFacing": "but you've been facing",
+      "creatorClubOffers": "Creator Club offers you:",
+      "yourProfile": "Your Learning Profile",
+      "personalizedMessage": "Personalized just for you based on your answers",
+      "connectsYouWith": "connects you with expert",
+      "expertCreators": "creators who understand your journey and can help you",
+      "achieveGoals": "achieve your goals faster",
+      "benefits": {
+        "expertCreators": "Learn from expert creators",
+        "flexibleLearning": "Flexible learning paths",
+        "supportiveCommunity": "Supportive community"
+      },
+      "learningStyleBenefits": {
+        "self_paced": "Self-paced courses",
+        "community": "Active learning community",
+        "mentorship": "1-on-1 mentorship options",
+        "hands_on": "Hands-on project experience",
+        "mix": "Flexible learning options"
+      },
+      "startLearningFree": "Start Learning for Free",
+      "freeToJoin": "Free to join",
+      "thousandsLearning": "Thousands already learning"
+    },
+    "signup": {
+      "back": "Back",
+      "title": "Create your account",
+      "subtitle": "Start your learning journey today",
+      "successTitle": "Account created successfully!",
+      "successMessage": "Your account has been created. Signing you in...",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your name",
+      "email": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Min. 6 characters",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "createAccount": "Create Account",
+      "creatingAccount": "Creating account...",
+      "accountCreated": "Account Created",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "trustSignals": {
+        "accessCourses": "Access top courses",
+        "joinCommunities": "Join communities",
+        "earnRewards": "Earn rewards"
+      },
+      "errors": {
+        "passwordsDontMatch": "Passwords do not match",
+        "passwordTooShort": "Password must be at least 6 characters long",
+        "enterFullName": "Please enter your full name",
+        "unexpectedError": "An unexpected error occurred. Please try again."
+      }
+    },
+    "interests": {
+      "fitness": "Fitness & Health",
+      "business": "Business & Marketing",
+      "design": "Design & Creative",
+      "tech": "Tech & Development",
+      "personal_development": "Personal Development",
+      "lifestyle": "Lifestyle & Hobbies",
+      "default": "your chosen field"
+    },
+    "goals": {
+      "new_career": "start a new career",
+      "level_up": "level up your skills",
+      "hobby": "pursue your passion",
+      "certification": "get certified",
+      "personal_growth": "personal growth",
+      "default": "achieve your goals"
+    },
+    "challenges": {
+      "no_time": "finding time to learn",
+      "motivation": "staying motivated",
+      "overwhelm": "information overwhelm",
+      "cost": "cost of education",
+      "support": "lack of support",
+      "default": "various challenges"
+    }
+  },
+
+  "whopLanding": {
+    "tagline": "Where creators build their business",
+    "signIn": "Sign in",
+    "createBusiness": "Create a business",
+    "trending": "Trending",
+    "searchPlaceholder": "Search communities, courses, coaches...",
+    "search": "Search",
+    "browseCategories": "Browse Categories",
+    "viewAll": "View all",
+    "featuredCommunities": "Featured Communities",
+    "communitiesBeingCreated": "Communities are being created!",
+    "beFirstToCreate": "Be the first to create one",
+    "exploreAllCommunities": "Explore all communities",
+    "community": "Community",
+    "communities": "Communities",
+    "creator": "Creator",
+    "creators": "Creators",
+    "member": "Member",
+    "members": "Members",
+    "categories": {
+      "courses": "Courses",
+      "coaching": "Coaching",
+      "fitness": "Fitness",
+      "business": "Business",
+      "design": "Design",
+      "development": "Development"
+    },
+    "trendingTopics": {
+      "aiAutomation": "AI & Automation",
+      "personalBranding": "Personal Branding",
+      "socialMediaGrowth": "Social Media Growth",
+      "ecommerce": "E-commerce",
+      "cryptoWeb3": "Crypto & Web3",
+      "contentCreation": "Content Creation",
+      "freelancing": "Freelancing",
+      "mindset": "Mindset"
+    },
+    "features": {
+      "launchCourses": "Launch courses",
+      "launchCoursesDesc": "Powerful LMS with AI tracking",
+      "buildCommunities": "Build communities",
+      "buildCommunitiesDesc": "Forums, channels, real-time chat",
+      "teachCoach": "Teach & coach",
+      "teachCoachDesc": "1:1 and group sessions",
+      "getPaid": "Get paid",
+      "getPaidDesc": "Stripe payments, low fees"
+    },
+    "startBuildingFree": "Start building for free",
+    "browseCommunities": "Browse communities",
+    "copyright": "© 2025 Creator Club™",
+    "madeIn": "Made with",
+    "inBulgaria": "in Bulgaria",
+    "explore": "Explore",
+    "pricing": "Pricing",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+
+  "marketingLanding": {
+    "nav": {
+      "pillars": "Pillars",
+      "pricing": "Pricing",
+      "testimonials": "Testimonials",
+      "getStarted": "Get Started"
+    },
+    "heroBadge": "The All-in-One OS for Mentors and Creators",
+    "heroTitle": "One tool.",
+    "heroTitleHighlight": "Everything you need.",
+    "heroSubtitle1": "Creator Club™ replaces",
+    "heroSubtitle2": "4-5 separate tools",
+    "heroSubtitle3": "and adds an",
+    "heroSubtitle4": "AI Success Manager",
+    "heroSubtitle5": "that tracks every student's progress.",
+    "startFree": "Start Free",
+    "watchDemo": "Watch Demo",
+    "noCardRequired": "No credit card required",
+    "readyInMinutes": "Ready in minutes",
+    "cancelAnytime": "Cancel anytime",
+    "platformChaos": "Platform Chaos",
+    "platformChaosTitle": "Sound familiar?",
+    "platformChaosNightmare": "nightmare",
+    "platformChaosSubtitle": "Juggling between 8+ platforms. Each with a separate login, separate fee, separate problems.",
+    "painPoints": {
+      "hoursLost": "15+ hours weekly",
+      "hoursLostDesc": "lost in switching",
+      "lostStudents": "Lost students",
+      "lostStudentsDesc": "no visibility into risk",
+      "monthlySpend": "€200-400/month",
+      "monthlySpendDesc": "scattered in bills"
+    },
+    "fivePillars": "The 5 Pillars",
+    "fivePillarsTitle": "Everything you need",
+    "fivePillarsSubtitle": "Creator Club™ is built on 5 pillars that together create the perfect ecosystem.",
+    "allIntegrated": "All integrated. No Zapier. No chaos.",
+    "pillars": {
+      "communityHub": {
+        "title": "Community Hub",
+        "description": "Full-featured forum with channels, discussions, and real-time chat.",
+        "features": ["Channels", "Posts", "Real-time chat"]
+      },
+      "courseLms": {
+        "title": "Course LMS",
+        "description": "Professional course platform with modules and lessons.",
+        "features": ["Modules", "Lessons", "Progress"]
+      },
+      "eventsBooking": {
+        "title": "Events & Booking",
+        "description": "Group events and 1:1 booking directly in the platform.",
+        "features": ["Events", "1:1 Booking", "Calendar"]
+      },
+      "aiSuccessManager": {
+        "title": "AI Success Manager",
+        "subtitle": "Your 24/7 assistant",
+        "description": "Artificial intelligence that monitors every student, recognizes dropout risk, and gives you actionable insights in real time.",
+        "features": ["Risk Score", "Alerts", "Insights"],
+        "riskScoring": "Risk Scoring",
+        "riskScoringDesc": "Automatic",
+        "smartAlerts": "Smart Alerts",
+        "smartAlertsDesc": "Proactive",
+        "healthDashboard": "Health Dashboard",
+        "healthDashboardDesc": "Visual"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Detailed engagement and revenue analytics.",
+        "features": ["Dashboards", "Reports", "Metrics"]
+      }
+    },
+    "aiSection": {
+      "badge": "Automated Success Machine",
+      "title": "AI Success Manager™",
+      "subtitle": "Your personal assistant that never sleeps.",
+      "features": {
+        "monitoring": {
+          "title": "Continuous Monitoring",
+          "description": "Tracks engagement, completion, and behavior patterns"
+        },
+        "prediction": {
+          "title": "Early Warning",
+          "description": "Predicts dropout risk before it's too late"
+        },
+        "actions": {
+          "title": "Suggested Actions",
+          "description": "Concrete steps to save every at-risk student"
+        }
+      },
+      "demoTitle": "Risk Dashboard",
+      "students": {
+        "alex": "Alex Petrov",
+        "maria": "Maria Ivanova",
+        "georgi": "Georgi Dimitrov"
+      },
+      "riskLevels": {
+        "high": "High Risk",
+        "medium": "Medium",
+        "onTrack": "On Track"
+      },
+      "alerts": {
+        "noActivity": "No activity for 7 days",
+        "slowProgress": "Slow progress",
+        "completing": "Completing Module 3"
+      }
+    },
+    "stats": {
+      "creators": "Creators",
+      "students": "Students",
+      "courses": "Courses",
+      "communities": "Communities"
+    },
+    "testimonials": {
+      "badge": "Creator Reviews",
+      "title": "What our clients say",
+      "subtitle": "Hear from real creators who transformed their business",
+      "items": {
+        "maria": {
+          "name": "Maria Ivanova",
+          "role": "Fitness Coach",
+          "quote": "Creator Club saved me 15+ hours weekly. No more switching between 5 different tools. AI Success Manager is a game-changer for retention."
+        },
+        "georgi": {
+          "name": "Georgi Petrov",
+          "role": "Business Mentor",
+          "quote": "I was paying €400/month for 5 tools. Now I pay €30 and have everything in one place. My students love the integrated experience."
+        },
+        "elena": {
+          "name": "Elena Dimitrova",
+          "role": "Design Course Creator",
+          "quote": "AI Success Manager helped me reduce churn by 40%. It recognizes at-risk students before they disappear. This alone paid for the investment 10x."
+        }
+      }
+    },
+    "originStory": {
+      "badge": "Our Story",
+      "title": "We built the tool we were missing",
+      "paragraph1": "As mentors and course creators, we experienced this chaos ourselves. Telegram for chat, Skool for community, Kajabi for courses, Calendly for booking... and still losing students.",
+      "paragraph2prefix": "The most painful part?",
+      "paragraph2": "Students dropped out in silence. We had no way to see who needed help until it was too late.",
+      "paragraph3prefix": "That's why we created",
+      "paragraph3suffix": "— the only platform with a built-in AI Success Manager.",
+      "teamName": "The Creator Club™ Team",
+      "teamDesc": "Mentors • Creators • Entrepreneurs"
+    },
+    "pricing": {
+      "badge": "Pricing",
+      "title": "Clear pricing. No surprises.",
+      "subtitle": "Start free. Pay for growth only when you have results.",
+      "choosePlan": "Choose Plan",
+      "popular": "MOST POPULAR",
+      "platformFee": "platform fee",
+      "afterFirstSale": "after first sale",
+      "perMonth": "/month",
+      "feeOnSale": "fee on sale",
+      "userRoles": {
+        "title": "Two types of users",
+        "creator": {
+          "title": "Creator",
+          "description": "Mentor, coach or course creator. Creates content and receives payments."
+        },
+        "student": {
+          "title": "Student",
+          "description": "Learns and participates in the community. Free platform access."
+        }
+      },
+      "starter": {
+        "name": "STARTER",
+        "price": "€0",
+        "description": "Perfect for getting started",
+        "fee": "6.9%",
+        "features": ["Up to 50 students", "2 courses", "1 community", "AI Success Manager", "Stripe payments"]
+      },
+      "pro": {
+        "name": "PRO",
+        "price": "€30",
+        "description": "For growing businesses",
+        "fee": "3.9%",
+        "features": ["Up to 500 students", "10 courses", "3 communities", "Custom branding", "Priority support", "Advanced analytics"]
+      },
+      "scale": {
+        "name": "SCALE",
+        "price": "€99",
+        "description": "For established businesses",
+        "fee": "1.9%",
+        "features": ["Unlimited students", "Unlimited courses", "Unlimited communities", "White-label", "API access", "Dedicated manager"]
+      },
+      "startFree": "Start Free",
+      "choosePro": "Choose Pro",
+      "chooseScale": "Choose Scale",
+      "activationNote": "* One-time activation fee of €9.90 on registration",
+      "guarantee": {
+        "title": "100% Satisfaction Guarantee",
+        "description": "Try Creator Club™ risk-free. If you're not satisfied in the first 14 days, we'll refund your money — no questions asked."
+      },
+      "features": {
+        "students": "students",
+        "unlimited": "Unlimited",
+        "courses": "courses",
+        "communities": "communities",
+        "community": "community",
+        "support": "support",
+        "priority": "Priority",
+        "email": "Email",
+        "whiteLabel": "White-label",
+        "apiAccess": "API access"
+      }
+    },
+    "cta": {
+      "titlePrefix": "Ready to",
+      "titleHighlight": "transform",
+      "titleSuffix": "your business?",
+      "subtitle": "Join creators who are already using Creator Club™ and achieving better results with less effort.",
+      "startNow": "Start Now - It's Free",
+      "benefits": {
+        "activation": "€9.90 one-time activation",
+        "noMonthlyFee": "No monthly fee for Starter",
+        "cancelAnytime": "Cancel anytime"
+      }
+    },
+    "aiSectionDetails": {
+      "riskScoring": {
+        "title": "Risk Scoring",
+        "description": "AI analyzes behavior and marks at-risk students."
+      },
+      "smartRecommendations": {
+        "title": "Smart Recommendations",
+        "description": "Personalized recommendations for retaining each student."
+      },
+      "healthDashboard": {
+        "title": "Health Dashboard",
+        "description": "Visual dashboard showing your entire business health."
+      },
+      "osTitle": "Operating System",
+      "osSubtitle": "OS for the Creator & Student",
+      "forCreator": {
+        "title": "For the Creator",
+        "description": "Centralized management of courses, community, events, and revenue."
+      },
+      "forStudent": {
+        "title": "For the Student",
+        "description": "Personalized experience with progress, points, and gamification."
+      }
+    },
+    "footer": {
+      "tagline": "The all-in-one platform for course creators, coaches, and mentors.",
+      "product": "Product",
+      "resources": "Resources",
+      "company": "Company",
+      "features": "Features",
+      "pricing": "Pricing",
+      "roadmap": "Roadmap",
+      "documentation": "Documentation",
+      "helpCenter": "Help Center",
+      "blog": "Blog",
+      "about": "About",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "copyright": "© 2025 Creator Club. All rights reserved.",
+      "madeIn": "Made with",
+      "inBulgaria": "in Bulgaria"
+    }
+  },
+
+  "exploreLanding": {
+    "searchPlaceholder": "Search for courses...",
+    "nav": {
+      "forCreators": "For Creators",
+      "communities": "Communities"
+    },
+    "hero": {
+      "titlePart1": "Learn from the",
+      "titleHighlight": "best creators",
+      "subtitle": "Access courses from industry experts and transform your skills. Join thousands of learners on their journey to success.",
+      "startLearning": "Start Learning",
+      "browseCourses": "Browse Courses"
+    },
+    "stats": {
+      "learners": "Learners",
+      "courses": "Courses",
+      "avgRating": "Avg Rating",
+      "completionRate": "Completion Rate"
+    },
+    "categories": {
+      "allCourses": "All Courses"
+    },
+    "courseGrid": {
+      "resultsFor": "Results for",
+      "courses": "Courses",
+      "allCourses": "All Courses",
+      "course": "course",
+      "coursePlural": "courses",
+      "noCoursesFound": "No courses found",
+      "noCoursesAvailable": "No courses available yet",
+      "tryAdjustingSearch": "Try adjusting your search terms",
+      "checkBackSoon": "Check back soon for new courses from our creators",
+      "clearSearch": "Clear search"
+    },
+    "cta": {
+      "title": "Ready to start learning?",
+      "subtitle": "Join our community of learners and get access to all courses.",
+      "createFreeAccount": "Create Free Account"
+    },
+    "footer": {
+      "tagline": "Learn from the best creators and transform your skills.",
+      "learn": "Learn",
+      "browseCourses": "Browse Courses",
+      "communities": "Communities",
+      "teach": "Teach",
+      "becomeCreator": "Become a Creator",
+      "support": "Support",
+      "helpCenter": "Help Center",
+      "contactUs": "Contact Us",
+      "copyright": "Creator Club. All rights reserved."
+    },
+    "courseCard": {
+      "free": "Free"
+    }
+  },
+
+  "studentHome": {
+    "welcome": {
+      "title": "Welcome back, {{firstName}}!",
+      "subtitle": "Continue your learning journey or discover new communities to join."
+    },
+    "stats": {
+      "communitiesJoined": "Communities Joined",
+      "coursesEnrolled": "Courses Enrolled",
+      "communitiesToExplore": "Communities to Explore"
+    },
+    "myCommunities": {
+      "title": "My Communities",
+      "viewAll": "View All"
+    },
+    "defaultCommunityDescription": "A great community to be part of",
+    "continueLearning": {
+      "title": "Continue Learning",
+      "viewAll": "All Courses"
+    },
+    "defaultCourseDescription": "Continue your learning journey",
+    "discoverCommunities": {
+      "title": "Discover Communities",
+      "subtitle": "Find and join communities that match your interests",
+      "browseAll": "Browse All",
+      "searchPlaceholder": "Search communities...",
+      "noResultsTitle": "No communities found",
+      "noResultsSubtitle": "Try adjusting your search query",
+      "allCaughtUpTitle": "All caught up!",
+      "allCaughtUpSubtitle": "You've joined all available communities. Check back later for more!",
+      "clearSearch": "Clear search"
+    },
+    "pricing": {
+      "free": "Free",
+      "monthly": "/mo"
+    },
+    "communityCard": {
+      "by": "by {{creatorName}}",
+      "description": "Join this community to learn and connect",
+      "viewCommunity": "View Community"
+    },
+    "exploreButton": "Explore All {{count}} Communities",
+    "emptyState": {
+      "title": "Start Your Journey",
+      "subtitle": "Communities are where the magic happens. Browse available communities to find your tribe and start learning.",
+      "browseButton": "Browse Communities"
+    }
+  },
+
+  "courseLms": {
+    "pageTitle": {
+      "myLearning": "My Learning",
+      "myCourses": "My Courses"
+    },
+    "payment": {
+      "successTitle": "Purchase Successful!",
+      "successMessage": "You now have access to the course. Happy learning!"
+    },
+    "emptyState": {
+      "notEnrolledYet": "You haven't enrolled in any courses yet. Browse available courses below.",
+      "selectCommunity": "Select a Community",
+      "selectCommunityDescription": "Please select a community from the sidebar to view its courses.",
+      "noCoursesYet": "No Courses Yet",
+      "createFirstCourse": "Create your first course to start teaching.",
+      "notEnrolledInAnyCourses": "Not Enrolled in Any Courses",
+      "joinCommunityToAccess": "Join a community to access their courses."
+    },
+    "button": {
+      "createCourse": "Create Course",
+      "newCourse": "New Course",
+      "cancel": "Cancel",
+      "create": "Create",
+      "markAsComplete": "Mark as Complete",
+      "completed": "Completed",
+      "backToCourses": "← Back to Courses"
+    },
+    "section": {
+      "availableCourses": "Available Courses",
+      "yourCourses": "Your Courses",
+      "continueLearning": "Continue Learning",
+      "lessonNotes": "Lesson Notes"
+    },
+    "courseCard": {
+      "published": "Published",
+      "draft": "Draft",
+      "noDescription": "No description"
+    },
+    "courseStats": {
+      "module": "Module",
+      "modules": "Modules",
+      "lesson": "Lesson",
+      "lessons": "Lessons"
+    },
+    "communityInfo": {
+      "showingCoursesFor": "Showing courses for",
+      "courseWillBeAddedTo": "This course will be added to",
+      "selectCommunityFirstToCreate": "Please select a community first to create a course."
+    },
+    "createCourseModal": {
+      "title": "Create Course",
+      "courseTitle": "Course title",
+      "courseDescription": "Course description (optional)"
+    },
+    "module": {
+      "addModule": "Add Module",
+      "noModulesYet": "No modules yet",
+      "addModulesToBuild": "Add modules to build your course"
+    },
+    "lesson": {
+      "addLesson": "Add Lesson",
+      "noLessonsInModule": "No lessons in this module",
+      "selectLessonToStart": "Select a lesson to start learning"
+    },
+    "lessonPlayer": {
+      "module": "Module:",
+      "resourceTextContent": "Resource/Text Content",
+      "noContentUrl": "No content URL set"
+    },
+    "tooltip": {
+      "editCourse": "Edit course",
+      "viewAnalytics": "View analytics",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "editModule": "Edit module",
+      "editLesson": "Edit lesson",
+      "dragToReorder": "Drag to reorder"
+    }
+  },
+
+  "homework": {
+    "page": {
+      "title": "Homework",
+      "subtitle": "View assignments and track your submissions"
+    },
+    "stats": {
+      "pending": "Pending",
+      "submitted": "Submitted",
+      "pointsEarned": "Points Earned"
+    },
+    "pendingAssignments": {
+      "sectionTitle": "Pending Assignments",
+      "emptyTitle": "All caught up!",
+      "emptyMessage": "You have no pending assignments at the moment.",
+      "pointsLabel": "points",
+      "dueLabel": "Due:",
+      "submitButton": "Submit"
+    },
+    "pendingSurveys": {
+      "sectionTitle": "Surveys to Complete",
+      "surveyBadge": "Survey",
+      "fillButton": "Fill Survey",
+      "moreCount_one": "+{{count}} more survey",
+      "moreCount_other": "+{{count}} more surveys"
+    },
+    "mySubmissions": {
+      "sectionTitle": "My Submissions",
+      "emptyTitle": "No submissions yet",
+      "emptyMessage": "Submit your first assignment to see it here.",
+      "submittedOnLabel": "Submitted on",
+      "pendingReviewStatus": "Pending Review",
+      "gradedStatus": "Graded",
+      "pointsDisplay": "points",
+      "gradedOnLabel": "Graded on",
+      "feedbackLabel": "Feedback:"
+    },
+    "errors": {
+      "submissionError": "Failed to submit homework. You may have already submitted this assignment."
+    }
+  },
+
+  "calendar": {
+    "title": "Community Calendar",
+    "subtitleCreator": "Manage your live sessions and workshops.",
+    "subtitleStudent": "Upcoming live sessions and workshops.",
+    "listViewTooltip": "List view",
+    "calendarViewTooltip": "Calendar view",
+    "newEventButton": "New Event",
+    "upcomingEventsHeading": "Upcoming Events",
+    "noUpcomingEventsHeading": "No Upcoming Events",
+    "pastEventsHeading": "Past Events",
+    "noPastEventsHeading": "No Past Events",
+    "historyButton": "History",
+    "showUpcomingButton": "Upcoming",
+    "showHistoryTooltip": "Show past events",
+    "showUpcomingTooltip": "Show upcoming events",
+    "emptyStateCreator": "No events scheduled. Create your first event!",
+    "emptyStateStudent": "No upcoming events to display.",
+    "eventTypeLabel": "EVENT_TYPE",
+    "attendingText": "{{count}} Attending",
+    "withAttendeeText": "with {{name}}",
+    "joinOnlineButton": "Join Online",
+    "viewLocationButton": "View Location",
+    "linkComingSoonButton": "Link Coming Soon",
+    "addToCalendarButton": "Add to Calendar",
+    "scheduledStatus": "Scheduled",
+    "rsvpButton": "RSVP",
+    "cancelRsvpButton": "Cancel RSVP",
+    "editEventTooltip": "Edit event",
+    "deleteEventTooltip": "Delete event",
+    "miniCalendar": {
+      "eventsOnDayText": "Events on {{month}} {{day}}",
+      "noEventsOnDay": "No events on this day",
+      "dayAbbreviations": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    },
+    "createEventModal": {
+      "title": "Create New Event",
+      "eventTitleLabel": "Event Title *",
+      "eventTitlePlaceholder": "e.g., Weekly Q&A Session",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "What's this event about?",
+      "communityLabel": "Community",
+      "communitySelectPlaceholder": "Select a community...",
+      "communityHelpText": "Only members of this community will see the event",
+      "eventTypeLabel": "Event Type",
+      "eventTypeGroup": "Group Session",
+      "eventTypeOneOnOne": "1:1 Session",
+      "scheduleWithLabel": "Schedule With *",
+      "scheduleWithPlaceholder": "Select a member...",
+      "loadingMembers": "Loading members...",
+      "noMembersMessage": "No members in this community yet.",
+      "selectCommunityFirst": "Select a community first to choose a member for your 1:1 session.",
+      "dateLabel": "Date *",
+      "startTimeLabel": "Start Time *",
+      "endTimeLabel": "End Time *",
+      "locationTypeLabel": "Location Type",
+      "locationTypeOnline": "Online",
+      "locationTypeInPerson": "In Person",
+      "meetingLinkLabel": "Meeting Link (Zoom, Meet, etc.)",
+      "meetingLinkPlaceholder": "https://zoom.us/j/...",
+      "addressLabel": "Location Address",
+      "addressPlaceholder": "Enter address or Google Maps link",
+      "addressHelpText": "Paste a Google Maps link or enter the address",
+      "cancelButton": "Cancel",
+      "createButton": "Create Event",
+      "creatingButton": "Creating..."
+    },
+    "editEventModal": {
+      "title": "Edit Event",
+      "scheduledWithLabel": "Scheduled With",
+      "scheduledWithPlaceholder": "Select a member...",
+      "loadingMembers": "Loading members...",
+      "noAttendeeAssigned": "No attendee assigned",
+      "eventTitleLabel": "Event Title *",
+      "eventTitlePlaceholder": "e.g., Weekly Q&A Session",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "What's this event about?",
+      "dateLabel": "Date *",
+      "startTimeLabel": "Start Time *",
+      "endTimeLabel": "End Time *",
+      "locationTypeLabel": "Location Type",
+      "locationTypeOnline": "Online",
+      "locationTypeInPerson": "In Person",
+      "meetingLinkLabel": "Meeting Link (Zoom, Meet, etc.)",
+      "meetingLinkPlaceholder": "https://zoom.us/j/...",
+      "addressLabel": "Location Address",
+      "addressPlaceholder": "Enter address or Google Maps link",
+      "addressHelpText": "Paste a Google Maps link or enter the address",
+      "cancelButton": "Cancel",
+      "saveButton": "Save Changes",
+      "savingButton": "Saving..."
+    },
+    "deleteEventModal": {
+      "title": "Delete Event",
+      "confirmationText": "Are you sure you want to delete this event? This action cannot be undone and will remove all attendee RSVPs.",
+      "cancelButton": "Cancel",
+      "deleteButton": "Delete Event",
+      "deletingButton": "Deleting..."
+    },
+    "markAttendanceButton": "Attendance",
+    "markAttendanceTooltip": "Mark who attended this event",
+    "attendance": {
+      "modalTitle": "Mark Attendance",
+      "searchPlaceholder": "Search members...",
+      "attendedCount": "{{count}} attended",
+      "totalCount": "{{count}} total",
+      "noSearchResults": "No members found matching your search",
+      "noMembers": "No members to display",
+      "rsvpYes": "RSVP'd",
+      "rsvpNo": "Not RSVP'd",
+      "cancelButton": "Cancel",
+      "saveButton": "Save Attendance",
+      "savingButton": "Saving..."
+    }
+  },
+
+  "creatorDashboard": {
+    "pageTitle": "Creator Dashboard",
+    "welcomeMessage": "Welcome back, {{name}}. Here's what's happening today.",
+    "generateReport": "Generate Report",
+    "communitySelector": {
+      "allCommunities": "All Communities"
+    },
+    "stats": {
+      "vsLastWeek": "vs last week",
+      "noPreviousData": "No previous data",
+      "communityMembers": "Community Members",
+      "totalPosts": "Total Posts",
+      "communityEngagement": "Community engagement",
+      "courseEnrollments": "Course Enrollments",
+      "completionRate": "Completion Rate",
+      "atRiskStudents": "At Risk Students",
+      "needAttention": "{{count}} need attention",
+      "allHealthy": "All healthy",
+      "inactive7d": "Inactive (7d+)",
+      "allActive": "All active"
+    },
+    "onboarding": {
+      "title": "Welcome to Creator Club!",
+      "description": "Get started by creating your community. This is where your students will connect, share wins, and engage with your content.",
+      "createCommunityButton": "Create Your Community",
+      "communityHub": "Community Hub",
+      "communityHubDescription": "Engage with students in channels",
+      "courseContent": "Course Content",
+      "courseContentDescription": "Create courses and modules",
+      "eventsAndCalls": "Events & Calls",
+      "eventsAndCallsDescription": "Schedule live sessions"
+    },
+    "chart": {
+      "title": "Engagement Activity",
+      "noData": "No activity data available yet"
+    },
+    "atRisk": {
+      "title": "At-Risk Students",
+      "needsAttention": "{{count}} Needs Attention",
+      "critical": "CRITICAL",
+      "high": "HIGH",
+      "profileButton": "Profile",
+      "messageButton": "Message",
+      "emptyTitle": "No at-risk students",
+      "emptyDescription": "All your students are doing great!"
+    },
+    "homework": {
+      "completionLabel": "Homework Submissions",
+      "missingCount_one": "{{count}} submission missing",
+      "missingCount_other": "{{count}} submissions missing",
+      "studentsWithMissing_one": "{{count}} student behind:",
+      "studentsWithMissing_other": "{{count}} students behind:",
+      "andMoreStudents_one": "+{{count}} more student",
+      "andMoreStudents_other": "+{{count}} more students",
+      "showAll": "Show all",
+      "showLess": "Show less",
+      "modal": {
+        "progress": "Homework Progress",
+        "completionRate": "{{rate}}% completed",
+        "totalAssignments": "Total",
+        "submitted": "Submitted",
+        "missing": "Missing",
+        "status": "Status",
+        "statusComplete": "All Complete",
+        "statusPartial": "In Progress",
+        "statusBehind": "Falling Behind",
+        "sendReminder": "Send Reminder",
+        "reminderReason_one": "Missing {{count}} homework assignment",
+        "reminderReason_other": "Missing {{count}} homework assignments"
+      }
+    },
+    "studentProfile": {
+      "riskScore": "Risk Score",
+      "status": "Status",
+      "statusCritical": "Critical",
+      "statusAtRisk": "At Risk",
+      "critical": "Critical",
+      "atRisk": "At Risk",
+      "reasonForRisk": "Reason for Risk",
+      "sendMessage": "Send Message",
+      "noCourse": "No course"
+    },
+    "message": {
+      "title": "Message {{name}}",
+      "subtitle": "Send a personalized message to this student",
+      "riskReason": "Risk reason:",
+      "yourMessage": "Your Message",
+      "placeholder": "Write an encouraging message to help this student get back on track...",
+      "cancel": "Cancel",
+      "send": "Send Message",
+      "sendButton": "Send Message",
+      "successToast": "Message sent to {{name}}!",
+      "sentSuccess": "Message sent to {{name}}!",
+      "sendError": "Failed to send message. Please try again."
+    },
+    "createCommunity": {
+      "title": "Create Your Community",
+      "subtitle": "This is where your students will connect and engage",
+      "nameLabel": "Community Name",
+      "namePlaceholder": "e.g., My Awesome Community",
+      "nameHint": "You can always change this later in settings",
+      "whatYouGet": "What you'll get:",
+      "defaultChannels": "Default channels (General, Wins, Help, Announcements, Introductions)",
+      "gamification": "Gamification with points & leaderboard",
+      "postFeatures": "Post, comment, and like features",
+      "feature1": "Default channels (General, Wins, Help, Announcements, Introductions)",
+      "feature2": "Gamification with points & leaderboard",
+      "feature3": "Post, comment, and like features",
+      "cancel": "Cancel",
+      "create": "Create Community",
+      "createButton": "Create Community",
+      "successToast": "Community created! Head to the Community tab to customize it."
+    },
+    "tasks": {
+      "title": "Tasks & Reminders",
+      "cancel": "Cancel",
+      "newTask": "New Task",
+      "form": {
+        "titlePlaceholder": "Task title *",
+        "descriptionPlaceholder": "Description (optional)",
+        "createButton": "Create Task"
+      },
+      "filter": {
+        "all": "All",
+        "todo": "To Do",
+        "inProgress": "In Progress",
+        "done": "Done"
+      },
+      "changeStatusTooltip": "Click to change status to {{status}}",
+      "deleteTooltip": "Delete task",
+      "empty": {
+        "title": "No tasks found",
+        "createFirst": "Create your first task to get started",
+        "noTasksWithStatus": "No {{status}} tasks"
+      }
+    },
+    "report": {
+      "modalTitle": "Dashboard Report",
+      "generating": "Generating your report...",
+      "generatingMessage": "Analyzing your data and generating insights...",
+      "generatingHint": "This may take a few seconds",
+      "aiInsightsTitle": "AI-Powered Insights",
+      "noReportYet": "Click 'Generate Report' to create your dashboard report",
+      "generatedAt": "Generated: {{date}}",
+      "downloadCSV": "Download CSV",
+      "regenerate": "Regenerate",
+      "errorGenerating": "Error generating report. Please try again.",
+      "downloadSuccess": "CSV downloaded successfully",
+      "downloadError": "Error downloading CSV"
+    },
+    "lectures": {
+      "viewLectures": "View Lectures",
+      "title": "Lecture Attendance",
+      "attendance": "Attendance",
+      "attendanceRate": "{{rate}}% attendance rate",
+      "attended": "Attended",
+      "missed": "Missed",
+      "eventHistory": "Event History",
+      "noEvents": "No past events found",
+      "backToProfile": "Back to Profile",
+      "loadError": "Failed to load lecture attendance"
+    }
+  },
+
+  "homeworkManagement": {
+    "pageTitle": "Homework Management",
+    "pageSubtitle": "Manage assignments and grade submissions",
+    "pendingReviews": "pending reviews",
+    "buttons": {
+      "newAssignment": "New Assignment",
+      "createAssignment": "Create Assignment",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "grade": "Grade",
+      "editGrade": "Edit Grade"
+    },
+    "assignments": {
+      "title": "Assignments",
+      "emptyTitle": "No assignments yet",
+      "emptyDescription": "Create your first assignment to get started."
+    },
+    "status": {
+      "published": "Published",
+      "draft": "Draft",
+      "pending": "pending",
+      "graded": "Graded"
+    },
+    "assignment": {
+      "points": "points",
+      "due": "Due:",
+      "submissions": "submissions"
+    },
+    "filter": {
+      "label": "Filter:",
+      "pendingReview": "Pending Review",
+      "graded": "Graded",
+      "allSubmissions": "All Submissions"
+    },
+    "submissions": {
+      "countSingular": "submission",
+      "countPlural": "submissions",
+      "empty": {
+        "noPending": {
+          "title": "No pending submissions",
+          "description": "All submissions have been graded."
+        },
+        "noGraded": {
+          "title": "No graded submissions",
+          "description": "Grade some submissions to see them here."
+        },
+        "noSubmissions": {
+          "title": "No submissions yet",
+          "description": "Students will appear here once they submit."
+        },
+        "pendingTitle": "No pending submissions",
+        "pendingDescription": "All submissions have been graded.",
+        "gradedTitle": "No graded submissions",
+        "gradedDescription": "Grade some submissions to see them here.",
+        "allTitle": "No submissions yet",
+        "allDescription": "Students will appear here once they submit."
+      },
+      "submitted": "Submitted",
+      "noTextResponse": "No text response",
+      "unknownStudent": "Unknown Student"
+    },
+    "selectAssignment": {
+      "title": "Select an Assignment",
+      "description": "Click on an assignment from the list to view and grade student submissions."
+    },
+    "assignmentModal": {
+      "titleCreate": "Create Assignment",
+      "titleEdit": "Edit Assignment",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Assignment title",
+      "instructionsLabel": "Instructions",
+      "instructionsPlaceholder": "Describe what students need to do...",
+      "charactersCount": "{{count}}/{{max}} characters",
+      "maxPointsLabel": "Maximum Points",
+      "pointsRange": "({{min}}-{{max}} points)",
+      "dueDateLabel": "Due Date",
+      "dueDateOptional": "(optional)",
+      "clearDueDate": "Clear due date",
+      "deleteConfirmQuestion": "Delete this assignment?",
+      "deleteButton": "Delete Assignment",
+      "yesDelete": "Yes, Delete",
+      "deleting": "Deleting...",
+      "cancelButton": "Cancel",
+      "saveChanges": "Save Changes",
+      "createAssignment": "Create Assignment",
+      "saving": "Saving...",
+      "validationTitleRequired": "Title is required",
+      "validationTitleTooLong": "Title must be less than {{max}} characters",
+      "validationDescriptionTooLong": "Description must be less than {{max}} characters",
+      "validationPointsRange": "Points must be between {{min}} and {{max}}",
+      "errorSaveFailed": "Failed to save assignment. Please try again.",
+      "errorDeleteFailed": "Failed to delete assignment. Please try again."
+    },
+    "gradingModal": {
+      "title": "Grade Submission",
+      "submittedLabel": "Submitted: {{date}}",
+      "unknownStudent": "Unknown Student",
+      "studentResponseLabel": "Student's Response",
+      "attachedFilesLabel": "Attached Files",
+      "fileDefaultName": "File",
+      "noContentWarning": "This submission has no text response or attached files.",
+      "gradeLabel": "Grade",
+      "pointsLabel": "points",
+      "feedbackLabel": "Feedback",
+      "feedbackOptional": "(optional)",
+      "feedbackPlaceholder": "Provide feedback for the student...",
+      "cancelButton": "Cancel",
+      "awardPointsButton": "Award {{points}} Points",
+      "grading": "Grading...",
+      "errorGradeFailed": "Failed to grade submission. Please try again."
+    }
+  },
+
+  "communityHub": {
+    "emptyState": {
+      "noCommunitiesTitle": "No Communities Yet",
+      "creatorPrompt": "Create your first community to start engaging with your students.",
+      "studentPrompt": "You haven't joined any communities yet.",
+      "noPostsInChannel": "No posts in this channel yet.",
+      "beFirstToPost": "Be the first to post!",
+      "noCommentsYet": "No comments yet. Be the first!",
+      "noMembersWithPoints": "No members with points yet",
+      "beFirstToEarnPoints": "Be the first to earn points!"
+    },
+    "buttons": {
+      "createCommunity": "Create Community",
+      "newCommunity": "New Community",
+      "joinCommunity": "Join Community",
+      "create": "Create",
+      "cancel": "Cancel",
+      "post": "Post",
+      "save": "Save",
+      "saveChanges": "Save Changes",
+      "createChannel": "Create Channel",
+      "delete": "Delete",
+      "manageGroups": "Manage Groups",
+      "leaderboard": "Leaderboard",
+      "leaveCommunity": "Leave Community"
+    },
+    "loading": {
+      "uploading": "Uploading...",
+      "posting": "Posting...",
+      "saving": "Saving...",
+      "deleting": "Deleting..."
+    },
+    "joinBanner": {
+      "title": "Join this community",
+      "subtitle": "Become a member to post and interact"
+    },
+    "createPost": {
+      "placeholder": "Share something with the club...",
+      "imagePreviewAlt": "Upload preview",
+      "meAlt": "Me"
+    },
+    "tooltip": {
+      "communitySettings": "Community Settings",
+      "removeImage": "Remove image",
+      "addImage": "Add image",
+      "addEmoji": "Add emoji"
+    },
+    "points": {
+      "yourLevel": "Your Level",
+      "pointsSuffix": "points",
+      "ptsSuffix": "pts"
+    },
+    "badges": {
+      "creator": "CREATOR",
+      "admin": "ADMIN",
+      "pinned": "PINNED"
+    },
+    "postMenu": {
+      "copyLink": "Copy link",
+      "pinPost": "Pin post",
+      "unpinPost": "Unpin post",
+      "deletePost": "Delete post",
+      "report": "Report"
+    },
+    "comments": {
+      "placeholder": "Write a comment..."
+    },
+    "modal": {
+      "createCommunity": {
+        "title": "Create Community",
+        "namePlaceholder": "Community name"
+      },
+      "channel": {
+        "createTitle": "Create Channel",
+        "editTitle": "Edit Channel",
+        "nameLabel": "Channel Name",
+        "namePlaceholder": "e.g., General, Announcements",
+        "namePreview": "Will display as: # {{channelName}}",
+        "descriptionLabel": "Description",
+        "descriptionOptional": "(optional)",
+        "descriptionPlaceholder": "What is this channel for?",
+        "visibleToLabel": "Visible to",
+        "allMembersOption": "All Members (Global)",
+        "membersSuffix": "members",
+        "visibilityHint": "Choose which group can see this channel"
+      },
+      "deletePost": {
+        "title": "Delete Post",
+        "message": "Are you sure you want to delete this post? This action cannot be undone."
+      },
+      "communitySettings": {
+        "title": "Community Settings",
+        "subtitle": "Configure your community",
+        "nameLabel": "Community Name",
+        "namePlaceholder": "Enter community name",
+        "tabs": {
+          "general": "General",
+          "team": "Team"
+        }
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "subtitle": "Top members by points",
+        "level": "Level",
+        "you": "(You)"
+      }
+    },
+    "givePoints": {
+      "title": "Give Points",
+      "buttonTitle": "Give points to this member",
+      "buttonLabel": "Give Points",
+      "amountLabel": "Points to award",
+      "reasonLabel": "Reason",
+      "optional": "(optional)",
+      "reasonPlaceholder": "e.g., Great contribution, helpful answer...",
+      "defaultReason": "Bonus points from team",
+      "cancelButton": "Cancel",
+      "awardButton": "Award {{points}} Points",
+      "awarding": "Awarding..."
+    },
+    "confirm": {
+      "deleteChannel": "Delete this channel? All posts in this channel will be permanently deleted."
+    },
+    "alert": {
+      "reportSubmitted": "Thank you for reporting. Our team will review this post."
+    },
+    "time": {
+      "justNow": "Just now",
+      "minuteAgo": "{{count}} minute ago",
+      "minutesAgo": "{{count}} minutes ago",
+      "hourAgo": "{{count}} hour ago",
+      "hoursAgo": "{{count}} hours ago",
+      "dayAgo": "{{count}} day ago",
+      "daysAgo": "{{count}} days ago"
+    },
+    "alt": {
+      "postImage": "Post image",
+      "userAvatar": "User",
+      "anonymous": "Anonymous"
+    },
+    "userProfile": {
+      "errorLoad": "Could not load profile",
+      "tryAgain": "Try again",
+      "role": {
+        "creator": "Creator",
+        "admin": "Admin",
+        "student": "Student",
+        "member": "Member"
+      },
+      "stats": {
+        "posts": "Posts",
+        "comments": "Comments",
+        "joined": "Joined"
+      },
+      "close": "Close",
+      "sendMessageToCreator": "Message Creator",
+      "sendMessageToStudent": "Send Message",
+      "viewProgress": "View Progress",
+      "progressTitle": "Student Progress",
+      "progress": {
+        "homework": "Homework",
+        "lessons": "Lessons",
+        "events": "Events",
+        "homeworkTab": "Homework",
+        "lessonsTab": "Lessons",
+        "eventsTab": "Events",
+        "noHomework": "No homework submitted yet",
+        "noLessons": "No lessons completed yet",
+        "noEvents": "No event registrations",
+        "pending": "Pending",
+        "attended": "Attended",
+        "registered": "Registered"
+      }
+    },
+    "pricing": {
+      "sectionTitle": "Community Settings",
+      "sectionDescription": "Configure {{communityName}}",
+      "title": "Pricing",
+      "subtitle": "Choose how members can access your community",
+      "thumbnail": {
+        "label": "Community Thumbnail",
+        "uploading": "Uploading...",
+        "uploadImage": "Upload Image",
+        "remove": "Remove thumbnail",
+        "hint": "Recommended: 400x400px, max 5MB"
+      },
+      "description": {
+        "label": "About / Description",
+        "hint": "This appears in the \"About\" section on your community landing page.",
+        "placeholder": "Describe your community... What will members learn? Who is it for? What makes it special?",
+        "charCount": "{{count}}/2000 characters",
+        "saved": "Saved!",
+        "saving": "Saving...",
+        "saveButton": "Save Description"
+      },
+      "vsl": {
+        "label": "Landing Page Video (VSL)",
+        "hint": "Upload a video to showcase on your community landing page. If no video is uploaded, the video section won't appear.",
+        "uploading": "Uploading...",
+        "uploadingWithProgress": "Uploading... {{progress}}%",
+        "replaceVideo": "Replace Video",
+        "uploadVideo": "Upload Video",
+        "deleting": "Deleting...",
+        "deleteVideo": "Delete Video",
+        "browserNotSupported": "Your browser does not support the video tag.",
+        "formatHint": "MP4, WebM, OGG, or MOV (max 49MB)"
+      },
+      "options": {
+        "free": {
+          "label": "Free",
+          "description": "Anyone can join for free"
+        },
+        "oneTime": {
+          "label": "One-time Payment",
+          "description": "Pay once, access forever"
+        },
+        "monthly": {
+          "label": "Monthly Subscription",
+          "description": "Recurring monthly access"
+        },
+        "both": {
+          "label": "One-time & Monthly",
+          "description": "Let students choose between one-time or monthly payment"
+        }
+      },
+      "price": {
+        "label": "Price",
+        "oneTimeLabel": "One-time price",
+        "monthlyLabel": "Monthly price",
+        "oneTimeHint": "Members pay this amount once for lifetime access",
+        "monthlyHint": "Members will be charged this amount every month",
+        "bothOneTimeHint": "One-time payment for lifetime access",
+        "bothMonthlyHint": "Recurring monthly subscription price",
+        "minPrice": "Minimum price is €0.50",
+        "maxPrice": "Maximum price is €9,999"
+      },
+      "connect": {
+        "setupTitle": "Set up payouts first",
+        "setupDescription": "Connect your bank account to receive payments from members. This is required before enabling paid access.",
+        "settingUp": "Setting up...",
+        "setupButton": "Set Up Payouts",
+        "completeTitle": "Complete payout setup",
+        "completeDescription": "Your payout account needs additional information before you can accept payments.",
+        "loading": "Loading...",
+        "completeSetupButton": "Complete Setup",
+        "checking": "Checking...",
+        "refreshStatus": "Refresh status",
+        "enabledTitle": "Payouts enabled",
+        "enabledDescription": "Your account is ready to receive payments from members."
+      },
+      "earnings": {
+        "perMonth": "Estimated earnings per month",
+        "perSale": "Estimated earnings per sale",
+        "afterFee": "After {{feePercent}}% platform fee (€{{feeAmount}})",
+        "noFee": "No platform fee"
+      },
+      "saving": "Saving...",
+      "savePricing": "Save Pricing",
+      "gatedAccess": {
+        "title": "Require Approval to Join",
+        "description": "Members must apply and be approved before joining this community",
+        "enabledHint": "New members will need to submit an application. You can review and approve them in the Student Manager."
+      },
+      "dangerZone": {
+        "title": "Danger Zone",
+        "description": "Permanently delete this community and all its data",
+        "deleteButton": "Delete Community",
+        "confirmTitle": "Are you absolutely sure?",
+        "confirmWarning": "This action cannot be undone. This will permanently delete the community \"{{communityName}}\", including all channels, posts, memberships, and associated data.",
+        "confirmLabel": "To confirm, type the community name: {{communityName}}",
+        "cancel": "Cancel",
+        "deleting": "Deleting...",
+        "deleteForever": "Delete Forever"
+      },
+      "errors": {
+        "title": "Error",
+        "loadFailed": "Failed to load community settings",
+        "notFound": "Community not found",
+        "unexpected": "An unexpected error occurred",
+        "completeProfile": "Please complete your profile before setting up payouts",
+        "createPayoutAccount": "Failed to create payout account",
+        "getOnboardingLink": "Failed to get onboarding link",
+        "settingUpPayouts": "An error occurred while setting up payouts",
+        "setupPayoutsFirst": "Please set up payouts before enabling paid access",
+        "maxPrice": "Maximum price is €9,999",
+        "saveFailed": "Failed to save pricing",
+        "uploadImage": "Please upload an image file (PNG, JPG, etc.)",
+        "imageTooLarge": "Image must be less than 5MB",
+        "thumbnailUploadFailed": "Failed to upload thumbnail. Please try again.",
+        "videoFormat": "Please upload a video file (MP4, WebM, OGG, or MOV)",
+        "videoTooLarge": "Video must be less than 49MB",
+        "videoUploadFailed": "Failed to upload video. Please try again.",
+        "videoDeleteFailed": "Failed to delete video. Please try again.",
+        "descriptionSaveFailed": "Failed to save description. Please try again.",
+        "deleteNameMismatch": "Community name does not match. Please type the exact name.",
+        "deleteFailed": "Failed to delete community. Please try again.",
+        "deleteUnexpected": "An unexpected error occurred. Please try again.",
+        "accessTypeFailed": "Failed to update access settings. Please try again."
+      }
+    },
+    "groups": {
+      "title": "Member Groups",
+      "description": "Create groups to segment your community. Assign channels and events to specific groups.",
+      "memberCount": "{{count}} member",
+      "memberCountPlural": "{{count}} members",
+      "tooltip": {
+        "manageMembers": "Manage members",
+        "editGroup": "Edit group",
+        "deleteGroup": "Delete group"
+      },
+      "deleteConfirm": "Delete this group? Channels and events in this group will become visible to all members.",
+      "emptyState": "No groups yet. Create your first group to start segmenting your community.",
+      "form": {
+        "namePlaceholder": "Group name (e.g., Sofia, VIP Members)",
+        "descriptionPlaceholder": "Description (optional)",
+        "saveChanges": "Save Changes",
+        "createGroup": "Create Group",
+        "cancel": "Cancel"
+      },
+      "addGroup": "Add Group"
+    },
+    "folders": {
+      "general": "GENERAL",
+      "contextMenu": {
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "emptyChannels": "No channels"
+    },
+    "memberAssigner": {
+      "title": "{{groupName}} Members",
+      "fallbackTitle": "Group Members",
+      "selectedCount": "{{count}} member selected",
+      "selectedCountPlural": "{{count}} members selected",
+      "searchPlaceholder": "Search members...",
+      "emptySearch": "No members match your search",
+      "emptyCommunity": "No members in this community yet",
+      "unknownMember": "Unknown",
+      "groupCount": "{{count}} group",
+      "groupCountPlural": "{{count}} groups",
+      "saving": "Saving...",
+      "saveMembers": "Save Members"
+    }
+  },
+
+  "chatbots": {
+    "page": {
+      "title": "AI Chat",
+      "subtitle": "Chat with AI assistants",
+      "manageBots": "Manage Bots",
+      "emptyState": {
+        "title": "No AI chatbots available yet",
+        "description": "The community creator hasn't set up any AI chatbots yet. Check back later!"
+      }
+    },
+    "editModal": {
+      "titleCreate": "Create Chatbot",
+      "titleEdit": "Edit Chatbot",
+      "roles": {
+        "qa": "QA Bot",
+        "motivation": "Motivation Coach",
+        "support": "Tech Support"
+      },
+      "fields": {
+        "botName": "Bot Name",
+        "botNamePlaceholder": "e.g., Course Helper",
+        "name": {
+          "label": "Bot Name",
+          "placeholder": "e.g., Course Helper"
+        },
+        "role": {
+          "label": "Role"
+        },
+        "personality": "Personality",
+        "personalityPlaceholder": "e.g., Friendly and knowledgeable",
+        "personalityHint": "A brief description of the bot's personality traits",
+        "systemPrompt": "System Prompt",
+        "systemPromptPlaceholder": "Instructions for the AI...",
+        "systemPromptHint": "Instructions that tell the AI how to behave and respond",
+        "greetingMessage": "Greeting Message",
+        "greetingPlaceholder": "First message shown to students...",
+        "greetingHint": "The first message students see when they start a conversation",
+        "avatar": {
+          "label": "Avatar Settings",
+          "showAvatar": "Show avatar",
+          "urlPlaceholder": "Image URL (https://...)",
+          "hint": "Leave empty to use the default role emoji, or enter a URL to a custom avatar image",
+          "uploadButton": "Upload Image",
+          "uploadFormats": "JPG, PNG, GIF or WebP (max 10MB)",
+          "uploadAfterCreate": "Save the bot first to upload an image",
+          "orEnterUrl": "Or enter an image URL:",
+          "uploadError": {
+            "invalidFile": "Please select a valid image file (JPG, PNG, GIF, WebP)",
+            "fileSize": "Image must be smaller than 10MB",
+            "saveFirst": "Please save the chatbot first before uploading an avatar",
+            "failed": "Failed to upload image. Please try again."
+          }
+        }
+      },
+      "validation": {
+        "nameRequired": "Bot name is required",
+        "systemPromptRequired": "System prompt is required"
+      },
+      "errors": {
+        "saveFailed": "Failed to save chatbot. Please try again.",
+        "deleteFailed": "Failed to delete chatbot. Please try again."
+      },
+      "delete": {
+        "confirm": "Delete this chatbot?",
+        "button": "Delete Chatbot",
+        "confirmButton": "Yes, Delete",
+        "deleting": "Deleting..."
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save Changes",
+        "create": "Create Chatbot",
+        "saving": "Saving..."
+      }
+    },
+    "settings": {
+      "title": "AI Chatbots",
+      "addBot": "Add Bot",
+      "addFirstBot": "Add Your First Bot",
+      "emptyState": {
+        "title": "No chatbots configured",
+        "description": "Add up to {{count}} AI chatbots for your community",
+        "addFirst": "Add Your First Bot"
+      },
+      "moreAvailable_one": "{{count}} more chatbot available",
+      "moreAvailable_other": "{{count}} more chatbots available",
+      "roles": {
+        "qa": "Q&A Bot",
+        "motivation": "Motivation",
+        "support": "Support"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "tooltips": {
+        "active": "Active - Click to deactivate",
+        "inactive": "Inactive - Click to activate",
+        "activate": "Inactive - Click to activate",
+        "deactivate": "Active - Click to deactivate",
+        "edit": "Edit chatbot"
+      }
+    },
+    "history": {
+      "title": "Chat History",
+      "newChat": "New Chat",
+      "emptyState": {
+        "title": "No past conversations yet",
+        "description": "Start a new chat to begin",
+        "subtitle": "Start a new chat to begin"
+      },
+      "defaultTitle": "New conversation",
+      "newConversation": "New conversation",
+      "rename": "Rename",
+      "delete": "Delete",
+      "deleteConfirm": "Delete this chat?",
+      "editPlaceholder": "Enter chat name...",
+      "date": {
+        "today": "Today",
+        "yesterday": "Yesterday"
+      },
+      "aria": {
+        "openHistory": "Open chat history",
+        "closeHistory": "Close sidebar"
+      }
+    },
+    "conversation": {
+      "loading": "Loading conversation...",
+      "emptyState": "Start a conversation with {{botName}}",
+      "inputPlaceholder": "Message {{botName}}...",
+      "errors": {
+        "apiKeyMissing": "API Key is missing. Please check your environment configuration.",
+        "noResponse": "I couldn't generate a response.",
+        "connectionError": "I'm having trouble connecting right now. Please try again later.",
+        "sendError": "Sorry, I encountered an error. Please try again.",
+        "generic": "Sorry, I encountered an error. Please try again."
+      },
+      "defaultSystemPrompt": "You are a helpful assistant."
+    }
+  },
+
+  "publicCommunities": {
+    "directory": {
+      "hero": {
+        "badge": {
+          "singular": "Community",
+          "plural": "Communities",
+          "available": "Available"
+        },
+        "available": "{{count}} Communities Available",
+        "title": "Discover Communities",
+        "subtitle": "Join communities led by expert creators. Learn, connect, and grow with like-minded people."
+      },
+      "search": {
+        "placeholder": "Search communities..."
+      },
+      "filter": {
+        "found": "{{count}} communities found",
+        "foundObj": {
+          "singular": "community",
+          "plural": "communities",
+          "suffix": "found"
+        }
+      },
+      "sort": {
+        "newest": "Newest",
+        "popular": "Most Popular",
+        "alphabetical": "Alphabetical"
+      },
+      "empty": {
+        "title": "No communities found",
+        "searchHint": "Try adjusting your search query",
+        "createHint": "Be the first to create a community!",
+        "clearSearch": "Clear search"
+      },
+      "cta": {
+        "title": "Ready to build your own community?",
+        "subtitle": "Start your journey as a creator and share your knowledge with the world.",
+        "button": "Get Started Free"
+      }
+    },
+    "landing": {
+      "loading": "Loading community...",
+      "error": {
+        "notFound": "Community Not Found",
+        "title": "Community Not Found",
+        "private": "This community is private or does not exist.",
+        "privateOrNotExist": "This community is private or does not exist.",
+        "loadFailed": "Failed to load community. Please try again.",
+        "default": "This community may be private or no longer exists.",
+        "defaultMessage": "This community may be private or no longer exists.",
+        "backButton": "Browse Communities",
+        "browseCommunities": "Browse Communities"
+      },
+      "joining": {
+        "title": "Joining {{name}}...",
+        "subtitle": "Please wait while we set up your membership."
+      },
+      "paymentSuccess": {
+        "title": "Welcome aboard!",
+        "message": "Taking you to {{name}}..."
+      },
+      "paymentCanceled": {
+        "title": "Payment Canceled",
+        "message": "No worries! You can try again whenever you're ready."
+      },
+      "stats": {
+        "member": "{{count}} members",
+        "memberObj": {
+          "singular": "member",
+          "plural": "members"
+        },
+        "channel": "{{count}} channels",
+        "channelObj": {
+          "singular": "channel",
+          "plural": "channels"
+        }
+      },
+      "about": {
+        "title": "About",
+        "empty": "No description available yet.",
+        "noDescription": "No description available yet."
+      },
+      "video": {
+        "title": "Watch Video",
+        "unsupported": "Your browser does not support the video tag."
+      },
+      "joinCta": {
+        "title": "Ready to join {{name}}?",
+        "subtitle": "Get access to all discussions, resources, and community content."
+      },
+      "creator": {
+        "label": "Created by",
+        "createdBy": "Created by",
+        "learnMore": "Click to learn more about the creator",
+        "noBio": "This creator hasn't added a bio yet."
+      },
+      "pricing": {
+        "subscription": "Subscription",
+        "oneTime": "One-Time Access",
+        "oneTimeTab": "One-time",
+        "monthlyTab": "Monthly",
+        "perMonth": "/month",
+        "subscriptionDescription": "Cancel anytime. Full access while subscribed.",
+        "oneTimeDescription": "Pay once for lifetime access to this community.",
+        "freeCommunity": "Free Community",
+        "freeDescription": "Join for free and get instant access to all community content.",
+        "free": {
+          "label": "Free Community",
+          "description": "Join for free and get instant access to all community content."
+        }
+      },
+      "communityStats": {
+        "title": "Community Stats",
+        "members": "Members",
+        "channels": "Channels",
+        "created": "Created"
+      },
+      "cta": {
+        "title": "Ready to join?",
+        "subtitle": "Get access to exclusive content, connect with other members, and grow together."
+      }
+    },
+    "card": {
+      "price": {
+        "free": "Free",
+        "monthly": "/mo",
+        "perMonth": "/mo"
+      },
+      "member": "{{count}} members",
+      "memberObj": {
+        "singular": "member",
+        "plural": "members"
+      },
+      "creator": {
+        "by": "by"
+      }
+    },
+    "join": {
+      "redirecting": "Redirecting to checkout...",
+      "joining": "Joining...",
+      "goToCommunity": "Go to Community",
+      "signIn": "Sign in to Join",
+      "signInToJoin": "Sign in to Join",
+      "subscribe": "Subscribe for {{price}}",
+      "buyAccess": "Buy Access for {{price}}",
+      "freeAccess": "Get Free Access",
+      "joinFree": "Join Community",
+      "joinCommunity": "Join Community",
+      "paymentPending": "Your payment is being processed. Please wait...",
+      "paymentPendingButton": "Payment Processing...",
+      "retryPayment": "Retry Payment",
+      "applyToJoin": "Apply to Join",
+      "applying": "Submitting...",
+      "applicationPending": "Application Pending",
+      "applicationDenied": "Application Denied",
+      "error": {
+        "checkoutFailed": "Failed to create checkout. Please try again.",
+        "joinFailed": "Failed to join. Please try again.",
+        "applyFailed": "Failed to submit application. Please try again.",
+        "generic": "An error occurred. Please try again."
+      }
+    },
+    "apply": {
+      "title": "Apply to Join {{communityName}}",
+      "subtitle": "This community requires approval to join.",
+      "description": "This community requires approval to join.",
+      "messageLabel": "Introduce yourself (optional)",
+      "messagePlaceholder": "Tell the creator a bit about yourself and why you'd like to join...",
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "cancel": "Cancel",
+      "applyToJoin": "Apply to Join",
+      "pending": "Application Pending",
+      "rejected": "Application Denied",
+      "error": {
+        "failed": "Failed to submit application. Please try again.",
+        "generic": "An error occurred. Please try again."
+      }
+    },
+    "nav": {
+      "browseCommunities": "Browse Communities",
+      "goToDashboard": "Go to Dashboard",
+      "signIn": "Sign In",
+      "getStarted": "Get Started"
+    },
+    "footer": {
+      "tagline": "The all-in-one platform for mentors, coaches, and course creators. Build your community, deliver courses, and scale your impact.",
+      "platform": "Platform",
+      "browseCommunities": "Browse Communities",
+      "getStarted": "Get Started",
+      "signIn": "Sign In",
+      "connect": "Connect",
+      "copyright": "Creator Club. All rights reserved."
+    }
+  },
+
+  "billing": {
+    "settings": {
+      "loading": "Loading billing information...",
+      "errorNotSetup": "Billing Not Set Up",
+      "errorIncompleteSetup": "Complete your account activation to access billing settings.",
+      "completeSetupButton": "Complete Setup",
+      "errorDismiss": "Dismiss",
+      "sectionCurrentPlan": "Current Plan",
+      "sectionSubtitle": "Manage your subscription and billing",
+      "viewAllPlansLink": "View all plans",
+      "freePlanLabel": "Free",
+      "platformFeeLabel": "+ {{fee}}% platform fee",
+      "upgradeButton": "Upgrade",
+      "activationFeeTitle": "Activation Fee",
+      "activationFeePaid": "Paid on {{date}}",
+      "activationFeePending": "Pending payment",
+      "firstSaleTitle": "First Sale",
+      "firstSaleMade": "Made on {{date}}",
+      "firstSaleMakeSale": "Make your first sale to grow",
+      "firstSaleBillingStarts": "Monthly billing starts after first sale",
+      "cancellationNoticeTitle": "Subscription Canceling",
+      "cancellationNoticeMessage": "Your subscription will end on {{date}}. You will be downgraded to the Starter plan.",
+      "resumeSubscriptionButton": "Resume Subscription",
+      "managePaymentButton": "Manage Payment Method",
+      "trialCtaTitle": "Ready to start your subscription?",
+      "trialCtaMessage": "Your monthly subscription will automatically start when you make your first sale. Or you can start it now to unlock all features immediately.",
+      "trialCtaMessageStarter": "You're on the free Starter plan. Upgrade to Pro for lower platform fees (3.9% vs 6.9%) and more features like 500 students and 10 courses.",
+      "upgradeToProButton": "Upgrade to Pro",
+      "startSubscriptionButton": "Start Subscription Now",
+      "processing": "Processing...",
+      "cancelSubscriptionButton": "Cancel Subscription",
+      "sectionPayouts": "Payouts",
+      "payoutsSubtitle": "Receive your earnings directly to your bank account",
+      "refreshStatusTitle": "Refresh status",
+      "payoutsSetupTitle": "Set Up Payouts",
+      "payoutsSetupMessage": "Connect your bank account to receive payouts when students purchase your courses and memberships.",
+      "setupPayoutsButton": "Set Up Payouts",
+      "settingUp": "Setting up...",
+      "payoutAccountTitle": "Payout Account",
+      "payoutAccountActive": "Your payout account is active and ready to receive funds",
+      "payoutAccountPending": "Complete onboarding to start receiving payouts",
+      "payoutAccountRestricted": "There are issues with your payout account that need attention",
+      "completeSetupButtonAlt": "Complete Setup",
+      "loadingButton": "Loading...",
+      "payoutChargesEnabled": "Accept Payments",
+      "payoutChargesReady": "You can accept payments from students",
+      "payoutChargesPending": "Complete verification to accept payments",
+      "payoutPayoutsEnabled": "Receive Payouts",
+      "payoutPayoutsReady": "Payouts are automatically sent to your bank",
+      "payoutPayoutsPending": "Add bank details to receive payouts",
+      "payoutIdentityVerified": "Identity Verified",
+      "payoutIdentityVerifiedComplete": "Your identity has been verified",
+      "payoutIdentityPending": "Provide identity documents for verification",
+      "sectionRevenue": "Revenue Overview",
+      "revenueThisMonth": "This Month",
+      "revenueFeesLabel": "Fees: {{amount}}",
+      "revenueAllTime": "All Time",
+      "revenueNextInvoice": "Next Invoice",
+      "revenueDueDate": "Due {{date}}",
+      "sectionWithdrawals": "Withdrawal History",
+      "withdrawalsSubtitle": "Your withdrawal and payout requests",
+      "noWithdrawals": "No withdrawals yet. When you withdraw your earnings, they will appear here.",
+      "withdrawalStatus": {
+        "completed": "Completed",
+        "processing": "Processing",
+        "pending": "Pending",
+        "failed": "Failed"
+      },
+      "withdrawalTypes": {
+        "manual": "Manual Withdrawal",
+        "automatic": "Automatic Payout"
+      },
+      "sectionSales": "Community Sales",
+      "salesSubtitle": "Revenue from community memberships and renewals",
+      "noSales": "No sales yet. When students purchase access to your communities, sales will appear here.",
+      "saleTypes": {
+        "membership": "Membership",
+        "membership_renewal": "Renewal",
+        "course": "Course",
+        "product": "Product"
+      },
+      "saleNet": "Net: {{amount}}",
+      "status": {
+        "active": "Active",
+        "trial": "Trial",
+        "pastDue": "Past Due",
+        "canceled": "Canceled",
+        "incomplete": "Incomplete",
+        "paused": "Paused"
+      },
+      "connectStatus": {
+        "active": "Active",
+        "pending": "Pending",
+        "restricted": "Action Required",
+        "disabled": "Disabled"
+      },
+      "transactionTypes": {
+        "activationFee": "Activation Fee",
+        "subscription": "Subscription",
+        "platformFee": "Platform Fee",
+        "refund": "Refund",
+        "payout": "Payout",
+        "adjustment": "Adjustment"
+      },
+      "cancelModal": {
+        "title": "Cancel Subscription?",
+        "message": "Are you sure you want to cancel your {{planName}} subscription?",
+        "accessUntil": "You will continue to have access until {{date}}",
+        "downgradeNotice": "After that, you will be downgraded to the Starter plan (6.9% fee)",
+        "resubscribe": "You can resubscribe anytime",
+        "keepButton": "Keep Subscription",
+        "confirmButton": "Yes, Cancel",
+        "canceling": "Canceling..."
+      }
+    },
+    "pricing": {
+      "loading": "Loading pricing...",
+      "backButton": "Back",
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Start free, scale as you grow. Pay only based on your success.",
+      "currentPlanLabel": "You are currently on the {{planName}} plan",
+      "billingActive": "(monthly billing active)",
+      "billingStartsAfterSale": "(monthly fee starts after first sale)",
+      "calculator": {
+        "title": "When Should You Upgrade?",
+        "starterToProTitle": "Starter to Pro",
+        "starterToProMessage": "Pro becomes more cost-effective when your monthly revenue exceeds approximately €{{amount}}/month.",
+        "starterToProExample1": "At €750/mo: Starter = €51.75 (6.9%) vs Pro = €59.25 (€30 + 3.9%)",
+        "starterToProExample2": "At €1,000/mo: Starter = €69 vs Pro = €69 (break-even)",
+        "starterToProExample3": "At €2,000/mo: Starter = €138 vs Pro = €108",
+        "proToScaleTitle": "Pro to Scale",
+        "proToScaleMessage": "Scale becomes more cost-effective when your monthly revenue exceeds approximately €{{amount}}/month.",
+        "proToScaleExample1": "At €5,000/mo: Pro = €225 (€30 + 3.9%) vs Scale = €194 (€99 + 1.9%)",
+        "proToScaleExample2": "At €7,000/mo: Pro = €303 vs Scale = €232",
+        "proToScaleExample3": "At €10,000/mo: Pro = €420 vs Scale = €289"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "activationTitle": "What is the activation fee?",
+        "activationAnswer": "All creators pay a one-time €9.90 activation fee to set up their account. This helps ensure committed creators and covers initial setup costs.",
+        "whenStartTitle": "When do monthly fees start?",
+        "whenStartAnswer": "For Pro and Scale plans, the monthly subscription fee only begins after you make your first sale. This means you can set up everything risk-free before you start earning.",
+        "changePlansTitle": "Can I change plans anytime?",
+        "changePlansAnswer": "Yes! Upgrades take effect immediately with prorated billing. Downgrades take effect at the end of your current billing period.",
+        "paymentTitle": "What payment methods do you accept?",
+        "paymentAnswer": "We accept all major credit cards through Stripe. Your payments are secure and you can manage your billing through the Stripe customer portal."
+      },
+      "getStartedButton": "Get Started Today",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in"
+    },
+    "onboarding": {
+      "loading": "Loading...",
+      "authRequiredTitle": "Sign In Required",
+      "authRequiredMessage": "Please sign in or create an account to continue.",
+      "signInButton": "Sign In",
+      "signUpButton": "Sign Up",
+      "creatorRequiredTitle": "Creator Account Required",
+      "creatorRequiredMessage": "This onboarding is for creator accounts. If you want to become a creator, please upgrade your account.",
+      "goToSettingsButton": "Go to Settings",
+      "alreadyActivatedTitle": "Already Activated!",
+      "alreadyActivatedMessage": "Your creator account is already activated. You can manage your billing in settings.",
+      "goToBillingButton": "Go to Billing",
+      "successTitle": "Account Activated!",
+      "successMessage": "Your payment was successful. Redirecting to your dashboard...",
+      "canceledTitle": "Payment Canceled",
+      "canceledMessage": "No problem! You can complete the activation whenever you are ready.",
+      "tryAgainButton": "Try Again",
+      "mainTitle": "Activate Your Creator Account",
+      "mainSubtitle": "Complete a one-time activation to unlock all creator features and start building your community.",
+      "activationFeeLabel": "One-time activation fee",
+      "currency": "EUR",
+      "whatYouGet": "What you get:",
+      "features": {
+        "communitiesTitle": "Create Unlimited Communities",
+        "communitiesDesc": "Build multiple communities for different topics",
+        "coursesTitle": "Course Builder",
+        "coursesDesc": "Create courses with modules, lessons, and quizzes",
+        "paymentsTitle": "Accept Payments",
+        "paymentsDesc": "Sell courses and memberships with Stripe integration",
+        "aiTitle": "AI Success Manager",
+        "aiDesc": "AI-powered insights and student engagement tools",
+        "starterTitle": "Start on Starter Plan (Free)",
+        "starterDesc": "6.9% platform fee only when you make sales"
+      },
+      "payButton": "Pay €9.90 and Activate",
+      "securityNote": "Secure payment via Stripe",
+      "faqTitle": "Frequently Asked Questions",
+      "faq": {
+        "activationTitle": "Why is there an activation fee?",
+        "activationAnswer": "The small activation fee helps ensure committed creators and covers initial account setup costs. It is a one-time payment, not recurring.",
+        "monthlyTitle": "What are the monthly fees?",
+        "monthlyAnswer": "You start on our free Starter plan with a 6.9% fee per sale. No monthly fees until you choose to upgrade to Pro or Scale plans.",
+        "upgradeTitle": "Can I upgrade later?",
+        "upgradeAnswer": "Yes! You can upgrade to Pro (3.9% fee) or Scale (1.9% fee) anytime from your billing settings. Monthly fees only start after your first sale."
+      }
+    },
+    "plans": {
+      "badgeMostPopular": "Most Popular",
+      "starter": {
+        "description": "Perfect for getting started"
+      },
+      "pro": {
+        "description": "For growing creators"
+      },
+      "scale": {
+        "description": "For established businesses"
+      },
+      "exclusive": {
+        "description": "Exclusive partner plan"
+      },
+      "freeLabel": "Free",
+      "monthlySuffix": "/mo",
+      "platformFeeLabel": "{{fee}}% platform fee",
+      "firstSaleNote": "Monthly fee starts after your first sale",
+      "breakEvenInfo": "Best value when earning €{{amount}}+",
+      "button": {
+        "current": "Current Plan",
+        "upgrade": "Upgrade",
+        "downgrade": "Downgrade",
+        "getStarted": "Get Started"
+      }
+    },
+    "gate": {
+      "features": {
+        "customBranding": "Custom Branding",
+        "whiteLabel": "White Label",
+        "advancedAnalytics": "Advanced Analytics",
+        "apiAccess": "API Access",
+        "prioritySupport": "Priority Support"
+      },
+      "lockedMessage": "This feature is not available on your current plan.",
+      "unlockButton": "Upgrade to Unlock",
+      "lockedLabel": "{{feature}} is locked",
+      "upgradeButtonShort": "Upgrade"
+    },
+    "upgradeModal": {
+      "titleUpgrade": "Upgrade Your Plan",
+      "titleChange": "Change Your Plan",
+      "currentPlanLabel": "Current Plan",
+      "newPlanLabel": "New Plan",
+      "priceSuffix": "/mo",
+      "feeLabel": "{{fee}} fee",
+      "whatChanges": {
+        "title": "What Changes",
+        "feeDecrease": "Platform fee decreases from {{current}} to {{new}}",
+        "feeSavings": "(save {{savings}}% on every sale)",
+        "unlockFeature": "Unlock: {{feature}}",
+        "feeIncrease": "Platform fee increases from {{current}} to {{new}}",
+        "loseFeature": "Lose access to: {{feature}}"
+      },
+      "billingDetails": {
+        "title": "Billing Details",
+        "upgradeImmediate": "Your upgrade will take effect immediately.",
+        "upgradeProrated": "You will be charged a prorated amount of €{{amount}} for the remainder of your current billing period.",
+        "firstSaleNotMade": "The monthly fee of €{{amount}} will only start after you make your first sale.",
+        "downgradePeriodEnd": "Your plan change will take effect at the end of your current billing period.",
+        "downgradeAccessContinues": "You will continue to have access to your current plan features until then."
+      },
+      "downgradeWarning": {
+        "title": "Before you downgrade",
+        "message": "Make sure you are within the limits of the {{planName}} plan. If you exceed the limits, some features may become unavailable."
+      },
+      "cancelButton": "Cancel",
+      "confirmUpgrade": "Confirm Upgrade",
+      "confirmDowngrade": "Confirm Downgrade",
+      "processing": "Processing..."
+    },
+    "upgradePrompt": {
+      "planNames": {
+        "starter": "Starter",
+        "pro": "Pro",
+        "scale": "Scale"
+      },
+      "currentUsage": "Current usage",
+      "recommendedUpgrade": "Recommended upgrade",
+      "planSuffix": " Plan",
+      "limits": {
+        "students": " students",
+        "courses": " courses",
+        "communities": " communities",
+        "unlimited": "Unlimited"
+      },
+      "maybeLaterButton": "Maybe Later",
+      "upgradeNowButton": "Upgrade Now"
+    },
+    "balance": {
+      "title": "Your Balance",
+      "subtitle": "Track your earnings and request withdrawals",
+      "pending": "Pending",
+      "pendingTooltip": "Funds are held for 7 days before becoming available to protect against chargebacks",
+      "available": "Available",
+      "reserved": "Reserved",
+      "reservedTooltip": "Rolling reserve held for 120 days to protect against chargebacks. Released gradually over time.",
+      "negative": "Negative Balance",
+      "negativeMessage": "Deducted from future earnings to cover chargebacks",
+      "availableInDays": "Available in {{days}} days",
+      "releasedInDays": "Next release in {{days}} days",
+      "readyForWithdrawal": "Ready for withdrawal",
+      "withdrawableAmount": "Withdrawable Amount"
+    },
+    "withdrawal": {
+      "withdrawButton": "Withdraw",
+      "processing": "Processing...",
+      "cooldownMessage": "Next withdrawal available in {{time}}",
+      "minimumMessage": "Minimum withdrawal is EUR 50",
+      "connectMessage": "Complete Stripe Connect setup to withdraw",
+      "setupConnectWarning": "Complete your payout account setup to enable withdrawals",
+      "modalTitle": "Withdraw Funds",
+      "availableBalance": "Available Balance",
+      "negativeDeduction": "Negative Balance Deduction",
+      "withdrawAmount": "Amount to Withdraw",
+      "blockerCooldownTitle": "Withdrawal Cooldown Active",
+      "blockerCooldownMessage": "You can withdraw again in {{time}}. This protects against potential issues.",
+      "blockerMinimumTitle": "Below Minimum Amount",
+      "blockerMinimumMessage": "Your withdrawable amount ({{current}}) is below the minimum ({{minimum}}). Continue earning to reach the threshold.",
+      "blockerConnectTitle": "Payout Account Not Set Up",
+      "blockerConnectMessage": "You need to complete Stripe Connect onboarding to receive payouts.",
+      "blockerNegativeTitle": "Negative Balance",
+      "blockerNegativeMessage": "Your negative balance must be cleared before you can withdraw.",
+      "setupConnectButton": "Set Up Payouts",
+      "processingInfo": "Withdrawals are typically processed within 1-2 business days. The funds will be sent to your connected bank account.",
+      "confirmButton": "Confirm Withdrawal",
+      "successTitle": "Withdrawal Successful!",
+      "successMessage": "{{amount}} has been sent to your payout account.",
+      "transferId": "Transfer ID",
+      "errorTitle": "Withdrawal Failed",
+      "errorMessage": "Something went wrong. Please try again or contact support."
+    },
+    "payoutHistory": {
+      "title": "Payout History",
+      "subtitle": "Track all your past withdrawals and automatic payouts",
+      "refresh": "Refresh",
+      "loading": "Loading payout history...",
+      "empty": "No payouts yet",
+      "emptySubtitle": "Your payouts will appear here once you have withdrawable funds",
+      "columnDate": "Date",
+      "columnType": "Type",
+      "columnAmount": "Amount",
+      "columnStatus": "Status",
+      "typeAutomatic": "Weekly Payout",
+      "typeManual": "Withdrawal",
+      "completedAt": "Completed: {{date}}",
+      "failedAt": "Failed: {{date}}",
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "completed": "Completed",
+        "failed": "Failed"
+      }
+    }
+  },
+
+  "creatorSettings": {
+    "tabs": {
+      "creator": "Creator Settings",
+      "chatbots": "Community Chatbots"
+    },
+    "languageDescription": "Select your preferred language for the interface",
+    "profile": {
+      "avatar": {
+        "uploadButton": "Upload Photo",
+        "formats": "JPG, PNG, GIF or WebP. Max 10MB.",
+        "uploadError": {
+          "invalidFile": "Please select a valid image file (JPEG, PNG, GIF, or WebP)",
+          "fileSize": "Image must be less than 10MB"
+        },
+        "uploadSuccess": "Avatar uploaded! Click Save Changes to update your profile.",
+        "uploadFailed": "Failed to upload avatar. Please try again."
+      },
+      "fullName": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+      },
+      "bio": {
+        "label": "Bio",
+        "placeholder": "Tell others a bit about yourself...",
+        "characterCount": "{{count}}/500 characters",
+        "visibilityHint": "This bio appears when members click your profile in community chat, event attendee lists, and anywhere your profile card is shown."
+      },
+      "avatarUrl": {
+        "label": "Avatar URL (or paste an image URL)",
+        "description": "You can also paste a direct URL to an image instead of uploading",
+        "placeholder": "https://example.com/avatar.jpg"
+      },
+      "email": {
+        "label": "Email",
+        "note": "Email cannot be changed"
+      },
+      "role": {
+        "label": "Role"
+      },
+      "memberSince": {
+        "label": "Member Since",
+        "never": "Never"
+      },
+      "save": {
+        "success": "Profile updated successfully!",
+        "error": "Failed to update profile. Please try again.",
+        "button": "Save Changes",
+        "saving": "Saving..."
+      }
+    },
+    "account": {
+      "password": {
+        "title": "Change Password",
+        "currentLabel": "Current Password",
+        "currentPlaceholder": "Enter your current password",
+        "newLabel": "New Password",
+        "newPlaceholder": "Enter new password",
+        "confirmLabel": "Confirm New Password",
+        "confirmPlaceholder": "Confirm new password",
+        "validation": {
+          "required": "Please fill in all password fields.",
+          "minLength": "Password must be at least 6 characters long.",
+          "mismatch": "Passwords do not match."
+        },
+        "success": "Password updated successfully!",
+        "error": "Failed to update password. Please try again.",
+        "button": "Update Password",
+        "updating": "Updating..."
+      },
+      "email": {
+        "title": "Change Email",
+        "description": "Change your email address. A confirmation link will be sent to the new email.",
+        "current": "Current email",
+        "newLabel": "New Email Address",
+        "newPlaceholder": "Enter new email address",
+        "validation": {
+          "invalid": "Please enter a valid email address.",
+          "same": "New email must be different from current email."
+        },
+        "success": "Confirmation email sent! Please check your new email to complete the change.",
+        "error": "Failed to update email. Please try again.",
+        "button": "Update Email",
+        "updating": "Updating..."
+      },
+      "signOut": {
+        "title": "Sign Out",
+        "description": "Sign out of your account on this device. You'll need to sign in again to access Creator Club.",
+        "button": "Sign Out",
+        "confirmTitle": "Sign Out?",
+        "confirmMessage": "Are you sure you want to sign out? You'll need to sign in again to access your account.",
+        "confirmButton": "Yes, Sign Out"
+      },
+      "dangerZone": {
+        "title": "Danger Zone",
+        "description": "Permanently delete your account and all associated data. This action cannot be undone.",
+        "button": "Delete Account",
+        "deleting": "Deleting...",
+        "error": "Failed to delete account. Please try again or contact support.",
+        "confirmTitle": "Delete Account?",
+        "confirmMessage": "This will permanently delete your account, all your data, courses, communities, and content. This action cannot be undone.",
+        "confirmButton": "Delete My Account"
+      }
+    },
+    "creator": {
+      "brandName": {
+        "label": "Brand Name",
+        "placeholder": "Your brand or business name",
+        "hint": "This will be displayed to your students"
+      },
+      "biography": {
+        "label": "Biography",
+        "placeholder": "Share your story, credentials, and what makes you unique...",
+        "hint": "Displayed on your community landing page to attract potential students",
+        "visibilityHint": "This biography appears in the \"About the Creator\" section on your public community landing page. Use it to introduce yourself to potential students."
+      },
+      "timezone": {
+        "label": "Timezone",
+        "hint": "Used for scheduling events and displaying times"
+      },
+      "payouts": {
+        "section": "Payouts",
+        "notSetup": {
+          "title": "Set up payouts",
+          "description": "Connect your bank account to receive earnings from course sales.",
+          "button": "Set up payouts",
+          "loading": "Setting up..."
+        },
+        "active": {
+          "title": "Payouts enabled",
+          "description": "Your payout account is active. You will automatically receive earnings from sales.",
+          "manageLink": "Manage payout settings"
+        },
+        "pending": {
+          "title": "Complete payout setup",
+          "description": "Finish setting up your payout account to start receiving earnings.",
+          "button": "Continue setup",
+          "loading": "Loading..."
+        },
+        "restricted": {
+          "title": "Action required",
+          "description": "Your payout account needs attention. Please complete the verification steps.",
+          "button": "Complete verification",
+          "loading": "Loading..."
+        },
+        "error": {
+          "failed": "Failed to create payout account",
+          "onboardingLink": "Failed to get onboarding link",
+          "setup": "Failed to set up payouts"
+        }
+      },
+      "branding": {
+        "section": "Custom Branding",
+        "logo": {
+          "label": "Brand Logo",
+          "upload": "Click to upload your brand logo",
+          "formats": "PNG, JPG up to 2MB"
+        },
+        "color": {
+          "label": "Primary Brand Color",
+          "hint": "This color will be used for buttons and accents throughout your community"
+        },
+        "domain": {
+          "coming": "Coming soon: Custom domains will allow you to use your own domain for your community."
+        }
+      },
+      "aiInstructions": {
+        "label": "Custom AI Instructions",
+        "placeholder": "Example: Focus on mindset coaching. Be encouraging but direct. Reference my book 'The Creator's Path' when relevant.",
+        "hint": "Customize how the AI Success Manager behaves and responds. These instructions will be added to the AI's system prompt."
+      },
+      "save": {
+        "success": "Creator settings saved successfully!",
+        "error": "Failed to save settings. Please try again.",
+        "button": "Save Changes",
+        "saving": "Saving..."
+      }
+    }
+  },
+
+  "imageCrop": {
+    "title": "Adjust Profile Photo",
+    "instructions": "Drag to reposition, scroll to zoom",
+    "zoomOut": "Zoom out",
+    "zoomIn": "Zoom in",
+    "reset": "Reset",
+    "cancelButton": "Cancel",
+    "applyButton": "Apply",
+    "processing": "Processing...",
+    "cropPreviewAlt": "Crop preview"
+  },
+
+  "discounts": {
+    "page": {
+      "title": "Discount Codes",
+      "subtitle": "Create and manage discount codes for your communities and courses",
+      "createButton": "Create Code",
+      "searchPlaceholder": "Search codes...",
+      "filterAll": "All Codes",
+      "filterActive": "Active",
+      "filterInactive": "Inactive",
+      "filterExpired": "Expired/Maxed",
+      "loginRequired": "Please log in to manage discount codes.",
+      "empty": {
+        "noFilters": "No discount codes yet",
+        "withFilters": "No codes match your filters",
+        "hintNoFilters": "Create your first discount code to offer special deals",
+        "hintWithFilters": "Try adjusting your search or filters"
+      }
+    },
+    "status": {
+      "inactive": "Inactive",
+      "expired": "Expired",
+      "maxedOut": "Maxed Out",
+      "active": "Active"
+    },
+    "codeDetails": {
+      "offLabel": "% off",
+      "usesLabel": "uses",
+      "targetFor": "For: {{email}}",
+      "targetCommunity": "Community: {{name}}",
+      "targetCourse": "Course: {{title}}",
+      "targetAll": "All products",
+      "expiryExpired": "Expired",
+      "expiryExpires": "Expires"
+    },
+    "actions": {
+      "copyTitle": "Copy code",
+      "editTitle": "Edit code",
+      "deactivateTitle": "Deactivate",
+      "activateTitle": "Activate",
+      "deleteTitle": "Delete code",
+      "deleteConfirm": "Are you sure you want to delete the code \"{{code}}\"? This cannot be undone."
+    },
+    "modal": {
+      "createTitle": "Create Discount Code",
+      "editTitle": "Edit Discount Code",
+      "cancelButton": "Cancel",
+      "createButton": "Create Code",
+      "saveButton": "Save Changes",
+      "savingButton": "Saving..."
+    },
+    "form": {
+      "code": {
+        "label": "Discount Code",
+        "placeholder": "e.g., SUMMER50",
+        "generateButton": "Generate",
+        "error": "This code is already in use",
+        "required": "Please enter a discount code"
+      },
+      "discount": {
+        "label": "Discount Percentage",
+        "hint": "Students will pay {{percentage}}% of the original price"
+      },
+      "duration": {
+        "label": "Duration (for subscriptions)"
+      },
+      "target": {
+        "label": "Valid For",
+        "all": "All my products",
+        "community": "Specific community",
+        "course": "Specific course",
+        "student": "Specific student",
+        "communitySelect": "Select Community",
+        "communityPlaceholder": "Select a community...",
+        "courseSelect": "Select Course",
+        "coursePlaceholder": "Select a course...",
+        "studentEmail": "Student Email",
+        "studentPlaceholder": "student@example.com",
+        "studentHint": "Only this student will be able to use this code",
+        "studentRequired": "Please enter a student email"
+      },
+      "limits": {
+        "maxUsesLabel": "Maximum Uses (optional)",
+        "maxUsesPlaceholder": "Unlimited"
+      },
+      "expiry": {
+        "label": "Expiry Date (optional)"
+      }
+    },
+    "errors": {
+      "loadFailed": "Failed to load discount codes",
+      "saveFailed": "Failed to save discount code",
+      "validationFailed": "Failed to validate code. Please try again."
+    },
+    "input": {
+      "validation": {
+        "empty": "Please enter a discount code",
+        "invalid": "Invalid discount code",
+        "defaultError": "Failed to validate code. Please try again."
+      },
+      "collapsed": {
+        "label": "Have a discount code?"
+      },
+      "expanded": {
+        "label": "Discount Code",
+        "placeholder": "Enter code",
+        "applyButton": "Apply",
+        "removeTitle": "Remove discount"
+      },
+      "success": {
+        "label": "{{discount}}% off applied",
+        "code": "Code: {{code}} - {{duration}}",
+        "originalPrice": "Original price",
+        "discount": "Discount",
+        "youPay": "You pay"
+      }
+    },
+    "duration": {
+      "forever": "Forever",
+      "firstMonth": "First month only",
+      "months_one": "{{count}} month",
+      "months_other": "{{count}} months"
+    }
+  },
+
+  "aiManager": {
+    "title": "AI Success Manager™",
+    "subtitle": "Your intelligent partner for community growth.",
+    "chat": {
+      "initialMessage": "Hello! I'm your AI Success Manager. I've analyzed your community data. How can I help you improve engagement today?",
+      "newConversationGreeting": "Hello! I'm your AI Success Manager. How can I help you today?",
+      "errorMessage": "I encountered an error.",
+      "placeholder": "Ask your AI mentor anything...",
+      "successMessage": "I've recalculated risk scores for all students. Found {{count}} students who need attention."
+    },
+    "buttons": {
+      "newChat": "New Chat",
+      "history": "History",
+      "recalculateRiskScores": "Recalculate Risk Scores",
+      "recalculatingRiskScores": "Recalculating...",
+      "mentorChat": "Mentor Chat",
+      "successReport": "Success Report",
+      "runAnalysis": "Run Analysis",
+      "analyzingData": "Analyzing Data...",
+      "runNewAnalysis": "Run New Analysis"
+    },
+    "history": {
+      "title": "Conversation History",
+      "empty": "No past conversations"
+    },
+    "filters": {
+      "atRisk": "At Risk",
+      "stable": "Stable",
+      "top": "Top",
+      "all": "All",
+      "total": "total",
+      "studentsCount": "{{count}} {{status}} students"
+    },
+    "emptyStates": {
+      "noStudents": "No {{status}} students found.",
+      "allStudentsWell": "All students are doing well!",
+      "tryDifferentFilter": "Try a different filter."
+    },
+    "studentCard": {
+      "riskScore": "Risk Score"
+    },
+    "report": {
+      "title": "Generate Weekly Success Report",
+      "description": "The AI will analyze login patterns, course progress, and community sentiment to identify at-risk students and growth opportunities.",
+      "resultsTitle": "Analysis Results"
+    }
+  },
+
+  "studentPlus": {
+    "page": {
+      "title": "Student Plus",
+      "tagline": "Exclusive Membership",
+      "subtitle": "Your membership to entrepreneurial success",
+      "pricePerMonth": "/month",
+      "successTitle": "Welcome to Student Plus!",
+      "successMessage": "Your subscription is now active. Start earning loyalty points!",
+      "canceledTitle": "Checkout Canceled",
+      "canceledMessage": "No worries! Your subscription was not started. Feel free to subscribe when you're ready.",
+      "checkoutError": "Failed to start checkout. Please try again.",
+      "redirectingToCheckout": "Redirecting to checkout...",
+      "startYourJourney": "Start Your Journey",
+      "cancelAnytime": "Cancel anytime. No questions asked.",
+      "readyToJoin": "Ready to join?",
+      "signInRequired": "Sign in to Subscribe",
+      "signInToSubscribe": "Sign in to Subscribe",
+      "noAccountYet": "Don't have an account?",
+      "createAccount": "Create one here",
+      "benefits": {
+        "exclusiveNewsletter": {
+          "title": "Exclusive Newsletter",
+          "description": "Private entrepreneurship & business practical insights delivered to your inbox weekly"
+        },
+        "communityPerks": {
+          "title": "Community Perks",
+          "description": "Exclusive access to premium community features, content, and member-only events"
+        },
+        "loyaltyRewards": {
+          "title": "Loyalty Rewards",
+          "description": "Earn points every month and unlock milestone rewards at 3, 6, 9, and 12 months"
+        },
+        "redeemRewards": {
+          "title": "Redeem Rewards",
+          "description": "Use your points for course discounts, template packs, priority support, and more"
+        }
+      },
+      "milestonePreview": {
+        "title": "Loyalty Milestones",
+        "months": "months",
+        "pts": "pts"
+      },
+      "whatsIncluded": {
+        "title": "What's Included",
+        "weeklyNewsletter": "Weekly exclusive newsletter with actionable business insights",
+        "monthlyPoints": "50 loyalty points earned every month (auto-accumulated)",
+        "milestoneBadges": "Milestone badges: Bronze (3mo), Silver (6mo), Gold (9mo), Diamond (12mo)",
+        "bonusPoints": "Bonus points at each milestone (100 to 1,000 points)",
+        "redeemPoints": "Redeem points for course discounts, templates, and priority support",
+        "memberOnlyPerks": "Member-only community perks and early access to new features"
+      }
+    },
+    "rewards": {
+      "title": "Rewards",
+      "pointsAvailable": "points available",
+      "dismiss": "Dismiss",
+      "tabs": {
+        "availableRewards": "Available Rewards",
+        "myRewards": "My Rewards"
+      },
+      "noRewardsAvailable": "No rewards available at the moment. Check back soon!",
+      "noRedeemedRewards": "You haven't redeemed any rewards yet.",
+      "browseAvailableRewards": "Browse Available Rewards",
+      "loadError": "Failed to load rewards. Please try again.",
+      "redeemError": "Failed to redeem reward. Please try again."
+    },
+    "dashboard": {
+      "yourPoints": "Your Points",
+      "redeemRewards": "Redeem Rewards",
+      "totalEarned": "Total Earned:",
+      "totalSpent": "Total Spent:",
+      "recentActivity": "Recent Activity",
+      "noActivityYet": "No activity yet. Your points will appear here after your first payment.",
+      "loadError": "Failed to load loyalty data. Please try again."
+    },
+    "milestones": {
+      "title": "Milestone Progress",
+      "monthsTo": "months to",
+      "achieved": "Achieved!",
+      "mo": "mo",
+      "currentProgress": "Current Progress",
+      "month": "month",
+      "months": "months",
+      "nextReward": "Next Reward",
+      "points": "points",
+      "status": "Status",
+      "diamondMember": "Diamond Member",
+      "allMilestonesAchieved": "All milestones achieved!"
+    },
+    "history": {
+      "transactionTypes": {
+        "subscriptionPayment": "Monthly Payment",
+        "milestoneBonus": "Milestone Bonus",
+        "referral": "Referral Bonus",
+        "engagement": "Engagement Reward",
+        "redemption": "Reward Redeemed",
+        "adjustment": "Adjustment",
+        "expiration": "Points Expired"
+      },
+      "loading": "Loading...",
+      "loadMore": "Load More"
+    },
+    "redemption": {
+      "status": {
+        "pending": "Pending",
+        "active": "Active",
+        "used": "Used",
+        "expired": "Expired",
+        "revoked": "Revoked"
+      },
+      "redeemedOn": "Redeemed on",
+      "yourVoucherCode": "Your Voucher Code",
+      "copy": "Copy",
+      "expiresSoon": "Expires soon!",
+      "validUntil": "Valid until",
+      "daysLeft": "{{count}} day left",
+      "daysLeftPlural": "{{count}} days left",
+      "usedOn": "Used on",
+      "reference": "Reference:",
+      "pointsSpent": "Points spent:",
+      "na": "N/A"
+    },
+    "rewardCard": {
+      "rewardTypes": {
+        "voucher": "Discount Voucher",
+        "templatePack": "Template Pack",
+        "feeDiscount": "Fee Discount",
+        "prioritySupport": "Priority Support",
+        "exclusiveContent": "Exclusive Content",
+        "badge": "Badge"
+      },
+      "points": "points",
+      "redeeming": "Redeeming...",
+      "soldOut": "Sold Out",
+      "notEnoughPoints": "Not Enough Points",
+      "redeem": "Redeem",
+      "rewardDetails": {
+        "voucherTemplate": "{{percent}}% off - Valid for {{days}} days",
+        "prioritySupportTemplate": "{{days}} days of priority support",
+        "feeDiscountTemplate": "{{percent}}% fee reduction for {{days}} days",
+        "templatePackDescription": "Downloadable templates package"
+      }
+    },
+    "subscription": {
+      "title": "Student Plus",
+      "perMonth": "/month",
+      "manageSubscription": "Manage Subscription",
+      "loading": "Loading...",
+      "status": {
+        "active": "Active",
+        "trialing": "Trial",
+        "pastDue": "Past Due",
+        "canceled": "Canceled",
+        "incomplete": "Incomplete",
+        "incompleteExpired": "Expired",
+        "paused": "Paused"
+      },
+      "stats": {
+        "monthsActive": "Months Active",
+        "memberSince": "Member Since",
+        "nextBilling": "Next Billing"
+      },
+      "cancellationScheduled": "Cancellation scheduled:",
+      "cancellationMessage": "Your subscription will end on {{date}}. You'll continue to have access until then.",
+      "na": "N/A"
+    }
+  },
+
+  "dwyPackages": {
+    "page": {
+      "activeEngagementsTitle": "Your Active Engagements",
+      "heroTitle": "Done-With-You Packages",
+      "heroDescription": "For creators who want professional help building their marketing infrastructure. We work with a limited number of creators.",
+      "hideApplications": "Hide My Applications",
+      "viewApplications": "View My Applications",
+      "trustTitle": "Ready to Scale Your Creator Business?",
+      "trustDescription": "We work with a limited number of creators who are serious about building sustainable, revenue-generating systems. If that's you, apply now.",
+      "trustNoContracts": "No long-term contracts",
+      "trustResultsFocused": "Results-focused approach",
+      "trustDedicatedSupport": "Dedicated support",
+      "confirmWithdraw": "Are you sure you want to withdraw this application?"
+    },
+    "packageCard": {
+      "slotsFullWaitlist": "Currently full - Join waitlist",
+      "slotsAvailable": "Only {{count}} slot available",
+      "slotsAvailablePlural": "Only {{count}} slots available",
+      "applicationSubmitted": "Application Submitted",
+      "joinWaitlist": "Join Waitlist",
+      "applyNow": "Apply Now"
+    },
+    "applicationForm": {
+      "applyFor": "Apply for {{packageName}}",
+      "businessNameLabel": "Business Name",
+      "businessNamePlaceholder": "Your business or brand name",
+      "businessTypeLabel": "Business Type",
+      "businessTypeSelectPlaceholder": "Select type...",
+      "currentRevenueLabel": "Current Monthly Revenue",
+      "revenueSelectPlaceholder": "Select range...",
+      "goalsLabel": "What are your main goals?",
+      "goalsPlaceholder": "What do you want to achieve? What problems are you facing?",
+      "timelineLabel": "When do you want to start?",
+      "timelineSelectPlaceholder": "Select timeline...",
+      "websiteUrlLabel": "Website URL (optional)",
+      "websiteUrlPlaceholder": "https://yourwebsite.com",
+      "howHeardLabel": "How did you hear about us? (optional)",
+      "howHeardPlaceholder": "e.g., YouTube, referral, social media...",
+      "additionalNotesLabel": "Anything else we should know? (optional)",
+      "additionalNotesPlaceholder": "Any additional context or questions...",
+      "requiredFieldsError": "Please fill in all required fields",
+      "submitError": "Failed to submit application",
+      "cancel": "Cancel",
+      "submitting": "Submitting...",
+      "submitApplication": "Submit Application"
+    },
+    "applicationStatus": {
+      "appliedOn": "Applied on {{date}}",
+      "stepSubmitted": "Submitted",
+      "stepReview": "Review",
+      "stepInterview": "Interview",
+      "stepApproved": "Approved",
+      "stepActive": "Active",
+      "interviewScheduled": "Interview Scheduled",
+      "joinInterview": "Join Interview",
+      "feedbackLabel": "Feedback:",
+      "businessLabel": "Business:",
+      "revenueLabel": "Revenue:",
+      "withdrawApplication": "Withdraw Application"
+    },
+    "myApplications": {
+      "noApplicationsTitle": "No applications yet",
+      "noApplicationsDescription": "Apply for a DWY package to get started"
+    },
+    "engagementDashboard": {
+      "activeEngagement": "Active Engagement",
+      "startedLabel": "Started",
+      "targetCompletionLabel": "Target Completion",
+      "daysRemainingLabel": "Days Remaining",
+      "daysValue": "{{count}} days",
+      "notAvailable": "N/A",
+      "toBeDetermined": "TBD",
+      "quickLinksTitle": "Quick Links",
+      "scopeDocument": "Scope Document",
+      "projectFolder": "Project Folder",
+      "slackChannel": "Slack Channel",
+      "linksOnboarding": "Links will be added during onboarding",
+      "notesTitle": "Notes"
+    },
+    "engagementMilestones": {
+      "title": "Project Milestones",
+      "completedOf": "{{completed}} of {{total}} completed",
+      "statusPending": "Pending",
+      "statusInProgress": "In Progress",
+      "statusCompleted": "Completed",
+      "completedOn": "Completed {{date}}",
+      "inProgress": "In progress",
+      "due": "Due {{date}}",
+      "upcoming": "Upcoming"
+    },
+    "types": {
+      "businessTypes": {
+        "courseCreator": "Course Creator",
+        "coach": "Coach / Consultant",
+        "serviceProvider": "Service Provider",
+        "communityBuilder": "Community Builder",
+        "other": "Other"
+      },
+      "revenueRanges": {
+        "0_5k": "€0 - €5,000",
+        "5k_20k": "€5,000 - €20,000",
+        "20k_50k": "€20,000 - €50,000",
+        "50k_plus": "€50,000+"
+      },
+      "timelineOptions": {
+        "asap": "As soon as possible",
+        "1Month": "Within 1 month",
+        "1_3Months": "1-3 months",
+        "exploring": "Just exploring options"
+      },
+      "applicationStatus": {
+        "pending": "Pending Review",
+        "underReview": "Under Review",
+        "interviewScheduled": "Interview Scheduled",
+        "approved": "Approved",
+        "rejected": "Not Selected",
+        "withdrawn": "Withdrawn",
+        "converted": "Active Engagement"
+      },
+      "engagementStatus": {
+        "onboarding": "Onboarding",
+        "active": "Active",
+        "paused": "Paused",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      }
+    }
+  },
+
+  "studentManager": {
+    "page": {
+      "title": "Student Manager",
+      "description": "View student progress and award bonus points"
+    },
+    "tabs": {
+      "students": "Students",
+      "applications": "Applications"
+    },
+    "applications": {
+      "empty": {
+        "title": "No pending applications",
+        "description": "When students apply to join your gated communities, they'll appear here for review."
+      },
+      "approve": "Approve",
+      "reject": "Reject",
+      "viewMessage": "View message"
+    },
+    "search": {
+      "placeholder": "Search students by name or email..."
+    },
+    "filter": {
+      "allCommunities": "All communities"
+    },
+    "table": {
+      "headers": {
+        "student": "Student",
+        "points": "Points",
+        "level": "Level",
+        "submissions": "Submissions",
+        "actions": "Actions"
+      },
+      "levelBadge": "Level {{level}}",
+      "gradedPercentage": "({{percent}}% graded)"
+    },
+    "empty": {
+      "noStudents": {
+        "title": "No students yet",
+        "description": "Students will appear here when they join your community."
+      },
+      "noResults": {
+        "title": "No students found",
+        "description": "Try adjusting your search query."
+      }
+    },
+    "summary": {
+      "showing": "Showing {{filtered}} of {{total}} students"
+    },
+    "actions": {
+      "bonus": "Bonus",
+      "message": "Message",
+      "remove": "Remove student"
+    },
+    "removeModal": {
+      "title": "Remove Student",
+      "selectCommunity": "Remove from community",
+      "warningTitle": "This action cannot be undone",
+      "loseAccess": "Student will lose access to this community",
+      "subscriptionCanceled": "Any active subscription will be canceled immediately",
+      "cannotUndo": "Points and progress data will be lost",
+      "cancel": "Cancel",
+      "confirm": "Remove Student",
+      "removing": "Removing...",
+      "errorGeneric": "Failed to remove student. Please try again."
+    },
+    "messageModal": {
+      "directMessage": "Direct message",
+      "noMessages": "No messages yet",
+      "startConversation": "Send a message to start the conversation",
+      "placeholder": "Type a message..."
+    },
+    "bonusModal": {
+      "title": "Award Bonus Points",
+      "currentPoints": "Current: {{points}} points",
+      "pointsLabel": "Bonus Points (1-10)",
+      "reasonLabel": "Reason (optional)",
+      "reasonPlaceholder": "e.g., Great participation in live session",
+      "preview": "Will award <strong>{{points}} bonus points</strong> to {{name}}",
+      "selectCommunity": "Select community for bonus",
+      "cancel": "Cancel",
+      "submit": "Award Points",
+      "submitting": "Awarding..."
+    },
+    "pagination": {
+      "page": "Page {{current}} of {{total}}",
+      "prev": "Prev",
+      "next": "Next",
+      "showing": "Showing {{from}}-{{to}} of {{total}}"
+    },
+    "communities": {
+      "label": "Communities"
+    },
+    "plan": {
+      "free": "Free",
+      "oneTime": "Paid",
+      "monthly": "Monthly",
+      "canceled": "Canceled",
+      "expiresAt": "until {{date}}",
+      "expired": "Expired",
+      "lifetime": "Lifetime",
+      "usedCode": "{{code}} (-{{percent}}%)",
+      "assignedCode": "Code: {{code}} (-{{percent}}%)"
+    },
+    "paymentDetail": {
+      "title": "Payment Details",
+      "plan": "Plan",
+      "amountCharged": "Amount Charged",
+      "paidAt": "Payment Date",
+      "expiresAt": "Renewal Date",
+      "discountUsed": "Discount Code",
+      "assignedCode": "Assigned Code",
+      "freeNote": "This student has free access — no payment was made.",
+      "close": "Close"
+    }
+  },
+
+  "team": {
+    "roles": {
+      "lecturer": "Lecturer",
+      "lecturerDescription": "Course instructor and primary teacher",
+      "assistant": "Assistant",
+      "assistantDescription": "Helps answer questions and supports students",
+      "guest_expert": "Guest Expert",
+      "guestExpertDescription": "Temporary guest speaker or expert"
+    },
+    "badges": {
+      "team": "Team",
+      "guest": "Guest"
+    },
+    "settings": {
+      "title": "Team Members",
+      "subtitle": "Manage lecturers, assistants, and guest experts",
+      "inviteButton": "Invite",
+      "emptyTitle": "No team members yet",
+      "emptyMessage": "Invite lecturers, assistants, and guest experts to help run your community.",
+      "inviteFirstMember": "Invite your first team member",
+      "unknownUser": "Unknown User",
+      "canReceiveDMs": "Can receive DMs",
+      "pendingInvite": "Pending",
+      "awaitingAcceptance": "Awaiting acceptance",
+      "confirmRemove": "Are you sure you want to remove {{name}} from your team?",
+      "confirmRemoveTitle": "Remove Team Member",
+      "removeButton": "Remove",
+      "confirmCancelInvite": "Are you sure you want to cancel the invitation to {{email}}?",
+      "confirmCancelInviteTitle": "Cancel Invitation",
+      "cancelInviteButton": "Cancel Invitation",
+      "cancelInvite": "Cancel invitation",
+      "errorLoading": "Failed to load team members",
+      "errorRemoving": "Failed to remove team member",
+      "errorCanceling": "Failed to cancel invitation",
+      "copyLink": "Copy Link",
+      "copied": "Copied!",
+      "expiresIn_one": "Expires in {{count}} day",
+      "expiresIn_other": "Expires in {{count}} days",
+      "expired": "Expired"
+    },
+    "invite": {
+      "title": "Invite Team Member",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "colleague@example.com",
+      "roleLabel": "Role",
+      "titleLabel": "Title (optional)",
+      "titlePlaceholder": "Course Instructor, Guest Speaker...",
+      "titleHint": "A short title shown to students",
+      "bioLabel": "Bio (optional)",
+      "bioPlaceholder": "A brief description for students...",
+      "canReceiveDMs": "Can receive direct messages",
+      "sendInvite": "Send Invitation",
+      "sending": "Sending...",
+      "createLink": "Create Invite Link",
+      "creating": "Creating...",
+      "errorEmailRequired": "Email address is required",
+      "errorInvalidEmail": "Please enter a valid email address",
+      "errorFailed": "Failed to send invitation",
+      "success": {
+        "title": "Invitation Created!",
+        "description": "Share this link with your team member. They can use it to join your community.",
+        "linkLabel": "Invitation Link",
+        "copy": "Copy",
+        "copied": "Copied",
+        "expiresIn": "This link expires in {{days}} days",
+        "done": "Done",
+        "autoAccepted": {
+          "title": "Team Member Added!",
+          "description": "{{name}} has been added to your team."
+        }
+      },
+      "loading": "Loading invitation...",
+      "invalid": {
+        "title": "Invalid Invitation",
+        "description": "This invitation link is invalid or has expired.",
+        "contact": "Please contact the creator for a new invitation link."
+      },
+      "expired": {
+        "title": "Invitation Expired",
+        "description": "This invitation link has expired."
+      },
+      "valid": {
+        "title": "You've Been Invited!",
+        "description": "You've been invited to join {{communityName}} as a {{role}}.",
+        "createdBy": "Created by {{creatorName}}",
+        "accept": "Accept Invitation",
+        "signup": "Sign Up to Accept",
+        "login": "Already have an account? Log In"
+      },
+      "accepting": "Accepting...",
+      "error": {
+        "accept": "Failed to accept invitation. Please try again.",
+        "PROFILE_NOT_FOUND": "Your profile could not be found. Please try logging out and back in.",
+        "CREATOR_NOT_ALLOWED": "Team invitations can only be accepted with a student account.",
+        "INVITE_NOT_FOUND": "This invitation link is invalid or no longer exists.",
+        "INVITE_ALREADY_USED": "This invitation has already been used.",
+        "INVITE_EXPIRED": "This invitation has expired. Please request a new one.",
+        "ALREADY_TEAM_MEMBER": "You are already a team member of this community.",
+        "RPC_ERROR": "A technical error occurred. Please try again later.",
+        "UNEXPECTED_ERROR": "An unexpected error occurred. Please try again."
+      },
+      "alreadyAccepted": {
+        "title": "Invitation Already Used",
+        "description": "This invitation has already been accepted. Log in to access your dashboard."
+      },
+      "creatorAccount": {
+        "title": "Creator Account Detected",
+        "description": "Team member invitations can only be accepted with a student account. Creators manage communities, while students can join as team members.",
+        "hint": "You're signed in as {{email}} (creator). To accept this invitation, please sign up with a different email as a student.",
+        "signupStudent": "Sign Up as Student"
+      }
+    },
+    "edit": {
+      "title": "Edit Team Member",
+      "roleLabel": "Role",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Course Instructor, Guest Speaker...",
+      "bioLabel": "Bio",
+      "bioPlaceholder": "A brief description for students...",
+      "canReceiveDMs": "Can receive direct messages",
+      "removeFromTeam": "Remove from Team",
+      "errorFailed": "Failed to update team member"
+    }
+  },
+
+  "teamMembers": {
+    "pageTitle": "Community Members",
+    "pageSubtitle": "{{count}} members in this community",
+    "searchPlaceholder": "Search members by name or email...",
+    "noSearchResults": "No members found",
+    "tryDifferentSearch": "Try a different search term.",
+    "noMembers": "No members yet",
+    "membersWillAppear": "Members will appear here when they join the community.",
+    "unnamed": "Unnamed Member",
+    "level": "Level {{level}}",
+    "awardBonus": "Award Bonus",
+    "table": {
+      "member": "Member",
+      "level": "Level",
+      "points": "Points",
+      "submissions": "Submissions",
+      "actions": "Actions"
+    },
+    "bonusModal": {
+      "title": "Award Bonus Points",
+      "currentPoints": "Current: {{points}} points",
+      "pointsLabel": "Bonus Points (1-10)",
+      "reasonLabel": "Reason (optional)",
+      "reasonPlaceholder": "e.g., Great participation in live session",
+      "cancel": "Cancel",
+      "awardButton": "Award +{{points}} Points",
+      "awarding": "Awarding..."
+    },
+    "errors": {
+      "loadFailed": "Failed to load members. Please try again.",
+      "awardFailed": "Failed to award bonus points. Please try again."
+    }
+  },
+
+  "directMessages": {
+    "teamCard": {
+      "unknownMember": "Unknown Member"
+    },
+    "badge": {
+      "team": "Team",
+      "guest": "Guest"
+    },
+    "roles": {
+      "lecturer": "Lecturer",
+      "assistant": "Assistant",
+      "guest_expert": "Guest Expert"
+    },
+    "actions": {
+      "sendMessage": "Send Message",
+      "viewProfile": "View Profile"
+    },
+    "profilePage": {
+      "loading": "Loading profile...",
+      "errorTitle": "Profile Not Found",
+      "errorNotFound": "This team member could not be found.",
+      "backToCommunity": "Back to Community",
+      "about": "About",
+      "courses": "Courses ({{count}})"
+    },
+    "course": {
+      "instructor": "Instructor",
+      "messageInstructor": "Message Instructor"
+    },
+    "teamSection": {
+      "title": "TEAM",
+      "badgeTeam": "Team",
+      "badgeGuest": "Guest",
+      "unknown": "Unknown"
+    },
+    "chatPanel": {
+      "unknownStudent": "Unknown Student",
+      "unknownMember": "Unknown Member",
+      "backToInbox": "Back to inbox",
+      "close": "Close chat",
+      "oversightMode": "View Only",
+      "oversightOnlyHint": "You are viewing this conversation in oversight mode. Only participants can send messages."
+    },
+    "conversationList": {
+      "inbox": "Inbox",
+      "myInbox": "My Inbox",
+      "inboxOf": "{{name}}'s Inbox",
+      "chatCount": "{{count}} conversations",
+      "back": "Back",
+      "noConversations": "No messages yet",
+      "noConversationsHint": "Student messages will appear here",
+      "unknownStudent": "Unknown Student",
+      "noMessagesYet": "No messages yet",
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    },
+    "thread": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "loading": "Loading...",
+      "loadMore": "Load earlier messages",
+      "noMessages": "No messages yet",
+      "startConversation": "Send a message to start the conversation",
+      "unknownSender": "Unknown",
+      "read": "Read"
+    },
+    "input": {
+      "placeholder": "Type a message...",
+      "sendButton": "Send message",
+      "hint": "Press Enter to send, Shift+Enter for new line"
+    }
+  },
+
+  "surveys": {
+    "questions": "{{count}} questions",
+    "sections": "{{count}} sections",
+    "attachmentTypes": {
+      "standalone": "Standalone Survey",
+      "course_intake": "Course Intake Form",
+      "community_intake": "Community Intake Form"
+    },
+    "questionTypes": {
+      "text": "Text Input",
+      "textDesc": "Free-form text response",
+      "singleChoice": "Single Choice",
+      "singleChoiceDesc": "Select one option",
+      "multiChoice": "Multiple Choice",
+      "multiChoiceDesc": "Select multiple options",
+      "number": "Number",
+      "numberDesc": "Numeric input",
+      "scale": "Scale (1-10)",
+      "scaleDesc": "Rate on a scale"
+    },
+    "list": {
+      "title": "Surveys",
+      "subtitle": "Create and manage surveys and intake forms",
+      "create": "New Survey",
+      "createTitle": "Create New Survey",
+      "createButton": "Create Survey",
+      "createFirst": "Create Your First Survey",
+      "createError": "Failed to create survey",
+      "surveyTitle": "Survey Title",
+      "titlePlaceholder": "Enter survey title...",
+      "surveyType": "Survey Type",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe what this survey is for...",
+      "emptyTitle": "No surveys yet",
+      "emptyDescription": "Create surveys to collect information from your students. Use intake forms to gather data before course access.",
+      "editSurvey": "Edit Survey",
+      "viewResponses": "View Responses",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "published": "Published",
+      "draft": "Draft",
+      "deleteConfirm": "Are you sure you want to delete this survey? All responses will be lost.",
+      "deleteError": "Failed to delete survey"
+    },
+    "send": {
+      "menuButton": "Send to Members",
+      "title": "Send Survey to Members",
+      "description": "Select members to send \"{{survey}}\" to",
+      "searchPlaceholder": "Search members...",
+      "selectedCount": "{{count}} selected",
+      "selectAll": "Select all",
+      "clearSelection": "Clear",
+      "alreadySent": "Already sent",
+      "sendButton": "Send to {{count}} members",
+      "sending": "Sending...",
+      "successTitle": "Survey Sent!",
+      "successMessage": "Sent to {{sent}} members. {{skipped}} already had the survey.",
+      "sendError": "Failed to send survey. Please try again.",
+      "noCommunity": "This survey is not attached to a community.",
+      "allResponded": "All members have already received this survey.",
+      "noMembers": "This community has no members yet."
+    },
+    "builder": {
+      "settings": "Settings",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "generalQuestions": "General Questions",
+      "addSection": "Add Section",
+      "addQuestion": "Add Question",
+      "newSection": "New Section",
+      "untitledQuestion": "Untitled Question",
+      "questionText": "Question Text",
+      "questionPlaceholder": "Enter your question...",
+      "options": "Answer Options",
+      "addOption": "Add an option...",
+      "placeholder": "Placeholder Text",
+      "placeholderHint": "Text shown when field is empty",
+      "required": "Required",
+      "allowOther": "Allow 'Other' option",
+      "sectionTitle": "Section Title",
+      "sectionDescription": "Section description (optional)",
+      "surveySettings": "Survey Settings",
+      "surveyTitle": "Title",
+      "surveyDescription": "Description",
+      "surveyRequired": "Survey is required to proceed",
+      "allowEdit": "Allow students to edit responses",
+      "emptyTitle": "Start Building Your Survey",
+      "emptyDescription": "Add sections and questions to create your survey. Students will see questions in the order you create them.",
+      "deleteSectionConfirm": "Delete this section? Questions will become unsectioned.",
+      "deleteQuestionConfirm": "Delete this question?",
+      "noQuestionsError": "Add at least one question before publishing"
+    },
+    "player": {
+      "loading": "Loading survey...",
+      "notFound": "Survey not found",
+      "loadError": "Failed to load survey",
+      "errorTitle": "Something went wrong",
+      "typeAnswer": "Type your answer...",
+      "enterNumber": "Enter a number",
+      "other": "Other",
+      "specifyOther": "Please specify...",
+      "sectionProgress": "Section {{current}} of {{total}}",
+      "saving": "Saving...",
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Survey",
+      "requiredFieldsError": "Please answer all required questions ({{count}} remaining)",
+      "submitError": "Failed to submit survey. Please try again.",
+      "thankYou": "Thank You!",
+      "submittedMessage": "Your responses have been submitted successfully.",
+      "completionEncouragement": "Your feedback helps us improve!",
+      "continue": "Continue",
+      "close": "Close"
+    },
+    "pending": {
+      "title": "Pending Surveys",
+      "empty": "No pending surveys",
+      "fillSurvey": "Fill Survey",
+      "from": "From {{community}}",
+      "count": "{{count}} surveys to complete",
+      "countSingle": "1 survey to complete"
+    },
+    "responses": {
+      "count": "{{count}} responses",
+      "notFound": "Survey not found",
+      "loadError": "Failed to load responses",
+      "exportCsv": "Export CSV",
+      "exportError": "Failed to export responses",
+      "noResponses": "No responses yet",
+      "noResponsesDesc": "Responses will appear here once students complete the survey.",
+      "searchPlaceholder": "Search by student name...",
+      "student": "Student",
+      "submittedAt": "Submitted",
+      "answers": "Answers",
+      "notSubmitted": "Not submitted"
+    },
+    "banner": {
+      "title": "You have surveys to complete",
+      "description": "{{count}} survey(s) waiting for your response",
+      "fillNow": "Fill Now",
+      "dismiss": "Later"
+    }
+  }
+}

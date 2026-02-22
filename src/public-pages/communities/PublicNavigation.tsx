@@ -1,0 +1,118 @@
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { LogIn, UserPlus, Menu, X } from 'lucide-react';
+import { useAuth } from '../../core/contexts/AuthContext';
+import { Logo } from '../../shared/Logo';
+
+export const PublicNavigation: React.FC = () => {
+  const { t } = useTranslation();
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <Logo variant="dark" size="lg" showText={false} />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-6">
+            <Link
+              to="/communities"
+              className="text-sm font-medium text-slate-600 hover:text-slate-900"
+            >
+              {t('publicCommunities.nav.browseCommunities')}
+            </Link>
+
+            {user ? (
+              <button
+                onClick={() => navigate('/app')}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+              >
+                {t('publicCommunities.nav.goToDashboard')}
+              </button>
+            ) : (
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => navigate('/login')}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors text-slate-700 border border-slate-300 hover:bg-slate-50"
+                >
+                  <LogIn className="w-4 h-4" />
+                  {t('publicCommunities.nav.signIn')}
+                </button>
+                <button
+                  onClick={() => navigate('/signup')}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                >
+                  <UserPlus className="w-4 h-4" />
+                  {t('publicCommunities.nav.getStarted')}
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg text-slate-600"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-200 shadow-lg">
+          <div className="px-4 py-4 space-y-3">
+            <Link
+              to="/communities"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg"
+            >
+              {t('publicCommunities.nav.browseCommunities')}
+            </Link>
+
+            {user ? (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  navigate('/app');
+                }}
+                className="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+              >
+                {t('publicCommunities.nav.goToDashboard')}
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    navigate('/login');
+                  }}
+                  className="w-full px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50"
+                >
+                  {t('publicCommunities.nav.signIn')}
+                </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    navigate('/signup');
+                  }}
+                  className="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                >
+                  {t('publicCommunities.nav.getStarted')}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};

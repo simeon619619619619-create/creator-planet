@@ -1,0 +1,705 @@
+Date: Sat, 31 Jan 2026 09:48:29 +0000 (UTC)
+Message-ID: <1275372615.41.1769852909064@266c41123a0b>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_40_2069178182.1769852909064"
+
+------=_Part_40_2069178182.1769852909064
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Fusion Pay - Changes in the API Integration Related to the Intro=
+duction of the Euro (EUR)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Fusion Pay - Changes in the API Integration Related to the Introduc=
+tion of the Euro (EUR)</h1>
+    <div class=3D"Section1">
+        <style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1769852909049 {padding: 0px;}
+div.rbtoc1769852909049 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1769852909049 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style>
+<div class=3D"toc-macro rbtoc1769852909049">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-1.Introduction">1. Introduction</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-2.ChangesbyAPIMethod">2. Changes by API Method</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-2.1.GetCalculations-Changes">2.1. GetCalculations - Changes=
+</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-2.2.registerApplication-Changes">2.2. registerApplication -=
+ Changes</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-2.3.getApplicationStatus">2.3. getApplicationStatus</a></li=
+>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-2.4.getApplicationData">2.4. getApplicationData</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-2.5.Ready-EmbeddedCalculator">2.5. Ready-Embedded Calculato=
+r</a></li>
+</ul></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-3.RequiredChangesinYourSystems-Summary">3. Required Changes=
+ in Your Systems - Summary</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-4.WhatRemainsUnchanged">4. What Remains Unchanged</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-5.Summary">5. Summary</a></li>
+<li><a href=3D"#FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductio=
+noftheEuro(EUR)-6.Support">6. Support</a></li>
+</ul>
+</div>
+<h2 local-id=3D"995485f1-7323-44ed-87d0-137c7e48d2f8" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-1.Introduction"=
+><strong>1. Introduction</strong></h2>
+<p local-id=3D"fd3ed134-75d9-4253-81d9-f3153bbb30da">As of 1 January 2026, =
+the Republic of Bulgaria will adopt the euro as its official currency.</p>
+<p local-id=3D"f7adafb7-5b85-4383-a2bd-378b3667c091">In connection with thi=
+s transition, TBI Bank is updating the API specifications of the service an=
+d introducing full support for the EUR currency.</p>
+<p local-id=3D"f5f483d1-fc5a-4f71-96e7-8028bddc0a8f">This document describe=
+s all changes that <strong>you must apply</strong> in your system to ensure=
+ correct operation after the transition to the euro.</p>
+<hr local-id=3D"646ee146-90d1-4a7f-af88-3f7a7ed22f53">
+<h2 local-id=3D"5101da69-369a-4086-a616-54595b90f846" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-2.ChangesbyAPIM=
+ethod"><strong>2. Changes by API Method</strong></h2>
+<h3 local-id=3D"d7049242-9071-4bee-a2f5-0f1eef349fc8" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-2.1.GetCalculat=
+ions-Changes"><strong>2.1. GetCalculations - Changes</strong></h3>
+<p local-id=3D"f595afc7-47b4-4491-b255-9f2ff923dd10"><strong>Request:</stro=
+ng><br>
+No changes.</p>
+<p local-id=3D"f6d5d094-e5e5-467a-bb98-e7216bd97ec4"><strong>Response updat=
+e:</strong><br>
+A new field <code>"currency"</code> is now returned in the response.<br>
+This value represents the <strong>main currency</strong> used for all calcu=
+lation fields.</p>
+<p local-id=3D"81227f2b-0dfc-4f55-b150-26c98cb62c51">Merchants must continu=
+e using fields <strong>as-is</strong>, without changing the integration.</p=
+>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">"amount=
+_min"
+"amount_max"</pre>
+</div>
+</div>
+<p local-id=3D"e691f183-7392-4de8-9ab1-a89e29f456a3">However, the meaning o=
+f these fields depends on the returned <code>"currency"</code>:</p>
+<ul local-id=3D"c277d694-23ea-42c3-b43e-f9ee3d4e8058">
+<li local-id=3D"2921c9e2-10ce-472f-9855-50216ff51ab5">
+<p local-id=3D"e2d63d69-7f85-4d6e-9df7-084d5360ef86"><strong>Until 1 Januar=
+y:</strong> <code>"currency": "BGN"</code> =E2=86=92 <code>amount_min</code=
+> / <code>amount_max</code> contain BGN values</p></li>
+<li local-id=3D"09e852da-2a2c-4040-8f7c-e4319c61f434">
+<p local-id=3D"1229e079-54c7-4966-9e6a-9ca02a8d8aed"><strong>From 1 January=
+:</strong> <code>"currency": "EUR"</code> =E2=86=92 <code>amount_min</code>=
+ / <code>amount_max</code> will contain EUR values</p></li>
+</ul>
+<p local-id=3D"5a4d54f3-2f7b-43c8-9a7b-6ebfc49a235a">Additional fields are =
+included depending on the main currency:</p>
+<p local-id=3D"85f6508f-b9e3-435b-b2c4-8d01d89ff900"><strong>If </strong><c=
+ode>"currency": "EUR"</code></p>
+<p local-id=3D"78a81d8b-8dce-46f9-a9d2-6e2ddb89e0d3">Response will also inc=
+lude BGN equivalents:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">"amount=
+_min_bgn"
+"amount_max_bgn"</pre>
+</div>
+</div>
+<p local-id=3D"7f3f916a-5f30-4c05-9f38-3610da48bfc3"><strong>If </strong><c=
+ode>"currency": "BGN"</code></p>
+<p local-id=3D"c4385002-5c9d-446c-8c6a-857589307c25">Response will also inc=
+lude EUR equivalents:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">"amount=
+_min_eur":
+"amount_max_eur":</pre>
+</div>
+</div>
+<p local-id=3D"3e3ce35a-1d0c-4951-a33a-e3b8bd8fb3ea"><strong>You must:</str=
+ong></p>
+<ul local-id=3D"24e0451e-33fd-4cc9-a7c7-d8c9f7a0764a">
+<li local-id=3D"f77b6b34-3791-48d1-aa97-b8da4b3951a2">
+<p local-id=3D"a19261a2-8636-4453-86d1-d7a35b597e84">use the amount_min/ am=
+ount_max fields as is with no changes when visualizing the calculator</p></=
+li>
+<li local-id=3D"a54460fd-d093-4745-9372-05f973ebc4df">
+<p local-id=3D"557d4f17-a50a-4bf0-a950-ae0ee33cba3f">ensure that all produc=
+t prices are recalculated in EUR</p></li>
+</ul>
+<hr local-id=3D"143e91e4-9519-4fc2-8208-f3a99166cfa4">
+<h3 local-id=3D"8c79c8d1-de8a-4125-a3d2-d454524d7534" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-2.2.registerApp=
+lication-Changes"><strong>2.2. registerApplication - Changes</strong></h3>
+<p local-id=3D"df7611a6-43c3-407b-ac33-b913ead57854">We have added new para=
+meter - <code>currency</code></p>
+<p local-id=3D"1b7dc3a0-526c-4c81-8a9d-b38975755dd0"><strong>Request:</stro=
+ng></p>
+<ul local-id=3D"ac7b4c5c-3e1b-4a9c-bf7a-9ca5ae41cf4d">
+<li local-id=3D"024067e5-0387-470a-b621-39fa7dd5d259">
+<p local-id=3D"c0fca313-da75-4394-b108-da5e0e0dbaf9"><strong>Until 1 Januar=
+y:</strong><br>
+The parameter <code>"currency"</code> is <strong>optional</strong>.<br>
+Requests without this parameter will continue to be processed normally.</p>=
+</li>
+<li local-id=3D"a8cc4555-a4fb-4a6d-b88b-fe4e49de008f">
+<p local-id=3D"fcbc417e-5f1b-416c-8077-0cb7a7748df5"><strong>From 1 January=
+:</strong><br>
+The parameter <code>"currency"</code> becomes <strong>mandatory</strong>.<b=
+r>
+If the request does not include <code>"currency": "EUR"</code>, the applica=
+tion <strong>cannot be created</strong>.<br>
+In this case, the merchant will receive an email notification informing the=
+m that the currency parameter must be provided.</p></li>
+<li local-id=3D"0d7a0a9a-c9e4-4892-819e-082d3c3340ac">
+<p local-id=3D"0be86fd5-565f-4e3e-b2e2-de65ba568468">The value must always =
+be sent in <strong>uppercase</strong>, e.g.:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">"curren=
+cy": "EUR"</pre>
+</div>
+</div></li>
+</ul>
+<p local-id=3D"136bd6ed-892b-494d-aa19-e457d9ce5cd4"><strong>Response:</str=
+ong></p>
+<ul local-id=3D"cb49cbf3-edec-4419-9141-83803be8730a">
+<li local-id=3D"c703be76-6e87-4c6f-8d15-d09f98460460">
+<p local-id=3D"30ffdc7a-0b8f-4c35-a216-dbebb31b7251">No changes.</p></li>
+<li local-id=3D"86a97e7b-449b-4254-9229-da35b95ce94e">
+<p local-id=3D"34f8cd87-c8e3-4caf-ad46-95ebe9969738">The method still retur=
+ns only the application URL.</p></li>
+</ul>
+<p local-id=3D"ef816a5a-d49d-4b14-b425-9afb7b5a84a7"><strong>You must:</str=
+ong></p>
+<ul local-id=3D"cb49cbf3-edec-4419-9141-83803be8730a">
+<li local-id=3D"0ab26b06-8701-4d74-8a72-fa6114029fb5">
+<p local-id=3D"6ad37291-9bfd-493a-8e84-4c793cc18b51">Always send <code>"cur=
+rency": "EUR"</code> in the request</p></li>
+<li local-id=3D"34dfe101-4258-4d01-8e0c-8cbe798f4258">
+<p local-id=3D"c1b4f328-8d55-442f-a54b-3c3ae623f96e">Ensure that <strong>al=
+l financial amounts</strong> in the request are provided in <strong>EUR</st=
+rong></p></li>
+<li local-id=3D"a274db84-0cfb-495b-ab25-9ef9d7b5327b">
+<p local-id=3D"8e37878a-1ac3-4d82-b56c-2581e398985d">Update your backend lo=
+gic to calculate all totals in EUR</p></li>
+</ul>
+<hr local-id=3D"228c28ea-c752-4600-afc4-5887d0f56729">
+<h3 local-id=3D"a4144d07-3f1a-47f6-8fad-41b6a1f94d10" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-2.3.getApplicat=
+ionStatus"><strong>2.3. getApplicationStatus</strong></h3>
+<p local-id=3D"20a164cd-3a8e-4e8d-a59e-2c0cfb3b0636">There are <strong>no c=
+hanges</strong> for this method.<br>
+Request and response remain fully unchanged.</p>
+<h3 local-id=3D"d4bbbd88-d1a0-4f17-b7a1-1545461112de" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-2.4.getApplicat=
+ionData"><strong>2.4. getApplicationData</strong></h3>
+<p local-id=3D"6c424e60-ed83-46e6-a491-da4dcc4d800b"><strong>Request:</stro=
+ng><br>
+No changes.</p>
+<p local-id=3D"0a3ffb75-ea36-4f22-a51e-2a665f68d3c6"><strong>Responce chang=
+es:</strong></p>
+<p local-id=3D"31bb733c-ade9-4a1e-8637-38381b5e45b5">The method continues t=
+o return <code>downpayment</code> and <code>installment</code> based on the=
+ <strong>main currency</strong>, which is indicated in the <code>"currency"=
+</code> field of the response.<br>
+Additional currency-specific fields are included depending on the transitio=
+n timeline and the main currency.</p>
+<p local-id=3D"0c56d06d-b5e9-4690-94fa-819d256dfb99"><strong>Before 1 Janua=
+ry (main currency =3D BGN)</strong></p>
+<ul local-id=3D"f66ac57c-d6a5-4b0c-8f0a-56a77aa89662">
+<li local-id=3D"8917d195-8141-4540-a635-5953b4430470">
+<p local-id=3D"b9f384c8-6ec1-43ed-8897-819518a4971f"><code>downpayment</cod=
+e> and <code>installment</code> are returned in <strong>BGN</strong>.</p></=
+li>
+<li local-id=3D"b23b9745-8ea4-4ce1-8e1f-44bb3ba46c8d">
+<p local-id=3D"a775dea4-c9b6-464a-b8e8-f808e3fc0acf">If needed, EUR equival=
+ents are provided in additional fields:</p>
+<ul local-id=3D"582edcc1-f2f7-4647-b91d-5994923fc2d9">
+<li local-id=3D"9475c6f7-b88e-49d1-90d9-2a4cc719c6a8">
+<p local-id=3D"2592ea29-893c-4df0-83c7-609d82577fea"><code>downpayment_eur<=
+/code></p></li>
+<li local-id=3D"f9ece002-de84-4dbd-ad78-d32272e33b8c">
+<p local-id=3D"e8293578-3853-452c-8882-228d50612388"><code>installment_eur<=
+/code></p></li>
+</ul></li>
+</ul>
+<p local-id=3D"d583651e-a390-4749-9519-e0a5aae93c01"><strong>Example (BGN m=
+ain currency):</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+    "error": 0,
+    "store_order_id": "0",
+    "status": "MP Sent",
+    "downpayment": 0,
+    "installment": 70.18,
+    "period": 13,
+    "currency": "BGN",
+    "downpayment_eur": "0.00",
+    "installment_eur": "35.88"
+}
+</pre>
+</div>
+</div>
+<p local-id=3D"685e2e2f-9f57-45f6-ab50-8170d725e842"><strong>After 1 Januar=
+y (main currency =3D EUR)</strong></p>
+<ul local-id=3D"798173d4-41e8-4a77-a4cf-1bd0082518a1">
+<li local-id=3D"67e19a76-2715-45ea-ba79-9d1e4bda8e4b">
+<p local-id=3D"207432ac-340a-4db7-8fb4-02478637f980"><code>downpayment</cod=
+e> and <code>installment</code> are returned in <strong>EUR</strong>.</p></=
+li>
+<li local-id=3D"f8f20058-068a-4228-961d-2393696cad75">
+<p local-id=3D"77435a27-f0aa-4933-914d-70af8934e542">If needed, BGN equival=
+ents are included in additional fields:</p>
+<ul local-id=3D"d5d40197-7349-492d-b0f2-cca8dc97175f">
+<li local-id=3D"96cba4f9-0776-471d-9070-17a8e2a26941">
+<p local-id=3D"449356cf-fd44-4fdd-a3bf-c4069e32334e"><code>downpayment_bgn<=
+/code></p></li>
+<li local-id=3D"e89830eb-a873-4313-a6c7-c9a5f0d45450">
+<p local-id=3D"4c1936a0-8b58-4613-b574-90a711668b86"><code>installment_bgn<=
+/code></p></li>
+</ul></li>
+</ul>
+<p local-id=3D"4372b7f2-f83d-4762-90cd-ed958c85a2c8"><strong>Example (EUR m=
+ain currency):</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+    "error": 0,
+    "store_order_id": "0",
+    "status": "MP Sent",
+    "downpayment": "0.00",
+    "installment": "35.88",
+    "period": 13,
+    "currency": "EUR",
+    "downpayment_bgn": 0,
+    "installment_bgn": 70.18
+}
+</pre>
+</div>
+</div>
+<hr local-id=3D"39cfc923-93e9-495d-b9d8-0a6a23e870b6">
+<p local-id=3D"eb3f4d7c-90c6-4e2b-990c-052440d633ec"><strong>Merchant Requi=
+rements</strong></p>
+<p local-id=3D"55a77a3c-9721-43d7-975f-e5c688390770">You must:</p>
+<ul local-id=3D"17943db4-3538-4ce0-9525-4fd247a5e885">
+<li local-id=3D"daf7c05c-f565-44e6-9242-e752648d1573">
+<p local-id=3D"b293ae1e-75fd-4678-bb3d-680ac7517107">Correctly <strong>proc=
+ess all fields</strong> included in the response.</p></li>
+<li local-id=3D"8446792c-51dd-4031-a3b1-dc321dc81732">
+<p local-id=3D"86181905-6c3c-442e-81b5-234678a105b6">Continue using the sta=
+ndard <code>downpayment</code> and <code>installment</code> fields -<br>
+these always match the <strong>main currency</strong> specified in <code>"c=
+urrency"</code>.</p></li>
+<li local-id=3D"b29ef74a-6b6d-4b93-87d4-53274b0a2f34">
+<p local-id=3D"108fd675-9475-4de1-9a62-54ef508cc2d6">Use the additional BGN=
+/EUR fields only if needed by your business logic.</p></li>
+</ul>
+<h3 local-id=3D"109d62d1-261f-4112-866b-db8c793906cd" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-2.5.Ready-Embed=
+dedCalculator"><strong>2.5. Ready-Embedded Calculator</strong></h3>
+<p local-id=3D"f519e7a8-ab0a-4aab-81d9-639eae441160">The embedded calculato=
+r URL now includes a new parameter:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">currenc=
+y=3DEUR</pre>
+</div>
+</div>
+<p local-id=3D"256ea967-3d2b-4c1e-9f40-e4ce7b153e35"><strong>Example:</stro=
+ng><br><a class=3D"external-link" data-card-appearance=3D"inline" href=3D"h=
+ttps://beta.tbibank.support/application/calculcator/?code=3DS333&amp;key=3D=
+tbitest&amp;amount=3D1377.03&amp;currency=3DEUR" local-id=3D"6c89193d-a694-=
+499d-bd64-8b3770f4e419" rel=3D"nofollow">https://beta.tbibank.support/appli=
+cation/calculcator/?code=3DS333&amp;key=3Dtbitest&amp;amount=3D1377.03&amp;=
+currency=3DEUR</a></p>
+<p local-id=3D"1025b87a-9624-409d-b660-95de4327b775">The <code>currency</co=
+de> parameter indicates the currency of the <code>amount</code> value passe=
+d in the link.</p>
+<p local-id=3D"7c299409-2e59-42dc-a6af-761969e38f6b">Merchants must use the=
+ calculator link according to the correct currency:</p>
+<ul local-id=3D"437415da-a31b-44ee-a0b0-f05a4074824c">
+<li local-id=3D"3a643f1a-7b35-4954-b8c0-437cbd318bf1">
+<p local-id=3D"2a1a9a51-ee61-420c-ba88-90b843c32215"><strong>Currently:</st=
+rong> BGN</p></li>
+<li local-id=3D"f3648e27-1741-4ced-be2b-675782f1db9f">
+<p local-id=3D"ec1cb99f-170c-4e33-a848-8237a33a4808"><strong>From 1 January=
+:</strong> EUR</p></li>
+</ul>
+<p local-id=3D"2ce388cb-4b88-4d9b-9ac5-1a324f71a46d">You can change the cur=
+rency parameter from <code>BGN</code> to <code>EUR</code> accordingly.</p>
+<hr local-id=3D"0a9b5ad9-c8b8-4ab6-8681-05f1f0f77964">
+<h2 local-id=3D"971900f8-9ac5-45d1-95b9-27cfd5b12a4d" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-3.RequiredChang=
+esinYourSystems-Summary"><strong>3. Required Changes in Your Systems - Summ=
+ary</strong></h2>
+<ul local-id=3D"55185d74-b82d-4896-808f-c5e7a785db3d">
+<li local-id=3D"ed84e66d-dd7a-4ceb-afa4-7c14f3907c70">
+<p local-id=3D"dcf80079-eb27-4a70-a4e7-c8fd5c928f5e"><strong>registerApplic=
+ation</strong></p>
+<ul local-id=3D"865b3dc9-6559-4bdf-82b0-9186a0d4e222">
+<li local-id=3D"87560353-b748-4b66-9fca-532fd301c5ac">
+<p local-id=3D"a09423dc-0146-4f0e-b23e-612e0e88ca5e">Until 1 January: curre=
+ncy optional</p></li>
+<li local-id=3D"b7a99765-12f0-4fad-8a9d-a72690b029f0">
+<p local-id=3D"579715b1-e7e8-47b7-8931-0bb8773c1df1">From 1 January: "curre=
+ncy": "EUR" is mandatory</p></li>
+<li local-id=3D"078b57c0-97f7-4e3e-a8c4-4a85a8477adb">
+<p local-id=3D"209ad072-81fd-4fa2-adb4-4b39581038e1">All amounts in the req=
+uest must be provided in EUR</p></li>
+</ul></li>
+</ul>
+<ul local-id=3D"6cad1c9a-d4ec-4f8f-9ce6-0f279a725293">
+<li local-id=3D"a2fb246e-5f56-4aee-88bb-a1e77d111e78">
+<p local-id=3D"e1f1f703-4bfd-41b7-91fa-2e36005b4d38"><strong>GetCalculation=
+s</strong></p>
+<ul local-id=3D"d383406e-a890-4abb-8fd2-783beea0d942">
+<li local-id=3D"79b39db5-8f1a-4493-852f-c583912e6326">
+<p local-id=3D"3f4a0c9b-1591-4a4f-9243-e49b5f06799c">Continue using amount_=
+min and amount_max</p></li>
+<li local-id=3D"7d13f95f-771a-4960-a04c-ab6df4bb3cd1">
+<p local-id=3D"4c02ac0b-d07f-4628-a3b7-515b43811876">From 1 January these w=
+ill return EUR values</p></li>
+<li local-id=3D"eacfef6b-f16a-4c02-8717-e60342bf1cc4">
+<p local-id=3D"d5b40b29-f3cf-4408-acc1-652ca14f902a">Additional BGN/EUR fie=
+lds must be consumed if needed</p></li>
+</ul></li>
+<li local-id=3D"46147fee-540c-4613-bef6-59b689e8043a">
+<p local-id=3D"640d5c0b-c366-4ef1-ae27-53d95aa336a8"><strong>getApplication=
+Data</strong></p>
+<ul local-id=3D"9c6683e2-ee67-4ea2-88db-99c810c7585d">
+<li local-id=3D"2114b99e-2ed7-4429-8783-5f3d958fd641">
+<p local-id=3D"e31d24cb-f185-43a6-8d02-79b5b518aa12">Continue using downpay=
+ment and installment fields (main currency)</p></li>
+<li local-id=3D"33e98187-47fb-4b1f-b617-3c9be829058f">
+<p local-id=3D"d5773bb2-8457-41df-8d8e-2f8c10971e29">Process additional EUR=
+/BGN fields as required</p></li>
+</ul></li>
+<li local-id=3D"ec84bc12-539f-4605-b425-7c9d97cdabb9">
+<p local-id=3D"ffac934f-3e70-4937-90eb-11d3b85a15ad"><strong>Embedded calcu=
+lator</strong></p>
+<ul local-id=3D"35359e71-1b16-47e7-b95d-33156176267b">
+<li local-id=3D"cb204754-5e22-40dd-bf8e-f49c0fe347da">
+<p local-id=3D"b4f4a484-67fa-412f-a52f-121d975dbdb8">Update links to includ=
+e:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">&amp;cu=
+rrency=3DEUR</pre>
+</div>
+</div></li>
+<li local-id=3D"76504da2-47ca-499b-ba61-ee48400b0c0a">
+<p local-id=3D"766d4377-bbb8-401d-8bd1-7d3703b70923">Ensure the amount pass=
+ed matches the specified currency</p></li>
+</ul></li>
+<li local-id=3D"ce2e4016-f7dc-4035-82ef-edd86ac5758e">
+<p local-id=3D"295e9dab-5b37-4671-9fa9-9fece7b99972"><strong>Merchant UI / =
+Backend</strong></p>
+<ul local-id=3D"5b4536bf-f1e8-470a-b4e1-49d8c4414260">
+<li local-id=3D"fb7b07a2-0151-4716-8a2b-0d3f52c6952f">
+<p local-id=3D"069e3afa-a1ea-4a37-a443-9c3941daa9db">Switch to sending all =
+product prices, totals, and amounts in EUR</p></li>
+<li local-id=3D"d5325542-cb10-4e37-ba28-e27c143d4c58">
+<p local-id=3D"7811541b-677e-450c-bf28-0e9474d19cb7">Update all internal ca=
+lculations to use EUR</p></li>
+<li local-id=3D"c4473f74-efd5-4d4d-a393-bf7d1b563812">
+<p local-id=3D"0178882e-8d5a-405b-98ee-772ccb14e68e">Clear or migrate any c=
+ached BGN values</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"18b5e20c-ebe2-4f8e-b554-398b9a65a44b">
+<h2 local-id=3D"d415545e-5365-48db-90ec-3f0d900759ba" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-4.WhatRemainsUn=
+changed"><strong>4. What Remains Unchanged</strong></h2>
+<ul local-id=3D"f71238c6-7cdc-4402-99e6-210de701d59a">
+<li local-id=3D"49547d3a-0bb8-441f-96a2-cf67cf3dccb6">
+<p local-id=3D"781e7a42-d39b-4678-8217-dfd819f19eb2">API method names</p></=
+li>
+<li local-id=3D"5716f1d5-5836-4866-afac-e0b8ed7f0cc8">
+<p local-id=3D"bf9f25ec-d3a8-4c55-85f6-acbeb86b7dbc">SSL certificate usage<=
+/p></li>
+<li local-id=3D"d95ac630-a072-4c41-83e5-79d8736e865f">
+<p local-id=3D"1aa29c48-dd09-49df-8740-b347b099b96e">General JSON request s=
+tructure</p></li>
+<li local-id=3D"6d9d2ffe-4115-4eb6-aa85-88740bd99a30">
+<p local-id=3D"589490b4-8050-4114-acf0-75968790ce07">API endpoint URLs</p>
+<ul local-id=3D"7799a4f8-7944-402d-a2ce-f2a5cb06331f">
+<li local-id=3D"53193cab-a78a-4264-a6c2-46c88b6aa46d">
+<p local-id=3D"a5cddb7f-2050-4f54-8693-a3c561cda77d">Except for the embedde=
+d calculator link, which now requires the <code>currency</code> parameter</=
+p></li>
+</ul></li>
+</ul>
+<p local-id=3D"b325578a-1ebd-4f51-bc68-8e625fd79055">No structural or schem=
+a changes to the existing endpoints are introduced; only currency-based log=
+ic and additional optional fields have been added.</p>
+<hr local-id=3D"a4674ad0-fe13-4de4-a674-0980407055af">
+<h2 local-id=3D"3ef60eb5-0736-460c-8342-3d2041c754fa" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-5.Summary"><str=
+ong>5. Summary</strong></h2>
+<p local-id=3D"09e7a890-798b-4310-9f8a-9bb459399ae6">After the transition t=
+o the euro:</p>
+<p local-id=3D"91ede5ec-5a33-4381-98a3-5c7e2b72b51f">=E2=9C=94 Existing fie=
+lds (<code>amount_min</code>, <code>downpayment</code>, <code>installment</=
+code>, etc.) continue to function but will reflect EUR values</p>
+<p local-id=3D"08abb5db-759b-4bb1-871f-eabb3594891e">=E2=9C=94 registerAppl=
+ication API will have mandatory field <code>currency</code></p>
+<p local-id=3D"e01c6386-3364-4987-befa-74213e285b90">=E2=9C=94 All product =
+prices and all financial amounts must be provided in <strong>EUR</strong></=
+p>
+<p local-id=3D"f1cd5bcf-3392-4e4f-8b36-cf272257b461">=E2=9C=94 No changes t=
+o endpoints, certificates, or method names</p>
+<p local-id=3D"bdfd78cd-f93b-427e-b0ab-13e8b8af7279">=E2=9C=94 The embedded=
+ calculator must use <code>currency=3DEUR</code></p>
+<p local-id=3D"d562ded2-80e9-4d8c-9768-43386aab3404">=E2=9C=94 Without thes=
+e updates, the integration will not function correctly</p>
+<hr local-id=3D"bbac2d0f-6fab-4fb0-8cfc-2df2d3bf23e8">
+<h2 local-id=3D"418b457a-55cf-40a3-bd2f-9be52c7f7676" id=3D"FusionPay-Chang=
+esintheAPIIntegrationRelatedtotheIntroductionoftheEuro(EUR)-6.Support"><str=
+ong>6. Support</strong></h2>
+<p local-id=3D"3d1dd93b-357d-47bd-b067-4df0613daf43">If you have any questi=
+ons or need assistance, you can contact the TBI Bank technical team at:</p>
+<p local-id=3D"fd839f1f-fb47-48ec-9b5b-daa838bbb6f4">=F0=9F=93=A7 <a class=
+=3D"external-link" href=3D"mailto:PartnersHelp@tbibank.bg" rel=3D"nofollow"=
+><strong>PartnersHelp@tbibank.bg</strong></a></p>
+<hr local-id=3D"e6b351bc-5a7a-4077-81b1-48cf34ec9fa0">
+    </div>
+</body>
+</html>
+------=_Part_40_2069178182.1769852909064--

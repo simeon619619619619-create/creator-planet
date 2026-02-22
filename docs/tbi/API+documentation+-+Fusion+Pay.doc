@@ -1,0 +1,3317 @@
+Date: Sat, 31 Jan 2026 09:47:59 +0000 (UTC)
+Message-ID: <1415654477.43.1769852879558@2c8bb2de8c71>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_42_1459601018.1769852879557"
+
+------=_Part_42_1459601018.1769852879557
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>API documentation - Fusion Pay</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>API documentation - Fusion Pay</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"06740b39-73b3-40c5-a34f-031fb47ecef5" id=3D"APIdocu=
+mentation-FusionPay-Contents:"><strong>Contents:</strong></h1>
+<ol start=3D"1" local-id=3D"0b0da1b7-ce5a-4377-a027-495343042cea">
+<li local-id=3D"b75e747c-324b-4eee-af5f-c039ea7d1018">
+<p local-id=3D"0e778100-fcdb-4f43-8503-5248e03cb6c2"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#General-Information" rel=3D"nofollow"><strong>General informati=
+on</strong></a></p>
+<ol start=3D"1" local-id=3D"4438457e-eefb-4bbf-9597-7c8d4189c9f9">
+<li local-id=3D"7cd6dc46-d788-4447-8e7c-824c816f58ff">
+<p local-id=3D"c9d031a1-5c31-4a36-be5f-8be53778239b"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Bank-Products" rel=3D"nofollow"><strong>Bank Products</strong><=
+/a></p></li>
+<li local-id=3D"3c7f4725-7e8a-40a3-bc4d-59d87238877f">
+<p local-id=3D"3aad6d62-464d-464f-b4d2-53233cc661d7"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Integration-Process" rel=3D"nofollow"><strong>Integration Proce=
+ss</strong></a></p></li>
+<li local-id=3D"e61148a7-e331-4124-8373-d9e06ac32b63">
+<p local-id=3D"b6c86b0a-79ca-448f-835e-c0581ea0ca66"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Fusion-Pay---Changes-in-the-API-Integration-Related-to-the-Intr=
+oduction-of-the-Euro-(EUR)" rel=3D"nofollow"><strong>Fusion Pay - Changes i=
+n the API Integration Related to the Introduction of the Euro (EUR)</strong=
+></a></p></li>
+</ol></li>
+<li local-id=3D"9521637d-db86-43ad-8004-0c1cec65fee2">
+<p local-id=3D"d119ca70-8d77-480f-aa56-1e878bd43a8a"><strong> </strong><a h=
+ref=3D"https://tbigroup.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/A=
+PI+documentation+-+Fusion+Pay#Application-Flow-Overview" rel=3D"nofollow"><=
+strong>Application Flow Overview </strong></a></p></li>
+<li local-id=3D"ed8adea2-b42f-4f42-a8e2-9d7b8b599768">
+<p local-id=3D"637ad40f-4595-439a-b067-0f012cd3ad21"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Methods" rel=3D"nofollow"><strong>Methods</strong></a></p>
+<ol start=3D"1" local-id=3D"2c10bbf8-ac33-49eb-8506-535dfedf8f57">
+<li local-id=3D"70ae7482-c53d-4a74-9371-4e9d2aebbf98">
+<p local-id=3D"d7573bdf-101e-455a-964d-7a0e5f2e26b2"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#GetCalculations" rel=3D"nofollow"><strong>Get Calculations</str=
+ong></a></p>
+<ol start=3D"1" local-id=3D"4a785fed-c52b-483c-af80-7b29e7034053">
+<li local-id=3D"ce138302-2f91-4ed8-a317-fb4da1698de9">
+<p local-id=3D"be42959b-225c-46b5-8265-36b01955f99a"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Examples" rel=3D"nofollow"><strong>Examples</strong></a></p></l=
+i>
+</ol></li>
+<li local-id=3D"cdf684bb-f2aa-4f18-af18-ecc4e8513f6a">
+<p local-id=3D"4e91c2f3-baeb-411b-9353-49226eb8231b"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Register-Application" rel=3D"nofollow"><strong>Register Applica=
+tions</strong></a></p>
+<ol start=3D"1" local-id=3D"9297990d-97c6-411a-a552-2167957bd3bc">
+<li local-id=3D"f220fe18-946c-43b3-a27a-b9fb96d03ea3">
+<p local-id=3D"db86ca85-ebcc-4d1f-ae87-5311684fe48e"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Examples%3A" rel=3D"nofollow"><strong>Examples</strong></a></p>=
+</li>
+</ol></li>
+<li local-id=3D"338452a7-1463-4384-98c6-3d90cb705195">
+<p local-id=3D"e9207188-9f1d-4c09-a747-542fb89e40b6"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Get-Application-Status" rel=3D"nofollow"><strong>Get Applicatio=
+n Status</strong></a></p></li>
+<li local-id=3D"593b1c28-ffc5-407a-ac88-4e61b23751fc">
+<p local-id=3D"24cfb8e9-1321-4b7c-ad05-7a83ac2ce053"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Get-Application-Data" rel=3D"nofollow"><strong>Get Application =
+Data</strong></a></p></li>
+</ol></li>
+<li local-id=3D"36b3a17c-4c3f-4cc3-9727-490e656adf59">
+<p local-id=3D"4211940c-d700-4e67-b7b0-86d21c46fc18"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Ready-Embedded-Calculator" rel=3D"nofollow"><strong>Ready embed=
+ded calculator</strong></a></p></li>
+<li local-id=3D"f9147510-e269-41c8-b941-42dbf56bc314">
+<p local-id=3D"cb13dc35-4524-4f97-9b77-bda647be4f5b"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Express-Buy-Button-Integration-on-Product-Page" rel=3D"nofollow=
+"><strong>Express buy button in product page</strong></a></p></li>
+<li local-id=3D"42456b29-727c-4ea6-a0de-2c126133cc8a">
+<p local-id=3D"b554cb98-f8b8-4847-b688-36c2b501eebd"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Add-to-cart-functionality" rel=3D"nofollow"><strong>Add to cart=
+ functionality</strong></a></p></li>
+<li local-id=3D"e85d7ae6-f5b7-48fa-b588-e17ba9303e1e">
+<p local-id=3D"2359c652-a7b7-4704-a2fb-745cd72e4ea2"><a href=3D"https://tbi=
+group.atlassian.net/wiki/spaces/TSFMPU/pages/4053106704/API+documentation+-=
++Fusion+Pay#Example-files" rel=3D"nofollow"><strong>Example files</strong><=
+/a></p></li>
+</ol>
+<p class=3D"media-group"><img height=3D"250" style=3D"margin: 2px; border: =
+1px solid #ddd; box-sizing: border-box; vertical-align: text-bottom;" src=
+=3D"060fdcf6e5d293e7142d715358e1ebfbd23e435337878e38e0234fa20b74b5c8" width=
+=3D"250"></p>
+<p local-id=3D"c1bd38c2-a6e8-482e-bd36-f0bf6b132f56"></p>
+<h2 local-id=3D"e587547e-db37-46bf-9384-f0710b1b6239" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-GeneralInformation">General Infor=
+mation</h2>
+<p local-id=3D"32f37db3-0a51-4216-9dea-999a290cd3ea"></p>
+<p local-id=3D"cbecbfb3-7435-47c4-8402-ed4f52442142">This document serves a=
+s a guide for merchants to integrate with the TBI Bank loan application pla=
+tform using the provided API. The platform can be accessed through the foll=
+owing URLs:</p>
+<ul local-id=3D"8430a637-9e52-4a1e-84c6-3a056e977b6c">
+<li local-id=3D"ee797e92-0e77-4572-aec6-1291e6f04781">
+<p local-id=3D"f9a8f164-70a8-49f5-8af2-59eeeb120d46"><strong>Test Environme=
+nt:</strong> <a class=3D"external-link" data-card-appearance=3D"inline" hre=
+f=3D"https://bankly-uat.tbibank.bg/#/login" local-id=3D"d4118cb0-9b69-42f6-=
+a012-c2fa320ca602" rel=3D"nofollow">https://bankly-uat.tbibank.bg/#/login</=
+a></p></li>
+<li local-id=3D"0377aad1-0a15-478e-b069-6499302d8f49">
+<p local-id=3D"d7d94212-13ff-4984-a56f-ba7735ccb973"><strong>Production Env=
+ironment:</strong> <a class=3D"external-link" href=3D"https://bnkl.tbibank.=
+bg/#/login" rel=3D"nofollow">https://bnkl.tbibank.bg/#/login</a></p></li>
+</ul>
+<p local-id=3D"3fd3e966-6d16-4482-9fe2-6d2149e059d7">Upon registering for a=
+ partnership with TBI Bank, merchants will receive access to these platform=
+s to track all incoming loan applications. This guide refers to the platfor=
+m as the "Merchant Portal." Merchants will also be provided with a 'reselle=
+r code' (a four-character code) and a 'reseller key' to identify the store =
+or object when using the API methods.</p>
+<h3 local-id=3D"1897e139-ec45-4e8a-8a18-339b8176187f" id=3D"APIdocumentatio=
+n-FusionPay-BankProducts">Bank Products</h3>
+<p local-id=3D"a38d71ba-20dc-40f0-861e-021332580338">TBI Bank offers variou=
+s repayment schemes:</p>
+<ul local-id=3D"f214169b-9a96-488a-88f3-67819597057a">
+<li local-id=3D"a54b5a44-2317-4b2f-b1e8-57393a1c3657">
+<p local-id=3D"b2433e11-6617-44bc-901a-e17f3879362a">Loan terms range from =
+3 to 60 months.</p></li>
+<li local-id=3D"c69a9ac1-bc11-4d4c-a6dc-a048a97501d8">
+<p local-id=3D"f0a39b95-9945-410c-961c-f19659996cdc">Loan amounts range fro=
+m 50 to 15,000 EUR .</p></li>
+<li local-id=3D"a85590c7-7078-4a46-9339-abdf7202881d">
+<p local-id=3D"4e83f974-0f65-4641-be80-e89259fb708d">Options include standa=
+rd loans and "Buy Now, Pay Later" schemes.</p></li>
+<li local-id=3D"3227bf3b-05ae-495d-bf92-d60607c6597a">
+<p local-id=3D"e9d63dbe-5a44-44d5-8e33-992a34611b4e">Terms and interest rat=
+es are agreed upon with the Merchant Enabler (a TBI Bank employee responsib=
+le for the merchant).</p></li>
+<li local-id=3D"fa864512-ea4b-4f88-a996-25579594ba67">
+<p local-id=3D"fc000d42-5247-4c24-b133-a75a589d336c">Interest rates can var=
+y based on the loan amount, with options for 0% rates and promotional schem=
+es for specific periods. These terms are also arranged with the Merchant En=
+abler.</p></li>
+</ul>
+<h2 local-id=3D"80e0e5fe-0153-4f87-b574-323bae555946" id=3D"APIdocumentatio=
+n-FusionPay-IntegrationProcess">Integration Process</h2>
+<p local-id=3D"4c55f65c-c085-475e-a0b6-9ff03e11161d">The integration proces=
+s for sending loan applications is divided into two main parts:</p>
+<h3 local-id=3D"1c9423bc-70f6-4793-9839-a62061faad8a" id=3D"APIdocumentatio=
+n-FusionPay-Part1:DisplayFinancingOptions">Part 1: Display Financing Option=
+s</h3>
+<ol start=3D"1" local-id=3D"d056f0b4-b777-49ae-aee1-dceeee683761">
+<li local-id=3D"6fdc1b63-7a0e-463a-a28d-14f4ceb00e83">
+<p local-id=3D"59cac852-27fb-4d89-a120-28509c878edd"><strong>Display Financ=
+ing Button:</strong></p>
+<ul local-id=3D"d9565253-76d9-47da-ae86-d86755caa33c">
+<li local-id=3D"514d16c8-9abe-4764-8da2-1cf92038bb63">
+<p local-id=3D"470033f6-3d0f-403d-9768-c7c1d06d28b5">Show a button on the p=
+roduct page saying "Buy in installments starting from XX.XX per month" or "=
+Buy in X installments for XX.XX / monthly."</p></li>
+<li local-id=3D"411c2f0f-01d1-4ef4-a4ed-72ad7fe628de">
+<p local-id=3D"3f7e157c-c407-41b0-a006-f438d8e78830">Use the <code>GetCalcu=
+lations</code> API method to calculate the installment amount (XX.XX).</p><=
+/li>
+</ul></li>
+<li local-id=3D"2b6fff91-29d2-48f8-a95d-8bd5cb1bac0d">
+<p local-id=3D"1fb9307b-85aa-4b52-8db9-0577b81c484d"><strong>Show All Pay S=
+chemes:</strong></p>
+<ul local-id=3D"41a4c1ca-176b-4986-b581-cd02106d89c2">
+<li local-id=3D"b33d950f-f67e-40c4-a380-d50c9e87b4a8">
+<p local-id=3D"a518d3ad-c174-4153-8f59-869fb9d304ec">Allow the customer to =
+view all available pay schemes with different periods.</p></li>
+<li local-id=3D"36be2ca6-944d-40a3-9adf-2fae585abd8c">
+<p local-id=3D"7eb261aa-0378-4974-a25c-258530bdad41">Display this informati=
+on on both the product and checkout pages.</p></li>
+<li local-id=3D"789c0113-a747-4052-bf18-872969add0a1">
+<p local-id=3D"cb09e424-d093-4772-beb3-89798a32d199">Ensure that the follow=
+ing EU-compliant parameters are displayed: APR, NIR, Total Due Amount, Inst=
+allment, and Period. These details are provided by the <code>GetCalculation=
+s</code> method.</p></li>
+</ul></li>
+</ol>
+<h3 local-id=3D"a4bdc12e-8f13-4b71-b347-55ddd2bec4d5" id=3D"APIdocumentatio=
+n-FusionPay-Part2:SubmitLoanApplication">Part 2: Submit Loan Application</h=
+3>
+<ol start=3D"1" local-id=3D"1b16850a-7af1-4a2b-9e9c-3241038e449d">
+<li local-id=3D"b9c40243-eb66-4628-92d3-2edaa687c86a">
+<p local-id=3D"8d4393df-4e69-4cd1-89c0-954d79999fd3"><strong>Send Loan Appl=
+ication:</strong></p>
+<ul local-id=3D"80a44c82-77b0-4f7c-afe2-fadaa58b3ae8">
+<li local-id=3D"3c9647db-f7c2-4a02-9e3c-9f42458b3a12">
+<p local-id=3D"1dd39f8f-e03e-4bd4-978f-ae9eec36640f">Use the <code>Register=
+Application</code> API method to send client data (e.g., Full Name, Phone N=
+umber, Address) and shopping cart items to the bank.</p></li>
+<li local-id=3D"90068bad-362c-4692-8297-d2f014bef44d">
+<p local-id=3D"4fe5afe6-c4ad-4e00-be2c-3caa05692a77">The only mandatory fie=
+lds are the items list and the order ID from the merchant's website.</p></l=
+i>
+<li local-id=3D"7ff3d2df-2467-49bf-ae58-08a96a21885f">
+<p local-id=3D"a1ae7062-6e09-42e8-902c-e71aff03966d">The <code>RegisterAppl=
+ication</code> method returns a URL where the customer completes the applic=
+ation. This URL can be used to redirect the customer or display a pop-up on=
+ the website.</p></li>
+<li local-id=3D"1dea4564-02e2-4c65-a800-90e37e5173f1">
+<p local-id=3D"8a012f07-2376-4836-88d4-8f2bd3822302">Preferably, send custo=
+mer data in the API call to prefill the application form, enhancing custome=
+r satisfaction.</p></li>
+</ul></li>
+</ol>
+<h3 local-id=3D"5ba8a391-1b6e-41d1-92ce-3f9660d31ab0" id=3D"APIdocumentatio=
+n-FusionPay-Extra:UpdateApplicationStatus">Extra: Update Application Status=
+</h3>
+<ul local-id=3D"24a92b6c-475a-4282-b115-10aa21ed8664">
+<li local-id=3D"552cc6a6-7a52-4405-9bc2-453564daa7f2">
+<p local-id=3D"3b37858a-9bdd-4a35-b561-73321c300423"><strong>Check Applicat=
+ion Status:</strong></p>
+<ul local-id=3D"29a37044-2b8d-42b7-adc7-5a11a8eacefb">
+<li local-id=3D"c97a7a43-a5bf-498f-826f-936d1fa23e9c">
+<p local-id=3D"861fe425-4577-4138-8a88-ffc2d617a0b9">Use the <code>GetAppli=
+cationStatus</code> endpoint to retrieve the current status of an applicati=
+on and track its status changes throughout the processing.</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"cf9a9369-3d47-46ba-869a-6d7a28dfe344">By following these ste=
+ps, merchants can seamlessly integrate with the TBI Bank loan application p=
+latform, offering flexible financing options to their customers and ensurin=
+g a smooth application process.</p>
+<div class=3D"confluence-information-macro confluence-information-macro-not=
+e">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-warning confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<h3 local-id=3D"0813faea-08de-42e3-87fc-31b0b491f596" id=3D"APIdocumentatio=
+n-FusionPay-FusionPay-ChangesintheAPIIntegrationRelatedtotheIntroductionoft=
+heEuro(EUR)">Fusion Pay - Changes in the API Integration Related to the Int=
+roduction of the Euro (EUR)</h3>
+<h3 local-id=3D"c743a238-d61b-4a19-a7c2-2c88d3351b38" id=3D"APIdocumentatio=
+n-FusionPay-FusionPayEURO"><a href=3D"https://tbigroup.atlassian.net/wiki/x=
+/AoCtRwE" rel=3D"nofollow">Fusion Pay EURO </a></h3>
+</div>
+</div>
+<p local-id=3D"4588215a-fa95-459e-80ce-d25875e7d7a3" style=3D"text-align: c=
+enter;"></p>
+<h2 local-id=3D"b99289e2-035f-4f28-a5f6-75be8fb5cb74" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-ApplicationFlowOverview"><strong>=
+Application Flow Overview</strong></h2>
+<p local-id=3D"9bbe4333-36be-4a11-ad6c-ae2872f8491d" style=3D"text-align: c=
+enter;"></p>
+<p local-id=3D"93261c38-d418-4293-baef-b030868260bd">This section provides =
+a high-level overview of how the loan application process works when you in=
+tegrate with tbi bank through Fusion Pay.</p>
+<p local-id=3D"d88fd564-1155-4bcb-be44-cd9cb325ef52">The diagram shows the =
+key steps your customer goes through - from choosing an installment option =
+on your website, to submitting the application, and finally receiving a dec=
+ision from the bank.</p>
+<p local-id=3D"1ba5271b-67cf-4ac3-bf9f-1a5d4f7cab84">This overview helps yo=
+u to:</p>
+<ul local-id=3D"db9f7511-021c-41c9-9c8e-1951b9027aaa">
+<li local-id=3D"63c97030-a731-47dd-9ec9-831930de1f4f">
+<p local-id=3D"0e328ed9-7e4e-43d8-a2e5-c4c95705e11c">Understand the complet=
+e loan application flow at a glance.</p></li>
+<li local-id=3D"43ab3d1b-373d-46e6-bc5c-bdeb370ec0d3">
+<p local-id=3D"e6021e6c-3755-431b-bab9-608671d5d48c">See how your website, =
+Fusion Pay, and tbi bank systems work together.</p></li>
+<li local-id=3D"5f6c6bd2-d61f-4bcf-a9c4-4cfb2caf4966">
+<p local-id=3D"2017fdc9-3af8-4732-adc5-b0c3a2b2453c">Recognize where the in=
+tegration points described later in this documentation apply.</p></li>
+</ul>
+<p local-id=3D"169979aa-994c-4969-8113-0670eb49c2b6">Refer to this diagram =
+to get the =E2=80=9Cbig picture=E2=80=9D before moving on to the technical =
+details and examples in the following sections.</p><span class=3D"confluenc=
+e-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-siz=
+e"><img class=3D"confluence-embedded-image image-center" alt=3D"BPMN.jpg" w=
+idth=3D"468" loading=3D"lazy" src=3D"c51b227e19f653f73936e08382ce91b4c6b7c7=
+6d1ffaa80697aea93b76124426" data-image-src=3D"https://tbigroup.atlassian.ne=
+t/wiki/download/attachments/4053106704/BPMN.jpg?version=3D1&amp;modificatio=
+nDate=3D1755853325968&amp;cacheVersion=3D1&amp;api=3Dv2" data-height=3D"200=
+2" data-width=3D"8192" data-unresolved-comment-count=3D"0" data-linked-reso=
+urce-id=3D"5216862220" data-linked-resource-version=3D"1" data-linked-resou=
+rce-type=3D"attachment" data-linked-resource-default-alias=3D"BPMN.jpg" dat=
+a-base-url=3D"https://tbigroup.atlassian.net/wiki" data-linked-resource-con=
+tent-type=3D"image/jpeg" data-linked-resource-container-id=3D"4053106704" d=
+ata-linked-resource-container-version=3D"34" data-media-id=3D"bf73055a-215f=
+-45b5-b0af-2d56089aabf5" data-media-type=3D"file" height=3D"114"></span>
+<h2 local-id=3D"ae51921d-cc0a-47d5-ad01-6897cec02087" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Methods">Methods</h2>
+<h3 local-id=3D"6d5abfd9-decb-4873-acee-1184ab9bbb62" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-GetCalculations">GetCalculations<=
+/h3>
+<h4 local-id=3D"a8a2e2fa-5f1a-464a-97c7-ab70ee98cfa5" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Overview">Overview</h4>
+<p local-id=3D"77d78246-51a9-443a-b68e-cb4c6f3fb967">The <code>GetCalculati=
+ons</code> API call provides a RESTful response with available repayment sc=
+hemes for a specific merchant or store. It supports both GET and POST reque=
+sts. The response includes all necessary parameters to display repayment sc=
+hemes in compliance with EU requirements and to facilitate sending applicat=
+ions to the bank processing platform.</p>
+<p local-id=3D"e8f7352d-b5aa-4d91-8959-0f768b959f79">To optimize performanc=
+e, it's recommended to update the parameters once per day, preferably after=
+ the first scheme request of the new day or after 00:01 daily. A manual pul=
+l update API call from the merchant backend is also advisable if different =
+interest rate conditions are set up.</p>
+<p local-id=3D"c7d06c6c-1158-4a69-907a-902a32ae98eb">However, if the API is=
+ called for each calculation, the response remains efficient and easy to ha=
+ndle.</p>
+<div class=3D"confluence-information-macro confluence-information-macro-not=
+e">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-warning confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<h4 local-id=3D"a549c96d-ca03-4dfb-b63f-8e7198cd119a" id=3D"APIdocumentatio=
+n-FusionPay-PRODEndpoint:<https://beta.tbibank.support/api/GetCalculations>=
+">PROD Endpoint: <code>&lt;https://beta.tbibank.support/api/GetCalculations=
+</code>&gt;</h4>
+</div>
+</div>
+<h4 local-id=3D"9da676fd-7f57-4f8b-853e-1fe6b80d556c" id=3D"APIdocumentatio=
+n-FusionPay-RequestParameters">Request Parameters</h4>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"e6=
+f197b6-8498-4c02-b97c-dabbc3b966f2" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"e5923429-1626-485a-8b95-7685845c6b7a">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"ea93c9b0-cb22-4bf8-9=
+f6c-9d509a47981f" class=3D"confluenceTh">
+<p local-id=3D"3c4fcc32-b8fa-4551-a1dc-59e171f867ca"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"f8482697-b15d-4494-9=
+fbe-4a14af935f3a" class=3D"confluenceTh">
+<p local-id=3D"ab9408c5-51e1-4cc4-97f6-4815a05b44c8"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"6529c058-6c7d-4a6c-9=
+8be-3373cdaa62df" class=3D"confluenceTh">
+<p local-id=3D"71b90af0-47ff-43de-aeb5-946110813ec7"><strong>Type</strong><=
+/p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"156c8f16-18d9-4570-9=
+c11-78c03ed35615" class=3D"confluenceTh">
+<p local-id=3D"d5461e13-5599-4831-9e91-336f8ffd7009"><strong>Required</stro=
+ng></p></th>
+</tr>
+<tr data-local-id=3D"fa7eb2ef-e238-4a3b-8231-a52a57b895b5">
+<td data-local-id=3D"b60c40fb-08cc-467f-964d-ef2b4ff699a6" class=3D"conflue=
+nceTd">
+<p local-id=3D"8fa9771e-1c5c-4a74-abb8-5bc64112a4a4"><code>reseller_code</c=
+ode></p></td>
+<td data-local-id=3D"d2127472-58d4-4f53-a868-9782590bfd76" class=3D"conflue=
+nceTd">
+<p local-id=3D"a09d71ff-5d60-4ba7-ba4a-44003973872b">Parameter to identify =
+the merchant in the system</p></td>
+<td data-local-id=3D"b57181bb-9711-4249-8919-59446d899832" class=3D"conflue=
+nceTd">
+<p local-id=3D"37354ff9-7d9f-431e-8ce0-207f8708a8e9">String</p></td>
+<td data-local-id=3D"66fed870-089b-4f0a-a691-084881cb58fa" class=3D"conflue=
+nceTd">
+<p local-id=3D"4ed0b52f-9aca-4d54-9b2a-c10be5ff660e">Yes</p></td>
+</tr>
+<tr data-local-id=3D"8e631b28-623a-4c40-ab3d-f767589ea54f">
+<td data-local-id=3D"d5dcd95b-580b-4c0b-b0ec-5e18633ad657" class=3D"conflue=
+nceTd">
+<p local-id=3D"43e06829-ed2f-4708-bdbb-0a4dc1e890e8"><code>reseller_key</co=
+de></p></td>
+<td data-local-id=3D"802efa46-abce-4d6c-aa6f-38e990746116" class=3D"conflue=
+nceTd">
+<p local-id=3D"b0be06a5-f733-41eb-b359-d48257dfe2ec">Parameter to validate =
+the merchant and specify in case of multiple websites/objects with differen=
+t APRs</p></td>
+<td data-local-id=3D"27246510-1021-4101-a563-9b9236a48460" class=3D"conflue=
+nceTd">
+<p local-id=3D"408fa24e-f706-4126-b643-f72d8521fd7c">String</p></td>
+<td data-local-id=3D"dc35a0c8-7477-4d18-898e-a3f9f41d94c0" class=3D"conflue=
+nceTd">
+<p local-id=3D"c76ba66b-73f1-421b-8b09-46e36252275f">Yes</p></td>
+</tr>
+<tr data-local-id=3D"28ab9797-81ab-4082-9761-8c6c29c2651e">
+<td data-local-id=3D"9a856cdf-79d6-4e71-b93d-8c69b1b62630" class=3D"conflue=
+nceTd">
+<p local-id=3D"428011b8-7a65-40ee-83d6-b66968a7121d"><code>amount</code></p=
+></td>
+<td data-local-id=3D"fb3c7a97-b5c7-4002-9500-da51f640645f" class=3D"conflue=
+nceTd">
+<p local-id=3D"2456a640-a61b-47cc-9241-7aa875d50e86">Total price of basket =
+goods / Total credit amount to extract specific schemes by amount-defined A=
+PR tiers</p></td>
+<td data-local-id=3D"b296a1ac-97cc-47ad-aee5-e602c32b876c" class=3D"conflue=
+nceTd">
+<p local-id=3D"486eb2e9-8247-4a1a-809d-25ee468861f9">Double</p></td>
+<td data-local-id=3D"c0686918-953c-47b2-809a-93ac0589a0ab" class=3D"conflue=
+nceTd">
+<p local-id=3D"83e09b2c-edb6-4d3f-9177-4bc741205345">No</p></td>
+</tr>
+<tr data-local-id=3D"d7007ba7-b459-4375-aa3a-86c3b8c35c75">
+<td data-local-id=3D"24397497-85f9-4839-b62d-3ccc83ea08bb" class=3D"conflue=
+nceTd">
+<p local-id=3D"58a69935-e891-4efc-a062-2a0df4a2a5c5"><code>category_id</cod=
+e></p></td>
+<td data-local-id=3D"aeb7a62d-1557-4c1b-9ee2-dadd0a92e27c" class=3D"conflue=
+nceTd">
+<p local-id=3D"38a016af-8242-4449-a24d-2b6cf0eccf20">ID to extract repaymen=
+t schemes set only for a specific category</p></td>
+<td data-local-id=3D"736c4b01-c5e6-4455-8b05-62b4b9e13f82" class=3D"conflue=
+nceTd">
+<p local-id=3D"439fb202-47ba-4e8e-8b5a-88b09a729e13">Int</p></td>
+<td data-local-id=3D"0a227aab-66e8-4554-b10f-423f4c1c011f" class=3D"conflue=
+nceTd">
+<p local-id=3D"2de61ea9-8a96-4258-8b45-d4698943cc74">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 local-id=3D"89185ea5-2974-40ce-a735-e308f1b7e832" id=3D"APIdocumentatio=
+n-FusionPay-ResponseParameters">Response Parameters</h4>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"42=
+cfad27-0010-455b-a3eb-ea5122d029fb" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"99234a2a-f658-416c-b325-505adcf5b98d">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"ff075953-f410-4aee-8=
+d2d-3596c0f3f085" class=3D"confluenceTh">
+<p local-id=3D"6fc45d17-a9d8-44ce-8b75-6d7851dbe789"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"e992084c-1957-4e33-b=
+315-3ba0f9ed6451" class=3D"confluenceTh">
+<p local-id=3D"384fbdc9-e0ab-4630-bbb1-1bd126a51a9a"><strong>Description / =
+Usage</strong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"febcca13-3a31-40cf-a=
+acd-20a2eff041f4" class=3D"confluenceTh">
+<p local-id=3D"dbdc4dca-392a-4d68-a439-f8036ac0fc58"><strong>Type</strong><=
+/p></th>
+</tr>
+<tr data-local-id=3D"25c6e7dd-d4d1-48cf-aa3c-4ebca17d95b0">
+<td data-local-id=3D"08e938c8-6b8b-489b-8b29-f026d3f0208d" class=3D"conflue=
+nceTd">
+<p local-id=3D"435c58c9-acd3-4cb9-b69a-faec0d9e5a9e"><code>id</code></p></t=
+d>
+<td data-local-id=3D"4444b17d-089a-4e2f-9b09-c16f638ea0bd" class=3D"conflue=
+nceTd">
+<p local-id=3D"eebc1282-7b1c-4479-beaf-4f2f241fad3c">Scheme unique ID. Used=
+ to sync with calculation API ID. /Backend/</p></td>
+<td data-local-id=3D"9137fbed-3582-4fa9-8dc6-d32dbf08ee97" class=3D"conflue=
+nceTd">
+<p local-id=3D"b9965c99-a5d4-4e01-b96a-e6bf1d362cc8">Int</p></td>
+</tr>
+<tr data-local-id=3D"ae2f09b5-8962-41e4-974b-2e03dfd7870c">
+<td data-local-id=3D"d3a9ddb9-d1a3-4e46-92e4-3c6fe51beff9" class=3D"conflue=
+nceTd">
+<p local-id=3D"d8710084-cb9e-443f-827c-ee9cfe45aac0"><code>name</code></p><=
+/td>
+<td data-local-id=3D"3f9d5fd4-aba0-4b00-a0f3-aae4f72e0187" class=3D"conflue=
+nceTd">
+<p local-id=3D"b5f2a7a5-16bb-4b38-8aae-6798146e9074">Scheme name. Used as t=
+he preferred name in the repayment options list. /Frontend/</p></td>
+<td data-local-id=3D"b702ca56-2456-40ad-ba6d-ab7385e93d65" class=3D"conflue=
+nceTd">
+<p local-id=3D"d69f937a-ca04-47f7-baa9-1857b4e02f01">String</p></td>
+</tr>
+<tr data-local-id=3D"a0128fa3-e03f-4baa-ad6e-096637c31ec5">
+<td data-local-id=3D"815135e6-cc9b-4415-bcc0-e18cc88507ee" class=3D"conflue=
+nceTd">
+<p local-id=3D"0bcf9613-72e2-40ae-a989-b1405071e48f"><code>bank_product</co=
+de></p></td>
+<td data-local-id=3D"629dae09-d2e9-4a94-9f77-611d947a5608" class=3D"conflue=
+nceTd">
+<p local-id=3D"70c85b09-3135-4e7f-a043-9b095f10894b">Bank product name. Not=
+ used with this type of integration. /Backend/</p></td>
+<td data-local-id=3D"f1800df7-ecff-4309-8d84-6e80cc8117c5" class=3D"conflue=
+nceTd">
+<p local-id=3D"39fe87f8-6eb8-414f-93ef-f7a27547bb56">String</p></td>
+</tr>
+<tr data-local-id=3D"068dc3f5-c920-469f-9aa6-f8f1108af082">
+<td data-local-id=3D"d8d36be4-1021-44e1-8541-bb71a13ab982" class=3D"conflue=
+nceTd">
+<p local-id=3D"e65ab159-1246-43df-8208-1522c623f31b"><code>period</code></p=
+></td>
+<td data-local-id=3D"6179738b-b24a-4609-adf6-60bfe07bf996" class=3D"conflue=
+nceTd">
+<p local-id=3D"c48e8cc5-9a41-4e72-aa8a-b191fb7df998">Repayment period in mo=
+nths. Used to display options. /Frontend; Backend/</p></td>
+<td data-local-id=3D"8253d602-44b1-4ce9-898d-262f961c2d7e" class=3D"conflue=
+nceTd">
+<p local-id=3D"dff17210-0d2d-44cf-9014-26dccd577cf7">Int</p></td>
+</tr>
+<tr data-local-id=3D"dd20e443-80aa-45bb-be99-fb2c94234e83">
+<td data-local-id=3D"c444aeb2-fd09-44f7-8e70-f5b0ff85ffa4" class=3D"conflue=
+nceTd">
+<p local-id=3D"d8cf9fa3-6847-46e6-be0e-f80b4947cf50"><code>installment_fact=
+or</code></p></td>
+<td data-local-id=3D"11affb01-1476-4c4e-9c68-2ac82ab81d78" class=3D"conflue=
+nceTd">
+<p local-id=3D"020c6385-dae5-403b-9578-6f1ad6400527">Coefficient used as a =
+multiplier to the product/basket total price for calculating the monthly in=
+stallment. Used to display repayment options. /Frontend; Backend/</p></td>
+<td data-local-id=3D"85da80d3-a5cd-47d3-b6c9-cec6761b0cbb" class=3D"conflue=
+nceTd">
+<p local-id=3D"2ace3406-a894-4638-add7-7d5f1c32680d">Double</p></td>
+</tr>
+<tr data-local-id=3D"e153f039-b923-4440-9342-8703ffe36a6a">
+<td data-local-id=3D"dcc27be3-2bf6-491b-875f-e4a0c972ac60" class=3D"conflue=
+nceTd">
+<p local-id=3D"82ad3b31-b3cb-4e82-a358-60fe28ca3437"><code>total_due_factor=
+</code></p></td>
+<td data-local-id=3D"138c92d9-7723-4a50-a36c-b93d32621610" class=3D"conflue=
+nceTd">
+<p local-id=3D"0cb848f3-fa13-43df-81ea-545fccab2007">Coefficient used as a =
+multiplier to the product/basket total price for calculating the repayment.=
+ Optional usage. /Frontend; Backend/</p></td>
+<td data-local-id=3D"46919ded-0a3c-4fd6-9560-6570c7f75628" class=3D"conflue=
+nceTd">
+<p local-id=3D"b307736e-e17b-4a90-ab13-190f45145694">Double</p></td>
+</tr>
+<tr data-local-id=3D"6ce3ed6a-fba4-48ae-9d65-8f873bd0cc57">
+<td data-local-id=3D"4c1cc922-ed40-4f49-95e7-21f02f71c518" class=3D"conflue=
+nceTd">
+<p local-id=3D"0746980f-65da-43f7-a248-a53bf1bfafcd"><code>nir</code></p></=
+td>
+<td data-local-id=3D"38e0ed41-df20-4b96-94a9-7e1e8dc765d6" class=3D"conflue=
+nceTd">
+<p local-id=3D"e3e9e269-45ba-4b8f-b3be-3c4d51a0946d">Scheme Nominal Interes=
+t Rate. Displayed in loan description as mandatory for EU compliance. /Fron=
+tend/</p></td>
+<td data-local-id=3D"ce55b163-1799-4307-aa1c-1369ac25ae66" class=3D"conflue=
+nceTd">
+<p local-id=3D"d8e473f3-3593-469f-a4cc-e2a66d5ed561">Double</p></td>
+</tr>
+<tr data-local-id=3D"fc8d6856-4721-43c0-806d-d7515475284a">
+<td data-local-id=3D"11ff9334-b20f-49f8-8ded-8bc76c973ba2" class=3D"conflue=
+nceTd">
+<p local-id=3D"3a76e3fd-d7c3-4ff0-b7fa-f6e9dfb8e317"><code>apr</code></p></=
+td>
+<td data-local-id=3D"d34e0e65-203d-42f9-8e76-749ea47021a0" class=3D"conflue=
+nceTd">
+<p local-id=3D"e824505b-a994-4049-8df4-f780e50beefe">Scheme Annual Percenta=
+ge Rate. Displayed in loan description as mandatory for EU compliance. /Fro=
+ntend/</p></td>
+<td data-local-id=3D"c141d25b-52f6-4f02-a0c9-860d57c8f6ff" class=3D"conflue=
+nceTd">
+<p local-id=3D"d07d7ef7-d258-4d24-8d2b-995473d14d4b">Double</p></td>
+</tr>
+<tr data-local-id=3D"bb865a89-ff1a-4cda-98ae-274ed5c818f9">
+<td data-local-id=3D"9fe78bd4-4afa-45aa-bfdc-75127ae1265c" class=3D"conflue=
+nceTd">
+<p local-id=3D"84ceb41c-59af-4c2e-9336-ca7f348ddbc1"><code>amount_min</code=
+></p></td>
+<td data-local-id=3D"bb78d1a6-e14d-4440-8d16-04bb7b9c7f02" class=3D"conflue=
+nceTd">
+<p local-id=3D"cef830d6-d626-4b36-8330-4296975e3f63">Minimum loan credit am=
+ount for the scheme to be available in the list. /Backend/</p></td>
+<td data-local-id=3D"026990b4-2087-4ac2-be7c-3f7a0356255c" class=3D"conflue=
+nceTd">
+<p local-id=3D"96a21fd1-922c-4e8b-8083-832991e3e826">Double</p></td>
+</tr>
+<tr data-local-id=3D"2e2fdfd3-7c8c-4840-9605-15b9b37cb02d">
+<td data-local-id=3D"aadc4794-e2c5-4c55-ab97-be898fde89ff" class=3D"conflue=
+nceTd">
+<p local-id=3D"fc3e3d8b-9bea-4cd4-a859-7ef123678050"><code>amount_max</code=
+></p></td>
+<td data-local-id=3D"cf1bf3a0-57c9-451e-be2f-1932e1212fb7" class=3D"conflue=
+nceTd">
+<p local-id=3D"2938a198-8eee-4973-a608-4aed2f407cc0">Maximum loan credit am=
+ount for the scheme to be available in the list. /Backend/</p></td>
+<td data-local-id=3D"28c87140-51af-4f3c-b42f-d399c0f0a3ef" class=3D"conflue=
+nceTd">
+<p local-id=3D"a97e130c-c515-403a-b38f-fb335ee72f88">Double</p></td>
+</tr>
+<tr data-local-id=3D"119dfaff-0496-49ab-903a-a9ceb75329c8">
+<td data-local-id=3D"6cb31495-8506-49b6-9fc7-20f3796de6d6" class=3D"conflue=
+nceTd">
+<p local-id=3D"f2061117-287f-49c3-aab0-feea51be00bc"><code>category_id</cod=
+e></p></td>
+<td data-local-id=3D"150ce0d6-e675-42cf-942f-a5966ca3cc5f" class=3D"conflue=
+nceTd">
+<p local-id=3D"d62d6d1a-24b3-4dd3-86a4-95f4c0dd723a">Scheme product categor=
+y limitation for the scheme to be available in the list. /Backend/</p></td>
+<td data-local-id=3D"2ec017c0-ed86-4933-b877-eb7eab84d3f0" class=3D"conflue=
+nceTd">
+<p local-id=3D"0f179bca-26fe-4baa-85e8-0f5da8cc97e9">Int</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 local-id=3D"78aedae6-b8af-4457-9904-6e416d9bd19d" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Examples">Examples</h2>
+<h3 local-id=3D"cc718f15-a6dc-4589-8596-939cd8290f4c" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-ExampleRequestsandResponses">Exam=
+ple Requests and Responses</h3>
+<p local-id=3D"d5622d47-e327-4c27-a284-28c841b1aff3"></p>
+<ol start=3D"1" local-id=3D"7dd8a715-9069-431f-9599-9692c649ede9">
+<li local-id=3D"ed41562f-f6e1-4634-8a97-6408d4893a18">
+<p local-id=3D"059f3d70-1c93-4ec5-951a-4887bcf387b6"><strong>Basic Request<=
+/strong></p>
+<p local-id=3D"97dcaa35-cd24-4358-a32d-908d5d72d6b2">Request:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;htt=
+ps://beta.tbibank.support/api/GetCalculations?reseller_code=3DTBI1&amp;rese=
+ller_key=3DEX1&gt;</pre>
+</div>
+</div>
+<p local-id=3D"a097b9fe-1683-43a5-b63f-5f37cc41dace">Response:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">[
+    {
+        "id": 755,
+        "name": "3 =D0=BC=D0=B5=D1=81=D0=B5=D1=86=D0=B0 =D0=9F=D0=A0=D0=9E=
+=D0=9C=D0=9E 0%",
+        "bank_product": "Promo 0%",
+        "period": 3,
+        "installment_factor": 0.3333333,
+        "total_due_factor": 1,
+        "nir": 0,
+        "apr": 0,
+        "amount_min": 100,
+        "amount_max": 1200,
+        "category_id": 255
+    },
+    {
+        "id": 1,
+        "name": "3 =D0=BC=D0=B5=D1=81=D0=B5=D1=86=D0=B0",
+        "bank_product": "Standard 0.61%",
+        "period": 3,
+        "installment_factor": 0.33940643333333,
+        "total_due_factor": 1.0182193,
+        "nir": 10.9,
+        "apr": 10.09,
+        "amount_min": 10000,
+        "amount_max": 30000,
+        "category_id": 0
+    },
+    {
+        "id": 474,
+        "name": "12 =D0=BC=D0=B5=D1=81=D0=B5=D1=86=D0=B0",
+        "bank_product": "Standard 1.50%",
+        "period": 12,
+        "installment_factor": 0.098333333333333,
+        "total_due_factor": 1.18,
+        "nir": 31.72,
+        "apr": 34.91,
+        "amount_min": 100,
+        "amount_max": 5000,
+        "category_id": 0
+    }
+]</pre>
+</div>
+</div></li>
+<li local-id=3D"68330d53-2dfc-421f-bb46-ad356098f5e2">
+<p local-id=3D"4b400380-cf07-450c-9fa5-adf62950bebc"><strong>Filtered by Am=
+ount</strong></p>
+<p local-id=3D"e1b3bc80-6d09-4419-991b-932f40fd2a17">Request:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;htt=
+ps://beta.tbibank.support/api/GetCalculations?reseller_code=3DTBI1&amp;rese=
+ller_key=3DEX1&amp;amount=3D1500&gt;</pre>
+</div>
+</div>
+<p local-id=3D"6f611cce-494c-4660-9637-36d8a9ce9b1a">Response:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">[
+    {
+        "id": 474,
+        "name": "12 =D0=BC=D0=B5=D1=81=D0=B5=D1=86=D0=B0",
+        "bank_product": "Standard 1.50%",
+        "period": 12,
+        "installment_factor": 0.098333333333333,
+        "total_due_factor": 1.18,
+        "nir": 31.72,
+        "apr": 34.91,
+        "amount_min": 100,
+        "amount_max": 5000,
+        "category_id": 0
+    }
+]</pre>
+</div>
+</div></li>
+<li local-id=3D"fbff81d7-3e76-42a7-a581-cfb283ce1206">
+<p local-id=3D"c6f61695-cf72-47ef-af7c-dabcf63231d9"><strong>Empty Request<=
+/strong></p>
+<p local-id=3D"7a02b03e-3489-4844-9f58-242bf7899963">Request:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;htt=
+ps://beta.tbibank.support/api/GetCalculations&gt;</pre>
+</div>
+</div>
+<p local-id=3D"47014268-d576-431e-9223-74dd736b675d">Response:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+    "error": 203,
+    "message": "Empty request /api/info203"
+}</pre>
+</div>
+</div></li>
+<li local-id=3D"e47a7222-f785-4697-983a-4a92906471b1">
+<p local-id=3D"1dab6755-20d8-4007-87e0-1d05eb5c1e6a"><strong>Invalid Reques=
+t</strong></p>
+<p local-id=3D"114c5091-89c7-4bb4-99e6-a43c914c9821">Request:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;htt=
+ps://beta.tbibank.support/api/GetCalculations?test=3Dtest&gt;</pre>
+</div>
+</div>
+<p local-id=3D"18964deb-b6b1-47d5-a7c0-11fdfb7bfe2f">Response:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+    "error": 204,
+    "message": "Invalid request /api/info204"
+}</pre>
+</div>
+</div></li>
+<li local-id=3D"11f76332-c03e-4cd2-9caa-6d780501bf53">
+<p local-id=3D"c2f9802b-3a85-4fcf-abdd-47ac4c471fb6"><strong>Unauthorized A=
+ccess</strong></p>
+<p local-id=3D"3f12f074-da8f-4d42-b7bc-bd7fd35aa7a3">Request:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;htt=
+ps://beta.tbibank.support/api/GetCalculations?reseller_code=3DTBI1&amp;rese=
+ller_key=3DUNAUTH&gt;</pre>
+</div>
+</div>
+<p local-id=3D"3e077409-d84e-4bda-bd7d-22b36218f81b">Response:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+    "error": 205,
+    "message": "Access denied /api/info205"
+}</pre>
+</div>
+</div></li>
+<li local-id=3D"3ed837a0-1186-4414-ac2d-8c310341a68c">
+<p local-id=3D"6ffb64c5-6e3b-4af6-bde4-72442b8c50eb"><strong>Valid Authoriz=
+ation with No Schemes</strong></p>
+<p local-id=3D"288aff9f-b9dd-4b8b-a3a2-8dcb09fedf5b">Request:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;htt=
+ps://beta.tbibank.support/api/GetCalculations?reseller_code=3DTBI1&amp;rese=
+ller_key=3DEMPTY&gt;</pre>
+</div>
+</div>
+<p local-id=3D"86fa206c-8901-4ade-962d-fbea9c20b355">Response:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">[]</pre=
+>
+</div>
+</div></li>
+</ol>
+<div class=3D"confluence-information-macro confluence-information-macro-not=
+e">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-warning confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<h3 local-id=3D"1465a543-c0f6-41f9-9d34-43556d1d62a6" id=3D"APIdocumentatio=
+n-FusionPay-ImportantNotice">Important Notice</h3>
+<p local-id=3D"a66ed02a-f2b5-4cbd-b525-ca9cc0384099">The <code>GetCalculati=
+ons</code> API can receive all parameters via a GET request and has no limi=
+tations since it does not handle sensitive information. However, setting th=
+e code and key via GET is not recommended. The preferred usage is via data =
+form POST or text/JSON raw POST request from the backend.</p>
+</div>
+</div>
+<h3 local-id=3D"3bc0fc44-edc4-49b8-98c1-91ce109996ad" id=3D"APIdocumentatio=
+n-FusionPay-ExamplecURLCommands">Example cURL Commands</h3>
+<ol start=3D"1" local-id=3D"1871cf44-bd3d-4126-884b-11978e6283cb">
+<li local-id=3D"e16cd44c-c4a1-4f70-b670-36e53df53cce">
+<p local-id=3D"166c32ff-7481-4543-8af1-c9c14e8f8875"><strong>Form Data POST=
+ Request</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">curl --=
+location '&lt;https://beta.tbibank.support/api/GetCalculations&gt;' \\
+--form 'reseller_code=3D"TBI1"' \\
+--form 'reseller_key=3D"EMPTY"'</pre>
+</div>
+</div></li>
+<li local-id=3D"5f05821c-5c49-4f01-9a5f-26025ca297a9">
+<p local-id=3D"857877e8-3a3b-49b7-9db4-3be8eef05e39"><strong>JSON POST Requ=
+est</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">curl --=
+location '&lt;https://beta.tbibank.support/api/GetCalculations&gt;' \\
+--header 'Content-Type: application/json' \\
+--data '{"reseller_code":"TBI1","reseller_key":"EX1","category_id":"255","a=
+mount":"1000"}'</pre>
+</div>
+</div></li>
+<li local-id=3D"80daa154-6bc8-4177-ac8e-70eb457df7f5">
+<p local-id=3D"2f0f10ed-c1a3-4eff-a72e-13970386db25"><strong>Text/Plain POS=
+T Request</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">curl --=
+location '&lt;https://beta.tbibank.support/api/GetCalculations&gt;' \\
+--header 'Content-Type: text/plain' \\
+--data '{"reseller_code":"TBI1","reseller_key":"EX1","category_id":"255","a=
+mount":"1000"}'</pre>
+</div>
+</div></li>
+</ol>
+<p local-id=3D"2e649c47-a92b-4f17-8825-a30c459e19e5"></p>
+<h2 local-id=3D"7651550e-5c01-4c08-8c8c-62883bf26dc0" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-RegisterApplication">Register App=
+lication</h2>
+<h3 local-id=3D"5f8ebd0b-98a4-40ef-8955-94ffd68eadcc" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Overview.1">Overview</h3>
+<p local-id=3D"093b36e7-2c72-4d6f-97d9-d5a601155077"></p>
+<p local-id=3D"2ee5a5ff-15e5-4281-a515-b59164e7162f">The <code>RegisterAppl=
+ication</code> method sends customer and order data to TBI Bank. If the dat=
+a is valid, the response includes a URL to which the customer should be red=
+irected to complete the application. This endpoint supports only the POST m=
+ethod.</p>
+<p local-id=3D"470ddfeb-e149-485d-b426-dd888ac5e13e">For testing, use the f=
+ollowing credentials:</p>
+<div class=3D"panel" style=3D"background-color: #EAE6FF;border-color: #998D=
+D9;border-width: 1px;">
+<div class=3D"panelContent" style=3D"background-color: #EAE6FF;">
+<ul local-id=3D"ed0bacc3-7d82-48d0-a1ea-ba70df827b55">
+<li local-id=3D"c9f5d32f-26f2-4e82-b80d-a6f680099210">
+<p local-id=3D"e899ae85-ff34-4fd5-ace7-db0aad08dbb5"><strong>reseller_code:=
+</strong> TBI1</p></li>
+<li local-id=3D"8705c044-d918-48de-949b-a04d01b79197">
+<p local-id=3D"4550b11c-7a05-4613-9f69-56b6f594c167"><strong>reseller_key:<=
+/strong> EX1</p></li>
+<li local-id=3D"5c533567-3a40-4468-b503-f69dc35126c7">
+<p local-id=3D"fe08f3dd-7794-4e24-b9b8-830037390f28"><strong>encryption key=
+:</strong> d1c2e12cfeababc8b95daf6902e210b170992e68fd1c1f19565a40cf0099c6e2=
+cb559b85d7c14ea05b4dca0a790656d003ccade9286827cffdf8e664fd271499</p></li>
+</ul>
+</div>
+</div>
+<h3 local-id=3D"31ee84e7-8261-417d-9ae6-79bd60eeff77" id=3D"APIdocumentatio=
+n-FusionPay-Endpoint">Endpoint</h3>
+<p local-id=3D"081a3f77-00f2-4698-b29e-3a608ef674fe"><code>&lt;https://beta=
+.tbibank.support/api/RegisterApplication</code>&gt;</p>
+<h3 local-id=3D"0a6b59a5-98ce-4c0f-838e-661458a66751" id=3D"APIdocumentatio=
+n-FusionPay-RequestParameters.1">Request Parameters</h3>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"f4=
+610699-fa50-43b4-8fca-d4a46bd631ba" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"eee6872e-2c23-42e7-b136-f98febc6429a">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"4b6f14bf-559f-46fc-b=
+f28-31f5a5bf5021" class=3D"confluenceTh">
+<p local-id=3D"1b8cb952-63c6-49bf-9349-e9d3b02e13c8"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"820b4da2-a49c-4d21-b=
+8f0-bae123468df9" class=3D"confluenceTh">
+<p local-id=3D"69c2846c-a7e1-4a10-b69f-b0e5b8a4d4af"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"51bae7ec-c51d-40c9-a=
+a94-d044b5de3152" class=3D"confluenceTh">
+<p local-id=3D"b3e08115-783e-4385-ae95-f16fb10ae829"><strong>Type</strong><=
+/p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"dc8f1f66-5be7-4d9a-9=
+327-ae1f8b43422d" class=3D"confluenceTh">
+<p local-id=3D"3262e5ce-5d7d-425c-8867-dfeec5816ea9"><strong>Required</stro=
+ng></p></th>
+</tr>
+<tr data-local-id=3D"bf153785-d4d2-4095-ab6a-35582d0a2f5c">
+<td data-local-id=3D"9422554f-a474-41bf-9d20-8ee1c2d9e67d" class=3D"conflue=
+nceTd">
+<p local-id=3D"30973c77-4a45-4a7a-8d6d-2dd1a3b36011">reseller_code</p></td>
+<td data-local-id=3D"0a42b790-dd58-44f3-8f60-2945614606f6" class=3D"conflue=
+nceTd">
+<p local-id=3D"94d18d38-a310-451a-b4d5-4be83d74a553">Merchant reseller code=
+</p></td>
+<td data-local-id=3D"0fad4e60-1bb1-45a6-878c-233fc74abf8e" class=3D"conflue=
+nceTd">
+<p local-id=3D"ba3b6ea8-f9da-48c8-8085-8aa07c7b947b">String</p></td>
+<td data-local-id=3D"124bb7b0-6090-4b87-aacc-7c8bec9bc5bd" class=3D"conflue=
+nceTd">
+<p local-id=3D"fbb10e8a-84e6-43c3-9fd7-d67f7248859c">Yes</p></td>
+</tr>
+<tr data-local-id=3D"6b3d90e8-014e-4cd5-a234-9214051af8b5">
+<td data-local-id=3D"805b39ac-a33a-46dd-a3b7-6876ffce7a63" class=3D"conflue=
+nceTd">
+<p local-id=3D"a8a3df22-e22e-45c0-a3dc-41a887b6601a">reseller_key</p></td>
+<td data-local-id=3D"f75e6893-5e46-49c8-a40e-c9d177cf5542" class=3D"conflue=
+nceTd">
+<p local-id=3D"13447401-01b7-41ba-8e30-e8c9268493ca">Merchant reseller key<=
+/p></td>
+<td data-local-id=3D"fcfdffd0-9bd7-4a51-b8d3-3688f8d70edf" class=3D"conflue=
+nceTd">
+<p local-id=3D"ed9b015a-f447-4ea1-9306-791d555c2634">String</p></td>
+<td data-local-id=3D"d8d95856-9014-4e7a-b788-56d67a5a2c25" class=3D"conflue=
+nceTd">
+<p local-id=3D"b2aaca98-d347-4ed8-939e-b9790644df21">Yes</p></td>
+</tr>
+<tr data-local-id=3D"7622f98e-6867-4bb2-814e-ff0c95020856">
+<td data-local-id=3D"cdcba9eb-dd91-47d8-b016-1a828291d01b" class=3D"conflue=
+nceTd">
+<p local-id=3D"81b3392d-43a6-4de8-8b62-b646b01a25b3">data</p></td>
+<td data-local-id=3D"d4be9702-cea5-4198-b7f9-448f49e8ac8b" class=3D"conflue=
+nceTd">
+<p local-id=3D"a3ed45c9-f4a5-459b-97a7-5a344e186243">Encrypted JSON format =
+string containing information for the application</p></td>
+<td data-local-id=3D"4c9d2f10-3cce-4497-9054-a1d4b914fc92" class=3D"conflue=
+nceTd">
+<p local-id=3D"187c5568-13d0-41a0-b5ca-98abcc93e335">String</p></td>
+<td data-local-id=3D"4f8d437a-62cb-46b2-8f55-72dbdba13967" class=3D"conflue=
+nceTd">
+<p local-id=3D"d3e6da9b-3d62-47e9-a7e0-6faed6a82647">Yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"260fcb1d-0062-4cac-8dab-82b241546c2d" id=3D"APIdocumentatio=
+n-FusionPay-EncryptedJSONParameters">Encrypted JSON Parameters</h3>
+<p local-id=3D"3d6875a6-0612-4871-b447-3ebde69c12a9">The encrypted JSON con=
+taining application information includes the following parameters:</p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"ef=
+0422c2-1d8a-4aeb-bd82-9fd470f605b0" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"f5b0ee50-d038-4557-b78f-43cbfbca122a">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"3b80590c-9ee1-494e-a=
+baf-bedfa0ce5585" class=3D"confluenceTh">
+<p local-id=3D"bfcd0543-dc31-4ae3-8c7c-1c04eb524aa5"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"6dcbd34a-f286-4d9e-8=
+030-4cd5c6ea9814" class=3D"confluenceTh">
+<p local-id=3D"e037bdfd-2ce7-425b-97b1-2240e4cfe6e7"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"7cc93475-1052-4db0-b=
+0b5-af9389b457ec" class=3D"confluenceTh">
+<p local-id=3D"58275001-7c8c-4973-b8df-e79d9a87495f"><strong>Type</strong><=
+/p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"ff978410-6e16-482d-a=
+a44-70b3f594bcae" class=3D"confluenceTh">
+<p local-id=3D"1063f87e-8746-49b4-bc30-4a81844dc16b"><strong>Required</stro=
+ng></p></th>
+</tr>
+<tr data-local-id=3D"608eb42f-fb5b-4efa-b8c0-48da8e003ddf">
+<td data-local-id=3D"fd5894a2-a49b-42b2-80fb-6e282cfb88ab" class=3D"conflue=
+nceTd">
+<p local-id=3D"37e96c8f-7cbd-40f6-9c3a-b2f570e39b5a">orderid</p></td>
+<td data-local-id=3D"4752ce93-ecdb-4eb4-a3a6-3d0c5615f20e" class=3D"conflue=
+nceTd">
+<p local-id=3D"b60a877f-e8d1-4ba1-8495-c033ade815d1">Merchant order ID</p><=
+/td>
+<td data-local-id=3D"d1749e94-011f-4f5c-8a3d-1c17f75f92bf" class=3D"conflue=
+nceTd">
+<p local-id=3D"b320fc34-00ac-451f-8a1a-65776749fa04">String</p></td>
+<td data-local-id=3D"c42550e7-6cef-42cf-8901-8f12a7f5deab" class=3D"conflue=
+nceTd">
+<p local-id=3D"60c8a087-143f-48e5-93bc-d0a21f11008a">Yes</p></td>
+</tr>
+<tr data-local-id=3D"4681ef04-d018-45f5-b865-1275f60c6944">
+<td data-local-id=3D"91800782-f3bb-4a2b-bf65-d235ce1f592b" class=3D"conflue=
+nceTd">
+<p local-id=3D"0be42109-0d4d-473d-848a-35cca90cfce1">firstname</p></td>
+<td data-local-id=3D"37239a02-ab23-4af4-ab0b-38c188257b98" class=3D"conflue=
+nceTd">
+<p local-id=3D"8bdd8313-05d0-4477-b7d7-391df94cb008">Client first name</p><=
+/td>
+<td data-local-id=3D"3062551a-e5bb-4bdc-90c4-19e184565e5c" class=3D"conflue=
+nceTd">
+<p local-id=3D"eb755edc-ee8e-46ac-928c-d01e4fa1e008">String</p></td>
+<td data-local-id=3D"ac4b2829-b8a0-4990-8a7f-bb501dbe0dd9" class=3D"conflue=
+nceTd">
+<p local-id=3D"31e85cd1-811f-4e8c-8a80-cdebb3bf7c14">No</p></td>
+</tr>
+<tr data-local-id=3D"5e1085ac-7b76-42c8-9af3-219f69951444">
+<td data-local-id=3D"f9cfd65b-bd8e-4cb7-9d20-71b7035ab0b4" class=3D"conflue=
+nceTd">
+<p local-id=3D"402ee5b7-2a88-4102-bc2c-2054ee7d04af">lastname</p></td>
+<td data-local-id=3D"e0dabfbf-6574-492e-8842-4ad454d308f9" class=3D"conflue=
+nceTd">
+<p local-id=3D"23163dbe-f243-4fa4-bf55-889325c9e9af">Client last name</p></=
+td>
+<td data-local-id=3D"19d4b192-1cdd-4c1c-8029-acab0d7363b9" class=3D"conflue=
+nceTd">
+<p local-id=3D"db7a60a4-596b-42d7-bdc9-6d7ba2bd7f13">String</p></td>
+<td data-local-id=3D"d67201dc-b2de-4ea2-bc7a-e585fe8d0676" class=3D"conflue=
+nceTd">
+<p local-id=3D"27816e94-d19a-46b5-8bf7-04084dca69dc">No</p></td>
+</tr>
+<tr data-local-id=3D"a05b2edc-04ca-46a3-897b-35cf8b2c43f0">
+<td data-local-id=3D"cfbbf7fd-752a-47d3-b397-7eba51ec36ac" class=3D"conflue=
+nceTd">
+<p local-id=3D"0567c664-10b9-4676-ae24-263fdf350587">surname</p></td>
+<td data-local-id=3D"10ee49c6-2f52-4565-9094-9d7e4b2b6208" class=3D"conflue=
+nceTd">
+<p local-id=3D"d8e889fb-77be-4714-94bc-d45ac40d5be7">Client surname</p></td=
+>
+<td data-local-id=3D"2981b442-aae3-433a-8537-a487f521a0a7" class=3D"conflue=
+nceTd">
+<p local-id=3D"284d73e1-1cf3-412d-9052-5217757c2a34">String</p></td>
+<td data-local-id=3D"54693879-3fe6-4d29-af4c-1358ee15ff2e" class=3D"conflue=
+nceTd">
+<p local-id=3D"f82ea5ed-761c-42d7-9749-7bd726650c2f">No</p></td>
+</tr>
+<tr data-local-id=3D"f7ba1f65-3464-4213-8ac9-98bfda9f9137">
+<td data-local-id=3D"7338d519-0b98-4b27-8bfa-20bd4fd79018" class=3D"conflue=
+nceTd">
+<p local-id=3D"0e75a39d-9cae-4336-8d00-fde6f90e507d">email</p></td>
+<td data-local-id=3D"4eb21816-a075-41ee-af7d-0ff197890b5b" class=3D"conflue=
+nceTd">
+<p local-id=3D"663ca188-b48f-44e4-a7c8-3cad8aa30e5b">Client email</p></td>
+<td data-local-id=3D"f122f1ac-ab3e-449b-898c-a4a954a69c5a" class=3D"conflue=
+nceTd">
+<p local-id=3D"56e9a26a-080e-4b5a-aaed-ab2feb727605">String</p></td>
+<td data-local-id=3D"7d4533af-908e-4eae-b708-b3d20263aaaa" class=3D"conflue=
+nceTd">
+<p local-id=3D"4c0f1d9c-910c-41d2-acd3-837379343d75">No</p></td>
+</tr>
+<tr data-local-id=3D"e8be5047-d094-4851-b994-cb3210a6384e">
+<td data-local-id=3D"85907c54-33e1-4d5f-b3f4-747683aeb757" class=3D"conflue=
+nceTd">
+<p local-id=3D"fe42e56a-d03b-49fe-9f50-965bf586692a">phone</p></td>
+<td data-local-id=3D"17fa699b-91be-498f-8752-00d74c9d39b4" class=3D"conflue=
+nceTd">
+<p local-id=3D"dd555fca-dd9f-4707-ac1c-8662e8aa946c">Client phone number</p=
+></td>
+<td data-local-id=3D"a69bb481-8d5f-4cf2-a9e7-899819008cc0" class=3D"conflue=
+nceTd">
+<p local-id=3D"bd88f36c-1421-4cdc-831f-55ee41ae54d4">String</p></td>
+<td data-local-id=3D"6863b750-13fe-4dd4-a141-ee0c688f36db" class=3D"conflue=
+nceTd">
+<p local-id=3D"75a3b473-33b7-45b3-ab86-4665c92d7e87">No</p></td>
+</tr>
+<tr data-local-id=3D"a01b2c18-7a34-49a6-a6dc-0cf3d6915519">
+<td data-local-id=3D"4af80a83-6a75-41b5-aadd-45352221eaa8" class=3D"conflue=
+nceTd">
+<p local-id=3D"b6294089-2a28-421d-9618-7399b1487d83">deliveryaddress</p></t=
+d>
+<td data-local-id=3D"507c1b5d-622c-441e-979c-34e33835e287" class=3D"conflue=
+nceTd">
+<p local-id=3D"ecfaa5c3-e3fd-4dd4-a9e7-7f50fcf712df">Client delivery addres=
+s</p></td>
+<td data-local-id=3D"e3846eba-2e8b-4c69-ae93-f4ae934ef46d" class=3D"conflue=
+nceTd">
+<p local-id=3D"4a221c97-db15-4af9-865c-6fcdd614b399">JSON</p></td>
+<td data-local-id=3D"07c5427d-0608-40fd-8b09-da469b431d06" class=3D"conflue=
+nceTd">
+<p local-id=3D"255169a9-d053-43fe-8c47-5b21d24e54ed">No</p></td>
+</tr>
+<tr data-local-id=3D"b7d36ec6-5c0f-494c-8043-3e4252560464">
+<td data-local-id=3D"bff7c983-15cc-4a8e-b90b-d97210cd95e7" class=3D"conflue=
+nceTd">
+<p local-id=3D"0b937687-1c52-483e-8f33-022755bd48be">items</p></td>
+<td data-local-id=3D"80588ad5-d56f-4d87-937a-50838c0ce2ab" class=3D"conflue=
+nceTd">
+<p local-id=3D"4e6685fc-308b-4694-95b1-c2a33b3e6459">List of items includin=
+g delivery fee, describing goods to be financed</p></td>
+<td data-local-id=3D"0fc3ac12-8a89-4533-945f-eb8e2187e2a7" class=3D"conflue=
+nceTd">
+<p local-id=3D"9e68ab3d-248b-4e4b-af6a-e4b86d2b279a">List</p></td>
+<td data-local-id=3D"3039e2e5-274c-4dfd-ab9f-190f49c241b3" class=3D"conflue=
+nceTd">
+<p local-id=3D"0c9cbceb-32d8-4b6b-89c0-b4dab96ceb0f">Yes</p></td>
+</tr>
+<tr data-local-id=3D"25084d26-ba5a-4722-af98-956671153cf4">
+<td data-local-id=3D"16afc723-2cf3-4d4c-b2c3-9133dca42bd4" class=3D"conflue=
+nceTd">
+<p local-id=3D"e8b4c09c-0723-419e-92f2-1164e5e6a4a1">period</p></td>
+<td data-local-id=3D"a885583d-424d-4216-898e-c5e5193f6adf" class=3D"conflue=
+nceTd">
+<p local-id=3D"3d591a21-4803-4c60-9903-e7d5d9a052fc">Preselected period (de=
+fault 12 months)</p></td>
+<td data-local-id=3D"6dc327dd-c762-4a30-ac43-bc10534cc226" class=3D"conflue=
+nceTd">
+<p local-id=3D"0a4ca5a8-8b7d-410c-84ce-d4fdcf78c19f">Int</p></td>
+<td data-local-id=3D"a8722693-c023-4e23-8d41-f8fd3e138925" class=3D"conflue=
+nceTd">
+<p local-id=3D"ebd1b946-b713-4e3b-aa67-44f9ba9001a1">No</p></td>
+</tr>
+<tr data-local-id=3D"e6ac2da2-dce1-4b3c-8cce-600decb4f21f">
+<td data-local-id=3D"3fc89cca-fc7f-4d7a-9740-54d6a431ea79" class=3D"conflue=
+nceTd">
+<p local-id=3D"bf81e2f7-a23b-4ffb-ba52-65ca9efa645b">promo</p></td>
+<td data-local-id=3D"2ab967a9-ea52-40b0-9407-9223164b64a2" class=3D"conflue=
+nceTd">
+<p local-id=3D"365a3278-4b43-4478-9f54-9efe839c6f8a">Preselected promo sche=
+me (default false)</p></td>
+<td data-local-id=3D"47f267f0-cf1c-4dc3-a8b6-a7b4ad39dd73" class=3D"conflue=
+nceTd">
+<p local-id=3D"cda029d0-7130-4bbd-b770-08a0e269f43b">Bool</p></td>
+<td data-local-id=3D"f313e830-6398-49fa-8ba7-75c2537bbc92" class=3D"conflue=
+nceTd">
+<p local-id=3D"89b28bae-8b0b-491b-be98-cce792c54a22">No</p></td>
+</tr>
+<tr data-local-id=3D"ffe69284-3549-4dda-a221-d510ba7076df">
+<td data-local-id=3D"50bff7c0-681b-4750-9902-d465752f1aa6" class=3D"conflue=
+nceTd">
+<p local-id=3D"db321559-da5c-4801-a761-a985598b3671">successRedirectURL</p>=
+</td>
+<td data-local-id=3D"d4cb6b1c-5ed0-48fc-9a41-01abe15e87ce" class=3D"conflue=
+nceTd">
+<p local-id=3D"a7c99e70-c166-44fe-a454-59547d57c19d">URL to redirect custom=
+er after successful application</p></td>
+<td data-local-id=3D"1cff8849-0e53-4bb0-baed-e24f2651af29" class=3D"conflue=
+nceTd">
+<p local-id=3D"1e1ede5e-b6af-4486-bd3a-2e378d2231c4">String</p></td>
+<td data-local-id=3D"1f85c750-e248-4692-9473-d7038b98844c" class=3D"conflue=
+nceTd">
+<p local-id=3D"4dd4dbb7-6204-4798-b9f9-a0d14e93f34a">No</p></td>
+</tr>
+<tr data-local-id=3D"95d44606-7f55-482c-bef6-6795df03d016">
+<td data-local-id=3D"e916161c-cdd1-45d5-83b7-32c18be0081c" class=3D"conflue=
+nceTd">
+<p local-id=3D"63fe557a-9829-4edb-815e-180b394c6592">bnpl</p></td>
+<td data-local-id=3D"c8edfe90-745e-488a-92ad-0702a5d0ce6e" class=3D"conflue=
+nceTd">
+<p local-id=3D"d88c79a0-2aae-4067-b4fc-6b1ff25c97ac">Indicate if BNPL shoul=
+d be allowed in the current application<br><br>
+You can use this parameter on a product by product basis to indicate you wa=
+nt BNPL to be an option or not.<br><br>
+Please note that BNPL already has a built in parameter of only appearing in=
+ prices from 20-200 EUR</p></td>
+<td data-local-id=3D"a41accd2-8138-4f14-a970-36b30dbd747a" class=3D"conflue=
+nceTd">
+<p local-id=3D"ab4ea4f1-bd37-489d-aa10-c7ac4060ebff">Bool (1, 0)</p></td>
+<td data-local-id=3D"c9cbab74-c5d1-4bc3-94ab-394cd06567d3" class=3D"conflue=
+nceTd">
+<p local-id=3D"b2961663-e1fa-43e1-a90b-2c4b0eaf259d">No</p></td>
+</tr>
+<tr data-local-id=3D"19b20ec4-75a2-4b3b-a9df-9f4b3e210967">
+<td data-local-id=3D"64eb7ae1-b3cd-4eb0-a441-7263a8fea99b" class=3D"conflue=
+nceTd">
+<p local-id=3D"8e0c30a0-c158-4ea8-8d22-6f169a13ee17">failRedirectURL</p></t=
+d>
+<td data-local-id=3D"9bdde18b-fbaa-408c-b44b-6045da096f1c" class=3D"conflue=
+nceTd">
+<p local-id=3D"996634aa-12a9-414c-8aa7-e6e48befccff">URL to redirect custom=
+er after failed application (used in BNPL)</p></td>
+<td data-local-id=3D"974adcca-8471-4aa1-a76c-b77ee1bc5f33" class=3D"conflue=
+nceTd">
+<p local-id=3D"a218bf6a-d686-4f70-9086-787838931cfa">String</p></td>
+<td data-local-id=3D"d37419bd-e5b7-44e4-80cc-fcedbbdac474" class=3D"conflue=
+nceTd">
+<p local-id=3D"b4fe362f-6f9f-4597-8c0e-4763914c5888">No</p></td>
+</tr>
+<tr data-local-id=3D"261c609e-1553-48ea-a9d5-8ba3ea830717">
+<td data-local-id=3D"6746cd90-f5b8-4cca-b29a-75271aa6542d" class=3D"conflue=
+nceTd">
+<p local-id=3D"3b068bc5-6cd9-41d0-9451-b0d830db1338">statusURL</p></td>
+<td data-local-id=3D"cdc112f9-e378-44f1-acaf-cde3e9359c52" class=3D"conflue=
+nceTd">
+<p local-id=3D"16fb5c8f-5bda-4fce-b046-bcc3ac82381d">Merchant endpoint for =
+application status updates</p></td>
+<td data-local-id=3D"5bd17505-121b-49fa-ac33-66f74a7af1ff" class=3D"conflue=
+nceTd">
+<p local-id=3D"581740aa-8037-4242-81af-a599e005e485">String</p></td>
+<td data-local-id=3D"21e4b558-9b6b-413e-a463-aef2b1b9b1f2" class=3D"conflue=
+nceTd">
+<p local-id=3D"83f23f8f-fa36-496e-a637-8b7b70168b98">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"91a033e5-b064-4d02-a04a-3ec9f9eecc90" id=3D"APIdocumentatio=
+n-FusionPay-ItemsListParameters">Items List Parameters</h3>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"d7=
+0acd85-c232-4613-9c7e-f547b01333f2" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"612f0a0d-669e-4a86-821c-32f404614d3e">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"e40d3c3b-a3e5-47a6-8=
+71c-83b1645b3c73" class=3D"confluenceTh">
+<p local-id=3D"293fb463-1d69-44cd-bdee-39b03cb7a238"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"14d884c9-3968-4123-8=
+c28-f6adf638c92b" class=3D"confluenceTh">
+<p local-id=3D"25f0ff27-23ee-4c34-8869-7aa49769008c"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"5c7604dc-03c3-4b3b-b=
+2df-538f50580b38" class=3D"confluenceTh">
+<p local-id=3D"05818b15-fd94-4113-aae5-7fcfb7a3352f"><strong>Type</strong><=
+/p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"db873da1-a323-4b65-a=
+eab-ea1d9f2e75b2" class=3D"confluenceTh">
+<p local-id=3D"3b198be8-ed4a-4767-a46e-91fe55b78e86"><strong>Required</stro=
+ng></p></th>
+</tr>
+<tr data-local-id=3D"ab2d067e-894f-4285-aa4e-438476d4c147">
+<td data-local-id=3D"e6089519-dbc7-4053-a9d1-b0cafcb0f775" class=3D"conflue=
+nceTd">
+<p local-id=3D"1d687a22-f40b-44c4-92f1-2ac2fae37d80">name</p></td>
+<td data-local-id=3D"7cc321d4-e904-4df8-947b-03e1760b76ed" class=3D"conflue=
+nceTd">
+<p local-id=3D"8899a09e-2652-4e71-9651-5f0d61ad0da8">Product name</p></td>
+<td data-local-id=3D"77ba0fb4-64ca-47ac-85a3-f3c12da556f1" class=3D"conflue=
+nceTd">
+<p local-id=3D"9b938012-3a16-43bd-bdf2-4966fd96081f">String</p></td>
+<td data-local-id=3D"f41bc61f-83ed-4e55-9cee-00d47097c1b5" class=3D"conflue=
+nceTd">
+<p local-id=3D"eb97ba16-6c6f-410d-bf23-0d7594270d64">Yes</p></td>
+</tr>
+<tr data-local-id=3D"04eaaa88-f170-494b-b953-5f92560a9834">
+<td data-local-id=3D"80c7a417-1c25-4a9c-977c-b82a66defba0" class=3D"conflue=
+nceTd">
+<p local-id=3D"271c6b9e-5241-4ae6-8d37-06d2fa36924d">description</p></td>
+<td data-local-id=3D"db6bb7f5-205c-4837-ad98-d49cc9aa5520" class=3D"conflue=
+nceTd">
+<p local-id=3D"1d650e85-3864-4e6b-aebf-c6554217c7b7">Product description</p=
+></td>
+<td data-local-id=3D"78eb66d3-d6ae-43dc-9c6d-a89d37d6f741" class=3D"conflue=
+nceTd">
+<p local-id=3D"555b7ec2-c17c-4f78-a654-f12a2bd7f151">String</p></td>
+<td data-local-id=3D"a4e68602-b692-4520-9b38-d957d73cb4da" class=3D"conflue=
+nceTd">
+<p local-id=3D"349f0196-3779-460b-b82d-c32c9c4d448b">No</p></td>
+</tr>
+<tr data-local-id=3D"e79bdb70-c906-43de-9dec-c0954cf426ad">
+<td data-local-id=3D"a2cc8874-205d-4669-9ec0-a3bf8e0648f8" class=3D"conflue=
+nceTd">
+<p local-id=3D"36225c65-c98a-4ae7-8a26-4cfc78bf3207">qty</p></td>
+<td data-local-id=3D"2239ac2e-d2ab-4f3b-a71a-9a00575b4452" class=3D"conflue=
+nceTd">
+<p local-id=3D"3d78d28a-d153-4699-be12-f63c2d189f8f">Product quantity in ba=
+sket</p></td>
+<td data-local-id=3D"5c5265b5-2fa7-4033-ac1c-4d39f689c99a" class=3D"conflue=
+nceTd">
+<p local-id=3D"868d24b4-41f5-4fcd-b672-f0a6aacc6727">Int</p></td>
+<td data-local-id=3D"965f167c-6236-49c4-8415-7af5170c4251" class=3D"conflue=
+nceTd">
+<p local-id=3D"a07d9aed-2f5b-4531-8af1-66312949ade6">Yes</p></td>
+</tr>
+<tr data-local-id=3D"53837125-3543-41b1-85c9-be488cc7f8e8">
+<td data-local-id=3D"5572db15-3a9c-42c9-93b7-7d519e0ded5b" class=3D"conflue=
+nceTd">
+<p local-id=3D"908679eb-bc75-4889-ba2d-ef0226fee0d8">price</p></td>
+<td data-local-id=3D"d53f51a2-eeff-4816-928a-5d78ec6a6b67" class=3D"conflue=
+nceTd">
+<p local-id=3D"00fc1ba3-b523-4b40-baae-424bde1115e8">Product single price</=
+p></td>
+<td data-local-id=3D"d8fbc439-3b98-427a-ab99-5acddf0eeeb3" class=3D"conflue=
+nceTd">
+<p local-id=3D"a9430774-6e34-4e38-bc16-43898a8996b8">Double</p></td>
+<td data-local-id=3D"4839344f-d75b-44e8-a958-5e9913767fb9" class=3D"conflue=
+nceTd">
+<p local-id=3D"dd99837a-66d1-437f-b845-a965e360586b">Yes</p></td>
+</tr>
+<tr data-local-id=3D"6c6b4298-3d2f-402f-ac64-70ba548e2741">
+<td data-local-id=3D"b0971c40-17f9-4768-85c9-5906be0423c7" class=3D"conflue=
+nceTd">
+<p local-id=3D"2e279b31-56d3-41ae-86e2-971c13ee0a8e">sku</p></td>
+<td data-local-id=3D"31bb0402-6170-4d60-8ad1-ad72e8456968" class=3D"conflue=
+nceTd">
+<p local-id=3D"5fcd14bc-5917-4b79-a019-a09a776ce950">Product SKU or ID</p><=
+/td>
+<td data-local-id=3D"cde50749-93e5-4e8e-9f18-d67b4c23d1e2" class=3D"conflue=
+nceTd">
+<p local-id=3D"2e0e3359-b4ff-4f7a-9297-90d56999df91">String</p></td>
+<td data-local-id=3D"2aa5efaa-5c1d-461f-b88d-ca789a434020" class=3D"conflue=
+nceTd">
+<p local-id=3D"54a198ec-29d1-4d10-b034-0e8e2180527e">No</p></td>
+</tr>
+<tr data-local-id=3D"f733ebba-5cdd-459a-9b9e-174a6ecbbb17">
+<td data-local-id=3D"f0e5ccd8-a713-4646-9228-3f2eb7412124" class=3D"conflue=
+nceTd">
+<p local-id=3D"84443205-f59b-46cc-9f26-4eca01780bb2">category</p></td>
+<td data-local-id=3D"7cf71a27-1352-4642-a8e3-370d550348cc" class=3D"conflue=
+nceTd">
+<p local-id=3D"8e1f8e83-6f65-410a-a6cb-2585d68970eb">Product category ID</p=
+></td>
+<td data-local-id=3D"939775c0-3f80-4589-a82b-547140aeac9a" class=3D"conflue=
+nceTd">
+<p local-id=3D"029d6565-3ca6-4c5d-8d46-fddcdb86bc38">Int</p></td>
+<td data-local-id=3D"1ab14c8b-0c87-4e4e-aaee-c0323d2f422c" class=3D"conflue=
+nceTd">
+<p local-id=3D"a88443dd-5e99-4a94-a713-69761083798f">Yes</p></td>
+</tr>
+<tr data-local-id=3D"fa411411-b311-4257-b697-afbf58c8a84c">
+<td data-local-id=3D"21bfd2e2-fa9f-47a9-8312-d090bec2d8e4" class=3D"conflue=
+nceTd">
+<p local-id=3D"7f5c4e02-3990-4ff7-832d-06b68ef26f5b">imagelink</p></td>
+<td data-local-id=3D"db217b9f-4bde-4263-a035-27240c50ca9f" class=3D"conflue=
+nceTd">
+<p local-id=3D"573b6c7d-edae-49e1-8568-05c6f90378b2">Product image URL</p><=
+/td>
+<td data-local-id=3D"83aeff88-de49-43fc-97a1-2f40c50a7f68" class=3D"conflue=
+nceTd">
+<p local-id=3D"e7b67e84-749b-4c1e-a182-236beeadd2b8">String</p></td>
+<td data-local-id=3D"da4f7262-388a-48b7-b085-4d3586356422" class=3D"conflue=
+nceTd">
+<p local-id=3D"80532142-9960-4e64-9758-277d122ff6e7">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"panel" style=3D"background-color: #EAE6FF;border-color: #998D=
+D9;border-width: 1px;">
+<div class=3D"panelContent" style=3D"background-color: #EAE6FF;">
+<p local-id=3D"5762e370-dea5-419d-9c5e-d000a330339e"><strong>Note:</strong>=
+</p>
+<ul local-id=3D"57664546-3b16-4868-8083-ac3e0eb74919">
+<li local-id=3D"a1024766-9070-475e-a6d4-aa64c0a6ee97">
+<p local-id=3D"b9814530-817b-4517-a847-37a5695bad9a"><code>imagelink</code>=
+ is recommended because it enhances the page where the customer is redirect=
+ed.</p></li>
+<li local-id=3D"b8838f5c-d64a-4324-b4fe-7fd198ee5242">
+<p local-id=3D"95c7fa4f-500d-4789-9fec-b45700131eb6"><code>category</code> =
+is mandatory to determine eligibility for promotional schemes.</p></li>
+</ul>
+</div>
+</div>
+<h3 local-id=3D"b9d71347-d531-4666-af2e-afe37b569ea5" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Examples:">Examples:</h3>
+<p local-id=3D"36aa8277-41c3-4737-b933-6579cb435dac"></p>
+<p local-id=3D"4b016e63-9a9c-410e-9c08-68d02976e18c"><strong>Input:</strong=
+></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+
+"reseller_code":"TBI1", "reseller_key":"EX1",
+
+"data":"5kx8mkDB5nPal+He0Q6XMMy2ZFvknJhUjmviqR2rHCMLWkP9VZIrqeyVMmZ3S6hJsA3=
+4D65
+
+Di6dF8ytD2g5Y3qQHnLJIp7ifChba8euLcmWAR0GbtTOZQNDfQC7SdDUaWcA5LyDj4d3m+Q2GBR=
+wbjKVWiB Lkn7g+o8VBbU7SYX1vISWKaM285YwVT9EmufQ9A+Se1ZRD4wOYgCHnDu9XoWdxG382=
+dDdMsXFL1Dlhcbl37 tirFTpxoZEwLYz6ZjPktfMu+AayFQmLFcbxLQkuFyqTUaSEEuEvEgkkK4=
+eyIliWmKgt7HoteKvG491GOYby XGr1abp8im8XzXnvDoPGk1yXJEgJfa8jlK8UNv3GAluN/aKZ=
+yXb9yOUMoUecMukakAZEKFbMtdMUPUMxa/A lYB0Vtfe4Sv7ZnhTBDT57fB9S9Y83j8FI1+siR+=
+SBaibNEZPfI5VyhFp4InLWSWfEtpOaQXMs9S1pe2R9Xk MRUam6x23/HRdDuhEuDQbRAVxmp4kN=
+Lw51SLS6NSPMxviVI89pp8zejKJzJA41ccg7v/vtFBRhF7N7tvXQS 1/1ZsMKh193lCAViSsQcJ=
+cmbLvS6XNAf8us+EG6LGi/VDw4vTBR8m8UloYqcHXbfSgnMGQPkknBUG+VtC3S KjiS42I+H+Ji=
+eSzAj5BBEx2Eda0hidFsg993CPS1F/uX372QpEm72fN0z9EBOINuuNL67CeR7TUKPoPE1FC
+
+6PudVCxB4MHwXBtDqDvD6rrsLgDq4EjG37dKblHBML/Sp/tMvLLWCog3eqtAVk2328hL+ceocez=
+WWpQcav1 ia2oYouZU/mGWyGDgToqyc1pb16B9nFoBNS2mJESdApegI8eGVkVGXqFi2XOyh9wHz=
+eD4UUz0cvg1Ha7kIL St4Cg9vUob5D2hhWu/aafuOfbrmBNVUgmMVWCYsSNxIGh7HgBpZJ6UJez=
+rO0hQYyL/yniO60N6utp6o3wHp dOfjU5I0u0NlIakGe4W7QR88h8ybO+/bn3BG5qjwHD9BIwvj=
+CujS8i1MxPX2GRyKLsd2NCvkna+Jg+/GHpi ydz7cu0oBjnf1brkGp9w0h4Xk5lZsFl45/XJlH0=
+ImwKFg3aBgeihBolRCMc+8YBzGyoNi1M0uoDm9tul60o oKO61/cbKhWK0i1cOkjUDvOIYLav2K=
+PYpyaTcoaw+DSG46RXdUuceQXnqTOlKKuhqozQ=3D=3D"
+
+}</pre>
+</div>
+</div>
+<p local-id=3D"605f47bb-e985-40b8-b115-8b54f15ec931"></p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"8c315c5f-f11f-4922-95de-07c54bc2978d">in the example input t=
+he data is encrypted with key:</p>
+<p local-id=3D"82350b48-af41-4e54-9c59-4efa31766136"><code>d1c2e12cfeababc8=
+b95daf6902e210b170992e68fd1c1f19565a40cf0099c6e2cb 559b85d7c14ea05b4dca0a79=
+0656d003ccade9286827cffdf8e664fd271499</code></p>
+</div>
+</div>
+<p local-id=3D"74fc1265-cee8-4d1c-bcdc-f4aa8d420130"><strong>and contains t=
+he following JSON</strong>:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+"orderid": "12345",
+"firstname": "=D0=A2=D0=B5=D1=81=D1=82", "lastname": "=D0=A2=D0=B5=D1=81=D1=
+=82=D0=BE=D0=B2", "surname": "",
+"email": "test@tbibank.bg", "phone": "0888123456",
+"deliveryaddress": { "country": "Bulgaria", "county": "",
+"city": "",
+"streetname": "",
+"streetno": "",
+"buildingno": "",
+"entranceno": "",
+"floorno": "",
+"apartmentno": "",
+"postalcode": ""
+},
+
+"items": [
+  {
+  "name": "=D0=A1=D0=BF=D0=BE=D1=80=D1=82=D0=BD=D0=BE =D0=B5=D0=BB=D0=B5=D0=
+=B3=D0=B0=D0=BD=D1=82=D0=B5=D0=BD =D0=BF=D0=B0=D0=BD=D1=82=D0=B0=D0=BB=D0=
+=BE=D0=BD", "description": "",
+  "qty": "3",
+  "price": "24.87",
+  "sku": "3345",
+  "category": "9",
+  "imagelink": "https://presta16.tbitest.online/img/p/8/8- large_default.jp=
+g"
+  },
+  {
+  "name": "=D0=91=D0=BB=D1=83=D0=B7=D0=B0 =D1=80=D0=B0=D0=B5=D1=82=D0=B0", =
+"description": "",
+  "qty": "2",
+  "price": "21.57",
+  "sku": "5566",
+  "category": "4",
+  "imagelink": "https://presta16.tbitest.online/img/p/7/7- large_default.jp=
+g"
+  }
+]
+}
+</pre>
+</div>
+</div>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">Output:
+{
+"error": 0,
+"order_id": 22,
+"token": "bdf54849927eed3d4b785fe1e812582a17ad",
+"url": "https://beta.tbibank.support/application/?order_id=3D22&amp;token=
+=3Dbdf54849927
+eed3d4b785fe1e812582a17ad"
+}</pre>
+</div>
+</div>
+<p local-id=3D"a9fc4d80-7d5e-4c55-8ecb-ad28bcec2897"></p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"62c60faf-ae1a-4b8a-b970-015fd6ee9861">With this output the c=
+ustomer should be either redirected to</p>
+<p local-id=3D"e6e9e7a9-b0ac-484b-aabc-482cfe6cab84"><a class=3D"external-l=
+ink" href=3D"https://beta.tbibank.support/application/?order_id=3D22&amp;to=
+ken=3Dbdf54849927eed3d4b785fe1e812582a17ad" rel=3D"nofollow">https://beta.t=
+bibank.support/application/?order_id=3D22&amp;token=3Dbdf54849927eed3d4b785=
+fe1e812582a17ad</a></p>
+<p local-id=3D"3dc34350-ffaf-4ae9-815a-c9d5e5e83bbf">or get a popup with if=
+rame containing the page.</p>
+</div>
+</div>
+<p local-id=3D"c873c407-1758-4804-9630-c8439328bc2c"></p>
+<p local-id=3D"e8b5e536-fba8-4cb7-bf84-487f1f622e0b"><strong>Examples with =
+optional fields:</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "orderid": "123456",
+  "firstname": "John",
+  "lastname": "Dow",
+  "surname": "",
+  "email": "test@tbibank.bg",
+  "phone": "0879123456",
+  "deliveryaddress": {
+    "country": "",
+    "county": "",
+    "city": "",
+    "streetname": "",
+    "streetno": "",
+    "buildingno": "",
+    "entranceno": "",
+    "floorno": "",
+    "apartmentno": "",
+    "postalcode": ""
+  },
+  "items": [
+    {
+      "name": "=D0=A1=D0=BF=D0=BE=D1=80=D1=82=D0=BD=D0=BE =D0=B5=D0=BB=D0=
+=B5=D0=B3=D0=B0=D0=BD=D1=82=D0=B5=D0=BD =D0=BF=D0=B0=D0=BD=D1=82=D0=B0=D0=
+=BB=D0=BE=D0=BD",
+      "description": "",
+      "qty": "3",
+      "price": "34.99",
+      "sku": "3345",
+      "category": "9",
+      "imagelink": "https://tbi-uat.online/hat/hat.jpg"
+    },
+    {
+      "name": "=D0=91=D0=BB=D1=83=D0=B7=D0=B0 =D1=80=D0=B0=D0=B5=D1=82=D0=
+=B0",
+      "description": "",
+      "qty": "1",
+      "price": "110.65",
+      "sku": "5566",
+      "category": "4",
+      "imagelink": "https://tbi-uat.online/hat/hat.jpg"
+    }
+  ],
+  "promo": true,
+  "successRedirectURL": "https://testsuccess.com",
+  "failRedirectURL": "https://testfail.com"
+}</pre>
+</div>
+</div>
+<p local-id=3D"ea0d0864-59b6-45de-8e54-9cf307486ba8">The body of the applic=
+ation from the above example will have Promo scheme preselected and the app=
+lication will have both <code>successRedirectURL</code> and <code>failRedir=
+ectURL</code> defined.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "orderid": "123456",
+  "firstname": "John",
+  "lastname": "Dow",
+  "surname": "",
+  "email": "test@tbibank.bg",
+  "phone": "0879123456",
+  "deliveryaddress": {
+    "country": "",
+    "county": "",
+    "city": "",
+    "streetname": "",
+    "streetno": "",
+    "buildingno": "",
+    "entranceno": "",
+    "floorno": "",
+    "apartmentno": "",
+    "postalcode": ""
+  },
+  "items": [
+    {
+      "name": "=D0=A1=D0=BF=D0=BE=D1=80=D1=82=D0=BD=D0=BE =D0=B5=D0=BB=D0=
+=B5=D0=B3=D0=B0=D0=BD=D1=82=D0=B5=D0=BD =D0=BF=D0=B0=D0=BD=D1=82=D0=B0=D0=
+=BB=D0=BE=D0=BD",
+      "description": "",
+      "qty": "3",
+      "price": "34.99",
+      "sku": "3345",
+      "category": "111",
+      "imagelink": "https://tbi-uat.online/hat/hat.jpg"
+    },
+    {
+      "name": "=D0=91=D0=BB=D1=83=D0=B7=D0=B0 =D1=80=D0=B0=D0=B5=D1=82=D0=
+=B0",
+      "description": "",
+      "qty": "1",
+      "price": "110.65",
+      "sku": "5566",
+      "category": "111",
+      "imagelink": "https://tbi-uat.online/hat/hat.jpg"
+    }
+  ],
+  "period": 34,
+  "statusURL" : "https://tbi-uat.online/endpoint/status-update"
+}</pre>
+</div>
+</div>
+<p local-id=3D"019f1961-b704-4b96-b582-812ebb912d08">The body of the applic=
+ation from the above example will have a period of 34 months preselected an=
+d the application will receive status updates at <code>https://tbi-uat.onli=
+ne/endpoint/status-update</code> awaiting post update with body for <strong=
+>Standard repayment plans from 3 to 60 months:</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "CreditApplicationId": "APPLICATION ID FROM BANKLY",
+  "StatusUrl": "https://tbi-uat.online/endpoint/status-update",
+  "OrderId": "123456",
+  "Status": "3",
+  "Message": "Approved",
+  "ResellerCode": "TBI1"
+}</pre>
+</div>
+</div>
+<p local-id=3D"9393d94e-78f6-44a6-8a98-fc2722a9a622"><strong>And body for B=
+NPL:</strong></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "CreditApplicationId": "BNPL APPLICATION ID",
+  "StatusUrl": "https://tbi-uat.online/endpoint/status-update"
+  "OrderId": "123456",
+  "Status": 1,
+  "Message": "in_progress",
+  "ResellerCode": "TBI1",
+  "System": "FTOS",
+  "ContractNumber": null
+}</pre>
+</div>
+</div>
+<p local-id=3D"d52895e2-f308-4942-94bb-3bb3c3a19a44"></p>
+<h4 local-id=3D"d5e53d28-efc7-4ba9-8956-539b4255bfa3" id=3D"APIdocumentatio=
+n-FusionPay-Standardapplicationstatusvariations:"><strong>Standard applicat=
+ion status variations:</strong></h4>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"44=
+09b941-abc7-48dc-9bda-00a8497e2208" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"42ce6087-667c-4377-92fb-7f32db643aac">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"fb51baec-3403-4623-8=
+fd9-a06ebcdcce74" class=3D"confluenceTh">
+<p local-id=3D"b4b3d5b8-6bbc-41a4-b3e8-af9390bef0f6"><strong>Application Ty=
+pe</strong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"3cac9db2-d2ee-421f-8=
+4dd-0f4f66d5823c" class=3D"confluenceTh">
+<p local-id=3D"1c2177f0-1c02-4e3d-8f84-2882419cbb06"><strong>Status</strong=
+></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"ac0f8f08-f730-478e-a=
+29a-47b5256b6f97" class=3D"confluenceTh">
+<p local-id=3D"03561ecc-f123-4a9c-88db-cb7742b745d7"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"1f1fe5c1-5f23-41c1-b=
+d71-e82167586179" class=3D"confluenceTh">
+<p local-id=3D"c24a5393-6137-4633-9c24-4d01917e8d11"><strong>Status Explana=
+tion</strong></p></th>
+</tr>
+<tr data-local-id=3D"4131f1d7-fddb-4935-b68a-a2e331d67ef5">
+<td data-local-id=3D"a79df939-9cc0-476e-b73b-da6cc654683f" class=3D"conflue=
+nceTd">
+<p local-id=3D"d3f344b3-50b1-4efe-b424-5acd39bf9fd6">Standard, BNPL</p></td=
+>
+<td data-local-id=3D"e9099cde-9bb2-4e60-ad83-8badcde6384a" class=3D"conflue=
+nceTd">
+<p local-id=3D"c3047cfd-3e7c-4dbc-a413-c47fac2266d3">Draft</p></td>
+<td data-local-id=3D"a4c68989-743e-4bb7-9fd7-b4b0f48187eb" class=3D"conflue=
+nceTd">
+<p local-id=3D"3d9115c1-dc15-4473-ae77-6ded1b128791">Intermediary status</p=
+></td>
+<td data-local-id=3D"b3c9d276-71f5-4013-a29d-85e878841dea" class=3D"conflue=
+nceTd">
+<p local-id=3D"1451de84-076f-4d71-b9c4-b8b7bccee1db">Application not finish=
+ed, And has not been sent to the banking systems</p></td>
+</tr>
+<tr data-local-id=3D"fb5e028f-bffe-44d8-97e5-4c3004408520">
+<td data-local-id=3D"a895aefc-feb9-4fbf-b4d0-ec880ba4d5e3" class=3D"conflue=
+nceTd">
+<p local-id=3D"47e1799d-d904-4807-946a-30c977c0339e">Standard</p></td>
+<td data-local-id=3D"95963fe3-02db-4077-8ea3-13c356f00c8c" class=3D"conflue=
+nceTd">
+<p local-id=3D"f8001655-1a42-448d-8ed7-804c12c1a44d">MP Sent</p></td>
+<td data-local-id=3D"e4c22866-6349-48f2-987d-d29f6d34d4d8" class=3D"conflue=
+nceTd">
+<p local-id=3D"f9797570-3d4a-4094-81f0-3d0efe5931bd">Intermediary status</p=
+></td>
+<td data-local-id=3D"96d64891-87f7-40c5-b574-82e76d6566c2" class=3D"conflue=
+nceTd">
+<p local-id=3D"16fb4120-209c-4914-9951-97635e1ae191">Awaiting Processing by=
+ Call Center</p></td>
+</tr>
+<tr data-local-id=3D"c0c3db79-b2db-42df-bcb8-85529852b649">
+<td data-local-id=3D"44bd685b-048d-4b87-b9cb-e6a03e387620" class=3D"conflue=
+nceTd">
+<p local-id=3D"8534f3b2-e160-44ce-a40b-b4d87afca041">Standard</p></td>
+<td data-local-id=3D"449a291c-0b5a-4b34-8e70-bfd2628230f5" class=3D"conflue=
+nceTd">
+<p local-id=3D"3d4d8906-f54f-4a2d-a3c4-d21ab7c9b679">InProgress</p></td>
+<td data-local-id=3D"994a3712-baaa-4819-bb8a-d46658f8afbb" class=3D"conflue=
+nceTd">
+<p local-id=3D"da4457e8-2cb8-402c-94a4-b290be106378">Intermediary status</p=
+></td>
+<td data-local-id=3D"c2fde0e0-5077-4394-9092-26318fe0a929" class=3D"conflue=
+nceTd">
+<p local-id=3D"b250fd62-dcd1-4906-8e52-af761564deca">In progress with Call =
+Center Agent</p></td>
+</tr>
+<tr data-local-id=3D"36a9354d-4231-4c71-947d-28fa24e209e9">
+<td data-local-id=3D"51744d32-027e-42d1-ae52-9933592dd2e9" class=3D"conflue=
+nceTd">
+<p local-id=3D"e24ea98c-e9da-4998-9ed0-50588daeb747">Standard</p></td>
+<td data-local-id=3D"fe80fae0-c033-4e89-a6e9-68c6b3e08e8a" class=3D"conflue=
+nceTd">
+<p local-id=3D"f3bcd981-6058-4db5-b87d-08835cef541f">InProgressAssessment</=
+p></td>
+<td data-local-id=3D"e5051665-5dfb-4de3-9ffa-394d3a96437d" class=3D"conflue=
+nceTd">
+<p local-id=3D"bfb21060-cb50-4e30-bd28-1d63c7b4a394">Intermediary status</p=
+></td>
+<td data-local-id=3D"46d5736a-46ef-41e1-b9b2-a07fa1f64dcc" class=3D"conflue=
+nceTd">
+<p local-id=3D"82fe2cbb-3715-4aad-926d-71e62a24c740">In Risk Assesment</p><=
+/td>
+</tr>
+<tr data-local-id=3D"81a03321-3838-46af-b01e-bfdfba86c730">
+<td data-local-id=3D"7776d174-37d8-4dd9-9611-087abcd97e87" class=3D"conflue=
+nceTd">
+<p local-id=3D"52237aa7-e05a-4d9b-8c62-159e3e3606d5">Standard</p></td>
+<td data-local-id=3D"2b4601a4-cdf3-4ffb-8908-034b49c4415e" class=3D"conflue=
+nceTd">
+<p local-id=3D"2bf5cea1-5dcb-484e-a432-74ef3f70736b">Approved</p></td>
+<td data-local-id=3D"b63eb5ef-2732-4603-bd34-535f20fb0def" class=3D"conflue=
+nceTd">
+<p local-id=3D"6d2e2b58-82f5-4dcd-a803-72dd90ccc03e">Intermediary status</p=
+></td>
+<td data-local-id=3D"6be4db96-7940-4491-b605-ff57feb4e4e2" class=3D"conflue=
+nceTd">
+<p local-id=3D"69e383d1-2392-4195-befb-c5220ce289a6">Risk Assessment Approv=
+ed</p></td>
+</tr>
+<tr data-local-id=3D"181dc52c-2254-42c9-a9e5-6e7bcbf815e5">
+<td data-local-id=3D"c6ea5f4b-c9f2-40e8-8b3f-403508161682" class=3D"conflue=
+nceTd">
+<p local-id=3D"ecd0850d-61a9-4087-8cb8-edc1efec035e">Standard</p></td>
+<td data-local-id=3D"46f63ef3-aef1-4d57-b4fe-fc85d320cac6" class=3D"conflue=
+nceTd">
+<p local-id=3D"d0cc567e-f221-4470-a59a-01377fe5f1fa">KYC</p></td>
+<td data-local-id=3D"b1a48a9f-a5bb-47b9-a1ca-cc5bd92b5ecb" class=3D"conflue=
+nceTd">
+<p local-id=3D"435ff11c-aa03-494c-b403-8347692e1e13">Intermediary status</p=
+></td>
+<td data-local-id=3D"9633d9f3-e13a-43b7-b49d-50aa55c3ee92" class=3D"conflue=
+nceTd">
+<p local-id=3D"e2c4f487-f7f2-4a04-b6e8-15c1510dd348">KYC</p></td>
+</tr>
+<tr data-local-id=3D"53cefb07-c83c-4c73-881a-5becb132fcc4">
+<td data-local-id=3D"554d9535-dc64-46cf-93b5-c47315050025" class=3D"conflue=
+nceTd">
+<p local-id=3D"28635f66-7f79-4bb4-b129-cad4862d906d">Standard</p></td>
+<td data-local-id=3D"4d8a2f82-5b80-4f36-9a93-8313b502f5b4" class=3D"conflue=
+nceTd">
+<p local-id=3D"092e42ce-3bd1-4936-a4b2-99996d4a60b6">ContractSigning</p></t=
+d>
+<td data-local-id=3D"aefcd580-ea30-4560-8e78-05624f54feda" class=3D"conflue=
+nceTd">
+<p local-id=3D"61e312ca-a324-405e-9cd1-ceaf46150abc">Intermediary status</p=
+></td>
+<td data-local-id=3D"caf382c8-ad8b-4ea1-ba93-a06cfc85fcb0" class=3D"conflue=
+nceTd">
+<p local-id=3D"d6ee0499-30a0-437c-9d5a-03a07b1f48cc">Contract ready to sign=
+</p></td>
+</tr>
+<tr data-local-id=3D"b6cbc119-9d16-4263-bda9-c6a9c81f3de9">
+<td data-local-id=3D"4f88617c-dc2c-4f37-9af4-3e2e5b658f69" class=3D"conflue=
+nceTd">
+<p local-id=3D"15866e07-0246-45d8-8091-035078ccc32f">Standard</p></td>
+<td data-local-id=3D"c8570817-2147-43ed-9bc7-f33a275795df" class=3D"conflue=
+nceTd">
+<p local-id=3D"27b04ab8-159d-4fef-b5c3-04682b1ac9e7">Rejected</p></td>
+<td data-local-id=3D"8ddaabd1-e21b-45e6-8e0e-d2f54896b3c1" class=3D"conflue=
+nceTd">
+<p local-id=3D"79f30b27-aecc-418d-803d-89497d7d833b">Final status</p></td>
+<td data-local-id=3D"33fba6fa-446b-4402-a2c1-565894a47d65" class=3D"conflue=
+nceTd">
+<p local-id=3D"9431be04-bdcf-4c96-8bfa-e680b310f968">Rejected from Risk</p>=
+</td>
+</tr>
+<tr data-local-id=3D"e14b7132-cde7-4e01-a686-620dd585c277">
+<td data-local-id=3D"b956946f-41e7-4175-a23e-8a3e88c62eca" class=3D"conflue=
+nceTd">
+<p local-id=3D"4b6e3429-28b4-4f48-84d6-f76bbe96f2f6">Standard</p></td>
+<td data-local-id=3D"bec00dfe-4812-4704-80d2-2cfb90fdac25" class=3D"conflue=
+nceTd">
+<p local-id=3D"19b002b9-c189-44d7-aa7c-d96248de9a63">Canceled</p></td>
+<td data-local-id=3D"f82f22ed-f476-4366-94c5-895e2a761771" class=3D"conflue=
+nceTd">
+<p local-id=3D"eb853538-9271-48fd-84fd-38daeb5eabfb">Final status</p></td>
+<td data-local-id=3D"fdc9afd3-53e2-43fa-a325-9b88f72f09e0" class=3D"conflue=
+nceTd">
+<p local-id=3D"7e606e1a-97fa-4fbe-8ee5-428e4071c735">Cancelled/Expired appl=
+ication</p></td>
+</tr>
+<tr data-local-id=3D"c98a151e-ff51-426c-92f6-73b068576767">
+<td data-local-id=3D"8157945c-ec1f-4ebf-9e92-5af126d72514" class=3D"conflue=
+nceTd">
+<p local-id=3D"0d6cccdf-1e79-4d14-8a9d-53b081531bd0">Standard</p></td>
+<td data-local-id=3D"e3595634-b044-4863-a93c-1ce564be76ee" class=3D"conflue=
+nceTd">
+<p local-id=3D"3538ce8d-7f68-4ada-a724-8da76da76290">ContractSigned</p></td=
+>
+<td data-local-id=3D"eb651618-ac09-4213-9b18-42c19ee56efe" class=3D"conflue=
+nceTd">
+<p local-id=3D"99d7bf80-8dcd-4ab6-939d-c1c637bf6454">Final status</p></td>
+<td data-local-id=3D"a268146d-7681-42f5-ba8f-9c2b9d580ceb" class=3D"conflue=
+nceTd">
+<p local-id=3D"40cda53b-ed20-497a-b290-6914505aaf3e">Contract Signed</p></t=
+d>
+</tr>
+<tr data-local-id=3D"d3f5b7ea-f8fd-4f08-91a9-8287bf743d11">
+<td data-local-id=3D"846667be-926b-431e-bc57-dd22b87c9f77" class=3D"conflue=
+nceTd">
+<p local-id=3D"3625fde9-ebfd-44f2-a16f-23c1e5b816ea">Standard</p></td>
+<td data-local-id=3D"760c4cc4-4f99-4561-bb42-b1742cb8703a" class=3D"conflue=
+nceTd">
+<p local-id=3D"40b3d1f2-2736-4c94-86a7-8f3f3bba7a7d">Paid</p></td>
+<td data-local-id=3D"62e325a8-c717-43f4-a4be-5a5655435e4e" class=3D"conflue=
+nceTd">
+<p local-id=3D"6e6e33f1-5011-47d1-9fdc-a2a862d719ef">Final status</p></td>
+<td data-local-id=3D"35268060-8e70-4519-8e0e-951f898e6a32" class=3D"conflue=
+nceTd">
+<p local-id=3D"bee2e899-7b48-426c-a530-d436ba9d738f">Payment Disbursed</p><=
+/td>
+</tr>
+<tr data-local-id=3D"4c6ce7de-e75e-4a38-9797-94e987f51b82">
+<td data-local-id=3D"2bcc86eb-4e19-4296-aa1a-8055bea9d023" class=3D"conflue=
+nceTd">
+<p local-id=3D"0d5f1496-9784-4515-b84a-c7e6192225ca">BNPL</p></td>
+<td data-local-id=3D"d1a844a9-d841-4298-a071-6e46f2e11dd7" class=3D"conflue=
+nceTd">
+<p local-id=3D"96c3e607-6c69-4495-b237-710ad16071bd">in_progress</p></td>
+<td data-local-id=3D"e794f33a-ec70-4b94-af18-5615d83608ee" class=3D"conflue=
+nceTd">
+<p local-id=3D"f124a341-d99f-46ee-acd6-f40742c04fe2">Intermediary status</p=
+></td>
+<td data-local-id=3D"6df86aa4-cead-47bc-adfc-44df5518356b" class=3D"conflue=
+nceTd">
+<p local-id=3D"ffc6d36c-7408-411a-b1ad-b60604f7b32a"></p></td>
+</tr>
+<tr data-local-id=3D"fdc0e16d-5a2a-4e53-9da5-0970680298ca">
+<td data-local-id=3D"75631c68-2da3-41ad-a83f-11beeb3fc796" class=3D"conflue=
+nceTd">
+<p local-id=3D"110c1c2d-7368-4acf-aee1-34c9bf527f4c">BNPL</p></td>
+<td data-local-id=3D"729eab4d-afa7-467e-9bbf-26613ad7fa7b" class=3D"conflue=
+nceTd">
+<p local-id=3D"9df8d7e7-e871-46e2-b19c-290789181e2a">rejected</p></td>
+<td data-local-id=3D"565f0462-d04f-4c6a-a551-dc8de9cbfd56" class=3D"conflue=
+nceTd">
+<p local-id=3D"47c6dff0-0c22-4dce-bb71-2a996bebdb77">Final status</p></td>
+<td data-local-id=3D"5771623a-40a9-4698-89a2-da015ab55a6e" class=3D"conflue=
+nceTd">
+<p local-id=3D"701b171b-10d3-4b17-b36d-4ca71c7c2fc1"></p></td>
+</tr>
+<tr data-local-id=3D"e98c1742-9998-4132-8ff0-d6268677a161">
+<td data-local-id=3D"36eea845-be4f-4699-9273-08785b10a3e0" class=3D"conflue=
+nceTd">
+<p local-id=3D"51a66f98-e02b-4a53-89a3-660b09f52bdf">BNPL</p></td>
+<td data-local-id=3D"ba8eacb0-3339-464b-8066-061ece1848c7" class=3D"conflue=
+nceTd">
+<p local-id=3D"ad799d0e-dc9f-42f4-87fc-e6ad0876a351">canceled</p></td>
+<td data-local-id=3D"6e124f01-1d73-4971-a0bc-aa63dfd0d314" class=3D"conflue=
+nceTd">
+<p local-id=3D"c881618e-fd9f-4b8e-858e-36918f439476">Final status</p></td>
+<td data-local-id=3D"00e8b0db-8f82-429a-9c4d-b1204cd379d6" class=3D"conflue=
+nceTd">
+<p local-id=3D"f4a021f1-084f-4e74-b3c1-c69f29089837"></p></td>
+</tr>
+<tr data-local-id=3D"adbc189a-75d1-4223-8f73-82b7766615a0">
+<td data-local-id=3D"eb851370-c36e-4c1a-bd2e-bebf652cafec" class=3D"conflue=
+nceTd">
+<p local-id=3D"ff8026db-e12e-427b-aa0e-bc5d61015d23">BNPL</p></td>
+<td data-local-id=3D"498cd786-f5d8-429f-870c-bc207a5b7da4" class=3D"conflue=
+nceTd">
+<p local-id=3D"8948f42c-08d7-4420-b91c-e4f2538dd622">approved &amp; signed<=
+/p></td>
+<td data-local-id=3D"7f7917f1-62b3-4438-bbb0-d31fe5bbb5bd" class=3D"conflue=
+nceTd">
+<p local-id=3D"ec1a8d64-9616-4520-bba8-0d9c596556f5">Final status</p></td>
+<td data-local-id=3D"04556e87-c401-4b48-ac2f-0098675896c7" class=3D"conflue=
+nceTd">
+<p local-id=3D"f33d0fcc-3067-47ed-ae0c-7c495c59c836"></p></td>
+</tr>
+<tr data-local-id=3D"73034e3d-c5ba-4435-8c43-86649625a5ed">
+<td data-local-id=3D"2c335b25-3b61-4a79-8541-a52f28168bac" class=3D"conflue=
+nceTd">
+<p local-id=3D"a6acb395-35bd-4a7b-9190-9b7fcefc97e5">BNPL</p></td>
+<td data-local-id=3D"437e0316-ab22-4041-9f69-895db0eb71cf" class=3D"conflue=
+nceTd">
+<p local-id=3D"7ae3df2d-4a2a-42fb-a972-deb2406ef919">expired</p></td>
+<td data-local-id=3D"406e2066-8646-4531-9e0b-e6ef06470152" class=3D"conflue=
+nceTd">
+<p local-id=3D"828ad111-ff07-4e23-a99b-c87ba7500b66">Final status</p></td>
+<td data-local-id=3D"852ff687-ca8a-49a7-94a8-152749fcaf5f" class=3D"conflue=
+nceTd">
+<p local-id=3D"f3ba499c-60ee-4c4a-9c80-08c7e844290e"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"2d938830-240c-4d0a-b2f3-c510176c17b6"></p>
+<ol start=3D"1" local-id=3D"59a0f6bd-2bb7-44c3-b5a0-65757b0215c2">
+<li local-id=3D"b18139a7-0cf3-45b8-b639-d3a830863707">
+<p local-id=3D"bedfe98d-29c1-4eaa-8af5-52a0a30a73ff"><strong>Missing Parame=
+ters:</strong></p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "error": 203,
+  "message": "Empty request /api/info203"
+}</pre>
+</div>
+</div>
+<p local-id=3D"30302362-6e94-4e4e-8e6c-49604a62d1de"><em>Indicates that the=
+ request is missing required parameters.</em></p>
+<ol start=3D"2" local-id=3D"99b54f46-a03c-4d69-9aa0-4ba7493fec75">
+<li local-id=3D"43e229f4-ce5e-4293-b499-ba9c0e4ccd26">
+<p local-id=3D"e55d1715-e9aa-438a-a349-ad0efff8f590"><strong>Total Basket A=
+mount Outside Financing Ranges:</strong></p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "error": 210,
+  "message": "Total basket amount (31000) is below or above financing limit=
+s /api/info210"
+}</pre>
+</div>
+</div>
+<p local-id=3D"471adada-afd3-43e5-bf4e-458033959e9e"><em>Indicates that the=
+ total basket amount exceeds the allowable financing limits.</em></p>
+<ol start=3D"3" local-id=3D"905eefb3-41ca-4734-970c-353dd727ae07">
+<li local-id=3D"c55d5b5e-cb31-4dc8-9a8d-ce3a0e5d2c98">
+<p local-id=3D"9f76ddba-8a78-4d24-a3e6-ad789803c289"><strong>Incorrect Rese=
+ller Code or Key Matching, or Incorrect Encryption:</strong></p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "error": 205,
+  "message": "Access denied /api/info205"
+}</pre>
+</div>
+</div>
+<p local-id=3D"768d489e-fb06-4f4f-a34b-f52467f650ca"><em>Indicates that the=
+re is an issue with the reseller code, key matching, or encryption used.</e=
+m></p>
+<ol start=3D"4" local-id=3D"7c2bd117-8caf-438a-9b0e-c69209ac29f5">
+<li local-id=3D"f872c082-521f-4daa-8fb8-40ee3296d346">
+<p local-id=3D"2f43eb4f-73ee-462d-b9a7-6e671cd25006"><strong>Incorrect Para=
+meters:</strong></p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "error": 209,
+  "message": "Missing mandatory parameters in the items list /api/info209"
+}</pre>
+</div>
+</div>
+<p local-id=3D"a6d4b6cb-0ff9-4ac4-b537-a1d2276b340d"><em>Indicates that the=
+re are incorrect parameters provided in the request's items list.</em></p>
+<p local-id=3D"4cd09d71-01cf-4e34-a498-808d31f7d023"></p>
+<p local-id=3D"6eefb130-09aa-4e28-8722-f8aab83f31a3"></p>
+<h2 local-id=3D"684b3710-563b-48b9-b7c5-4e39bd09efb8" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-GetApplicationStatus">Get Applica=
+tion Status</h2>
+<h3 local-id=3D"d3a6b86b-012d-4e4c-8337-cff3c88faa84" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Overview.2">Overview</h3>
+<p local-id=3D"01a8a7ac-c190-45e7-9985-ffa89766ce59"></p>
+<p local-id=3D"fbf3b56b-bb64-46d1-8bd1-349f7b40a678">After successfully sen=
+ding an application, the response will include an <code>order_id</code> and=
+ <code>token</code>. You can use these, along with the <code>reseller_code<=
+/code> and <code>reseller_key</code>, to request and track the application'=
+s status and its movement through the assessment process. This API endpoint=
+ exclusively supports the POST method.</p>
+<div class=3D"panel" style=3D"background-color: #EAE6FF;border-color: #998D=
+D9;border-width: 1px;">
+<div class=3D"panelContent" style=3D"background-color: #EAE6FF;">
+<p local-id=3D"a86326ac-1913-43a7-a988-7a6d68d9f960"><strong>This endpoint =
+can be used to track status updates only if the </strong><code>statusURL</c=
+ode><strong> variable in </strong><code>RegisterApplication</code><strong> =
+is not provided (i.e., not included in the request)</strong></p>
+</div>
+</div>
+<ul local-id=3D"759d562d-586f-4e3c-ac0e-773310c64a34">
+<li local-id=3D"4251e41e-bc91-4565-8338-edc86e6da30c">
+<p local-id=3D"dbd75d66-1a2b-4434-aea2-3c7b08d77d15"><strong>Interface</str=
+ong>: <a class=3D"external-link" href=3D"https://beta.tbibank.support/api/G=
+etApplicationStatus" rel=3D"nofollow">https://beta.tbibank.support/api/GetA=
+pplicationStatus</a></p></li>
+</ul>
+<h3 local-id=3D"22fef5d3-fc66-437a-87a1-ae66b8b4589e" id=3D"APIdocumentatio=
+n-FusionPay-Parameters">Parameters</h3>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"4f=
+87e653-193e-4064-950f-f26dd9d7949b" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"013a8814-e542-4a48-82ee-c17edda5fb62">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"96cf91b5-608d-4b5c-8=
+920-01cf7444c86c" class=3D"confluenceTh">
+<p local-id=3D"cdc29906-09df-4ee6-b7cc-ac06ca0beddc"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"73b289dd-bad8-4c36-b=
+ccb-d6f0f8f6445f" class=3D"confluenceTh">
+<p local-id=3D"47293452-01a0-470d-a8a5-7e8ca970b612"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"31057a25-3911-4ac3-8=
+bf3-646af8042578" class=3D"confluenceTh">
+<p local-id=3D"c45a081b-5ef2-4847-bba4-f1183bb8800d"><strong>Type</strong><=
+/p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"9dd250e3-1a92-4a9f-a=
+2bd-88e0b2bc0d19" class=3D"confluenceTh">
+<p local-id=3D"73688610-fc12-4ee7-a7a4-76246cab3f91"><strong>Required</stro=
+ng></p></th>
+</tr>
+<tr data-local-id=3D"e9845620-212d-4f69-b0b9-609e8fac62a3">
+<td data-local-id=3D"6687a5b8-c059-47d6-ac5a-5b9753fe4bcc" class=3D"conflue=
+nceTd">
+<p local-id=3D"22f930d0-2e21-471d-a94d-a2627649ff24">reseller_code</p></td>
+<td data-local-id=3D"d0c94165-4475-47e9-98c8-f46310c41242" class=3D"conflue=
+nceTd">
+<p local-id=3D"b5764424-17fd-43d2-acf5-80141c3c9f79">Identifies the merchan=
+t in the system</p></td>
+<td data-local-id=3D"633f2017-243f-4127-bd69-90a09a621e5d" class=3D"conflue=
+nceTd">
+<p local-id=3D"37782e36-8e31-4050-9338-fd4f819ce69e">String</p></td>
+<td data-local-id=3D"595bf58f-835e-4972-bb8f-bfda084418ec" class=3D"conflue=
+nceTd">
+<p local-id=3D"6ea9b3a4-7a47-48bb-bb99-c24aa524d7a5">Yes</p></td>
+</tr>
+<tr data-local-id=3D"ea09dac0-ca61-47e0-9615-b54acfba1d4b">
+<td data-local-id=3D"e1d0ff06-dae6-4fcf-989c-65d206902d2e" class=3D"conflue=
+nceTd">
+<p local-id=3D"cf297a79-74a6-4c59-8502-f4401d0c789c">reseller_key</p></td>
+<td data-local-id=3D"52ce95cd-5704-4b0f-81aa-cdf389053179" class=3D"conflue=
+nceTd">
+<p local-id=3D"ea7bac07-65a4-4a1f-b444-0c36354a58ab">Validates the merchant=
+</p></td>
+<td data-local-id=3D"bbc947e9-4ae3-4e4a-a637-a55b5d232535" class=3D"conflue=
+nceTd">
+<p local-id=3D"5fd487e4-5e5c-458c-9e20-b8ef56e442c2">String</p></td>
+<td data-local-id=3D"18496e25-34b4-44ea-97b0-1fcd448e387b" class=3D"conflue=
+nceTd">
+<p local-id=3D"4ab71e44-1d27-464d-9c1a-b8393ee24596">Yes</p></td>
+</tr>
+<tr data-local-id=3D"3fc43e8e-8000-42ec-96dc-00bbf3f91e8c">
+<td data-local-id=3D"4c8a63b6-9dd4-4267-a1eb-38735b58eb32" class=3D"conflue=
+nceTd">
+<p local-id=3D"9e2c5800-b9e3-4409-baeb-6cf1ffd229bd">order_id</p></td>
+<td data-local-id=3D"aeabc640-58c3-47b4-a09f-342621ed72f3" class=3D"conflue=
+nceTd">
+<p local-id=3D"f57c8909-3817-482c-bdcb-6f90fa28ea4f">Order ID received with=
+ Register Application method</p></td>
+<td data-local-id=3D"d1098a64-1dfa-419c-96ad-bca8ef267cdc" class=3D"conflue=
+nceTd">
+<p local-id=3D"08d5c734-cffd-443d-ad88-699ea22c7912">Int</p></td>
+<td data-local-id=3D"9a5ceaa1-b460-45a6-9549-baf6b2ab0592" class=3D"conflue=
+nceTd">
+<p local-id=3D"0ad166bc-6770-4147-9e4b-4b437c5ab568">Yes</p></td>
+</tr>
+<tr data-local-id=3D"4b6f48dd-1539-4306-a99f-3ef3a41669fb">
+<td data-local-id=3D"c7b9e3fd-bb0c-48e2-80f7-a3881900a025" class=3D"conflue=
+nceTd">
+<p local-id=3D"92423c3d-1a7d-4fdd-840a-3aacbd8d3ac4">token</p></td>
+<td data-local-id=3D"5f3594b7-09bd-41b7-8678-abb270a03e6d" class=3D"conflue=
+nceTd">
+<p local-id=3D"4d925ed4-0e17-478c-8919-748252da49e6">Token received with Re=
+gister Application method</p></td>
+<td data-local-id=3D"18c33bc4-7121-47d1-adeb-0ccc0d913152" class=3D"conflue=
+nceTd">
+<p local-id=3D"8e985771-7f35-4490-b75b-9a13819b0303">String</p></td>
+<td data-local-id=3D"2121512a-b42f-4a55-9295-ac658d43deb1" class=3D"conflue=
+nceTd">
+<p local-id=3D"2b963286-dc9c-458d-bd8e-6c2a21e5ea3a">Yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"4a6973b9-ddc0-434a-a70f-c4d9ef46b9ec" id=3D"APIdocumentatio=
+n-FusionPay-Examples.1">Examples</h3>
+<h4 local-id=3D"3d91f534-062e-4003-a875-218e4e68dc72" id=3D"APIdocumentatio=
+n-FusionPay-Input:">Input:</h4>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">curl --=
+location '&lt;https://beta.tbibank.support/api/GetApplicationStatus&gt;' \
+--header 'Content-Type: application/json' \
+--data '{
+  "reseller_code": "TBI1",
+  "reseller_key": "EX1",
+  "order_id": 20,
+  "token": "b5f80fc011c052231240e1cf267e9ebbbc55"
+}'</pre>
+</div>
+</div>
+<h4 local-id=3D"cca605a8-c4aa-46cd-9b0d-e31b81fc205a" id=3D"APIdocumentatio=
+n-FusionPay-Output:">Output:</h4>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "error": 0,
+  "store_order_id": "230110114428803",
+  "status": "Draft",
+  "status_chain": [
+    {
+      "datetime": "30.03.2023 12:11:22",
+      "status": "Draft"
+    },
+    {
+      "datetime": "30.03.2023 12:15:22",
+      "status": "InProgress"
+    }
+  ]
+}</pre>
+</div>
+</div>
+<p local-id=3D"2398372b-6fee-436f-b4e2-ebfb169fd0dd">Here, <code>store_orde=
+r_id</code> refers to the order ID on the merchant's side, which is sent in=
+ the Register Application method.</p>
+<h2 local-id=3D"33c5cce9-e3cf-4175-9ac6-15a0783b5e54" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-GetApplicationData">Get Applicati=
+on Data</h2>
+<h3 local-id=3D"4ae3df75-6e13-4af7-93f6-2ca319ec084a" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Overview.3">Overview</h3>
+<p local-id=3D"e9819176-b4d3-4873-88bb-81b2369a07de">After successfully sen=
+ding an application, the response will include an <code>order_id</code> and=
+ <code>token</code>. You can use these, along with the <code>reseller_code<=
+/code> and <code>reseller_key</code>, to request and track the application'=
+s data and some of its details like store_order_id (the id in the merchants=
+ store), latest status, downpayment, installment and period of the loan app=
+lication. This API endpoint exclusively supports the POST method.<br><br></=
+p>
+<ul local-id=3D"a793e843-17f7-434d-a982-c5b91ef70379">
+<li local-id=3D"aa5b3848-fcea-48a0-a7c3-6310a2166bbf">
+<p local-id=3D"e5bed8a1-6ac7-4a60-9c2e-55f69ec0b565"><strong>Interface</str=
+ong>: <a class=3D"external-link" href=3D"https://beta.tbibank.support/api/G=
+etApplicationData" rel=3D"nofollow">https://beta.tbibank.support/api/GetApp=
+licationData</a></p></li>
+</ul>
+<h3 local-id=3D"246722e5-9743-4882-b251-81c21519a8db" id=3D"APIdocumentatio=
+n-FusionPay-Parameters.1">Parameters</h3>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"f1=
+6fb6e9-7b7f-4766-b139-23b5dc0260c9" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"17bee920-4f32-471d-bd1c-b59c0e5aed17">
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"a46a7c40-4daa-4687-b=
+310-dfb3baec6e8f" class=3D"confluenceTh">
+<p local-id=3D"1e4ac0ae-bf97-43db-adb0-7adbf8c415f2"><strong>Parameter</str=
+ong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"0c7d2bb9-0b9c-439c-9=
+14a-493dfe86eebe" class=3D"confluenceTh">
+<p local-id=3D"2ab8e02a-c621-475b-a3b9-2f650ebf23e1"><strong>Description</s=
+trong></p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"7f2a00d2-0b14-4b6c-b=
+6a6-92f1dac61b22" class=3D"confluenceTh">
+<p local-id=3D"51b05cd5-6f3b-45a5-8b81-14f49232221c"><strong>Type</strong><=
+/p></th>
+<th data-highlight-colour=3D"#ffc400" data-local-id=3D"de0b66d3-4610-4cf5-9=
+939-d6657ca71c98" class=3D"confluenceTh">
+<p local-id=3D"51d41101-bc7b-4936-9f2e-49a6231bc91f"><strong>Required</stro=
+ng></p></th>
+</tr>
+<tr data-local-id=3D"1d1da446-d4b6-4a6a-83cf-50ce9db92d4e">
+<td data-local-id=3D"e1e3bb01-0829-47b5-be71-9fef1068b162" class=3D"conflue=
+nceTd">
+<p local-id=3D"cf9fe410-9b9b-4b27-a973-81a0b39e72c7">reseller_code</p></td>
+<td data-local-id=3D"8656cb02-f8ad-417b-9bba-a48032187a5e" class=3D"conflue=
+nceTd">
+<p local-id=3D"16aa7bf3-0efb-4206-8f0d-8bf00c05ab2c">Identifies the merchan=
+t in the system</p></td>
+<td data-local-id=3D"7debc0fb-456d-4a88-a4c3-a9d5cc3e5054" class=3D"conflue=
+nceTd">
+<p local-id=3D"8c7f1571-993d-45f1-b455-35a80144c8d4">String</p></td>
+<td data-local-id=3D"cbb4f9d5-c68a-43a8-9fff-1a7f98538b86" class=3D"conflue=
+nceTd">
+<p local-id=3D"cbabeee8-2d17-43ed-9365-fa45cfdedf0c">Yes</p></td>
+</tr>
+<tr data-local-id=3D"6b00b76e-ed59-4d1b-9492-6e3421e6027e">
+<td data-local-id=3D"316183bf-91ca-4b41-8d50-a0783f42d6d7" class=3D"conflue=
+nceTd">
+<p local-id=3D"a15e47e5-3602-477b-a798-b7c66381d7d5">reseller_key</p></td>
+<td data-local-id=3D"37fb3678-c4b5-4f57-a01b-b978ecc7e7e0" class=3D"conflue=
+nceTd">
+<p local-id=3D"15f1f7af-1009-41cc-8feb-f7e427094af3">Validates the merchant=
+</p></td>
+<td data-local-id=3D"b9ee1620-15f2-4dde-bb04-8217cc2af5c5" class=3D"conflue=
+nceTd">
+<p local-id=3D"1595823c-9608-41d1-97cd-fbe9e9ddd1cf">String</p></td>
+<td data-local-id=3D"8a8d3bf0-e4df-4d94-8151-7073c62e167e" class=3D"conflue=
+nceTd">
+<p local-id=3D"fc4a2757-0043-4f88-8584-22fd46c25e66">Yes</p></td>
+</tr>
+<tr data-local-id=3D"184af195-214d-4f63-865d-0fa15285c109">
+<td data-local-id=3D"c20a801b-3d4c-4941-b038-8e4a2f9840c6" class=3D"conflue=
+nceTd">
+<p local-id=3D"34ae0504-6f32-4693-b1e6-4a0ca9afb1be">order_id</p></td>
+<td data-local-id=3D"4eb51817-389e-4539-a823-ff0a333e4619" class=3D"conflue=
+nceTd">
+<p local-id=3D"2e3bd0c1-641f-48e7-a20b-854e88cdb13b">Order ID received with=
+ Register Application method</p></td>
+<td data-local-id=3D"b038515a-f63d-4d2d-b8ac-dedc481a3678" class=3D"conflue=
+nceTd">
+<p local-id=3D"2ecf2479-03fd-4830-a744-27ccd174c2b8">Int</p></td>
+<td data-local-id=3D"75966c2e-729a-4d45-800c-3cae0c68a3af" class=3D"conflue=
+nceTd">
+<p local-id=3D"7f0fe30a-7d2e-4425-bdaa-876d9b2162b9">Yes</p></td>
+</tr>
+<tr data-local-id=3D"1c7e3073-d9f2-4591-ade6-9a40bd59805c">
+<td data-local-id=3D"4b17dae6-9ce9-4cd3-b22a-4840d4c90891" class=3D"conflue=
+nceTd">
+<p local-id=3D"d61dc1f2-2b24-4356-9fd4-8e5db0fa49b1">token</p></td>
+<td data-local-id=3D"a93584d3-1af5-4746-b061-00f8d368154e" class=3D"conflue=
+nceTd">
+<p local-id=3D"7061ae0f-ec13-4ef5-abc5-c6b0f5e310c5">Token received with Re=
+gister Application method</p></td>
+<td data-local-id=3D"8e515622-d7b4-4fcf-ad98-192957186b5e" class=3D"conflue=
+nceTd">
+<p local-id=3D"b377171a-28d9-425d-9abd-08b63ab7e808">String</p></td>
+<td data-local-id=3D"19c75e22-46c0-4fc0-9b49-e0a560f0268b" class=3D"conflue=
+nceTd">
+<p local-id=3D"fbc2df73-fb82-409b-9dae-d3e0a77e209e">Yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"e648a780-f719-432a-a0ef-0bdb78838218" id=3D"APIdocumentatio=
+n-FusionPay-Examples.2">Examples</h3>
+<h4 local-id=3D"c78120ba-82fc-4bc4-909e-32cfceddd1c9" id=3D"APIdocumentatio=
+n-FusionPay-Input:.1">Input:</h4>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">curl --=
+location '&lt;https://beta.tbibank.support/api/GetApplicationData&gt;' \
+--header 'Content-Type: application/json' \
+--data '{
+  "reseller_code": "TBI1",
+  "reseller_key": "EX1",
+  "order_id": 20,
+  "token": "b5f80fc011c052231240e1cf267e9ebbbc55"
+}'</pre>
+</div>
+</div>
+<h4 local-id=3D"7684d9d0-c350-403b-85f6-507dd1907380" id=3D"APIdocumentatio=
+n-FusionPay-Output:.1">Output:</h4>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+    "error": 0,
+    "store_order_id": "2973",
+    "status": "MP Sent",
+    "downpayment": "1270.00",
+    "installment": "146.07",
+    "period": 12
+}</pre>
+</div>
+</div>
+<p local-id=3D"0ef66db4-1b31-4521-a931-4bf6803462bb">Here, <code>store_orde=
+r_id</code> refers to the order ID on the merchant's side, which is sent in=
+ the Register Application method. <code>status</code> is the latest status =
+of the application. <code>downpayment</code> is either <strong>NULL</strong=
+> (if not downpayment is used or not eligible for the merchant) or a double=
+ value - the amount of downpayment selected by the customer. <code>installm=
+ent</code> is the amount of the monthly installment of the remaining amount=
+. <code>period</code> is an integer and show the selected period of the app=
+lication.</p>
+<p local-id=3D"ee603ffc-9103-48e2-b28c-f62f9aae6aa5" style=3D"text-align: c=
+enter;"></p>
+<h2 local-id=3D"2bbb4d85-9f30-48f6-8c3d-bcb7c7433c04" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Ready-EmbeddedCalculator">Ready-E=
+mbedded Calculator</h2>
+<p local-id=3D"9ab16df4-a483-4cd9-96aa-8a363f9009f4"></p>
+<p local-id=3D"f1715788-413b-4e66-8acd-4ded2065b9ac">Using the <code>resell=
+er_code</code>, <code>reseller_key</code>, and the total basket amount, you=
+ can call a dynamic URL to present available repayment schemes:</p>
+<ul local-id=3D"066bc529-e0dd-46ab-a8ed-ac54a1f34592">
+<li local-id=3D"3b36080b-c17d-4c95-a0f1-acc8c5f478b2">
+<p local-id=3D"f6da80f8-e4d4-48cf-9103-475d708624e9"><a class=3D"external-l=
+ink" href=3D"https://beta.tbibank.support/application/calculcator/?code=3DT=
+BI1&amp;key=3DEX1&amp;amount=3D1000" rel=3D"nofollow"><strong>Calculator wi=
+th Total Amount</strong></a><strong> =E2=86=92 </strong>code=3D<strong>TBI1=
+</strong>&amp;key=3D<strong>EX1</strong>&amp;amount=3D<strong>1000</strong>=
+</p></li>
+<li local-id=3D"13796c73-0789-4e54-88e8-a32a19e0e59f">
+<p local-id=3D"cf5dc0ea-12af-49d8-9aef-41192c8117a8"><a class=3D"external-l=
+ink" href=3D"https://beta.tbibank.support/application/calculcator/?code=3DT=
+BI1&amp;key=3DEX1&amp;amount=3D1000&amp;category=3D255" rel=3D"nofollow"><s=
+trong>Calculator with Total Amount and Category</strong></a><strong> =E2=86=
+=92 </strong>code=3DTBI1&amp;key=3DEX1&amp;amount=3D1000&amp;category=3D<st=
+rong>255</strong></p></li>
+</ul>
+<p local-id=3D"28ed3850-9907-4a5d-b866-71bd29d58d9b">In the tbi system, add=
+itional schemes can be added depending on the category ID. For example, the=
+ second link above triggers two more schemes, which are only available for =
+category ID 255. This category ID should also be sent in the item list cate=
+gory field.</p>
+<p local-id=3D"ae46a990-03ef-4433-a46f-5a62a9288696"></p>
+<h2 local-id=3D"728c08ad-f146-46c7-8d5c-15145c4dc604" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-ExpressBuyButtonIntegrationonProd=
+uctPage">Express Buy Button Integration on Product Page</h2>
+<p local-id=3D"c48ef12d-2014-4dbe-b57b-d9750ed43b23"></p>
+<p local-id=3D"e84deba3-2fce-40a5-91e3-f338f49ae874">An express buy with tb=
+i button can be implemented in product page using a callback if customer fi=
+nishes the application in tbi redirected URL. To use this option the mercha=
+nt need an endpoint which will receive a POST message with a body similar t=
+o tbi RegisterApplication with encrypted data. This endpoint needs to retur=
+n 'order_id' that is created in the merchant website.</p>
+<p local-id=3D"01215808-b9f6-4bf8-83be-cd61aa8e8fe7">If the order_id has va=
+lue 0 when registering the initial application tbi will send back the infor=
+mation with customer details back to the mechant and will use the returned =
+order_id to be visible in Merchant Portal.</p>
+<h3 local-id=3D"080ccfc2-9ed8-447c-afdc-738074ed38c8" id=3D"APIdocumentatio=
+n-FusionPay-IntegrationProcessOverview:">Integration Process Overview:</h3>
+<ol start=3D"1" local-id=3D"a735d44d-2e4d-4f98-9fa9-647340389b9b">
+<li local-id=3D"133afd1b-30db-4a19-94fa-3ec89e6f4732">
+<p local-id=3D"3bf42505-3be2-46e8-9ff1-71381549970f"><strong>Merchant Initi=
+alization</strong>: Send the application with missing data and <code>"order=
+id": "0"</code> as follows:</p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "orderid": "0",
+  "firstname": "",
+  "lastname": "",
+  "surname": "",
+  "email": "",
+  "phone": "",
+  "deliveryaddress": {
+    "country": "",
+    "county": "",
+    "city": "",
+    "streetname": "",
+    "streetno": "",
+    "buildingno": "",
+    "entranceno": "",
+    "floorno": "",
+    "apartmentno": "",
+    "postalcode": ""
+  },
+  "items": [
+    {
+      "name": "Sport Elegant Pants",
+      "description": "",
+      "qty": "3",
+      "price": "34.99",
+      "sku": "3345",
+      "category": "9",
+      "imagelink": "&lt;https://tbi-uat.online/hat/hat.jpg&gt;"
+    },
+    {
+      "name": "Blouse Raita",
+      "description": "",
+      "qty": "1",
+      "price": "110.65",
+      "sku": "5566",
+      "category": "4",
+      "imagelink": "&lt;https://tbi-uat.online/hat/hat.jpg&gt;"
+    }
+  ],
+  "promo": true,
+  "successRedirectURL": "&lt;https://testsuccess.com&gt;",
+  "failRedirectURL": "&lt;https://testfail.com&gt;"
+}</pre>
+</div>
+</div>
+<ol start=3D"2" local-id=3D"fbffd406-0a13-46cc-8866-5915f9401452">
+<li local-id=3D"72aa0267-bd39-4e40-8e69-90636757e447">
+<p local-id=3D"1408e94c-4c1d-40fe-bc3f-842bcccddf13"><strong>TBI Response</=
+strong>: TBI will respond with:</p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{=20
+  "reseller_code": "TBI1",
+  "reseller_key": "EX1",
+  "data": "ENCRYPTED_BODY"
+}</pre>
+</div>
+</div>
+<ol start=3D"3" local-id=3D"598e317c-f95e-412b-9dc9-c2a48c1007fd">
+<li local-id=3D"2317c56e-800b-4494-9deb-bebedbf1bcbd">
+<p local-id=3D"7b30060c-b458-401e-a427-8e86b3ec1c9a"><strong>Decryption</st=
+rong>: Decrypt the <code>data</code> field to obtain the following JSON for=
+mat. Note that the <code>period</code> can represent either a period in mon=
+ths or 'BNPL'. Also, the <code>sku</code> field is replaced with <code>code=
+</code> in the items list:</p></li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "firstname": "John",
+  "lastname": "Dow",
+  "surname": "",
+  "email": "test@tbibank.bg",
+  "phone": "0879123456",
+  "deliveryaddress": {
+    "country": "",
+    "county": "",
+    "city": "",
+    "streetname": "",
+    "streetno": "",
+    "buildingno": "",
+    "entranceno": "",
+    "floorno": "",
+    "apartmentno": "",
+    "postalcode": ""
+  },
+  "items": [
+    {
+      "name": "Sport Elegant Pants",
+      "description": "",
+      "qty": "3",
+      "price": "34.99",
+      "code": "3345",
+      "category": "111",
+      "imagelink": "&lt;https://tbi-uat.online/hat/hat.jpg&gt;"
+    },
+    {
+      "name": "Blouse Raita",
+      "description": "",
+      "qty": "1",
+      "price": "110.65",
+      "code": "5566",
+      "category": "111",
+      "imagelink": "&lt;https://tbi-uat.online/hat/hat.jpg&gt;"
+    }
+  ],
+  "period": 34
+}</pre>
+</div>
+</div>
+<h1 local-id=3D"69da5eef-7741-440a-ab06-28958b2837b6" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Addtocartfunctionality"><strong>A=
+dd to cart functionality</strong></h1>
+<p local-id=3D"b70bb3d3-231c-4b42-befb-95359d433030"></p>
+<p local-id=3D"a0b25ad1-1ef7-43c3-a5ff-8c4e8a89a80c">On choosing a scheme a=
+nd/or downpayment, our calculator=E2=80=99s JS will return a message via</p=
+>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">targetW=
+indow.postMessage(message, '*');</pre>
+</div>
+</div>
+<p local-id=3D"d6af0fe3-c070-421a-a1af-7c597641c5e6">The content of the mes=
+sage will be a JSON in the following format as example</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{"schem=
+e_id" : 477, "downpayment" : 150}</pre>
+</div>
+</div>
+<p local-id=3D"6f2784d9-6384-4459-ba57-74640825523c">The Merchants website =
+must catch this message and read it</p>
+<p local-id=3D"b9e0f098-2aeb-48fd-b413-64f2b7f61209">Example code to includ=
+e:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">const F=
+PTBI_ORIGIN =3D 'https://beta.tbibank.support';
+window.addEventListener('message', (e) =3D&gt; {
+    if (e.origin =3D=3D=3D FPTBI_ORIGIN) {
+        try {
+            const jsonObject =3D JSON.parse(e.data);
+            if (jsonObject.scheme_id !=3D=3D undefined || jsonObject.downpa=
+yment !=3D=3D undefined) {
+                // Merchants defatul logic for adding to cart, includiding =
+the scheme_id and downpayment in some sort of session data
+            }
+            //if it's a success, then close the pop-up or return the produc=
+t page with the default add to cart message
+        } catch (error) {
+          console.error('Invalid JSON string:', error);
+        }
+      }
+    });</pre>
+</div>
+</div>
+<p local-id=3D"bdecd5bb-d96a-40c1-be30-54c84a899d38"></p>
+<p local-id=3D"d2ed3083-8148-4d1e-85f9-27ae7a3ba509">We need the scheme_id =
+and/or downpayment to be accessible in checkout. If they are - then include=
+ them in the RegisterApplication request, just like that:</p>
+<p local-id=3D"e4ca8d11-4a54-40ad-a774-e1f441443d7d"></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">$data_a=
+rray =3D [
+    "orderid" =3D&gt; "123",
+    "firstname" =3D&gt; "=D0=A2=D0=B5=D1=81=D1=82",
+    "lastname" =3D&gt; "=D0=A2=D0=B5=D1=81=D1=82=D0=BE=D0=B2",
+    "surname" =3D&gt; "",
+    "email" =3D&gt; "test@tbibank.bg",
+    "phone" =3D&gt; "1231231231",
+    "deliveryaddress" =3D&gt; [
+        "country" =3D&gt; "Bulgaria",
+        "county" =3D&gt; "",
+        "city" =3D&gt; "=D0=A1=D0=BE=D1=84=D0=B8=D1=8F",
+        "streetname" =3D&gt; "=D0=93=D0=9C =D0=94=D0=B8=D0=BC=D0=B8=D1=82=
+=D1=80=D0=BE=D0=B2",
+        "streetno" =3D&gt; "62",
+        "buildingno" =3D&gt; "",
+        "entranceno" =3D&gt; "",
+        "floorno" =3D&gt; "321",
+        "apartmentno" =3D&gt; "123",
+        "postalcode" =3D&gt; ""
+       =20
+         ],
+    "items" =3D&gt; [=09
+        [
+            "name" =3D&gt; "=D0=A1=D0=BF=D0=BE=D1=80=D1=82=D0=BD=D0=BE =D0=
+=B5=D0=BB=D0=B5=D0=B3=D0=B0=D0=BD=D1=82=D0=B5=D0=BD =D0=BF=D0=B0=D0=BD=D1=
+=82=D0=B0=D0=BB=D0=BE=D0=BD",
+            "description" =3D&gt; "",
+            "qty" =3D&gt; "3",
+            "price" =3D&gt; "34.99",
+            "sku" =3D&gt; "3345",
+            "category" =3D&gt; "255",
+            "imagelink" =3D&gt; "https://tbi-uat.online/hat/hat.jpg"
+        ],
+        [=09=09=09
+            "name" =3D&gt; "=D0=91=D0=BB=D1=83=D0=B7=D0=B0 =D1=80=D0=B0=D0=
+=B5=D1=82=D0=B0",
+            "description" =3D&gt; "",
+            "qty" =3D&gt; "1",
+            "price" =3D&gt; "90.65",
+            "sku" =3D&gt; "5566",
+            "category" =3D&gt; "255",
+            "imagelink" =3D&gt; "https://tbi-uat.online/hat/hat.jpg"
+        ]
+    ],
+    "successRedirectURL" =3D&gt; "https://success.com",
+    "failRedirectURL" =3D&gt; "https://fail.com",
+   =20
+    //add the values here
+    "scheme_id" =3D&gt; 755,
+=09"downpayment" =3D&gt; 155
+];</pre>
+</div>
+</div>
+<p local-id=3D"bd3fddb0-779c-405f-9a5f-78edb3efdfe7"></p>
+<h1 local-id=3D"f9680779-0efb-489d-b5c4-1d7edfd3358b" style=3D"text-align: =
+center;" id=3D"APIdocumentation-FusionPay-Examplefiles">Example files</h1>
+<p local-id=3D"314c8295-958e-4b05-bfc7-d34ea321fd4b"></p>
+<p local-id=3D"ad702c0e-1565-49ae-83a1-ee9020577d3f"><img height=3D"250" st=
+yle=3D"margin: 2px; border: 1px solid #ddd; box-sizing: border-box; vertica=
+l-align: text-bottom;" src=3D"b129f371cc5cf1a31799e7256fb3d14190b620b22aec6=
+dcc12f1c8b188699bca" width=3D"250"> =E2=80=93 can be used as a reference to=
+ get repayments schemes. registerApplication.php =E2=80=93 an example appli=
+cation encryption and cURL request getStatusUpdate.php =E2=80=93 an example=
+ cURL for status update</p>
+<p local-id=3D"9a0d3d51-ee20-451f-8661-287164942360"><img height=3D"250" st=
+yle=3D"margin: 2px; border: 1px solid #ddd; box-sizing: border-box; vertica=
+l-align: text-bottom;" src=3D"630edba1211f7343aea14e8ec21eee06254a328fe5693=
+2d890605463d73ac7e1" width=3D"250"> =E2=80=93 an encryption model file for =
+encrypting sensitive data in the Register Application method.</p>
+<p local-id=3D"32e2e0b1-4bf5-4cb5-9f72-fd41308a66f6"><em>For different prog=
+ramming languages additional model files can be provided</em></p>
+    </div>
+</body>
+</html>
+------=_Part_42_1459601018.1769852879557
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/630edba1211f7343aea14e8ec21eee06254a328fe56932d890605463d73ac7e1
+
+iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAADAFBMVEX19fXv7+98fHx1dXV9fX23
+t7eenp5wcHDn5+f09PTz8/Pd3d2SkpLY2Njt7e3Q0NCioqJycnKqqqq7u7uurq6CgoKGhobOzs7D
+w8PR0dGNjY3Hx8fj4+PGxsbS0tKoqKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABYhwFnAAADmklEQVR4Xu3cjW/aOBjH8ad5ISG8tnRXeitb/v9/atJt0klsVdWV
+QoGDXAxkCYahUtUxGd+PWsl+bCR+dQIqMREBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+gAq40AtmhMulq9d+Y+E4L3qtwkLPD/Xa74S+8+q5FVDz9cohfk2vGOHoBSNefbSvuEu9UmGBXjjs
+yOlvVM6qn6Qzjn7USfhm3kKvtPu1qXP9IZnqA8rudBMsRW+N3ckskcWotS/7zvQK01+3boLbdeM2
+aG2PrOjTq0zL0vY+Zc2O2y6OrJUT3crL3GX3n6z52LksjpTJ0wtlGE/y9tTKMyiPdgS7hX+a2uqF
+Vhv/cw/4upfknZ/WVt1G9BNB9HNE9HNkLXo5b2CHWItuH9HPEdHPEdHPEdHPEdHtiaJIL5XESnQV
+dr65kuz6Y6lbSW8j+uQxTBe7u+60liLJ4/aEctiILlFHxt2HvqhP5O/HIh0rq27lwlPivMjPyG04
+1w+tJI3uT7avqJdz4clK9OZTNJeZtNxn52ku0phE21feyoleDv1ziUFQ2C4TOh/zzoo+vcp2svS8
+RtZsBb3iiLIzvcJ2swyc7k1Yr4c3XU9f833Tq2tPlrbf9IJLr+nv2bm3Z3plHZnlyOlvZOV9/TQQ
+3bDFUVs/w3Le1suJ7hwVZlHSk9ILRjjJMduDS4q+563FhPPdFA4AAAAAAAAAOFWxXjDB1Kf9F80g
+NdDLG7FesMFQ9IvaS23mNYd6/ZQYiu7Lf0/J8/00XeCrIAnUNZ52EMbX6ZFwrRY9jmORz+nIZ1lP
+WT0qGxfppQ11e5q8UhnBr10icdCQ4CptXHlpe9AeBP3NAe8H/XZfbaRRUzZzs/F06M51C5XqyHdI
+xZ/Uhql6WrqVWG0Y8oNN9EDdp2fVy77In4930sadamQVAwwd8AVf1U8kDflX5FmKO/VUa9X7mlV+
+jc/T32/qpg7bj3hXpqLnG8LUabwcycWBWwwVvtO9MdYLBhiKnvzY6vryca4Ob3VOq10GX1abYrNe
+7jWVd2Mo+ly8VnTXy07ScfLDVws5Sl+0nKZI2I7UobDprcWF8dxu5d0Yip7Mwtni++ivrB/Kag94
+azgdNu7T1A/Pscz7w8dh/z5/UD5+qFI1vdWfONaqulgv7Km8H0Orrrkb/a2X7Cslevy9+U2vAQAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACM+h8yLJvzZ3NunwAAAABJRU5ErkJggg==
+------=_Part_42_1459601018.1769852879557
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/c51b227e19f653f73936e08382ce91b4c6b7c76d1ffaa80697aea93b76124426
+
+/9j/4AAQSkZJRgABAgAAAQABAAD/wAARCAD6A/8DAREAAhEBAxEB/9sAQwAIBgYHBgUIBwcHCQkI
+CgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJ
+CQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy
+MjIyMjIy/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD31mVF
+LMcAdaaV9EJtJXZF9rg/56D8jVezl2I9rDuH2uD/AJ6D8jR7OXYPaw7h9rg/56D8jR7OXYPaw7kg
+kQqCG4PSp5WVzLcPMT1osw5kHmJ60WYcyDzE9aLMOZB5ietFmHMg8xPWjlYcyDzE9aLMOZB5ietH
+Kw5kHmJ60crDmQeYnrRZhzIPMT1o5WHMg8xPWizDmQeYnrRysOZB5ietHKw5kHmJ60crDmQeYnrR
+ZhzIPMT1osw5kHmJ60crDmQeYnrRZhzIPMT1osw5kHmJ60crDmQeYnrRZhzIPMT1o5WHMg8xPWjl
+YcyDzE9aLMOZB5ietFmHMg8xPWjlYcyDzE9aLMOZB5ietHKw5kHmJ60crDmQeYnrRZhzIPMT1osw
+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
+ASgBaACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoASgBaACgBK
+AFoAKAEoAWgBKAFoAKACgAoASgBaACgBKAFoASgBaACgBKAFoASgBaAEoAWgAoASgBaAEoAWgBKA
+CgBaAEoAKACgBaAEoAKAFoASgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAo
+AKACgAoAWgBKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAWgBKACgAoAKACgBaAEoAWgBKAKN6Ji
+HEEiRy8bWddw/LIpiMc6ZMoMsptJBnc4jtWJb6fNQAsVh56sFjiRAcqstsy4/wDHuaANG1hlgi8u
+Ro2Ufd2IVx+poA1B0FIYtACUALQAUAJQAtACUALQAlABQAUAFAC0AFACUAFABQAtABQAlABQAUAL
+QAUAJQAtACUALQAUAJQAUALQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAlAC0AFABQ
+AUAFABQAUAFACUALQAUAFABQAUAFABQAUAFABQAUAFABQAlAC0AFABQAUAFACUALQAUAFABQAUAF
+ABQAlAC0AFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFACUALQAUAFACUALQA
+UAFABQAUAFABQBQvIIrktHNGrpkHa3TIpiMGSCUHYsUflxEhAbKQ4GfUNQBEkFwn7wJCecAfY5Qf
+x+bigDctbe3iTfDEY9w7gg/kaANUdBSGLQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQ
+AUAFABQAUAFABQAUAFABQAUAFABQAlAC0AFABQAlAC0AJQAtABQAUAFACUALQAUAJQAtACUALQAU
+AJQAtACUALQAUAFABQAUAFACUALQAUAFABQAUAFACUALQAUAJQAtACUAFABQAUALQAlAC0AJQAUA
+LQAlABQAtABQAUAJQAUALQAUAFABQAlAC0AJQAtABQAUAFABQAlABQAtABQAUAFACUALQAlAC0AJ
+QAtABQAUAFACUALQAlABQAtACUALQAlAGXqk6wq6skjeYpUbYmcdO4HPemI5jyUi2YtwBuzn7JcH
+Hp/FQBpOqyiSZYTsckfNbyhs8HkZ/XFAF2wkWPMBRg27jEThenq2fSgDcHSkMWgBKAFoAKAEoAWg
+BKAFoAKAEoAWgAoAKACgBKAFoAKACgAoAKACgAoAKACgBKAFoAKACgAoASgBaAEoAKAFoAKAEoAK
+ACgBaACgBKACgAoAWgAoASgBaACgAoAKAEoAWgBKAFoASgBaACgBKAFoASgBaACgBKAFoASgAoAK
+ACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoA
+KACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgBaAEoAKACgCKSEs5II5oAp/wBjW4uH
+n2DzHBDHc2DnrxnFMBP7Gt+PlPHI/eN/jQBaW1KKFDDAGBQBYpAFABQAUAFABQAUAFABQAUAFABQ
+AUAFAC0AJQAUAFABQAtACUAFABQAtABQAlAC0AJQAtABQAlAC0AFABQAUAFABQAUAFABQAUAFABQ
+AUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFAB
+QAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFA
+BQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAF
+ABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQAUAFABQB//2Q==
+------=_Part_42_1459601018.1769852879557
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/060fdcf6e5d293e7142d715358e1ebfbd23e435337878e38e0234fa20b74b5c8
+
+iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAADAFBMVEX19fXv7+98fHx1dXV9fX23
+t7eenp5wcHDn5+f09PTz8/Pd3d2SkpLY2Njt7e3Q0NCioqJycnKqqqq7u7uurq6CgoKGhobOzs7D
+w8PR0dGNjY3Hx8fj4+PGxsbS0tKoqKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABYhwFnAAAC4klEQVR4Xu3b/0/aQBjH8Vu/2FJowegiZmPp//9PzWy/uRkiKgwN
+dLQVKE+rsSa9o/T9SjR3z3M/8MlBG+mpFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0
+wBdZaIa/Xtuy9oaVZf2TtRbzHdeXtbf4rvXhtS1w5srKe9wzWWmEJQuN+PC7PWOvZaXFPFl4X83l
+n6Rn149Sh6PX+hB+mrOSlWh8trQuvyZL2UiVlzfBUPRwbi+eE7V6DKuyl5a3mLxuXXnX+eDaCw87
+Gbm8zUSWyPmxHQ7tqNjJ6Ylu5DJ3Pvq1Hd4Pz4sdnRxZ0GG+2I+XRl6BPuIdbBf+aIrSC63on+4b
+vuck+8nM2K6biH4kiN5FRO8iY9H13MDeYyy6eUTvIqJ3EdG7iOhdRHRzgiCQJU2MRE/Dvrw+Sbbd
+ueoZSW8i+uLe32z2KJ+Ea6WS+8MFepiIroKhmo+mY5V+I383V2poZNeNPHhKrH9qFth963IaJpvo
+7uLwibqeB09Gog8eghf1rEL7yXp4Uaq/CA6fvOmJrof8XmLiFY7L+Na3/SQjl7dZKcuF098OQ++i
+2EmVlrdYOcvEGl35vZ5/NXLknlctb6+KLJE7cLxzZ+BWnNyrWN5aNbPUXP5JRu7rx4HoDVvVOvrp
+67mt64lu1Qqz0vSiZKERVlLneLCm6BW3liZ091A4AAAAAAAAAEC/uDSonOqg59v+TCwL3RHvfh0H
+TU9f1Gvom/jxQanw72Z6s6+qm3S6a52eOPvlTaKJNz7YftfLpruWJtr/mXbwW83cabEyufXys2Pl
+VqM0XuZyT0oc1gtvndkbrWZpjy59f/bTyAZojP4zOwmbnpcrHDSI/gx2Z4NF64R442B7LbvIL3Ob
+H+/1gHRcaGmicdfX06c4/Wgvb/t3u+L1KN7Ix6LVIbEsNEzjrh+bDkcHAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAgJP2H3bsdGtva8x+AAAAAElFTkSuQmCC
+------=_Part_42_1459601018.1769852879557
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/b129f371cc5cf1a31799e7256fb3d14190b620b22aec6dcc12f1c8b188699bca
+
+iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAADAFBMVEX19fXv7+98fHx1dXV9fX23
+t7eenp5wcHDn5+f09PTz8/Pd3d2SkpLY2Njt7e3Q0NCioqJycnKqqqq7u7uurq6CgoKGhobOzs7D
+w8PR0dGNjY3Hx8fj4+PGxsbS0tKoqKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABYhwFnAAADnklEQVR4Xu3ce2+iShzG8RGGghcQ17Z2c7YN5/2/qGP2bE52u9n0
+ZrXaKoeLFxxpUxthpHw/f3SGH0PjkwFNZYoQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AFABDbVQDGexMNXaK+aG8aTWKsyRlqPWXuNYxrvHVsCJpVbeYp2olUIYaqEQ7z7bE+ZCrVSYrRbe
+tufwDypn1o9SjaPvdRF+mJyrFe/iZGqcnoVTdUdsd3gRNEV3x+ZkFor5yM3LvjO8wtT3rYH9Ne18
+td3tPQl1eJUpWTx5tep2TS+7J1VOdC1vcz3/+6p71+1l95RJqoUyjCeb/lTLKyiPcgabmT+avPiN
+Vtn/eU/4pgw3G/faZl1H9CNB9Doieh1pi17OB9hbtEXXj+h1RPQ6InodEb2OiK5Pq9VSSyXREj0O
++7y8k2xaY9HUkl5H9MmdE022n264CyHCu+0B5dARXbS6YuzfXIj4G/k/YyG6WmZdy42n0HgS9y2z
+bZzeuGEU3Zps31Ev58aTluidh9azmAnXfDQenoVoT1rbd97KiV4O9XuJSzuzXMYx/tpsJNThVbaT
+pS/bq65r97N7YjvDK2w3y6XhD5xm0xn4Up3zvOHVlZPFszrS7smOlbNyL2d4Ze2ZZc/hH6Tlc/04
+EL1g872WfjrlfKyXE93YK8y8pBelFgphhPssDy4pes5HSxHquygcAAAAAAAAAFCgYKeTu/mqQC0c
+XBHf9gdq4TgVEX3bUC0ci/feE9lDIHzfv/XlXMreONq8Tcv9RbLt3wq3HUpPvAi3IaX0J+s2OXh1
+mG9G40P7ZVM5tAJmfSiGw6EQD+f2+UO8Ni7VH3XsQXrXcdaZ2ZYbtWHDPh9t2sT6sFHPPms8ZysV
+ECQ/4sVBlr2+8u3lU3mWm160x/623LVsY5vDulHnW9xZVQ6tgFlfehTbl9Om3+7ZwZen6ET4fXYa
+p161ifVh8YT/iJ/roP6iQ9HxL9Qv3fb15G8h/rv6OZcns3W7rYCre1sRs/5PsuQ1XhiXXVGQ6Y9+
+jJNZ/j6by/gu96qNqYflVQ6jiOiOF2cfXXqXRietBEKcG33vannePnmD66ix+453mmmT94HsYand
+ymEUEX1x8xgI4V5Pr9t/1sV/F6Ppr/SRHE5jetuM2t4onMYPLVi1CeWw3MrnFKiFnMqBFDHrFVHj
+6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwqf0PHk68l4llUfUAAAAASUVORK5CYII=
+------=_Part_42_1459601018.1769852879557--

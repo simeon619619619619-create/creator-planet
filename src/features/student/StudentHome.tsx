@@ -1,0 +1,389 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import {
+  Search,
+  Loader2,
+  Users,
+  Sparkles,
+  BookOpen,
+  Compass,
+  ChevronRight,
+  ArrowRight,
+  Gift,
+  CreditCard,
+  Repeat
+} from 'lucide-react';
+import { useAuth } from '../../core/contexts/AuthContext';
+import { getMemberCommunities, getPublicCommunities } from '../community/communityService';
+import { getEnrolledCourses } from '../courses/courseService';
+import PendingSurveysWidget from '../surveys/components/PendingSurveysWidget';
+import type { DbCommunity, DbCourse } from '../../core/supabase/database.types';
+import type { CommunityListItem } from '../../core/types';
+
+interface StudentHomeProps {
+  onNavigate: (view: string) => void;
+}
+
+const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { user, profile } = useAuth();
+
+  // State
+  const [myCommunities, setMyCommunities] = useState<DbCommunity[]>([]);
+  const [discoverCommunities, setDiscoverCommunities] = useState<CommunityListItem[]>([]);
+  const [enrolledCourses, setEnrolledCourses] = useState<DbCourse[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      if (!user) return;
+
+      setIsLoading(true);
+      try {
+        // Load communities user is a member of
+        const memberCommunities = await getMemberCommunities(user.id);
+        setMyCommunities(memberCommunities);
+
+        // Load public communities for discovery
+        const publicCommunities = await getPublicCommunities();
+        // Filter out communities user is already a member of
+        const memberIds = new Set(memberCommunities.map(c => c.id));
+        const toDiscover = publicCommunities.filter(c => !memberIds.has(c.id));
+        setDiscoverCommunities(toDiscover);
+
+        // Load enrolled courses
+        const courses = await getEnrolledCourses(user.id);
+        setEnrolledCourses(courses);
+      } catch (error) {
+        console.error('Error loading student data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
+  }, [user]);
+
+  // Filter discover communities by search
+  const filteredDiscoverCommunities = discoverCommunities.filter((community) => {
+    if (!searchQuery) return true;
+    const query = searchQuery.toLowerCase();
+    return (
+      community.name.toLowerCase().includes(query) ||
+      community.description?.toLowerCase().includes(query) ||
+      community.creator.full_name.toLowerCase().includes(query)
+    );
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      {/* Welcome Header */}
+      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+          <h1 className="text-2xl md:text-3xl font-bold">
+            {t('studentHome.welcome.title', { firstName: profile?.full_name?.split(' ')[0] || 'Student' })}
+          </h1>
+          <p className="mt-2 text-sm md:text-base text-indigo-100">
+            {t('studentHome.welcome.subtitle')}
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+          <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-slate-200">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 md:p-3 bg-indigo-100 rounded-lg shrink-0">
+                <Users className="w-5 h-5 md:w-6 md:h-6 text-indigo-600" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xl md:text-2xl font-bold text-slate-900">{myCommunities.length}</p>
+                <p className="text-xs md:text-sm text-slate-600 truncate">{t('studentHome.stats.communitiesJoined')}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-slate-200">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 md:p-3 bg-green-100 rounded-lg shrink-0">
+                <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xl md:text-2xl font-bold text-slate-900">{enrolledCourses.length}</p>
+                <p className="text-xs md:text-sm text-slate-600 truncate">{t('studentHome.stats.coursesEnrolled')}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-slate-200">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 md:p-3 bg-purple-100 rounded-lg shrink-0">
+                <Compass className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xl md:text-2xl font-bold text-slate-900">{discoverCommunities.length}</p>
+                <p className="text-xs md:text-sm text-slate-600 truncate">{t('studentHome.stats.communitiesToExplore')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Pending Surveys Widget */}
+        {profile?.id && (
+          <div className="mb-8">
+            <PendingSurveysWidget studentId={profile.id} />
+          </div>
+        )}
+
+        {/* My Communities Section */}
+        {myCommunities.length > 0 && (
+          <section className="mb-8 md:mb-10">
+            <div className="flex items-center justify-between mb-3 md:mb-4">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900">{t('studentHome.myCommunities.title')}</h2>
+              <button
+                onClick={() => onNavigate('community')}
+                className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+              >
+                {t('studentHome.myCommunities.viewAll')} <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {myCommunities.slice(0, 3).map((community) => (
+                <div
+                  key={community.id}
+                  onClick={() => onNavigate('community')}
+                  className="bg-white rounded-xl p-5 shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer"
+                >
+                  <div className="flex items-start gap-3">
+                    {community.thumbnail_url ? (
+                      <img
+                        src={community.thumbnail_url}
+                        alt={community.name}
+                        className="w-12 h-12 rounded-lg object-cover"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+                        {community.name[0]}
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-slate-900 truncate">{community.name}</h3>
+                      <p className="text-sm text-slate-500 line-clamp-2 mt-1">
+                        {community.description || 'A great community to be part of'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Continue Learning Section */}
+        {enrolledCourses.length > 0 && (
+          <section className="mb-8 md:mb-10">
+            <div className="flex items-center justify-between mb-3 md:mb-4">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900">{t('studentHome.continueLearning.title')}</h2>
+              <button
+                onClick={() => onNavigate('courses')}
+                className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+              >
+                {t('studentHome.continueLearning.viewAll')} <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {enrolledCourses.slice(0, 3).map((course) => (
+                <div
+                  key={course.id}
+                  onClick={() => onNavigate('courses')}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer"
+                >
+                  {course.thumbnail_url ? (
+                    <img
+                      src={course.thumbnail_url}
+                      alt={course.title}
+                      className="w-full h-32 object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-32 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                      <BookOpen className="w-12 h-12 text-white/80" />
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-slate-900 truncate">{course.title}</h3>
+                    <p className="text-sm text-slate-500 line-clamp-2 mt-1">
+                      {course.description || 'Continue your learning journey'}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Discover Communities Section */}
+        <section>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+            <div>
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900">{t('studentHome.discoverCommunities.title')}</h2>
+              <p className="text-xs md:text-sm text-slate-600 mt-1">
+                {t('studentHome.discoverCommunities.subtitle')}
+              </p>
+            </div>
+            <button
+              onClick={() => navigate('/communities')}
+              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+            >
+              {t('studentHome.discoverCommunities.browseAll')} <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Search */}
+          <div className="mb-6">
+            <div className="relative max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder={t('studentHome.discoverCommunities.searchPlaceholder')}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              />
+            </div>
+          </div>
+
+          {/* Communities Grid */}
+          {filteredDiscoverCommunities.length === 0 ? (
+            <div className="text-center py-12 bg-white rounded-xl border border-slate-200">
+              <Sparkles className="w-12 h-12 text-slate-300 mx-auto" />
+              <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                {searchQuery ? t('studentHome.discoverCommunities.noResultsTitle') : t('studentHome.discoverCommunities.allCaughtUpTitle')}
+              </h3>
+              <p className="mt-2 text-slate-600">
+                {searchQuery
+                  ? t('studentHome.discoverCommunities.noResultsSubtitle')
+                  : t('studentHome.discoverCommunities.allCaughtUpSubtitle')}
+              </p>
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="mt-4 text-indigo-600 hover:text-indigo-700 font-medium"
+                >
+                  {t('studentHome.discoverCommunities.clearSearch')}
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredDiscoverCommunities.slice(0, 6).map((community) => {
+                const isFree = community.pricing_type === 'free' || community.price_cents === 0;
+                const isMonthly = community.pricing_type === 'monthly';
+                const priceDisplay = isFree
+                  ? t('studentHome.pricing.free')
+                  : `€${(community.price_cents / 100).toFixed(2)}${isMonthly ? t('studentHome.pricing.monthly') : ''}`;
+
+                return (
+                  <div
+                    key={community.id}
+                    onClick={() => navigate(`/community/${community.id}`)}
+                    className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer group"
+                  >
+                    <div className="relative">
+                      <img
+                        src={community.thumbnail_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(community.name)}&background=6366f1&color=fff&size=400`}
+                        alt={community.name}
+                        className="w-full h-32 object-cover"
+                      />
+                      {/* Pricing Badge */}
+                      <div className={`absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${
+                        isFree
+                          ? 'bg-green-500 text-white'
+                          : 'bg-white text-slate-900 shadow-sm'
+                      }`}>
+                        {isFree ? (
+                          <Gift className="w-3 h-3" />
+                        ) : isMonthly ? (
+                          <Repeat className="w-3 h-3" />
+                        ) : (
+                          <CreditCard className="w-3 h-3" />
+                        )}
+                        {priceDisplay}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-slate-900 truncate">{community.name}</h3>
+                          <p className="text-sm text-slate-500 mt-1">
+                            {t('studentHome.communityCard.by', { creatorName: community.creator.full_name })}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-1 text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded-full">
+                          <Users className="w-3 h-3" />
+                          {community.memberCount}
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 line-clamp-2 mt-2">
+                        {community.description || 'Join this community to learn and connect'}
+                      </p>
+                      <button className="mt-3 w-full py-2 bg-indigo-50 text-indigo-600 rounded-lg font-medium text-sm hover:bg-indigo-100 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
+                        {t('studentHome.communityCard.viewCommunity')}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Show More Button */}
+          {filteredDiscoverCommunities.length > 6 && (
+            <div className="text-center mt-6">
+              <button
+                onClick={() => navigate('/communities')}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+              >
+                <Compass className="w-5 h-5" />
+                {t('studentHome.exploreButton', { count: filteredDiscoverCommunities.length })}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* Empty State - No communities at all */}
+        {myCommunities.length === 0 && discoverCommunities.length === 0 && (
+          <div className="text-center py-16">
+            <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Compass className="w-10 h-10 text-indigo-600" />
+            </div>
+            <h2 className="text-2xl font-bold text-slate-900">{t('studentHome.emptyState.title')}</h2>
+            <p className="mt-2 text-slate-600 max-w-md mx-auto">
+              {t('studentHome.emptyState.subtitle')}
+            </p>
+            <button
+              onClick={() => navigate('/communities')}
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            >
+              <Sparkles className="w-5 h-5" />
+              {t('studentHome.emptyState.browseButton')}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default StudentHome;

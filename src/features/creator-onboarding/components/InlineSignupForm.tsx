@@ -1,0 +1,263 @@
+// =============================================================================
+// InlineSignupForm Component
+// Embedded signup form for the end of creator onboarding flow
+// =============================================================================
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { User, Mail, Lock, AlertCircle, CheckCircle, Shield, Zap, Users } from 'lucide-react';
+import { useAuth } from '../../../core/contexts/AuthContext';
+import type { User as SupabaseUser } from '@supabase/supabase-js';
+
+interface InlineSignupFormProps {
+  onSignupSuccess: (user: SupabaseUser) => void;
+  onBack: () => void;
+}
+
+export const InlineSignupForm: React.FC<InlineSignupFormProps> = ({
+  onSignupSuccess,
+  onBack,
+}) => {
+  const { t } = useTranslation();
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setSuccess(false);
+
+    // Validation
+    if (password !== confirmPassword) {
+      setError(t('onboarding.signup.errors.passwordsDontMatch'));
+      return;
+    }
+
+    if (password.length < 6) {
+      setError(t('onboarding.signup.errors.passwordTooShort'));
+      return;
+    }
+
+    if (!fullName.trim()) {
+      setError(t('onboarding.signup.errors.enterFullName'));
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Always sign up as creator - no role selection needed
+      const { error: signUpError } = await signUp(email, password, fullName.trim(), 'creator');
+
+      if (signUpError) {
+        setError(signUpError.message);
+      } else {
+        setSuccess(true);
+        // User is auto-confirmed (no email verification required)
+        // Auth state change will trigger redirect automatically
+      }
+    } catch (err) {
+      setError(t('onboarding.signup.errors.unexpectedError'));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignInClick = () => {
+    navigate('/login');
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 flex items-center justify-center p-3">
+      <div className="w-full max-w-sm">
+        {/* Back button */}
+        <button
+          onClick={onBack}
+          className="mb-3 text-gray-400 hover:text-white transition-colors flex items-center gap-1.5 text-sm"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          {t('onboarding.signup.back')}
+        </button>
+
+        {/* Main card */}
+        <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 p-5 shadow-2xl">
+          {/* Header - more compact */}
+          <div className="text-center mb-4">
+            <div className="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <User className="w-6 h-6 text-indigo-400" />
+            </div>
+            <h1 className="text-xl font-bold text-white">{t('onboarding.signup.title')}</h1>
+            <p className="text-gray-400 text-sm mt-1">{t('onboarding.signup.subtitle')}</p>
+          </div>
+
+          {/* Success Message */}
+          {success && (
+            <div className="mb-4 p-3 bg-green-500/10 border border-green-500/30 rounded-lg flex items-start gap-2">
+              <CheckCircle className="text-green-400 mt-0.5 flex-shrink-0" size={16} />
+              <div>
+                <p className="text-green-300 text-xs font-medium">{t('onboarding.signup.successTitle')}</p>
+                <p className="text-green-400/80 text-[11px] mt-0.5">
+                  {t('onboarding.signup.successMessage')}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start gap-2">
+              <AlertCircle className="text-red-400 mt-0.5 flex-shrink-0" size={16} />
+              <p className="text-red-300 text-xs">{error}</p>
+            </div>
+          )}
+
+          {/* Signup Form - more compact */}
+          <form onSubmit={handleSubmit} className="space-y-3">
+            {/* Full Name Field */}
+            <div>
+              <label htmlFor="fullName" className="block text-xs font-medium text-gray-300 mb-1">
+                {t('onboarding.signup.fullName')}
+              </label>
+              <div className="relative">
+                <User className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
+                <input
+                  id="fullName"
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  placeholder={t('onboarding.signup.fullNamePlaceholder')}
+                  disabled={isLoading || success}
+                />
+              </div>
+            </div>
+
+            {/* Email Field */}
+            <div>
+              <label htmlFor="email" className="block text-xs font-medium text-gray-300 mb-1">
+                {t('onboarding.signup.email')}
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  placeholder={t('onboarding.signup.emailPlaceholder')}
+                  disabled={isLoading || success}
+                />
+              </div>
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <label htmlFor="password" className="block text-xs font-medium text-gray-300 mb-1">
+                {t('onboarding.signup.password')}
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  placeholder={t('onboarding.signup.passwordPlaceholder')}
+                  disabled={isLoading || success}
+                />
+              </div>
+            </div>
+
+            {/* Confirm Password Field */}
+            <div>
+              <label htmlFor="confirmPassword" className="block text-xs font-medium text-gray-300 mb-1">
+                {t('onboarding.signup.confirmPassword')}
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  placeholder={t('onboarding.signup.confirmPasswordPlaceholder')}
+                  disabled={isLoading || success}
+                />
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isLoading || success}
+              className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-sm"
+            >
+              {isLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  {t('onboarding.signup.creatingAccount')}
+                </>
+              ) : success ? (
+                <>
+                  <CheckCircle size={16} />
+                  {t('onboarding.signup.accountCreated')}
+                </>
+              ) : (
+                t('onboarding.signup.createAccount')
+              )}
+            </button>
+          </form>
+
+          {/* Sign In Link */}
+          <div className="mt-4 text-center">
+            <p className="text-gray-400 text-xs">
+              {t('onboarding.signup.alreadyHaveAccount')}{' '}
+              <button
+                onClick={handleSignInClick}
+                className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors"
+              >
+                {t('onboarding.signup.signIn')}
+              </button>
+            </p>
+          </div>
+        </div>
+
+        {/* Trust signals - more compact */}
+        <div className="mt-4 flex justify-center gap-4">
+          <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+            <Shield className="w-3.5 h-3.5 text-indigo-400/70" />
+            <span>{t('onboarding.signup.securePrivate')}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+            <Zap className="w-3.5 h-3.5 text-indigo-400/70" />
+            <span>{t('onboarding.signup.getStartedFree')}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[10px] text-gray-500">
+            <Users className="w-3.5 h-3.5 text-indigo-400/70" />
+            <span>{t('onboarding.signup.joinCreators')}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default InlineSignupForm;

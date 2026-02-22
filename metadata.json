@@ -1,0 +1,8 @@
+{
+  "name": "Creator Club™",
+  "description": "The All-In-One Operating System for Creators. Replace Kajabi, Discord, and Calendly with a single AI-powered platform.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}

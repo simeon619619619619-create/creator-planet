@@ -1,0 +1,64 @@
+name: Balance System Cron Jobs
+
+on:
+  schedule:
+    # Daily at 6:00 AM UTC - Release pending balances (7-day hold)
+    - cron: '0 6 * * *'
+    # Every Friday at 9:00 AM UTC - Process automatic payouts
+    - cron: '0 9 * * 5'
+  workflow_dispatch:
+    inputs:
+      job:
+        description: 'Which job to run'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - release-pending
+          - process-payouts
+
+jobs:
+  release-pending-balances:
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.job == 'both' || github.event.inputs.job == 'release-pending') || (github.event_name == 'schedule' && github.event.schedule == '0 6 * * *')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Pending Balances
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            'https://znqesarsluytxhuiwfkt.supabase.co/functions/v1/release-pending-balances' \
+            -H 'Content-Type: application/json' \
+            -d '{"secret":"${{ secrets.CRON_SECRET }}"}')
+
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          echo "Response: $body"
+          echo "HTTP Status: $http_code"
+
+          if [ "$http_code" != "200" ]; then
+            echo "::error::Function returned HTTP $http_code"
+            exit 1
+          fi
+
+  process-payouts:
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.job == 'both' || github.event.inputs.job == 'process-payouts') || (github.event_name == 'schedule' && github.event.schedule == '0 9 * * 5')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Process Weekly Payouts
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            'https://znqesarsluytxhuiwfkt.supabase.co/functions/v1/process-payouts' \
+            -H 'Content-Type: application/json' \
+            -d '{"secret":"${{ secrets.CRON_SECRET }}"}')
+
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          echo "Response: $body"
+          echo "HTTP Status: $http_code"
+
+          if [ "$http_code" != "200" ]; then
+            echo "::error::Function returned HTTP $http_code"
+            exit 1
+          fi

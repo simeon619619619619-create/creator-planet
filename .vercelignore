@@ -1,0 +1,9 @@
+.env.local
+.env
+.git
+node_modules
+.playwright-mcp
+docs
+supabase/migrations
+*.md
+!README.md
