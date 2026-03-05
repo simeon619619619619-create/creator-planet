@@ -203,7 +203,7 @@ const PayoutHistory: React.FC<PayoutHistoryProps> = ({
                         </p>
                       )}
                       {payout.failed_at && (
-                        <p className="text-xs text-red-400 ml-6">
+                        <p className="text-xs text-[#EF4444] ml-6">
                           {t('billing.payoutHistory.failedAt', {
                             date: formatDateTime(payout.failed_at),
                           })}

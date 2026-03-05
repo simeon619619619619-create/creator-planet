@@ -238,7 +238,7 @@ const SurveyResponses: React.FC<SurveyResponsesProps> = ({ surveyId, onClose }) 
             <button
               onClick={handleExport}
               disabled={isExporting || responses.length === 0}
-              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 py-2 bg-[#22C55E] text-white font-medium rounded-lg hover:bg-[#22C55E]/90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isExporting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

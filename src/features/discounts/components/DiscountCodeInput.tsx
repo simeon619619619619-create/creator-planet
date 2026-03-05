@@ -186,7 +186,7 @@ export function DiscountCodeInput({
         <button
           onClick={handleApply}
           disabled={isValidating || !code.trim()}
-          className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-white hover:bg-[#E0E0E0] disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-black hover:bg-[#E0E0E0] disabled:bg-[#1F1F1F] disabled:text-[#666666] disabled:cursor-not-allowed"
         >
           {isValidating ? (
             <Loader2 className="h-4 w-4 animate-spin" />

@@ -398,7 +398,7 @@ const BillingSettingsPage: React.FC = () => {
   if (!dashboard || !dashboard.currentPlan || !dashboard.billing) {
     return (
       <div className="text-center py-12">
-        <AlertCircle size={48} className="text-amber-500 mx-auto mb-4" />
+        <AlertCircle size={48} className="text-[#EAB308] mx-auto mb-4" />
         <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2">
           {t('billing.settings.errorNotSetup')}
         </h3>
@@ -485,9 +485,9 @@ const BillingSettingsPage: React.FC = () => {
           <div className="p-4 border border-[#1F1F1F] rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               {billing.activation_fee_paid ? (
-                <CheckCircle size={18} className="text-green-500" />
+                <CheckCircle size={18} className="text-[#22C55E]" />
               ) : (
-                <Clock size={18} className="text-amber-500" />
+                <Clock size={18} className="text-[#EAB308]" />
               )}
               <span className="font-medium text-[#FAFAFA]">{t('billing.settings.activationFeeTitle')}</span>
             </div>
@@ -501,7 +501,7 @@ const BillingSettingsPage: React.FC = () => {
           <div className="p-4 border border-[#1F1F1F] rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               {billing.has_first_sale ? (
-                <CheckCircle size={18} className="text-green-500" />
+                <CheckCircle size={18} className="text-[#22C55E]" />
               ) : (
                 <Clock size={18} className="text-[#666666]" />
               )}
@@ -714,9 +714,9 @@ const BillingSettingsPage: React.FC = () => {
               <div className="p-4 border border-[#1F1F1F] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.chargesEnabled ? (
-                    <CheckCircle size={18} className="text-green-500" />
+                    <CheckCircle size={18} className="text-[#22C55E]" />
                   ) : (
-                    <Clock size={18} className="text-amber-500" />
+                    <Clock size={18} className="text-[#EAB308]" />
                   )}
                   <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutChargesEnabled')}</span>
                 </div>
@@ -730,9 +730,9 @@ const BillingSettingsPage: React.FC = () => {
               <div className="p-4 border border-[#1F1F1F] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.payoutsEnabled ? (
-                    <CheckCircle size={18} className="text-green-500" />
+                    <CheckCircle size={18} className="text-[#22C55E]" />
                   ) : (
-                    <Clock size={18} className="text-amber-500" />
+                    <Clock size={18} className="text-[#EAB308]" />
                   )}
                   <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutPayoutsEnabled')}</span>
                 </div>
@@ -746,9 +746,9 @@ const BillingSettingsPage: React.FC = () => {
               <div className="p-4 border border-[#1F1F1F] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.detailsSubmitted ? (
-                    <CheckCircle size={18} className="text-green-500" />
+                    <CheckCircle size={18} className="text-[#22C55E]" />
                   ) : (
-                    <Clock size={18} className="text-amber-500" />
+                    <Clock size={18} className="text-[#EAB308]" />
                   )}
                   <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutIdentityVerified')}</span>
                 </div>
@@ -984,10 +984,10 @@ interface PayoutRowProps {
 
 const PayoutRow: React.FC<PayoutRowProps> = ({ payout, t }) => {
   const statusIcons: Record<string, React.ReactNode> = {
-    completed: <CheckCircle size={16} className="text-green-500" />,
+    completed: <CheckCircle size={16} className="text-[#22C55E]" />,
     processing: <Clock size={16} className="text-[#A0A0A0]" />,
-    pending: <Clock size={16} className="text-amber-500" />,
-    failed: <XCircle size={16} className="text-red-500" />,
+    pending: <Clock size={16} className="text-[#EAB308]" />,
+    failed: <XCircle size={16} className="text-[#EF4444]" />,
   };
 
   const statusLabels: Record<string, string> = {
@@ -1043,9 +1043,9 @@ const SaleRow: React.FC<SaleRowProps> = ({ sale, t }) => {
   };
 
   const statusIcons: Record<string, React.ReactNode> = {
-    completed: <CheckCircle size={16} className="text-green-500" />,
-    pending: <Clock size={16} className="text-amber-500" />,
-    failed: <XCircle size={16} className="text-red-500" />,
+    completed: <CheckCircle size={16} className="text-[#22C55E]" />,
+    pending: <Clock size={16} className="text-[#EAB308]" />,
+    failed: <XCircle size={16} className="text-[#EF4444]" />,
     refunded: <AlertCircle size={16} className="text-[#666666]" />,
   };
 

@@ -165,7 +165,7 @@ export function TBIApplicationModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div className="relative w-full max-w-md bg-[#0A0A0A] rounded-2xl overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4 flex items-center justify-between">
+        <div className="bg-orange-500 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img
               src="https://cdn.tbibank.support/logo/tbi-bank-white.svg"
@@ -306,9 +306,9 @@ export function TBIApplicationModal({
                 disabled={!isFormValid()}
                 className="
                   w-full py-3 px-4 rounded-lg font-medium
-                  bg-gradient-to-r from-orange-500 to-orange-600
+                  bg-orange-500
                   text-white
-                  hover:from-orange-600 hover:to-orange-700
+                  hover:bg-orange-600
                   disabled:opacity-50 disabled:cursor-not-allowed
                   flex items-center justify-center gap-2
                   transition-all duration-200

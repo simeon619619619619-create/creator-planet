@@ -103,11 +103,11 @@ export const InlineSignupForm: React.FC<InlineSignupFormProps> = ({
 
           {/* Success Message */}
           {success && (
-            <div className="mb-4 p-3 bg-[#22C55E]/100/10 border border-green-500/30 rounded-lg flex items-start gap-2">
-              <CheckCircle className="text-green-400 mt-0.5 flex-shrink-0" size={16} />
+            <div className="mb-4 p-3 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg flex items-start gap-2">
+              <CheckCircle className="text-[#22C55E] mt-0.5 flex-shrink-0" size={16} />
               <div>
-                <p className="text-green-300 text-xs font-medium">{t('onboarding.signup.successTitle')}</p>
-                <p className="text-green-400/80 text-[11px] mt-0.5">
+                <p className="text-[#22C55E] text-xs font-medium">{t('onboarding.signup.successTitle')}</p>
+                <p className="text-[#22C55E]/80 text-[11px] mt-0.5">
                   {t('onboarding.signup.successMessage')}
                 </p>
               </div>
@@ -116,9 +116,9 @@ export const InlineSignupForm: React.FC<InlineSignupFormProps> = ({
 
           {/* Error Message */}
           {error && (
-            <div className="mb-4 p-3 bg-[#EF4444]/100/10 border border-red-500/30 rounded-lg flex items-start gap-2">
-              <AlertCircle className="text-red-400 mt-0.5 flex-shrink-0" size={16} />
-              <p className="text-red-300 text-xs">{error}</p>
+            <div className="mb-4 p-3 bg-[#EF4444]/10 border border-[#EF4444]/30 rounded-lg flex items-start gap-2">
+              <AlertCircle className="text-[#EF4444] mt-0.5 flex-shrink-0" size={16} />
+              <p className="text-[#EF4444] text-xs">{error}</p>
             </div>
           )}
 

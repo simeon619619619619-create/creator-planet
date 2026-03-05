@@ -113,7 +113,7 @@ export const UpgradePrompt: React.FC<UpgradePromptProps> = ({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-[#0A0A0A] rounded-2xl w-full max-w-md overflow-hidden">
         {/* Header */}
-        <div className="bg-white p-6 text-white relative">
+        <div className="bg-[#151515] p-6 text-[#FAFAFA] relative">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 p-1 rounded-full hover:bg-[#0A0A0A]/20 transition-colors"

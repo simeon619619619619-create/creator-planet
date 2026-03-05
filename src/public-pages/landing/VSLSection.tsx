@@ -72,15 +72,15 @@ const VSLSection: React.FC<VSLSectionProps> = ({
   }, [showVideo, videoId, videoUrl]);
 
   return (
-    <section className="py-20 px-4 bg-slate-50">
+    <section className="py-20 px-4 bg-[#0A0A0A]">
       <div className="max-w-4xl mx-auto">
         {/* Headline */}
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-slate-900">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#FAFAFA]">
           {headline}
         </h2>
 
         {/* Video Container */}
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-[#1F1F1F]">
           {!showVideo ? (
             // Thumbnail with Play Button Overlay
             <div
@@ -95,15 +95,15 @@ const VSLSection: React.FC<VSLSectionProps> = ({
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                  <p className="text-white text-xl font-semibold">Click to Play</p>
+                <div className="w-full h-full bg-[#1F1F1F] flex items-center justify-center">
+                  <p className="text-[#FAFAFA] text-xl font-semibold">Click to Play</p>
                 </div>
               )}
 
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Play className="w-8 h-8 text-indigo-600 ml-1" fill="currentColor" />
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Play className="w-8 h-8 text-black ml-1" fill="currentColor" />
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ const VSLSection: React.FC<VSLSectionProps> = ({
 
         {/* Optional Caption */}
         {!showVideo && (
-          <p className="text-center text-slate-600 mt-6 text-sm">
+          <p className="text-center text-[#A0A0A0] mt-6 text-sm">
             Watch the full demo to see how Founders Club replaces 5+ tools
           </p>
         )}

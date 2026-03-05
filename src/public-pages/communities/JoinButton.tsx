@@ -498,7 +498,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
       </button>
 
       {error && (
-        <p className="text-xs text-red-600">{error}</p>
+        <p className="text-xs text-[#EF4444]">{error}</p>
       )}
 
       {/* Intake Survey Modal */}

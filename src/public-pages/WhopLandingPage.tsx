@@ -131,7 +131,7 @@ const CategoryCard: React.FC<{
       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 brightness-[0.35] group-hover:brightness-[0.25]"
     />
     <div className="absolute inset-0 bg-black/40" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+    <div className="absolute inset-0 bg-black/50" />
     <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center gap-2">
       <div className="w-8 h-8 rounded-lg bg-[#1F1F1F] flex items-center justify-center">
         <category.icon className="text-white" size={16} />

@@ -193,7 +193,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
             <p className="text-[#EF4444] text-sm">{error}</p>
             <button
               onClick={() => setError(null)}
-              className="ml-auto text-red-400 hover:text-[#EF4444]"
+              className="ml-auto text-[#EF4444] hover:text-[#EF4444]"
             >
               <X size={16} />
             </button>

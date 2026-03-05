@@ -174,7 +174,7 @@ const TeamSettingsTab: React.FC = () => {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <div className="w-14 h-14 rounded-2xl bg-[#1F1F1F] flex items-center justify-center mx-auto mb-4 shadow-none">
+          <div className="w-14 h-14 rounded-2xl bg-[#1F1F1F] flex items-center justify-center mx-auto mb-4">
             <Loader2 size={24} className="text-white animate-spin" />
           </div>
           <p className="text-[#A0A0A0] font-medium">{t('common.loading')}</p>
@@ -188,7 +188,7 @@ const TeamSettingsTab: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-[#1F1F1F] flex items-center justify-center shadow-none">
+          <div className="w-12 h-12 rounded-xl bg-[#1F1F1F] flex items-center justify-center">
             <Users size={22} className="text-white" />
           </div>
           <div>
@@ -211,7 +211,7 @@ const TeamSettingsTab: React.FC = () => {
 
       {/* Error Display */}
       {error && (
-        <div className="mb-6 p-4 bg-[#EF4444]/10 border border-red-100 rounded-xl text-[#EF4444] flex items-start gap-3">
+        <div className="mb-6 p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-xl text-[#EF4444] flex items-start gap-3">
           <div className="w-8 h-8 rounded-lg bg-[#EF4444]/10 flex items-center justify-center shrink-0">
             <AlertCircle size={16} className="text-[#EF4444]" />
           </div>
@@ -369,7 +369,7 @@ const TeamMemberRow: React.FC<TeamMemberRowProps> = ({
           size="md"
         />
         {member.is_messageable && (
-          <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#22C55E]/100 border-2 border-white flex items-center justify-center">
+          <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#22C55E] border-2 border-white flex items-center justify-center">
             <MessageSquare size={8} className="text-white" />
           </div>
         )}
@@ -495,7 +495,7 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
               {t(`team.badges.${badgeType}`)}
             </span>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#EAB308]/10 text-[#EAB308] text-xs font-semibold rounded-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EAB308]/100 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#EAB308] animate-pulse" />
               {t('team.settings.pendingInvite')}
             </span>
           </div>

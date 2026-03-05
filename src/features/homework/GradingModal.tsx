@@ -179,7 +179,7 @@ const GradingModal: React.FC<GradingModalProps> = ({
 
           {/* No Content Message */}
           {!submission.text_response && (!submission.file_urls || submission.file_urls.length === 0) && (
-            <div className="bg-[#EAB308]/10 border border-yellow-200 text-yellow-700 px-4 py-3 rounded-lg text-sm">
+            <div className="bg-[#EAB308]/10 border border-[#EAB308]/20 text-[#EAB308] px-4 py-3 rounded-lg text-sm">
               {t('homeworkManagement.gradingModal.noContentWarning')}
             </div>
           )}
@@ -245,7 +245,7 @@ const GradingModal: React.FC<GradingModalProps> = ({
           <button
             onClick={handleGrade}
             disabled={isGrading}
-            className="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
+            className="flex-1 bg-[#22C55E] text-white px-4 py-2 rounded-lg hover:bg-[#22C55E]/90 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
           >
             {isGrading ? (
               <>

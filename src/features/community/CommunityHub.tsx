@@ -1617,11 +1617,11 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   {leaderboard.map((member, index) => {
                     const isCurrentUser = user?.id === member.user_id;
                     const rankColors = [
-                      'from-[#FAFAFA] to-[#A0A0A0]', // 1st place
-                      'from-[#A0A0A0] to-[#666666]', // 2nd place
-                      'from-[#666666] to-[#333333]', // 3rd place
+                      'bg-[#FAFAFA] text-black', // 1st place
+                      'bg-[#A0A0A0] text-black', // 2nd place
+                      'bg-[#666666]', // 3rd place
                     ];
-                    const rankColor = index < 3 ? rankColors[index] : 'from-[#333333] to-[#1F1F1F]';
+                    const rankColor = index < 3 ? rankColors[index] : 'bg-[#333333]';
 
                     return (
                       <div
@@ -1632,7 +1632,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                             : 'bg-[#0A0A0A] border-[#1F1F1F] hover:border-[#333333]'
                         }`}
                       >
-                        <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br ${rankColor} text-white font-bold text-sm shrink-0`}>
+                        <div className={`flex items-center justify-center w-8 h-8 rounded-full ${rankColor} text-white font-bold text-sm shrink-0`}>
                           {index + 1}
                         </div>
 

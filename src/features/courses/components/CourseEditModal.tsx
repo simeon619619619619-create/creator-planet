@@ -274,7 +274,7 @@ const CourseEditModal: React.FC<CourseEditModalProps> = ({
             <button
               onClick={() => setIsPublished(!isPublished)}
               className={`relative w-12 h-6 rounded-full transition-colors ${
-                isPublished ? 'bg-[#22C55E]/100' : 'bg-[#333333]'
+                isPublished ? 'bg-[#22C55E]' : 'bg-[#333333]'
               }`}
             >
               <span

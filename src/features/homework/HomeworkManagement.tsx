@@ -403,7 +403,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                       className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium text-sm transition-colors ${
                         selectedAssignment.is_published
                           ? 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#151515]'
-                          : 'bg-green-600 text-white hover:bg-green-700'
+                          : 'bg-[#22C55E] text-white hover:bg-[#22C55E]/80'
                       }`}
                     >
                       {selectedAssignment.is_published ? (

@@ -87,7 +87,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex items-center justify-center p-3">
+    <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-3">
       <div className="w-full max-w-sm">
         {/* Back button */}
         <button
@@ -104,8 +104,8 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
         <div className="bg-[#0A0A0A]/50 backdrop-blur-sm rounded-xl border border-[#1F1F1F]/50 p-5">
           {/* Header */}
           <div className="text-center mb-4">
-            <div className="w-12 h-12 bg-[#22C55E]/100/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-              <User className="w-6 h-6 text-emerald-400" />
+            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <User className="w-6 h-6 text-[#666666]" />
             </div>
             <h1 className="text-xl font-bold text-white">{t('studentOnboarding.signup.title')}</h1>
             <p className="text-[#666666] text-sm mt-1">{t('studentOnboarding.signup.subtitle')}</p>
@@ -113,11 +113,11 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
 
           {/* Success Message */}
           {success && (
-            <div className="mb-4 p-3 bg-[#22C55E]/100/10 border border-emerald-500/30 rounded-lg flex items-start gap-2">
-              <CheckCircle className="text-emerald-400 mt-0.5 flex-shrink-0" size={16} />
+            <div className="mb-4 p-3 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg flex items-start gap-2">
+              <CheckCircle className="text-[#22C55E] mt-0.5 flex-shrink-0" size={16} />
               <div>
-                <p className="text-emerald-300 text-xs font-medium">{t('studentOnboarding.signup.successTitle')}</p>
-                <p className="text-emerald-400/80 text-[11px] mt-0.5">
+                <p className="text-[#22C55E] text-xs font-medium">{t('studentOnboarding.signup.successTitle')}</p>
+                <p className="text-[#22C55E]/80 text-[11px] mt-0.5">
                   {t('studentOnboarding.signup.successMessage')}
                 </p>
               </div>
@@ -126,9 +126,9 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
 
           {/* Error Message */}
           {error && (
-            <div className="mb-4 p-3 bg-[#EF4444]/100/10 border border-red-500/30 rounded-lg flex items-start gap-2">
-              <AlertCircle className="text-red-400 mt-0.5 flex-shrink-0" size={16} />
-              <p className="text-red-300 text-xs">{error}</p>
+            <div className="mb-4 p-3 bg-[#EF4444]/10 border border-[#EF4444]/30 rounded-lg flex items-start gap-2">
+              <AlertCircle className="text-[#EF4444] mt-0.5 flex-shrink-0" size={16} />
+              <p className="text-[#EF4444] text-xs">{error}</p>
             </div>
           )}
 
@@ -147,7 +147,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
-                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-[#555555] transition-all"
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-all"
                   placeholder={t('studentOnboarding.signup.fullNamePlaceholder')}
                   disabled={isLoading || success}
                 />
@@ -167,7 +167,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-[#555555] transition-all"
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-all"
                   placeholder={t('studentOnboarding.signup.emailPlaceholder')}
                   disabled={isLoading || success}
                 />
@@ -187,7 +187,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-[#555555] transition-all"
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-all"
                   placeholder={t('studentOnboarding.signup.passwordPlaceholder')}
                   disabled={isLoading || success}
                 />
@@ -207,7 +207,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
-                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-[#555555] transition-all"
+                  className="w-full pl-8 pr-3 py-2 text-sm bg-[#151515]/50 border border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-all"
                   placeholder={t('studentOnboarding.signup.confirmPasswordPlaceholder')}
                   disabled={isLoading || success}
                 />
@@ -218,11 +218,11 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
             <button
               type="submit"
               disabled={isLoading || success}
-              className="w-full bg-[#22C55E]/100 hover:bg-emerald-600 text-white font-semibold py-2.5 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-sm"
+              className="w-full bg-white hover:bg-[#E0E0E0] text-black font-semibold py-2.5 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-sm"
             >
               {isLoading ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
                   {t('studentOnboarding.signup.creatingAccount')}
                 </>
               ) : success ? (
@@ -242,7 +242,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
               {t('studentOnboarding.signup.alreadyHaveAccount')}{' '}
               <button
                 onClick={handleSignInClick}
-                className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
+                className="text-[#A0A0A0] hover:text-white font-semibold transition-colors"
               >
                 {t('studentOnboarding.signup.signIn')}
               </button>
@@ -253,15 +253,15 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
         {/* Trust signals */}
         <div className="mt-4 flex justify-center gap-4">
           <div className="flex items-center gap-1.5 text-[10px] text-[#666666]">
-            <BookOpen className="w-3.5 h-3.5 text-emerald-400/70" />
+            <BookOpen className="w-3.5 h-3.5 text-[#666666]/70" />
             <span>{t('studentOnboarding.signup.accessCourses')}</span>
           </div>
           <div className="flex items-center gap-1.5 text-[10px] text-[#666666]">
-            <Users className="w-3.5 h-3.5 text-emerald-400/70" />
+            <Users className="w-3.5 h-3.5 text-[#666666]/70" />
             <span>{t('studentOnboarding.signup.joinCommunities')}</span>
           </div>
           <div className="flex items-center gap-1.5 text-[10px] text-[#666666]">
-            <Trophy className="w-3.5 h-3.5 text-emerald-400/70" />
+            <Trophy className="w-3.5 h-3.5 text-[#666666]/70" />
             <span>{t('studentOnboarding.signup.earnRewards')}</span>
           </div>
         </div>

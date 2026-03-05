@@ -431,7 +431,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
               <div className="flex items-start gap-3">
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
-                    qr.is_correct ? 'bg-[#22C55E]/100' : 'bg-[#EF4444]'
+                    qr.is_correct ? 'bg-[#22C55E]' : 'bg-[#EF4444]'
                   }`}
                 >
                   {qr.is_correct ? (

@@ -184,7 +184,7 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
                     <button
                       onClick={() => handleApprove(application.id)}
                       disabled={isProcessing}
-                      className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg transition-colors disabled:opacity-50"
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white bg-[#22C55E] hover:bg-[#22C55E]/80 rounded-lg transition-colors disabled:opacity-50"
                     >
                       {isProcessing ? (
                         <Loader2 className="w-4 h-4 animate-spin" />

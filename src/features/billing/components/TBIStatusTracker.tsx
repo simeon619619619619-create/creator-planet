@@ -212,7 +212,7 @@ export function TBIStatusTracker({
   return (
     <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4">
+      <div className="bg-orange-500 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
@@ -260,7 +260,7 @@ export function TBIStatusTracker({
               {/* Progress line */}
               <div className="absolute top-4 left-0 right-0 h-0.5 bg-[#1F1F1F]">
                 <div
-                  className="h-full bg-[#EAB308]/100 transition-all duration-500"
+                  className="h-full bg-[#EAB308] transition-all duration-500"
                   style={{ width: `${(currentStepIndex / (STATUS_STEPS.length - 1)) * 100}%` }}
                 />
               </div>
@@ -281,9 +281,9 @@ export function TBIStatusTracker({
                         w-8 h-8 rounded-full flex items-center justify-center
                         transition-all duration-300
                         ${isCompleted
-                          ? 'bg-[#EAB308]/100 text-white'
+                          ? 'bg-[#EAB308] text-white'
                           : isActive
-                            ? 'bg-[#EAB308]/100 text-white ring-2 ring-[#EAB308]/10'
+                            ? 'bg-[#EAB308] text-white ring-2 ring-[#EAB308]/10'
                             : 'bg-[#1F1F1F] text-[#666666]'
                         }
                       `}
@@ -339,7 +339,7 @@ export function TBIStatusTracker({
             <div className="flex items-start gap-3">
               <Clock className="w-5 h-5 text-[#EAB308] flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-yellow-700">Кандидатурата е изтекла</p>
+                <p className="font-medium text-[#EAB308]">Кандидатурата е изтекла</p>
                 <p className="text-sm text-[#EAB308] mt-1">
                   Времето за завършване на кандидатурата изтече. Моля, кандидатствайте отново.
                 </p>

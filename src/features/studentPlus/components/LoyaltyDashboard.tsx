@@ -36,7 +36,7 @@ export function LoyaltyDashboard({ consecutiveMonths }: LoyaltyDashboardProps) {
   return (
     <div className="space-y-6">
       {/* Points Balance Card */}
-      <div className="bg-gradient-to-r to-[#1F1F1F] to-pink-600 text-white rounded-xl p-6">
+      <div className="bg-[#151515] text-white rounded-xl p-6 border border-[#1F1F1F]">
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-lg opacity-90 mb-1">{t('studentPlus.dashboard.yourPoints')}</h2>

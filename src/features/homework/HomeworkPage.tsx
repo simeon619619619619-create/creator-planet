@@ -225,7 +225,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
               {pendingSurveys.slice(0, 3).map((survey) => (
                 <div
                   key={survey.id}
-                  className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-[#EAB308]/20 p-5 hover:shadow-md hover:border-[#EAB308]/20 transition-all"
+                  className="bg-[#EAB308]/5 rounded-xl border border-[#EAB308]/20 p-5 hover:border-[#EAB308]/30 transition-all"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
@@ -277,7 +277,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
 
           {pendingAssignments.length === 0 ? (
             <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
-              <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
+              <CheckCircle className="w-12 h-12 text-[#22C55E] mx-auto mb-3" />
               <h3 className="text-lg font-semibold text-[#FAFAFA]">
                 {t('homework.pendingAssignments.emptyTitle')}
               </h3>
@@ -290,7 +290,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
               {pendingAssignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-5 hover:shadow-md hover:border-[#1F1F1F] transition-all"
+                  className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-5 hover:border-[#333333] transition-all"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">

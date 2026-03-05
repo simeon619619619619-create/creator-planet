@@ -142,7 +142,7 @@ export function TBICalculator({
                     className={`
                       w-5 h-5 rounded-full border-2 flex items-center justify-center
                       ${isSelected 
-                        ? 'border-orange-500 bg-[#EAB308]/100' 
+                        ? 'border-orange-500 bg-[#EAB308]' 
                         : 'border-[#1F1F1F]'
                       }
                     `}

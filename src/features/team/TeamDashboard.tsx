@@ -164,7 +164,7 @@ const TeamDashboard: React.FC = () => {
               <MessageSquare className="w-5 h-5 text-[#FAFAFA]" />
               <h2 className="font-semibold text-[#FAFAFA]">{t('teamDashboard.messages')}</h2>
               {unreadCount > 0 && (
-                <span className="bg-[#EF4444]/100 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                <span className="bg-[#EF4444] text-white text-xs font-medium px-2 py-0.5 rounded-full">
                   {unreadCount}
                 </span>
               )}

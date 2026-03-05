@@ -149,7 +149,7 @@ const PricingPage: React.FC = () => {
 
         {/* Error Display */}
         {error && (
-          <div className="mb-8 p-4 bg-[#EF4444]/10 border border-red-200 rounded-lg text-red-700 text-center">
+          <div className="mb-8 p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg text-[#EF4444] text-center">
             {error}
           </div>
         )}

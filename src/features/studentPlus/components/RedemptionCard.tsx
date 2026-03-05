@@ -104,7 +104,7 @@ export function RedemptionCard({ redemption }: RedemptionCardProps) {
       {redemption.valid_until && redemption.status === 'active' && (
         <div className={`mt-4 p-3 rounded-lg ${isExpiringSoon() ? 'bg-[#EAB308]/10 border border-[#EAB308]/20' : 'bg-[#0A0A0A]'}`}>
           <div className="flex items-center justify-between">
-            <span className={`text-sm ${isExpiringSoon() ? 'text-yellow-700' : 'text-[#A0A0A0]'}`}>
+            <span className={`text-sm ${isExpiringSoon() ? 'text-[#EAB308]' : 'text-[#A0A0A0]'}`}>
               {isExpiringSoon() ? t('studentPlus.redemption.expiresSoon') : t('studentPlus.redemption.validUntil')}
             </span>
             <span className={`font-medium ${isExpiringSoon() ? 'text-[#EAB308]' : 'text-[#FAFAFA]'}`}>

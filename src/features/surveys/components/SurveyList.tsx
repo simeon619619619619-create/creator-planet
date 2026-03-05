@@ -728,7 +728,7 @@ const SurveyList: React.FC<SurveyListProps> = ({ creatorId, communityId }) => {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] hover:shadow-md transition-all"
+          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] hover:border-[#333333] transition-all"
         >
           <Plus className="w-5 h-5" />
           {t('surveys.list.create')}
@@ -757,7 +757,7 @@ const SurveyList: React.FC<SurveyListProps> = ({ creatorId, communityId }) => {
           </p>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] hover:shadow-md transition-all"
+            className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] hover:border-[#333333] transition-all"
           >
             <Plus className="w-5 h-5" />
             {t('surveys.list.createFirst')}

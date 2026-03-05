@@ -44,7 +44,7 @@ export function RewardCard({ reward, userPoints, onRedeem, isRedeeming }: Reward
   };
 
   return (
-    <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl p-5 hover:shadow-md transition-shadow">
+    <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl p-5 hover:border-[#333333] transition-shadow">
       <div className="flex items-start gap-4">
         <div className="text-3xl">{rewardTypeIcons[reward.reward_type]}</div>
         <div className="flex-1 min-w-0">

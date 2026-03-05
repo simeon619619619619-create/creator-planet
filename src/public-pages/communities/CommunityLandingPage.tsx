@@ -444,7 +444,7 @@ export const CommunityLandingPage: React.FC = () => {
             alt={community.name}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
+          <div className="absolute inset-0 bg-[#0A0A0A]/70" />
         </div>
 
         {/* Hero Content */}

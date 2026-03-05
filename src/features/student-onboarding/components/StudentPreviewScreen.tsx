@@ -97,13 +97,12 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
   const interestDisplay = getInterestDisplay();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      {/* Subtle gradient background shapes */}
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* Subtle background shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large gradient orbs with subtle animation */}
-        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-emerald-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-cyan-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-teal-500/5 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-white/5 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '6s' }} />
       </div>
 
       {/* Header with enhanced animation */}
@@ -115,15 +114,15 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
         <div className="flex items-center justify-center gap-2 mb-2">
           <Sparkles
             size={24}
-            className="text-emerald-400 animate-pulse"
+            className="text-[#666666] animate-pulse"
             style={{ animationDuration: '2s' }}
           />
-          <span className="text-emerald-400 text-sm font-medium tracking-wide uppercase">
+          <span className="text-[#666666] text-sm font-medium tracking-wide uppercase">
             {t('studentOnboarding.preview.ready', 'Ready')}
           </span>
           <Sparkles
             size={24}
-            className="text-emerald-400 animate-pulse"
+            className="text-[#666666] animate-pulse"
             style={{ animationDuration: '2s' }}
           />
         </div>
@@ -143,8 +142,8 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
         style={{ transitionDelay: '150ms' }}
       >
         {/* Enhanced glow effect */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/30 via-teal-500/25 to-cyan-500/30 blur-3xl rounded-3xl opacity-70" />
-        <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 blur-xl rounded-2xl" />
+        <div className="absolute -inset-4 bg-white/5 blur-3xl rounded-3xl opacity-70" />
+        <div className="absolute -inset-1 bg-white/5 blur-xl rounded-2xl" />
 
         {/* Main mockup */}
         <div className="relative bg-[#0A0A0A]/95 rounded-xl border border-[#1F1F1F]/50 overflow-hidden backdrop-blur-sm" style={{ minHeight: '55vh', maxHeight: '70vh' }}>
@@ -152,14 +151,14 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
           <div className="flex items-center justify-between px-4 py-3 bg-[#0A0A0A]/80 border-b border-[#1F1F1F]/50">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#EF4444]/100/80" />
-                <div className="w-3 h-3 rounded-full bg-[#EAB308]/100/80" />
-                <div className="w-3 h-3 rounded-full bg-[#22C55E]/100/80" />
+                <div className="w-3 h-3 rounded-full bg-[#EF4444]/80" />
+                <div className="w-3 h-3 rounded-full bg-[#EAB308]/80" />
+                <div className="w-3 h-3 rounded-full bg-[#22C55E]/80" />
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-[#22C55E]/100 rounded flex items-center justify-center">
-                <span className="text-white text-xs font-bold">C</span>
+              <div className="w-5 h-5 bg-white rounded flex items-center justify-center">
+                <span className="text-black text-xs font-bold">C</span>
               </div>
               <span className="text-white font-semibold text-sm">{t('studentOnboarding.preview.myLearning')}</span>
             </div>
@@ -170,8 +169,8 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
           <div className="flex flex-1">
             {/* Sidebar */}
             <div className="w-14 md:w-16 bg-[#0A0A0A]/60 border-r border-[#1F1F1F]/30 py-4 px-2 space-y-3">
-              <div className="flex flex-col items-center p-2 rounded-lg bg-emerald-600/20 border border-emerald-500/30">
-                <BookOpen size={18} className="text-emerald-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg bg-white/20 border border-[#333333]/30">
+                <BookOpen size={18} className="text-[#FAFAFA]" />
               </div>
               <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
                 <Users size={18} className="text-[#666666]" />
@@ -202,11 +201,11 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
               {/* Stats cards with animated counting */}
               <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
                 {/* Courses */}
-                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-emerald-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-[#333333]/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-[#22C55E]/100/20 rounded-lg flex items-center justify-center">
-                      <BookOpen size={16} className="text-emerald-400 md:hidden" />
-                      <BookOpen size={20} className="text-emerald-400 hidden md:block" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <BookOpen size={16} className="text-[#666666] md:hidden" />
+                      <BookOpen size={20} className="text-[#666666] hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{coursesCount}</div>
@@ -214,11 +213,11 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
                 </div>
 
                 {/* Progress */}
-                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-cyan-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-[#333333]/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
-                      <TrendingUp size={16} className="text-cyan-400 md:hidden" />
-                      <TrendingUp size={20} className="text-cyan-400 hidden md:block" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <TrendingUp size={16} className="text-[#666666] md:hidden" />
+                      <TrendingUp size={20} className="text-[#666666] hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{progressCount}%</div>
@@ -226,11 +225,11 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
                 </div>
 
                 {/* Points */}
-                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-amber-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-[#333333]/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-[#EAB308]/100/20 rounded-lg flex items-center justify-center">
-                      <Trophy size={16} className="text-amber-400 md:hidden" />
-                      <Trophy size={20} className="text-amber-400 hidden md:block" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <Trophy size={16} className="text-[#666666] md:hidden" />
+                      <Trophy size={20} className="text-[#666666] hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{pointsCount}</div>
@@ -239,11 +238,11 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
               </div>
 
               {/* Continue learning card - larger */}
-              <div className="bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-xl p-4 border border-emerald-500/20 mt-auto">
+              <div className="bg-[#1F1F1F]/20 rounded-xl p-4 border border-[#1F1F1F]/20 mt-auto">
                 <div className="flex items-center gap-4">
                   <div className="w-20 h-14 md:w-24 md:h-16 bg-[#151515] rounded-lg flex items-center justify-center shrink-0">
-                    <Play size={20} className="text-emerald-400 md:hidden" />
-                    <Play size={24} className="text-emerald-400 hidden md:block" />
+                    <Play size={20} className="text-[#FAFAFA] md:hidden" />
+                    <Play size={24} className="text-[#FAFAFA] hidden md:block" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm md:text-base font-medium text-white truncate">
@@ -253,8 +252,8 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
                       {t('studentOnboarding.preview.lesson5of12')}
                     </p>
                   </div>
-                  <ArrowRight size={18} className="text-emerald-400 shrink-0 md:hidden" />
-                  <ArrowRight size={22} className="text-emerald-400 shrink-0 hidden md:block" />
+                  <ArrowRight size={18} className="text-[#A0A0A0] shrink-0 md:hidden" />
+                  <ArrowRight size={22} className="text-[#A0A0A0] shrink-0 hidden md:block" />
                 </div>
               </div>
             </div>
@@ -271,7 +270,7 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
       >
         <button
           onClick={onContinue}
-          className="group px-8 py-3.5 bg-emerald-600 hover:bg-[#22C55E]/100 text-white font-semibold rounded-xl shadow-emerald-500/30 transition-all duration-200 flex items-center gap-2 hover:scale-[1.02]"
+          className="group px-8 py-3.5 bg-white hover:bg-[#E0E0E0] text-black font-semibold rounded-xl transition-all duration-200 flex items-center gap-2 hover:scale-[1.02]"
         >
           <span>{t('studentOnboarding.continue')}</span>
           <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />

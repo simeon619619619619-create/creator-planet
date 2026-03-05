@@ -61,13 +61,13 @@ export const TBI_STATUS_LABELS: Record<TBIApplicationStatus, string> = {
 };
 
 export const TBI_STATUS_COLORS: Record<TBIApplicationStatus, string> = {
-  pending: 'text-yellow-600 bg-yellow-50',
-  processing: 'text-blue-600 bg-blue-50',
-  approved: 'text-green-600 bg-green-50',
-  rejected: 'text-red-600 bg-red-50',
-  cancelled: 'text-gray-600 bg-gray-50',
-  completed: 'text-emerald-600 bg-emerald-50',
-  expired: 'text-gray-500 bg-gray-100',
+  pending: 'text-[#EAB308] bg-[#EAB308]/10',
+  processing: 'text-[#A0A0A0] bg-[#1F1F1F]',
+  approved: 'text-[#22C55E] bg-[#22C55E]/10',
+  rejected: 'text-[#EF4444] bg-[#EF4444]/10',
+  cancelled: 'text-[#666666] bg-[#1F1F1F]',
+  completed: 'text-[#22C55E] bg-[#22C55E]/10',
+  expired: 'text-[#666666] bg-[#1F1F1F]',
 };
 
 // ============================================================================

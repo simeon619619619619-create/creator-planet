@@ -161,7 +161,7 @@ export function DiscountsPage() {
     }
     if (isMaxedOut(code)) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-600">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#EAB308]/10 px-2 py-0.5 text-xs font-medium text-[#EAB308]">
           <Users className="h-3 w-3" /> {t('discounts.status.maxedOut')}
         </span>
       );
@@ -207,7 +207,7 @@ export function DiscountsPage() {
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-white hover:bg-[#E0E0E0]"
+            className="flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-black hover:bg-[#E0E0E0]"
           >
             <Plus className="h-4 w-4" />
             {t('discounts.page.createButton')}
@@ -270,7 +270,7 @@ export function DiscountsPage() {
             {!searchQuery && filterStatus === 'all' && (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="mt-4 flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-white hover:bg-[#E0E0E0]"
+                className="mt-4 flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black hover:bg-[#E0E0E0]"
               >
                 <Plus className="h-4 w-4" />
                 {t('discounts.page.createButton')}
@@ -283,7 +283,7 @@ export function DiscountsPage() {
             {filteredCodes.map((code) => (
               <div
                 key={code.id}
-                className="rounded-xl border border-[#1F1F1F] bg-[#0A0A0A] p-5 transition-shadow hover:shadow-md"
+                className="rounded-xl border border-[#1F1F1F] bg-[#0A0A0A] p-5 transition-shadow hover:border-[#333333]"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">

@@ -164,7 +164,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 <div
                   key={community.id}
                   onClick={() => onNavigate('community')}
-                  className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F] hover:shadow-md hover:border-[#1F1F1F] transition-all cursor-pointer"
+                  className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer"
                 >
                   <div className="flex items-start gap-3">
                     {community.thumbnail_url ? (
@@ -208,7 +208,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 <div
                   key={course.id}
                   onClick={() => onNavigate('courses')}
-                  className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:shadow-md hover:border-[#1F1F1F] transition-all cursor-pointer"
+                  className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer"
                 >
                   {course.thumbnail_url ? (
                     <img
@@ -217,7 +217,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                       className="w-full h-32 object-cover"
                     />
                   ) : (
-                    <div className="w-full h-32 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                    <div className="w-full h-32 bg-[#151515] flex items-center justify-center">
                       <BookOpen className="w-12 h-12 text-white/80" />
                     </div>
                   )}
@@ -298,7 +298,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                   <div
                     key={community.id}
                     onClick={() => navigate(`/community/${community.id}`)}
-                    className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:shadow-md hover:border-[#1F1F1F] transition-all cursor-pointer group"
+                    className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer group"
                   >
                     <div className="relative">
                       <img
@@ -309,7 +309,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                       {/* Pricing Badge */}
                       <div className={`absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${
                         isFree
-                          ? 'bg-[#22C55E]/100 text-white'
+                          ? 'bg-[#22C55E] text-white'
                           : 'bg-[#0A0A0A] text-[#FAFAFA]'
                       }`}>
                         {isFree ? (
@@ -338,7 +338,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                       <p className="text-sm text-[#A0A0A0] line-clamp-2 mt-2">
                         {community.description || 'Join this community to learn and connect'}
                       </p>
-                      <button className="mt-3 w-full py-2 bg-[#151515] text-[#FAFAFA] rounded-lg font-medium text-sm hover:bg-[#1F1F1F] transition-colors group-hover:bg-white group-hover:text-white">
+                      <button className="mt-3 w-full py-2 bg-[#151515] text-[#FAFAFA] rounded-lg font-medium text-sm hover:bg-[#1F1F1F] transition-colors group-hover:bg-white group-hover:text-black">
                         {t('studentHome.communityCard.viewCommunity')}
                       </button>
                     </div>

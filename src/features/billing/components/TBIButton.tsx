@@ -33,7 +33,7 @@ const TBI_LOGOS = {
 // Button style configurations
 const BUTTON_STYLES = {
   light: {
-    container: 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700',
+    container: 'bg-orange-500 hover:bg-orange-600',
     text: 'text-white',
     logo: TBI_LOGOS.white,
     border: 'border-transparent',
@@ -242,10 +242,10 @@ export function TBIButtonCompact({
       disabled={disabled || loading}
       className={`
         inline-flex items-center gap-1.5 px-3 py-1.5
-        bg-gradient-to-r from-orange-500 to-orange-600
+        bg-orange-500
         text-white text-xs font-medium rounded-md
         transition-all duration-200
-        hover:from-orange-600 hover:to-orange-700 hover:shadow-md
+        hover:bg-orange-600 hover:border-[#333333]
         ${disabled || loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
         ${className}
       `}

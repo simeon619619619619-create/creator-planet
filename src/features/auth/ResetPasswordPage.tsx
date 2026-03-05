@@ -101,12 +101,12 @@ const ResetPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
       {/* Simple Header */}
-      <header className="border-b border-slate-200 bg-white">
+      <header className="border-b border-[#1F1F1F] bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <Logo variant="dark" size="md" showText={false} />
+            <Logo variant="light" size="md" showText={false} />
           </Link>
           <LanguageSwitcher variant="minimal" />
         </div>
@@ -118,16 +118,16 @@ const ResetPasswordPage: React.FC = () => {
           {/* Loading State - waiting for recovery token */}
           {isWaitingForRecovery ? (
             <div className="text-center">
-              <div className="w-8 h-8 border-3 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-              <p className="text-slate-600">{t('common.loading')}</p>
+              <div className="w-8 h-8 border-3 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-[#A0A0A0]">{t('common.loading')}</p>
             </div>
           ) : !isRecoveryReady && !isSuccess ? (
             <div className="text-center">
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-                <AlertCircle className="text-red-500 mt-0.5 flex-shrink-0" size={20} />
-                <p className="text-red-700 text-sm">{t('auth.invalidRecoveryLink')}</p>
+              <div className="mb-6 p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg flex items-start gap-3">
+                <AlertCircle className="text-[#EF4444] mt-0.5 flex-shrink-0" size={20} />
+                <p className="text-[#EF4444] text-sm">{t('auth.invalidRecoveryLink')}</p>
               </div>
-              <Link to="/login" className="text-indigo-600 hover:text-indigo-700 font-medium">
+              <Link to="/login" className="text-white hover:text-[#A0A0A0] font-medium">
                 {t('auth.backToLogin')}
               </Link>
             </div>
@@ -135,22 +135,22 @@ const ResetPasswordPage: React.FC = () => {
           <>
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-slate-900 mb-2">
+            <h1 className="text-2xl font-bold text-[#FAFAFA] mb-2">
               {t('auth.resetPasswordTitle')}
             </h1>
-            <p className="text-slate-600">{t('auth.resetPasswordSubtitle')}</p>
+            <p className="text-[#A0A0A0]">{t('auth.resetPasswordSubtitle')}</p>
           </div>
 
           {/* Success Message */}
           {isSuccess ? (
             <div className="text-center">
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-                <CheckCircle className="text-green-500 mt-0.5 flex-shrink-0" size={20} />
-                <p className="text-green-700 text-sm">{t('auth.passwordResetSuccess')}</p>
+              <div className="mb-6 p-4 bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-lg flex items-start gap-3">
+                <CheckCircle className="text-[#22C55E] mt-0.5 flex-shrink-0" size={20} />
+                <p className="text-[#22C55E] text-sm">{t('auth.passwordResetSuccess')}</p>
               </div>
               <Link
                 to="/login"
-                className="text-indigo-600 hover:text-indigo-700 font-medium"
+                className="text-white hover:text-[#A0A0A0] font-medium"
               >
                 {t('auth.backToLogin')}
               </Link>
@@ -159,9 +159,9 @@ const ResetPasswordPage: React.FC = () => {
             <>
               {/* Error Message */}
               {error && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-                  <AlertCircle className="text-red-500 mt-0.5 flex-shrink-0" size={20} />
-                  <p className="text-red-700 text-sm">{error}</p>
+                <div className="mb-6 p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg flex items-start gap-3">
+                  <AlertCircle className="text-[#EF4444] mt-0.5 flex-shrink-0" size={20} />
+                  <p className="text-[#EF4444] text-sm">{error}</p>
                 </div>
               )}
 
@@ -169,11 +169,11 @@ const ResetPasswordPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* New Password Field */}
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
+                  <label htmlFor="password" className="block text-sm font-medium text-[#A0A0A0] mb-2">
                     {t('auth.newPassword')}
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
                     <input
                       id="password"
                       type={showPassword ? 'text' : 'password'}
@@ -181,7 +181,7 @@ const ResetPasswordPage: React.FC = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       minLength={6}
-                      className="w-full pl-12 pr-12 py-4 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-base"
+                      className="w-full pl-12 pr-12 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
                       placeholder="••••••••"
                       disabled={isLoading}
                       autoComplete="new-password"
@@ -189,7 +189,7 @@ const ResetPasswordPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#A0A0A0]"
                       tabIndex={-1}
                     >
                       {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -199,11 +199,11 @@ const ResetPasswordPage: React.FC = () => {
 
                 {/* Confirm Password Field */}
                 <div>
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 mb-2">
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#A0A0A0] mb-2">
                     {t('auth.confirmPassword')}
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
                     <input
                       id="confirmPassword"
                       type={showConfirmPassword ? 'text' : 'password'}
@@ -211,7 +211,7 @@ const ResetPasswordPage: React.FC = () => {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
                       minLength={6}
-                      className="w-full pl-12 pr-12 py-4 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-base"
+                      className="w-full pl-12 pr-12 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
                       placeholder="••••••••"
                       disabled={isLoading}
                       autoComplete="new-password"
@@ -219,7 +219,7 @@ const ResetPasswordPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#A0A0A0]"
                       tabIndex={-1}
                     >
                       {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -231,11 +231,11 @@ const ResetPasswordPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base"
+                  className="w-full bg-white hover:bg-[#E0E0E0] text-black font-bold py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base"
                 >
                   {isLoading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
                       {t('common.loading')}
                     </>
                   ) : (
@@ -248,7 +248,7 @@ const ResetPasswordPage: React.FC = () => {
               <div className="mt-6 text-center">
                 <Link
                   to="/login"
-                  className="text-slate-600 hover:text-slate-800 text-sm"
+                  className="text-[#A0A0A0] hover:text-[#FAFAFA] text-sm"
                 >
                   {t('auth.backToLogin')}
                 </Link>

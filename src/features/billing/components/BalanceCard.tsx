@@ -138,7 +138,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
         </div>
 
         {/* Available Balance */}
-        <div className="p-4 bg-[#22C55E]/10 border border-green-100 rounded-lg">
+        <div className="p-4 bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp size={18} className="text-[#22C55E]" />
             <span className="font-medium text-[#FAFAFA]">
@@ -182,7 +182,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
           <div className="p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle size={18} className="text-[#EF4444]" />
-              <span className="font-medium text-red-900">
+              <span className="font-medium text-[#EF4444]">
                 {t('billing.balance.negative')}
               </span>
             </div>

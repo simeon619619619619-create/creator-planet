@@ -73,7 +73,7 @@ export function EngagementMilestones({ milestones }: EngagementMilestonesProps) 
                 ) : milestone.status === 'in_progress' ? (
                   <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 ) : (
-                  <div className="w-2 h-2 rounded-full bg-gray-400" />
+                  <div className="w-2 h-2 rounded-full bg-[#666666]" />
                 )}
               </div>
 

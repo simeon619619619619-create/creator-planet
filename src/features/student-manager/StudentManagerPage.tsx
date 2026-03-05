@@ -823,7 +823,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
               <button
                 onClick={handleAwardBonus}
                 disabled={isAwarding}
-                className="flex items-center gap-2 px-4 py-2 bg-[#EAB308]/100 text-white hover:bg-[#EAB308] rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2 bg-[#EAB308] text-white hover:bg-[#EAB308] rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {isAwarding ? (
                   <>
@@ -1030,7 +1030,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   <select
                     value={removeCommunityId}
                     onChange={(e) => setRemoveCommunityId(e.target.value)}
-                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-red-500 focus:border-[#555555]"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-[#EF4444]/20 focus:border-[#555555]"
                   >
                     {removeStudent.communities.map((community) => (
                       <option key={community.id} value={community.id}>

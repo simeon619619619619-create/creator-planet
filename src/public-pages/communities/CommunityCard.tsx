@@ -30,7 +30,7 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
           alt={community.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-black/50" />
 
         {/* Member Count Badge */}
         <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium">

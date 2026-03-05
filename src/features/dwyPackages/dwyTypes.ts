@@ -138,19 +138,19 @@ export const TIMELINE_OPTIONS = [
 
 // Status display configurations
 export const APPLICATION_STATUS_CONFIG: Record<DwyApplicationStatus, { label: string; color: string }> = {
-  pending: { label: 'Pending Review', color: 'bg-yellow-100 text-yellow-800' },
-  under_review: { label: 'Under Review', color: 'bg-blue-100 text-blue-800' },
-  interview_scheduled: { label: 'Interview Scheduled', color: 'bg-purple-100 text-purple-800' },
-  approved: { label: 'Approved', color: 'bg-green-100 text-green-800' },
-  rejected: { label: 'Not Selected', color: 'bg-gray-100 text-gray-600' },
-  withdrawn: { label: 'Withdrawn', color: 'bg-gray-100 text-gray-600' },
-  converted: { label: 'Active Engagement', color: 'bg-green-100 text-green-800' },
+  pending: { label: 'Pending Review', color: 'bg-[#EAB308]/10 text-[#EAB308]' },
+  under_review: { label: 'Under Review', color: 'bg-[#1F1F1F] text-[#A0A0A0]' },
+  interview_scheduled: { label: 'Interview Scheduled', color: 'bg-[#1F1F1F] text-[#FAFAFA]' },
+  approved: { label: 'Approved', color: 'bg-[#22C55E]/10 text-[#22C55E]' },
+  rejected: { label: 'Not Selected', color: 'bg-[#1F1F1F] text-[#666666]' },
+  withdrawn: { label: 'Withdrawn', color: 'bg-[#1F1F1F] text-[#666666]' },
+  converted: { label: 'Active Engagement', color: 'bg-[#22C55E]/10 text-[#22C55E]' },
 };
 
 export const ENGAGEMENT_STATUS_CONFIG: Record<DwyEngagementStatus, { label: string; color: string }> = {
-  onboarding: { label: 'Onboarding', color: 'bg-blue-100 text-blue-800' },
-  active: { label: 'Active', color: 'bg-green-100 text-green-800' },
-  paused: { label: 'Paused', color: 'bg-yellow-100 text-yellow-800' },
-  completed: { label: 'Completed', color: 'bg-gray-100 text-gray-600' },
-  cancelled: { label: 'Cancelled', color: 'bg-red-100 text-red-800' },
+  onboarding: { label: 'Onboarding', color: 'bg-[#1F1F1F] text-[#A0A0A0]' },
+  active: { label: 'Active', color: 'bg-[#22C55E]/10 text-[#22C55E]' },
+  paused: { label: 'Paused', color: 'bg-[#EAB308]/10 text-[#EAB308]' },
+  completed: { label: 'Completed', color: 'bg-[#1F1F1F] text-[#666666]' },
+  cancelled: { label: 'Cancelled', color: 'bg-[#EF4444]/10 text-[#EF4444]' },
 };

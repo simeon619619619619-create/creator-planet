@@ -437,10 +437,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   return (
     <Link
       to={`/signup?course=${course.id}`}
-      className="group bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg hover:border-slate-300 transition-all duration-200"
+      className="group bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] hover:bg-[#151515] transition-all duration-200"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-gradient-to-br from-indigo-500 to-purple-600 overflow-hidden">
+      <div className="relative aspect-video bg-[#1F1F1F] overflow-hidden">
         {course.thumbnail_url ? (
           <img
             src={course.thumbnail_url}
@@ -454,28 +454,28 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
         )}
         {/* Play overlay on hover */}
         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Play className="w-6 h-6 text-indigo-600 ml-1" />
+          <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
+            <Play className="w-6 h-6 text-black ml-1" />
           </div>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-slate-900 mb-1 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+        <h3 className="font-semibold text-[#FAFAFA] mb-1 line-clamp-2 group-hover:text-white transition-colors">
           {course.title}
         </h3>
 
         {/* Creator */}
         {course.creator && (
-          <p className="text-sm text-slate-500 mb-2">
+          <p className="text-sm text-[#666666] mb-2">
             {course.creator.full_name}
           </p>
         )}
 
         {/* Rating */}
         <div className="flex items-center gap-1 mb-2">
-          <span className="text-sm font-bold text-amber-600">
+          <span className="text-sm font-bold text-[#EAB308]">
             {course.rating ?? 4.5}
           </span>
           <div className="flex items-center">
@@ -485,22 +485,22 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                 size={14}
                 className={
                   star <= Math.round(course.rating ?? 4.5)
-                    ? 'text-amber-400 fill-amber-400'
-                    : 'text-slate-300'
+                    ? 'text-[#EAB308] fill-[#EAB308]'
+                    : 'text-[#666666]'
                 }
               />
             ))}
           </div>
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-[#666666]">
             ({course.enrolled_count > 0 ? course.enrolled_count : Math.floor(Math.random() * 500) + 50})
           </span>
         </div>
 
         {/* Price */}
         <div className="flex items-center justify-between">
-          <span className="font-bold text-slate-900">
+          <span className="font-bold text-[#FAFAFA]">
             {course.is_free || course.price === 0 ? (
-              <span className="text-emerald-600">{t('exploreLanding.courseCard.free')}</span>
+              <span className="text-[#22C55E]">{t('exploreLanding.courseCard.free')}</span>
             ) : (
               `$${course.price.toFixed(2)}`
             )}

@@ -115,7 +115,7 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
                         <div className="flex items-center gap-2">
                           <div className="w-24 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#22C55E]/100 transition-all"
+                              className="h-full bg-[#22C55E] transition-all"
                               style={{ width: `${lesson.completionRate}%` }}
                             />
                           </div>
@@ -186,9 +186,9 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
                                 <div
                                   className={`h-full transition-all ${
                                     student.progressPercent >= 80
-                                      ? 'bg-[#22C55E]/100'
+                                      ? 'bg-[#22C55E]'
                                       : student.progressPercent >= 50
-                                      ? 'bg-[#EAB308]/100'
+                                      ? 'bg-[#EAB308]'
                                       : 'bg-[#333333]'
                                   }`}
                                   style={{ width: `${student.progressPercent}%` }}

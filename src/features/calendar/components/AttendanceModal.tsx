@@ -244,7 +244,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
                       member.attended
-                        ? 'bg-[#22C55E]/100 text-white'
+                        ? 'bg-[#22C55E] text-white'
                         : 'bg-[#1F1F1F] text-[#666666]'
                     }`}
                   >

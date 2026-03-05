@@ -20,7 +20,7 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
     <div
       className={`relative rounded-2xl border-2 p-8 transition-shadow  ${
         isGrowthPartner
-          ? 'border-[#1F1F1F] bg-gradient-to-b from-[#0A0A0A] to-white'
+          ? 'border-[#1F1F1F] bg-[#0A0A0A]'
           : 'border-[#1F1F1F] bg-[#0A0A0A]'
       }`}
     >
@@ -84,7 +84,7 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
       {/* Slots indicator */}
       {pkg.slots_available !== null && pkg.slots_available <= 5 && (
         <div className="text-center mb-4">
-          <span className="text-sm text-orange-600 font-medium">
+          <span className="text-sm text-[#EAB308] font-medium">
             {pkg.slots_available === 0
               ? t('dwyPackages.packageCard.slotsFullWaitlist')
               : t(pkg.slots_available === 1 ? 'dwyPackages.packageCard.slotsAvailable' : 'dwyPackages.packageCard.slotsAvailablePlural', { count: pkg.slots_available })}

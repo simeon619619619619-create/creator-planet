@@ -165,9 +165,9 @@ const SortableCourseCard: React.FC<SortableCourseCardProps> = ({
             <BookOpen className="w-16 h-16 text-white/50" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute bottom-4 left-4 text-white">
-          <span className={`text-xs font-semibold px-2 py-1 rounded mb-2 inline-block ${course.is_published ? 'bg-[#22C55E]/100' : 'bg-[#EAB308]/100'}`}>
+          <span className={`text-xs font-semibold px-2 py-1 rounded mb-2 inline-block ${course.is_published ? 'bg-[#22C55E]' : 'bg-[#EAB308]'}`}>
             {course.is_published ? t('courseLms.courseCard.published') : t('courseLms.courseCard.draft')}
           </span>
           <h3 className="font-bold text-lg">{course.title}</h3>
@@ -208,7 +208,7 @@ const SortableCourseCard: React.FC<SortableCourseCardProps> = ({
             <div className="flex items-center gap-2">
               <div className="w-20 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#22C55E]/100 transition-all"
+                  className="h-full bg-[#22C55E] transition-all"
                   style={{ width: `${course.progress_percent}%` }}
                 />
               </div>
@@ -718,7 +718,7 @@ const CourseLMS: React.FC = () => {
                       <BookOpen className="w-16 h-16 text-white/50" />
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-black/40" />
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="font-bold text-lg">{course.title}</h3>
                   </div>
@@ -922,9 +922,9 @@ const CourseLMS: React.FC = () => {
                         <BookOpen className="w-16 h-16 text-white/50" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-black/40" />
                     <div className="absolute bottom-4 left-4 text-white">
-                      <span className={`text-xs font-semibold px-2 py-1 rounded mb-2 inline-block ${course.is_published ? 'bg-[#22C55E]/100' : 'bg-[#EAB308]/100'}`}>
+                      <span className={`text-xs font-semibold px-2 py-1 rounded mb-2 inline-block ${course.is_published ? 'bg-[#22C55E]' : 'bg-[#EAB308]'}`}>
                         {course.is_published ? t('courseLms.courseCard.published') : t('courseLms.courseCard.draft')}
                       </span>
                       <h3 className="font-bold text-lg">{course.title}</h3>
@@ -940,7 +940,7 @@ const CourseLMS: React.FC = () => {
                         <div className="flex items-center gap-2">
                           <div className="w-20 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#22C55E]/100 transition-all"
+                              className="h-full bg-[#22C55E] transition-all"
                               style={{ width: `${course.progress_percent}%` }}
                             />
                           </div>
@@ -973,7 +973,7 @@ const CourseLMS: React.FC = () => {
                         <BookOpen className="w-16 h-16 text-white/50" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-black/40" />
                     <div className="absolute bottom-4 left-4 text-white">
                       <h3 className="font-bold text-lg">{course.title}</h3>
                     </div>
@@ -1119,7 +1119,7 @@ const CourseLMS: React.FC = () => {
             <div className="mt-2 flex items-center gap-2">
               <div className="flex-1 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#22C55E]/100 transition-all"
+                  className="h-full bg-[#22C55E] transition-all"
                   style={{ width: `${selectedCourse.progress_percent}%` }}
                 />
               </div>

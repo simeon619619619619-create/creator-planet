@@ -190,16 +190,16 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
       accentColor: 'bg-white/20',
     },
     {
-      icon: <AlertCircle size={20} className="text-amber-400" />,
+      icon: <AlertCircle size={20} className="text-[#EAB308]" />,
       label: t('onboarding.questions.painPoint.title', 'Challenge'),
       value: painPointText,
-      accentColor: 'bg-[#EAB308]/100/20',
+      accentColor: 'bg-[#1F1F1F]',
     },
     {
-      icon: <Wrench size={20} className="text-cyan-400" />,
+      icon: <Wrench size={20} className="text-[#666666]" />,
       label: t('onboarding.questions.tools.title', 'Current Tools'),
       value: toolsText,
-      accentColor: 'bg-cyan-500/20',
+      accentColor: 'bg-[#1F1F1F]',
     },
   ];
 
@@ -211,7 +211,7 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#0A0A0A] to-[#0A0A0A] flex flex-col md:flex-row relative overflow-hidden">
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col md:flex-row relative overflow-hidden">
       {/* Floating gradient orbs background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div

@@ -57,14 +57,14 @@ const solutions: SolutionCard[] = [
 
 export const PromiseSection: React.FC = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+    <section className="py-20 px-4 bg-[#0A0A0A] text-[#FAFAFA]">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Everything You Need, Unified
           </h2>
-          <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
+          <p className="text-xl text-[#A0A0A0] max-w-2xl mx-auto">
             Stop paying for 5 separate tools. Get all the features you need in one platform.
           </p>
         </div>
@@ -74,29 +74,29 @@ export const PromiseSection: React.FC = () => {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-200 hover:scale-105"
+              className="bg-[#0A0A0A] rounded-2xl p-6 border border-[#1F1F1F] hover:border-[#333333] hover:bg-[#151515] transition-all duration-200 hover:scale-105"
             >
               {/* Icon */}
-              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-[#1F1F1F] rounded-xl flex items-center justify-center mb-4 text-[#FAFAFA]">
                 {solution.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold mb-2">
+              <h3 className="text-2xl font-bold mb-2 text-[#FAFAFA]">
                 {solution.title}
               </h3>
 
               {/* Description */}
-              <p className="text-indigo-100 mb-4">
+              <p className="text-[#A0A0A0] mb-4">
                 {solution.description}
               </p>
 
               {/* Features List */}
               <ul className="space-y-2">
                 {solution.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center gap-2 text-sm text-indigo-50">
+                  <li key={featureIndex} className="flex items-center gap-2 text-sm text-[#A0A0A0]">
                     <svg
-                      className="w-5 h-5 text-green-300 flex-shrink-0"
+                      className="w-5 h-5 text-[#22C55E] flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -118,10 +118,10 @@ export const PromiseSection: React.FC = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-lg text-indigo-100 mb-6">
+          <p className="text-lg text-[#A0A0A0] mb-6">
             Plus payments, analytics, mobile apps, and more—all included
           </p>
-          <button className="bg-white text-indigo-600 hover:bg-indigo-50 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105">
+          <button className="bg-white text-black hover:bg-[#E0E0E0] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
             See All Features
           </button>
         </div>

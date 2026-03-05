@@ -681,7 +681,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
               className={`px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-2 ${
                 survey.is_published
                   ? 'bg-[#EAB308]/10 text-[#EAB308] hover:bg-amber-200'
-                  : 'bg-green-600 text-white hover:bg-green-700'
+                  : 'bg-[#22C55E] text-white hover:bg-[#22C55E]/80'
               }`}
             >
               <Eye className="w-4 h-4" />

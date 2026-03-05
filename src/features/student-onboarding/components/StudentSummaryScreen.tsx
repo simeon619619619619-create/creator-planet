@@ -93,15 +93,14 @@ const AnimatedCheck: React.FC<AnimatedCheckProps> = ({ text, delay, isVisible })
       <div className="relative">
         <CheckCircle
           size={24}
-          className="text-emerald-400"
+          className="text-[#666666]"
           style={{
             strokeDasharray: 100,
             strokeDashoffset: isVisible ? 0 : 100,
             transition: `stroke-dashoffset 600ms ease-out ${delay}ms`,
           }}
         />
-        {/* Glow effect */}
-        <div className="absolute inset-0 bg-emerald-400/30 rounded-full blur-sm" />
+        <div className="absolute inset-0 bg-[#1F1F1F]/30 rounded-full blur-sm" />
       </div>
       <span className="text-[#A0A0A0] text-sm">{text}</span>
     </div>
@@ -123,13 +122,11 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
-  // Trigger entrance animations on mount
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 50);
     return () => clearTimeout(timer);
   }, []);
 
-  // Get interest title
   const getInterestTitle = (): string => {
     if (interest === 'other' && interestOther) {
       return interestOther.charAt(0).toUpperCase() + interestOther.slice(1);
@@ -138,22 +135,17 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
     return t(`studentOnboarding.interests.${interest}`);
   };
 
-  // Get goal text
   const getGoalText = (): string => {
     if (!goal) return t('studentOnboarding.goals.default');
     return t(`studentOnboarding.goals.${goal}`);
   };
 
-  // Get challenge text
   const getChallengeText = (): string => {
-    if (challenge === 'other' && challengeOther) {
-      return challengeOther;
-    }
+    if (challenge === 'other' && challengeOther) return challengeOther;
     if (!challenge) return t('studentOnboarding.challenges.default');
     return t(`studentOnboarding.challenges.${challenge}`);
   };
 
-  // Get learning style text
   const getLearningStyleText = (): string => {
     if (!learningStyle) return t('studentOnboarding.summary.learningStyleBenefits.mix');
     return t(`studentOnboarding.summary.learningStyleBenefits.${learningStyle}`);
@@ -164,25 +156,24 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
   const challengeText = getChallengeText();
   const learningStyleText = getLearningStyleText();
 
-  // Answer cards data
   const answerCards = [
     {
-      icon: <Target size={20} className="text-emerald-400" />,
+      icon: <Target size={20} className="text-[#666666]" />,
       label: t('studentOnboarding.questions.interest.title', 'Interest'),
       value: interestTitle,
-      accentColor: 'bg-[#22C55E]/100/20',
+      accentColor: 'bg-white/20',
     },
     {
-      icon: <TrendingUp size={20} className="text-cyan-400" />,
+      icon: <TrendingUp size={20} className="text-[#666666]" />,
       label: t('studentOnboarding.questions.goal.title', 'Goal'),
       value: goalText,
-      accentColor: 'bg-cyan-500/20',
+      accentColor: 'bg-white/20',
     },
     {
-      icon: <AlertCircle size={20} className="text-amber-400" />,
+      icon: <AlertCircle size={20} className="text-[#EAB308]" />,
       label: t('studentOnboarding.questions.challenge.title', 'Challenge'),
       value: challengeText,
-      accentColor: 'bg-[#EAB308]/100/20',
+      accentColor: 'bg-[#1F1F1F]',
     },
     {
       icon: <Brain size={20} className="text-[#666666]" />,
@@ -192,7 +183,6 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
     },
   ];
 
-  // Checkmark items with staggered delays
   const checkmarkItems = [
     t('studentOnboarding.summary.benefits.expertCreators'),
     t('studentOnboarding.summary.benefits.flexibleLearning'),
@@ -200,56 +190,27 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex flex-col md:flex-row relative overflow-hidden">
-      {/* Floating gradient orbs background */}
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col md:flex-row relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-emerald-600/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '8s' }}
-        />
-        <div
-          className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-cyan-600/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '10s' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-teal-500/5 rounded-full blur-2xl animate-pulse"
-          style={{ animationDuration: '6s' }}
-        />
-        {/* Additional floating orb */}
-        <div
-          className="absolute top-1/4 right-1/4 w-1/4 h-1/4 bg-emerald-400/5 rounded-full blur-2xl animate-pulse"
-          style={{ animationDuration: '12s' }}
-        />
+        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-white/5 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="absolute top-1/4 right-1/4 w-1/4 h-1/4 bg-[#1F1F1F]/5 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '12s' }} />
       </div>
 
-      {/* Left Panel - 40% on desktop */}
+      {/* Left Panel */}
       <div className="w-full md:w-2/5 flex flex-col justify-center px-6 py-8 md:px-10 md:py-12 relative z-10">
-        {/* Header with sparkles */}
-        <div
-          className={`flex items-center gap-2 mb-4 transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-          }`}
-        >
-          <Sparkles
-            size={24}
-            className="text-emerald-400 animate-pulse"
-            style={{ animationDuration: '2s' }}
-          />
-          <span className="text-emerald-300 text-sm font-medium tracking-wide uppercase">
+        <div className={`flex items-center gap-2 mb-4 transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+          <Sparkles size={24} className="text-[#666666] animate-pulse" style={{ animationDuration: '2s' }} />
+          <span className="text-[#A0A0A0] text-sm font-medium tracking-wide uppercase">
             {t('studentOnboarding.summary.basedOnShared')}
           </span>
         </div>
 
-        {/* Personalization message */}
-        <div
-          className={`mb-8 transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-          style={{ transitionDelay: '100ms' }}
-        >
+        <div className={`mb-8 transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '100ms' }}>
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">
             {t('studentOnboarding.summary.youWantToLearn')}{' '}
-            <span className="text-emerald-400">{interestTitle}</span>
+            <span className="text-[#A0A0A0]">{interestTitle}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#A0A0A0]">
             {t('studentOnboarding.summary.toAchieve')}{' '}
@@ -257,45 +218,20 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
           </p>
         </div>
 
-        {/* Animated checkmarks */}
         <div className="space-y-4 mb-8">
-          <p
-            className={`text-[#666666] text-sm font-medium mb-3 transition-all duration-500 ease-out ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ transitionDelay: '300ms' }}
-          >
+          <p className={`text-[#666666] text-sm font-medium mb-3 transition-all duration-500 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '300ms' }}>
             Founders Club offers you:
           </p>
           {checkmarkItems.map((item, index) => (
-            <AnimatedCheck
-              key={index}
-              text={item}
-              delay={400 + index * 150}
-              isVisible={isVisible}
-            />
+            <AnimatedCheck key={index} text={item} delay={400 + index * 150} isVisible={isVisible} />
           ))}
         </div>
 
-        {/* CTA Button - visible on mobile only here, desktop shows it on right */}
-        <div
-          className={`md:hidden transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-          style={{ transitionDelay: '800ms' }}
-        >
-          <button
-            onClick={onCreateAccount}
-            className="group w-full py-3.5 px-6 bg-emerald-600 hover:bg-[#22C55E]/100 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-emerald-600/25 hover:shadow-emerald-500/30 hover:scale-[1.02]"
-          >
+        <div className={`md:hidden transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '800ms' }}>
+          <button onClick={onCreateAccount} className="group w-full py-3.5 px-6 bg-white hover:bg-[#E0E0E0] text-black font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 hover:scale-[1.02]">
             {t('studentOnboarding.summary.startLearningFree')}
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
-
-          {/* Trust Signals */}
           <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#666666]">
             <span>{t('studentOnboarding.summary.freeToJoin')}</span>
             <span className="w-1 h-1 bg-[#151515] rounded-full" />
@@ -304,75 +240,34 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
         </div>
       </div>
 
-      {/* Right Panel - 60% on desktop */}
+      {/* Right Panel */}
       <div className="w-full md:w-3/5 flex flex-col justify-center px-6 py-8 md:px-10 md:py-12 relative z-10">
-        {/* Section header */}
-        <div
-          className={`mb-6 transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-          }`}
-          style={{ transitionDelay: '200ms' }}
-        >
-          <h2 className="text-xl md:text-2xl font-semibold text-white mb-2">
-            Your Learning Profile
-          </h2>
-          <p className="text-[#666666] text-sm">
-            Personalized just for you based on your answers
-          </p>
+        <div className={`mb-6 transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{ transitionDelay: '200ms' }}>
+          <h2 className="text-xl md:text-2xl font-semibold text-white mb-2">Your Learning Profile</h2>
+          <p className="text-[#666666] text-sm">Personalized just for you based on your answers</p>
         </div>
 
-        {/* Answer cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           {answerCards.map((card, index) => (
-            <AnswerCard
-              key={index}
-              icon={card.icon}
-              label={card.label}
-              value={card.value}
-              accentColor={card.accentColor}
-              delay={300 + index * 100}
-              isVisible={isVisible}
-            />
+            <AnswerCard key={index} icon={card.icon} label={card.label} value={card.value} accentColor={card.accentColor} delay={300 + index * 100} isVisible={isVisible} />
           ))}
         </div>
 
-        {/* Value proposition card */}
-        <div
-          className={`bg-[#0A0A0A]/40 backdrop-blur-sm rounded-xl p-5 border border-[#1F1F1F]/40 mb-6 transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-          style={{ transitionDelay: '700ms' }}
-        >
+        <div className={`bg-[#0A0A0A]/40 backdrop-blur-sm rounded-xl p-5 border border-[#1F1F1F]/40 mb-6 transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '700ms' }}>
           <p className="text-sm text-[#A0A0A0] leading-relaxed">
             <span className="font-semibold text-white">Founders Club</span>{' '}
             {t('studentOnboarding.summary.connectsYouWith')}{' '}
-            <span className="text-emerald-400">{interestTitle.toLowerCase()}</span>{' '}
+            <span className="text-[#A0A0A0]">{interestTitle.toLowerCase()}</span>{' '}
             {t('studentOnboarding.summary.expertCreators')}{' '}
-            <span className="text-white font-medium">
-              {t('studentOnboarding.summary.achieveGoals')}
-            </span>.
+            <span className="text-white font-medium">{t('studentOnboarding.summary.achieveGoals')}</span>.
           </p>
         </div>
 
-        {/* CTA Button - desktop only, hidden on mobile */}
-        <div
-          className={`hidden md:block transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-          style={{ transitionDelay: '850ms' }}
-        >
-          <button
-            onClick={onCreateAccount}
-            className="group w-full max-w-md py-3.5 px-6 bg-emerald-600 hover:bg-[#22C55E]/100 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-emerald-600/25 hover:shadow-emerald-500/30 hover:scale-[1.02]"
-          >
+        <div className={`hidden md:block transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '850ms' }}>
+          <button onClick={onCreateAccount} className="group w-full max-w-md py-3.5 px-6 bg-white hover:bg-[#E0E0E0] text-black font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 hover:scale-[1.02]">
             {t('studentOnboarding.summary.startLearningFree')}
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
-
-          {/* Trust Signals */}
           <div className="mt-4 flex items-center gap-3 text-xs text-[#666666]">
             <span>{t('studentOnboarding.summary.freeToJoin')}</span>
             <span className="w-1 h-1 bg-[#151515] rounded-full" />

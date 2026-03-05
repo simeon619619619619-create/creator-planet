@@ -106,7 +106,7 @@ const PendingSurveyBanner: React.FC<PendingSurveyBannerProps> = ({
   return (
     <>
       {/* Banner */}
-      <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-[#EAB308]/20 rounded-xl p-4 mb-6">
+      <div className="bg-[#EAB308]/5 border border-[#EAB308]/20 rounded-xl p-4 mb-6">
         <div className="flex items-start gap-4">
           {/* Icon */}
           <div className="shrink-0 w-10 h-10 bg-[#EAB308]/10 rounded-lg flex items-center justify-center">

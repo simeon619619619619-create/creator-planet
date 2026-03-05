@@ -246,7 +246,7 @@ const OnboardingPage: React.FC = () => {
 
         {/* Error Display */}
         {error && (
-          <div className="mb-8 p-4 bg-[#EF4444]/10 border border-red-200 rounded-lg text-red-700 text-center">
+          <div className="mb-8 p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg text-[#EF4444] text-center">
             {error}
           </div>
         )}
@@ -254,7 +254,7 @@ const OnboardingPage: React.FC = () => {
         {/* Activation Card */}
         <div className="bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F] overflow-hidden">
           {/* Price Header */}
-          <div className="bg-gradient-to-r from-[#1F1F1F] to-[#151515] p-6 text-center text-white">
+          <div className="bg-[#1F1F1F] p-6 text-center text-white">
             <p className="text-[#A0A0A0] text-sm mb-1">{t('billing.onboarding.activationFeeLabel')}</p>
             <div className="flex items-baseline justify-center gap-1">
               <span className="text-4xl font-bold">9.90</span>

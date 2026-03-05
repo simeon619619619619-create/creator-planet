@@ -217,7 +217,7 @@ export function CreateDiscountModal({
                   onChange={(e) => handleCodeChange(e.target.value)}
                   placeholder={t('discounts.form.code.placeholder')}
                   className={`w-full rounded-lg border py-2.5 pl-10 pr-4 text-sm uppercase ${
-                    codeError ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-[#1F1F1F] focus:border-[#555555] focus:ring-white/10'
+                    codeError ? 'border-[#EF4444]/30 focus:border-[#EF4444]/50 focus:ring-[#EF4444]/20' : 'border-[#1F1F1F] focus:border-[#555555] focus:ring-white/10'
                   }`}
                   maxLength={20}
                 />
@@ -405,7 +405,7 @@ export function CreateDiscountModal({
             <button
               type="submit"
               disabled={isLoading || !!codeError}
-              className="flex-1 rounded-lg bg-white py-2.5 text-sm font-medium text-white hover:bg-[#E0E0E0] disabled:opacity-50"
+              className="flex-1 rounded-lg bg-white py-2.5 text-sm font-medium text-black hover:bg-[#E0E0E0] disabled:opacity-50"
             >
               {isLoading ? t('discounts.modal.savingButton') : isEditing ? t('discounts.modal.saveButton') : t('discounts.modal.createButton')}
             </button>

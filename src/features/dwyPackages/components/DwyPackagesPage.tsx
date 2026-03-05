@@ -143,7 +143,7 @@ export function DwyPackagesPage() {
       </div>
 
       {/* Trust Section */}
-      <div className="text-center bg-gradient-to-b from-gray-50 to-white rounded-2xl p-8 border border-[#1F1F1F]">
+      <div className="text-center bg-[#0A0A0A] rounded-2xl p-8 border border-[#1F1F1F]">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-[#FAFAFA] mb-4">
             {t('dwyPackages.page.trustTitle')}
