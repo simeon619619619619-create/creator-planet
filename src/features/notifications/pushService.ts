@@ -45,7 +45,6 @@ export async function subscribeToPush(profileId: string): Promise<boolean> {
     const registration = await registerServiceWorker();
     if (!registration) return false;
 
-    // Wait for the service worker to be ready
     await navigator.serviceWorker.ready;
 
     const permission = await Notification.requestPermission();
@@ -57,11 +56,20 @@ export async function subscribeToPush(profileId: string): Promise<boolean> {
     });
 
     const keys = subscription.toJSON();
+    const endpoint = subscription.endpoint;
 
+    // Remove any existing subscriptions for this endpoint (other accounts on shared browser)
+    await supabase
+      .from('push_subscriptions')
+      .delete()
+      .eq('endpoint', endpoint)
+      .neq('profile_id', profileId);
+
+    // Upsert the subscription for this user
     const { error } = await supabase.from('push_subscriptions').upsert(
       {
         profile_id: profileId,
-        endpoint: subscription.endpoint,
+        endpoint,
         p256dh: keys.keys?.p256dh ?? '',
         auth: keys.keys?.auth ?? '',
         user_agent: navigator.userAgent,
@@ -85,15 +93,21 @@ export async function unsubscribeFromPush(profileId: string): Promise<boolean> {
   try {
     const subscription = await getExistingSubscription();
     if (subscription) {
-      // Delete from DB first
-      await supabase
+      const endpoint = subscription.endpoint;
+
+      // Unsubscribe from browser first (source of truth)
+      await subscription.unsubscribe();
+
+      // Then clean up DB record
+      const { error } = await supabase
         .from('push_subscriptions')
         .delete()
         .eq('profile_id', profileId)
-        .eq('endpoint', subscription.endpoint);
+        .eq('endpoint', endpoint);
 
-      // Then unsubscribe from browser
-      await subscription.unsubscribe();
+      if (error) {
+        console.error('Failed to delete push subscription from DB:', error);
+      }
     }
     return true;
   } catch (err) {

@@ -26,19 +26,42 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
 
-  const url = event.notification.data?.url || '/';
+  const rawUrl = event.notification.data?.url || '/';
+
+  // Only allow same-origin or relative URLs (prevent open-redirect)
+  let targetUrl;
+  try {
+    const parsed = new URL(rawUrl, self.location.origin);
+    if (parsed.origin !== self.location.origin) {
+      targetUrl = '/';
+    } else {
+      targetUrl = parsed.pathname + parsed.search + parsed.hash;
+    }
+  } catch {
+    targetUrl = '/';
+  }
 
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
-      // Focus existing window if one exists
       for (const client of windowClients) {
         if (client.url.includes(self.location.origin) && 'focus' in client) {
-          client.navigate(url);
+          client.navigate(targetUrl);
           return client.focus();
         }
       }
-      // Open new window
-      return clients.openWindow(url);
+      return clients.openWindow(targetUrl);
     })
+  );
+});
+
+// Handle subscription expiry/rotation
+self.addEventListener('pushsubscriptionchange', (event) => {
+  event.waitUntil(
+    self.registration.pushManager
+      .subscribe(event.oldSubscription.options)
+      .then((newSub) => {
+        // Re-registration handled on next app visit via usePushNotifications hook
+        return newSub;
+      })
   );
 });
