@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { User, Sparkles, Shield, Bot, CreditCard, Globe } from 'lucide-react';
+import { User, Sparkles, Shield, Bot, CreditCard, Globe, Bell } from 'lucide-react';
 import { useAuth } from '../../core/contexts/AuthContext';
 import { useCommunity } from '../../core/contexts/CommunityContext';
 import ProfileSettings from './ProfileSettings';
@@ -8,9 +8,10 @@ import CreatorSettings from './CreatorSettings';
 import AccountSettings from './AccountSettings';
 import { ChatbotSettings } from '../chatbots';
 import { BillingSettingsPage } from '../billing';
+import NotificationSettings from './NotificationSettings';
 import LanguageSwitcher from '../../shared/LanguageSwitcher';
 
-type SettingsTab = 'profile' | 'creator' | 'billing' | 'chatbots' | 'account' | 'language';
+type SettingsTab = 'profile' | 'creator' | 'billing' | 'chatbots' | 'account' | 'language' | 'notifications';
 
 const LanguageSettings: React.FC = () => {
   const { t } = useTranslation();
@@ -79,6 +80,12 @@ const Settings: React.FC = () => {
       visible: canAccessCreatorSettings && !!selectedCommunity,
     },
     {
+      id: 'notifications' as SettingsTab,
+      label: t('settings.notifications'),
+      icon: Bell,
+      visible: true,
+    },
+    {
       id: 'account' as SettingsTab,
       label: t('settings.account'),
       icon: Shield,
@@ -104,6 +111,8 @@ const Settings: React.FC = () => {
             {t('errors.selectCommunity')}
           </div>
         );
+      case 'notifications':
+        return <NotificationSettings />;
       case 'account':
         return <AccountSettings />;
       default:

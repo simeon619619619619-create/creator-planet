@@ -418,11 +418,11 @@ const Dashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Chart */}
-        <div className="lg:col-span-2 bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
+        <div className="lg:col-span-2 bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F] min-w-0">
           <h2 className="text-lg font-bold text-[#FAFAFA] mb-6">{t('creatorDashboard.chart.title')}</h2>
-          <div className="h-80 w-full">
+          <div className="w-full" style={{ height: 320 }}>
             {activityData.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="100%" height={320}>
                 <AreaChart data={activityData}>
                   <defs>
                     <linearGradient id="colorActive" x1="0" y1="0" x2="0" y2="1">
@@ -537,7 +537,7 @@ const Dashboard: React.FC = () => {
               )}
             </div>
           )}
-          <div className="space-y-4">
+          <div className="space-y-3 max-h-[420px] overflow-y-auto pr-1" style={{ scrollbarWidth: 'thin', scrollbarColor: '#333 transparent' }}>
             {atRiskStudents.length > 0 ? (
               atRiskStudents.map(student => (
                 <div key={student.id} className="flex items-start gap-3 p-3 rounded-lg border border-[#1F1F1F] hover:bg-[#151515] transition-colors">

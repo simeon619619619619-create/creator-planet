@@ -1,6 +1,32 @@
 # Founders Club - Discovery Log
 
-Implementation history and lessons learned. This file is referenced by CLAUDE.md but extracted to reduce context window usage.
+Implementation history and lessons learned. Referenced by CLAUDE.md. Most recent first.
+
+---
+
+## [2026-03-05] CC → FC Database Migration
+
+**Context**: Copying full database from Creator Club Supabase (`znqesarsluytxhuiwfkt`) to Founders Club Supabase (`ilntxxutxbygjuixrzng`) after rebrand.
+
+**Learnings**:
+- `pg_dump` and standard pooler (`aws-0-eu-central-1`) don't work for these projects (DNS/tenant errors)
+- Supabase CLI pooler (`aws-1-eu-west-1.pooler.supabase.com`) works — get credentials via `supabase db dump --dry-run`
+- Must `SET ROLE postgres` after connecting for full table access
+- CC REST API (PostgREST) with anon key works for some tables but RLS blocks modules, lessons, events, quiz_attempts, lesson_progress
+- CC anon key found in `/Users/bojodanchev/creator-club™/.env.local`
+- auth.identities `email` column is `GENERATED ALWAYS` in FC — must exclude from INSERT
+- Schema differences: CC has columns FC lacks (bio, vsl_url, group_id, display_order, stripe_customer_id, is_pinned)
+- FC `profiles.user_id` has UNIQUE constraint — causes conflicts when inserting CC profiles that share an email with existing FC user
+
+**Result**: 20 tables imported successfully (auth.users: 130, profiles: 131, communities: 4, courses: 7, posts: 101, quiz_options: 504, etc.)
+
+**Still missing**: modules, lessons, events, event_attendees, lesson_progress, quiz_attempts (need MCP pointed at CC to extract)
+
+---
+
+## [2026-03-05] Full Rebrand: Creator Club → Founders Club
+
+**Context**: Complete rebrand across assets, i18n, source code, edge functions, and documentation.
 
 ---
 
