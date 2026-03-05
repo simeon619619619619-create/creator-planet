@@ -112,30 +112,30 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div className="absolute inset-0 bg-black/50" onClick={handleClose} />
-        <div className="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+        <div className="relative bg-[#0A0A0A] rounded-xl max-w-md w-full p-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle size={32} className="text-green-600" />
+            <div className="w-16 h-16 bg-[#22C55E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle size={32} className="text-[#22C55E]" />
             </div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">
+            <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">
               {t('billing.withdrawal.successTitle')}
             </h2>
-            <p className="text-slate-600 mb-4">
+            <p className="text-[#A0A0A0] mb-4">
               {t('billing.withdrawal.successMessage', {
                 amount: formatAmount(result.payout?.amount || withdrawableAmount),
               })}
             </p>
-            <div className="p-4 bg-slate-50 rounded-lg mb-6">
-              <p className="text-sm text-slate-500 mb-1">
+            <div className="p-4 bg-[#0A0A0A] rounded-lg mb-6">
+              <p className="text-sm text-[#666666] mb-1">
                 {t('billing.withdrawal.transferId')}
               </p>
-              <p className="font-mono text-sm text-slate-700">
+              <p className="font-mono text-sm text-[#A0A0A0]">
                 {result.payout?.transferId}
               </p>
             </div>
             <button
               onClick={handleClose}
-              className="w-full py-2.5 px-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+              className="w-full py-2.5 px-4 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
             >
               {t('common.close')}
             </button>
@@ -150,20 +150,20 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div className="absolute inset-0 bg-black/50" onClick={handleClose} />
-        <div className="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+        <div className="relative bg-[#0A0A0A] rounded-xl max-w-md w-full p-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <XCircle size={32} className="text-red-600" />
+            <div className="w-16 h-16 bg-[#EF4444]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <XCircle size={32} className="text-[#EF4444]" />
             </div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">
+            <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">
               {t('billing.withdrawal.errorTitle')}
             </h2>
-            <p className="text-slate-600 mb-6">
+            <p className="text-[#A0A0A0] mb-6">
               {result.error || t('billing.withdrawal.errorMessage')}
             </p>
             <button
               onClick={handleClose}
-              className="w-full py-2.5 px-4 bg-slate-100 text-slate-700 font-medium rounded-lg hover:bg-slate-200 transition-colors"
+              className="w-full py-2.5 px-4 bg-[#1F1F1F] text-[#A0A0A0] font-medium rounded-lg hover:bg-[#151515] transition-colors"
             >
               {t('common.close')}
             </button>
@@ -177,52 +177,52 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={handleClose} />
-      <div className="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+      <div className="relative bg-[#0A0A0A] rounded-xl max-w-md w-full p-6">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-            <Wallet size={20} className="text-indigo-600" />
+          <div className="w-10 h-10 bg-[#1F1F1F] rounded-full flex items-center justify-center">
+            <Wallet size={20} className="text-[#FAFAFA]" />
           </div>
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-[#FAFAFA]">
             {t('billing.withdrawal.modalTitle')}
           </h2>
         </div>
 
         {/* Amount Summary */}
         <div className="space-y-3 mb-6">
-          <div className="flex justify-between items-center py-2 border-b border-slate-100">
-            <span className="text-slate-600">{t('billing.withdrawal.availableBalance')}</span>
-            <span className="font-medium text-slate-900">{formatAmount(availableAmount)}</span>
+          <div className="flex justify-between items-center py-2 border-b border-[#1F1F1F]">
+            <span className="text-[#A0A0A0]">{t('billing.withdrawal.availableBalance')}</span>
+            <span className="font-medium text-[#FAFAFA]">{formatAmount(availableAmount)}</span>
           </div>
           {negativeBalance > 0 && (
-            <div className="flex justify-between items-center py-2 border-b border-slate-100">
-              <span className="text-red-600">{t('billing.withdrawal.negativeDeduction')}</span>
-              <span className="font-medium text-red-600">-{formatAmount(negativeBalance)}</span>
+            <div className="flex justify-between items-center py-2 border-b border-[#1F1F1F]">
+              <span className="text-[#EF4444]">{t('billing.withdrawal.negativeDeduction')}</span>
+              <span className="font-medium text-[#EF4444]">-{formatAmount(negativeBalance)}</span>
             </div>
           )}
-          <div className="flex justify-between items-center py-3 bg-green-50 rounded-lg px-3">
-            <span className="font-medium text-slate-900">{t('billing.withdrawal.withdrawAmount')}</span>
-            <span className="text-xl font-bold text-green-700">{formatAmount(withdrawableAmount)}</span>
+          <div className="flex justify-between items-center py-3 bg-[#22C55E]/10 rounded-lg px-3">
+            <span className="font-medium text-[#FAFAFA]">{t('billing.withdrawal.withdrawAmount')}</span>
+            <span className="text-xl font-bold text-[#22C55E]">{formatAmount(withdrawableAmount)}</span>
           </div>
         </div>
 
         {/* Blocker Message */}
         {!isEligible && blocker && (
-          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+          <div className="mb-6 p-4 bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-lg">
             <div className="flex items-start gap-3">
               {blocker.reason === 'COOLDOWN_ACTIVE' ? (
-                <Clock size={20} className="text-amber-600 shrink-0 mt-0.5" />
+                <Clock size={20} className="text-[#EAB308] shrink-0 mt-0.5" />
               ) : (
-                <AlertTriangle size={20} className="text-amber-600 shrink-0 mt-0.5" />
+                <AlertTriangle size={20} className="text-[#EAB308] shrink-0 mt-0.5" />
               )}
               <div>
-                <p className="font-medium text-amber-800">
+                <p className="font-medium text-[#FAFAFA]">
                   {blocker.reason === 'COOLDOWN_ACTIVE' && t('billing.withdrawal.blockerCooldownTitle')}
                   {blocker.reason === 'BELOW_MINIMUM' && t('billing.withdrawal.blockerMinimumTitle')}
                   {blocker.reason === 'CONNECT_NOT_ACTIVE' && t('billing.withdrawal.blockerConnectTitle')}
                   {blocker.reason === 'NEGATIVE_BALANCE' && t('billing.withdrawal.blockerNegativeTitle')}
                 </p>
-                <p className="text-sm text-amber-700 mt-1">
+                <p className="text-sm text-[#EAB308] mt-1">
                   {blocker.reason === 'COOLDOWN_ACTIVE' && getCooldownTimeRemaining() && (
                     t('billing.withdrawal.blockerCooldownMessage', { time: getCooldownTimeRemaining() })
                   )}
@@ -242,7 +242,7 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
                 {blocker.reason === 'CONNECT_NOT_ACTIVE' && onSetupConnect && (
                   <button
                     onClick={onSetupConnect}
-                    className="mt-3 text-sm font-medium text-amber-800 underline hover:no-underline flex items-center gap-1"
+                    className="mt-3 text-sm font-medium text-[#FAFAFA] underline hover:no-underline flex items-center gap-1"
                   >
                     {t('billing.withdrawal.setupConnectButton')}
                     <ExternalLink size={14} />
@@ -255,8 +255,8 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
 
         {/* Processing Info */}
         {isEligible && (
-          <div className="mb-6 p-3 bg-slate-50 rounded-lg">
-            <p className="text-sm text-slate-600">
+          <div className="mb-6 p-3 bg-[#0A0A0A] rounded-lg">
+            <p className="text-sm text-[#A0A0A0]">
               {t('billing.withdrawal.processingInfo')}
             </p>
           </div>
@@ -267,7 +267,7 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
           <button
             onClick={handleClose}
             disabled={isProcessing}
-            className="flex-1 py-2.5 px-4 bg-slate-100 text-slate-700 font-medium rounded-lg hover:bg-slate-200 transition-colors disabled:opacity-50"
+            className="flex-1 py-2.5 px-4 bg-[#1F1F1F] text-[#A0A0A0] font-medium rounded-lg hover:bg-[#151515] transition-colors disabled:opacity-50"
           >
             {t('common.cancel')}
           </button>
@@ -276,8 +276,8 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
             disabled={!isEligible || isProcessing}
             className={`flex-1 py-2.5 px-4 font-medium rounded-lg transition-colors flex items-center justify-center gap-2 ${
               isEligible && !isProcessing
-                ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
             }`}
           >
             {isProcessing ? (

@@ -57,20 +57,20 @@ export function PointsHistory({
       {transactions.map((tx) => (
         <div
           key={tx.id}
-          className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0"
+          className="flex items-center justify-between py-3 border-b border-[#1F1F1F] last:border-0"
         >
           <div className="flex items-center gap-3">
             <span className="text-2xl">{transactionTypeIcons[tx.transaction_type]}</span>
             <div>
-              <div className="font-medium text-gray-900">
+              <div className="font-medium text-[#FAFAFA]">
                 {tx.description || transactionTypeLabels[tx.transaction_type]}
               </div>
-              <div className="text-xs text-gray-500">{formatDate(tx.created_at)}</div>
+              <div className="text-xs text-[#666666]">{formatDate(tx.created_at)}</div>
             </div>
           </div>
           <div
             className={`font-semibold ${
-              tx.points >= 0 ? 'text-green-600' : 'text-red-600'
+              tx.points >= 0 ? 'text-[#22C55E]' : 'text-[#EF4444]'
             }`}
           >
             {tx.points >= 0 ? '+' : ''}
@@ -83,7 +83,7 @@ export function PointsHistory({
         <button
           onClick={onLoadMore}
           disabled={isLoadingMore}
-          className="w-full py-2 text-sm text-purple-600 hover:text-purple-700 font-medium disabled:opacity-50"
+          className="w-full py-2 text-sm text-[#FAFAFA] hover:text-[#A0A0A0] font-medium disabled:opacity-50"
         >
           {isLoadingMore ? t('studentPlus.history.loading') : t('studentPlus.history.loadMore')}
         </button>

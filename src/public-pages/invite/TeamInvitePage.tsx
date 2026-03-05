@@ -8,11 +8,11 @@ import LanguageSwitcher from '../../shared/LanguageSwitcher';
 import { getInviteByToken, acceptTeamInvitation } from '../../features/direct-messages/teamService';
 import type { DbCommunityTeamMember, TeamMemberRole } from '../../features/direct-messages/dmTypes';
 
-// Role badge color configuration
+// Role badge color configuration — monochrome with subtle differentiation
 const roleBadgeColors: Record<TeamMemberRole, { bg: string; text: string }> = {
-  lecturer: { bg: 'bg-indigo-100', text: 'text-indigo-700' },
-  assistant: { bg: 'bg-emerald-100', text: 'text-emerald-700' },
-  guest_expert: { bg: 'bg-amber-100', text: 'text-amber-700' },
+  lecturer: { bg: 'bg-[#1F1F1F]', text: 'text-[#FAFAFA]' },
+  assistant: { bg: 'bg-[#1F1F1F]', text: 'text-[#FAFAFA]' },
+  guest_expert: { bg: 'bg-[#1F1F1F]', text: 'text-[#FAFAFA]' },
 };
 
 type InviteState = 'loading' | 'invalid' | 'expired' | 'valid' | 'already_accepted';
@@ -145,12 +145,12 @@ const TeamInvitePage: React.FC = () => {
   // Loading state
   if (state === 'loading' || authLoading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
         <Header />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-            <p className="text-slate-600">{t('team.invite.loading')}</p>
+            <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-[#A0A0A0]">{t('team.invite.loading')}</p>
           </div>
         </main>
       </div>
@@ -160,21 +160,21 @@ const TeamInvitePage: React.FC = () => {
   // Invalid state
   if (state === 'invalid') {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
         <Header />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="w-full max-w-md">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <AlertCircle className="w-8 h-8 text-red-600" />
+            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+              <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mx-auto mb-4">
+                <AlertCircle className="w-8 h-8 text-[#EF4444]" />
               </div>
-              <h1 className="text-xl font-bold text-slate-900 mb-2">
+              <h1 className="text-xl font-bold text-[#FAFAFA] mb-2">
                 {t('team.invite.invalid.title')}
               </h1>
-              <p className="text-slate-600 mb-4">
+              <p className="text-[#A0A0A0] mb-4">
                 {errorMessage || t('team.invite.invalid.description')}
               </p>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-[#666666]">
                 {t('team.invite.invalid.contact')}
               </p>
             </div>
@@ -187,21 +187,21 @@ const TeamInvitePage: React.FC = () => {
   // Expired state
   if (state === 'expired') {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
         <Header />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="w-full max-w-md">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-amber-600" />
+            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+              <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-[#EAB308]" />
               </div>
-              <h1 className="text-xl font-bold text-slate-900 mb-2">
+              <h1 className="text-xl font-bold text-[#FAFAFA] mb-2">
                 {t('team.invite.expired.title')}
               </h1>
-              <p className="text-slate-600 mb-4">
+              <p className="text-[#A0A0A0] mb-4">
                 {t('team.invite.expired.description')}
               </p>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-[#666666]">
                 {t('team.invite.invalid.contact')}
               </p>
             </div>
@@ -214,23 +214,23 @@ const TeamInvitePage: React.FC = () => {
   // Already accepted - will redirect if logged in
   if (state === 'already_accepted') {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
         <Header />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="w-full max-w-md">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
+            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+              <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-[#22C55E]" />
               </div>
-              <h1 className="text-xl font-bold text-slate-900 mb-2">
+              <h1 className="text-xl font-bold text-[#FAFAFA] mb-2">
                 {t('team.invite.alreadyAccepted.title')}
               </h1>
-              <p className="text-slate-600 mb-6">
+              <p className="text-[#A0A0A0] mb-6">
                 {t('team.invite.alreadyAccepted.description')}
               </p>
               <Link
                 to="/login"
-                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#E0E0E0] text-black font-semibold py-3 px-6 rounded-lg transition-colors duration-150"
               >
                 <LogIn className="w-5 h-5" />
                 {t('common.logIn')}
@@ -251,14 +251,14 @@ const TeamInvitePage: React.FC = () => {
   const roleColors = roleBadgeColors[invite.role];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
       <Header />
       <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
             {/* Community header with logo */}
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-6 text-center">
-              <div className="w-20 h-20 mx-auto mb-3 rounded-xl overflow-hidden bg-white/20 flex items-center justify-center">
+            <div className="bg-[#1F1F1F] p-6 text-center">
+              <div className="w-20 h-20 mx-auto mb-3 rounded-xl overflow-hidden bg-[#333333] flex items-center justify-center">
                 {community.logo_url ? (
                   <img
                     src={community.logo_url}
@@ -266,12 +266,12 @@ const TeamInvitePage: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <Users className="w-10 h-10 text-white" />
+                  <Users className="w-10 h-10 text-[#FAFAFA]" />
                 )}
               </div>
-              <h2 className="text-xl font-bold text-white">{community.name}</h2>
+              <h2 className="text-xl font-bold text-[#FAFAFA]">{community.name}</h2>
               {creator?.full_name && (
-                <p className="text-white/80 text-sm mt-1">
+                <p className="text-[#A0A0A0] text-sm mt-1">
                   {t('team.invite.valid.createdBy', { creatorName: creator.full_name })}
                 </p>
               )}
@@ -290,15 +290,15 @@ const TeamInvitePage: React.FC = () => {
 
               {/* Title if set */}
               {invite.title && (
-                <p className="text-center text-slate-600 mb-4">{invite.title}</p>
+                <p className="text-center text-[#A0A0A0] mb-4">{invite.title}</p>
               )}
 
               {/* Invitation message */}
               <div className="text-center mb-6">
-                <h1 className="text-xl font-bold text-slate-900 mb-2">
+                <h1 className="text-xl font-bold text-[#FAFAFA] mb-2">
                   {t('team.invite.valid.title')}
                 </h1>
-                <p className="text-slate-600">
+                <p className="text-[#A0A0A0]">
                   {t('team.invite.valid.description', {
                     communityName: community.name,
                     role: getRoleDisplayName(invite.role),
@@ -308,9 +308,9 @@ const TeamInvitePage: React.FC = () => {
 
               {/* Error message */}
               {acceptError && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
-                  <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-red-700 text-sm">{acceptError}</p>
+                <div className="mb-4 p-3 bg-[#1F1F1F] border border-[#EF4444]/30 rounded-lg flex items-start gap-2">
+                  <AlertCircle className="w-5 h-5 text-[#EF4444] flex-shrink-0 mt-0.5" />
+                  <p className="text-[#EF4444] text-sm">{acceptError}</p>
                 </div>
               )}
 
@@ -319,25 +319,25 @@ const TeamInvitePage: React.FC = () => {
                 isCreator ? (
                   // Creator account - cannot accept team invites
                   <div className="space-y-4">
-                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                    <div className="p-4 bg-[#1F1F1F] border border-[#EAB308]/30 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <ShieldAlert className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                        <ShieldAlert className="w-5 h-5 text-[#EAB308] flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-amber-800 font-medium text-sm">
+                          <p className="text-[#FAFAFA] font-medium text-sm">
                             {t('team.invite.creatorAccount.title')}
                           </p>
-                          <p className="text-amber-700 text-sm mt-1">
+                          <p className="text-[#A0A0A0] text-sm mt-1">
                             {t('team.invite.creatorAccount.description')}
                           </p>
                         </div>
                       </div>
                     </div>
-                    <p className="text-center text-slate-500 text-sm">
+                    <p className="text-center text-[#666666] text-sm">
                       {t('team.invite.creatorAccount.hint', { email: profile.email })}
                     </p>
                     <Link
                       to={`/signup?return=${encodedReturnUrl}`}
-                      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                      className="w-full bg-white hover:bg-[#E0E0E0] text-black font-semibold py-3 px-4 rounded-lg transition-colors duration-150 flex items-center justify-center gap-2"
                     >
                       <UserPlus className="w-5 h-5" />
                       {t('team.invite.creatorAccount.signupStudent')}
@@ -348,11 +348,11 @@ const TeamInvitePage: React.FC = () => {
                   <button
                     onClick={handleAccept}
                     disabled={isAccepting}
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                    className="w-full bg-white hover:bg-[#E0E0E0] disabled:bg-[#333333] disabled:text-[#666666] text-black font-semibold py-3 px-4 rounded-lg transition-colors duration-150 flex items-center justify-center gap-2"
                   >
                     {isAccepting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
                         {t('team.invite.accepting')}
                       </>
                     ) : (
@@ -368,14 +368,14 @@ const TeamInvitePage: React.FC = () => {
                 <div className="space-y-3">
                   <Link
                     to={`/signup?return=${encodedReturnUrl}`}
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                    className="w-full bg-white hover:bg-[#E0E0E0] text-black font-semibold py-3 px-4 rounded-lg transition-colors duration-150 flex items-center justify-center gap-2"
                   >
                     <UserPlus className="w-5 h-5" />
                     {t('team.invite.valid.signup')}
                   </Link>
                   <Link
                     to={`/login?return=${encodedReturnUrl}`}
-                    className="w-full bg-white hover:bg-slate-50 text-slate-700 font-semibold py-3 px-4 rounded-lg border border-slate-300 transition-colors flex items-center justify-center gap-2"
+                    className="w-full bg-transparent hover:bg-[#151515] text-[#FAFAFA] font-semibold py-3 px-4 rounded-lg border border-[#1F1F1F] hover:border-[#333333] transition-colors duration-150 flex items-center justify-center gap-2"
                   >
                     <LogIn className="w-5 h-5" />
                     {t('team.invite.valid.login')}
@@ -393,10 +393,10 @@ const TeamInvitePage: React.FC = () => {
 // Header component
 const Header: React.FC = () => {
   return (
-    <header className="border-b border-slate-200 bg-white">
+    <header className="border-b border-[#1F1F1F] bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <Logo variant="dark" size="md" showText={false} />
+          <Logo variant="light" size="md" showText={false} />
         </Link>
         <LanguageSwitcher variant="minimal" />
       </div>

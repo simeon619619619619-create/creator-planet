@@ -189,7 +189,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
       const badgeType = getBadgeType(teamMember.role);
       return (
         <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
-          badgeType === 'guest' ? 'bg-amber-100 text-amber-700' : 'bg-indigo-100 text-indigo-700'
+          badgeType === 'guest' ? 'bg-[#1F1F1F] text-[#A0A0A0]' : 'bg-[#1F1F1F] text-[#FAFAFA]'
         }`}>
           {t(`directMessages.badge.${badgeType}`)}
         </span>
@@ -199,25 +199,25 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
     switch (role) {
       case 'creator':
         return (
-          <span className="bg-indigo-100 text-indigo-700 text-xs px-2 py-0.5 rounded-full font-semibold">
+          <span className="bg-[#1F1F1F] text-[#FAFAFA] text-xs px-2 py-0.5 rounded-full font-semibold">
             {t('communityHub.userProfile.role.creator')}
           </span>
         );
       case 'superadmin':
         return (
-          <span className="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full font-semibold">
+          <span className="bg-[#1F1F1F] text-[#FAFAFA] text-xs px-2 py-0.5 rounded-full font-semibold">
             {t('communityHub.userProfile.role.admin')}
           </span>
         );
       case 'student':
         return (
-          <span className="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded-full font-semibold">
+          <span className="bg-[#1F1F1F] text-[#A0A0A0] text-xs px-2 py-0.5 rounded-full font-semibold">
             {t('communityHub.userProfile.role.student')}
           </span>
         );
       default:
         return (
-          <span className="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded-full font-semibold">
+          <span className="bg-[#1F1F1F] text-[#A0A0A0] text-xs px-2 py-0.5 rounded-full font-semibold">
             {t('communityHub.userProfile.role.member')}
           </span>
         );
@@ -232,7 +232,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-xl w-full max-w-sm shadow-xl relative"
+        className="bg-[#0A0A0A] rounded-xl w-full max-w-sm border border-[#1F1F1F] relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Progress View */}
@@ -242,52 +242,52 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
             <div className="flex items-center gap-3 mb-4">
               <button
                 onClick={handleBackToProfile}
-                className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-[#151515] rounded-lg transition-colors"
               >
-                <ChevronLeft size={20} className="text-slate-600" />
+                <ChevronLeft size={20} className="text-[#A0A0A0]" />
               </button>
               <div>
-                <h3 className="font-bold text-slate-900">{profile?.full_name}</h3>
-                <p className="text-sm text-slate-500">{t('communityHub.userProfile.progressTitle')}</p>
+                <h3 className="font-bold text-[#FAFAFA]">{profile?.full_name}</h3>
+                <p className="text-sm text-[#A0A0A0]">{t('communityHub.userProfile.progressTitle')}</p>
               </div>
             </div>
 
             {isLoadingProgress ? (
               <div className="flex justify-center py-12">
-                <Loader2 className="w-6 h-6 animate-spin text-indigo-600" />
+                <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
               </div>
             ) : progressData ? (
               <>
                 {/* Stats Summary */}
                 <div className="grid grid-cols-3 gap-2 mb-4">
-                  <div className="bg-emerald-50 rounded-lg p-3 text-center">
-                    <div className="text-lg font-bold text-emerald-700">
+                  <div className="bg-[#151515] rounded-lg p-3 text-center border border-[#1F1F1F]">
+                    <div className="text-lg font-bold text-[#FAFAFA]">
                       {progressData.stats.gradedHomework}/{progressData.stats.totalHomework}
                     </div>
-                    <div className="text-xs text-emerald-600">{t('communityHub.userProfile.progress.homework')}</div>
+                    <div className="text-xs text-[#A0A0A0]">{t('communityHub.userProfile.progress.homework')}</div>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-3 text-center">
-                    <div className="text-lg font-bold text-blue-700">
+                  <div className="bg-[#151515] rounded-lg p-3 text-center border border-[#1F1F1F]">
+                    <div className="text-lg font-bold text-[#FAFAFA]">
                       {progressData.stats.completedLessons}/{progressData.stats.totalLessons}
                     </div>
-                    <div className="text-xs text-blue-600">{t('communityHub.userProfile.progress.lessons')}</div>
+                    <div className="text-xs text-[#A0A0A0]">{t('communityHub.userProfile.progress.lessons')}</div>
                   </div>
-                  <div className="bg-purple-50 rounded-lg p-3 text-center">
-                    <div className="text-lg font-bold text-purple-700">
+                  <div className="bg-[#151515] rounded-lg p-3 text-center border border-[#1F1F1F]">
+                    <div className="text-lg font-bold text-[#FAFAFA]">
                       {progressData.stats.attendedEvents}/{progressData.stats.totalEvents}
                     </div>
-                    <div className="text-xs text-purple-600">{t('communityHub.userProfile.progress.events')}</div>
+                    <div className="text-xs text-[#A0A0A0]">{t('communityHub.userProfile.progress.events')}</div>
                   </div>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex border-b border-slate-200 mb-4">
+                <div className="flex border-b border-[#1F1F1F] mb-4">
                   <button
                     onClick={() => setProgressTab('homework')}
                     className={`flex-1 py-2 text-sm font-medium border-b-2 transition-colors ${
                       progressTab === 'homework'
-                        ? 'border-indigo-600 text-indigo-600'
-                        : 'border-transparent text-slate-500 hover:text-slate-700'
+                        ? 'border-white text-[#FAFAFA]'
+                        : 'border-transparent text-[#A0A0A0] hover:text-[#A0A0A0]'
                     }`}
                   >
                     {t('communityHub.userProfile.progress.homeworkTab')}
@@ -296,8 +296,8 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                     onClick={() => setProgressTab('lessons')}
                     className={`flex-1 py-2 text-sm font-medium border-b-2 transition-colors ${
                       progressTab === 'lessons'
-                        ? 'border-indigo-600 text-indigo-600'
-                        : 'border-transparent text-slate-500 hover:text-slate-700'
+                        ? 'border-white text-[#FAFAFA]'
+                        : 'border-transparent text-[#A0A0A0] hover:text-[#A0A0A0]'
                     }`}
                   >
                     {t('communityHub.userProfile.progress.lessonsTab')}
@@ -306,8 +306,8 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                     onClick={() => setProgressTab('events')}
                     className={`flex-1 py-2 text-sm font-medium border-b-2 transition-colors ${
                       progressTab === 'events'
-                        ? 'border-indigo-600 text-indigo-600'
-                        : 'border-transparent text-slate-500 hover:text-slate-700'
+                        ? 'border-white text-[#FAFAFA]'
+                        : 'border-transparent text-[#A0A0A0] hover:text-[#A0A0A0]'
                     }`}
                   >
                     {t('communityHub.userProfile.progress.eventsTab')}
@@ -319,24 +319,24 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                   {progressTab === 'homework' && (
                     <div className="space-y-2">
                       {progressData.homework.length === 0 ? (
-                        <p className="text-center text-slate-400 py-4 text-sm">
+                        <p className="text-center text-[#666666] py-4 text-sm">
                           {t('communityHub.userProfile.progress.noHomework')}
                         </p>
                       ) : (
                         progressData.homework.map((hw) => (
-                          <div key={hw.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                          <div key={hw.id} className="flex items-center justify-between p-3 bg-[#151515] rounded-lg">
                             <div className="flex-1 min-w-0">
-                              <p className="font-medium text-slate-900 text-sm truncate">{hw.title}</p>
-                              <p className="text-xs text-slate-500">{formatDate(hw.submittedAt)}</p>
+                              <p className="font-medium text-[#FAFAFA] text-sm truncate">{hw.title}</p>
+                              <p className="text-xs text-[#A0A0A0]">{formatDate(hw.submittedAt)}</p>
                             </div>
                             <div className="flex items-center gap-2 ml-2">
                               {hw.status === 'graded' ? (
-                                <span className="flex items-center gap-1 text-emerald-600 text-sm font-medium">
+                                <span className="flex items-center gap-1 text-[#22C55E] text-sm font-medium">
                                   <CheckCircle size={14} />
                                   {hw.pointsAwarded}/{hw.maxPoints}
                                 </span>
                               ) : (
-                                <span className="flex items-center gap-1 text-amber-600 text-sm">
+                                <span className="flex items-center gap-1 text-[#EAB308] text-sm">
                                   <Clock size={14} />
                                   {t('communityHub.userProfile.progress.pending')}
                                 </span>
@@ -351,17 +351,17 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                   {progressTab === 'lessons' && (
                     <div className="space-y-2">
                       {progressData.lessons.length === 0 ? (
-                        <p className="text-center text-slate-400 py-4 text-sm">
+                        <p className="text-center text-[#666666] py-4 text-sm">
                           {t('communityHub.userProfile.progress.noLessons')}
                         </p>
                       ) : (
                         progressData.lessons.map((lesson) => (
-                          <div key={lesson.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                          <div key={lesson.id} className="flex items-center justify-between p-3 bg-[#151515] rounded-lg">
                             <div className="flex-1 min-w-0">
-                              <p className="font-medium text-slate-900 text-sm truncate">{lesson.title}</p>
-                              <p className="text-xs text-slate-500">{lesson.courseName}</p>
+                              <p className="font-medium text-[#FAFAFA] text-sm truncate">{lesson.title}</p>
+                              <p className="text-xs text-[#A0A0A0]">{lesson.courseName}</p>
                             </div>
-                            <div className="flex items-center gap-1 text-emerald-600 text-xs ml-2">
+                            <div className="flex items-center gap-1 text-[#22C55E] text-xs ml-2">
                               <CheckCircle size={14} />
                               {formatDate(lesson.completedAt)}
                             </div>
@@ -374,24 +374,24 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                   {progressTab === 'events' && (
                     <div className="space-y-2">
                       {progressData.events.length === 0 ? (
-                        <p className="text-center text-slate-400 py-4 text-sm">
+                        <p className="text-center text-[#666666] py-4 text-sm">
                           {t('communityHub.userProfile.progress.noEvents')}
                         </p>
                       ) : (
                         progressData.events.map((event) => (
-                          <div key={event.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                          <div key={event.id} className="flex items-center justify-between p-3 bg-[#151515] rounded-lg">
                             <div className="flex-1 min-w-0">
-                              <p className="font-medium text-slate-900 text-sm truncate">{event.title}</p>
-                              <p className="text-xs text-slate-500">{formatDate(event.eventDate)}</p>
+                              <p className="font-medium text-[#FAFAFA] text-sm truncate">{event.title}</p>
+                              <p className="text-xs text-[#A0A0A0]">{formatDate(event.eventDate)}</p>
                             </div>
                             <div className="ml-2">
                               {event.attended ? (
-                                <span className="flex items-center gap-1 text-emerald-600 text-xs">
+                                <span className="flex items-center gap-1 text-[#22C55E] text-xs">
                                   <CalendarCheck size={14} />
                                   {t('communityHub.userProfile.progress.attended')}
                                 </span>
                               ) : (
-                                <span className="text-slate-400 text-xs">
+                                <span className="text-[#666666] text-xs">
                                   {t('communityHub.userProfile.progress.registered')}
                                 </span>
                               )}
@@ -406,7 +406,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                 {/* Close Button */}
                 <button
                   onClick={onClose}
-                  className="w-full mt-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition-colors"
+                  className="w-full mt-4 py-2.5 bg-[#151515] hover:bg-[#1F1F1F] text-[#A0A0A0] rounded-lg font-medium transition-colors"
                 >
                   {t('communityHub.userProfile.close')}
                 </button>
@@ -416,7 +416,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
         ) : (
           <>
             {/* Header */}
-            <div className="relative bg-gradient-to-br from-indigo-500 to-purple-600 h-24 rounded-t-xl">
+            <div className="relative bg-[#151515] h-24 rounded-t-xl border-b border-[#1F1F1F]">
               <button
                 onClick={onClose}
                 className="absolute top-3 right-3 p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
@@ -426,10 +426,10 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
 
               {/* Avatar - positioned at bottom of header, extending below */}
               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2">
-                <div className="w-24 h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-slate-100">
+                <div className="w-24 h-24 rounded-full border-4 border-[#333333] overflow-hidden bg-[#151515]">
                   {isLoading ? (
                     <div className="w-full h-full flex items-center justify-center">
-                      <Loader2 className="w-8 h-8 animate-spin text-slate-300" />
+                      <Loader2 className="w-8 h-8 animate-spin text-[#666666]" />
                     </div>
                   ) : (
                     <img
@@ -447,14 +447,14 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
 
               {isLoading ? (
             <div className="flex justify-center py-8">
-              <Loader2 className="w-6 h-6 animate-spin text-indigo-600" />
+              <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
             </div>
           ) : error ? (
             <div className="text-center py-8">
-              <p className="text-slate-500">{error}</p>
+              <p className="text-[#A0A0A0]">{error}</p>
               <button
                 onClick={loadProfile}
-                className="mt-2 text-indigo-600 hover:text-indigo-700 text-sm font-medium"
+                className="mt-2 text-[#FAFAFA] hover:text-[#A0A0A0] text-sm font-medium"
               >
                 {t('communityHub.userProfile.tryAgain')}
               </button>
@@ -463,7 +463,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
             <>
               {/* Name and Role */}
               <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">
+                <h3 className="text-xl font-bold text-[#FAFAFA] mb-1">
                   {profile.full_name}
                 </h3>
                 {getRoleBadge(profile.role)}
@@ -471,35 +471,35 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
 
               {/* Bio */}
               {profile.bio && (
-                <p className="text-center text-slate-600 text-sm mb-4 px-2">
+                <p className="text-center text-[#A0A0A0] text-sm mb-4 px-2">
                   {profile.bio}
                 </p>
               )}
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="bg-slate-50 rounded-lg p-3 text-center">
-                  <div className="flex items-center justify-center text-slate-400 mb-1">
+                <div className="bg-[#151515] rounded-lg p-3 text-center">
+                  <div className="flex items-center justify-center text-[#666666] mb-1">
                     <FileText size={16} />
                   </div>
-                  <div className="text-lg font-bold text-slate-900">{profile.postsCount}</div>
-                  <div className="text-xs text-slate-500">{t('communityHub.userProfile.stats.posts')}</div>
+                  <div className="text-lg font-bold text-[#FAFAFA]">{profile.postsCount}</div>
+                  <div className="text-xs text-[#A0A0A0]">{t('communityHub.userProfile.stats.posts')}</div>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3 text-center">
-                  <div className="flex items-center justify-center text-slate-400 mb-1">
+                <div className="bg-[#151515] rounded-lg p-3 text-center">
+                  <div className="flex items-center justify-center text-[#666666] mb-1">
                     <MessageSquare size={16} />
                   </div>
-                  <div className="text-lg font-bold text-slate-900">{profile.commentsCount}</div>
-                  <div className="text-xs text-slate-500">{t('communityHub.userProfile.stats.comments')}</div>
+                  <div className="text-lg font-bold text-[#FAFAFA]">{profile.commentsCount}</div>
+                  <div className="text-xs text-[#A0A0A0]">{t('communityHub.userProfile.stats.comments')}</div>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3 text-center">
-                  <div className="flex items-center justify-center text-slate-400 mb-1">
+                <div className="bg-[#151515] rounded-lg p-3 text-center">
+                  <div className="flex items-center justify-center text-[#666666] mb-1">
                     <Calendar size={16} />
                   </div>
-                  <div className="text-sm font-medium text-slate-900 leading-tight">
+                  <div className="text-sm font-medium text-[#FAFAFA] leading-tight">
                     {formatJoinDate(profile.joined_at)}
                   </div>
-                  <div className="text-xs text-slate-500">{t('communityHub.userProfile.stats.joined')}</div>
+                  <div className="text-xs text-[#A0A0A0]">{t('communityHub.userProfile.stats.joined')}</div>
                 </div>
               </div>
 
@@ -508,14 +508,14 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                 <div className="flex gap-2 mb-3">
                   <button
                     onClick={handleSendMessage}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
                   >
                     <MessageCircle size={18} />
                     {t('directMessages.actions.sendMessage')}
                   </button>
                   <button
                     onClick={handleViewProfile}
-                    className="flex items-center justify-center gap-2 px-4 py-2.5 border border-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 border border-[#1F1F1F] text-[#A0A0A0] rounded-lg font-medium hover:bg-[#151515] transition-colors"
                   >
                     <User size={18} />
                   </button>
@@ -526,7 +526,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {teamMember && !teamMember.is_messageable && (
                 <button
                   onClick={handleViewProfile}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors mb-3"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
                 >
                   <User size={18} />
                   {t('directMessages.actions.viewProfile')}
@@ -537,7 +537,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {canShowCreatorStudentDM && (
                 <button
                   onClick={handleSendCreatorStudentMessage}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors mb-3"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
                 >
                   <MessageCircle size={18} />
                   {isViewerCreator
@@ -551,7 +551,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {canAwardPoints && !isViewingOwnProfile && !isProfileCreator && (
                 <button
                   onClick={handleViewProgress}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 mb-3 border border-indigo-200 text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 mb-3 border border-[#1F1F1F] text-[#FAFAFA] rounded-lg font-medium hover:bg-[#151515] hover:border-[#333333] transition-colors"
                 >
                   <BookOpen size={18} />
                   {t('communityHub.userProfile.viewProgress')}
@@ -564,22 +564,22 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                   {!showGivePoints ? (
                     <button
                       onClick={() => setShowGivePoints(true)}
-                      className="w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-lg font-medium transition-colors"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-[#E0E0E0] text-black rounded-lg font-medium transition-colors"
                     >
                       <Award size={18} />
                       {t('communityHub.givePoints.buttonLabel')}
                     </button>
                   ) : (
-                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 space-y-3">
+                    <div className="bg-[#151515] border border-[#1F1F1F] rounded-lg p-4 space-y-3">
                       <div className="flex items-center justify-between">
-                        <h4 className="font-medium text-amber-800 flex items-center gap-2">
+                        <h4 className="font-medium text-[#FAFAFA] flex items-center gap-2">
                           <Award size={16} />
                           {t('communityHub.givePoints.title')}
                         </h4>
                         <button
                           onClick={() => setShowGivePoints(false)}
                           disabled={isAwardingPoints}
-                          className="text-amber-600 hover:text-amber-800"
+                          className="text-[#666666] hover:text-[#FAFAFA]"
                         >
                           <X size={16} />
                         </button>
@@ -594,9 +594,9 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                             max="100"
                             value={givePointsAmount}
                             onChange={(e) => setGivePointsAmount(Number(e.target.value))}
-                            className="flex-1 h-2 bg-amber-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                            className="flex-1 h-2 bg-[#1F1F1F] rounded-lg appearance-none cursor-pointer accent-white"
                           />
-                          <span className="text-xl font-bold text-amber-600 w-12 text-center">
+                          <span className="text-xl font-bold text-[#FAFAFA] w-12 text-center">
                             {givePointsAmount}
                           </span>
                         </div>
@@ -608,14 +608,14 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                         value={givePointsReason}
                         onChange={(e) => setGivePointsReason(e.target.value)}
                         placeholder={t('communityHub.givePoints.reasonPlaceholder')}
-                        className="w-full px-3 py-2 text-sm border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                        className="w-full px-3 py-2 text-sm bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                       />
 
                       {/* Award button */}
                       <button
                         onClick={handleAwardPoints}
                         disabled={isAwardingPoints || givePointsAmount < 1}
-                        className="w-full py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                        className="w-full py-2 bg-white hover:bg-[#E0E0E0] text-black rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                       >
                         {isAwardingPoints ? (
                           <>
@@ -634,7 +634,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition-colors"
+                className="w-full py-2.5 bg-[#151515] hover:bg-[#1F1F1F] text-[#A0A0A0] rounded-lg font-medium transition-colors"
               >
                 {t('communityHub.userProfile.close')}
               </button>

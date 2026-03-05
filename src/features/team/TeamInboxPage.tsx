@@ -162,35 +162,35 @@ const TeamInboxPage: React.FC = () => {
   if (isLoading) {
     return (
       <div className="h-full flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#333333] border-t-transparent rounded-full"></div>
       </div>
     );
   }
 
   return (
-    <div className="h-full flex bg-white">
+    <div className="h-full flex bg-[#0A0A0A]">
       {/* Inbox List */}
       <div
         className={`
-          w-full md:w-80 lg:w-96 border-r border-slate-200 flex flex-col
+          w-full md:w-80 lg:w-96 border-r border-[#1F1F1F] flex flex-col
           ${selectedConversation ? 'hidden md:flex' : 'flex'}
         `}
       >
         {/* Header */}
-        <div className="p-4 border-b border-slate-200">
+        <div className="p-4 border-b border-[#1F1F1F]">
           <div className="flex items-center gap-2 mb-4">
-            <MessageSquare className="w-5 h-5 text-indigo-600" />
-            <h1 className="text-lg font-semibold text-slate-900">{t('teamInbox.title')}</h1>
+            <MessageSquare className="w-5 h-5 text-[#FAFAFA]" />
+            <h1 className="text-lg font-semibold text-[#FAFAFA]">{t('teamInbox.title')}</h1>
           </div>
           {/* Search */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#666666]" />
             <input
               type="text"
               placeholder={t('teamInbox.search')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full pl-9 pr-4 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
             />
           </div>
         </div>
@@ -199,8 +199,8 @@ const TeamInboxPage: React.FC = () => {
         <div className="flex-1 overflow-y-auto">
           {filteredConversations.length === 0 ? (
             <div className="p-8 text-center">
-              <Mail className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-500">{t('teamInbox.noConversations')}</p>
+              <Mail className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
+              <p className="text-[#666666]">{t('teamInbox.noConversations')}</p>
             </div>
           ) : (
             filteredConversations.map((conv) => {
@@ -212,8 +212,8 @@ const TeamInboxPage: React.FC = () => {
                   key={conv.id}
                   onClick={() => setSelectedConversation(conv)}
                   className={`
-                    p-4 border-b border-slate-100 cursor-pointer transition-colors
-                    ${selectedConversation?.id === conv.id ? 'bg-indigo-50' : 'hover:bg-slate-50'}
+                    p-4 border-b border-[#1F1F1F] cursor-pointer transition-colors
+                    ${selectedConversation?.id === conv.id ? 'bg-[#151515]' : 'hover:bg-[#0A0A0A]'}
                   `}
                 >
                   <div className="flex items-start gap-3">
@@ -224,19 +224,19 @@ const TeamInboxPage: React.FC = () => {
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <p className={`text-sm font-medium truncate ${hasUnread ? 'text-slate-900' : 'text-slate-600'}`}>
+                        <p className={`text-sm font-medium truncate ${hasUnread ? 'text-[#FAFAFA]' : 'text-[#A0A0A0]'}`}>
                           {studentName}
                         </p>
-                        <span className="text-xs text-slate-400 shrink-0 ml-2">
+                        <span className="text-xs text-[#666666] shrink-0 ml-2">
                           {formatTime(conv.last_message_at)}
                         </span>
                       </div>
-                      <p className={`text-sm truncate ${hasUnread ? 'text-slate-700 font-medium' : 'text-slate-500'}`}>
+                      <p className={`text-sm truncate ${hasUnread ? 'text-[#A0A0A0] font-medium' : 'text-[#666666]'}`}>
                         {conv.last_message?.content || t('teamInbox.startConversation')}
                       </p>
                     </div>
                     {hasUnread && (
-                      <div className="w-2.5 h-2.5 bg-indigo-500 rounded-full shrink-0 mt-1.5"></div>
+                      <div className="w-2.5 h-2.5 bg-white rounded-full shrink-0 mt-1.5"></div>
                     )}
                   </div>
                 </div>
@@ -256,12 +256,12 @@ const TeamInboxPage: React.FC = () => {
         {selectedConversation ? (
           <>
             {/* Conversation Header */}
-            <div className="p-4 border-b border-slate-200 flex items-center gap-3">
+            <div className="p-4 border-b border-[#1F1F1F] flex items-center gap-3">
               <button
                 onClick={() => setSelectedConversation(null)}
-                className="md:hidden p-1 hover:bg-slate-100 rounded"
+                className="md:hidden p-1 hover:bg-[#1F1F1F] rounded"
               >
-                <ChevronLeft className="w-5 h-5 text-slate-600" />
+                <ChevronLeft className="w-5 h-5 text-[#A0A0A0]" />
               </button>
               <Avatar
                 src={selectedConversation.student?.avatar_url}
@@ -269,8 +269,8 @@ const TeamInboxPage: React.FC = () => {
                 size="md"
               />
               <div>
-                <p className="font-medium text-slate-900">{selectedConversation.student?.full_name || 'Student'}</p>
-                <p className="text-xs text-slate-500">{t('teamInbox.student')}</p>
+                <p className="font-medium text-[#FAFAFA]">{selectedConversation.student?.full_name || 'Student'}</p>
+                <p className="text-xs text-[#666666]">{t('teamInbox.student')}</p>
               </div>
             </div>
 
@@ -278,14 +278,14 @@ const TeamInboxPage: React.FC = () => {
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {isLoadingMessages ? (
                 <div className="flex items-center justify-center h-full">
-                  <div className="animate-spin w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full"></div>
+                  <div className="animate-spin w-6 h-6 border-2 border-[#333333] border-t-transparent rounded-full"></div>
                 </div>
               ) : messages.length === 0 ? (
                 <div className="flex items-center justify-center h-full">
                   <div className="text-center">
-                    <MessageSquare className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                    <p className="text-slate-500">{t('teamInbox.noMessages')}</p>
-                    <p className="text-sm text-slate-400">{t('teamInbox.startConversationHint')}</p>
+                    <MessageSquare className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
+                    <p className="text-[#666666]">{t('teamInbox.noMessages')}</p>
+                    <p className="text-sm text-[#666666]">{t('teamInbox.startConversationHint')}</p>
                   </div>
                 </div>
               ) : (
@@ -300,12 +300,12 @@ const TeamInboxPage: React.FC = () => {
                         className={`
                           max-w-[70%] rounded-2xl px-4 py-2
                           ${isOwnMessage
-                            ? 'bg-indigo-600 text-white rounded-br-md'
-                            : 'bg-slate-100 text-slate-900 rounded-bl-md'}
+                            ? 'bg-[#FAFAFA] text-black rounded-br-md'
+                            : 'bg-[#151515] text-[#A0A0A0] rounded-bl-md'}
                         `}
                       >
                         <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                        <p className={`text-xs mt-1 ${isOwnMessage ? 'text-indigo-200' : 'text-slate-400'}`}>
+                        <p className={`text-xs mt-1 ${isOwnMessage ? 'text-[#A0A0A0]' : 'text-[#666666]'}`}>
                           {formatTime(message.created_at)}
                         </p>
                       </div>
@@ -316,7 +316,7 @@ const TeamInboxPage: React.FC = () => {
             </div>
 
             {/* Message Input */}
-            <div className="p-4 border-t border-slate-200">
+            <div className="p-4 border-t border-[#1F1F1F]">
               <div className="flex items-end gap-2">
                 <textarea
                   value={newMessage}
@@ -324,7 +324,7 @@ const TeamInboxPage: React.FC = () => {
                   onKeyPress={handleKeyPress}
                   placeholder={t('teamInbox.typeMessage')}
                   rows={1}
-                  className="flex-1 px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none max-h-32"
+                  className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none max-h-32"
                   style={{ minHeight: '40px' }}
                 />
                 <button
@@ -333,8 +333,8 @@ const TeamInboxPage: React.FC = () => {
                   className={`
                     p-2 rounded-lg transition-colors
                     ${newMessage.trim() && !isSending
-                      ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                      : 'bg-slate-100 text-slate-400 cursor-not-allowed'}
+                      ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                      : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'}
                   `}
                 >
                   <Send className="w-5 h-5" />
@@ -345,9 +345,9 @@ const TeamInboxPage: React.FC = () => {
         ) : (
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
-              <MessageSquare className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-slate-700 mb-1">{t('teamInbox.selectConversation')}</h3>
-              <p className="text-sm text-slate-500">{t('teamInbox.selectConversationHint')}</p>
+              <MessageSquare className="w-16 h-16 text-[#A0A0A0] mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-[#A0A0A0] mb-1">{t('teamInbox.selectConversation')}</h3>
+              <p className="text-sm text-[#666666]">{t('teamInbox.selectConversationHint')}</p>
             </div>
           </div>
         )}

@@ -57,11 +57,11 @@ export function DwyPackagesPage() {
     return (
       <div className="max-w-6xl mx-auto py-12 px-4">
         <div className="animate-pulse">
-          <div className="h-12 bg-gray-200 rounded w-1/3 mx-auto mb-4"></div>
-          <div className="h-6 bg-gray-200 rounded w-2/3 mx-auto mb-12"></div>
+          <div className="h-12 bg-[#1F1F1F] rounded w-1/3 mx-auto mb-4"></div>
+          <div className="h-6 bg-[#1F1F1F] rounded w-2/3 mx-auto mb-12"></div>
           <div className="grid md:grid-cols-2 gap-8">
             {[1, 2].map(i => (
-              <div key={i} className="bg-gray-200 rounded-2xl h-96"></div>
+              <div key={i} className="bg-[#1F1F1F] rounded-2xl h-96"></div>
             ))}
           </div>
         </div>
@@ -74,7 +74,7 @@ export function DwyPackagesPage() {
       {/* Active Engagements */}
       {activeEngagements.length > 0 && (
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('dwyPackages.page.activeEngagementsTitle')}</h2>
+          <h2 className="text-2xl font-bold text-[#FAFAFA] mb-6">{t('dwyPackages.page.activeEngagementsTitle')}</h2>
           <div className="space-y-6">
             {activeEngagements.map(engagement => (
               <EngagementDashboard key={engagement.id} engagement={engagement} />
@@ -85,10 +85,10 @@ export function DwyPackagesPage() {
 
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-[#FAFAFA] mb-4">
           {t('dwyPackages.page.heroTitle')}
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl text-[#A0A0A0] max-w-2xl mx-auto">
           {t('dwyPackages.page.heroDescription')}
         </p>
       </div>
@@ -98,7 +98,7 @@ export function DwyPackagesPage() {
         <div className="flex justify-center mb-8">
           <button
             onClick={() => setShowApplications(!showApplications)}
-            className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-2"
+            className="text-[#FAFAFA] hover:text-[#A0A0A0] font-medium flex items-center gap-2"
           >
             {showApplications ? (
               <>
@@ -143,29 +143,29 @@ export function DwyPackagesPage() {
       </div>
 
       {/* Trust Section */}
-      <div className="text-center bg-gradient-to-b from-gray-50 to-white rounded-2xl p-8 border border-gray-100">
+      <div className="text-center bg-gradient-to-b from-gray-50 to-white rounded-2xl p-8 border border-[#1F1F1F]">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-bold text-[#FAFAFA] mb-4">
             {t('dwyPackages.page.trustTitle')}
           </h2>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-[#A0A0A0] mb-6">
             {t('dwyPackages.page.trustDescription')}
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-[#666666]">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-[#22C55E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {t('dwyPackages.page.trustNoContracts')}
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-[#22C55E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {t('dwyPackages.page.trustResultsFocused')}
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-[#22C55E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {t('dwyPackages.page.trustDedicatedSupport')}

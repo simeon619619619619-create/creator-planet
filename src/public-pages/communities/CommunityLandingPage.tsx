@@ -292,7 +292,7 @@ export const CommunityLandingPage: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/communities')}
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] transition-colors duration-150"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-[#0A0A0A] text-black rounded-lg hover:bg-[#E0E0E0] transition-colors duration-150"
             >
               <ArrowLeft className="w-4 h-4" />
               {t('publicCommunities.landing.error.browseCommunities')}
@@ -329,15 +329,15 @@ export const CommunityLandingPage: React.FC = () => {
       {showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-6 px-4 pointer-events-none">
           <div
-            className="pointer-events-auto w-full max-w-md rounded-2xl bg-white shadow-2xl shadow-emerald-500/20 border border-emerald-100 overflow-hidden"
+            className="pointer-events-auto w-full max-w-md rounded-2xl bg-[#0A0A0A] border border-[#1F1F1F] overflow-hidden"
             style={{
               animation: 'successSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             }}
           >
             {/* Progress bar */}
-            <div className="h-1 bg-emerald-50">
+            <div className="h-1 bg-[#1F1F1F]">
               <div
-                className="h-full bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"
+                className="h-full bg-[#22C55E] rounded-full"
                 style={{
                   animation: 'successProgress 2.5s linear forwards',
                 }}
@@ -348,7 +348,7 @@ export const CommunityLandingPage: React.FC = () => {
               {/* Animated checkmark circle */}
               <div className="relative flex-shrink-0">
                 <div
-                  className="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center"
+                  className="w-11 h-11 rounded-full bg-[#22C55E] flex items-center justify-center"
                   style={{
                     animation: 'successPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both',
                   }}
@@ -357,7 +357,7 @@ export const CommunityLandingPage: React.FC = () => {
                 </div>
                 {/* Pulse ring */}
                 <div
-                  className="absolute inset-0 rounded-full border-2 border-emerald-400"
+                  className="absolute inset-0 rounded-full border-2 border-[#22C55E]"
                   style={{
                     animation: 'successRing 0.8s ease-out 0.3s both',
                   }}
@@ -366,17 +366,17 @@ export const CommunityLandingPage: React.FC = () => {
 
               {/* Text content */}
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-slate-900 text-[15px]">
+                <p className="font-semibold text-[#FAFAFA] text-[15px]">
                   {t('publicCommunities.landing.paymentSuccess.title')}
                 </p>
-                <p className="text-sm text-slate-500 mt-0.5">
+                <p className="text-sm text-[#666666] mt-0.5">
                   {t('publicCommunities.landing.paymentSuccess.message', { name: community.name })}
                 </p>
               </div>
 
               {/* Spinner for redirect */}
               <div className="flex-shrink-0">
-                <Loader2 className="w-4 h-4 text-emerald-500 animate-spin" />
+                <Loader2 className="w-4 h-4 text-[#22C55E] animate-spin" />
               </div>
             </div>
           </div>
@@ -407,26 +407,26 @@ export const CommunityLandingPage: React.FC = () => {
       {showCancelMessage && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-6 px-4 pointer-events-none">
           <div
-            className="pointer-events-auto w-full max-w-md rounded-2xl bg-white shadow-2xl shadow-amber-500/15 border border-amber-100 overflow-hidden"
+            className="pointer-events-auto w-full max-w-md rounded-2xl bg-[#0A0A0A] border border-[#1F1F1F] overflow-hidden"
             style={{
               animation: 'successSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             }}
           >
             <div className="px-5 py-4 flex items-center gap-4">
-              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center">
+              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#EAB308] flex items-center justify-center">
                 <XCircle className="w-6 h-6 text-white" strokeWidth={2.5} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-slate-900 text-[15px]">
+                <p className="font-semibold text-[#FAFAFA] text-[15px]">
                   {t('publicCommunities.landing.paymentCanceled.title')}
                 </p>
-                <p className="text-sm text-slate-500 mt-0.5">
+                <p className="text-sm text-[#666666] mt-0.5">
                   {t('publicCommunities.landing.paymentCanceled.message')}
                 </p>
               </div>
               <button
                 onClick={() => setShowCancelMessage(false)}
-                className="flex-shrink-0 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                className="flex-shrink-0 p-1.5 rounded-full text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] transition-colors duration-150"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -601,28 +601,28 @@ export const CommunityLandingPage: React.FC = () => {
                 </div>
               </div>
               {creator.bio && (
-                <p className="mt-4 text-sm text-slate-600 line-clamp-2">
+                <p className="mt-4 text-sm text-[#A0A0A0] line-clamp-2">
                   {creator.bio}
                 </p>
               )}
-              <p className="mt-3 text-xs text-indigo-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              <p className="mt-3 text-xs text-[#A0A0A0] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                 {t('publicCommunities.landing.creator.learnMore')}
               </p>
             </button>
 
             {/* Pricing Card */}
             {community.pricing_type !== 'free' && community.price_cents > 0 && (
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-sm border border-emerald-200 p-6">
+              <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
                 {/* Dual pricing toggle tabs */}
                 {community.pricing_type === 'both' && community.monthly_price_cents && community.monthly_price_cents > 0 ? (
                   <>
-                    <div className="flex rounded-lg bg-emerald-100 p-1 mb-4">
+                    <div className="flex rounded-lg bg-[#1F1F1F] p-1 mb-4">
                       <button
                         onClick={() => setSelectedCheckoutMode('one_time')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'one_time'
-                            ? 'bg-white text-emerald-700 shadow-sm'
-                            : 'text-emerald-600 hover:text-emerald-700'
+                            ? 'bg-[#0A0A0A] text-[#A0A0A0] '
+                            : 'text-[#FAFAFA] hover:text-[#A0A0A0]'
                         }`}
                       >
                         {t('publicCommunities.landing.pricing.oneTimeTab')}
@@ -631,24 +631,24 @@ export const CommunityLandingPage: React.FC = () => {
                         onClick={() => setSelectedCheckoutMode('monthly')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'monthly'
-                            ? 'bg-white text-emerald-700 shadow-sm'
-                            : 'text-emerald-600 hover:text-emerald-700'
+                            ? 'bg-[#0A0A0A] text-[#A0A0A0] '
+                            : 'text-[#FAFAFA] hover:text-[#A0A0A0]'
                         }`}
                       >
                         {t('publicCommunities.landing.pricing.monthlyTab')}
                       </button>
                     </div>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-slate-900">
+                      <span className="text-3xl font-bold text-[#FAFAFA]">
                         €{selectedCheckoutMode === 'monthly'
                           ? (community.monthly_price_cents / 100).toFixed(2)
                           : (community.price_cents / 100).toFixed(2)}
                       </span>
                       {selectedCheckoutMode === 'monthly' && (
-                        <span className="text-slate-600">{t('publicCommunities.landing.pricing.perMonth')}</span>
+                        <span className="text-[#A0A0A0]">{t('publicCommunities.landing.pricing.perMonth')}</span>
                       )}
                     </div>
-                    <p className="mt-2 text-sm text-slate-600">
+                    <p className="mt-2 text-sm text-[#A0A0A0]">
                       {selectedCheckoutMode === 'monthly'
                         ? t('publicCommunities.landing.pricing.subscriptionDescription')
                         : t('publicCommunities.landing.pricing.oneTimeDescription')}
@@ -658,23 +658,23 @@ export const CommunityLandingPage: React.FC = () => {
                   <>
                     <div className="flex items-center gap-2 mb-3">
                       {community.pricing_type === 'monthly' ? (
-                        <Repeat className="w-5 h-5 text-emerald-600" />
+                        <Repeat className="w-5 h-5 text-[#FAFAFA]" />
                       ) : (
-                        <CreditCard className="w-5 h-5 text-emerald-600" />
+                        <CreditCard className="w-5 h-5 text-[#FAFAFA]" />
                       )}
-                      <h3 className="text-sm font-medium text-emerald-700 uppercase tracking-wide">
+                      <h3 className="text-sm font-medium text-[#A0A0A0] uppercase tracking-wide">
                         {community.pricing_type === 'monthly' ? t('publicCommunities.landing.pricing.subscription') : t('publicCommunities.landing.pricing.oneTime')}
                       </h3>
                     </div>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-slate-900">
+                      <span className="text-3xl font-bold text-[#FAFAFA]">
                         €{(community.price_cents / 100).toFixed(2)}
                       </span>
                       {community.pricing_type === 'monthly' && (
-                        <span className="text-slate-600">{t('publicCommunities.landing.pricing.perMonth')}</span>
+                        <span className="text-[#A0A0A0]">{t('publicCommunities.landing.pricing.perMonth')}</span>
                       )}
                     </div>
-                    <p className="mt-2 text-sm text-slate-600">
+                    <p className="mt-2 text-sm text-[#A0A0A0]">
                       {community.pricing_type === 'monthly'
                         ? t('publicCommunities.landing.pricing.subscriptionDescription')
                         : t('publicCommunities.landing.pricing.oneTimeDescription')}
@@ -723,9 +723,9 @@ export const CommunityLandingPage: React.FC = () => {
                 {community.tbi_enabled && community.price_cents >= 5000 && (community.pricing_type !== 'both' || selectedCheckoutMode === 'one_time') && (
                   <div className="mt-3">
                     <div className="flex items-center gap-2 my-2">
-                      <div className="flex-1 h-px bg-slate-200" />
-                      <span className="text-xs text-slate-400 uppercase">или</span>
-                      <div className="flex-1 h-px bg-slate-200" />
+                      <div className="flex-1 h-px bg-[#1F1F1F]" />
+                      <span className="text-xs text-[#666666] uppercase">или</span>
+                      <div className="flex-1 h-px bg-[#1F1F1F]" />
                     </div>
                     <TBIButton
                       amountCents={community.price_cents}
@@ -751,14 +751,14 @@ export const CommunityLandingPage: React.FC = () => {
 
             {/* Free Community Badge */}
             {(community.pricing_type === 'free' || community.price_cents === 0) && (
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-sm border border-green-200 p-6">
+              <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
                 <div className="flex items-center gap-2 mb-2">
-                  <Gift className="w-5 h-5 text-green-600" />
-                  <h3 className="text-sm font-medium text-green-700 uppercase tracking-wide">
+                  <Gift className="w-5 h-5 text-[#22C55E]" />
+                  <h3 className="text-sm font-medium text-[#22C55E] uppercase tracking-wide">
                     {t('publicCommunities.landing.pricing.freeCommunity')}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-[#A0A0A0]">
                   {t('publicCommunities.landing.pricing.freeDescription')}
                 </p>
                 <div className="mt-4">
@@ -778,22 +778,22 @@ export const CommunityLandingPage: React.FC = () => {
             )}
 
             {/* Stats Card */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-sm font-medium text-slate-500 uppercase tracking-wide mb-4">
+            <div className="bg-[#0A0A0A] rounded-xl  border border-[#1F1F1F] p-6">
+              <h3 className="text-sm font-medium text-[#666666] uppercase tracking-wide mb-4">
                 {t('publicCommunities.landing.communityStats.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">{t('publicCommunities.landing.communityStats.members')}</span>
-                  <span className="font-semibold text-slate-900">{memberCount.toLocaleString()}</span>
+                  <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.members')}</span>
+                  <span className="font-semibold text-[#FAFAFA]">{memberCount.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">{t('publicCommunities.landing.communityStats.channels')}</span>
-                  <span className="font-semibold text-slate-900">{channelPreviews.length}</span>
+                  <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.channels')}</span>
+                  <span className="font-semibold text-[#FAFAFA]">{channelPreviews.length}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">{t('publicCommunities.landing.communityStats.created')}</span>
-                  <span className="font-semibold text-slate-900">
+                  <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.created')}</span>
+                  <span className="font-semibold text-[#FAFAFA]">
                     {new Date(community.created_at).toLocaleDateString('en-US', {
                       month: 'short',
                       year: 'numeric',
@@ -841,7 +841,7 @@ export const CommunityLandingPage: React.FC = () => {
             }}
           />
           {/* Modal Content */}
-          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden m-4">
+          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-[#0A0A0A] rounded-xl  overflow-hidden m-4">
             {/* Close button - only show if survey is not required */}
             {!intakeSurvey.is_required && (
               <button
@@ -849,7 +849,7 @@ export const CommunityLandingPage: React.FC = () => {
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#1F1F1F] rounded-full transition-colors duration-150"
               >
                 <X className="w-5 h-5" />
               </button>

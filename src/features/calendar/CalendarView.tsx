@@ -542,7 +542,7 @@ const CalendarView: React.FC = () => {
                       {!canManageCalendar && (
                         event.event_type === 'one_on_one' ? (
                           // 1:1 events: student is scheduled, show confirmation status
-                          <div className="px-4 py-2 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm font-medium flex items-center gap-2 whitespace-nowrap">
+                          <div className="px-4 py-2 bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] rounded-lg text-sm font-medium flex items-center gap-2 whitespace-nowrap">
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
@@ -1156,7 +1156,7 @@ const CalendarView: React.FC = () => {
           <div className="bg-[#0A0A0A] rounded-xl max-w-sm w-full">
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-[#EF4444]/10 flex items-center justify-center">
                   <AlertTriangle className="w-5 h-5 text-[#EF4444]" />
                 </div>
                 <h2 className="text-lg font-bold text-[#FAFAFA]">{t('calendar.deleteEventModal.title')}</h2>
@@ -1177,7 +1177,7 @@ const CalendarView: React.FC = () => {
               <button
                 onClick={() => handleDeleteEvent(deletingEventId)}
                 disabled={deleting}
-                className="flex-1 bg-rose-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-rose-700 disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 bg-[#EF4444] text-white py-2 rounded-lg text-sm font-medium hover:bg-[#EF4444]/80 disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {deleting ? (
                   <>

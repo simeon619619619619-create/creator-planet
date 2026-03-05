@@ -32,7 +32,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
       {/* Section Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="group w-full flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-slate-500 hover:text-slate-700 uppercase tracking-wider"
+        className="group w-full flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-[#666666] hover:text-[#A0A0A0] uppercase tracking-wider"
       >
         {isExpanded ? (
           <ChevronDown size={14} />
@@ -40,7 +40,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
           <ChevronRight size={14} />
         )}
         <span className="flex-1 text-left">{t('directMessages.teamSection.title')}</span>
-        <MessageCircle size={12} className="text-slate-400" />
+        <MessageCircle size={12} className="text-[#666666]" />
       </button>
 
       {/* Team Members List */}
@@ -59,7 +59,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                 key={member.id}
                 onClick={() => onSelectTeamMember(member)}
                 className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors text-left
-                  ${isSelected ? 'bg-indigo-50' : 'hover:bg-slate-50'}
+                  ${isSelected ? 'bg-[#151515]' : 'hover:bg-[#0A0A0A]'}
                 `}
               >
                 {/* Avatar with unread indicator */}
@@ -70,21 +70,21 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                     className="w-7 h-7 rounded-full object-cover"
                   />
                   {hasUnread && (
-                    <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-indigo-500 rounded-full border-2 border-white" />
+                    <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-white rounded-full border-2 border-white" />
                   )}
                 </div>
 
                 {/* Name and title */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <span className={`text-sm font-medium truncate ${isSelected ? 'text-indigo-700' : 'text-slate-700'}`}>
+                    <span className={`text-sm font-medium truncate ${isSelected ? 'text-[#A0A0A0]' : 'text-[#A0A0A0]'}`}>
                       {displayName}
                     </span>
                     <span
                       className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold shrink-0
                         ${badgeType === 'team'
-                          ? 'bg-indigo-100 text-indigo-700'
-                          : 'bg-amber-100 text-amber-700'
+                          ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                          : 'bg-[#EAB308]/10 text-[#EAB308]'
                         }
                       `}
                     >
@@ -95,7 +95,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                     </span>
                   </div>
                   {member.title && (
-                    <p className="text-xs text-slate-500 truncate">{member.title}</p>
+                    <p className="text-xs text-[#666666] truncate">{member.title}</p>
                   )}
                 </div>
               </button>

@@ -85,7 +85,7 @@ export function CoursePurchaseModal({
     appearance: {
       theme: 'stripe',
       variables: {
-        colorPrimary: '#4f46e5',
+        colorPrimary: '#FAFAFA',
         fontFamily: 'Inter, system-ui, sans-serif',
         borderRadius: '8px',
       },

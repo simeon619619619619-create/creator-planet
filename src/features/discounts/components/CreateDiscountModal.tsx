@@ -189,14 +189,14 @@ export function CreateDiscountModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+      <div className="w-full max-w-lg rounded-xl bg-[#0A0A0A] p-6">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-[#FAFAFA]">
             {isEditing ? t('discounts.modal.editTitle') : t('discounts.modal.createTitle')}
           </h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
           >
             <X className="h-5 w-5" />
           </button>
@@ -205,19 +205,19 @@ export function CreateDiscountModal({
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Code Input */}
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
               {t('discounts.form.code.label')}
             </label>
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#666666]" />
                 <input
                   type="text"
                   value={code}
                   onChange={(e) => handleCodeChange(e.target.value)}
                   placeholder={t('discounts.form.code.placeholder')}
                   className={`w-full rounded-lg border py-2.5 pl-10 pr-4 text-sm uppercase ${
-                    codeError ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                    codeError ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-[#1F1F1F] focus:border-[#555555] focus:ring-white/10'
                   }`}
                   maxLength={20}
                 />
@@ -225,45 +225,45 @@ export function CreateDiscountModal({
               <button
                 type="button"
                 onClick={handleGenerateCode}
-                className="flex items-center gap-1.5 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="flex items-center gap-1.5 rounded-lg border border-[#1F1F1F] px-3 py-2 text-sm font-medium text-[#A0A0A0] hover:bg-[#0A0A0A]"
               >
                 <Shuffle className="h-4 w-4" />
                 {t('discounts.form.code.generateButton')}
               </button>
             </div>
-            {codeError && <p className="mt-1 text-sm text-red-600">{codeError}</p>}
+            {codeError && <p className="mt-1 text-sm text-[#EF4444]">{codeError}</p>}
           </div>
 
           {/* Discount Percent */}
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
               {t('discounts.form.discount.label')}
             </label>
             <div className="relative">
-              <Percent className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Percent className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#666666]" />
               <input
                 type="number"
                 value={discountPercent}
                 onChange={(e) => setDiscountPercent(Math.min(100, Math.max(1, Number(e.target.value))))}
                 min={1}
                 max={100}
-                className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-[#1F1F1F] py-2.5 pl-10 pr-4 text-sm focus:border-[#555555] focus:ring-white/10"
               />
             </div>
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-[#666666]">
               {t('discounts.form.discount.hint', { percentage: 100 - discountPercent })}
             </p>
           </div>
 
           {/* Duration */}
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
               {t('discounts.form.duration.label')}
             </label>
             <select
               value={durationIndex}
               onChange={(e) => setDurationIndex(Number(e.target.value))}
-              className="w-full rounded-lg border border-gray-300 py-2.5 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-[#1F1F1F] py-2.5 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
             >
               {DURATION_OPTIONS.map((option, index) => (
                 <option key={index} value={index}>
@@ -275,13 +275,13 @@ export function CreateDiscountModal({
 
           {/* Target Type */}
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
               {t('discounts.form.target.label')}
             </label>
             <select
               value={targetType}
               onChange={(e) => setTargetType(e.target.value as typeof targetType)}
-              className="w-full rounded-lg border border-gray-300 py-2.5 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-[#1F1F1F] py-2.5 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
             >
               <option value="all">{t('discounts.form.target.all')}</option>
               <option value="community">{t('discounts.form.target.community')}</option>
@@ -293,13 +293,13 @@ export function CreateDiscountModal({
           {/* Conditional Target Inputs */}
           {targetType === 'community' && (
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-gray-700">
+              <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
                 {t('discounts.form.target.communitySelect')}
               </label>
               <select
                 value={targetCommunityId}
                 onChange={(e) => setTargetCommunityId(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 py-2.5 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-[#1F1F1F] py-2.5 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
                 required
               >
                 <option value="">{t('discounts.form.target.communityPlaceholder')}</option>
@@ -314,13 +314,13 @@ export function CreateDiscountModal({
 
           {targetType === 'course' && (
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-gray-700">
+              <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
                 {t('discounts.form.target.courseSelect')}
               </label>
               <select
                 value={targetCourseId}
                 onChange={(e) => setTargetCourseId(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 py-2.5 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-[#1F1F1F] py-2.5 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
                 required
               >
                 <option value="">{t('discounts.form.target.coursePlaceholder')}</option>
@@ -335,21 +335,21 @@ export function CreateDiscountModal({
 
           {targetType === 'student' && (
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-gray-700">
+              <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
                 {t('discounts.form.target.studentEmail')}
               </label>
               <div className="relative">
-                <Users className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <Users className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#666666]" />
                 <input
                   type="email"
                   value={targetStudentEmail}
                   onChange={(e) => setTargetStudentEmail(e.target.value)}
                   placeholder={t('discounts.form.target.studentPlaceholder')}
-                  className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  className="w-full rounded-lg border border-[#1F1F1F] py-2.5 pl-10 pr-4 text-sm focus:border-[#555555] focus:ring-white/10"
                   required
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-[#666666]">
                 {t('discounts.form.target.studentHint')}
               </p>
             </div>
@@ -357,7 +357,7 @@ export function CreateDiscountModal({
 
           {/* Max Uses */}
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
               {t('discounts.form.limits.maxUsesLabel')}
             </label>
             <input
@@ -366,29 +366,29 @@ export function CreateDiscountModal({
               onChange={(e) => setMaxUses(e.target.value ? Number(e.target.value) : '')}
               min={1}
               placeholder={t('discounts.form.limits.maxUsesPlaceholder')}
-              className="w-full rounded-lg border border-gray-300 py-2.5 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-[#1F1F1F] py-2.5 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
             />
           </div>
 
           {/* Expiry Date */}
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
+            <label className="mb-1.5 block text-sm font-medium text-[#A0A0A0]">
               {t('discounts.form.expiry.label')}
             </label>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Calendar className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#666666]" />
               <input
                 type="date"
                 value={validUntil}
                 onChange={(e) => setValidUntil(e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
-                className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="w-full rounded-lg border border-[#1F1F1F] py-2.5 pl-10 pr-4 text-sm focus:border-[#555555] focus:ring-white/10"
               />
             </div>
           </div>
 
           {error && (
-            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
+            <div className="rounded-lg bg-[#EF4444]/10 p-3 text-sm text-[#EF4444]">
               {error}
             </div>
           )}
@@ -398,14 +398,14 @@ export function CreateDiscountModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 rounded-lg border border-gray-300 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="flex-1 rounded-lg border border-[#1F1F1F] py-2.5 text-sm font-medium text-[#A0A0A0] hover:bg-[#0A0A0A]"
             >
               {t('discounts.modal.cancelButton')}
             </button>
             <button
               type="submit"
               disabled={isLoading || !!codeError}
-              className="flex-1 rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="flex-1 rounded-lg bg-white py-2.5 text-sm font-medium text-white hover:bg-[#E0E0E0] disabled:opacity-50"
             >
               {isLoading ? t('discounts.modal.savingButton') : isEditing ? t('discounts.modal.saveButton') : t('discounts.modal.createButton')}
             </button>

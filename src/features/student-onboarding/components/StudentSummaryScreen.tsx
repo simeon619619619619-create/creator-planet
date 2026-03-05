@@ -53,7 +53,7 @@ const AnswerCard: React.FC<AnswerCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 border border-slate-700/50 hover:border-slate-600/70 transition-all duration-500 ease-out ${
+      className={`bg-[#0A0A0A]/60 backdrop-blur-sm rounded-xl p-4 border border-[#1F1F1F]/50 hover:border-[#1F1F1F]/70 transition-all duration-500 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
@@ -63,7 +63,7 @@ const AnswerCard: React.FC<AnswerCardProps> = ({
           {icon}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-medium text-slate-400 uppercase tracking-wide mb-1">
+          <p className="text-xs font-medium text-[#666666] uppercase tracking-wide mb-1">
             {label}
           </p>
           <p className="text-white font-semibold truncate">{value}</p>
@@ -103,7 +103,7 @@ const AnimatedCheck: React.FC<AnimatedCheckProps> = ({ text, delay, isVisible })
         {/* Glow effect */}
         <div className="absolute inset-0 bg-emerald-400/30 rounded-full blur-sm" />
       </div>
-      <span className="text-slate-300 text-sm">{text}</span>
+      <span className="text-[#A0A0A0] text-sm">{text}</span>
     </div>
   );
 };
@@ -170,7 +170,7 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
       icon: <Target size={20} className="text-emerald-400" />,
       label: t('studentOnboarding.questions.interest.title', 'Interest'),
       value: interestTitle,
-      accentColor: 'bg-emerald-500/20',
+      accentColor: 'bg-[#22C55E]/100/20',
     },
     {
       icon: <TrendingUp size={20} className="text-cyan-400" />,
@@ -182,13 +182,13 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
       icon: <AlertCircle size={20} className="text-amber-400" />,
       label: t('studentOnboarding.questions.challenge.title', 'Challenge'),
       value: challengeText,
-      accentColor: 'bg-amber-500/20',
+      accentColor: 'bg-[#EAB308]/100/20',
     },
     {
-      icon: <Brain size={20} className="text-purple-400" />,
+      icon: <Brain size={20} className="text-[#666666]" />,
       label: t('studentOnboarding.questions.learningStyle.title', 'Learning Style'),
       value: learningStyleText,
-      accentColor: 'bg-purple-500/20',
+      accentColor: 'bg-white/20',
     },
   ];
 
@@ -251,7 +251,7 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
             {t('studentOnboarding.summary.youWantToLearn')}{' '}
             <span className="text-emerald-400">{interestTitle}</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300">
+          <p className="text-lg md:text-xl text-[#A0A0A0]">
             {t('studentOnboarding.summary.toAchieve')}{' '}
             <span className="text-white font-semibold">{goalText}</span>
           </p>
@@ -260,7 +260,7 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
         {/* Animated checkmarks */}
         <div className="space-y-4 mb-8">
           <p
-            className={`text-slate-400 text-sm font-medium mb-3 transition-all duration-500 ease-out ${
+            className={`text-[#666666] text-sm font-medium mb-3 transition-all duration-500 ease-out ${
               isVisible ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -286,7 +286,7 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
         >
           <button
             onClick={onCreateAccount}
-            className="group w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/25 hover:shadow-emerald-500/30 hover:scale-[1.02]"
+            className="group w-full py-3.5 px-6 bg-emerald-600 hover:bg-[#22C55E]/100 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-emerald-600/25 hover:shadow-emerald-500/30 hover:scale-[1.02]"
           >
             {t('studentOnboarding.summary.startLearningFree')}
             <ArrowRight
@@ -296,9 +296,9 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
           </button>
 
           {/* Trust Signals */}
-          <div className="mt-4 flex items-center justify-center gap-3 text-xs text-slate-400">
+          <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#666666]">
             <span>{t('studentOnboarding.summary.freeToJoin')}</span>
-            <span className="w-1 h-1 bg-slate-600 rounded-full" />
+            <span className="w-1 h-1 bg-[#151515] rounded-full" />
             <span>{t('studentOnboarding.summary.thousandsLearning')}</span>
           </div>
         </div>
@@ -316,7 +316,7 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
           <h2 className="text-xl md:text-2xl font-semibold text-white mb-2">
             Your Learning Profile
           </h2>
-          <p className="text-slate-400 text-sm">
+          <p className="text-[#666666] text-sm">
             Personalized just for you based on your answers
           </p>
         </div>
@@ -338,12 +338,12 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
 
         {/* Value proposition card */}
         <div
-          className={`bg-slate-800/40 backdrop-blur-sm rounded-xl p-5 border border-slate-700/40 mb-6 transition-all duration-500 ease-out ${
+          className={`bg-[#0A0A0A]/40 backdrop-blur-sm rounded-xl p-5 border border-[#1F1F1F]/40 mb-6 transition-all duration-500 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
           style={{ transitionDelay: '700ms' }}
         >
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm text-[#A0A0A0] leading-relaxed">
             <span className="font-semibold text-white">Founders Club</span>{' '}
             {t('studentOnboarding.summary.connectsYouWith')}{' '}
             <span className="text-emerald-400">{interestTitle.toLowerCase()}</span>{' '}
@@ -363,7 +363,7 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
         >
           <button
             onClick={onCreateAccount}
-            className="group w-full max-w-md py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/25 hover:shadow-emerald-500/30 hover:scale-[1.02]"
+            className="group w-full max-w-md py-3.5 px-6 bg-emerald-600 hover:bg-[#22C55E]/100 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-emerald-600/25 hover:shadow-emerald-500/30 hover:scale-[1.02]"
           >
             {t('studentOnboarding.summary.startLearningFree')}
             <ArrowRight
@@ -373,9 +373,9 @@ const StudentSummaryScreen: React.FC<StudentSummaryScreenProps> = ({
           </button>
 
           {/* Trust Signals */}
-          <div className="mt-4 flex items-center gap-3 text-xs text-slate-400">
+          <div className="mt-4 flex items-center gap-3 text-xs text-[#666666]">
             <span>{t('studentOnboarding.summary.freeToJoin')}</span>
-            <span className="w-1 h-1 bg-slate-600 rounded-full" />
+            <span className="w-1 h-1 bg-[#151515] rounded-full" />
             <span>{t('studentOnboarding.summary.thousandsLearning')}</span>
           </div>
         </div>

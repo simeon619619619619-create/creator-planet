@@ -251,7 +251,7 @@ const ChatbotSettings: React.FC<ChatbotSettingsProps> = ({ communityId }) => {
                       disabled={isToggling}
                       className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-sm font-medium transition-colors ${
                         chatbot.is_active
-                          ? 'text-green-700 bg-green-50 hover:bg-green-100'
+                          ? 'text-[#22C55E] bg-[#22C55E]/10 hover:bg-[#22C55E]/20'
                           : 'text-[#666666] bg-[#1F1F1F] hover:bg-[#1F1F1F]'
                       } ${isToggling ? 'opacity-50 cursor-not-allowed' : ''}`}
                       title={chatbot.is_active ? t('chatbots.settings.tooltips.deactivate') : t('chatbots.settings.tooltips.activate')}

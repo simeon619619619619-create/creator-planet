@@ -516,7 +516,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
             }}
           />
           {/* Modal Content */}
-          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden m-4">
+          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl overflow-hidden m-4">
             {/* Close button - only show if survey is not required */}
             {!intakeSurvey.is_required && (
               <button
@@ -524,7 +524,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-full transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

@@ -148,13 +148,13 @@ export function isOverdue(dueDate: string | null): boolean {
 export function getTaskStatusColor(status: TaskStatus): string {
   switch (status) {
     case 'todo':
-      return 'bg-slate-100 text-slate-700';
+      return 'bg-[#1F1F1F] text-[#A0A0A0]';
     case 'in_progress':
-      return 'bg-blue-100 text-blue-700';
+      return 'bg-[#1F1F1F] text-[#FAFAFA]';
     case 'done':
-      return 'bg-emerald-100 text-emerald-700';
+      return 'bg-[#22C55E]/10 text-[#22C55E]';
     default:
-      return 'bg-slate-100 text-slate-700';
+      return 'bg-[#1F1F1F] text-[#A0A0A0]';
   }
 }
 

@@ -387,8 +387,8 @@ const BillingSettingsPage: React.FC = () => {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <Loader2 size={32} className="text-indigo-600 animate-spin mx-auto mb-4" />
-          <p className="text-slate-600">{t('billing.settings.loading')}</p>
+          <Loader2 size={32} className="text-[#FAFAFA] animate-spin mx-auto mb-4" />
+          <p className="text-[#A0A0A0]">{t('billing.settings.loading')}</p>
         </div>
       </div>
     );
@@ -399,15 +399,15 @@ const BillingSettingsPage: React.FC = () => {
     return (
       <div className="text-center py-12">
         <AlertCircle size={48} className="text-amber-500 mx-auto mb-4" />
-        <h3 className="text-lg font-semibold text-slate-900 mb-2">
+        <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2">
           {t('billing.settings.errorNotSetup')}
         </h3>
-        <p className="text-slate-600 mb-6">
+        <p className="text-[#A0A0A0] mb-6">
           {t('billing.settings.errorIncompleteSetup')}
         </p>
         <button
           onClick={() => navigate('/onboarding')}
-          className="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+          className="bg-white text-black px-6 py-2 rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
         >
           {t('billing.settings.completeSetupButton')}
         </button>
@@ -422,7 +422,7 @@ const BillingSettingsPage: React.FC = () => {
     <div className="space-y-8">
       {/* Error Display */}
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-start gap-3">
+        <div className="p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg text-[#EF4444] flex items-start gap-3">
           <AlertCircle size={20} className="shrink-0 mt-0.5" />
           <div>
             <p>{error}</p>
@@ -437,33 +437,33 @@ const BillingSettingsPage: React.FC = () => {
       )}
 
       {/* Current Plan Section */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">{t('billing.settings.sectionCurrentPlan')}</h2>
-            <p className="text-slate-500 text-sm">
+            <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionCurrentPlan')}</h2>
+            <p className="text-[#666666] text-sm">
               {t('billing.settings.sectionSubtitle')}
             </p>
           </div>
           <button
             onClick={() => navigate('/pricing')}
-            className="text-indigo-600 hover:text-indigo-700 text-sm font-medium flex items-center gap-1"
+            className="text-[#FAFAFA] hover:text-white text-sm font-medium flex items-center gap-1"
           >
             {t('billing.settings.viewAllPlansLink')}
             <ArrowUpRight size={16} />
           </button>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-lg mb-6">
-          <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-            <CreditCard size={24} className="text-indigo-600" />
+        <div className="flex items-center gap-4 p-4 bg-[#0A0A0A] rounded-lg mb-6">
+          <div className="w-12 h-12 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
+            <CreditCard size={24} className="text-[#FAFAFA]" />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-slate-900">{currentPlan.name}</h3>
+              <h3 className="font-semibold text-[#FAFAFA]">{currentPlan.name}</h3>
               <StatusBadge status={billing.status} t={t} />
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#A0A0A0]">
               {currentPlan.price_monthly_cents === 0
                 ? t('billing.settings.freePlanLabel')
                 : `${formatAmount(currentPlan.price_monthly_cents)}/month`}{' '}
@@ -473,7 +473,7 @@ const BillingSettingsPage: React.FC = () => {
           {currentTier !== 'scale' && (
             <button
               onClick={() => handlePlanChange(currentTier === 'starter' ? 'pro' : 'scale')}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+              className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
             >
               {t('billing.settings.upgradeButton')}
             </button>
@@ -482,32 +482,32 @@ const BillingSettingsPage: React.FC = () => {
 
         {/* Activation & First Sale Status */}
         <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <div className="p-4 border border-slate-200 rounded-lg">
+          <div className="p-4 border border-[#1F1F1F] rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               {billing.activation_fee_paid ? (
                 <CheckCircle size={18} className="text-green-500" />
               ) : (
                 <Clock size={18} className="text-amber-500" />
               )}
-              <span className="font-medium text-slate-900">{t('billing.settings.activationFeeTitle')}</span>
+              <span className="font-medium text-[#FAFAFA]">{t('billing.settings.activationFeeTitle')}</span>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#A0A0A0]">
               {billing.activation_fee_paid
                 ? t('billing.settings.activationFeePaid', { date: new Date(billing.activation_fee_paid_at!).toLocaleDateString() })
                 : t('billing.settings.activationFeePending')}
             </p>
           </div>
 
-          <div className="p-4 border border-slate-200 rounded-lg">
+          <div className="p-4 border border-[#1F1F1F] rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               {billing.has_first_sale ? (
                 <CheckCircle size={18} className="text-green-500" />
               ) : (
-                <Clock size={18} className="text-slate-400" />
+                <Clock size={18} className="text-[#666666]" />
               )}
-              <span className="font-medium text-slate-900">{t('billing.settings.firstSaleTitle')}</span>
+              <span className="font-medium text-[#FAFAFA]">{t('billing.settings.firstSaleTitle')}</span>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#A0A0A0]">
               {billing.has_first_sale
                 ? t('billing.settings.firstSaleMade', { date: new Date(billing.first_sale_at!).toLocaleDateString() })
                 : currentTier === 'starter'
@@ -519,12 +519,12 @@ const BillingSettingsPage: React.FC = () => {
 
         {/* Cancellation Notice */}
         {billing.cancel_at_period_end && (
-          <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg mb-6">
+          <div className="p-4 bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-lg mb-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle size={20} className="text-amber-600 shrink-0 mt-0.5" />
+              <AlertTriangle size={20} className="text-[#EAB308] shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-amber-800">{t('billing.settings.cancellationNoticeTitle')}</p>
-                <p className="text-sm text-amber-700 mt-1">
+                <p className="font-medium text-[#FAFAFA]">{t('billing.settings.cancellationNoticeTitle')}</p>
+                <p className="text-sm text-[#EAB308] mt-1">
                   {t('billing.settings.cancellationNoticeMessage', {
                     date: billing.current_period_end
                       ? new Date(billing.current_period_end).toLocaleDateString()
@@ -534,7 +534,7 @@ const BillingSettingsPage: React.FC = () => {
                 <button
                   onClick={handleResumeSubscription}
                   disabled={isProcessing}
-                  className="mt-3 text-sm font-medium text-amber-800 underline hover:no-underline disabled:opacity-50"
+                  className="mt-3 text-sm font-medium text-[#FAFAFA] underline hover:no-underline disabled:opacity-50"
                 >
                   {t('billing.settings.resumeSubscriptionButton')}
                 </button>
@@ -550,7 +550,7 @@ const BillingSettingsPage: React.FC = () => {
             <button
               onClick={handleOpenBillingPortal}
               disabled={isProcessing}
-              className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 border border-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] hover:bg-[#0A0A0A] transition-colors disabled:opacity-50"
             >
               <ExternalLink size={16} />
               {t('billing.settings.managePaymentButton')}
@@ -558,12 +558,12 @@ const BillingSettingsPage: React.FC = () => {
           ) : (
             // For trial creators without subscription, show option to start subscription early
             billing.status === 'trialing' && (
-              <div className="w-full p-4 bg-indigo-50 border border-indigo-100 rounded-lg mb-2">
+              <div className="w-full p-4 bg-[#151515] border border-[#1F1F1F] rounded-lg mb-2">
                 <div className="flex items-start gap-3">
-                  <CreditCard size={20} className="text-indigo-600 shrink-0 mt-0.5" />
+                  <CreditCard size={20} className="text-[#FAFAFA] shrink-0 mt-0.5" />
                   <div className="flex-1">
-                    <p className="font-medium text-indigo-900">{t('billing.settings.trialCtaTitle')}</p>
-                    <p className="text-sm text-indigo-700 mt-1">
+                    <p className="font-medium text-[#FAFAFA]">{t('billing.settings.trialCtaTitle')}</p>
+                    <p className="text-sm text-[#A0A0A0] mt-1">
                       {currentTier === 'starter'
                         ? t('billing.settings.trialCtaMessageStarter')
                         : t('billing.settings.trialCtaMessage')
@@ -576,7 +576,7 @@ const BillingSettingsPage: React.FC = () => {
                           <button
                             onClick={() => handlePlanChange('pro')}
                             disabled={isProcessing}
-                            className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                            className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 flex items-center gap-2"
                           >
                             {isProcessing ? (
                               <>
@@ -596,7 +596,7 @@ const BillingSettingsPage: React.FC = () => {
                         <button
                           onClick={handleStartCurrentSubscription}
                           disabled={isProcessing}
-                          className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                          className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 flex items-center gap-2"
                         >
                           {isProcessing ? (
                             <>
@@ -617,7 +617,7 @@ const BillingSettingsPage: React.FC = () => {
           {currentTier !== 'starter' && !billing.cancel_at_period_end && billing.stripe_subscription_id && (
             <button
               onClick={() => setShowCancelModal(true)}
-              className="px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors"
+              className="px-4 py-2 text-sm font-medium text-[#EF4444] hover:text-[#EF4444] transition-colors"
             >
               {t('billing.settings.cancelSubscriptionButton')}
             </button>
@@ -626,11 +626,11 @@ const BillingSettingsPage: React.FC = () => {
       </div>
 
       {/* Payouts Section (Stripe Connect) */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">{t('billing.settings.sectionPayouts')}</h2>
-            <p className="text-slate-500 text-sm">
+            <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionPayouts')}</h2>
+            <p className="text-[#666666] text-sm">
               {t('billing.settings.payoutsSubtitle')}
             </p>
           </div>
@@ -638,7 +638,7 @@ const BillingSettingsPage: React.FC = () => {
             <button
               onClick={handleRefreshConnectStatus}
               disabled={isConnectLoading}
-              className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors disabled:opacity-50"
+              className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
               title={t('billing.settings.refreshStatusTitle')}
             >
               <RefreshCw size={16} className={isConnectLoading ? 'animate-spin' : ''} />
@@ -648,20 +648,20 @@ const BillingSettingsPage: React.FC = () => {
 
         {!connectStatus ? (
           // No Connect account - show setup prompt
-          <div className="p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-100">
+          <div className="p-6 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F]">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center shrink-0">
-                <Wallet size={24} className="text-indigo-600" />
+              <div className="w-12 h-12 bg-[#1F1F1F] rounded-lg flex items-center justify-center shrink-0">
+                <Wallet size={24} className="text-[#FAFAFA]" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-slate-900 mb-1">{t('billing.settings.payoutsSetupTitle')}</h3>
-                <p className="text-sm text-slate-600 mb-4">
+                <h3 className="font-semibold text-[#FAFAFA] mb-1">{t('billing.settings.payoutsSetupTitle')}</h3>
+                <p className="text-sm text-[#A0A0A0] mb-4">
                   {t('billing.settings.payoutsSetupMessage')}
                 </p>
                 <button
                   onClick={handleSetupPayouts}
                   disabled={isConnectLoading}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors flex items-center gap-2 disabled:opacity-50"
+                  className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors flex items-center gap-2 disabled:opacity-50"
                 >
                   {isConnectLoading ? (
                     <>
@@ -681,16 +681,16 @@ const BillingSettingsPage: React.FC = () => {
         ) : (
           // Has Connect account - show status
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-lg">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                <Wallet size={24} className="text-indigo-600" />
+            <div className="flex items-center gap-4 p-4 bg-[#0A0A0A] rounded-lg">
+              <div className="w-12 h-12 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
+                <Wallet size={24} className="text-[#FAFAFA]" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-semibold text-slate-900">{t('billing.settings.payoutAccountTitle')}</h3>
+                  <h3 className="font-semibold text-[#FAFAFA]">{t('billing.settings.payoutAccountTitle')}</h3>
                   <ConnectStatusBadge status={connectStatus.status} t={t} />
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-[#A0A0A0]">
                   {connectStatus.status === 'active'
                     ? t('billing.settings.payoutAccountActive')
                     : connectStatus.status === 'pending'
@@ -702,7 +702,7 @@ const BillingSettingsPage: React.FC = () => {
                 <button
                   onClick={handleSetupPayouts}
                   disabled={isConnectLoading}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                  className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
                 >
                   {isConnectLoading ? t('billing.settings.loadingButton') : t('billing.settings.completeSetupButtonAlt')}
                 </button>
@@ -711,48 +711,48 @@ const BillingSettingsPage: React.FC = () => {
 
             {/* Status details */}
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 border border-slate-200 rounded-lg">
+              <div className="p-4 border border-[#1F1F1F] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.chargesEnabled ? (
                     <CheckCircle size={18} className="text-green-500" />
                   ) : (
                     <Clock size={18} className="text-amber-500" />
                   )}
-                  <span className="font-medium text-slate-900">{t('billing.settings.payoutChargesEnabled')}</span>
+                  <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutChargesEnabled')}</span>
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-[#A0A0A0]">
                   {connectStatus.chargesEnabled
                     ? t('billing.settings.payoutChargesReady')
                     : t('billing.settings.payoutChargesPending')}
                 </p>
               </div>
 
-              <div className="p-4 border border-slate-200 rounded-lg">
+              <div className="p-4 border border-[#1F1F1F] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.payoutsEnabled ? (
                     <CheckCircle size={18} className="text-green-500" />
                   ) : (
                     <Clock size={18} className="text-amber-500" />
                   )}
-                  <span className="font-medium text-slate-900">{t('billing.settings.payoutPayoutsEnabled')}</span>
+                  <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutPayoutsEnabled')}</span>
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-[#A0A0A0]">
                   {connectStatus.payoutsEnabled
                     ? t('billing.settings.payoutPayoutsReady')
                     : t('billing.settings.payoutPayoutsPending')}
                 </p>
               </div>
 
-              <div className="p-4 border border-slate-200 rounded-lg">
+              <div className="p-4 border border-[#1F1F1F] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.detailsSubmitted ? (
                     <CheckCircle size={18} className="text-green-500" />
                   ) : (
                     <Clock size={18} className="text-amber-500" />
                   )}
-                  <span className="font-medium text-slate-900">{t('billing.settings.payoutIdentityVerified')}</span>
+                  <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutIdentityVerified')}</span>
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-[#A0A0A0]">
                   {connectStatus.detailsSubmitted
                     ? t('billing.settings.payoutIdentityVerifiedComplete')
                     : t('billing.settings.payoutIdentityPending')}
@@ -786,43 +786,43 @@ const BillingSettingsPage: React.FC = () => {
       )}
 
       {/* Revenue Overview */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-6">{t('billing.settings.sectionRevenue')}</h2>
+      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
+        <h2 className="text-lg font-semibold text-[#FAFAFA] mb-6">{t('billing.settings.sectionRevenue')}</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-4 bg-slate-50 rounded-lg">
-            <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
+          <div className="p-4 bg-[#0A0A0A] rounded-lg">
+            <div className="flex items-center gap-2 text-[#666666] text-sm mb-2">
               <TrendingUp size={16} />
               {t('billing.settings.revenueThisMonth')}
             </div>
-            <p className="text-2xl font-bold text-slate-900">
+            <p className="text-2xl font-bold text-[#FAFAFA]">
               {formatAmount(dashboard.currentPeriodRevenue)}
             </p>
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-sm text-[#666666] mt-1">
               {t('billing.settings.revenueFeesLabel', { amount: formatAmount(dashboard.platformFeesThisPeriod) })}
             </p>
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg">
-            <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
+          <div className="p-4 bg-[#0A0A0A] rounded-lg">
+            <div className="flex items-center gap-2 text-[#666666] text-sm mb-2">
               <Receipt size={16} />
               {t('billing.settings.revenueAllTime')}
             </div>
-            <p className="text-2xl font-bold text-slate-900">
+            <p className="text-2xl font-bold text-[#FAFAFA]">
               {formatAmount(dashboard.totalRevenue)}
             </p>
           </div>
 
           {dashboard.nextInvoiceDate && dashboard.nextInvoiceAmount && (
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
+            <div className="p-4 bg-[#0A0A0A] rounded-lg">
+              <div className="flex items-center gap-2 text-[#666666] text-sm mb-2">
                 <Clock size={16} />
                 {t('billing.settings.revenueNextInvoice')}
               </div>
-              <p className="text-2xl font-bold text-slate-900">
+              <p className="text-2xl font-bold text-[#FAFAFA]">
                 {formatAmount(dashboard.nextInvoiceAmount)}
               </p>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-[#666666] mt-1">
                 {t('billing.settings.revenueDueDate', { date: new Date(dashboard.nextInvoiceDate).toLocaleDateString() })}
               </p>
             </div>
@@ -831,18 +831,18 @@ const BillingSettingsPage: React.FC = () => {
       </div>
 
       {/* Community Sales */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-slate-900">{t('billing.settings.sectionSales')}</h2>
-          <p className="text-slate-500 text-sm">{t('billing.settings.salesSubtitle')}</p>
+          <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionSales')}</h2>
+          <p className="text-[#666666] text-sm">{t('billing.settings.salesSubtitle')}</p>
         </div>
 
         {sales.length === 0 ? (
-          <p className="text-center text-slate-500 py-8">
+          <p className="text-center text-[#666666] py-8">
             {t('billing.settings.noSales')}
           </p>
         ) : (
-          <div className="divide-y divide-slate-200">
+          <div className="divide-y divide-[#1F1F1F]">
             {sales.map((sale) => (
               <SaleRow key={sale.id} sale={sale} t={t} />
             ))}
@@ -851,20 +851,20 @@ const BillingSettingsPage: React.FC = () => {
       </div>
 
       {/* Withdrawal History */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">{t('billing.settings.sectionWithdrawals')}</h2>
-            <p className="text-slate-500 text-sm">{t('billing.settings.withdrawalsSubtitle')}</p>
+            <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionWithdrawals')}</h2>
+            <p className="text-[#666666] text-sm">{t('billing.settings.withdrawalsSubtitle')}</p>
           </div>
         </div>
 
         {payouts.length === 0 ? (
-          <p className="text-center text-slate-500 py-8">
+          <p className="text-center text-[#666666] py-8">
             {t('billing.settings.noWithdrawals')}
           </p>
         ) : (
-          <div className="divide-y divide-slate-200">
+          <div className="divide-y divide-[#1F1F1F]">
             {payouts.map((payout) => (
               <PayoutRow key={payout.id} payout={payout} t={t} />
             ))}
@@ -938,12 +938,12 @@ interface StatusBadgeProps {
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status, t }) => {
   const config: Record<string, { bg: string; text: string; labelKey: string }> = {
-    active: { bg: 'bg-green-100', text: 'text-green-700', labelKey: 'billing.settings.status.active' },
-    trialing: { bg: 'bg-blue-100', text: 'text-blue-700', labelKey: 'billing.settings.status.trial' },
-    past_due: { bg: 'bg-red-100', text: 'text-red-700', labelKey: 'billing.settings.status.pastDue' },
-    canceled: { bg: 'bg-slate-100', text: 'text-slate-700', labelKey: 'billing.settings.status.canceled' },
-    incomplete: { bg: 'bg-amber-100', text: 'text-amber-700', labelKey: 'billing.settings.status.incomplete' },
-    paused: { bg: 'bg-slate-100', text: 'text-slate-700', labelKey: 'billing.settings.status.paused' },
+    active: { bg: 'bg-[#22C55E]/10', text: 'text-[#22C55E]', labelKey: 'billing.settings.status.active' },
+    trialing: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.status.trial' },
+    past_due: { bg: 'bg-[#EF4444]/10', text: 'text-[#EF4444]', labelKey: 'billing.settings.status.pastDue' },
+    canceled: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.status.canceled' },
+    incomplete: { bg: 'bg-[#EAB308]/10', text: 'text-[#EAB308]', labelKey: 'billing.settings.status.incomplete' },
+    paused: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.status.paused' },
   };
 
   const { bg, text, labelKey } = config[status] || config.incomplete;
@@ -962,10 +962,10 @@ interface ConnectStatusBadgeProps {
 
 const ConnectStatusBadge: React.FC<ConnectStatusBadgeProps> = ({ status, t }) => {
   const config: Record<string, { bg: string; text: string; labelKey: string }> = {
-    active: { bg: 'bg-green-100', text: 'text-green-700', labelKey: 'billing.settings.connectStatus.active' },
-    pending: { bg: 'bg-amber-100', text: 'text-amber-700', labelKey: 'billing.settings.connectStatus.pending' },
-    restricted: { bg: 'bg-red-100', text: 'text-red-700', labelKey: 'billing.settings.connectStatus.restricted' },
-    disabled: { bg: 'bg-slate-100', text: 'text-slate-700', labelKey: 'billing.settings.connectStatus.disabled' },
+    active: { bg: 'bg-[#22C55E]/10', text: 'text-[#22C55E]', labelKey: 'billing.settings.connectStatus.active' },
+    pending: { bg: 'bg-[#EAB308]/10', text: 'text-[#EAB308]', labelKey: 'billing.settings.connectStatus.pending' },
+    restricted: { bg: 'bg-[#EF4444]/10', text: 'text-[#EF4444]', labelKey: 'billing.settings.connectStatus.restricted' },
+    disabled: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.connectStatus.disabled' },
   };
 
   const { bg, text, labelKey } = config[status] || config.pending;
@@ -985,7 +985,7 @@ interface PayoutRowProps {
 const PayoutRow: React.FC<PayoutRowProps> = ({ payout, t }) => {
   const statusIcons: Record<string, React.ReactNode> = {
     completed: <CheckCircle size={16} className="text-green-500" />,
-    processing: <Clock size={16} className="text-blue-500" />,
+    processing: <Clock size={16} className="text-[#A0A0A0]" />,
     pending: <Clock size={16} className="text-amber-500" />,
     failed: <XCircle size={16} className="text-red-500" />,
   };
@@ -1006,21 +1006,21 @@ const PayoutRow: React.FC<PayoutRowProps> = ({ payout, t }) => {
     <div className="flex items-center gap-4 py-4">
       <div className="shrink-0">{statusIcons[payout.status] || statusIcons.pending}</div>
       <div className="flex-1 min-w-0">
-        <p className="font-medium text-slate-900">
+        <p className="font-medium text-[#FAFAFA]">
           {typeLabels[payout.type] || payout.type}
         </p>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-[#666666]">
           {statusLabels[payout.status] || payout.status}
           {' · '}
           {new Date(payout.created_at).toLocaleDateString()}
         </p>
       </div>
       <div className="text-right">
-        <p className="font-medium text-slate-900">
+        <p className="font-medium text-[#FAFAFA]">
           -{formatAmount(payout.amount_cents, payout.currency)}
         </p>
         {payout.completed_at && (
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[#666666]">
             {new Date(payout.completed_at).toLocaleDateString()}
           </p>
         )}
@@ -1046,27 +1046,27 @@ const SaleRow: React.FC<SaleRowProps> = ({ sale, t }) => {
     completed: <CheckCircle size={16} className="text-green-500" />,
     pending: <Clock size={16} className="text-amber-500" />,
     failed: <XCircle size={16} className="text-red-500" />,
-    refunded: <AlertCircle size={16} className="text-slate-500" />,
+    refunded: <AlertCircle size={16} className="text-[#666666]" />,
   };
 
   return (
     <div className="flex items-center gap-4 py-4">
       <div className="shrink-0">{statusIcons[sale.status] || statusIcons.pending}</div>
       <div className="flex-1 min-w-0">
-        <p className="font-medium text-slate-900">
+        <p className="font-medium text-[#FAFAFA]">
           {sale.product_name}
         </p>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-[#666666]">
           {typeLabels[sale.product_type] || sale.product_type}
           {' · '}
           {new Date(sale.created_at).toLocaleDateString()}
         </p>
       </div>
       <div className="text-right">
-        <p className="font-medium text-green-600">
+        <p className="font-medium text-[#22C55E]">
           +{formatAmount(sale.sale_amount_cents, sale.currency)}
         </p>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-[#666666]">
           {t('billing.settings.saleNet', { amount: formatAmount(sale.net_amount_cents, sale.currency) })}
         </p>
       </div>
@@ -1094,21 +1094,21 @@ const CancelModal: React.FC<CancelModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={onCancel} />
-      <div className="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+      <div className="relative bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] max-w-md w-full p-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-            <AlertTriangle size={20} className="text-red-600" />
+          <div className="w-10 h-10 bg-[#EF4444]/10 rounded-full flex items-center justify-center">
+            <AlertTriangle size={20} className="text-[#EF4444]" />
           </div>
-          <h2 className="text-lg font-semibold text-slate-900">{t('billing.settings.cancelModal.title')}</h2>
+          <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.cancelModal.title')}</h2>
         </div>
 
-        <p className="text-slate-600 mb-4">
+        <p className="text-[#A0A0A0] mb-4">
           {t('billing.settings.cancelModal.message', { planName })}
         </p>
 
-        <ul className="space-y-2 mb-6 text-sm text-slate-600">
+        <ul className="space-y-2 mb-6 text-sm text-[#A0A0A0]">
           <li className="flex items-start gap-2">
-            <span className="text-slate-400">-</span>
+            <span className="text-[#666666]">-</span>
             <span>
               {t('billing.settings.cancelModal.accessUntil', {
                 date: periodEnd ? new Date(periodEnd).toLocaleDateString() : 'the end of your billing period'
@@ -1116,11 +1116,11 @@ const CancelModal: React.FC<CancelModalProps> = ({
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-slate-400">-</span>
+            <span className="text-[#666666]">-</span>
             <span>{t('billing.settings.cancelModal.downgradeNotice')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-slate-400">-</span>
+            <span className="text-[#666666]">-</span>
             <span>{t('billing.settings.cancelModal.resubscribe')}</span>
           </li>
         </ul>
@@ -1129,14 +1129,14 @@ const CancelModal: React.FC<CancelModalProps> = ({
           <button
             onClick={onCancel}
             disabled={isLoading}
-            className="flex-1 py-2.5 px-4 bg-slate-100 text-slate-700 font-medium rounded-lg hover:bg-slate-200 transition-colors disabled:opacity-50"
+            className="flex-1 py-2.5 px-4 border border-[#1F1F1F] text-[#FAFAFA] font-medium rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors disabled:opacity-50"
           >
             {t('billing.settings.cancelModal.keepButton')}
           </button>
           <button
             onClick={onConfirm}
             disabled={isLoading}
-            className="flex-1 py-2.5 px-4 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+            className="flex-1 py-2.5 px-4 bg-[#EF4444] text-white font-medium rounded-lg hover:bg-[#EF4444]/80 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>

@@ -69,17 +69,17 @@ const PendingSurveysWidget: React.FC<PendingSurveysWidgetProps> = ({ studentId }
   // Loading state
   if (isLoading) {
     return (
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+      <div className="bg-[#0A0A0A] rounded-xl p-6 border border-[#1F1F1F]">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 bg-amber-100 rounded-lg">
-            <ClipboardCheck className="w-6 h-6 text-amber-600" />
+          <div className="p-3 bg-[#EAB308]/10 rounded-lg">
+            <ClipboardCheck className="w-6 h-6 text-[#EAB308]" />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-900">{t('surveys.pending.title')}</h3>
+            <h3 className="font-semibold text-[#FAFAFA]">{t('surveys.pending.title')}</h3>
           </div>
         </div>
         <div className="flex items-center justify-center py-8">
-          <Loader2 className="w-6 h-6 text-amber-600 animate-spin" />
+          <Loader2 className="w-6 h-6 text-[#EAB308] animate-spin" />
         </div>
       </div>
     );
@@ -93,14 +93,14 @@ const PendingSurveysWidget: React.FC<PendingSurveysWidgetProps> = ({ studentId }
   return (
     <>
       {/* Widget Card */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+      <div className="bg-[#0A0A0A] rounded-xl p-6 border border-[#1F1F1F]">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 bg-amber-100 rounded-lg">
-            <ClipboardCheck className="w-6 h-6 text-amber-600" />
+          <div className="p-3 bg-[#EAB308]/10 rounded-lg">
+            <ClipboardCheck className="w-6 h-6 text-[#EAB308]" />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-900">{t('surveys.pending.title')}</h3>
-            <p className="text-sm text-slate-500">
+            <h3 className="font-semibold text-[#FAFAFA]">{t('surveys.pending.title')}</h3>
+            <p className="text-sm text-[#666666]">
               {pendingSurveys.length === 1
                 ? t('surveys.pending.countSingle')
                 : t('surveys.pending.count', { count: pendingSurveys.length })}
@@ -113,12 +113,12 @@ const PendingSurveysWidget: React.FC<PendingSurveysWidgetProps> = ({ studentId }
           {pendingSurveys.map((survey) => (
             <div
               key={survey.id}
-              className="flex items-center justify-between p-3 bg-amber-50 border border-amber-100 rounded-lg hover:bg-amber-100 transition-colors"
+              className="flex items-center justify-between p-3 bg-[#EAB308]/10 border border-amber-100 rounded-lg hover:bg-[#EAB308]/10 transition-colors"
             >
               <div className="flex-1 min-w-0">
-                <h4 className="font-medium text-slate-900 truncate">{survey.survey_title}</h4>
+                <h4 className="font-medium text-[#FAFAFA] truncate">{survey.survey_title}</h4>
                 {survey.community_name && (
-                  <p className="text-sm text-slate-500 flex items-center gap-1 mt-0.5">
+                  <p className="text-sm text-[#666666] flex items-center gap-1 mt-0.5">
                     <Users className="w-3.5 h-3.5" />
                     {t('surveys.pending.from', { community: survey.community_name })}
                   </p>
@@ -126,7 +126,7 @@ const PendingSurveysWidget: React.FC<PendingSurveysWidgetProps> = ({ studentId }
               </div>
               <button
                 onClick={() => handleOpenSurvey(survey)}
-                className="ml-3 flex items-center gap-1 px-3 py-1.5 bg-amber-600 text-white text-sm font-medium rounded-lg hover:bg-amber-700 transition-colors shrink-0"
+                className="ml-3 flex items-center gap-1 px-3 py-1.5 bg-[#EAB308] text-white text-sm font-medium rounded-lg hover:bg-[#EAB308]/80 transition-colors shrink-0"
               >
                 {t('surveys.pending.fillSurvey')}
                 <ChevronRight className="w-4 h-4" />
@@ -147,13 +147,13 @@ const PendingSurveysWidget: React.FC<PendingSurveysWidgetProps> = ({ studentId }
 
           {/* Modal Container */}
           <div className="relative min-h-screen flex items-center justify-center p-4">
-            <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="relative bg-[#0A0A0A] rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
               {/* Close Button */}
               <button
                 onClick={handleCloseModal}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-md transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 bg-[#0A0A0A]/90 hover:bg-[#0A0A0A] rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-slate-600" />
+                <X className="w-5 h-5 text-[#A0A0A0]" />
               </button>
 
               {/* Survey Player */}

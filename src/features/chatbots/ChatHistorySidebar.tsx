@@ -283,7 +283,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                           />
                           <button
                             onClick={handleSaveEdit}
-                            className="p-1 text-green-600 hover:bg-green-50 rounded"
+                            className="p-1 text-[#22C55E] hover:bg-[#22C55E]/10 rounded"
                             title={t('common.save')}
                           >
                             <Check size={14} />

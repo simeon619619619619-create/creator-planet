@@ -53,14 +53,20 @@ const PlanCard: React.FC<PlanCardProps> = ({
   return (
     <div
       className={`
-        relative bg-white rounded-xl border-2 p-6 flex flex-col transition-all
-        ${isRecommended ? 'border-indigo-500 shadow-lg scale-105 z-10' : 'border-slate-200 shadow-sm'}
-        ${isCurrentPlan ? 'ring-2 ring-indigo-200' : ''}
+        relative bg-[#0A0A0A] rounded-xl border p-6 flex flex-col transition-all
+        ${isCurrentPlan ? 'border-[#333333]' : 'border-[#1F1F1F]'}
       `}
     >
+      {/* Current Plan Badge */}
+      {isCurrentPlan && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-sm font-medium">
+          {t('billing.plans.button.current')}
+        </div>
+      )}
+
       {/* Recommended Badge */}
-      {isRecommended && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+      {isRecommended && !isCurrentPlan && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
           <Star size={14} className="fill-current" />
           {t('billing.plans.badgeMostPopular')}
         </div>
@@ -68,27 +74,27 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Plan Header */}
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-slate-900 mb-1">{plan.name}</h3>
-        <p className="text-slate-500 text-sm">{plan.description || t(`billing.plans.${plan.tier}.description`)}</p>
+        <h3 className="text-xl font-bold text-[#FAFAFA] mb-1">{plan.name}</h3>
+        <p className="text-[#666666] text-sm">{plan.description || t(`billing.plans.${plan.tier}.description`)}</p>
       </div>
 
       {/* Pricing */}
       <div className="text-center mb-6">
         <div className="flex items-baseline justify-center gap-1">
-          <span className="text-4xl font-bold text-slate-900">
+          <span className="text-3xl font-bold text-[#FAFAFA]">
             {plan.price_monthly_cents === 0 ? t('billing.plans.freeLabel') : `${plan.price_monthly_cents / 100}`}
           </span>
           {plan.price_monthly_cents > 0 && (
-            <span className="text-slate-500 text-lg">{t('billing.plans.monthlySuffix')}</span>
+            <span className="text-[#666666] text-lg">{t('billing.plans.monthlySuffix')}</span>
           )}
         </div>
-        <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 bg-slate-100 rounded-full">
-          <span className="text-sm font-medium text-slate-700">
+        <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 bg-[#1F1F1F] rounded-full">
+          <span className="text-sm font-medium text-[#A0A0A0]">
             {t('billing.plans.platformFeeLabel', { fee: plan.platform_fee_percent })}
           </span>
         </div>
         {showFirstSaleNote && plan.tier !== 'starter' && (
-          <p className="text-xs text-slate-500 mt-2">
+          <p className="text-xs text-[#666666] mt-2">
             {t('billing.plans.firstSaleNote')}
           </p>
         )}
@@ -96,8 +102,8 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Break-even Info */}
       {displayInfo.breakEvenRevenue && (
-        <div className="text-center mb-4 px-3 py-2 bg-indigo-50 rounded-lg">
-          <p className="text-xs text-indigo-700">
+        <div className="text-center mb-4 px-3 py-2 bg-[#151515] rounded-lg border border-[#1F1F1F]">
+          <p className="text-xs text-[#A0A0A0]">
             {t('billing.plans.breakEvenInfo', { amount: displayInfo.breakEvenRevenue.replace('€', '') })}
           </p>
         </div>
@@ -109,9 +115,9 @@ const PlanCard: React.FC<PlanCardProps> = ({
           <li key={index} className="flex items-start gap-3">
             <Check
               size={18}
-              className={`shrink-0 mt-0.5 ${isRecommended ? 'text-indigo-600' : 'text-green-500'}`}
+              className="shrink-0 mt-0.5 text-[#A0A0A0]"
             />
-            <span className="text-sm text-slate-700">{feature}</span>
+            <span className="text-sm text-[#A0A0A0]">{feature}</span>
           </li>
         ))}
       </ul>
@@ -124,10 +130,8 @@ const PlanCard: React.FC<PlanCardProps> = ({
           w-full py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2
           ${
             isCurrentPlan
-              ? 'bg-slate-100 text-slate-500 cursor-default'
-              : isRecommended
-              ? 'bg-indigo-600 text-white hover:bg-indigo-700 disabled:bg-indigo-300'
-              : 'bg-slate-900 text-white hover:bg-slate-800 disabled:bg-slate-300'
+              ? 'bg-[#1F1F1F] text-[#666666] cursor-default'
+              : 'bg-white text-black hover:bg-[#E0E0E0] disabled:opacity-50'
           }
           disabled:cursor-not-allowed
         `}

@@ -56,20 +56,20 @@ const ConversationList: React.FC<ConversationListProps> = ({
   const chatCount = conversations.length;
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full bg-[#0A0A0A]">
       {/* Header */}
-      <div className="border-b border-slate-200 px-4 py-3">
+      <div className="border-b border-[#1F1F1F] px-4 py-3">
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1.5 hover:bg-[#1F1F1F] rounded-lg transition-colors"
             title={t('directMessages.conversationList.back')}
           >
-            <ArrowLeft size={20} className="text-slate-600" />
+            <ArrowLeft size={20} className="text-[#A0A0A0]" />
           </button>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h2 className="font-semibold text-slate-900 truncate">
+              <h2 className="font-semibold text-[#FAFAFA] truncate">
                 {isCreatorView && teamMember
                   ? t('directMessages.conversationList.inboxOf', { name: headerName })
                   : t('directMessages.conversationList.myInbox')
@@ -79,8 +79,8 @@ const ConversationList: React.FC<ConversationListProps> = ({
                 <span
                   className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold shrink-0
                     ${getBadgeType(teamMember.role) === 'team'
-                      ? 'bg-indigo-100 text-indigo-700'
-                      : 'bg-amber-100 text-amber-700'
+                      ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                      : 'bg-[#EAB308]/10 text-[#EAB308]'
                     }
                   `}
                 >
@@ -91,7 +91,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                 </span>
               )}
             </div>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-[#666666]">
               {t('directMessages.conversationList.chatCount', { count: chatCount })}
             </p>
           </div>
@@ -102,26 +102,26 @@ const ConversationList: React.FC<ConversationListProps> = ({
       <div className="flex-1 overflow-y-auto">
         {isLoading && (
           <div className="flex items-center justify-center py-12">
-            <Loader2 className="w-6 h-6 animate-spin text-indigo-600" />
+            <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
           </div>
         )}
 
         {!isLoading && conversations.length === 0 && (
           <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-              <MessageCircle className="w-8 h-8 text-slate-400" />
+            <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mb-4">
+              <MessageCircle className="w-8 h-8 text-[#666666]" />
             </div>
-            <p className="text-slate-500 font-medium">
+            <p className="text-[#666666] font-medium">
               {t('directMessages.conversationList.noConversations')}
             </p>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="text-[#666666] text-sm mt-1">
               {t('directMessages.conversationList.noConversationsHint')}
             </p>
           </div>
         )}
 
         {!isLoading && conversations.length > 0 && (
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-[#1F1F1F]">
             {conversations.map((conv) => {
               const student = conv.student;
               const studentName = student?.full_name || t('directMessages.conversationList.unknownStudent');
@@ -137,7 +137,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                   key={conv.id}
                   onClick={() => onSelectConversation(conv)}
                   className={`w-full flex items-center gap-3 px-4 py-3 transition-colors text-left
-                    ${isSelected ? 'bg-indigo-50' : 'hover:bg-slate-50'}
+                    ${isSelected ? 'bg-[#151515]' : 'hover:bg-[#0A0A0A]'}
                   `}
                 >
                   {/* Avatar with unread dot */}
@@ -148,27 +148,27 @@ const ConversationList: React.FC<ConversationListProps> = ({
                       className="w-11 h-11 rounded-full object-cover"
                     />
                     {hasUnread && (
-                      <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white" />
+                      <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-white rounded-full border-2 border-white" />
                     )}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
-                      <span className={`font-medium truncate ${hasUnread ? 'text-slate-900' : 'text-slate-700'}`}>
+                      <span className={`font-medium truncate ${hasUnread ? 'text-[#FAFAFA]' : 'text-[#A0A0A0]'}`}>
                         {studentName}
                       </span>
-                      <span className="text-xs text-slate-400 shrink-0">
+                      <span className="text-xs text-[#666666] shrink-0">
                         {formatTimestamp(conv.last_message_at)}
                       </span>
                     </div>
                     {lastMessage && (
-                      <p className={`text-sm truncate mt-0.5 ${hasUnread ? 'text-slate-700 font-medium' : 'text-slate-500'}`}>
+                      <p className={`text-sm truncate mt-0.5 ${hasUnread ? 'text-[#A0A0A0] font-medium' : 'text-[#666666]'}`}>
                         {truncateMessage(lastMessage)}
                       </p>
                     )}
                     {!lastMessage && (
-                      <p className="text-sm text-slate-400 italic mt-0.5">
+                      <p className="text-sm text-[#666666] italic mt-0.5">
                         {t('directMessages.conversationList.noMessagesYet')}
                       </p>
                     )}

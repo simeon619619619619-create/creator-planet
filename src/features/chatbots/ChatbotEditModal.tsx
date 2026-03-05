@@ -227,7 +227,7 @@ const ChatbotEditModal: React.FC<ChatbotEditModalProps> = ({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               placeholder={t('chatbots.editModal.fields.name.placeholder')}
             />
           </div>
@@ -265,7 +265,7 @@ const ChatbotEditModal: React.FC<ChatbotEditModalProps> = ({
               type="text"
               value={personality}
               onChange={(e) => setPersonality(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               placeholder={t('chatbots.editModal.fields.personalityPlaceholder')}
             />
             <p className="text-xs text-[#666666] mt-1">
@@ -281,7 +281,7 @@ const ChatbotEditModal: React.FC<ChatbotEditModalProps> = ({
             <textarea
               value={systemPrompt}
               onChange={(e) => setSystemPrompt(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent h-28 resize-none"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-28 resize-none"
               placeholder={t('chatbots.editModal.fields.systemPromptPlaceholder')}
             />
             <p className="text-xs text-[#666666] mt-1">
@@ -297,7 +297,7 @@ const ChatbotEditModal: React.FC<ChatbotEditModalProps> = ({
             <textarea
               value={greetingMessage}
               onChange={(e) => setGreetingMessage(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent h-20 resize-none"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-20 resize-none"
               placeholder={t('chatbots.editModal.fields.greetingPlaceholder')}
             />
             <p className="text-xs text-[#666666] mt-1">
@@ -411,7 +411,7 @@ const ChatbotEditModal: React.FC<ChatbotEditModalProps> = ({
                     type="url"
                     value={avatarUrl}
                     onChange={(e) => setAvatarUrl(e.target.value)}
-                    className="w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     placeholder={t('chatbots.editModal.fields.avatar.urlPlaceholder')}
                   />
                 </div>

@@ -254,7 +254,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               placeholder="Module title"
               autoFocus
             />
@@ -268,7 +268,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent h-20 resize-none"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-20 resize-none"
               placeholder="Brief description of this module"
             />
           </div>
@@ -391,7 +391,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                   type="date"
                   value={unlockValue}
                   onChange={(e) => setUnlockValue(e.target.value)}
-                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 />
               </div>
             )}
@@ -403,7 +403,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                   max="100"
                   value={unlockValue}
                   onChange={(e) => setUnlockValue(e.target.value)}
-                  className="w-24 px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                  className="w-24 px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                   placeholder="50"
                 />
                 <span className="text-sm text-[#666666]">% completion of previous module</span>
@@ -421,7 +421,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                     <select
                       value={unlockValue}
                       onChange={(e) => setUnlockValue(e.target.value)}
-                      className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     >
                       <option value="">Select a quiz...</option>
                       {quizLessons.map((quiz) => (

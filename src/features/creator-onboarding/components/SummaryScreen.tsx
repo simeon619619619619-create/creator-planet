@@ -47,7 +47,7 @@ const AnswerCard: React.FC<AnswerCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 border border-slate-700/50 hover:border-slate-600/70 transition-all duration-500 ease-out ${
+      className={`bg-[#0A0A0A]/60 backdrop-blur-sm rounded-xl p-4 border border-[#1F1F1F]/50 hover:border-[#1F1F1F]/70 transition-all duration-500 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
@@ -57,7 +57,7 @@ const AnswerCard: React.FC<AnswerCardProps> = ({
           {icon}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-medium text-slate-400 uppercase tracking-wide mb-1">
+          <p className="text-xs font-medium text-[#666666] uppercase tracking-wide mb-1">
             {label}
           </p>
           <p className="text-white font-semibold truncate">{value}</p>
@@ -87,7 +87,7 @@ const AnimatedCheck: React.FC<AnimatedCheckProps> = ({ text, delay, isVisible })
       <div className="relative">
         <CheckCircle
           size={24}
-          className="text-indigo-400"
+          className="text-[#666666]"
           style={{
             strokeDasharray: 100,
             strokeDashoffset: isVisible ? 0 : 100,
@@ -95,9 +95,9 @@ const AnimatedCheck: React.FC<AnimatedCheckProps> = ({ text, delay, isVisible })
           }}
         />
         {/* Glow effect */}
-        <div className="absolute inset-0 bg-indigo-400/30 rounded-full blur-sm" />
+        <div className="absolute inset-0 bg-[#1F1F1F]/30 rounded-full blur-sm" />
       </div>
-      <span className="text-slate-300 text-sm">{text}</span>
+      <span className="text-[#A0A0A0] text-sm">{text}</span>
     </div>
   );
 };
@@ -178,22 +178,22 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
   // Answer cards data with business-focused icons
   const answerCards = [
     {
-      icon: <Target size={20} className="text-indigo-400" />,
+      icon: <Target size={20} className="text-[#666666]" />,
       label: t('onboarding.questions.niche.title', 'Your Niche'),
       value: nicheTitle,
-      accentColor: 'bg-indigo-500/20',
+      accentColor: 'bg-white/20',
     },
     {
-      icon: <TrendingUp size={20} className="text-purple-400" />,
+      icon: <TrendingUp size={20} className="text-[#666666]" />,
       label: t('onboarding.questions.goal.title', 'Your Goal'),
       value: goalText,
-      accentColor: 'bg-purple-500/20',
+      accentColor: 'bg-white/20',
     },
     {
       icon: <AlertCircle size={20} className="text-amber-400" />,
       label: t('onboarding.questions.painPoint.title', 'Challenge'),
       value: painPointText,
-      accentColor: 'bg-amber-500/20',
+      accentColor: 'bg-[#EAB308]/100/20',
     },
     {
       icon: <Wrench size={20} className="text-cyan-400" />,
@@ -211,24 +211,24 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 flex flex-col md:flex-row relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#0A0A0A] to-[#0A0A0A] flex flex-col md:flex-row relative overflow-hidden">
       {/* Floating gradient orbs background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-indigo-600/10 rounded-full blur-3xl animate-pulse"
+          className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: '8s' }}
         />
         <div
-          className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-purple-600/10 rounded-full blur-3xl animate-pulse"
+          className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: '10s' }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-indigo-500/5 rounded-full blur-2xl animate-pulse"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-white/5 rounded-full blur-2xl animate-pulse"
           style={{ animationDuration: '6s' }}
         />
         {/* Additional floating orb */}
         <div
-          className="absolute top-1/4 right-1/4 w-1/4 h-1/4 bg-purple-400/5 rounded-full blur-2xl animate-pulse"
+          className="absolute top-1/4 right-1/4 w-1/4 h-1/4 bg-[#1F1F1F]/5 rounded-full blur-2xl animate-pulse"
           style={{ animationDuration: '12s' }}
         />
       </div>
@@ -243,10 +243,10 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
         >
           <Sparkles
             size={24}
-            className="text-indigo-400 animate-pulse"
+            className="text-[#666666] animate-pulse"
             style={{ animationDuration: '2s' }}
           />
-          <span className="text-indigo-300 text-sm font-medium tracking-wide uppercase">
+          <span className="text-[#A0A0A0] text-sm font-medium tracking-wide uppercase">
             {t('onboarding.summary.basedOnShared')}
           </span>
         </div>
@@ -260,9 +260,9 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
         >
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">
             {t('onboarding.summary.youreA')}{' '}
-            <span className="text-indigo-400">{nicheTitle}</span>
+            <span className="text-[#666666]">{nicheTitle}</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300">
+          <p className="text-lg md:text-xl text-[#A0A0A0]">
             {t('onboarding.summary.lookingTo')}{' '}
             <span className="text-white font-semibold">{goalText}</span>
           </p>
@@ -271,7 +271,7 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
         {/* Animated checkmarks */}
         <div className="space-y-4 mb-8">
           <p
-            className={`text-slate-400 text-sm font-medium mb-3 transition-all duration-500 ease-out ${
+            className={`text-[#666666] text-sm font-medium mb-3 transition-all duration-500 ease-out ${
               isVisible ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -297,7 +297,7 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
         >
           <button
             onClick={onCreateAccount}
-            className="group w-full py-3.5 px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-500/30 hover:scale-[1.02]"
+            className="group w-full py-3.5 px-6 bg-white hover:bg-[#E0E0E0] text-black font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 hover:scale-[1.02]"
           >
             {t('onboarding.summary.createFreeAccount')}
             <ArrowRight
@@ -307,9 +307,9 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
           </button>
 
           {/* Trust Signals */}
-          <div className="mt-4 flex items-center justify-center gap-3 text-xs text-slate-400">
+          <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#666666]">
             <span>{t('onboarding.summary.noCreditCard')}</span>
-            <span className="w-1 h-1 bg-slate-600 rounded-full" />
+            <span className="w-1 h-1 bg-[#151515] rounded-full" />
             <span>{t('onboarding.summary.freeTrial')}</span>
           </div>
         </div>
@@ -327,7 +327,7 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
           <h2 className="text-xl md:text-2xl font-semibold text-white mb-2">
             {t('onboarding.summary.yourCreatorProfile', 'Your Creator Profile')}
           </h2>
-          <p className="text-slate-400 text-sm">
+          <p className="text-[#666666] text-sm">
             {t('onboarding.summary.personalizedForYou', 'Personalized just for you based on your answers')}
           </p>
         </div>
@@ -349,15 +349,15 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
 
         {/* Value proposition card */}
         <div
-          className={`bg-slate-800/40 backdrop-blur-sm rounded-xl p-5 border border-slate-700/40 mb-6 transition-all duration-500 ease-out ${
+          className={`bg-[#0A0A0A]/40 backdrop-blur-sm rounded-xl p-5 border border-[#1F1F1F]/40 mb-6 transition-all duration-500 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
           style={{ transitionDelay: '700ms' }}
         >
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm text-[#A0A0A0] leading-relaxed">
             <span className="font-semibold text-white">Founders Club</span>{' '}
             {t('onboarding.summary.foundersClubReplaces')}{' '}
-            <span className="text-indigo-400">{toolsText}</span>{' '}
+            <span className="text-[#666666]">{toolsText}</span>{' '}
             {t('onboarding.summary.withOnePlatform')}{' '}
             <span className="text-white font-medium">
               {t('onboarding.summary.neverLoseStudent')}
@@ -374,7 +374,7 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
         >
           <button
             onClick={onCreateAccount}
-            className="group w-full max-w-md py-3.5 px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-500/30 hover:scale-[1.02]"
+            className="group w-full max-w-md py-3.5 px-6 bg-white hover:bg-[#E0E0E0] text-black font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 hover:scale-[1.02]"
           >
             {t('onboarding.summary.createFreeAccount')}
             <ArrowRight
@@ -384,9 +384,9 @@ const SummaryScreen: React.FC<SummaryScreenProps> = ({
           </button>
 
           {/* Trust Signals */}
-          <div className="mt-4 flex items-center gap-3 text-xs text-slate-400">
+          <div className="mt-4 flex items-center gap-3 text-xs text-[#666666]">
             <span>{t('onboarding.summary.noCreditCard')}</span>
-            <span className="w-1 h-1 bg-slate-600 rounded-full" />
+            <span className="w-1 h-1 bg-[#151515] rounded-full" />
             <span>{t('onboarding.summary.freeTrial')}</span>
           </div>
         </div>

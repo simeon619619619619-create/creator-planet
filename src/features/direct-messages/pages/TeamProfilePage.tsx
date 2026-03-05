@@ -20,13 +20,13 @@ function getRoleBadgeClasses(role: TeamMemberRole): { bg: string; text: string }
   const badgeType = getBadgeType(role);
   if (badgeType === 'guest') {
     return {
-      bg: 'bg-amber-100',
-      text: 'text-amber-700',
+      bg: 'bg-[#EAB308]/10',
+      text: 'text-[#EAB308]',
     };
   }
   return {
-    bg: 'bg-indigo-100',
-    text: 'text-indigo-700',
+    bg: 'bg-[#1F1F1F]',
+    text: 'text-[#A0A0A0]',
   };
 }
 
@@ -96,10 +96,10 @@ const TeamProfilePage: React.FC = () => {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin text-indigo-600 mx-auto mb-3" />
-          <p className="text-slate-500">{t('directMessages.profilePage.loading')}</p>
+          <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA] mx-auto mb-3" />
+          <p className="text-[#666666]">{t('directMessages.profilePage.loading')}</p>
         </div>
       </div>
     );
@@ -108,20 +108,20 @@ const TeamProfilePage: React.FC = () => {
   // Error state
   if (error || !profileData) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white rounded-xl shadow-sm border border-slate-100 p-8 text-center">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <AlertCircle className="w-8 h-8 text-red-500" />
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-6">
+        <div className="max-w-md w-full bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+          <div className="w-16 h-16 bg-[#EF4444]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <AlertCircle className="w-8 h-8 text-[#EF4444]" />
           </div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-2">
+          <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">
             {t('directMessages.profilePage.errorTitle')}
           </h2>
-          <p className="text-slate-500 mb-6">
+          <p className="text-[#666666] mb-6">
             {error || t('directMessages.profilePage.errorNotFound')}
           </p>
           <button
             onClick={handleBackToCommunity}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
           >
             <ArrowLeft size={18} />
             {t('directMessages.profilePage.backToCommunity')}
@@ -138,9 +138,9 @@ const TeamProfilePage: React.FC = () => {
   const badgeStyle = getRoleBadgeClasses(teamMember.role);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Header with gradient */}
-      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 h-48 relative">
+      <div className="bg-[#1F1F1F] h-48 relative">
         {/* Back button */}
         <button
           onClick={handleBackToCommunity}
@@ -157,7 +157,7 @@ const TeamProfilePage: React.FC = () => {
 
         {/* Avatar positioned at bottom */}
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2">
-          <div className="w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
+          <div className="w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-[#0A0A0A]">
             <Avatar
               src={profile?.avatar_url}
               name={displayName}
@@ -172,22 +172,22 @@ const TeamProfilePage: React.FC = () => {
       <div className="max-w-2xl mx-auto px-6 pt-20 pb-12">
         {/* Name, badge, title */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">{displayName}</h1>
+          <h1 className="text-2xl font-bold text-[#FAFAFA] mb-2">{displayName}</h1>
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className={`text-sm px-3 py-1 rounded-full font-semibold ${badgeStyle.bg} ${badgeStyle.text}`}>
               {t(`directMessages.badge.${getBadgeType(teamMember.role)}`)}
             </span>
           </div>
-          <p className="text-lg text-slate-600">{title}</p>
+          <p className="text-lg text-[#A0A0A0]">{title}</p>
         </div>
 
         {/* Bio */}
         {teamMember.bio && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-6 mb-6">
-            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6 mb-6">
+            <h2 className="text-sm font-semibold text-[#666666] uppercase tracking-wide mb-3">
               {t('directMessages.profilePage.about')}
             </h2>
-            <p className="text-slate-700 leading-relaxed whitespace-pre-wrap">
+            <p className="text-[#A0A0A0] leading-relaxed whitespace-pre-wrap">
               {teamMember.bio}
             </p>
           </div>
@@ -198,7 +198,7 @@ const TeamProfilePage: React.FC = () => {
           <div className="mb-8">
             <button
               onClick={handleSendMessage}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-[#E0E0E0] transition-colors"
             >
               <MessageCircle size={20} />
               {t('directMessages.actions.sendMessage')}
@@ -208,8 +208,8 @@ const TeamProfilePage: React.FC = () => {
 
         {/* Courses they teach */}
         {courses.length > 0 && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
-            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4 flex items-center gap-2">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
+            <h2 className="text-sm font-semibold text-[#666666] uppercase tracking-wide mb-4 flex items-center gap-2">
               <BookOpen size={16} />
               {t('directMessages.profilePage.courses', { count: courses.length })}
             </h2>
@@ -218,10 +218,10 @@ const TeamProfilePage: React.FC = () => {
                 <Link
                   key={course.id}
                   to="/courses"
-                  className="flex items-center gap-3 p-3 rounded-lg border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/50 transition-colors"
+                  className="flex items-center gap-3 p-3 rounded-lg border border-[#1F1F1F] hover:border-[#1F1F1F] hover:bg-[#151515]/50 transition-colors"
                 >
                   {/* Course thumbnail */}
-                  <div className="w-16 h-12 rounded-lg overflow-hidden bg-gradient-to-br from-indigo-500 to-purple-600 flex-shrink-0">
+                  <div className="w-16 h-12 rounded-lg overflow-hidden bg-[#1F1F1F] flex-shrink-0">
                     {course.thumbnail_url ? (
                       <img
                         src={course.thumbnail_url}
@@ -234,7 +234,7 @@ const TeamProfilePage: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <span className="font-medium text-slate-900">{course.title}</span>
+                  <span className="font-medium text-[#FAFAFA]">{course.title}</span>
                 </Link>
               ))}
             </div>

@@ -365,7 +365,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               placeholder="Lesson title"
               autoFocus
             />
@@ -447,7 +447,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
                     type="url"
                     value={contentUrl}
                     onChange={(e) => setContentUrl(e.target.value)}
-                    className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     placeholder="https://youtube.com/watch?v=... or direct video URL"
                   />
                   <p className="text-xs text-[#666666] mt-1">
@@ -489,7 +489,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
                             : 'border-[#333333] hover:border-[#555555] hover:bg-[#1F1F1F]/50'
                         }`}
                       >
-                        <Video size={32} className={`mx-auto mb-2 ${hadPreviousFile ? 'text-amber-500' : 'text-[#666666]'}`} />
+                        <Video size={32} className={`mx-auto mb-2 ${hadPreviousFile ? 'text-[#EAB308]' : 'text-[#666666]'}`} />
                         <p className="text-sm font-medium text-[#A0A0A0]">
                           {hadPreviousFile ? 'Re-select your video file' : 'Click to select video file'}
                         </p>
@@ -575,7 +575,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
                   min="0"
                   value={durationMinutes}
                   onChange={(e) => setDurationMinutes(e.target.value)}
-                  className="w-32 px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                  className="w-32 px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                   placeholder="15"
                 />
               </div>
@@ -591,7 +591,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
                 type="url"
                 value={contentUrl}
                 onChange={(e) => setContentUrl(e.target.value)}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 placeholder="URL to text content or Google Doc"
               />
               <p className="text-xs text-[#666666] mt-1">
@@ -609,7 +609,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
                 type="url"
                 value={contentUrl}
                 onChange={(e) => setContentUrl(e.target.value)}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 placeholder="https://example.com/file.pdf"
               />
               <p className="text-xs text-[#666666] mt-1">
@@ -640,7 +640,7 @@ const LessonEditModal: React.FC<LessonEditModalProps> = ({
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent h-24 resize-none"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
               placeholder="Brief description or notes for this lesson (shown to students)"
             />
           </div>

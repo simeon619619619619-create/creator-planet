@@ -109,7 +109,7 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="w-6 h-6 animate-spin text-indigo-600" />
+        <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
       </div>
     );
   }
@@ -120,15 +120,15 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
       <div className="flex items-center gap-3">
         <button
           onClick={onBack}
-          className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded"
+          className="p-1.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded"
         >
           <ArrowLeft size={20} />
         </button>
         <div>
-          <h3 className="text-lg font-semibold text-slate-900">
+          <h3 className="text-lg font-semibold text-[#FAFAFA]">
             {group?.name ? t('communityHub.memberAssigner.title', { groupName: group.name }) : t('communityHub.memberAssigner.fallbackTitle')}
           </h3>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-[#A0A0A0]">
             {selectedIds.size === 1 ? t('communityHub.memberAssigner.selectedCount', { count: selectedIds.size }) : t('communityHub.memberAssigner.selectedCountPlural', { count: selectedIds.size })}
           </p>
         </div>
@@ -136,27 +136,27 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
 
       {/* Search */}
       <div className="relative">
-        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#666666]" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder={t('communityHub.memberAssigner.searchPlaceholder')}
-          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          className="w-full pl-10 pr-4 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
         />
       </div>
 
       {/* Members List */}
-      <div className="max-h-80 overflow-y-auto border border-slate-200 rounded-lg divide-y divide-slate-100">
+      <div className="max-h-80 overflow-y-auto border border-[#1F1F1F] rounded-lg divide-y divide-[#1F1F1F]">
         {filteredMembers.length === 0 ? (
-          <div className="p-4 text-center text-sm text-slate-500">
+          <div className="p-4 text-center text-sm text-[#A0A0A0]">
             {searchQuery ? t('communityHub.memberAssigner.emptySearch') : t('communityHub.memberAssigner.emptyCommunity')}
           </div>
         ) : (
           filteredMembers.map((member) => (
             <label
               key={member.id}
-              className="flex items-center gap-3 p-3 hover:bg-slate-50 cursor-pointer"
+              className="flex items-center gap-3 p-3 hover:bg-[#151515] cursor-pointer"
             >
               <input
                 type="checkbox"
@@ -167,12 +167,12 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
               <div
                 className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                   selectedIds.has(member.id)
-                    ? 'bg-indigo-600 border-indigo-600'
-                    : 'border-slate-300'
+                    ? 'bg-white border-white'
+                    : 'border-[#1F1F1F]'
                 }`}
               >
                 {selectedIds.has(member.id) && (
-                  <Check size={14} className="text-white" />
+                  <Check size={14} className="text-black" />
                 )}
               </div>
               <img
@@ -186,13 +186,13 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
                 className="w-8 h-8 rounded-full object-cover"
               />
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-slate-900 truncate">
+                <p className="font-medium text-[#FAFAFA] truncate">
                   {member.full_name || t('communityHub.memberAssigner.unknownMember')}
                 </p>
-                <p className="text-xs text-slate-500 truncate">{member.email}</p>
+                <p className="text-xs text-[#A0A0A0] truncate">{member.email}</p>
               </div>
               {member.group_ids.length > 0 && (
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-[#666666]">
                   {member.group_ids.length === 1 ? t('communityHub.memberAssigner.groupCount', { count: member.group_ids.length }) : t('communityHub.memberAssigner.groupCountPlural', { count: member.group_ids.length })}
                 </span>
               )}
@@ -205,7 +205,7 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
       <button
         onClick={handleSave}
         disabled={!hasChanges || isSaving}
-        className="w-full py-2.5 px-4 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full py-2.5 px-4 bg-white text-black rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:bg-[#333333] disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isSaving ? (
           <>

@@ -163,7 +163,7 @@ export function TBIApplicationModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-md bg-[#0A0A0A] rounded-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -177,7 +177,7 @@ export function TBIApplicationModal({
           <button
             onClick={handleClose}
             disabled={step === 'submitting'}
-            className="p-1 hover:bg-white/20 rounded-full transition-colors disabled:opacity-50"
+            className="p-1 hover:bg-[#0A0A0A]/20 rounded-full transition-colors disabled:opacity-50"
           >
             <X className="w-5 h-5 text-white" />
           </button>
@@ -198,14 +198,14 @@ export function TBIApplicationModal({
           {step === 'customer-form' && selectedScheme && (
             <div className="space-y-4">
               {/* Selected scheme summary */}
-              <div className="bg-orange-50 rounded-lg p-4 border border-orange-100">
-                <p className="text-sm text-gray-600 mb-1">Избрана схема:</p>
-                <p className="font-semibold text-orange-700">
+              <div className="bg-[#EAB308]/10 rounded-lg p-4 border border-[#EAB308]/20">
+                <p className="text-sm text-[#A0A0A0] mb-1">Избрана схема:</p>
+                <p className="font-semibold text-[#EAB308]">
                   {formatInstallmentDisplay(selectedScheme.period, selectedScheme.monthly_amount_cents, 'EUR')}
                 </p>
                 <button
                   onClick={() => setStep('calculator')}
-                  className="text-xs text-orange-600 hover:text-orange-700 mt-2 underline"
+                  className="text-xs text-[#EAB308] hover:text-[#EAB308] mt-2 underline"
                 >
                   Промени схемата
                 </button>
@@ -213,36 +213,36 @@ export function TBIApplicationModal({
 
               {/* Form fields */}
               <div className="space-y-3">
-                <h3 className="font-medium text-gray-900 flex items-center gap-2">
+                <h3 className="font-medium text-[#FAFAFA] flex items-center gap-2">
                   <User className="w-4 h-4" />
                   Лични данни
                 </h3>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">Име</label>
+                    <label className="block text-sm text-[#A0A0A0] mb-1">Име</label>
                     <input
                       type="text"
                       value={customerData.first_name}
                       onChange={(e) => setCustomerData({ ...customerData, first_name: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                       placeholder="Иван"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">Фамилия</label>
+                    <label className="block text-sm text-[#A0A0A0] mb-1">Фамилия</label>
                     <input
                       type="text"
                       value={customerData.last_name}
                       onChange={(e) => setCustomerData({ ...customerData, last_name: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                      className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                       placeholder="Иванов"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1 flex items-center gap-1">
+                  <label className="block text-sm text-[#A0A0A0] mb-1 flex items-center gap-1">
                     <Mail className="w-3.5 h-3.5" />
                     Имейл
                   </label>
@@ -250,13 +250,13 @@ export function TBIApplicationModal({
                     type="email"
                     value={customerData.email}
                     onChange={(e) => setCustomerData({ ...customerData, email: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     placeholder="ivan@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1 flex items-center gap-1">
+                  <label className="block text-sm text-[#A0A0A0] mb-1 flex items-center gap-1">
                     <Phone className="w-3.5 h-3.5" />
                     Телефон
                   </label>
@@ -264,13 +264,13 @@ export function TBIApplicationModal({
                     type="tel"
                     value={customerData.phone}
                     onChange={(e) => setCustomerData({ ...customerData, phone: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     placeholder="0888123456"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1 flex items-center gap-1">
+                  <label className="block text-sm text-[#A0A0A0] mb-1 flex items-center gap-1">
                     <CreditCard className="w-3.5 h-3.5" />
                     ЕГН
                   </label>
@@ -281,22 +281,22 @@ export function TBIApplicationModal({
                       const value = e.target.value.replace(/\D/g, '').slice(0, 10);
                       setCustomerData({ ...customerData, egn: value });
                     }}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     placeholder="0000000000"
                     maxLength={10}
                   />
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-[#666666] mt-1">
                     Необходимо е за проверка на кредитната история
                   </p>
                 </div>
               </div>
 
               {/* Security note */}
-              <div className="flex items-start gap-2 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg">
+              <div className="flex items-start gap-2 text-xs text-[#666666] bg-[#0A0A0A] p-3 rounded-lg">
                 <Shield className="w-4 h-4 flex-shrink-0 mt-0.5" />
                 <span>
                   Данните ви се предават сигурно към TBI Bank. С натискане на бутона се съгласявате с{' '}
-                  <a href="#" className="text-orange-600 hover:underline">общите условия</a>.
+                  <a href="#" className="text-[#EAB308] hover:underline">общите условия</a>.
                 </span>
               </div>
 
@@ -323,9 +323,9 @@ export function TBIApplicationModal({
           {/* Step 3: Submitting */}
           {step === 'submitting' && (
             <div className="py-8 text-center">
-              <Loader2 className="w-12 h-12 text-orange-500 animate-spin mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">Обработка на кандидатурата...</h3>
-              <p className="text-sm text-gray-600">
+              <Loader2 className="w-12 h-12 text-[#EAB308] animate-spin mx-auto mb-4" />
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">Обработка на кандидатурата...</h3>
+              <p className="text-sm text-[#A0A0A0]">
                 Свързваме се с TBI Bank. Моля, изчакайте.
               </p>
             </div>
@@ -334,18 +334,18 @@ export function TBIApplicationModal({
           {/* Step 4: Success */}
           {step === 'success' && (
             <div className="py-6 text-center">
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">Кандидатурата е изпратена!</h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <CheckCircle className="w-16 h-16 text-[#22C55E] mx-auto mb-4" />
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">Кандидатурата е изпратена!</h3>
+              <p className="text-sm text-[#A0A0A0] mb-4">
                 TBI Bank ще се свърже с вас на <strong>{customerData.phone}</strong> за потвърждение.
               </p>
-              <div className="bg-gray-50 rounded-lg p-4 text-sm">
-                <p className="text-gray-600">Номер на кандидатура:</p>
-                <p className="font-mono font-semibold text-gray-900">{applicationId}</p>
+              <div className="bg-[#0A0A0A] rounded-lg p-4 text-sm">
+                <p className="text-[#A0A0A0]">Номер на кандидатура:</p>
+                <p className="font-mono font-semibold text-[#FAFAFA]">{applicationId}</p>
               </div>
               <button
                 onClick={handleClose}
-                className="mt-6 px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                className="mt-6 px-6 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] transition-colors"
               >
                 Разбрах
               </button>
@@ -355,19 +355,19 @@ export function TBIApplicationModal({
           {/* Step 5: Error */}
           {step === 'error' && (
             <div className="py-6 text-center">
-              <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">Възникна грешка</h3>
-              <p className="text-sm text-gray-600 mb-4">{error}</p>
+              <AlertCircle className="w-16 h-16 text-[#EF4444] mx-auto mb-4" />
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">Възникна грешка</h3>
+              <p className="text-sm text-[#A0A0A0] mb-4">{error}</p>
               <div className="flex gap-3 justify-center">
                 <button
                   onClick={() => setStep('customer-form')}
-                  className="px-4 py-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                  className="px-4 py-2 text-[#EAB308] hover:bg-[#EAB308]/10 rounded-lg transition-colors"
                 >
                   Опитай отново
                 </button>
                 <button
                   onClick={handleClose}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                  className="px-4 py-2 bg-[#1F1F1F] text-[#A0A0A0] rounded-lg hover:bg-[#1F1F1F] transition-colors"
                 >
                   Затвори
                 </button>

@@ -21,14 +21,14 @@ function getRoleBadgeClasses(role: TeamMemberRole): { bg: string; text: string; 
   const badgeType = getBadgeType(role);
   if (badgeType === 'guest') {
     return {
-      bg: 'bg-amber-100',
-      text: 'text-amber-700',
+      bg: 'bg-[#EAB308]/10',
+      text: 'text-[#EAB308]',
       label: 'Guest',
     };
   }
   return {
-    bg: 'bg-indigo-100',
-    text: 'text-indigo-700',
+    bg: 'bg-[#1F1F1F]',
+    text: 'text-[#A0A0A0]',
     label: 'Team',
   };
 }
@@ -60,7 +60,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
   if (compact) {
     // Compact version for inline display
     return (
-      <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-100 hover:border-slate-200 transition-colors">
+      <div className="flex items-center gap-3 p-3 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F] hover:border-[#1F1F1F] transition-colors">
         <Avatar
           src={profile?.avatar_url}
           name={displayName}
@@ -70,17 +70,17 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
         />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-slate-900 truncate">{displayName}</span>
+            <span className="font-medium text-[#FAFAFA] truncate">{displayName}</span>
             <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${badgeStyle.bg} ${badgeStyle.text}`}>
               {t(`directMessages.badge.${getBadgeType(teamMember.role)}`)}
             </span>
           </div>
-          <p className="text-sm text-slate-500 truncate">{title}</p>
+          <p className="text-sm text-[#666666] truncate">{title}</p>
         </div>
         {showActions && teamMember.is_messageable && onSendMessage && (
           <button
             onClick={onSendMessage}
-            className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+            className="p-2 text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors"
             title={t('directMessages.actions.sendMessage')}
           >
             <MessageCircle size={18} />
@@ -92,12 +92,12 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
 
   // Full card version (for popups and profile previews)
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden max-w-sm">
+    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden max-w-sm">
       {/* Header with gradient */}
-      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 h-16 relative">
+      <div className="bg-[#1F1F1F] h-16 relative">
         {/* Avatar positioned at bottom, extending below */}
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2">
-          <div className="w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
+          <div className="w-20 h-20 rounded-full border-4 border-white overflow-hidden bg-[#0A0A0A]">
             <Avatar
               src={profile?.avatar_url}
               name={displayName}
@@ -111,7 +111,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
       <div className="px-5 pb-5 pt-12 text-center">
         {/* Name and badge */}
         <div className="mb-2">
-          <h3 className="text-lg font-bold text-slate-900">{displayName}</h3>
+          <h3 className="text-lg font-bold text-[#FAFAFA]">{displayName}</h3>
           <div className="flex items-center justify-center gap-2 mt-1">
             <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold ${badgeStyle.bg} ${badgeStyle.text}`}>
               {t(`directMessages.badge.${getBadgeType(teamMember.role)}`)}
@@ -120,11 +120,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
         </div>
 
         {/* Title */}
-        <p className="text-sm text-slate-600 font-medium mb-2">{title}</p>
+        <p className="text-sm text-[#A0A0A0] font-medium mb-2">{title}</p>
 
         {/* Bio preview */}
         {bio && (
-          <p className="text-sm text-slate-500 mb-4 line-clamp-3">
+          <p className="text-sm text-[#666666] mb-4 line-clamp-3">
             {bio}
           </p>
         )}
@@ -135,7 +135,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             {teamMember.is_messageable && onSendMessage && (
               <button
                 onClick={onSendMessage}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
               >
                 <MessageCircle size={18} />
                 {t('directMessages.actions.sendMessage')}
@@ -146,8 +146,8 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                 onClick={onViewProfile}
                 className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-colors ${
                   teamMember.is_messageable && onSendMessage
-                    ? 'border border-slate-200 text-slate-700 hover:bg-slate-50'
-                    : 'flex-1 bg-indigo-600 text-white hover:bg-indigo-700'
+                    ? 'border border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                    : 'flex-1 bg-white text-black hover:bg-[#E0E0E0]'
                 }`}
               >
                 <User size={18} />

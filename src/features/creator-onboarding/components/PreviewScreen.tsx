@@ -98,13 +98,13 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
   const hubName = `${nicheDisplay} Hub`;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col items-center justify-center p-4 relative overflow-hidden">
       {/* Floating gradient orbs background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Large gradient orbs with subtle animation */}
-        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-indigo-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-purple-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-indigo-500/5 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-white/5 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '6s' }} />
       </div>
 
       {/* Header with enhanced animation */}
@@ -116,22 +116,22 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
         <div className="flex items-center justify-center gap-2 mb-2">
           <Sparkles
             size={24}
-            className="text-indigo-400 animate-pulse"
+            className="text-[#666666] animate-pulse"
             style={{ animationDuration: '2s' }}
           />
-          <span className="text-indigo-400 text-sm font-medium tracking-wide uppercase">
+          <span className="text-[#666666] text-sm font-medium tracking-wide uppercase">
             {t('onboarding.preview.ready', 'Ready')}
           </span>
           <Sparkles
             size={24}
-            className="text-indigo-400 animate-pulse"
+            className="text-[#666666] animate-pulse"
             style={{ animationDuration: '2s' }}
           />
         </div>
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
           {t('onboarding.preview.title')}
         </h1>
-        <p className="text-slate-300 text-sm md:text-base max-w-md mx-auto">
+        <p className="text-[#A0A0A0] text-sm md:text-base max-w-md mx-auto">
           {t('onboarding.preview.subtitle', { niche: nicheDisplay.toLowerCase() })}
         </p>
       </div>
@@ -144,22 +144,22 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
         style={{ transitionDelay: '150ms' }}
       >
         {/* Enhanced glow effect */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/30 via-purple-500/25 to-indigo-500/30 blur-3xl rounded-3xl opacity-70" />
-        <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10 blur-xl rounded-2xl" />
+        <div className="absolute -inset-4 bg-white/5 blur-3xl rounded-3xl opacity-70" />
+        <div className="absolute -inset-1 bg-white/5 blur-xl rounded-2xl" />
 
         {/* Main mockup */}
-        <div className="relative bg-slate-900/95 rounded-xl border border-slate-600/50 shadow-2xl overflow-hidden backdrop-blur-sm" style={{ minHeight: '55vh', maxHeight: '70vh' }}>
+        <div className="relative bg-[#0A0A0A]/95 rounded-xl border border-[#1F1F1F]/50 overflow-hidden backdrop-blur-sm" style={{ minHeight: '55vh', maxHeight: '70vh' }}>
           {/* Title bar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-800/80 border-b border-slate-700/50">
+          <div className="flex items-center justify-between px-4 py-3 bg-[#0A0A0A]/80 border-b border-[#1F1F1F]/50">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-[#EF4444]/80" />
+                <div className="w-3 h-3 rounded-full bg-[#EAB308]/80" />
+                <div className="w-3 h-3 rounded-full bg-[#22C55E]/80" />
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-indigo-500 rounded flex items-center justify-center">
+              <div className="w-5 h-5 bg-white rounded flex items-center justify-center">
                 <span className="text-white text-xs font-bold">C</span>
               </div>
               <span className="text-white font-semibold text-sm">{hubName}</span>
@@ -170,24 +170,24 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
           {/* Dashboard content */}
           <div className="flex flex-1">
             {/* Sidebar */}
-            <div className="w-14 md:w-16 bg-slate-800/60 border-r border-slate-700/30 py-4 px-2 space-y-3">
-              <div className="flex flex-col items-center p-2 rounded-lg bg-indigo-600/20 border border-indigo-500/30">
-                <BarChart3 size={18} className="text-indigo-400" />
+            <div className="w-14 md:w-16 bg-[#0A0A0A]/60 border-r border-[#1F1F1F]/30 py-4 px-2 space-y-3">
+              <div className="flex flex-col items-center p-2 rounded-lg bg-white/20 border border-[#333333]/30">
+                <BarChart3 size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <Users size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <Users size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <BookOpen size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <BookOpen size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <MessageSquare size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <MessageSquare size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <Calendar size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <Calendar size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <Bot size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <Bot size={18} className="text-[#666666]" />
               </div>
             </div>
 
@@ -198,7 +198,7 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
                 <h2 className="text-base md:text-lg font-semibold text-white">
                   {t('onboarding.preview.welcomeBack')}
                 </h2>
-                <p className="text-slate-400 text-sm">
+                <p className="text-[#666666] text-sm">
                   {t('onboarding.preview.businessDoingToday', { niche: nicheDisplay.toLowerCase() })}
                 </p>
               </div>
@@ -206,59 +206,59 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
               {/* Stats cards with animated counting */}
               <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
                 {/* Revenue */}
-                <div className="bg-slate-800/60 rounded-xl p-3 md:p-4 border border-slate-700/30 hover:border-indigo-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-[#333333]/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center">
-                      <DollarSign size={16} className="text-indigo-400 md:hidden" />
-                      <DollarSign size={20} className="text-indigo-400 hidden md:block" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <DollarSign size={16} className="text-[#666666] md:hidden" />
+                      <DollarSign size={20} className="text-[#666666] hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">${revenueCount.toLocaleString()}</div>
-                  <div className="text-xs text-slate-400 mt-1">{t('onboarding.preview.monthlyRevenue', 'Monthly Revenue')}</div>
+                  <div className="text-xs text-[#666666] mt-1">{t('onboarding.preview.monthlyRevenue', 'Monthly Revenue')}</div>
                 </div>
 
                 {/* Students */}
-                <div className="bg-slate-800/60 rounded-xl p-3 md:p-4 border border-slate-700/30 hover:border-purple-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-[#1F1F1F]/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                      <Users size={16} className="text-purple-400 md:hidden" />
-                      <Users size={20} className="text-purple-400 hidden md:block" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <Users size={16} className="text-[#666666] md:hidden" />
+                      <Users size={20} className="text-[#666666] hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{studentsCount}</div>
-                  <div className="text-xs text-slate-400 mt-1">{t('onboarding.preview.activeStudents')}</div>
+                  <div className="text-xs text-[#666666] mt-1">{t('onboarding.preview.activeStudents')}</div>
                 </div>
 
                 {/* Courses */}
-                <div className="bg-slate-800/60 rounded-xl p-3 md:p-4 border border-slate-700/30 hover:border-emerald-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-[#333333]/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
-                      <BookOpen size={16} className="text-emerald-400 md:hidden" />
-                      <BookOpen size={20} className="text-emerald-400 hidden md:block" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <BookOpen size={16} className="text-[#22C55E] md:hidden" />
+                      <BookOpen size={20} className="text-[#22C55E] hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{coursesCount}</div>
-                  <div className="text-xs text-slate-400 mt-1">{t('onboarding.preview.coursesCount')}</div>
+                  <div className="text-xs text-[#666666] mt-1">{t('onboarding.preview.coursesCount')}</div>
                 </div>
               </div>
 
               {/* AI Success Manager Insight - larger */}
-              <div className="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-xl p-4 border border-indigo-500/20 mt-auto">
+              <div className="bg-[#1F1F1F]/20 rounded-xl p-4 border border-[#333333]/20 mt-auto">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 md:w-14 md:h-14 bg-indigo-500/30 rounded-lg flex items-center justify-center shrink-0">
-                    <Bot size={20} className="text-indigo-400 md:hidden" />
-                    <Bot size={24} className="text-indigo-400 hidden md:block" />
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-white/30 rounded-lg flex items-center justify-center shrink-0">
+                    <Bot size={20} className="text-[#666666] md:hidden" />
+                    <Bot size={24} className="text-[#666666] hidden md:block" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm md:text-base font-medium text-white">
                       {t('onboarding.preview.aiInsightTitle', 'AI Success Manager')}
                     </p>
-                    <p className="text-xs md:text-sm text-slate-400">
+                    <p className="text-xs md:text-sm text-[#666666]">
                       {t('onboarding.preview.aiSuccessInsight')}
                     </p>
                   </div>
-                  <TrendingUp size={18} className="text-emerald-400 shrink-0 md:hidden" />
-                  <TrendingUp size={22} className="text-emerald-400 shrink-0 hidden md:block" />
+                  <TrendingUp size={18} className="text-[#22C55E] shrink-0 md:hidden" />
+                  <TrendingUp size={22} className="text-[#22C55E] shrink-0 hidden md:block" />
                 </div>
               </div>
             </div>
@@ -275,7 +275,7 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
       >
         <button
           onClick={onContinue}
-          className="group px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/30 transition-all duration-200 flex items-center gap-2 hover:scale-[1.02]"
+          className="group px-8 py-3.5 bg-white hover:bg-[#E0E0E0] text-black font-semibold rounded-xl transition-all duration-200 flex items-center gap-2 hover:scale-[1.02]"
         >
           <span>{t('onboarding.continue')}</span>
           <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
@@ -284,7 +284,7 @@ const PreviewScreen: React.FC<PreviewScreenProps> = ({
 
       {/* Hint text */}
       <p
-        className={`mt-3 text-slate-400 text-sm relative z-10 transition-all duration-500 ease-out ${
+        className={`mt-3 text-[#666666] text-sm relative z-10 transition-all duration-500 ease-out ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ transitionDelay: '500ms' }}

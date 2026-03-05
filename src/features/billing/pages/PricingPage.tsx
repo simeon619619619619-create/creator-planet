@@ -114,23 +114,23 @@ const PricingPage: React.FC = () => {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
         <div className="text-center">
-          <Loader2 size={40} className="text-indigo-600 animate-spin mx-auto mb-4" />
-          <p className="text-slate-600">{t('billing.pricing.loading')}</p>
+          <Loader2 size={40} className="text-[#FAFAFA] animate-spin mx-auto mb-4" />
+          <p className="text-[#A0A0A0]">{t('billing.pricing.loading')}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4">
+    <div className="min-h-screen bg-[#0A0A0A] py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Back button if logged in */}
         {user && (
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6 transition-colors"
+            className="flex items-center gap-2 text-[#A0A0A0] hover:text-[#FAFAFA] mb-6 transition-colors"
           >
             <ArrowLeft size={20} />
             {t('billing.pricing.backButton')}
@@ -139,26 +139,26 @@ const PricingPage: React.FC = () => {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl font-bold text-[#FAFAFA] mb-4">
             {t('billing.pricing.title')}
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-[#A0A0A0] max-w-2xl mx-auto">
             {t('billing.pricing.subtitle')}
           </p>
         </div>
 
         {/* Error Display */}
         {error && (
-          <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-center">
+          <div className="mb-8 p-4 bg-[#EF4444]/10 border border-red-200 rounded-lg text-red-700 text-center">
             {error}
           </div>
         )}
 
         {/* Current Plan Banner (for logged in creators) */}
         {isCreator && billing && (
-          <div className="mb-8 p-4 bg-indigo-50 border border-indigo-200 rounded-lg flex items-center justify-center gap-3">
-            <CheckCircle size={20} className="text-indigo-600" />
-            <span className="text-indigo-900">
+          <div className="mb-8 p-4 bg-[#151515] border border-[#1F1F1F] rounded-lg flex items-center justify-center gap-3">
+            <CheckCircle size={20} className="text-[#FAFAFA]" />
+            <span className="text-[#FAFAFA]">
               {t('billing.pricing.currentPlanLabel', { planName: billing.plan?.name || 'Starter' })}
               {billing.has_first_sale
                 ? billing.monthly_fee_active
@@ -188,22 +188,22 @@ const PricingPage: React.FC = () => {
         </div>
 
         {/* Break-Even Calculator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 mb-12">
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-              <Calculator size={20} className="text-indigo-600" />
+            <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
+              <Calculator size={20} className="text-[#FAFAFA]" />
             </div>
-            <h2 className="text-xl font-bold text-slate-900">{t('billing.pricing.calculator.title')}</h2>
+            <h2 className="text-xl font-bold text-[#FAFAFA]">{t('billing.pricing.calculator.title')}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Starter to Pro */}
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="font-semibold text-slate-900 mb-3">{t('billing.pricing.calculator.starterToProTitle')}</h3>
-              <p className="text-slate-600 text-sm mb-4">
+            <div className="p-6 bg-[#0A0A0A] rounded-lg">
+              <h3 className="font-semibold text-[#FAFAFA] mb-3">{t('billing.pricing.calculator.starterToProTitle')}</h3>
+              <p className="text-[#A0A0A0] text-sm mb-4">
                 {t('billing.pricing.calculator.starterToProMessage', { amount: '750' })}
               </p>
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-[#666666]">
                 <p>{t('billing.pricing.calculator.starterToProExample1')}</p>
                 <p>{t('billing.pricing.calculator.starterToProExample2')}</p>
                 <p>{t('billing.pricing.calculator.starterToProExample3')}</p>
@@ -211,12 +211,12 @@ const PricingPage: React.FC = () => {
             </div>
 
             {/* Pro to Scale */}
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="font-semibold text-slate-900 mb-3">{t('billing.pricing.calculator.proToScaleTitle')}</h3>
-              <p className="text-slate-600 text-sm mb-4">
+            <div className="p-6 bg-[#0A0A0A] rounded-lg">
+              <h3 className="font-semibold text-[#FAFAFA] mb-3">{t('billing.pricing.calculator.proToScaleTitle')}</h3>
+              <p className="text-[#A0A0A0] text-sm mb-4">
                 {t('billing.pricing.calculator.proToScaleMessage', { amount: '6,900' })}
               </p>
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-[#666666]">
                 <p>{t('billing.pricing.calculator.proToScaleExample1')}</p>
                 <p>{t('billing.pricing.calculator.proToScaleExample2')}</p>
                 <p>{t('billing.pricing.calculator.proToScaleExample3')}</p>
@@ -226,42 +226,42 @@ const PricingPage: React.FC = () => {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">{t('billing.pricing.faq.title')}</h2>
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8">
+          <h2 className="text-xl font-bold text-[#FAFAFA] mb-6">{t('billing.pricing.faq.title')}</h2>
 
           <div className="space-y-6">
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">
                 {t('billing.pricing.faq.activationTitle')}
               </h3>
-              <p className="text-slate-600 text-sm">
+              <p className="text-[#A0A0A0] text-sm">
                 {t('billing.pricing.faq.activationAnswer')}
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">
                 {t('billing.pricing.faq.whenStartTitle')}
               </h3>
-              <p className="text-slate-600 text-sm">
+              <p className="text-[#A0A0A0] text-sm">
                 {t('billing.pricing.faq.whenStartAnswer')}
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">
                 {t('billing.pricing.faq.changePlansTitle')}
               </h3>
-              <p className="text-slate-600 text-sm">
+              <p className="text-[#A0A0A0] text-sm">
                 {t('billing.pricing.faq.changePlansAnswer')}
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-[#FAFAFA] mb-2">
                 {t('billing.pricing.faq.paymentTitle')}
               </h3>
-              <p className="text-slate-600 text-sm">
+              <p className="text-[#A0A0A0] text-sm">
                 {t('billing.pricing.faq.paymentAnswer')}
               </p>
             </div>
@@ -273,15 +273,15 @@ const PricingPage: React.FC = () => {
           <div className="text-center mt-12">
             <button
               onClick={() => navigate('/signup')}
-              className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition-colors text-lg"
+              className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-[#E0E0E0] transition-colors text-lg"
             >
               {t('billing.pricing.getStartedButton')}
             </button>
-            <p className="text-slate-500 mt-4">
+            <p className="text-[#666666] mt-4">
               {t('billing.pricing.haveAccount')}{' '}
               <button
                 onClick={() => navigate('/login')}
-                className="text-indigo-600 hover:underline"
+                className="text-[#FAFAFA] hover:underline"
               >
                 {t('billing.pricing.signInLink')}
               </button>

@@ -348,7 +348,7 @@ const QuizBuilder: React.FC<QuizBuilderProps> = ({ lessonId, onSave }) => {
                   value={question.question_text}
                   onChange={(e) => updateQuestion(qIndex, e.target.value)}
                   placeholder="Enter your question..."
-                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg resize-none focus:ring-1 focus:ring-white/10 focus:border-transparent text-[#FAFAFA]"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg resize-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-[#FAFAFA]"
                   rows={2}
                 />
                 <div className="text-xs text-[#666666] mt-1 text-right">
@@ -409,7 +409,7 @@ const QuizBuilder: React.FC<QuizBuilderProps> = ({ lessonId, onSave }) => {
                       value={option.option_text}
                       onChange={(e) => updateOption(qIndex, oIndex, e.target.value)}
                       placeholder={`Option ${oIndex + 1}`}
-                      className={`flex-1 px-3 py-2 border rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent text-[#FAFAFA] ${
+                      className={`flex-1 px-3 py-2 border rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-[#FAFAFA] ${
                         option.is_correct
                           ? 'border-[#22C55E]/30 bg-[#22C55E]/10'
                           : 'border-[#1F1F1F] bg-[#0A0A0A]'
@@ -446,7 +446,7 @@ const QuizBuilder: React.FC<QuizBuilderProps> = ({ lessonId, onSave }) => {
                   value={question.correct_answer || ''}
                   onChange={(e) => updateCorrectAnswer(qIndex, e.target.value)}
                   placeholder="Enter the expected answer..."
-                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent text-[#FAFAFA] bg-[#0A0A0A]"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-[#FAFAFA] bg-[#0A0A0A]"
                 />
               </div>
             )}

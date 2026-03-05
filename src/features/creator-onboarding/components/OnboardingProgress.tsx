@@ -31,9 +31,9 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
               key={stepNumber}
               className={`
                 w-2.5 h-2.5 rounded-full transition-all duration-300 ease-out
-                ${isActive ? 'bg-indigo-500 scale-125' : ''}
-                ${isCompleted ? 'bg-indigo-300' : ''}
-                ${isFuture ? 'bg-transparent border-2 border-gray-300' : ''}
+                ${isActive ? 'bg-white scale-125' : ''}
+                ${isCompleted ? 'bg-[#A0A0A0]' : ''}
+                ${isFuture ? 'bg-transparent border-2 border-[#1F1F1F]' : ''}
               `}
               aria-label={
                 isActive
@@ -48,7 +48,7 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
       </div>
 
       {/* Step text */}
-      <span className="text-xs text-gray-400 font-medium">
+      <span className="text-xs text-[#666666] font-medium">
         Step {currentStep} of {totalSteps}
       </span>
     </div>

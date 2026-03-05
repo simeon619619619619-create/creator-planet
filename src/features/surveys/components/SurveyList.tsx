@@ -85,30 +85,30 @@ const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
-        <div className="px-6 py-5 border-b border-slate-100">
-          <h2 className="text-xl font-semibold text-slate-900">
+      <div className="bg-[#0A0A0A] rounded-2xl max-w-md w-full overflow-hidden">
+        <div className="px-6 py-5 border-b border-[#1F1F1F]">
+          <h2 className="text-xl font-semibold text-[#FAFAFA]">
             {t('surveys.list.createTitle')}
           </h2>
         </div>
         <div className="p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               {t('surveys.list.surveyTitle')} *
             </label>
             <input
               type="text"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
               placeholder={t('surveys.list.titlePlaceholder')}
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               {t('surveys.list.surveyType')}
             </label>
             <div className="space-y-2">
@@ -117,8 +117,8 @@ const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                   key={type}
                   className={`flex items-center gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
                     formData.attachment_type === type
-                      ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-slate-200 hover:border-indigo-300'
+                      ? 'border-[#333333] bg-[#151515]'
+                      : 'border-[#1F1F1F] hover:border-[#333333]'
                   }`}
                 >
                   <input
@@ -127,13 +127,13 @@ const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                     value={type}
                     checked={formData.attachment_type === type}
                     onChange={() => setFormData({ ...formData, attachment_type: type })}
-                    className="w-4 h-4 text-indigo-600"
+                    className="w-4 h-4 text-[#FAFAFA]"
                   />
                   <div className="flex items-center gap-2">
-                    {type === 'standalone' && <FileText className="w-4 h-4 text-slate-500" />}
-                    {type === 'course_intake' && <BookOpen className="w-4 h-4 text-slate-500" />}
-                    {type === 'community_intake' && <Users2 className="w-4 h-4 text-slate-500" />}
-                    <span className="text-sm text-slate-700">
+                    {type === 'standalone' && <FileText className="w-4 h-4 text-[#666666]" />}
+                    {type === 'course_intake' && <BookOpen className="w-4 h-4 text-[#666666]" />}
+                    {type === 'community_intake' && <Users2 className="w-4 h-4 text-[#666666]" />}
+                    <span className="text-sm text-[#A0A0A0]">
                       {t(`surveys.attachmentTypes.${type}`)}
                     </span>
                   </div>
@@ -143,13 +143,13 @@ const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               {t('surveys.list.description')}
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
               placeholder={t('surveys.list.descriptionPlaceholder')}
               rows={3}
             />
@@ -157,18 +157,18 @@ const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
 
         </form>
         </div>
-        <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+        <div className="px-6 py-4 bg-[#0A0A0A] border-t border-[#1F1F1F] flex justify-end gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-200 rounded-lg transition-colors"
+            className="px-4 py-2.5 text-sm font-medium text-[#A0A0A0] hover:bg-[#151515] rounded-lg transition-colors"
           >
             {t('common.cancel')}
           </button>
           <button
             onClick={handleSubmit}
             disabled={isSubmitting || !formData.title.trim()}
-            className="px-5 py-2.5 text-sm bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
+            className="px-5 py-2.5 text-sm bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
           >
             {isSubmitting ? (
               <>
@@ -290,13 +290,13 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[80vh] flex flex-col">
+      <div className="bg-[#0A0A0A] rounded-xl max-w-lg w-full max-h-[80vh] flex flex-col">
         {/* Header */}
-        <div className="p-6 border-b border-slate-200">
-          <h2 className="text-lg font-semibold text-slate-900">
+        <div className="p-6 border-b border-[#1F1F1F]">
+          <h2 className="text-lg font-semibold text-[#FAFAFA]">
             {t('surveys.send.title')}
           </h2>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-[#666666] mt-1">
             {t('surveys.send.description', { survey: survey.title })}
           </p>
         </div>
@@ -306,13 +306,13 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
           {/* Success state */}
           {result && (
             <div className="flex flex-col items-center justify-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-[#22C55E]/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="w-8 h-8 text-[#22C55E]" />
               </div>
-              <h3 className="text-lg font-medium text-slate-900">
+              <h3 className="text-lg font-medium text-[#FAFAFA]">
                 {t('surveys.send.successTitle')}
               </h3>
-              <p className="text-sm text-slate-500 mt-2 text-center">
+              <p className="text-sm text-[#666666] mt-2 text-center">
                 {t('surveys.send.successMessage', {
                   sent: result.sent,
                   skipped: result.skipped,
@@ -324,15 +324,15 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
           {/* Loading state */}
           {isLoading && !result && (
             <div className="flex items-center justify-center py-12">
-              <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
+              <Loader2 className="w-8 h-8 text-[#FAFAFA] animate-spin" />
             </div>
           )}
 
           {/* No community error */}
           {!isLoading && !result && !survey.community_id && (
             <div className="text-center py-8">
-              <AlertCircle className="w-12 h-12 text-amber-500 mx-auto mb-3" />
-              <p className="text-slate-600">
+              <AlertCircle className="w-12 h-12 text-[#EAB308] mx-auto mb-3" />
+              <p className="text-[#A0A0A0]">
                 {t('surveys.send.noCommunity')}
               </p>
             </div>
@@ -341,8 +341,8 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
           {/* No eligible members */}
           {!isLoading && !result && survey.community_id && eligibleMembers.length === 0 && members.length > 0 && (
             <div className="text-center py-8">
-              <Users className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-600">
+              <Users className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
+              <p className="text-[#A0A0A0]">
                 {t('surveys.send.allResponded')}
               </p>
             </div>
@@ -351,8 +351,8 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
           {/* No members at all */}
           {!isLoading && !result && survey.community_id && members.length === 0 && (
             <div className="text-center py-8">
-              <Users className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-600">
+              <Users className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
+              <p className="text-[#A0A0A0]">
                 {t('surveys.send.noMembers')}
               </p>
             </div>
@@ -364,30 +364,30 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
               {/* Search and selection controls */}
               <div className="space-y-3 mb-4">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#666666]" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder={t('surveys.send.searchPlaceholder')}
-                    className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+                    className="w-full pl-10 pr-4 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10"
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-500">
+                  <span className="text-sm text-[#666666]">
                     {t('surveys.send.selectedCount', { count: selectedIds.size })}
                   </span>
                   <div className="flex gap-2">
                     <button
                       onClick={selectAll}
-                      className="text-sm text-indigo-600 hover:text-indigo-700"
+                      className="text-sm text-[#FAFAFA] hover:text-[#A0A0A0]"
                     >
                       {t('surveys.send.selectAll')}
                     </button>
-                    <span className="text-slate-300">|</span>
+                    <span className="text-[#A0A0A0]">|</span>
                     <button
                       onClick={clearSelection}
-                      className="text-sm text-slate-500 hover:text-slate-600"
+                      className="text-sm text-[#666666] hover:text-[#A0A0A0]"
                     >
                       {t('surveys.send.clearSelection')}
                     </button>
@@ -396,11 +396,11 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
               </div>
 
               {/* Member list */}
-              <div className="flex-1 overflow-y-auto border border-slate-200 rounded-lg divide-y divide-slate-100">
+              <div className="flex-1 overflow-y-auto border border-[#1F1F1F] rounded-lg divide-y divide-[#1F1F1F]">
                 {filteredMembers.map((member) => (
                   <label
                     key={member.id}
-                    className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-slate-50 ${
+                    className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-[#0A0A0A] ${
                       member.hasResponse ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
@@ -409,18 +409,18 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
                       checked={selectedIds.has(member.id)}
                       onChange={() => !member.hasResponse && toggleMember(member.id)}
                       disabled={member.hasResponse}
-                      className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500 disabled:opacity-50"
+                      className="w-4 h-4 text-[#FAFAFA] rounded border-[#1F1F1F] focus:ring-white/10 disabled:opacity-50"
                     />
                     <Avatar
                       src={member.avatar_url}
                       name={member.full_name}
                       size="sm"
                     />
-                    <span className="flex-1 text-sm text-slate-700">
+                    <span className="flex-1 text-sm text-[#A0A0A0]">
                       {member.full_name}
                     </span>
                     {member.hasResponse && (
-                      <span className="text-xs text-slate-400 flex items-center gap-1">
+                      <span className="text-xs text-[#666666] flex items-center gap-1">
                         <CheckCircle className="w-3 h-3" />
                         {t('surveys.send.alreadySent')}
                       </span>
@@ -433,10 +433,10 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-slate-200 flex justify-end gap-3">
+        <div className="p-6 border-t border-[#1F1F1F] flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg"
+            className="px-4 py-2 text-sm text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg"
           >
             {result ? t('common.close') : t('common.cancel')}
           </button>
@@ -444,7 +444,7 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
             <button
               onClick={handleSend}
               disabled={isSending || selectedIds.size === 0}
-              className="px-4 py-2 text-sm bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50 flex items-center gap-2"
+              className="px-4 py-2 text-sm bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center gap-2"
             >
               {isSending ? (
                 <>
@@ -497,16 +497,16 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
   const Icon = attachmentIcon;
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-200">
+    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F]  hover:border-[#1F1F1F] transition-all duration-200">
       <div className="p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-start gap-3 min-w-0">
-            <div className="w-11 h-11 bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-xl flex items-center justify-center flex-shrink-0">
-              <Icon className="w-5 h-5 text-indigo-600" />
+            <div className="w-11 h-11 bg-[#1F1F1F] rounded-xl flex items-center justify-center flex-shrink-0">
+              <Icon className="w-5 h-5 text-[#FAFAFA]" />
             </div>
             <div className="min-w-0">
-              <h3 className="font-semibold text-slate-900 truncate">{survey.title}</h3>
-              <p className="text-sm text-slate-500">
+              <h3 className="font-semibold text-[#FAFAFA] truncate">{survey.title}</h3>
+              <p className="text-sm text-[#666666]">
                 {t(`surveys.attachmentTypes.${survey.attachment_type}`)}
               </p>
             </div>
@@ -515,18 +515,18 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
           <div className="relative">
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded"
+              className="p-1.5 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded"
             >
               <MoreVertical className="w-4 h-4" />
             </button>
             {showMenu && (
-              <div className="absolute right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-10 py-1 w-40">
+              <div className="absolute right-0 top-full mt-1 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg z-10 py-1 w-40">
                 <button
                   onClick={() => {
                     setShowMenu(false);
                     onEdit();
                   }}
-                  className="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2"
+                  className="w-full px-4 py-2 text-left text-sm text-[#A0A0A0] hover:bg-[#0A0A0A] flex items-center gap-2"
                 >
                   <Edit className="w-4 h-4" />
                   {t('common.edit')}
@@ -536,7 +536,7 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
                     setShowMenu(false);
                     onTogglePublish();
                   }}
-                  className="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2"
+                  className="w-full px-4 py-2 text-left text-sm text-[#A0A0A0] hover:bg-[#0A0A0A] flex items-center gap-2"
                 >
                   {survey.is_published ? (
                     <>
@@ -557,7 +557,7 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
                       setShowMenu(false);
                       onSendToMembers();
                     }}
-                    className="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2"
+                    className="w-full px-4 py-2 text-left text-sm text-[#A0A0A0] hover:bg-[#0A0A0A] flex items-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     {t('surveys.send.menuButton')}
@@ -568,7 +568,7 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
                     setShowMenu(false);
                     onDelete();
                   }}
-                  className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2"
+                  className="w-full px-4 py-2 text-left text-sm text-[#EF4444] hover:bg-[#EF4444]/10 flex items-center gap-2"
                 >
                   <Trash2 className="w-4 h-4" />
                   {t('common.delete')}
@@ -579,23 +579,23 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
         </div>
 
         {survey.description && (
-          <p className="mt-3 text-sm text-slate-600 line-clamp-2">{survey.description}</p>
+          <p className="mt-3 text-sm text-[#A0A0A0] line-clamp-2">{survey.description}</p>
         )}
 
         <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
-          <span className="flex items-center gap-1.5 text-slate-500">
+          <span className="flex items-center gap-1.5 text-[#666666]">
             <FileText className="w-4 h-4" />
             {t('surveys.questions', { count: survey.questions?.length || 0 })}
           </span>
-          <span className="flex items-center gap-1.5 text-slate-500">
+          <span className="flex items-center gap-1.5 text-[#666666]">
             <Users className="w-4 h-4" />
             {t('surveys.responses.count', { count: survey.response_count || 0 })}
           </span>
           <span
             className={`px-2.5 py-1 rounded-full text-xs font-medium ${
               survey.is_published
-                ? 'bg-emerald-100 text-emerald-700'
-                : 'bg-slate-100 text-slate-600'
+                ? 'bg-[#22C55E]/10 text-[#22C55E]'
+                : 'bg-[#1F1F1F] text-[#A0A0A0]'
             }`}
           >
             {survey.is_published ? t('surveys.list.published') : t('surveys.list.draft')}
@@ -603,16 +603,16 @@ const SurveyCard: React.FC<SurveyCardProps> = ({
         </div>
       </div>
 
-      <div className="border-t border-slate-100 px-5 py-3 flex justify-between bg-slate-50/50">
+      <div className="border-t border-[#1F1F1F] px-5 py-3 flex justify-between bg-[#0A0A0A]/50">
         <button
           onClick={onEdit}
-          className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+          className="text-sm text-[#FAFAFA] hover:text-[#A0A0A0] font-medium transition-colors"
         >
           {t('surveys.list.editSurvey')}
         </button>
         <button
           onClick={onViewResponses}
-          className="text-sm text-slate-600 hover:text-slate-800 font-medium flex items-center gap-1.5 transition-colors"
+          className="text-sm text-[#A0A0A0] hover:text-[#FAFAFA] font-medium flex items-center gap-1.5 transition-colors"
         >
           <BarChart2 className="w-4 h-4" />
           {t('surveys.list.viewResponses')}
@@ -723,12 +723,12 @@ const SurveyList: React.FC<SurveyListProps> = ({ creatorId, communityId }) => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">{t('surveys.list.title')}</h1>
-          <p className="mt-1 text-slate-500">{t('surveys.list.subtitle')}</p>
+          <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('surveys.list.title')}</h1>
+          <p className="mt-1 text-[#666666]">{t('surveys.list.subtitle')}</p>
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 shadow-sm hover:shadow-md transition-all"
+          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] hover:shadow-md transition-all"
         >
           <Plus className="w-5 h-5" />
           {t('surveys.list.create')}
@@ -738,26 +738,26 @@ const SurveyList: React.FC<SurveyListProps> = ({ creatorId, communityId }) => {
       {/* Loading */}
       {isLoading && (
         <div className="flex flex-col items-center justify-center py-16">
-          <Loader2 className="w-10 h-10 text-indigo-600 animate-spin" />
-          <p className="mt-4 text-slate-500">{t('common.loading')}</p>
+          <Loader2 className="w-10 h-10 text-[#FAFAFA] animate-spin" />
+          <p className="mt-4 text-[#666666]">{t('common.loading')}</p>
         </div>
       )}
 
       {/* Empty State */}
       {!isLoading && surveys.length === 0 && (
-        <div className="text-center py-16 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-200">
-          <div className="w-20 h-20 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto">
-            <FileText className="w-10 h-10 text-indigo-500" />
+        <div className="text-center py-16 bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F]">
+          <div className="w-20 h-20 bg-[#1F1F1F] rounded-2xl flex items-center justify-center mx-auto">
+            <FileText className="w-10 h-10 text-[#FAFAFA]" />
           </div>
-          <h3 className="mt-6 text-xl font-semibold text-slate-900">
+          <h3 className="mt-6 text-xl font-semibold text-[#FAFAFA]">
             {t('surveys.list.emptyTitle')}
           </h3>
-          <p className="mt-2 text-slate-500 max-w-md mx-auto px-4">
+          <p className="mt-2 text-[#666666] max-w-md mx-auto px-4">
             {t('surveys.list.emptyDescription')}
           </p>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 shadow-sm hover:shadow-md transition-all"
+            className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] hover:shadow-md transition-all"
           >
             <Plus className="w-5 h-5" />
             {t('surveys.list.createFirst')}

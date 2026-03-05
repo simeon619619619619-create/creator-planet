@@ -19,7 +19,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {showNavigation && <PublicNavigation />}
 
       <main className={showNavigation ? 'pt-16' : ''}>
@@ -27,7 +27,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
       </main>
 
       {showFooter && (
-        <footer className="bg-slate-900 text-white">
+        <footer className="bg-[#0A0A0A] border-t border-[#1F1F1F] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {/* Brand */}
@@ -35,27 +35,27 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
                 <div className="mb-4">
                   <Logo variant="light" size="lg" showText={false} />
                 </div>
-                <p className="text-slate-400 text-sm max-w-md">
+                <p className="text-[#A0A0A0] text-sm max-w-md">
                   {t('publicCommunities.footer.description')}
                 </p>
               </div>
 
               {/* Links */}
               <div>
-                <h4 className="font-semibold mb-4">{t('publicCommunities.footer.platform')}</h4>
-                <ul className="space-y-2 text-sm text-slate-400">
+                <h4 className="font-semibold text-[#FAFAFA] mb-4">{t('publicCommunities.footer.platform')}</h4>
+                <ul className="space-y-2 text-sm text-[#A0A0A0]">
                   <li>
-                    <Link to="/communities" className="hover:text-white transition-colors">
+                    <Link to="/communities" className="hover:text-white transition-colors duration-150">
                       {t('publicCommunities.footer.browseCommunities')}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/signup" className="hover:text-white transition-colors">
+                    <Link to="/signup" className="hover:text-white transition-colors duration-150">
                       {t('publicCommunities.footer.getStarted')}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/login" className="hover:text-white transition-colors">
+                    <Link to="/login" className="hover:text-white transition-colors duration-150">
                       {t('publicCommunities.footer.signIn')}
                     </Link>
                   </li>
@@ -64,13 +64,13 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
 
               {/* Social */}
               <div>
-                <h4 className="font-semibold mb-4">{t('publicCommunities.footer.connect')}</h4>
+                <h4 className="font-semibold text-[#FAFAFA] mb-4">{t('publicCommunities.footer.connect')}</h4>
                 <div className="flex items-center gap-3">
                   <a
                     href="https://twitter.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
+                    className="p-2 bg-[#1F1F1F] rounded-lg hover:bg-[#333333] transition-colors duration-150"
                   >
                     <Twitter className="w-5 h-5" />
                   </a>
@@ -78,13 +78,13 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
                     href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
+                    className="p-2 bg-[#1F1F1F] rounded-lg hover:bg-[#333333] transition-colors duration-150"
                   >
                     <Github className="w-5 h-5" />
                   </a>
                   <a
                     href="mailto:hello@creatorclub.app"
-                    className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
+                    className="p-2 bg-[#1F1F1F] rounded-lg hover:bg-[#333333] transition-colors duration-150"
                   >
                     <Mail className="w-5 h-5" />
                   </a>
@@ -92,7 +92,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
+            <div className="mt-12 pt-8 border-t border-[#1F1F1F] text-center text-sm text-[#666666]">
               <p>{t('publicCommunities.footer.copyright', { year: new Date().getFullYear() })}</p>
             </div>
           </div>

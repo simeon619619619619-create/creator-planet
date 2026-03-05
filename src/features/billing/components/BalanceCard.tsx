@@ -95,83 +95,83 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
       {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-[#FAFAFA]">
             {t('billing.balance.title')}
           </h2>
-          <p className="text-slate-500 text-sm">
+          <p className="text-[#666666] text-sm">
             {t('billing.balance.subtitle')}
           </p>
         </div>
-        <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-          <Wallet size={20} className="text-indigo-600" />
+        <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
+          <Wallet size={20} className="text-[#FAFAFA]" />
         </div>
       </div>
 
       {/* Balance Grid */}
       <div className="grid md:grid-cols-2 gap-4 mb-6">
         {/* Pending Balance */}
-        <div className="p-4 bg-amber-50 border border-amber-100 rounded-lg">
+        <div className="p-4 bg-[#EAB308]/10 border border-amber-100 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
-            <Clock size={18} className="text-amber-600" />
-            <span className="font-medium text-slate-900">
+            <Clock size={18} className="text-[#EAB308]" />
+            <span className="font-medium text-[#FAFAFA]">
               {t('billing.balance.pending')}
             </span>
             <div className="group relative ml-auto">
-              <Info size={14} className="text-slate-400 cursor-help" />
-              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-slate-800 text-white text-xs rounded shadow-lg z-10">
+              <Info size={14} className="text-[#666666] cursor-help" />
+              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-[#0A0A0A] text-white text-xs rounded z-10">
                 {t('billing.balance.pendingTooltip')}
               </div>
             </div>
           </div>
-          <p className="text-2xl font-bold text-amber-700">
+          <p className="text-2xl font-bold text-[#EAB308]">
             {formatAmount(balances.pending)}
           </p>
           {nextPendingRelease && daysUntilAvailable !== null && (
-            <p className="text-sm text-amber-600 mt-1">
+            <p className="text-sm text-[#EAB308] mt-1">
               {t('billing.balance.availableInDays', { days: daysUntilAvailable })}
             </p>
           )}
         </div>
 
         {/* Available Balance */}
-        <div className="p-4 bg-green-50 border border-green-100 rounded-lg">
+        <div className="p-4 bg-[#22C55E]/10 border border-green-100 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
-            <TrendingUp size={18} className="text-green-600" />
-            <span className="font-medium text-slate-900">
+            <TrendingUp size={18} className="text-[#22C55E]" />
+            <span className="font-medium text-[#FAFAFA]">
               {t('billing.balance.available')}
             </span>
           </div>
-          <p className="text-2xl font-bold text-green-700">
+          <p className="text-2xl font-bold text-[#22C55E]">
             {formatAmount(balances.available)}
           </p>
-          <p className="text-sm text-green-600 mt-1">
+          <p className="text-sm text-[#22C55E] mt-1">
             {t('billing.balance.readyForWithdrawal')}
           </p>
         </div>
 
         {/* Reserved Balance */}
-        <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg">
+        <div className="p-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg">
           <div className="flex items-center gap-2 mb-2">
-            <Shield size={18} className="text-slate-600" />
-            <span className="font-medium text-slate-900">
+            <Shield size={18} className="text-[#A0A0A0]" />
+            <span className="font-medium text-[#FAFAFA]">
               {t('billing.balance.reserved')}
             </span>
             <div className="group relative ml-auto">
-              <Info size={14} className="text-slate-400 cursor-help" />
-              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-slate-800 text-white text-xs rounded shadow-lg z-10">
+              <Info size={14} className="text-[#666666] cursor-help" />
+              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-[#0A0A0A] text-white text-xs rounded z-10">
                 {t('billing.balance.reservedTooltip')}
               </div>
             </div>
           </div>
-          <p className="text-2xl font-bold text-slate-700">
+          <p className="text-2xl font-bold text-[#A0A0A0]">
             {formatAmount(balances.reserved)}
           </p>
           {nextReserveRelease && daysUntilReserveRelease !== null && (
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-sm text-[#666666] mt-1">
               {t('billing.balance.releasedInDays', { days: daysUntilReserveRelease })}
             </p>
           )}
@@ -179,17 +179,17 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
 
         {/* Negative Balance (only show if > 0) */}
         {balances.negative > 0 && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle size={18} className="text-red-600" />
+              <AlertTriangle size={18} className="text-[#EF4444]" />
               <span className="font-medium text-red-900">
                 {t('billing.balance.negative')}
               </span>
             </div>
-            <p className="text-2xl font-bold text-red-700">
+            <p className="text-2xl font-bold text-[#EF4444]">
               -{formatAmount(balances.negative)}
             </p>
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-[#EF4444] mt-1">
               {t('billing.balance.negativeMessage')}
             </p>
           </div>
@@ -197,13 +197,13 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
       </div>
 
       {/* Withdrawal Section */}
-      <div className="border-t border-slate-200 pt-6">
+      <div className="border-t border-[#1F1F1F] pt-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-[#666666]">
               {t('billing.balance.withdrawableAmount')}
             </p>
-            <p className="text-xl font-bold text-slate-900">
+            <p className="text-xl font-bold text-[#FAFAFA]">
               {formatAmount(balances.withdrawable)}
             </p>
           </div>
@@ -212,8 +212,8 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
             disabled={!isEligibleForWithdrawal || isLoading}
             className={`px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2 ${
               isEligibleForWithdrawal && !isLoading
-                ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
             }`}
           >
             {isLoading ? (
@@ -229,8 +229,8 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
 
         {/* Withdrawal Blocker Message */}
         {withdrawalBlocker && !isEligibleForWithdrawal && (
-          <div className="mt-4 p-3 bg-slate-50 rounded-lg">
-            <p className="text-sm text-slate-600">
+          <div className="mt-4 p-3 bg-[#0A0A0A] rounded-lg">
+            <p className="text-sm text-[#A0A0A0]">
               {withdrawalBlocker.reason === 'COOLDOWN_ACTIVE' && getCooldownTimeRemaining() ? (
                 <>
                   {t('billing.withdrawal.cooldownMessage', { time: getCooldownTimeRemaining() })}
@@ -248,10 +248,10 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
 
         {/* Connect Not Setup Warning */}
         {connectStatus !== 'active' && (
-          <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+          <div className="mt-4 p-3 bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-lg">
             <div className="flex items-start gap-2">
-              <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
-              <p className="text-sm text-amber-700">
+              <AlertTriangle size={18} className="text-[#EAB308] shrink-0 mt-0.5" />
+              <p className="text-sm text-[#EAB308]">
                 {t('billing.withdrawal.setupConnectWarning')}
               </p>
             </div>

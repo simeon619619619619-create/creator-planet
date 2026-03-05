@@ -39,19 +39,19 @@ const BUTTON_STYLES = {
     border: 'border-transparent',
   },
   dark: {
-    container: 'bg-white border-2 border-orange-500 hover:bg-orange-50',
-    text: 'text-gray-900',
+    container: 'bg-[#0A0A0A] border-2 border-orange-500 hover:bg-[#EAB308]/10',
+    text: 'text-[#FAFAFA]',
     logo: TBI_LOGOS.dark,
     border: 'border-orange-500',
   },
   outline: {
-    container: 'bg-white/90 backdrop-blur border-2 border-white hover:bg-white',
-    text: 'text-gray-900',
+    container: 'bg-[#0A0A0A]/90 backdrop-blur border-2 border-white hover:bg-[#0A0A0A]',
+    text: 'text-[#FAFAFA]',
     logo: TBI_LOGOS.dark,
     border: 'border-white',
   },
   minimal: {
-    container: 'bg-gray-900 hover:bg-gray-800',
+    container: 'bg-[#0A0A0A] hover:bg-[#0A0A0A]',
     text: 'text-white',
     logo: TBI_LOGOS.logo2,
     border: 'border-transparent',
@@ -131,7 +131,7 @@ export function TBIButton({
           transition-all duration-200 ease-out
           ${styleConfig.container}
           ${styleConfig.border}
-          ${disabled || loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer shadow-md hover:shadow-lg hover:scale-[1.02]'}
+          ${disabled || loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer  hover:scale-[1.02]'}
         `}
       >
         <div className="px-4 py-3 flex flex-col items-center justify-center gap-1">
@@ -185,7 +185,7 @@ export function TBIButton({
 
       {/* Minimum amount indicator (optional) */}
       {amountCents < TBI_CONFIG.minAmountCents && (
-        <p className="text-xs text-gray-500 mt-1 text-center">
+        <p className="text-xs text-[#666666] mt-1 text-center">
           Минимум {TBI_CONFIG.minAmountCents / 100} {currency} за вноски
         </p>
       )}
@@ -316,7 +316,7 @@ export function TBIInstallmentText({
   if (!isEligible || !bestScheme) return null;
 
   return (
-    <span className={`text-sm text-orange-600 font-medium ${className}`}>
+    <span className={`text-sm text-[#EAB308] font-medium ${className}`}>
       или {bestScheme.period} x {(bestScheme.monthly_amount_cents / 100).toFixed(2)} {currency} с{' '}
       <span className="inline-flex items-center gap-0.5">
         <img

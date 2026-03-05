@@ -315,30 +315,30 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
   const totalPages = paginatedData?.totalPages || 0;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-indigo-100 rounded-xl">
-              <Users className="w-7 h-7 text-indigo-600" />
+            <div className="p-3 bg-[#1F1F1F] rounded-xl">
+              <Users className="w-7 h-7 text-[#FAFAFA]" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">{t('studentManager.page.title')}</h1>
-              <p className="text-slate-600">
+              <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('studentManager.page.title')}</h1>
+              <p className="text-[#A0A0A0]">
                 {t('studentManager.page.description')}
               </p>
             </div>
           </div>
 
           {/* Tabs */}
-          <div className="mt-6 flex gap-1 border-b border-slate-200 -mb-px">
+          <div className="mt-6 flex gap-1 border-b border-[#1F1F1F] -mb-px">
             <button
               onClick={() => setActiveTab('students')}
               className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
                 activeTab === 'students'
-                  ? 'border-indigo-600 text-indigo-600'
-                  : 'border-transparent text-slate-500 hover:text-slate-700'
+                  ? 'border-white text-[#FAFAFA]'
+                  : 'border-transparent text-[#666666] hover:text-[#A0A0A0]'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -350,15 +350,15 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
               onClick={() => setActiveTab('applications')}
               className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
                 activeTab === 'applications'
-                  ? 'border-indigo-600 text-indigo-600'
-                  : 'border-transparent text-slate-500 hover:text-slate-700'
+                  ? 'border-white text-[#FAFAFA]'
+                  : 'border-transparent text-[#666666] hover:text-[#A0A0A0]'
               }`}
             >
               <div className="flex items-center gap-2">
                 <Inbox className="w-4 h-4" />
                 {t('studentManager.tabs.applications')}
                 {applicationsCount > 0 && (
-                  <span className="px-2 py-0.5 text-xs font-semibold bg-amber-100 text-amber-700 rounded-full">
+                  <span className="px-2 py-0.5 text-xs font-semibold bg-[#EAB308]/10 text-[#EAB308] rounded-full">
                     {applicationsCount}
                   </span>
                 )}
@@ -372,7 +372,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
       <div className="max-w-7xl mx-auto px-6 py-6">
         {/* Applications Tab */}
         {activeTab === 'applications' && (
-          <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
             <ApplicationsTab
               creatorId={creatorId}
               onApplicationsChange={loadApplicationsCount}
@@ -387,27 +387,27 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
         <div className="mb-6 flex flex-col sm:flex-row gap-3">
           {/* Search Input */}
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666666]" />
             <input
               type="text"
               placeholder={t('studentManager.search.placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2.5 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
             />
           </div>
 
           {/* Community Filter */}
           {communities.length > 1 && (
             <div className="relative">
-              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666666] pointer-events-none" />
               <select
                 value={selectedCommunityFilter}
                 onChange={(e) => {
                   setSelectedCommunityFilter(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="pl-10 pr-8 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:border-slate-300 appearance-none bg-white cursor-pointer min-w-[200px]"
+                className="pl-10 pr-8 py-2.5 border border-[#1F1F1F] rounded-lg focus:outline-none focus:border-[#1F1F1F] appearance-none bg-[#0A0A0A] cursor-pointer min-w-[200px]"
               >
                 <option value="">{t('studentManager.filter.allCommunities')}</option>
                 {communities.map((community) => (
@@ -416,24 +416,24 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   </option>
                 ))}
               </select>
-              <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
+              <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#666666] rotate-90 pointer-events-none" />
             </div>
           )}
         </div>
 
         {/* Students Table */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
           {isLoading ? (
             <div className="p-12 text-center">
-              <Loader2 className="w-12 h-12 text-indigo-600 animate-spin mx-auto" />
+              <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin mx-auto" />
             </div>
           ) : students.length === 0 ? (
             <div className="p-12 text-center">
-              <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-slate-700">
+              <Users className="w-16 h-16 text-[#A0A0A0] mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-[#A0A0A0]">
                 {debouncedSearch ? t('studentManager.empty.noResults.title') : t('studentManager.empty.noStudents.title')}
               </h3>
-              <p className="text-slate-500 mt-2">
+              <p className="text-[#666666] mt-2">
                 {debouncedSearch
                   ? t('studentManager.empty.noResults.description')
                   : t('studentManager.empty.noStudents.description')}
@@ -442,39 +442,39 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-slate-50 border-b border-slate-200">
+                <thead className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-[#A0A0A0]">
                       {t('studentManager.table.headers.student')}
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-[#A0A0A0]">
                       <div className="flex items-center gap-1">
                         <Trophy className="w-4 h-4" />
                         {t('studentManager.table.headers.points')}
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-[#A0A0A0]">
                       {t('studentManager.table.headers.level')}
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-[#A0A0A0]">
                       <div className="flex items-center gap-1">
                         <FileText className="w-4 h-4" />
                         {t('studentManager.table.headers.submissions')}
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-slate-700">
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-[#A0A0A0]">
                       {t('studentManager.table.headers.actions')}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[#1F1F1F]">
                   {students.map((student) => {
                     const studentName = student.profile.full_name || student.profile.email;
                     const totalPoints = student.points?.total_points || 0;
                     const level = student.points?.level || 1;
 
                     return (
-                      <tr key={student.profile.id} className="hover:bg-slate-50 transition-colors">
+                      <tr key={student.profile.id} className="hover:bg-[#0A0A0A] transition-colors">
                         {/* Student Info with Community Labels */}
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
@@ -485,16 +485,16 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                                 className="w-10 h-10 rounded-full object-cover"
                               />
                             ) : (
-                              <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                                <span className="text-indigo-600 font-medium">
+                              <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center flex-shrink-0">
+                                <span className="text-[#FAFAFA] font-medium">
                                   {studentName.charAt(0).toUpperCase()}
                                 </span>
                               </div>
                             )}
                             <div>
-                              <p className="font-medium text-slate-900">{studentName}</p>
+                              <p className="font-medium text-[#FAFAFA]">{studentName}</p>
                               {student.profile.full_name && (
-                                <p className="text-sm text-slate-500">{student.profile.email}</p>
+                                <p className="text-sm text-[#666666]">{student.profile.email}</p>
                               )}
                               {/* Community Labels with Plan & Promo Info */}
                               <div className="flex flex-col gap-1.5 mt-1">
@@ -505,10 +505,10 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                                   const planType = payment?.planType ?? 'free';
 
                                   const planBadgeStyles: Record<string, string> = {
-                                    one_time: 'bg-emerald-100 text-emerald-700',
-                                    monthly: 'bg-blue-100 text-blue-700',
-                                    free: 'bg-slate-100 text-slate-500',
-                                    canceled: 'bg-red-100 text-red-600',
+                                    one_time: 'bg-[#22C55E]/10 text-[#22C55E]',
+                                    monthly: 'bg-[#1F1F1F] text-[#A0A0A0]',
+                                    free: 'bg-[#1F1F1F] text-[#666666]',
+                                    canceled: 'bg-[#EF4444]/10 text-[#EF4444]',
                                   };
                                   const planLabel: Record<string, string> = {
                                     one_time: t('studentManager.plan.oneTime'),
@@ -522,7 +522,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                                   return (
                                     <div key={community.id} className="flex flex-wrap items-center gap-1">
                                       <span
-                                        className="inline-flex items-center px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-xs font-medium truncate max-w-[150px]"
+                                        className="inline-flex items-center px-2 py-0.5 bg-[#1F1F1F] text-[#A0A0A0] rounded text-xs font-medium truncate max-w-[150px]"
                                         title={community.name}
                                       >
                                         {community.name}
@@ -538,7 +538,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                                         {planLabel[planType]}
                                       </button>
                                       {planType === 'monthly' && payment?.expiresAt && (
-                                        <span className={`text-[10px] ${isExpired ? 'text-red-500 font-medium' : 'text-slate-400'}`}>
+                                        <span className={`text-[10px] ${isExpired ? 'text-[#EF4444] font-medium' : 'text-[#666666]'}`}>
                                           {isExpired
                                             ? t('studentManager.plan.expired')
                                             : t('studentManager.plan.expiresAt', {
@@ -547,13 +547,13 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                                         </span>
                                       )}
                                       {payment?.discountCode && (
-                                        <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-medium">
+                                        <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-[#151515] text-[#FAFAFA] rounded text-[10px] font-medium">
                                           <Ticket className="w-2.5 h-2.5" />
                                           {t('studentManager.plan.usedCode', { code: payment.discountCode, percent: payment.discountPercent })}
                                         </span>
                                       )}
                                       {payment?.assignedCode && !payment?.discountCode && (
-                                        <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded text-[10px] font-medium">
+                                        <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-[#EAB308]/10 text-[#EAB308] rounded text-[10px] font-medium">
                                           <Tag className="w-2.5 h-2.5" />
                                           {t('studentManager.plan.assignedCode', { code: payment.assignedCode, percent: payment.assignedCodePercent })}
                                         </span>
@@ -569,14 +569,14 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                         {/* Points */}
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-1.5">
-                            <Award className="w-4 h-4 text-amber-500" />
-                            <span className="font-semibold text-slate-900">{totalPoints}</span>
+                            <Award className="w-4 h-4 text-[#EAB308]" />
+                            <span className="font-semibold text-[#FAFAFA]">{totalPoints}</span>
                           </div>
                         </td>
 
                         {/* Level */}
                         <td className="px-6 py-4">
-                          <span className="inline-flex items-center px-2.5 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">
+                          <span className="inline-flex items-center px-2.5 py-1 bg-[#1F1F1F] text-[#A0A0A0] rounded-full text-sm font-medium">
                             {t('studentManager.table.levelBadge', { level })}
                           </span>
                         </td>
@@ -584,11 +584,11 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                         {/* Submissions */}
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
-                            <span className="text-slate-900">
+                            <span className="text-[#FAFAFA]">
                               {student.gradedCount}/{student.submissionCount}
                             </span>
                             {student.submissionCount > 0 && (
-                              <span className="text-slate-500 text-sm">
+                              <span className="text-[#666666] text-sm">
                                 {t('studentManager.table.gradedPercentage', { percent: Math.round((student.gradedCount / student.submissionCount) * 100) })}
                               </span>
                             )}
@@ -600,21 +600,21 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => handleMessageClick(student)}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 rounded-lg font-medium text-sm transition-colors"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#151515] rounded-lg font-medium text-sm transition-colors"
                             >
                               <MessageSquare className="w-4 h-4" />
                               {t('studentManager.actions.message')}
                             </button>
                             <button
                               onClick={() => handleBonusClick(student)}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-100 text-amber-700 hover:bg-amber-200 rounded-lg font-medium text-sm transition-colors"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EAB308]/10 text-[#EAB308] hover:bg-amber-200 rounded-lg font-medium text-sm transition-colors"
                             >
                               <Award className="w-4 h-4" />
                               {t('studentManager.actions.bonus')}
                             </button>
                             <button
                               onClick={() => handleRemoveClick(student)}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg font-medium text-sm transition-colors"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EF4444]/10 text-[#EF4444] hover:bg-[#EF4444]/10 rounded-lg font-medium text-sm transition-colors"
                               title={t('studentManager.actions.remove')}
                             >
                               <UserMinus className="w-4 h-4" />
@@ -633,7 +633,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
         {/* Pagination & Summary */}
         {totalCount > 0 && (
           <div className="mt-4 flex items-center justify-between">
-            <div className="text-sm text-slate-500">
+            <div className="text-sm text-[#666666]">
               {t('studentManager.summary.showing', {
                 filtered: students.length,
                 total: totalCount,
@@ -651,7 +651,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                 <button
                   onClick={handlePrevPage}
                   disabled={currentPage === 1}
-                  className="flex items-center gap-1 px-3 py-1.5 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-1 px-3 py-1.5 border border-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] hover:bg-[#0A0A0A] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   {t('studentManager.pagination.prev')}
@@ -678,8 +678,8 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                         onClick={() => setCurrentPage(pageNum)}
                         className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
                           currentPage === pageNum
-                            ? 'bg-indigo-600 text-white'
-                            : 'text-slate-700 hover:bg-slate-100'
+                            ? 'bg-white text-black'
+                            : 'text-[#A0A0A0] hover:bg-[#1F1F1F]'
                         }`}
                       >
                         {pageNum}
@@ -691,7 +691,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                 <button
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}
-                  className="flex items-center gap-1 px-3 py-1.5 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-1 px-3 py-1.5 border border-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] hover:bg-[#0A0A0A] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {t('studentManager.pagination.next')}
                   <ChevronRight className="w-4 h-4" />
@@ -707,14 +707,14 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
       {/* Bonus Points Modal */}
       {isBonusModalOpen && selectedStudent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md mx-4">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200">
-              <h3 className="text-lg font-semibold text-slate-900">{t('studentManager.bonusModal.title')}</h3>
+            <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+              <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('studentManager.bonusModal.title')}</h3>
               <button
                 onClick={handleCloseModal}
                 disabled={isAwarding}
-                className="p-1 text-slate-400 hover:text-slate-600 rounded-lg transition-colors disabled:opacity-50"
+                className="p-1 text-[#666666] hover:text-[#A0A0A0] rounded-lg transition-colors disabled:opacity-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -723,7 +723,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             {/* Modal Body */}
             <div className="p-4">
               {/* Student Info */}
-              <div className="flex items-center gap-3 mb-6 p-3 bg-slate-50 rounded-lg">
+              <div className="flex items-center gap-3 mb-6 p-3 bg-[#0A0A0A] rounded-lg">
                 {selectedStudent.profile.avatar_url ? (
                   <img
                     src={selectedStudent.profile.avatar_url}
@@ -731,8 +731,8 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                     className="w-12 h-12 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-indigo-600 font-medium text-lg">
+                  <div className="w-12 h-12 rounded-full bg-[#1F1F1F] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#FAFAFA] font-medium text-lg">
                       {(selectedStudent.profile.full_name || selectedStudent.profile.email)
                         .charAt(0)
                         .toUpperCase()}
@@ -740,10 +740,10 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   </div>
                 )}
                 <div>
-                  <p className="font-medium text-slate-900">
+                  <p className="font-medium text-[#FAFAFA]">
                     {selectedStudent.profile.full_name || selectedStudent.profile.email}
                   </p>
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-[#666666]">
                     {t('studentManager.bonusModal.currentPoints', { points: selectedStudent.points?.total_points || 0 })}
                   </p>
                 </div>
@@ -752,13 +752,13 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
               {/* Community Selector (if student is in multiple communities) */}
               {selectedStudent.communities.length > 1 && (
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                     {t('studentManager.bonusModal.selectCommunity')}
                   </label>
                   <select
                     value={selectedCommunityId}
                     onChange={(e) => setSelectedCommunityId(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                   >
                     {selectedStudent.communities.map((community) => (
                       <option key={community.id} value={community.id}>
@@ -771,7 +771,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
               {/* Points Input */}
               <div className="mb-4">
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                   {t('studentManager.bonusModal.pointsLabel')}
                 </label>
                 <input
@@ -780,13 +780,13 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   max={10}
                   value={bonusPoints}
                   onChange={(e) => setBonusPoints(Math.min(10, Math.max(1, parseInt(e.target.value) || 1)))}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 />
               </div>
 
               {/* Reason Input */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                   {t('studentManager.bonusModal.reasonLabel')}
                 </label>
                 <input
@@ -794,14 +794,14 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   placeholder={t('studentManager.bonusModal.reasonPlaceholder')}
                   value={bonusReason}
                   onChange={(e) => setBonusReason(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 />
               </div>
 
               {/* Preview */}
-              <div className="flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg mb-4">
-                <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                <p className="text-sm text-amber-800">
+              <div className="flex items-center gap-2 p-3 bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-lg mb-4">
+                <CheckCircle className="w-5 h-5 text-[#EAB308] flex-shrink-0" />
+                <p className="text-sm text-[#FAFAFA]">
                   <Trans
                     i18nKey="studentManager.bonusModal.preview"
                     values={{ points: bonusPoints, name: selectedStudent.profile.full_name || selectedStudent.profile.email }}
@@ -812,18 +812,18 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             </div>
 
             {/* Modal Footer */}
-            <div className="flex items-center justify-end gap-3 p-4 border-t border-slate-200">
+            <div className="flex items-center justify-end gap-3 p-4 border-t border-[#1F1F1F]">
               <button
                 onClick={handleCloseModal}
                 disabled={isAwarding}
-                className="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="px-4 py-2 text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {t('studentManager.bonusModal.cancel')}
               </button>
               <button
                 onClick={handleAwardBonus}
                 disabled={isAwarding}
-                className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white hover:bg-amber-600 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2 bg-[#EAB308]/100 text-white hover:bg-[#EAB308] rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {isAwarding ? (
                   <>
@@ -845,9 +845,9 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
       {/* Message Modal */}
       {isMessageModalOpen && messageStudent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 flex flex-col max-h-[80vh]">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-lg mx-4 flex flex-col max-h-[80vh]">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200 shrink-0">
+            <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F] shrink-0">
               <div className="flex items-center gap-3">
                 {messageStudent.profile.avatar_url ? (
                   <img
@@ -856,8 +856,8 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-indigo-600 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#FAFAFA] font-medium">
                       {(messageStudent.profile.full_name || messageStudent.profile.email)
                         .charAt(0)
                         .toUpperCase()}
@@ -865,16 +865,16 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   </div>
                 )}
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900">
+                  <h3 className="text-lg font-semibold text-[#FAFAFA]">
                     {messageStudent.profile.full_name || messageStudent.profile.email}
                   </h3>
-                  <p className="text-sm text-slate-500">{t('studentManager.messageModal.directMessage')}</p>
+                  <p className="text-sm text-[#666666]">{t('studentManager.messageModal.directMessage')}</p>
                 </div>
               </div>
               <button
                 onClick={handleCloseMessageModal}
                 disabled={isSendingMessage}
-                className="p-1 text-slate-400 hover:text-slate-600 rounded-lg transition-colors disabled:opacity-50"
+                className="p-1 text-[#666666] hover:text-[#A0A0A0] rounded-lg transition-colors disabled:opacity-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -882,11 +882,11 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
             {/* Community Selector (if student is in multiple communities) */}
             {messageStudent.communities.length > 1 && (
-              <div className="px-4 py-3 border-b border-slate-200 shrink-0">
+              <div className="px-4 py-3 border-b border-[#1F1F1F] shrink-0">
                 <select
                   value={messageCommunityId}
                   onChange={(e) => handleMessageCommunityChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-sm"
                 >
                   {messageStudent.communities.map((community) => (
                     <option key={community.id} value={community.id}>
@@ -901,13 +901,13 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">
               {isLoadingMessages ? (
                 <div className="flex items-center justify-center h-full">
-                  <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
+                  <Loader2 className="w-8 h-8 text-[#FAFAFA] animate-spin" />
                 </div>
               ) : messages.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center py-8">
-                  <MessageSquare className="w-12 h-12 text-slate-300 mb-3" />
-                  <p className="text-slate-500">{t('studentManager.messageModal.noMessages')}</p>
-                  <p className="text-sm text-slate-400">{t('studentManager.messageModal.startConversation')}</p>
+                  <MessageSquare className="w-12 h-12 text-[#A0A0A0] mb-3" />
+                  <p className="text-[#666666]">{t('studentManager.messageModal.noMessages')}</p>
+                  <p className="text-sm text-[#666666]">{t('studentManager.messageModal.startConversation')}</p>
                 </div>
               ) : (
                 messages.map((message) => {
@@ -920,14 +920,14 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                       <div
                         className={`max-w-[80%] px-4 py-2 rounded-2xl ${
                           isOwn
-                            ? 'bg-indigo-600 text-white rounded-br-md'
-                            : 'bg-slate-100 text-slate-900 rounded-bl-md'
+                            ? 'bg-[#FAFAFA] text-black rounded-br-md'
+                            : 'bg-[#151515] text-[#A0A0A0] rounded-bl-md'
                         }`}
                       >
                         <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                         <p
                           className={`text-[10px] mt-1 ${
-                            isOwn ? 'text-indigo-200' : 'text-slate-400'
+                            isOwn ? 'text-[#A0A0A0]' : 'text-[#666666]'
                           }`}
                         >
                           {new Date(message.created_at).toLocaleTimeString([], {
@@ -943,7 +943,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             </div>
 
             {/* Message Input */}
-            <div className="border-t border-slate-200 p-4 shrink-0">
+            <div className="border-t border-[#1F1F1F] p-4 shrink-0">
               <div className="flex items-center gap-2">
                 <input
                   type="text"
@@ -957,12 +957,12 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                     }
                   }}
                   disabled={!conversation || isSendingMessage}
-                  className="flex-1 px-4 py-2 border border-slate-200 rounded-full focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:opacity-50"
+                  className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-full focus:ring-1 focus:ring-white/10 focus:border-[#555555] disabled:opacity-50"
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={!conversation || !messageContent.trim() || isSendingMessage}
-                  className="p-2.5 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="p-2.5 bg-white text-black rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSendingMessage ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -978,17 +978,17 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
       {/* Remove Student Modal */}
       {isRemoveModalOpen && removeStudent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md mx-4">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200">
-              <div className="flex items-center gap-2 text-red-600">
+            <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+              <div className="flex items-center gap-2 text-[#EF4444]">
                 <UserMinus className="w-5 h-5" />
                 <h3 className="text-lg font-semibold">{t('studentManager.removeModal.title')}</h3>
               </div>
               <button
                 onClick={handleCloseRemoveModal}
                 disabled={isRemoving}
-                className="p-1 text-slate-400 hover:text-slate-600 rounded-lg transition-colors disabled:opacity-50"
+                className="p-1 text-[#666666] hover:text-[#A0A0A0] rounded-lg transition-colors disabled:opacity-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -997,7 +997,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             {/* Modal Body */}
             <div className="p-4 space-y-4">
               {/* Student Info */}
-              <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-[#0A0A0A] rounded-lg">
                 {removeStudent.profile.avatar_url ? (
                   <img
                     src={removeStudent.profile.avatar_url}
@@ -1005,8 +1005,8 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                     className="w-12 h-12 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-indigo-600 font-medium text-lg">
+                  <div className="w-12 h-12 rounded-full bg-[#1F1F1F] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#FAFAFA] font-medium text-lg">
                       {(removeStudent.profile.full_name || removeStudent.profile.email)
                         .charAt(0)
                         .toUpperCase()}
@@ -1014,23 +1014,23 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   </div>
                 )}
                 <div>
-                  <p className="font-medium text-slate-900">
+                  <p className="font-medium text-[#FAFAFA]">
                     {removeStudent.profile.full_name || removeStudent.profile.email}
                   </p>
-                  <p className="text-sm text-slate-500">{removeStudent.profile.email}</p>
+                  <p className="text-sm text-[#666666]">{removeStudent.profile.email}</p>
                 </div>
               </div>
 
               {/* Community Selector (if student is in multiple communities) */}
               {removeStudent.communities.length > 1 && (
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                     {t('studentManager.removeModal.selectCommunity')}
                   </label>
                   <select
                     value={removeCommunityId}
                     onChange={(e) => setRemoveCommunityId(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-red-500 focus:border-[#555555]"
                   >
                     {removeStudent.communities.map((community) => (
                       <option key={community.id} value={community.id}>
@@ -1042,14 +1042,14 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
               )}
 
               {/* Warning */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="w-5 h-5 text-[#EAB308] flex-shrink-0 mt-0.5" />
                   <div className="text-sm">
-                    <p className="text-amber-800 font-medium mb-1">
+                    <p className="text-[#FAFAFA] font-medium mb-1">
                       {t('studentManager.removeModal.warningTitle')}
                     </p>
-                    <ul className="list-disc list-inside space-y-1 text-amber-700">
+                    <ul className="list-disc list-inside space-y-1 text-[#EAB308]">
                       <li>{t('studentManager.removeModal.loseAccess')}</li>
                       <li>{t('studentManager.removeModal.subscriptionCanceled')}</li>
                       <li>{t('studentManager.removeModal.cannotUndo')}</li>
@@ -1060,25 +1060,25 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
               {/* Error message */}
               {removeError && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                  <p className="text-red-700 text-sm">{removeError}</p>
+                <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg p-3">
+                  <p className="text-[#EF4444] text-sm">{removeError}</p>
                 </div>
               )}
             </div>
 
             {/* Modal Footer */}
-            <div className="flex items-center justify-end gap-3 p-4 border-t border-slate-200">
+            <div className="flex items-center justify-end gap-3 p-4 border-t border-[#1F1F1F]">
               <button
                 onClick={handleCloseRemoveModal}
                 disabled={isRemoving}
-                className="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="px-4 py-2 text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {t('studentManager.removeModal.cancel')}
               </button>
               <button
                 onClick={handleConfirmRemove}
                 disabled={isRemoving || !removeCommunityId}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white hover:bg-red-700 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2 bg-[#EF4444] text-white hover:bg-[#EF4444]/80 rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {isRemoving ? (
                   <>
@@ -1099,16 +1099,16 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
       {/* Payment Detail Modal */}
       {paymentDetailOpen && paymentDetailStudent && paymentDetailInfo && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md mx-4">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200">
+            <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
               <div className="flex items-center gap-2">
-                <CreditCard className="w-5 h-5 text-indigo-600" />
-                <h3 className="text-lg font-semibold text-slate-900">{t('studentManager.paymentDetail.title')}</h3>
+                <CreditCard className="w-5 h-5 text-[#FAFAFA]" />
+                <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('studentManager.paymentDetail.title')}</h3>
               </div>
               <button
                 onClick={() => setPaymentDetailOpen(false)}
-                className="p-1 text-slate-400 hover:text-slate-600 rounded-lg transition-colors"
+                className="p-1 text-[#666666] hover:text-[#A0A0A0] rounded-lg transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1117,7 +1117,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             {/* Body */}
             <div className="p-4 space-y-4">
               {/* Student Info */}
-              <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-[#0A0A0A] rounded-lg">
                 {paymentDetailStudent.profile.avatar_url ? (
                   <img
                     src={paymentDetailStudent.profile.avatar_url}
@@ -1125,8 +1125,8 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-indigo-600 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#FAFAFA] font-medium">
                       {(paymentDetailStudent.profile.full_name || paymentDetailStudent.profile.email)
                         .charAt(0)
                         .toUpperCase()}
@@ -1134,24 +1134,24 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                   </div>
                 )}
                 <div>
-                  <p className="font-medium text-slate-900">
+                  <p className="font-medium text-[#FAFAFA]">
                     {paymentDetailStudent.profile.full_name || paymentDetailStudent.profile.email}
                   </p>
-                  <p className="text-sm text-slate-500">{paymentDetailInfo.communityName}</p>
+                  <p className="text-sm text-[#666666]">{paymentDetailInfo.communityName}</p>
                 </div>
               </div>
 
               {/* Payment Details Grid */}
               <div className="space-y-3">
                 {/* Plan Type */}
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-sm text-slate-500">{t('studentManager.paymentDetail.plan')}</span>
+                <div className="flex items-center justify-between py-2 border-b border-[#1F1F1F]">
+                  <span className="text-sm text-[#666666]">{t('studentManager.paymentDetail.plan')}</span>
                   <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${
                     {
-                      one_time: 'bg-emerald-100 text-emerald-700',
-                      monthly: 'bg-blue-100 text-blue-700',
-                      free: 'bg-slate-100 text-slate-500',
-                      canceled: 'bg-red-100 text-red-600',
+                      one_time: 'bg-[#22C55E]/10 text-[#22C55E]',
+                      monthly: 'bg-[#1F1F1F] text-[#A0A0A0]',
+                      free: 'bg-[#1F1F1F] text-[#666666]',
+                      canceled: 'bg-[#EF4444]/10 text-[#EF4444]',
                     }[paymentDetailInfo.planType]
                   }`}>
                     {({
@@ -1164,9 +1164,9 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                 </div>
 
                 {/* Amount Charged */}
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-sm text-slate-500">{t('studentManager.paymentDetail.amountCharged')}</span>
-                  <span className="text-sm font-semibold text-slate-900">
+                <div className="flex items-center justify-between py-2 border-b border-[#1F1F1F]">
+                  <span className="text-sm text-[#666666]">{t('studentManager.paymentDetail.amountCharged')}</span>
+                  <span className="text-sm font-semibold text-[#FAFAFA]">
                     {paymentDetailInfo.amountCents != null
                       ? `€${(paymentDetailInfo.amountCents / 100).toFixed(2)}`
                       : paymentDetailInfo.planType === 'free'
@@ -1177,9 +1177,9 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
                 {/* Payment Date */}
                 {paymentDetailInfo.paidAt && (
-                  <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                    <span className="text-sm text-slate-500">{t('studentManager.paymentDetail.paidAt')}</span>
-                    <span className="text-sm text-slate-900">
+                  <div className="flex items-center justify-between py-2 border-b border-[#1F1F1F]">
+                    <span className="text-sm text-[#666666]">{t('studentManager.paymentDetail.paidAt')}</span>
+                    <span className="text-sm text-[#FAFAFA]">
                       {new Date(paymentDetailInfo.paidAt).toLocaleDateString(undefined, {
                         year: 'numeric',
                         month: 'long',
@@ -1191,10 +1191,10 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
                 {/* Expiry (monthly only) */}
                 {paymentDetailInfo.planType === 'monthly' && paymentDetailInfo.expiresAt && (
-                  <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                    <span className="text-sm text-slate-500">{t('studentManager.paymentDetail.expiresAt')}</span>
+                  <div className="flex items-center justify-between py-2 border-b border-[#1F1F1F]">
+                    <span className="text-sm text-[#666666]">{t('studentManager.paymentDetail.expiresAt')}</span>
                     <span className={`text-sm font-medium ${
-                      new Date(paymentDetailInfo.expiresAt) < new Date() ? 'text-red-600' : 'text-slate-900'
+                      new Date(paymentDetailInfo.expiresAt) < new Date() ? 'text-[#EF4444]' : 'text-[#FAFAFA]'
                     }`}>
                       {new Date(paymentDetailInfo.expiresAt) < new Date()
                         ? t('studentManager.plan.expired')
@@ -1209,9 +1209,9 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
                 {/* Discount Code Used */}
                 {paymentDetailInfo.discountCode && (
-                  <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                    <span className="text-sm text-slate-500">{t('studentManager.paymentDetail.discountUsed')}</span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-50 text-purple-700 rounded text-xs font-semibold">
+                  <div className="flex items-center justify-between py-2 border-b border-[#1F1F1F]">
+                    <span className="text-sm text-[#666666]">{t('studentManager.paymentDetail.discountUsed')}</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#151515] text-[#A0A0A0] rounded text-xs font-semibold">
                       <Ticket className="w-3 h-3" />
                       {paymentDetailInfo.discountCode} (-{paymentDetailInfo.discountPercent}%)
                     </span>
@@ -1220,9 +1220,9 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
                 {/* Assigned Code (not yet used) */}
                 {paymentDetailInfo.assignedCode && !paymentDetailInfo.discountCode && (
-                  <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                    <span className="text-sm text-slate-500">{t('studentManager.paymentDetail.assignedCode')}</span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-50 text-amber-700 rounded text-xs font-semibold">
+                  <div className="flex items-center justify-between py-2 border-b border-[#1F1F1F]">
+                    <span className="text-sm text-[#666666]">{t('studentManager.paymentDetail.assignedCode')}</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#EAB308]/10 text-[#EAB308] rounded text-xs font-semibold">
                       <Tag className="w-3 h-3" />
                       {paymentDetailInfo.assignedCode} (-{paymentDetailInfo.assignedCodePercent}%)
                     </span>
@@ -1232,18 +1232,18 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
 
               {/* No payment data info */}
               {paymentDetailInfo.planType === 'free' && !paymentDetailInfo.discountCode && !paymentDetailInfo.assignedCode && (
-                <div className="flex items-start gap-2 p-3 bg-slate-50 rounded-lg">
-                  <Info className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-slate-500">{t('studentManager.paymentDetail.freeNote')}</p>
+                <div className="flex items-start gap-2 p-3 bg-[#0A0A0A] rounded-lg">
+                  <Info className="w-4 h-4 text-[#666666] mt-0.5 flex-shrink-0" />
+                  <p className="text-sm text-[#666666]">{t('studentManager.paymentDetail.freeNote')}</p>
                 </div>
               )}
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-end p-4 border-t border-slate-200">
+            <div className="flex items-center justify-end p-4 border-t border-[#1F1F1F]">
               <button
                 onClick={() => setPaymentDetailOpen(false)}
-                className="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg font-medium transition-colors"
+                className="px-4 py-2 text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg font-medium transition-colors"
               >
                 {t('studentManager.paymentDetail.close')}
               </button>

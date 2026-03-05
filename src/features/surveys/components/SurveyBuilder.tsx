@@ -126,24 +126,24 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
   const hasChoices = question.question_type === 'single_choice' || question.question_type === 'multi_choice';
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+    <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg">
       {/* Header */}
       <div
-        className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-slate-50"
+        className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-[#0A0A0A]"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <GripVertical className="w-4 h-4 text-slate-400 cursor-grab" />
-        <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
-          <TypeIcon className="w-4 h-4 text-indigo-600" />
+        <GripVertical className="w-4 h-4 text-[#666666] cursor-grab" />
+        <div className="w-8 h-8 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
+          <TypeIcon className="w-4 h-4 text-[#FAFAFA]" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-slate-900 truncate">
+          <p className="text-sm font-medium text-[#FAFAFA] truncate">
             {question.question_text || t('surveys.builder.untitledQuestion')}
           </p>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[#666666]">
             {t(questionTypeConfig[question.question_type].label)}
             {question.is_required && (
-              <span className="ml-2 text-red-500">*</span>
+              <span className="ml-2 text-[#EF4444]">*</span>
             )}
           </p>
         </div>
@@ -152,24 +152,24 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
             e.stopPropagation();
             onDelete(question.id);
           }}
-          className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded"
+          className="p-1.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded"
           disabled={isLoading}
         >
           <Trash2 className="w-4 h-4" />
         </button>
         {isExpanded ? (
-          <ChevronUp className="w-4 h-4 text-slate-400" />
+          <ChevronUp className="w-4 h-4 text-[#666666]" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-slate-400" />
+          <ChevronDown className="w-4 h-4 text-[#666666]" />
         )}
       </div>
 
       {/* Expanded Editor */}
       {isExpanded && (
-        <div className="px-4 pb-4 border-t border-slate-100 space-y-4">
+        <div className="px-4 pb-4 border-t border-[#1F1F1F] space-y-4">
           {/* Question Text */}
           <div className="pt-4">
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               {t('surveys.builder.questionText')}
             </label>
             <input
@@ -178,7 +178,7 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
               onChange={(e) =>
                 setLocalQuestion({ ...localQuestion, question_text: e.target.value })
               }
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               placeholder={t('surveys.builder.questionPlaceholder')}
             />
           </div>
@@ -186,13 +186,13 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
           {/* Options for choice questions */}
           {hasChoices && (
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                 {t('surveys.builder.options')}
               </label>
               <div className="space-y-2">
                 {options.map((option, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <span className="w-6 h-6 bg-slate-100 rounded text-center text-sm text-slate-600 flex items-center justify-center">
+                    <span className="w-6 h-6 bg-[#1F1F1F] rounded text-center text-sm text-[#A0A0A0] flex items-center justify-center">
                       {index + 1}
                     </span>
                     <input
@@ -203,18 +203,18 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
                         newOptions[index] = e.target.value;
                         setOptions(newOptions);
                       }}
-                      className="flex-1 px-3 py-1.5 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="flex-1 px-3 py-1.5 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     />
                     <button
                       onClick={() => removeOption(index)}
-                      className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded"
+                      className="p-1.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded"
                     >
                       <X className="w-4 h-4" />
                     </button>
                   </div>
                 ))}
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 bg-slate-100 rounded text-center text-sm text-slate-400 flex items-center justify-center">
+                  <span className="w-6 h-6 bg-[#1F1F1F] rounded text-center text-sm text-[#666666] flex items-center justify-center">
                     +
                   </span>
                   <input
@@ -222,12 +222,12 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
                     value={newOption}
                     onChange={(e) => setNewOption(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && addOption()}
-                    className="flex-1 px-3 py-1.5 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="flex-1 px-3 py-1.5 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                     placeholder={t('surveys.builder.addOption')}
                   />
                   <button
                     onClick={addOption}
-                    className="px-3 py-1.5 text-sm bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200"
+                    className="px-3 py-1.5 text-sm bg-[#1F1F1F] text-[#A0A0A0] rounded-lg hover:bg-[#151515]"
                   >
                     {t('common.add')}
                   </button>
@@ -239,7 +239,7 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
           {/* Placeholder for text/number */}
           {(question.question_type === 'text' || question.question_type === 'number') && (
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
                 {t('surveys.builder.placeholder')}
               </label>
               <input
@@ -248,7 +248,7 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
                 onChange={(e) =>
                   setLocalQuestion({ ...localQuestion, placeholder: e.target.value })
                 }
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 placeholder={t('surveys.builder.placeholderHint')}
               />
             </div>
@@ -263,9 +263,9 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
                 onChange={(e) =>
                   setLocalQuestion({ ...localQuestion, is_required: e.target.checked })
                 }
-                className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500"
+                className="w-4 h-4 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10"
               />
-              <span className="text-sm text-slate-700">{t('surveys.builder.required')}</span>
+              <span className="text-sm text-[#A0A0A0]">{t('surveys.builder.required')}</span>
             </label>
             {hasChoices && (
               <label className="flex items-center gap-2 cursor-pointer">
@@ -275,9 +275,9 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
                   onChange={(e) =>
                     setLocalQuestion({ ...localQuestion, allow_other: e.target.checked })
                   }
-                  className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500"
+                  className="w-4 h-4 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10"
                 />
-                <span className="text-sm text-slate-700">{t('surveys.builder.allowOther')}</span>
+                <span className="text-sm text-[#A0A0A0]">{t('surveys.builder.allowOther')}</span>
               </label>
             )}
           </div>
@@ -287,7 +287,7 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
             <button
               onClick={handleSave}
               disabled={isLoading}
-              className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50 flex items-center gap-2"
+              className="px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center gap-2"
             >
               {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -343,22 +343,22 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
   };
 
   return (
-    <div className="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
+    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
       {/* Section Header */}
-      <div className="px-4 py-3 bg-slate-100 border-b border-slate-200">
+      <div className="px-4 py-3 bg-[#1F1F1F] border-b border-[#1F1F1F]">
         {isEditing ? (
           <div className="space-y-2">
             <input
               type="text"
               value={localSection.title}
               onChange={(e) => setLocalSection({ ...localSection, title: e.target.value })}
-              className="w-full px-3 py-2 text-sm font-semibold border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 text-sm font-semibold border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
               placeholder={t('surveys.builder.sectionTitle')}
             />
             <textarea
               value={localSection.description || ''}
               onChange={(e) => setLocalSection({ ...localSection, description: e.target.value })}
-              className="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
               placeholder={t('surveys.builder.sectionDescription')}
               rows={2}
             />
@@ -366,7 +366,7 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
               <button
                 onClick={handleSaveSection}
                 disabled={isLoading}
-                className="px-3 py-1.5 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                className="px-3 py-1.5 text-sm bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
               >
                 {t('common.save')}
               </button>
@@ -375,7 +375,7 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
                   setLocalSection(section);
                   setIsEditing(false);
                 }}
-                className="px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-200 rounded-lg"
+                className="px-3 py-1.5 text-sm text-[#A0A0A0] hover:bg-[#151515] rounded-lg"
               >
                 {t('common.cancel')}
               </button>
@@ -387,35 +387,35 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
               className="flex items-center gap-3 flex-1 cursor-pointer"
               onClick={() => setIsExpanded(!isExpanded)}
             >
-              <GripVertical className="w-4 h-4 text-slate-400 cursor-grab" />
+              <GripVertical className="w-4 h-4 text-[#666666] cursor-grab" />
               <div>
-                <h3 className="font-semibold text-slate-900">{section.title}</h3>
+                <h3 className="font-semibold text-[#FAFAFA]">{section.title}</h3>
                 {section.description && (
-                  <p className="text-sm text-slate-500">{section.description}</p>
+                  <p className="text-sm text-[#666666]">{section.description}</p>
                 )}
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-500 px-2 py-1 bg-slate-200 rounded">
+              <span className="text-xs text-[#666666] px-2 py-1 bg-[#1F1F1F] rounded">
                 {t('surveys.questions', { count: questions.length })}
               </span>
               <button
                 onClick={() => setIsEditing(true)}
-                className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-200 rounded"
+                className="p-1.5 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#151515] rounded"
               >
                 <Settings className="w-4 h-4" />
               </button>
               <button
                 onClick={() => onDeleteSection(section.id)}
                 disabled={isLoading}
-                className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded"
+                className="p-1.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
               {isExpanded ? (
-                <ChevronUp className="w-4 h-4 text-slate-400" />
+                <ChevronUp className="w-4 h-4 text-[#666666]" />
               ) : (
-                <ChevronDown className="w-4 h-4 text-slate-400" />
+                <ChevronDown className="w-4 h-4 text-[#666666]" />
               )}
             </div>
           </div>
@@ -442,7 +442,7 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
         <button
           onClick={() => setShowQuestionTypeMenu(!showQuestionTypeMenu)}
           disabled={isLoading}
-          className="w-full py-3 border-2 border-dashed border-slate-300 rounded-lg text-slate-500 hover:border-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 border-2 border-dashed border-[#1F1F1F] rounded-lg text-[#666666] hover:border-[#333333] hover:text-[#FAFAFA] hover:bg-[#151515] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -453,7 +453,7 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
         </button>
 
         {showQuestionTypeMenu && (
-          <div className="absolute bottom-full left-4 right-4 mb-2 bg-white border border-slate-200 rounded-lg shadow-lg z-10 p-2 grid grid-cols-2 gap-1">
+          <div className="absolute bottom-full left-4 right-4 mb-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg z-10 p-2 grid grid-cols-2 gap-1">
             {(Object.keys(questionTypeConfig) as SurveyQuestionType[]).map((type) => {
               const config = questionTypeConfig[type];
               const Icon = config.icon;
@@ -465,7 +465,7 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
                     setShowQuestionTypeMenu(false);
                   }}
                   disabled={isLoading}
-                  className="flex items-center gap-2 px-3 py-2 text-left text-sm rounded-lg hover:bg-indigo-50 hover:text-indigo-600 disabled:opacity-50"
+                  className="flex items-center gap-2 px-3 py-2 text-left text-sm rounded-lg hover:bg-[#151515] hover:text-[#FAFAFA] disabled:opacity-50"
                 >
                   <Icon className="w-4 h-4" />
                   {t(config.label)}
@@ -648,20 +648,20 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-[#1F1F1F]">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-20">
+      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F] sticky top-0 z-20">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
               onClick={onClose}
-              className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg"
+              className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg"
             >
               <X className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-lg font-semibold text-slate-900">{survey.title}</h1>
-              <p className="text-sm text-slate-500">
+              <h1 className="text-lg font-semibold text-[#FAFAFA]">{survey.title}</h1>
+              <p className="text-sm text-[#666666]">
                 {t('surveys.questions', { count: questions.length })} •{' '}
                 {t('surveys.sections', { count: sections.length })}
               </p>
@@ -670,7 +670,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowSettings(true)}
-              className="px-3 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg flex items-center gap-2"
+              className="px-3 py-2 text-sm text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg flex items-center gap-2"
             >
               <Settings className="w-4 h-4" />
               {t('surveys.builder.settings')}
@@ -680,7 +680,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
               disabled={isLoading}
               className={`px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-2 ${
                 survey.is_published
-                  ? 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                  ? 'bg-[#EAB308]/10 text-[#EAB308] hover:bg-amber-200'
                   : 'bg-green-600 text-white hover:bg-green-700'
               }`}
             >
@@ -697,7 +697,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
         {(unsectionedQuestions.length > 0 || sections.length > 0) && (
           <div className="space-y-3">
             {unsectionedQuestions.length > 0 && (
-              <h2 className="text-sm font-medium text-slate-500 uppercase tracking-wide">
+              <h2 className="text-sm font-medium text-[#666666] uppercase tracking-wide">
                 {t('surveys.builder.generalQuestions')}
               </h2>
             )}
@@ -716,7 +716,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
                 <button
                   onClick={() => setShowUnsectionedQuestionTypeMenu(!showUnsectionedQuestionTypeMenu)}
                   disabled={isLoading}
-                  className="w-full py-3 border-2 border-dashed border-slate-300 rounded-lg text-slate-500 hover:border-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 border-2 border-dashed border-[#1F1F1F] rounded-lg text-[#666666] hover:border-[#333333] hover:text-[#FAFAFA] hover:bg-[#151515] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -727,7 +727,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
                 </button>
 
                 {showUnsectionedQuestionTypeMenu && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-lg shadow-lg z-10 p-2 grid grid-cols-2 gap-1">
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg z-10 p-2 grid grid-cols-2 gap-1">
                     {(Object.keys(questionTypeConfig) as SurveyQuestionType[]).map((type) => {
                       const config = questionTypeConfig[type];
                       const Icon = config.icon;
@@ -739,7 +739,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
                             setShowUnsectionedQuestionTypeMenu(false);
                           }}
                           disabled={isLoading}
-                          className="flex items-center gap-2 px-3 py-2 text-left text-sm rounded-lg hover:bg-indigo-50 hover:text-indigo-600 disabled:opacity-50"
+                          className="flex items-center gap-2 px-3 py-2 text-left text-sm rounded-lg hover:bg-[#151515] hover:text-[#FAFAFA] disabled:opacity-50"
                         >
                           <Icon className="w-4 h-4" />
                           {t(config.label)}
@@ -773,7 +773,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
           <button
             onClick={handleAddSection}
             disabled={isLoading}
-            className="flex-1 py-4 border-2 border-dashed border-slate-300 rounded-xl text-slate-500 hover:border-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2"
+            className="flex-1 py-4 border-2 border-dashed border-[#1F1F1F] rounded-xl text-[#666666] hover:border-[#333333] hover:text-[#FAFAFA] hover:bg-[#151515] transition-colors flex items-center justify-center gap-2"
           >
             <Plus className="w-5 h-5" />
             {t('surveys.builder.addSection')}
@@ -782,7 +782,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
             <button
               onClick={() => handleAddQuestion(null, 'text')}
               disabled={isLoading}
-              className="flex-1 py-4 border-2 border-dashed border-slate-300 rounded-xl text-slate-500 hover:border-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 py-4 border-2 border-dashed border-[#1F1F1F] rounded-xl text-[#666666] hover:border-[#333333] hover:text-[#FAFAFA] hover:bg-[#151515] transition-colors flex items-center justify-center gap-2"
             >
               <Plus className="w-5 h-5" />
               {t('surveys.builder.addQuestion')}
@@ -793,11 +793,11 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
         {/* Empty State */}
         {questions.length === 0 && sections.length === 0 && (
           <div className="text-center py-12">
-            <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-slate-900 mb-2">
+            <AlertCircle className="w-12 h-12 text-[#A0A0A0] mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-[#FAFAFA] mb-2">
               {t('surveys.builder.emptyTitle')}
             </h3>
-            <p className="text-slate-500 max-w-md mx-auto">
+            <p className="text-[#666666] max-w-md mx-auto">
               {t('surveys.builder.emptyDescription')}
             </p>
           </div>
@@ -807,30 +807,30 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
       {/* Settings Modal */}
       {showSettings && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-          <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
-            <h2 className="text-lg font-semibold text-slate-900 mb-4">
+          <div className="bg-[#0A0A0A] rounded-xl max-w-md w-full p-6">
+            <h2 className="text-lg font-semibold text-[#FAFAFA] mb-4">
               {t('surveys.builder.surveySettings')}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
                   {t('surveys.builder.surveyTitle')}
                 </label>
                 <input
                   type="text"
                   value={surveySettings.title}
                   onChange={(e) => setSurveySettings({ ...surveySettings, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
                   {t('surveys.builder.surveyDescription')}
                 </label>
                 <textarea
                   value={surveySettings.description}
                   onChange={(e) => setSurveySettings({ ...surveySettings, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
                   rows={3}
                 />
               </div>
@@ -840,32 +840,32 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
                     type="checkbox"
                     checked={surveySettings.is_required}
                     onChange={(e) => setSurveySettings({ ...surveySettings, is_required: e.target.checked })}
-                    className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500"
+                    className="w-4 h-4 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10"
                   />
-                  <span className="text-sm text-slate-700">{t('surveys.builder.surveyRequired')}</span>
+                  <span className="text-sm text-[#A0A0A0]">{t('surveys.builder.surveyRequired')}</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={surveySettings.allow_edit}
                     onChange={(e) => setSurveySettings({ ...surveySettings, allow_edit: e.target.checked })}
-                    className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500"
+                    className="w-4 h-4 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10"
                   />
-                  <span className="text-sm text-slate-700">{t('surveys.builder.allowEdit')}</span>
+                  <span className="text-sm text-[#A0A0A0]">{t('surveys.builder.allowEdit')}</span>
                 </label>
               </div>
             </div>
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowSettings(false)}
-                className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg"
+                className="px-4 py-2 text-sm text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg"
               >
                 {t('common.cancel')}
               </button>
               <button
                 onClick={handleSaveSettings}
                 disabled={isLoading}
-                className="px-4 py-2 text-sm bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                className="px-4 py-2 text-sm bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
               >
                 {t('common.save')}
               </button>

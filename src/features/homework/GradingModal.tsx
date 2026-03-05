@@ -21,15 +21,15 @@ const getFileIcon = (url: string) => {
   const documentExtensions = ['pdf', 'doc', 'docx', 'txt'];
 
   if (imageExtensions.includes(extension)) {
-    return <Image size={16} className="text-blue-500" />;
+    return <Image size={16} className="text-[#A0A0A0]" />;
   }
   if (videoExtensions.includes(extension)) {
-    return <Film size={16} className="text-purple-500" />;
+    return <Film size={16} className="text-[#FAFAFA]" />;
   }
   if (documentExtensions.includes(extension)) {
-    return <FileText size={16} className="text-red-500" />;
+    return <FileText size={16} className="text-[#EF4444]" />;
   }
-  return <File size={16} className="text-slate-500" />;
+  return <File size={16} className="text-[#666666]" />;
 };
 
 /**
@@ -89,23 +89,23 @@ const GradingModal: React.FC<GradingModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col overflow-hidden">
+      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
-          <h3 className="text-lg font-semibold text-slate-900">{t('homeworkManagement.gradingModal.title')}</h3>
+        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+          <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('homeworkManagement.gradingModal.title')}</h3>
           <button
             onClick={onClose}
             disabled={isGrading}
-            className="p-1 hover:bg-slate-100 rounded-lg transition-colors disabled:opacity-50"
+            className="p-1 hover:bg-[#1F1F1F] rounded-lg transition-colors disabled:opacity-50"
           >
-            <X size={20} className="text-slate-500" />
+            <X size={20} className="text-[#666666]" />
           </button>
         </div>
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {/* Student Info */}
-          <div className="bg-slate-50 rounded-lg p-4">
+          <div className="bg-[#0A0A0A] rounded-lg p-4">
             <div className="flex items-center gap-3">
               {submission.student?.avatar_url ? (
                 <img
@@ -114,22 +114,22 @@ const GradingModal: React.FC<GradingModalProps> = ({
                   className="w-10 h-10 rounded-full object-cover"
                 />
               ) : (
-                <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                  <span className="text-indigo-600 font-medium text-sm">
+                <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center">
+                  <span className="text-[#FAFAFA] font-medium text-sm">
                     {studentName.charAt(0).toUpperCase()}
                   </span>
                 </div>
               )}
               <div>
-                <h4 className="font-medium text-slate-900">{studentName}</h4>
-                <p className="text-xs text-slate-500">{t('homeworkManagement.gradingModal.submittedLabel', { date: submittedDate })}</p>
+                <h4 className="font-medium text-[#FAFAFA]">{studentName}</h4>
+                <p className="text-xs text-[#666666]">{t('homeworkManagement.gradingModal.submittedLabel', { date: submittedDate })}</p>
               </div>
             </div>
           </div>
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg text-sm">
+            <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 text-[#EF4444] px-4 py-2 rounded-lg text-sm">
               {errorMessage}
             </div>
           )}
@@ -137,11 +137,11 @@ const GradingModal: React.FC<GradingModalProps> = ({
           {/* Student's Text Response */}
           {submission.text_response && (
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                 {t('homeworkManagement.gradingModal.studentResponseLabel')}
               </label>
-              <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                <p className="text-sm text-slate-700 whitespace-pre-wrap">
+              <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg p-4">
+                <p className="text-sm text-[#A0A0A0] whitespace-pre-wrap">
                   {submission.text_response}
                 </p>
               </div>
@@ -151,7 +151,7 @@ const GradingModal: React.FC<GradingModalProps> = ({
           {/* Attached Files */}
           {submission.file_urls && submission.file_urls.length > 0 && (
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                 {t('homeworkManagement.gradingModal.attachedFilesLabel')}
               </label>
               <div className="space-y-2">
@@ -161,15 +161,15 @@ const GradingModal: React.FC<GradingModalProps> = ({
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors group"
+                    className="flex items-center gap-3 p-3 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg hover:bg-[#1F1F1F] transition-colors group"
                   >
                     {getFileIcon(url)}
-                    <span className="flex-1 text-sm text-slate-700 truncate">
+                    <span className="flex-1 text-sm text-[#A0A0A0] truncate">
                       {getFileName(url, t('homeworkManagement.gradingModal.fileDefaultName'))}
                     </span>
                     <ExternalLink
                       size={16}
-                      className="text-slate-400 group-hover:text-indigo-500 transition-colors"
+                      className="text-[#666666] group-hover:text-[#FAFAFA] transition-colors"
                     />
                   </a>
                 ))}
@@ -179,23 +179,23 @@ const GradingModal: React.FC<GradingModalProps> = ({
 
           {/* No Content Message */}
           {!submission.text_response && (!submission.file_urls || submission.file_urls.length === 0) && (
-            <div className="bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded-lg text-sm">
+            <div className="bg-[#EAB308]/10 border border-yellow-200 text-yellow-700 px-4 py-3 rounded-lg text-sm">
               {t('homeworkManagement.gradingModal.noContentWarning')}
             </div>
           )}
 
           {/* Grade Section */}
-          <div className="border-t border-slate-100 pt-4">
-            <label className="block text-sm font-medium text-slate-700 mb-3">
+          <div className="border-t border-[#1F1F1F] pt-4">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-3">
               {t('homeworkManagement.gradingModal.gradeLabel')}
             </label>
 
             {/* Points Display */}
             <div className="flex items-center justify-center mb-4">
               <div className="text-center">
-                <span className="text-4xl font-bold text-indigo-600">{points}</span>
-                <span className="text-2xl text-slate-400 ml-1">/ {maxPoints}</span>
-                <p className="text-xs text-slate-500 mt-1">{t('homeworkManagement.gradingModal.pointsLabel')}</p>
+                <span className="text-4xl font-bold text-[#FAFAFA]">{points}</span>
+                <span className="text-2xl text-[#666666] ml-1">/ {maxPoints}</span>
+                <p className="text-xs text-[#666666] mt-1">{t('homeworkManagement.gradingModal.pointsLabel')}</p>
               </div>
             </div>
 
@@ -207,12 +207,12 @@ const GradingModal: React.FC<GradingModalProps> = ({
                 max={maxPoints}
                 value={points}
                 onChange={handleSliderChange}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+                className="w-full h-2 bg-[#1F1F1F] rounded-lg appearance-none cursor-pointer slider-thumb"
                 style={{
                   background: `linear-gradient(to right, #4f46e5 0%, #4f46e5 ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`,
                 }}
               />
-              <div className="flex justify-between text-xs text-slate-400 mt-1">
+              <div className="flex justify-between text-xs text-[#666666] mt-1">
                 <span>0</span>
                 <span>{maxPoints}</span>
               </div>
@@ -220,13 +220,13 @@ const GradingModal: React.FC<GradingModalProps> = ({
 
             {/* Feedback Textarea */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
-                {t('homeworkManagement.gradingModal.feedbackLabel')} <span className="text-slate-400 font-normal">{t('homeworkManagement.gradingModal.feedbackOptional')}</span>
+              <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                {t('homeworkManagement.gradingModal.feedbackLabel')} <span className="text-[#666666] font-normal">{t('homeworkManagement.gradingModal.feedbackOptional')}</span>
               </label>
               <textarea
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent h-24 resize-none"
+                className="w-full px-4 py-3 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
                 placeholder={t('homeworkManagement.gradingModal.feedbackPlaceholder')}
               />
             </div>
@@ -234,11 +234,11 @@ const GradingModal: React.FC<GradingModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 p-4 border-t border-slate-100">
+        <div className="flex gap-3 p-4 border-t border-[#1F1F1F]">
           <button
             onClick={onClose}
             disabled={isGrading}
-            className="flex-1 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium text-slate-700 disabled:opacity-50"
+            className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#0A0A0A] font-medium text-[#A0A0A0] disabled:opacity-50"
           >
             {t('homeworkManagement.gradingModal.cancelButton')}
           </button>

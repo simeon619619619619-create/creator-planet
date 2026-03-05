@@ -65,8 +65,8 @@ export function TBICalculator({
 
   if (loading) {
     return (
-      <div className={`bg-gray-50 rounded-lg p-6 ${className}`}>
-        <div className="flex items-center justify-center gap-2 text-gray-500">
+      <div className={`bg-[#0A0A0A] rounded-lg p-6 ${className}`}>
+        <div className="flex items-center justify-center gap-2 text-[#666666]">
           <Loader2 className="w-5 h-5 animate-spin" />
           <span>Зареждане на вноски...</span>
         </div>
@@ -76,8 +76,8 @@ export function TBICalculator({
 
   if (error) {
     return (
-      <div className={`bg-red-50 rounded-lg p-4 ${className}`}>
-        <div className="flex items-center gap-2 text-red-600">
+      <div className={`bg-[#EF4444]/10 rounded-lg p-4 ${className}`}>
+        <div className="flex items-center gap-2 text-[#EF4444]">
           <AlertCircle className="w-5 h-5" />
           <span className="text-sm">{error}</span>
         </div>
@@ -87,8 +87,8 @@ export function TBICalculator({
 
   if (schemes.length === 0) {
     return (
-      <div className={`bg-gray-50 rounded-lg p-4 ${className}`}>
-        <p className="text-sm text-gray-500 text-center">
+      <div className={`bg-[#0A0A0A] rounded-lg p-4 ${className}`}>
+        <p className="text-sm text-[#666666] text-center">
           Няма налични схеми за вноски за тази сума
         </p>
       </div>
@@ -98,7 +98,7 @@ export function TBICalculator({
   return (
     <div className={`space-y-3 ${className}`}>
       {/* Header */}
-      <div className="flex items-center gap-2 text-gray-700">
+      <div className="flex items-center gap-2 text-[#A0A0A0]">
         <img
           src="https://cdn.tbibank.support/logo/tbi-bank.svg"
           alt="TBI Bank"
@@ -108,9 +108,9 @@ export function TBICalculator({
       </div>
 
       {/* Total amount display */}
-      <div className="bg-orange-50 rounded-lg p-3 text-center">
-        <span className="text-sm text-gray-600">Обща сума: </span>
-        <span className="font-semibold text-orange-700">
+      <div className="bg-[#EAB308]/10 rounded-lg p-3 text-center">
+        <span className="text-sm text-[#A0A0A0]">Обща сума: </span>
+        <span className="font-semibold text-[#EAB308]">
           {(amountCents / 100).toFixed(2)} {currency}
         </span>
       </div>
@@ -126,8 +126,8 @@ export function TBICalculator({
               className={`
                 border-2 rounded-lg transition-all duration-200 overflow-hidden
                 ${isSelected 
-                  ? 'border-orange-500 bg-orange-50/50' 
-                  : 'border-gray-200 hover:border-orange-300 bg-white'
+                  ? 'border-orange-500 bg-[#EAB308]/10/50' 
+                  : 'border-[#1F1F1F] hover:border-orange-300 bg-[#0A0A0A]'
                 }
               `}
             >
@@ -142,8 +142,8 @@ export function TBICalculator({
                     className={`
                       w-5 h-5 rounded-full border-2 flex items-center justify-center
                       ${isSelected 
-                        ? 'border-orange-500 bg-orange-500' 
-                        : 'border-gray-300'
+                        ? 'border-orange-500 bg-[#EAB308]/100' 
+                        : 'border-[#1F1F1F]'
                       }
                     `}
                   >
@@ -153,16 +153,16 @@ export function TBICalculator({
                   {/* Scheme info */}
                   <div className="text-left">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-gray-900">
+                      <span className="font-semibold text-[#FAFAFA]">
                         {scheme.period} вноски
                       </span>
                       {scheme.name && (
-                        <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                        <span className="px-2 py-0.5 bg-[#1F1F1F] text-[#A0A0A0] text-xs font-medium rounded-full">
                           {scheme.name}
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-[#A0A0A0]">
                       {formatInstallmentDisplay(scheme.period, scheme.monthly_amount_cents, currency)}
                     </p>
                   </div>
@@ -174,12 +174,12 @@ export function TBICalculator({
                     e.stopPropagation();
                     toggleExpand(scheme.scheme_id);
                   }}
-                  className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                  className="p-1 hover:bg-[#1F1F1F] rounded-full transition-colors"
                 >
                   {isExpanded ? (
-                    <ChevronUp className="w-4 h-4 text-gray-400" />
+                    <ChevronUp className="w-4 h-4 text-[#666666]" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                    <ChevronDown className="w-4 h-4 text-[#666666]" />
                   )}
                 </button>
               </button>
@@ -189,13 +189,13 @@ export function TBICalculator({
                 <div className="px-3 pb-3 pt-0">
                   <div className="pl-8 space-y-2 text-sm">
                     {/* APR info */}
-                    <div className="flex justify-between text-gray-600">
+                    <div className="flex justify-between text-[#A0A0A0]">
                       <span>ГПР (годишен процент на разходите):</span>
                       <span className="font-medium">{scheme.apr}%</span>
                     </div>
 
                     {/* Interest rate (NIR) */}
-                    <div className="flex justify-between text-gray-600">
+                    <div className="flex justify-between text-[#A0A0A0]">
                       <span>Лихвен процент (ГЛП):</span>
                       <span className="font-medium">
                         {scheme.nir > 0 ? `${scheme.nir}%` : '0% (без лихва)'}
@@ -203,7 +203,7 @@ export function TBICalculator({
                     </div>
 
                     {/* Total amount */}
-                    <div className="flex justify-between text-gray-600">
+                    <div className="flex justify-between text-[#A0A0A0]">
                       <span>Обща дължима сума:</span>
                       <span className="font-medium">
                         {(scheme.total_amount_cents / 100).toFixed(2)} {currency}
@@ -211,7 +211,7 @@ export function TBICalculator({
                     </div>
 
                     {/* Monthly payment */}
-                    <div className="flex justify-between text-orange-700 font-medium pt-2 border-t border-orange-100">
+                    <div className="flex justify-between text-[#EAB308] font-medium pt-2 border-t border-[#EAB308]/20">
                       <span>Месечна вноска:</span>
                       <span>
                         {(scheme.monthly_amount_cents / 100).toFixed(2)} {currency}
@@ -219,7 +219,7 @@ export function TBICalculator({
                     </div>
 
                     {/* Info note */}
-                    <div className="flex items-start gap-1.5 text-xs text-gray-500 mt-2">
+                    <div className="flex items-start gap-1.5 text-xs text-[#666666] mt-2">
                       <Info className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
                       <span>
                         Крайната сума се определя от TBI Bank след преглед на вашата кредитна история.
@@ -234,7 +234,7 @@ export function TBICalculator({
       </div>
 
       {/* Disclaimer */}
-      <p className="text-xs text-gray-500 text-center">
+      <p className="text-xs text-[#666666] text-center">
         TBI Bank ще се свърже с вас за потвърждение на кандидатурата
       </p>
     </div>

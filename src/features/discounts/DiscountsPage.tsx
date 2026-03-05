@@ -147,14 +147,14 @@ export function DiscountsPage() {
   const getStatusBadge = (code: DiscountCodeWithDetails) => {
     if (!code.is_active) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#1F1F1F] px-2 py-0.5 text-xs font-medium text-[#A0A0A0]">
           <XCircle className="h-3 w-3" /> {t('discounts.status.inactive')}
         </span>
       );
     }
     if (isExpired(code)) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#EF4444]/10 px-2 py-0.5 text-xs font-medium text-[#EF4444]">
           <Calendar className="h-3 w-3" /> {t('discounts.status.expired')}
         </span>
       );
@@ -167,7 +167,7 @@ export function DiscountsPage() {
       );
     }
     return (
-      <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-600">
+      <span className="inline-flex items-center gap-1 rounded-full bg-[#22C55E]/10 px-2 py-0.5 text-xs font-medium text-[#22C55E]">
         <CheckCircle2 className="h-3 w-3" /> {t('discounts.status.active')}
       </span>
     );
@@ -189,25 +189,25 @@ export function DiscountsPage() {
   if (!profile) {
     return (
       <div className="flex h-full items-center justify-center">
-        <p className="text-gray-500">{t('discounts.page.loginRequired')}</p>
+        <p className="text-[#666666]">{t('discounts.page.loginRequired')}</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-[#0A0A0A] p-6">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{t('discounts.page.title')}</h1>
-            <p className="mt-1 text-sm text-gray-500">
+            <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('discounts.page.title')}</h1>
+            <p className="mt-1 text-sm text-[#666666]">
               {t('discounts.page.subtitle')}
             </p>
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700"
+            className="flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-white hover:bg-[#E0E0E0]"
           >
             <Plus className="h-4 w-4" />
             {t('discounts.page.createButton')}
@@ -217,21 +217,21 @@ export function DiscountsPage() {
         {/* Filters */}
         <div className="mb-6 flex flex-wrap items-center gap-4">
           <div className="relative flex-1 min-w-[200px]">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#666666]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('discounts.page.searchPlaceholder')}
-              className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-[#1F1F1F] py-2 pl-10 pr-4 text-sm focus:border-[#555555] focus:ring-white/10"
             />
           </div>
           <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-gray-400" />
+            <Filter className="h-4 w-4 text-[#666666]" />
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as FilterStatus)}
-              className="rounded-lg border border-gray-300 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="rounded-lg border border-[#1F1F1F] py-2 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
             >
               <option value="all">{t('discounts.page.filterAll')}</option>
               <option value="active">{t('discounts.page.filterActive')}</option>
@@ -243,7 +243,7 @@ export function DiscountsPage() {
 
         {/* Error State */}
         {error && (
-          <div className="mb-6 rounded-lg bg-red-50 p-4 text-sm text-red-600">
+          <div className="mb-6 rounded-lg bg-[#EF4444]/10 p-4 text-sm text-[#EF4444]">
             {error}
           </div>
         )}
@@ -251,18 +251,18 @@ export function DiscountsPage() {
         {/* Loading State */}
         {isLoading ? (
           <div className="flex h-64 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-600 border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-white border-t-transparent" />
           </div>
         ) : filteredCodes.length === 0 ? (
           /* Empty State */
-          <div className="flex h-64 flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-white">
-            <Tag className="mb-3 h-12 w-12 text-gray-300" />
-            <h3 className="text-lg font-medium text-gray-900">
+          <div className="flex h-64 flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#1F1F1F] bg-[#0A0A0A]">
+            <Tag className="mb-3 h-12 w-12 text-[#A0A0A0]" />
+            <h3 className="text-lg font-medium text-[#FAFAFA]">
               {searchQuery || filterStatus !== 'all'
                 ? t('discounts.page.empty.withFilters')
                 : t('discounts.page.empty.noFilters')}
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-[#666666]">
               {searchQuery || filterStatus !== 'all'
                 ? t('discounts.page.empty.hintWithFilters')
                 : t('discounts.page.empty.hintNoFilters')}
@@ -270,7 +270,7 @@ export function DiscountsPage() {
             {!searchQuery && filterStatus === 'all' && (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="mt-4 flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="mt-4 flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-white hover:bg-[#E0E0E0]"
               >
                 <Plus className="h-4 w-4" />
                 {t('discounts.page.createButton')}
@@ -283,43 +283,43 @@ export function DiscountsPage() {
             {filteredCodes.map((code) => (
               <div
                 key={code.id}
-                className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+                className="rounded-xl border border-[#1F1F1F] bg-[#0A0A0A] p-5 transition-shadow hover:shadow-md"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     {/* Code and Status */}
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-lg font-bold text-gray-900">
+                      <span className="font-mono text-lg font-bold text-[#FAFAFA]">
                         {code.code}
                       </span>
                       {getStatusBadge(code)}
                     </div>
 
                     {/* Details */}
-                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-[#A0A0A0]">
                       <span className="flex items-center gap-1">
-                        <Percent className="h-4 w-4 text-indigo-500" />
+                        <Percent className="h-4 w-4 text-[#FAFAFA]" />
                         {code.discount_percent}{t('discounts.codeDetails.offLabel')}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4 text-indigo-500" />
+                        <Calendar className="h-4 w-4 text-[#FAFAFA]" />
                         {getDurationLabel(code.duration_months)}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Users className="h-4 w-4 text-indigo-500" />
+                        <Users className="h-4 w-4 text-[#FAFAFA]" />
                         {code.current_uses}
                         {code.max_uses !== null ? `/${code.max_uses}` : ''} {t('discounts.codeDetails.usesLabel')}
                       </span>
                     </div>
 
                     {/* Target */}
-                    <p className="mt-2 text-sm text-gray-500">
+                    <p className="mt-2 text-sm text-[#666666]">
                       {getTargetLabel(code)}
                     </p>
 
                     {/* Expiry */}
                     {code.valid_until && (
-                      <p className="mt-1 text-xs text-gray-400">
+                      <p className="mt-1 text-xs text-[#666666]">
                         {isExpired(code) ? t('discounts.codeDetails.expiryExpired') : t('discounts.codeDetails.expiryExpires')}{' '}
                         {new Date(code.valid_until).toLocaleDateString()}
                       </p>
@@ -330,36 +330,36 @@ export function DiscountsPage() {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleCopyCode(code.code, code.id)}
-                      className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
                       title={t('discounts.actions.copyTitle')}
                     >
                       {copiedId === code.id ? (
-                        <CheckCircle2 className="h-5 w-5 text-green-500" />
+                        <CheckCircle2 className="h-5 w-5 text-[#22C55E]" />
                       ) : (
                         <Copy className="h-5 w-5" />
                       )}
                     </button>
                     <button
                       onClick={() => handleEdit(code)}
-                      className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
                       title={t('discounts.actions.editTitle')}
                     >
                       <Edit2 className="h-5 w-5" />
                     </button>
                     <button
                       onClick={() => handleToggleActive(code)}
-                      className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
                       title={code.is_active ? t('discounts.actions.deactivateTitle') : t('discounts.actions.activateTitle')}
                     >
                       {code.is_active ? (
-                        <ToggleRight className="h-5 w-5 text-green-500" />
+                        <ToggleRight className="h-5 w-5 text-[#22C55E]" />
                       ) : (
                         <ToggleLeft className="h-5 w-5" />
                       )}
                     </button>
                     <button
                       onClick={() => handleDelete(code)}
-                      className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-red-600"
+                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#EF4444]"
                       title={t('discounts.actions.deleteTitle')}
                     >
                       <Trash2 className="h-5 w-5" />

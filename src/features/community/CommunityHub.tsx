@@ -764,7 +764,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   if (communitiesLoading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA]" />
       </div>
     );
   }
@@ -773,10 +773,10 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   if (communities.length === 0) {
     return (
       <div className="max-w-2xl mx-auto p-6 text-center">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-12">
-          <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-slate-900 mb-2">{t('communityHub.emptyState.noCommunitiesTitle')}</h2>
-          <p className="text-slate-500 mb-6">
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-12">
+          <Users className="w-16 h-16 text-[#666666] mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">{t('communityHub.emptyState.noCommunitiesTitle')}</h2>
+          <p className="text-[#A0A0A0] mb-6">
             {role === 'creator'
               ? t('communityHub.emptyState.creatorPrompt')
               : t('communityHub.emptyState.studentPrompt')
@@ -791,7 +791,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   setShowCreateCommunity(true);
                 }
               }}
-              className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 inline-flex items-center gap-2"
+              className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] inline-flex items-center gap-2"
             >
               <Plus size={20} />
               {t('communityHub.buttons.createCommunity')}
@@ -802,25 +802,25 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         {/* Create Community Modal */}
         {showCreateCommunity && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-6 w-full max-w-md">
+            <div className="bg-[#0A0A0A] rounded-xl p-6 w-full max-w-md">
               <h3 className="text-lg font-semibold mb-4">{t('communityHub.modal.createCommunity.title')}</h3>
               <input
                 type="text"
                 value={newCommunityName}
                 onChange={(e) => setNewCommunityName(e.target.value)}
                 placeholder={t('communityHub.modal.createCommunity.namePlaceholder')}
-                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               />
               <div className="flex gap-3 mt-4">
                 <button
                   onClick={handleCloseCreateModal}
-                  className="flex-1 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-50"
+                  className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#151515]"
                 >
                   {t('communityHub.buttons.cancel')}
                 </button>
                 <button
                   onClick={handleCreateCommunity}
-                  className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700"
+                  className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0]"
                 >
                   {t('communityHub.buttons.create')}
                 </button>
@@ -837,7 +837,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}
-        className="lg:hidden fixed bottom-4 left-4 z-40 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
+        className="lg:hidden fixed bottom-4 left-4 z-40 bg-white text-black p-3 rounded-full hover:bg-[#E0E0E0] transition-colors flex items-center gap-2"
         aria-label="Open channels"
       >
         <Hash size={20} />
@@ -858,24 +858,24 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         transform transition-transform duration-200 ease-in-out
         ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <div className="bg-white rounded-none lg:rounded-xl shadow-sm border-r lg:border border-slate-100 p-4 h-full lg:h-auto lg:sticky lg:top-6 overflow-y-auto">
+        <div className="bg-[#0A0A0A] rounded-none lg:rounded-xl border-r lg:border border-[#1F1F1F] p-4 h-full lg:h-auto lg:sticky lg:top-6 overflow-y-auto">
           {/* Mobile close button */}
           <button
             onClick={() => setIsMobileSidebarOpen(false)}
-            className="lg:hidden absolute top-4 right-4 p-1 text-slate-400 hover:text-slate-600"
+            className="lg:hidden absolute top-4 right-4 p-1 text-[#666666] hover:text-[#A0A0A0]"
           >
             <X size={20} />
           </button>
           {/* Community Selector */}
           {communities.length > 1 && (
-            <div className="mb-4 pb-4 border-b border-slate-100">
+            <div className="mb-4 pb-4 border-b border-[#1F1F1F]">
               <select
                 value={selectedCommunity?.id || ''}
                 onChange={(e) => {
                   const comm = communities.find(c => c.id === e.target.value);
                   setSelectedCommunity(comm || null);
                 }}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+                className="w-full px-3 py-2 bg-[#151515] border border-[#1F1F1F] rounded-lg text-sm"
               >
                 {communities.map(c => (
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -887,14 +887,14 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           {selectedCommunity && (
             <div className="mb-4">
               <div className="flex items-center justify-between">
-                <h2 className="font-semibold text-slate-900 truncate">{selectedCommunity.name}</h2>
+                <h2 className="font-semibold text-[#FAFAFA] truncate">{selectedCommunity.name}</h2>
                 {isOwner ? (
                   <button
                     onClick={() => {
                       setEditingCommunityName(selectedCommunity.name);
                       setShowPricingSettings(true);
                     }}
-                    className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                    className="p-1.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors"
                     title={t('communityHub.tooltip.communitySettings')}
                   >
                     <Settings size={16} />
@@ -906,18 +906,18 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         e.stopPropagation();
                         setShowCommunityMenu(!showCommunityMenu);
                       }}
-                      className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                      className="p-1.5 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#151515] rounded-lg transition-colors"
                     >
                       <MoreHorizontal size={16} />
                     </button>
                     {showCommunityMenu && (
-                      <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-50">
+                      <div className="absolute right-0 top-full mt-1 w-48 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F] py-1 z-50">
                         <button
                           onClick={() => {
                             setShowCommunityMenu(false);
                             setShowLeaveCommunityModal(true);
                           }}
-                          className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2"
+                          className="w-full px-4 py-2 text-left text-sm text-[#EF4444] hover:bg-[#EF4444]/10 flex items-center gap-2"
                         >
                           <LogOut size={14} />
                           {t('communityHub.buttons.leaveCommunity')}
@@ -932,23 +932,23 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
           {/* User Points Display */}
           {isMember && userPoints && (
-            <div className="mb-4 pb-4 border-b border-slate-100">
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-3">
+            <div className="mb-4 pb-4 border-b border-[#1F1F1F]">
+              <div className="bg-[#151515] rounded-lg p-3 border border-[#1F1F1F]">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-indigo-600" />
-                    <span className="text-xs font-semibold text-slate-700">{t('communityHub.points.yourLevel')}</span>
+                    <Zap className="w-4 h-4 text-white" />
+                    <span className="text-xs font-semibold text-[#A0A0A0]">{t('communityHub.points.yourLevel')}</span>
                   </div>
-                  <span className="text-lg font-bold text-indigo-600">{userPoints.level}</span>
+                  <span className="text-lg font-bold text-white">{userPoints.level}</span>
                 </div>
                 <div className="mb-1">
-                  <div className="flex justify-between text-xs text-slate-600 mb-1">
+                  <div className="flex justify-between text-xs text-[#A0A0A0] mb-1">
                     <span>{userPoints.total_points} {t('communityHub.points.pointsSuffix')}</span>
                     <span>{getPointsForNextLevel(userPoints.level)} {t('communityHub.points.ptsSuffix')}</span>
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-1.5">
+                  <div className="w-full bg-[#1F1F1F] rounded-full h-1.5">
                     <div
-                      className="bg-gradient-to-r from-indigo-500 to-purple-500 h-1.5 rounded-full transition-all duration-300"
+                      className="bg-white h-1.5 rounded-full transition-all duration-300"
                       style={{ width: `${getLevelProgress(userPoints.total_points, userPoints.level)}%` }}
                     />
                   </div>
@@ -1013,7 +1013,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           {isOwner && (
             <button
               onClick={() => setShowGroupManager(true)}
-              className="w-full mt-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg flex items-center gap-2"
+              className="w-full mt-2 px-3 py-2 text-sm text-[#A0A0A0] hover:bg-[#151515] rounded-lg flex items-center gap-2"
             >
               <Users size={16} />
               {t('communityHub.buttons.manageGroups')}
@@ -1024,7 +1024,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           {isMember && (
             <button
               onClick={() => setShowLeaderboard(true)}
-              className="w-full mt-4 px-3 py-2 text-sm text-amber-600 hover:bg-amber-50 rounded-lg flex items-center gap-2 font-medium"
+              className="w-full mt-4 px-3 py-2 text-sm text-[#A0A0A0] hover:bg-[#151515] hover:text-[#FAFAFA] rounded-lg flex items-center gap-2 font-medium"
             >
               <Trophy size={16} />
               {t('communityHub.buttons.leaderboard')}
@@ -1041,7 +1041,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   setShowCreateCommunity(true);
                 }
               }}
-              className="w-full mt-2 px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-lg flex items-center gap-2"
+              className="w-full mt-2 px-3 py-2 text-sm text-[#FAFAFA] hover:bg-[#151515] rounded-lg flex items-center gap-2"
             >
               <Plus size={16} />
               {t('communityHub.buttons.newCommunity')}
@@ -1080,14 +1080,14 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
         {/* Join Banner (for non-members) */}
         {!isMember && selectedCommunity && (
-          <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex items-center justify-between">
+          <div className="bg-[#151515] border border-[#1F1F1F] rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-indigo-900 font-medium">{t('communityHub.joinBanner.title')}</p>
-              <p className="text-indigo-700 text-sm">{t('communityHub.joinBanner.subtitle')}</p>
+              <p className="text-[#FAFAFA] font-medium">{t('communityHub.joinBanner.title')}</p>
+              <p className="text-[#A0A0A0] text-sm">{t('communityHub.joinBanner.subtitle')}</p>
             </div>
             <button
               onClick={handleJoinCommunity}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700"
+              className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0]"
             >
               {t('communityHub.buttons.joinCommunity')}
             </button>
@@ -1096,7 +1096,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
         {/* Create Post */}
         {isMember && selectedChannel && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-4">
             <div className="flex gap-4">
               <img
                 src={profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile?.full_name || 'User')}&background=6366f1&color=fff`}
@@ -1109,7 +1109,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
                   placeholder={t('communityHub.createPost.placeholder')}
-                  className="w-full bg-slate-50 border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-indigo-500 resize-none h-24"
+                  className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg p-3 text-sm text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-24"
                 />
 
                 {/* Image Preview */}
@@ -1118,11 +1118,11 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                     <img
                       src={pendingImagePreview}
                       alt={t('communityHub.createPost.imagePreviewAlt')}
-                      className="max-h-48 rounded-lg border border-slate-200"
+                      className="max-h-48 rounded-lg border border-[#1F1F1F]"
                     />
                     <button
                       onClick={handleRemoveImage}
-                      className="absolute -top-2 -right-2 bg-slate-800 text-white p-1 rounded-full hover:bg-slate-700 transition-colors"
+                      className="absolute -top-2 -right-2 bg-[#1F1F1F] text-white p-1 rounded-full hover:bg-[#333333] transition-colors"
                       title={t('communityHub.tooltip.removeImage')}
                     >
                       <X size={14} />
@@ -1142,14 +1142,14 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                     />
                     <button
                       onClick={handleImageClick}
-                      className={`p-2 rounded-full transition-colors ${pendingImage ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+                      className={`p-2 rounded-full transition-colors ${pendingImage ? 'text-[#FAFAFA] bg-[#151515]' : 'text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515]'}`}
                       title={t('communityHub.tooltip.addImage')}
                     >
                       <ImageIcon size={20} />
                     </button>
                     <button
                       onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-                      className={`p-2 rounded-full transition-colors ${showEmojiPicker ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+                      className={`p-2 rounded-full transition-colors ${showEmojiPicker ? 'text-[#FAFAFA] bg-[#151515]' : 'text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515]'}`}
                       title={t('communityHub.tooltip.addEmoji')}
                     >
                       <Smile size={20} />
@@ -1160,7 +1160,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       <>
                         <div className="fixed inset-0 z-40" onClick={() => setShowEmojiPicker(false)} />
                         <div
-                          className="absolute z-50 bg-white rounded-xl shadow-xl border border-slate-200 p-3"
+                          className="absolute z-50 bg-[#0A0A0A] rounded-xl  border border-[#1F1F1F] p-3"
                           style={{
                             bottom: 'calc(100% + 8px)',
                             left: '0',
@@ -1173,7 +1173,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                                 key={emoji}
                                 type="button"
                                 onClick={() => handleEmojiClick(emoji)}
-                                className="w-8 h-8 flex items-center justify-center hover:bg-slate-100 rounded-md transition-colors text-xl leading-none"
+                                className="w-8 h-8 flex items-center justify-center hover:bg-[#151515] rounded-md transition-colors text-xl leading-none"
                               >
                                 <span role="img" aria-label="emoji">{emoji}</span>
                               </button>
@@ -1186,7 +1186,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   <button
                     onClick={handleCreatePost}
                     disabled={(!newPost.trim() && !pendingImage) || isPostingLoading}
-                    className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isPostingLoading ? (
                       <>
@@ -1209,24 +1209,24 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         {/* Posts */}
         <div className="space-y-4">
           {posts.length === 0 && selectedChannel && (
-            <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-8 text-center">
-              <MessageSquare className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-500">{t('communityHub.emptyState.noPostsInChannel')}</p>
-              {isMember && <p className="text-slate-400 text-sm mt-1">{t('communityHub.emptyState.beFirstToPost')}</p>}
+            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+              <MessageSquare className="w-12 h-12 text-[#666666] mx-auto mb-3" />
+              <p className="text-[#A0A0A0]">{t('communityHub.emptyState.noPostsInChannel')}</p>
+              {isMember && <p className="text-[#666666] text-sm mt-1">{t('communityHub.emptyState.beFirstToPost')}</p>}
             </div>
           )}
 
           {posts.map(post => (
-            <div key={post.id} className={`bg-white rounded-xl shadow-sm border p-5 ${post.is_pinned ? 'border-amber-200 bg-amber-50/30' : 'border-slate-100'}`}>
+            <div key={post.id} className={`bg-[#0A0A0A] rounded-xl border p-5 ${post.is_pinned ? 'border-[#EAB308]/20 bg-[#EAB308]/5' : 'border-[#1F1F1F]'}`}>
               <div className="flex justify-between items-start">
                 <div className="flex gap-3">
                   <button
                     onClick={() => post.author?.id && handleOpenProfile(post.author.id)}
-                    className="shrink-0 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-full"
+                    className="shrink-0 focus:outline-none focus:ring-1 focus:ring-white/10 focus:ring-offset-2 rounded-full"
                   >
                     <img
                       src={post.author?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author?.full_name || 'User')}&background=6366f1&color=fff`}
-                      className="w-10 h-10 rounded-full object-cover hover:ring-2 hover:ring-indigo-300 transition-all cursor-pointer"
+                      className="w-10 h-10 rounded-full object-cover hover:ring-2 hover:ring-[#333333] transition-all cursor-pointer"
                       alt={post.author?.full_name || 'User'}
                     />
                   </button>
@@ -1234,23 +1234,23 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => post.author?.id && handleOpenProfile(post.author.id)}
-                        className="font-semibold text-slate-900 hover:text-indigo-600 transition-colors cursor-pointer"
+                        className="font-semibold text-[#FAFAFA] hover:text-[#FAFAFA] transition-colors cursor-pointer"
                       >
                         {post.author?.full_name || 'Anonymous'}
                       </button>
                       {post.author?.role === 'creator' && (
-                        <span className="bg-indigo-100 text-indigo-700 text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.creator')}</span>
+                        <span className="bg-[#1F1F1F] text-[#FAFAFA] text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.creator')}</span>
                       )}
                       {post.author?.role === 'superadmin' && (
-                        <span className="bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.admin')}</span>
+                        <span className="bg-[#1F1F1F] text-[#FAFAFA] text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.admin')}</span>
                       )}
                       {post.is_pinned && (
-                        <span className="bg-amber-100 text-amber-700 text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+                        <span className="bg-[#EAB308]/10 text-[#EAB308] text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
                           <Pin size={10} /> {t('communityHub.badges.pinned')}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-500">{formatTimestamp(post.created_at)}</p>
+                    <p className="text-xs text-[#A0A0A0]">{formatTimestamp(post.created_at)}</p>
                   </div>
                 </div>
 
@@ -1258,7 +1258,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                 <div className="relative">
                   <button
                     onClick={() => handleToggleMenu(post.id)}
-                    className="text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-100 transition-colors"
+                    className="text-[#666666] hover:text-[#A0A0A0] p-1 rounded-full hover:bg-[#151515] transition-colors"
                   >
                     <MoreHorizontal size={20} />
                   </button>
@@ -1271,11 +1271,11 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         className="fixed inset-0 z-10"
                         onClick={handleCloseMenu}
                       />
-                      <div className="absolute right-0 top-8 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20 min-w-[160px]">
+                      <div className="absolute right-0 top-8 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F] py-1 z-20 min-w-[160px]">
                         {/* Copy Link - Available to everyone */}
                         <button
                           onClick={() => handleCopyPostLink(post.id)}
-                          className="w-full flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                          className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#A0A0A0] hover:bg-[#151515] transition-colors"
                         >
                           <Copy size={16} />
                           {t('communityHub.postMenu.copyLink')}
@@ -1286,15 +1286,15 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           <>
                             <button
                               onClick={() => handlePinPost(post.id, post.is_pinned || false)}
-                              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#A0A0A0] hover:bg-[#151515] transition-colors"
                             >
                               <Pin size={16} />
                               {post.is_pinned ? t('communityHub.postMenu.unpinPost') : t('communityHub.postMenu.pinPost')}
                             </button>
-                            <div className="border-t border-slate-100 my-1" />
+                            <div className="border-t border-[#1F1F1F] my-1" />
                             <button
                               onClick={() => handleDeletePost(post.id)}
-                              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#EF4444] hover:bg-[#EF4444]/10 transition-colors"
                             >
                               <Trash2 size={16} />
                               {t('communityHub.postMenu.deletePost')}
@@ -1306,7 +1306,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         {!isCreator && (
                           <button
                             onClick={() => handleReportPost(post.id)}
-                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#A0A0A0] hover:bg-[#151515] transition-colors"
                           >
                             <Flag size={16} />
                             {t('communityHub.postMenu.report')}
@@ -1320,7 +1320,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
               {/* Post Content */}
               {post.content && (
-                <div className="mt-4 text-slate-700 leading-relaxed whitespace-pre-wrap">
+                <div className="mt-4 text-[#A0A0A0] leading-relaxed whitespace-pre-wrap">
                   {post.content}
                 </div>
               )}
@@ -1331,19 +1331,19 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   <img
                     src={post.image_url}
                     alt={t('communityHub.alt.postImage')}
-                    className="max-w-full rounded-lg border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity"
+                    className="max-w-full rounded-lg border border-[#1F1F1F] cursor-pointer hover:opacity-95 transition-opacity"
                     onClick={() => window.open(post.image_url!, '_blank')}
                   />
                 </div>
               )}
 
-              <div className="mt-5 pt-4 border-t border-slate-50 flex gap-6">
+              <div className="mt-5 pt-4 border-t border-[#1F1F1F] flex gap-6">
                 <button
                   onClick={() => handleToggleLike(post.id, post.user_has_liked || false, post.author_id)}
                   className={`flex items-center gap-2 text-sm transition-colors ${
                     post.user_has_liked
-                      ? 'text-rose-500'
-                      : 'text-slate-500 hover:text-rose-500'
+                      ? 'text-[#EF4444]'
+                      : 'text-[#A0A0A0] hover:text-[#EF4444]'
                   }`}
                 >
                   <Heart size={18} fill={post.user_has_liked ? 'currentColor' : 'none'} />
@@ -1353,8 +1353,8 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   onClick={() => handleToggleComments(post.id)}
                   className={`flex items-center gap-2 text-sm transition-colors ${
                     expandedPostId === post.id
-                      ? 'text-indigo-600'
-                      : 'text-slate-500 hover:text-indigo-600'
+                      ? 'text-[#FAFAFA]'
+                      : 'text-[#A0A0A0] hover:text-[#FAFAFA]'
                   }`}
                 >
                   <MessageSquare size={18} /> {post.comments_count || 0}
@@ -1363,11 +1363,11 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
               {/* Comments Section */}
               {expandedPostId === post.id && (
-                <div className="mt-4 pt-4 border-t border-slate-100">
+                <div className="mt-4 pt-4 border-t border-[#1F1F1F]">
                   {/* Loading state */}
                   {loadingComments.has(post.id) && (
                     <div className="flex justify-center py-4">
-                      <Loader2 className="w-5 h-5 animate-spin text-indigo-600" />
+                      <Loader2 className="w-5 h-5 animate-spin text-[#FAFAFA]" />
                     </div>
                   )}
 
@@ -1375,31 +1375,31 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   {!loadingComments.has(post.id) && postComments.get(post.id) && (
                     <div className="space-y-3 mb-4">
                       {postComments.get(post.id)?.length === 0 ? (
-                        <p className="text-sm text-slate-400 text-center py-2">{t('communityHub.emptyState.noCommentsYet')}</p>
+                        <p className="text-sm text-[#666666] text-center py-2">{t('communityHub.emptyState.noCommentsYet')}</p>
                       ) : (
                         postComments.get(post.id)?.map(comment => (
                           <div key={comment.id} className="flex gap-3">
                             <button
                               onClick={() => comment.author?.id && handleOpenProfile(comment.author.id)}
-                              className="shrink-0 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-full"
+                              className="shrink-0 focus:outline-none focus:ring-1 focus:ring-white/10 focus:ring-offset-2 rounded-full"
                             >
                               <img
                                 src={comment.author?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(comment.author?.full_name || 'User')}&background=6366f1&color=fff`}
-                                className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-indigo-300 transition-all cursor-pointer"
+                                className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-[#333333] transition-all cursor-pointer"
                                 alt={comment.author?.full_name || 'User'}
                               />
                             </button>
-                            <div className="flex-1 bg-slate-50 rounded-lg p-3">
+                            <div className="flex-1 bg-[#151515] rounded-lg p-3">
                               <div className="flex items-center gap-2 mb-1">
                                 <button
                                   onClick={() => comment.author?.id && handleOpenProfile(comment.author.id)}
-                                  className="text-sm font-medium text-slate-900 hover:text-indigo-600 transition-colors cursor-pointer"
+                                  className="text-sm font-medium text-[#FAFAFA] hover:text-[#FAFAFA] transition-colors cursor-pointer"
                                 >
                                   {comment.author?.full_name || 'Anonymous'}
                                 </button>
-                                <span className="text-xs text-slate-400">{formatTimestamp(comment.created_at)}</span>
+                                <span className="text-xs text-[#666666]">{formatTimestamp(comment.created_at)}</span>
                               </div>
-                              <p className="text-sm text-slate-700">{comment.content}</p>
+                              <p className="text-sm text-[#A0A0A0]">{comment.content}</p>
                             </div>
                           </div>
                         ))
@@ -1422,12 +1422,12 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           onChange={(e) => handleCommentInputChange(post.id, e.target.value)}
                           onKeyPress={(e) => e.key === 'Enter' && handleSubmitComment(post.id)}
                           placeholder={t('communityHub.comments.placeholder')}
-                          className="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                          className="flex-1 px-3 py-2 bg-[#151515] border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                         />
                         <button
                           onClick={() => handleSubmitComment(post.id)}
                           disabled={!newComment.get(post.id)?.trim() || submittingComment}
-                          className="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-3 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {submittingComment ? (
                             <Loader2 size={16} className="animate-spin" />
@@ -1450,27 +1450,27 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Create Community Modal */}
       {showCreateCommunity && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
+          <div className="bg-[#0A0A0A] rounded-xl p-6 w-full max-w-md">
             <h3 className="text-lg font-semibold mb-4">{t('communityHub.modal.createCommunity.title')}</h3>
             <input
               type="text"
               value={newCommunityName}
               onChange={(e) => setNewCommunityName(e.target.value)}
               placeholder={t('communityHub.modal.createCommunity.namePlaceholder')}
-              className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               autoFocus
             />
             <div className="flex gap-3 mt-4">
               <button
                 onClick={handleCloseCreateModal}
-                className="flex-1 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-50"
+                className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#151515]"
               >
                 {t('communityHub.buttons.cancel')}
               </button>
               <button
                 onClick={handleCreateCommunity}
                 disabled={!newCommunityName.trim()}
-                className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
               >
                 {t('communityHub.buttons.create')}
               </button>
@@ -1482,21 +1482,21 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Channel Create/Edit Modal */}
       {showChannelModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
+          <div className="bg-[#0A0A0A] rounded-xl p-6 w-full max-w-md">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">
                 {editingChannel ? t('communityHub.modal.channel.editTitle') : t('communityHub.modal.channel.createTitle')}
               </h3>
               <button
                 onClick={handleCloseChannelModal}
-                className="text-slate-400 hover:text-slate-600"
+                className="text-[#666666] hover:text-[#A0A0A0]"
               >
                 <X size={20} />
               </button>
             </div>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
                   {t('communityHub.modal.channel.nameLabel')}
                 </label>
                 <input
@@ -1504,34 +1504,34 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={channelName}
                   onChange={(e) => setChannelName(e.target.value)}
                   placeholder={t('communityHub.modal.channel.namePlaceholder')}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                   autoFocus
                 />
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-[#A0A0A0] mt-1">
                   {t('communityHub.modal.channel.namePreview', { channelName: channelName.toLowerCase().replace(/ /g, '-') || 'channel-name' })}
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  {t('communityHub.modal.channel.descriptionLabel')} <span className="text-slate-400 font-normal">{t('communityHub.modal.channel.descriptionOptional')}</span>
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  {t('communityHub.modal.channel.descriptionLabel')} <span className="text-[#666666] font-normal">{t('communityHub.modal.channel.descriptionOptional')}</span>
                 </label>
                 <textarea
                   value={channelDescription}
                   onChange={(e) => setChannelDescription(e.target.value)}
                   placeholder={t('communityHub.modal.channel.descriptionPlaceholder')}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none h-20"
+                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-20"
                 />
               </div>
               {/* Group Selector */}
               {isOwner && groups.length > 0 && (
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
                     {t('communityHub.modal.channel.visibleToLabel')}
                   </label>
                   <select
                     value={channelGroupId || ''}
                     onChange={(e) => setChannelGroupId(e.target.value || null)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10"
                   >
                     <option value="">{t('communityHub.modal.channel.allMembersOption')}</option>
                     {groups.map((g) => (
@@ -1540,7 +1540,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       </option>
                     ))}
                   </select>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="mt-1 text-xs text-[#A0A0A0]">
                     {t('communityHub.modal.channel.visibilityHint')}
                   </p>
                 </div>
@@ -1549,14 +1549,14 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleCloseChannelModal}
-                className="flex-1 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-50"
+                className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#151515]"
               >
                 {t('communityHub.buttons.cancel')}
               </button>
               <button
                 onClick={handleSaveChannel}
                 disabled={!channelName.trim() || isSavingChannel}
-                className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isSavingChannel ? (
                   <>
@@ -1582,21 +1582,21 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Leaderboard Modal */}
       {showLeaderboard && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-6">
-          <div className="bg-white rounded-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
-            <div className="p-6 border-b border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
+            <div className="p-6 border-b border-[#1F1F1F]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="bg-gradient-to-br from-amber-400 to-amber-600 p-2 rounded-lg">
-                    <Trophy className="w-6 h-6 text-white" />
+                  <div className="bg-[#1F1F1F] p-2 rounded-lg">
+                    <Trophy className="w-6 h-6 text-[#FAFAFA]" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900">{t('communityHub.modal.leaderboard.title')}</h3>
-                    <p className="text-sm text-slate-500">{t('communityHub.modal.leaderboard.subtitle')}</p>
+                    <h3 className="text-xl font-bold text-[#FAFAFA]">{t('communityHub.modal.leaderboard.title')}</h3>
+                    <p className="text-sm text-[#A0A0A0]">{t('communityHub.modal.leaderboard.subtitle')}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setShowLeaderboard(false)}
-                  className="text-slate-400 hover:text-slate-600"
+                  className="text-[#666666] hover:text-[#A0A0A0]"
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1608,28 +1608,28 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
             <div className="overflow-y-auto p-6">
               {leaderboard.length === 0 ? (
                 <div className="text-center py-12">
-                  <Trophy className="w-16 h-16 text-slate-300 mx-auto mb-3" />
-                  <p className="text-slate-500">{t('communityHub.emptyState.noMembersWithPoints')}</p>
-                  <p className="text-sm text-slate-400 mt-1">{t('communityHub.emptyState.beFirstToEarnPoints')}</p>
+                  <Trophy className="w-16 h-16 text-[#666666] mx-auto mb-3" />
+                  <p className="text-[#A0A0A0]">{t('communityHub.emptyState.noMembersWithPoints')}</p>
+                  <p className="text-sm text-[#666666] mt-1">{t('communityHub.emptyState.beFirstToEarnPoints')}</p>
                 </div>
               ) : (
                 <div className="space-y-3">
                   {leaderboard.map((member, index) => {
                     const isCurrentUser = user?.id === member.user_id;
                     const rankColors = [
-                      'from-amber-400 to-amber-600', // 1st place
-                      'from-slate-300 to-slate-500', // 2nd place
-                      'from-orange-400 to-orange-600', // 3rd place
+                      'from-[#FAFAFA] to-[#A0A0A0]', // 1st place
+                      'from-[#A0A0A0] to-[#666666]', // 2nd place
+                      'from-[#666666] to-[#333333]', // 3rd place
                     ];
-                    const rankColor = index < 3 ? rankColors[index] : 'from-slate-200 to-slate-400';
+                    const rankColor = index < 3 ? rankColors[index] : 'from-[#333333] to-[#1F1F1F]';
 
                     return (
                       <div
                         key={member.id}
                         className={`flex items-center gap-4 p-4 rounded-lg border transition-all ${
                           isCurrentUser
-                            ? 'bg-indigo-50 border-indigo-200 ring-2 ring-indigo-200'
-                            : 'bg-white border-slate-200 hover:border-slate-300'
+                            ? 'bg-[#151515] border-[#333333] ring-1 ring-[#333333]'
+                            : 'bg-[#0A0A0A] border-[#1F1F1F] hover:border-[#333333]'
                         }`}
                       >
                         <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br ${rankColor} text-white font-bold text-sm shrink-0`}>
@@ -1638,11 +1638,11 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
                         <button
                           onClick={() => handleOpenProfile(member.user_id)}
-                          className="shrink-0 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-full"
+                          className="shrink-0 focus:outline-none focus:ring-1 focus:ring-white/10 focus:ring-offset-2 rounded-full"
                         >
                           <img
                             src={member.user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.user.full_name)}&background=6366f1&color=fff`}
-                            className="w-10 h-10 rounded-full object-cover hover:ring-2 hover:ring-indigo-300 transition-all cursor-pointer"
+                            className="w-10 h-10 rounded-full object-cover hover:ring-2 hover:ring-[#333333] transition-all cursor-pointer"
                             alt={member.user.full_name}
                           />
                         </button>
@@ -1651,31 +1651,31 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => handleOpenProfile(member.user_id)}
-                              className="font-semibold text-slate-900 truncate hover:text-indigo-600 transition-colors cursor-pointer"
+                              className="font-semibold text-[#FAFAFA] truncate hover:text-[#FAFAFA] transition-colors cursor-pointer"
                             >
                               {member.user.full_name}
-                              {isCurrentUser && <span className="text-indigo-600 ml-1">{t('communityHub.modal.leaderboard.you')}</span>}
+                              {isCurrentUser && <span className="text-[#FAFAFA] ml-1">{t('communityHub.modal.leaderboard.you')}</span>}
                             </button>
                             {member.user.role === 'creator' && (
-                              <span className="bg-indigo-100 text-indigo-700 text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.creator')}</span>
+                              <span className="bg-[#1F1F1F] text-[#FAFAFA] text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.creator')}</span>
                             )}
                           </div>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-slate-500">{t('communityHub.modal.leaderboard.level')} {member.level}</span>
-                            <span className="text-xs text-slate-300">•</span>
-                            <span className="text-xs text-slate-500">{member.total_points} {t('communityHub.points.pointsSuffix')}</span>
+                            <span className="text-xs text-[#A0A0A0]">{t('communityHub.modal.leaderboard.level')} {member.level}</span>
+                            <span className="text-xs text-[#666666]">•</span>
+                            <span className="text-xs text-[#A0A0A0]">{member.total_points} {t('communityHub.points.pointsSuffix')}</span>
                           </div>
                         </div>
 
                         {index < 3 && (
-                          <Star className={`w-5 h-5 ${index === 0 ? 'text-amber-500' : index === 1 ? 'text-slate-400' : 'text-orange-500'}`} fill="currentColor" />
+                          <Star className={`w-5 h-5 ${index === 0 ? 'text-[#FAFAFA]' : index === 1 ? 'text-[#A0A0A0]' : 'text-[#666666]'}`} fill="currentColor" />
                         )}
 
                         {/* Give Points button for creators/team members */}
                         {canAwardPoints && !isCurrentUser && (
                           <button
                             onClick={() => handleOpenGivePoints(member.user_id, member.user.full_name)}
-                            className="ml-2 p-1.5 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+                            className="ml-2 p-1.5 text-[#A0A0A0] hover:bg-[#151515] hover:text-[#FAFAFA] rounded-lg transition-colors"
                             title={t('communityHub.givePoints.buttonTitle')}
                           >
                             <Award className="w-4 h-4" />
@@ -1694,23 +1694,23 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Give Points Modal */}
       {showGivePointsModal && givePointsTarget && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl w-full max-w-md shadow-xl">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md ">
             {/* Header */}
-            <div className="p-6 border-b border-slate-200">
+            <div className="p-6 border-b border-[#1F1F1F]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="bg-gradient-to-br from-amber-400 to-amber-600 p-2 rounded-lg">
-                    <Award className="w-5 h-5 text-white" />
+                  <div className="bg-[#1F1F1F] p-2 rounded-lg">
+                    <Award className="w-5 h-5 text-[#FAFAFA]" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900">{t('communityHub.givePoints.title')}</h3>
-                    <p className="text-sm text-slate-500">{givePointsTarget.name}</p>
+                    <h3 className="text-lg font-bold text-[#FAFAFA]">{t('communityHub.givePoints.title')}</h3>
+                    <p className="text-sm text-[#A0A0A0]">{givePointsTarget.name}</p>
                   </div>
                 </div>
                 <button
                   onClick={handleCloseGivePoints}
                   disabled={isAwardingPoints}
-                  className="text-slate-400 hover:text-slate-600 disabled:opacity-50"
+                  className="text-[#666666] hover:text-[#A0A0A0] disabled:opacity-50"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1721,7 +1721,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
             <div className="p-6 space-y-4">
               {/* Points amount */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                   {t('communityHub.givePoints.amountLabel')}
                 </label>
                 <div className="flex items-center gap-3">
@@ -1731,13 +1731,13 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                     max="100"
                     value={givePointsAmount}
                     onChange={(e) => setGivePointsAmount(Number(e.target.value))}
-                    className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                    className="flex-1 h-2 bg-[#1F1F1F] rounded-lg appearance-none cursor-pointer accent-white"
                   />
                   <div className="w-16 text-center">
-                    <span className="text-2xl font-bold text-amber-600">{givePointsAmount}</span>
+                    <span className="text-2xl font-bold text-[#FAFAFA]">{givePointsAmount}</span>
                   </div>
                 </div>
-                <div className="flex justify-between text-xs text-slate-400 mt-1">
+                <div className="flex justify-between text-xs text-[#666666] mt-1">
                   <span>1</span>
                   <span>100</span>
                 </div>
@@ -1745,33 +1745,33 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
               {/* Reason */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                   {t('communityHub.givePoints.reasonLabel')}
-                  <span className="text-slate-400 font-normal ml-1">{t('communityHub.givePoints.optional')}</span>
+                  <span className="text-[#666666] font-normal ml-1">{t('communityHub.givePoints.optional')}</span>
                 </label>
                 <textarea
                   value={givePointsReason}
                   onChange={(e) => setGivePointsReason(e.target.value)}
                   placeholder={t('communityHub.givePoints.reasonPlaceholder')}
                   rows={2}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm resize-none"
+                  className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-sm text-[#FAFAFA] placeholder-[#666666] resize-none"
                 />
               </div>
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-slate-200 flex gap-3">
+            <div className="p-6 border-t border-[#1F1F1F] flex gap-3">
               <button
                 onClick={handleCloseGivePoints}
                 disabled={isAwardingPoints}
-                className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="flex-1 py-2.5 bg-transparent border border-[#1F1F1F] hover:bg-[#151515] hover:border-[#333333] text-[#FAFAFA] rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {t('communityHub.givePoints.cancelButton')}
               </button>
               <button
                 onClick={handleAwardPoints}
                 disabled={isAwardingPoints || givePointsAmount < 1}
-                className="flex-1 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 bg-white hover:bg-[#E0E0E0] text-black rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isAwardingPoints ? (
                   <>
@@ -1793,32 +1793,32 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Community Settings Modal */}
       {showPricingSettings && selectedCommunity && isOwner && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-6">
-          <div className="bg-white rounded-xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col">
+          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col">
             {/* Header */}
-            <div className="p-6 border-b border-slate-200">
+            <div className="p-6 border-b border-[#1F1F1F]">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900">{t('communityHub.modal.communitySettings.title')}</h3>
-                  <p className="text-sm text-slate-500">{t('communityHub.modal.communitySettings.subtitle')}</p>
+                  <h3 className="text-xl font-bold text-[#FAFAFA]">{t('communityHub.modal.communitySettings.title')}</h3>
+                  <p className="text-sm text-[#A0A0A0]">{t('communityHub.modal.communitySettings.subtitle')}</p>
                 </div>
                 <button
                   onClick={() => {
                     setShowPricingSettings(false);
                     setSettingsTab('general');
                   }}
-                  className="text-slate-400 hover:text-slate-600"
+                  className="text-[#666666] hover:text-[#A0A0A0]"
                 >
                   <X size={20} />
                 </button>
               </div>
               {/* Tabs */}
-              <div className="flex gap-4 mt-4 border-b border-slate-200 -mb-6 -mx-6 px-6">
+              <div className="flex gap-4 mt-4 border-b border-[#1F1F1F] -mb-6 -mx-6 px-6">
                 <button
                   onClick={() => setSettingsTab('general')}
                   className={`pb-3 text-sm font-medium border-b-2 transition-colors ${
                     settingsTab === 'general'
-                      ? 'border-indigo-600 text-indigo-600'
-                      : 'border-transparent text-slate-500 hover:text-slate-700'
+                      ? 'border-white text-[#FAFAFA]'
+                      : 'border-transparent text-[#A0A0A0] hover:text-[#A0A0A0]'
                   }`}
                 >
                   {t('communityHub.modal.communitySettings.tabs.general')}
@@ -1827,8 +1827,8 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   onClick={() => setSettingsTab('team')}
                   className={`pb-3 text-sm font-medium border-b-2 transition-colors ${
                     settingsTab === 'team'
-                      ? 'border-indigo-600 text-indigo-600'
-                      : 'border-transparent text-slate-500 hover:text-slate-700'
+                      ? 'border-white text-[#FAFAFA]'
+                      : 'border-transparent text-[#A0A0A0] hover:text-[#A0A0A0]'
                   }`}
                 >
                   {t('communityHub.modal.communitySettings.tabs.team')}
@@ -1842,7 +1842,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                 <div className="p-6 space-y-6">
                   {/* Community Name Section */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                       {t('communityHub.modal.communitySettings.nameLabel')}
                     </label>
                     <div className="flex gap-2">
@@ -1850,7 +1850,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         type="text"
                         value={editingCommunityName}
                         onChange={(e) => setEditingCommunityName(e.target.value)}
-                        className="flex-1 px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="flex-1 px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                         placeholder={t('communityHub.modal.communitySettings.namePlaceholder')}
                       />
                       <button
@@ -1864,7 +1864,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           setIsSavingCommunityName(false);
                         }}
                         disabled={isSavingCommunityName || !editingCommunityName.trim() || editingCommunityName === selectedCommunity.name}
-                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                       >
                         {isSavingCommunityName ? (
                           <Loader2 size={16} className="animate-spin" />
@@ -1876,7 +1876,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-slate-200" />
+                  <div className="border-t border-[#1F1F1F]" />
 
                   {/* Pricing Settings */}
                   <CommunityPricingSettings
@@ -1905,7 +1905,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Group Manager Modal */}
       {showGroupManager && selectedCommunity && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 p-6 max-h-[80vh] overflow-y-auto">
+          <div className="bg-[#0A0A0A] rounded-xl  max-w-md w-full mx-4 p-6 max-h-[80vh] overflow-y-auto">
             {selectedGroupForAssign ? (
               <GroupMemberAssigner
                 communityId={selectedCommunity.id}
@@ -1929,28 +1929,28 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Delete Post Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl max-w-sm w-full mx-4 p-6">
-            <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-red-100 rounded-full">
-              <Trash2 className="w-6 h-6 text-red-600" />
+          <div className="bg-[#0A0A0A] rounded-xl  max-w-sm w-full mx-4 p-6">
+            <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-[#EF4444]/10 rounded-full">
+              <Trash2 className="w-6 h-6 text-[#EF4444]" />
             </div>
-            <h3 className="text-lg font-semibold text-center text-slate-900 mb-2">
+            <h3 className="text-lg font-semibold text-center text-[#FAFAFA] mb-2">
               {t('communityHub.modal.deletePost.title')}
             </h3>
-            <p className="text-sm text-slate-500 text-center mb-6">
+            <p className="text-sm text-[#A0A0A0] text-center mb-6">
               {t('communityHub.modal.deletePost.message')}
             </p>
             <div className="flex gap-3">
               <button
                 onClick={cancelDeletePost}
                 disabled={isDeleting}
-                className="flex-1 px-4 py-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium text-slate-700 transition-colors disabled:opacity-50"
+                className="flex-1 px-4 py-2.5 border border-[#1F1F1F] rounded-lg hover:bg-[#151515] font-medium text-[#A0A0A0] transition-colors disabled:opacity-50"
               >
                 {t('communityHub.buttons.cancel')}
               </button>
               <button
                 onClick={confirmDeletePost}
                 disabled={isDeleting}
-                className="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2.5 bg-[#EF4444] text-white rounded-lg hover:bg-[#DC2626] font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isDeleting ? (
                   <>

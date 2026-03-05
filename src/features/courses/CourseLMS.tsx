@@ -155,7 +155,7 @@ const SortableCourseCard: React.FC<SortableCourseCardProps> = ({
       )}
 
       <div
-        className="relative h-48 overflow-hidden bg-gradient-to-br from-indigo-500 to-purple-600 cursor-pointer"
+        className="relative h-48 overflow-hidden bg-[#1F1F1F] cursor-pointer"
         onClick={() => onSelect(course)}
       >
         {course.thumbnail_url ? (
@@ -710,7 +710,7 @@ const CourseLMS: React.FC = () => {
                 key={course.id}
                 className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden"
               >
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-indigo-500 to-purple-600">
+                <div className="relative h-48 overflow-hidden bg-[#1F1F1F]">
                   {course.thumbnail_url ? (
                     <img src={course.thumbnail_url} alt={course.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   ) : (
@@ -790,14 +790,14 @@ const CourseLMS: React.FC = () => {
                 value={newCourseName}
                 onChange={(e) => setNewCourseName(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseTitle')}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent mb-3"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] mb-3"
                 disabled={!selectedCommunity}
               />
               <textarea
                 value={newCourseDescription}
                 onChange={(e) => setNewCourseDescription(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseDescription')}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent h-24 resize-none"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
                 disabled={!selectedCommunity}
               />
               <div className="flex gap-3 mt-4">
@@ -829,14 +829,14 @@ const CourseLMS: React.FC = () => {
         {/* Payment Success Banner */}
         {showPaymentSuccess && (
           <div className="mb-6 animate-in slide-in-from-top duration-300">
-            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-4 rounded-xl flex items-center justify-between">
+            <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#FAFAFA] px-6 py-4 rounded-xl flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="bg-[#0A0A0A]/20 rounded-full p-2">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div>
                   <p className="font-semibold text-lg">{t('courseLms.payment.successTitle')}</p>
-                  <p className="text-emerald-100 text-sm">{t('courseLms.payment.successMessage')}</p>
+                  <p className="text-[#22C55E] text-sm">{t('courseLms.payment.successMessage')}</p>
                 </div>
               </div>
               <button
@@ -912,7 +912,7 @@ const CourseLMS: React.FC = () => {
                   className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] transition-colors group"
                 >
                   <div
-                    className="relative h-48 overflow-hidden bg-gradient-to-br from-indigo-500 to-purple-600 cursor-pointer"
+                    className="relative h-48 overflow-hidden bg-[#1F1F1F] cursor-pointer"
                     onClick={() => handleSelectCourse(course)}
                   >
                     {course.thumbnail_url ? (
@@ -965,7 +965,7 @@ const CourseLMS: React.FC = () => {
                   key={course.id}
                   className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden"
                 >
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-indigo-500 to-purple-600">
+                  <div className="relative h-48 overflow-hidden bg-[#1F1F1F]">
                     {course.thumbnail_url ? (
                       <img src={course.thumbnail_url} alt={course.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                     ) : (
@@ -1012,7 +1012,7 @@ const CourseLMS: React.FC = () => {
                 value={newCourseName}
                 onChange={(e) => setNewCourseName(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseTitle')}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent mb-3"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] mb-3"
                 autoFocus
                 disabled={!selectedCommunity}
               />
@@ -1020,7 +1020,7 @@ const CourseLMS: React.FC = () => {
                 value={newCourseDescription}
                 onChange={(e) => setNewCourseDescription(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseDescription')}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent h-24 resize-none"
+                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
                 disabled={!selectedCommunity}
               />
               <div className="flex gap-3 mt-4">
@@ -1223,7 +1223,7 @@ const CourseLMS: React.FC = () => {
                             }}
                             className="flex-1 flex items-center gap-3 px-6 py-3 text-left"
                           >
-                            <div className={`shrink-0 ${lesson.is_completed ? 'text-emerald-500' : 'text-[#666666]'}`}>
+                            <div className={`shrink-0 ${lesson.is_completed ? 'text-[#22C55E]' : 'text-[#666666]'}`}>
                               {lesson.is_completed ? (
                                 <CheckCircle size={16} />
                               ) : lesson.type === 'video' ? (

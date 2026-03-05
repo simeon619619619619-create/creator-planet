@@ -252,7 +252,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
               placeholder="Write your answer..."
               rows={4}
               disabled={state === 'submitting'}
-              className="w-full px-4 py-3 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-transparent text-[#FAFAFA] resize-none"
+              className="w-full px-4 py-3 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-[#FAFAFA] resize-none"
             />
           ) : (
             <div className="space-y-3">

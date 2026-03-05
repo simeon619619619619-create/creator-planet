@@ -141,23 +141,23 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+        <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
         <div className="max-w-5xl mx-auto px-6 py-6">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-indigo-100 rounded-xl">
-              <ClipboardList className="w-7 h-7 text-indigo-600" />
+            <div className="p-3 bg-[#1F1F1F] rounded-xl">
+              <ClipboardList className="w-7 h-7 text-[#FAFAFA]" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">{t('homework.page.title')}</h1>
-              <p className="text-slate-600">
+              <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('homework.page.title')}</h1>
+              <p className="text-[#A0A0A0]">
                 {t('homework.page.subtitle')}
               </p>
             </div>
@@ -168,47 +168,47 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
       <div className="max-w-5xl mx-auto px-6 py-8">
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-amber-100 rounded-lg">
-                <Clock className="w-5 h-5 text-amber-600" />
+              <div className="p-2.5 bg-[#EAB308]/10 rounded-lg">
+                <Clock className="w-5 h-5 text-[#EAB308]" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-900">
+                <p className="text-2xl font-bold text-[#FAFAFA]">
                   {pendingAssignments.length}
                 </p>
-                <p className="text-sm text-slate-600">{t('homework.stats.pending')}</p>
+                <p className="text-sm text-[#A0A0A0]">{t('homework.stats.pending')}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-blue-100 rounded-lg">
-                <FileText className="w-5 h-5 text-blue-600" />
+              <div className="p-2.5 bg-[#1F1F1F] rounded-lg">
+                <FileText className="w-5 h-5 text-[#FAFAFA]" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-900">
+                <p className="text-2xl font-bold text-[#FAFAFA]">
                   {submissions.length}
                 </p>
-                <p className="text-sm text-slate-600">{t('homework.stats.submitted')}</p>
+                <p className="text-sm text-[#A0A0A0]">{t('homework.stats.submitted')}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-green-100 rounded-lg">
-                <Award className="w-5 h-5 text-green-600" />
+              <div className="p-2.5 bg-[#22C55E]/10 rounded-lg">
+                <Award className="w-5 h-5 text-[#22C55E]" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-900">
+                <p className="text-2xl font-bold text-[#FAFAFA]">
                   {submissions.filter((s) => s.status === 'graded').reduce(
                     (sum, s) => sum + (s.points_awarded || 0),
                     0
                   )}
                 </p>
-                <p className="text-sm text-slate-600">{t('homework.stats.pointsEarned')}</p>
+                <p className="text-sm text-[#A0A0A0]">{t('homework.stats.pointsEarned')}</p>
               </div>
             </div>
           </div>
@@ -217,33 +217,33 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
         {/* Pending Surveys Section */}
         {pendingSurveys.length > 0 && (
           <section className="mb-10">
-            <h2 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-              <ClipboardCheck className="w-5 h-5 text-amber-500" />
+            <h2 className="text-lg font-semibold text-[#FAFAFA] mb-4 flex items-center gap-2">
+              <ClipboardCheck className="w-5 h-5 text-[#EAB308]" />
               {t('homework.pendingSurveys.sectionTitle')}
             </h2>
             <div className="space-y-4">
               {pendingSurveys.slice(0, 3).map((survey) => (
                 <div
                   key={survey.id}
-                  className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200 p-5 hover:shadow-md hover:border-amber-300 transition-all"
+                  className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-[#EAB308]/20 p-5 hover:shadow-md hover:border-[#EAB308]/20 transition-all"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-slate-900 text-lg">
+                        <h3 className="font-semibold text-[#FAFAFA] text-lg">
                           {survey.survey_title}
                         </h3>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#EAB308]/10 text-[#EAB308]">
                           {t('homework.pendingSurveys.surveyBadge')}
                         </span>
                       </div>
                       {survey.survey_description && (
-                        <p className="text-slate-600 mt-1 line-clamp-2">
+                        <p className="text-[#A0A0A0] mt-1 line-clamp-2">
                           {survey.survey_description}
                         </p>
                       )}
                       {survey.community_name && (
-                        <p className="text-sm text-slate-500 mt-2 flex items-center gap-1">
+                        <p className="text-sm text-[#666666] mt-2 flex items-center gap-1">
                           <Users className="w-4 h-4" />
                           {survey.community_name}
                         </p>
@@ -251,7 +251,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
                     </div>
                     <button
                       onClick={() => setSelectedSurvey(survey)}
-                      className="flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium whitespace-nowrap"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#EAB308] text-white rounded-lg hover:bg-[#EAB308]/80 transition-colors font-medium whitespace-nowrap"
                     >
                       {t('homework.pendingSurveys.fillButton')}
                       <ChevronRight className="w-4 h-4" />
@@ -260,7 +260,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
                 </div>
               ))}
               {pendingSurveys.length > 3 && (
-                <p className="text-sm text-amber-600 mt-2">
+                <p className="text-sm text-[#EAB308] mt-2">
                   {t('homework.pendingSurveys.moreCount', { count: pendingSurveys.length - 3 })}
                 </p>
               )}
@@ -270,18 +270,18 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
 
         {/* Pending Assignments Section */}
         <section className="mb-10">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-amber-500" />
+          <h2 className="text-lg font-semibold text-[#FAFAFA] mb-4 flex items-center gap-2">
+            <Clock className="w-5 h-5 text-[#EAB308]" />
             {t('homework.pendingAssignments.sectionTitle')}
           </h2>
 
           {pendingAssignments.length === 0 ? (
-            <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
+            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
               <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-slate-900">
+              <h3 className="text-lg font-semibold text-[#FAFAFA]">
                 {t('homework.pendingAssignments.emptyTitle')}
               </h3>
-              <p className="text-slate-600 mt-1">
+              <p className="text-[#A0A0A0] mt-1">
                 {t('homework.pendingAssignments.emptyMessage')}
               </p>
             </div>
@@ -290,20 +290,20 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
               {pendingAssignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-indigo-200 transition-all"
+                  className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-5 hover:shadow-md hover:border-[#1F1F1F] transition-all"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-slate-900 text-lg">
+                      <h3 className="font-semibold text-[#FAFAFA] text-lg">
                         {assignment.title}
                       </h3>
                       {assignment.description && (
-                        <p className="text-slate-600 mt-1 line-clamp-2">
+                        <p className="text-[#A0A0A0] mt-1 line-clamp-2">
                           {assignment.description}
                         </p>
                       )}
                       <div className="flex items-center gap-4 mt-3 text-sm">
-                        <span className="flex items-center gap-1 text-indigo-600 font-medium">
+                        <span className="flex items-center gap-1 text-[#FAFAFA] font-medium">
                           <Award className="w-4 h-4" />
                           {assignment.max_points} {t('homework.pendingAssignments.pointsLabel')}
                         </span>
@@ -311,14 +311,14 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
                           <span
                             className={`flex items-center gap-1 ${
                               isPastDue(assignment.due_date)
-                                ? 'text-red-600'
-                                : 'text-slate-500'
+                                ? 'text-[#EF4444]'
+                                : 'text-[#666666]'
                             }`}
                           >
                             <Calendar className="w-4 h-4" />
                             {t('homework.pendingAssignments.dueLabel')} {formatDate(assignment.due_date)}
                             {isPastDue(assignment.due_date) && (
-                              <AlertCircle className="w-4 h-4 text-red-500" />
+                              <AlertCircle className="w-4 h-4 text-[#EF4444]" />
                             )}
                           </span>
                         )}
@@ -326,7 +326,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
                     </div>
                     <button
                       onClick={() => setSelectedAssignment(assignment)}
-                      className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium whitespace-nowrap"
+                      className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] transition-colors font-medium whitespace-nowrap"
                     >
                       {t('homework.pendingAssignments.submitButton')}
                       <ChevronRight className="w-4 h-4" />
@@ -340,18 +340,18 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
 
         {/* My Submissions Section */}
         <section>
-          <h2 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-blue-500" />
+          <h2 className="text-lg font-semibold text-[#FAFAFA] mb-4 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-[#A0A0A0]" />
             {t('homework.mySubmissions.sectionTitle')}
           </h2>
 
           {submissions.length === 0 ? (
-            <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
-              <FileText className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-slate-900">
+            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+              <FileText className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
+              <h3 className="text-lg font-semibold text-[#FAFAFA]">
                 {t('homework.mySubmissions.emptyTitle')}
               </h3>
-              <p className="text-slate-600 mt-1">
+              <p className="text-[#A0A0A0] mt-1">
                 {t('homework.mySubmissions.emptyMessage')}
               </p>
             </div>
@@ -360,50 +360,50 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
               {submissions.map((submission) => (
                 <div
                   key={submission.id}
-                  className="bg-white rounded-xl border border-slate-200 p-5"
+                  className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-5"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3">
-                        <h3 className="font-semibold text-slate-900">
+                        <h3 className="font-semibold text-[#FAFAFA]">
                           {submission.assignment.title}
                         </h3>
                         {submission.status === 'pending' ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#EAB308]/10 text-[#EAB308] rounded-full text-xs font-medium">
                             <Clock className="w-3 h-3" />
                             {t('homework.mySubmissions.pendingReviewStatus')}
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#22C55E]/10 text-[#22C55E] rounded-full text-xs font-medium">
                             <CheckCircle className="w-3 h-3" />
                             {t('homework.mySubmissions.gradedStatus')}
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-slate-500 mt-1">
+                      <p className="text-sm text-[#666666] mt-1">
                         {t('homework.mySubmissions.submittedOnLabel')} {formatDate(submission.submitted_at)}
                       </p>
 
                       {/* Show graded info */}
                       {submission.status === 'graded' && (
-                        <div className="mt-3 p-3 bg-slate-50 rounded-lg">
+                        <div className="mt-3 p-3 bg-[#0A0A0A] rounded-lg">
                           <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1 text-green-600 font-semibold">
+                            <div className="flex items-center gap-1 text-[#22C55E] font-semibold">
                               <Award className="w-4 h-4" />
                               {submission.points_awarded} / {submission.assignment.max_points} {t('homework.pendingAssignments.pointsLabel')}
                             </div>
                             {submission.graded_at && (
-                              <span className="text-sm text-slate-500">
+                              <span className="text-sm text-[#666666]">
                                 {t('homework.mySubmissions.gradedOnLabel')} {formatDate(submission.graded_at)}
                               </span>
                             )}
                           </div>
                           {submission.feedback && (
                             <div className="mt-2">
-                              <p className="text-sm font-medium text-slate-700">
+                              <p className="text-sm font-medium text-[#A0A0A0]">
                                 {t('homework.mySubmissions.feedbackLabel')}
                               </p>
-                              <p className="text-sm text-slate-600 mt-1">
+                              <p className="text-sm text-[#A0A0A0] mt-1">
                                 {submission.feedback.length > 200
                                   ? `${submission.feedback.slice(0, 200)}...`
                                   : submission.feedback}
@@ -443,13 +443,13 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
 
           {/* Modal Container */}
           <div className="relative min-h-screen flex items-center justify-center p-4">
-            <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="relative bg-[#0A0A0A] rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
               {/* Close Button */}
               <button
                 onClick={() => setSelectedSurvey(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-md transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 bg-[#0A0A0A]/90 hover:bg-[#0A0A0A] rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-slate-600" />
+                <X className="w-5 h-5 text-[#A0A0A0]" />
               </button>
 
               {/* Survey Player */}

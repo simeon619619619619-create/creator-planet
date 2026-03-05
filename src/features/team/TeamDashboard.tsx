@@ -119,13 +119,13 @@ const TeamDashboard: React.FC = () => {
   const getRoleBadgeColor = () => {
     switch (teamRole) {
       case 'lecturer':
-        return 'bg-indigo-100 text-indigo-700';
+        return 'bg-[#1F1F1F] text-[#A0A0A0]';
       case 'assistant':
-        return 'bg-emerald-100 text-emerald-700';
+        return 'bg-[#22C55E]/10 text-[#22C55E]';
       case 'guest_expert':
-        return 'bg-amber-100 text-amber-700';
+        return 'bg-[#EAB308]/10 text-[#EAB308]';
       default:
-        return 'bg-slate-100 text-slate-700';
+        return 'bg-[#1F1F1F] text-[#A0A0A0]';
     }
   };
 
@@ -133,10 +133,10 @@ const TeamDashboard: React.FC = () => {
     return (
       <div className="p-8">
         <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-slate-200 rounded w-1/3"></div>
+          <div className="h-8 bg-[#1F1F1F] rounded w-1/3"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="h-48 bg-slate-200 rounded-xl"></div>
-            <div className="h-48 bg-slate-200 rounded-xl"></div>
+            <div className="h-48 bg-[#1F1F1F] rounded-xl"></div>
+            <div className="h-48 bg-[#1F1F1F] rounded-xl"></div>
           </div>
         </div>
       </div>
@@ -147,10 +147,10 @@ const TeamDashboard: React.FC = () => {
     <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
       {/* Welcome Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#FAFAFA]">
           {t('teamDashboard.welcome', { name: profile?.full_name?.split(' ')[0] || 'Team Member' })}
         </h1>
-        <p className="text-slate-600 mt-1">
+        <p className="text-[#A0A0A0] mt-1">
           {t('teamDashboard.roleAt', { role: t(`team.roles.${teamRole}`), community: selectedCommunity?.name })}
         </p>
       </div>
@@ -158,30 +158,30 @@ const TeamDashboard: React.FC = () => {
       {/* Dashboard Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Messages Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+          <div className="p-4 border-b border-[#1F1F1F] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-indigo-600" />
-              <h2 className="font-semibold text-slate-900">{t('teamDashboard.messages')}</h2>
+              <MessageSquare className="w-5 h-5 text-[#FAFAFA]" />
+              <h2 className="font-semibold text-[#FAFAFA]">{t('teamDashboard.messages')}</h2>
               {unreadCount > 0 && (
-                <span className="bg-red-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                <span className="bg-[#EF4444]/100 text-white text-xs font-medium px-2 py-0.5 rounded-full">
                   {unreadCount}
                 </span>
               )}
             </div>
             <button
               onClick={() => navigate('/messages')}
-              className="text-sm text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+              className="text-sm text-[#FAFAFA] hover:text-white flex items-center gap-1"
             >
               {t('teamDashboard.viewAll')}
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-[#1F1F1F]">
             {recentConversations.length === 0 ? (
               <div className="p-6 text-center">
-                <Mail className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                <p className="text-sm text-slate-500">{t('teamDashboard.noMessages')}</p>
+                <Mail className="w-10 h-10 text-[#A0A0A0] mx-auto mb-2" />
+                <p className="text-sm text-[#666666]">{t('teamDashboard.noMessages')}</p>
               </div>
             ) : (
               recentConversations.map((conv) => {
@@ -191,7 +191,7 @@ const TeamDashboard: React.FC = () => {
                 return (
                   <div
                     key={conv.id}
-                    className="p-4 hover:bg-slate-50 cursor-pointer transition-colors"
+                    className="p-4 hover:bg-[#0A0A0A] cursor-pointer transition-colors"
                     onClick={() => navigate('/messages')}
                   >
                     <div className="flex items-start gap-3">
@@ -202,19 +202,19 @@ const TeamDashboard: React.FC = () => {
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
-                          <p className={`text-sm font-medium truncate ${hasUnread ? 'text-slate-900' : 'text-slate-600'}`}>
+                          <p className={`text-sm font-medium truncate ${hasUnread ? 'text-[#FAFAFA]' : 'text-[#A0A0A0]'}`}>
                             {studentName}
                           </p>
-                          <span className="text-xs text-slate-400 shrink-0 ml-2">
+                          <span className="text-xs text-[#666666] shrink-0 ml-2">
                             {formatRelativeTime(conv.last_message_at)}
                           </span>
                         </div>
-                        <p className={`text-sm truncate ${hasUnread ? 'text-slate-700' : 'text-slate-500'}`}>
+                        <p className={`text-sm truncate ${hasUnread ? 'text-[#A0A0A0]' : 'text-[#666666]'}`}>
                           {conv.last_message?.content || t('teamDashboard.noMessageYet')}
                         </p>
                       </div>
                       {hasUnread && (
-                        <div className="w-2 h-2 bg-indigo-500 rounded-full shrink-0 mt-2"></div>
+                        <div className="w-2 h-2 bg-white rounded-full shrink-0 mt-2"></div>
                       )}
                     </div>
                   </div>
@@ -226,15 +226,15 @@ const TeamDashboard: React.FC = () => {
 
         {/* Courses Card (for lecturers) */}
         {teamRole === 'lecturer' && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+            <div className="p-4 border-b border-[#1F1F1F] flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 text-emerald-600" />
-                <h2 className="font-semibold text-slate-900">{t('teamDashboard.yourCourses')}</h2>
+                <GraduationCap className="w-5 h-5 text-[#22C55E]" />
+                <h2 className="font-semibold text-[#FAFAFA]">{t('teamDashboard.yourCourses')}</h2>
               </div>
               <button
                 onClick={() => navigate('/courses')}
-                className="text-sm text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+                className="text-sm text-[#FAFAFA] hover:text-white flex items-center gap-1"
               >
                 {t('teamDashboard.viewAll')}
                 <ChevronRight className="w-4 h-4" />
@@ -243,15 +243,15 @@ const TeamDashboard: React.FC = () => {
             <div className="p-4">
               {courses.length === 0 ? (
                 <div className="text-center py-4">
-                  <GraduationCap className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                  <p className="text-sm text-slate-500">{t('teamDashboard.noCourses')}</p>
+                  <GraduationCap className="w-10 h-10 text-[#A0A0A0] mx-auto mb-2" />
+                  <p className="text-sm text-[#666666]">{t('teamDashboard.noCourses')}</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-3">
                   {courses.map((course) => (
                     <div
                       key={course.id}
-                      className="bg-slate-50 rounded-lg p-3 hover:bg-slate-100 cursor-pointer transition-colors"
+                      className="bg-[#0A0A0A] rounded-lg p-3 hover:bg-[#1F1F1F] cursor-pointer transition-colors"
                       onClick={() => navigate('/courses')}
                     >
                       {course.thumbnail_url ? (
@@ -261,11 +261,11 @@ const TeamDashboard: React.FC = () => {
                           className="w-full h-16 object-cover rounded mb-2"
                         />
                       ) : (
-                        <div className="w-full h-16 bg-slate-200 rounded mb-2 flex items-center justify-center">
-                          <GraduationCap className="w-6 h-6 text-slate-400" />
+                        <div className="w-full h-16 bg-[#1F1F1F] rounded mb-2 flex items-center justify-center">
+                          <GraduationCap className="w-6 h-6 text-[#666666]" />
                         </div>
                       )}
-                      <p className="text-sm font-medium text-slate-700 truncate">{course.title}</p>
+                      <p className="text-sm font-medium text-[#A0A0A0] truncate">{course.title}</p>
                     </div>
                   ))}
                 </div>
@@ -276,31 +276,31 @@ const TeamDashboard: React.FC = () => {
 
         {/* At-Risk Students Card (for lecturers) */}
         {teamRole === 'lecturer' && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+            <div className="p-4 border-b border-[#1F1F1F] flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-red-500" />
-                <h2 className="font-semibold text-slate-900">{t('teamDashboard.atRiskStudents')}</h2>
+                <AlertTriangle className="w-5 h-5 text-[#EF4444]" />
+                <h2 className="font-semibold text-[#FAFAFA]">{t('teamDashboard.atRiskStudents')}</h2>
                 {atRiskStudents.length > 0 && (
-                  <span className="bg-red-100 text-red-700 text-xs font-medium px-2 py-0.5 rounded-full">
+                  <span className="bg-[#EF4444]/10 text-[#EF4444] text-xs font-medium px-2 py-0.5 rounded-full">
                     {atRiskStudents.length}
                   </span>
                 )}
               </div>
               <button
                 onClick={() => navigate('/ai-manager')}
-                className="text-sm text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+                className="text-sm text-[#FAFAFA] hover:text-white flex items-center gap-1"
               >
                 <BrainCircuit className="w-4 h-4" />
                 {t('teamDashboard.viewAll')}
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-[#1F1F1F]">
               {atRiskStudents.length === 0 ? (
                 <div className="p-6 text-center">
-                  <AlertTriangle className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                  <p className="text-sm text-slate-500">{t('teamDashboard.noAtRiskStudents')}</p>
+                  <AlertTriangle className="w-10 h-10 text-[#A0A0A0] mx-auto mb-2" />
+                  <p className="text-sm text-[#666666]">{t('teamDashboard.noAtRiskStudents')}</p>
                 </div>
               ) : (
                 atRiskStudents.map((student) => (
@@ -308,14 +308,14 @@ const TeamDashboard: React.FC = () => {
                     <div className="flex items-center gap-3">
                       <Avatar src={student.avatar_url} name={student.name} size="sm" />
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-slate-900 truncate">{student.name}</p>
-                        <p className="text-xs text-slate-500 truncate">{student.reason}</p>
+                        <p className="text-sm font-medium text-[#FAFAFA] truncate">{student.name}</p>
+                        <p className="text-xs text-[#666666] truncate">{student.reason}</p>
                       </div>
                       <div className="flex items-center gap-1">
                         <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                          student.risk_score >= 70 ? 'bg-red-100 text-red-700' :
-                          student.risk_score >= 40 ? 'bg-amber-100 text-amber-700' :
-                          'bg-green-100 text-green-700'
+                          student.risk_score >= 70 ? 'bg-[#EF4444]/10 text-[#EF4444]' :
+                          student.risk_score >= 40 ? 'bg-[#EAB308]/10 text-[#EAB308]' :
+                          'bg-[#22C55E]/10 text-[#22C55E]'
                         }`}>
                           {student.risk_score}
                         </span>
@@ -329,39 +329,39 @@ const TeamDashboard: React.FC = () => {
         )}
 
         {/* Upcoming Events Card */}
-        <div className={`bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden ${teamRole !== 'lecturer' ? '' : ''}`}>
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+        <div className={`bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden ${teamRole !== 'lecturer' ? '' : ''}`}>
+          <div className="p-4 border-b border-[#1F1F1F] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-amber-600" />
-              <h2 className="font-semibold text-slate-900">{t('teamDashboard.upcomingEvents')}</h2>
+              <Calendar className="w-5 h-5 text-[#EAB308]" />
+              <h2 className="font-semibold text-[#FAFAFA]">{t('teamDashboard.upcomingEvents')}</h2>
             </div>
             <button
               onClick={() => navigate('/calendar')}
-              className="text-sm text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+              className="text-sm text-[#FAFAFA] hover:text-white flex items-center gap-1"
             >
               {t('teamDashboard.viewCalendar')}
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-[#1F1F1F]">
             {upcomingEvents.length === 0 ? (
               <div className="p-6 text-center">
-                <Calendar className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                <p className="text-sm text-slate-500">{t('teamDashboard.noEvents')}</p>
+                <Calendar className="w-10 h-10 text-[#A0A0A0] mx-auto mb-2" />
+                <p className="text-sm text-[#666666]">{t('teamDashboard.noEvents')}</p>
               </div>
             ) : (
               upcomingEvents.map((event) => (
                 <div
                   key={event.id}
-                  className="p-4 hover:bg-slate-50 cursor-pointer transition-colors"
+                  className="p-4 hover:bg-[#0A0A0A] cursor-pointer transition-colors"
                   onClick={() => navigate('/calendar')}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-slate-900">{event.title}</p>
-                      <p className="text-xs text-slate-500">{formatDate(event.start_time)}</p>
+                      <p className="text-sm font-medium text-[#FAFAFA]">{event.title}</p>
+                      <p className="text-xs text-[#666666]">{formatDate(event.start_time)}</p>
                     </div>
-                    <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded-full">
+                    <span className="text-xs bg-[#EAB308]/10 text-[#EAB308] px-2 py-1 rounded-full">
                       {event.event_type}
                     </span>
                   </div>
@@ -372,15 +372,15 @@ const TeamDashboard: React.FC = () => {
         </div>
 
         {/* Profile Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+          <div className="p-4 border-b border-[#1F1F1F] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <User className="w-5 h-5 text-slate-600" />
-              <h2 className="font-semibold text-slate-900">{t('teamDashboard.yourProfile')}</h2>
+              <User className="w-5 h-5 text-[#A0A0A0]" />
+              <h2 className="font-semibold text-[#FAFAFA]">{t('teamDashboard.yourProfile')}</h2>
             </div>
             <button
               onClick={() => navigate('/settings')}
-              className="text-sm text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+              className="text-sm text-[#FAFAFA] hover:text-white flex items-center gap-1"
             >
               {t('teamDashboard.editProfile')}
               <ChevronRight className="w-4 h-4" />
@@ -394,8 +394,8 @@ const TeamDashboard: React.FC = () => {
                 size="lg"
               />
               <div>
-                <h3 className="text-lg font-semibold text-slate-900">{profile?.full_name}</h3>
-                <p className="text-sm text-slate-500">{teamMembership?.title || t(`team.roles.${teamRole}`)}</p>
+                <h3 className="text-lg font-semibold text-[#FAFAFA]">{profile?.full_name}</h3>
+                <p className="text-sm text-[#666666]">{teamMembership?.title || t(`team.roles.${teamRole}`)}</p>
                 <span className={`inline-block mt-2 px-2 py-0.5 text-xs font-medium rounded-full ${getRoleBadgeColor()}`}>
                   {t(`team.roles.${teamRole}`)}
                 </span>

@@ -19,15 +19,15 @@ export function LoyaltyDashboard({ consecutiveMonths }: LoyaltyDashboardProps) {
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <div className="h-32 bg-gray-100 rounded-xl animate-pulse" />
-        <div className="h-48 bg-gray-100 rounded-xl animate-pulse" />
+        <div className="h-32 bg-[#1F1F1F] rounded-xl animate-pulse" />
+        <div className="h-48 bg-[#1F1F1F] rounded-xl animate-pulse" />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700">
+      <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-xl p-4 text-[#EF4444]">
         {t('studentPlus.dashboard.loadError')}
       </div>
     );
@@ -36,7 +36,7 @@ export function LoyaltyDashboard({ consecutiveMonths }: LoyaltyDashboardProps) {
   return (
     <div className="space-y-6">
       {/* Points Balance Card */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl p-6">
+      <div className="bg-gradient-to-r to-[#1F1F1F] to-pink-600 text-white rounded-xl p-6">
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-lg opacity-90 mb-1">{t('studentPlus.dashboard.yourPoints')}</h2>
@@ -46,7 +46,7 @@ export function LoyaltyDashboard({ consecutiveMonths }: LoyaltyDashboardProps) {
           </div>
           <a
             href="/student-plus/rewards"
-            className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm font-medium"
+            className="bg-[#0A0A0A]/20 hover:bg-[#0A0A0A]/30 px-4 py-2 rounded-lg transition text-sm font-medium"
           >
             {t('studentPlus.dashboard.redeemRewards')}
           </a>
@@ -67,11 +67,11 @@ export function LoyaltyDashboard({ consecutiveMonths }: LoyaltyDashboardProps) {
       <MilestoneProgress consecutiveMonths={consecutiveMonths} />
 
       {/* Recent Activity */}
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
-        <h3 className="font-semibold text-lg mb-4 text-gray-900">{t('studentPlus.dashboard.recentActivity')}</h3>
+      <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl p-6">
+        <h3 className="font-semibold text-lg mb-4 text-[#FAFAFA]">{t('studentPlus.dashboard.recentActivity')}</h3>
         <PointsHistory transactions={history.slice(0, 5)} />
         {history.length === 0 && (
-          <p className="text-gray-500 text-sm text-center py-4">
+          <p className="text-[#666666] text-sm text-center py-4">
             {t('studentPlus.dashboard.noActivityYet')}
           </p>
         )}

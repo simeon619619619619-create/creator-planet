@@ -308,8 +308,8 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
           group flex items-center gap-4 text-left
           ${cardsVisible ? 'animate-[fade-in-up_300ms_ease-out_forwards]' : 'opacity-0'}
           ${selected
-            ? 'border-indigo-500 bg-indigo-500/20 shadow-lg shadow-indigo-500/20'
-            : 'border-slate-700 bg-slate-800/50 hover:border-indigo-400/50 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/50'
+            ? 'border-[#333333] bg-white/20'
+            : 'border-[#1F1F1F] bg-[#0A0A0A]/50 hover:border-[#333333]/50 hover:bg-[#0A0A0A]'
           }
           hover:scale-[1.02]
         `}
@@ -318,8 +318,8 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
         <div
           className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
             selected
-              ? 'bg-indigo-500 text-white'
-              : 'bg-slate-700 text-slate-400 group-hover:bg-slate-600 group-hover:text-slate-300'
+              ? 'bg-white text-black'
+              : 'bg-[#151515] text-[#666666] group-hover:bg-[#151515] group-hover:text-[#A0A0A0]'
           }`}
         >
           {question.type === 'multi' && selected ? (
@@ -333,12 +333,12 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
         {IconComponent && (
           <div
             className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
-              selected ? 'bg-indigo-500/30' : 'bg-slate-700/50 group-hover:bg-slate-600/50'
+              selected ? 'bg-white/30' : 'bg-[#151515]/50 group-hover:bg-[#151515]/50'
             }`}
           >
             <IconComponent
               size={24}
-              className={`transition-colors duration-200 ${selected ? 'text-indigo-300' : 'text-slate-400 group-hover:text-slate-300'}`}
+              className={`transition-colors duration-200 ${selected ? 'text-[#A0A0A0]' : 'text-[#666666] group-hover:text-[#A0A0A0]'}`}
             />
           </div>
         )}
@@ -347,7 +347,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
         <div className="flex-1 min-w-0">
           <p
             className={`font-semibold text-base ${
-              selected ? 'text-white' : 'text-slate-200 group-hover:text-white'
+              selected ? 'text-white' : 'text-[#A0A0A0] group-hover:text-white'
             }`}
           >
             {t(option.label)}
@@ -355,7 +355,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
           {option.description && (
             <p
               className={`text-sm mt-1 ${
-                selected ? 'text-indigo-300' : 'text-slate-400 group-hover:text-slate-300'
+                selected ? 'text-[#A0A0A0]' : 'text-[#666666] group-hover:text-[#A0A0A0]'
               }`}
             >
               {t(option.description)}
@@ -368,11 +368,11 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
           <div
             className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
               selected
-                ? 'border-indigo-500 bg-indigo-500'
-                : 'border-slate-600 group-hover:border-slate-500'
+                ? 'border-[#333333] bg-white'
+                : 'border-[#1F1F1F] group-hover:border-[#1F1F1F]'
             }`}
           >
-            {selected && <div className="w-2 h-2 rounded-full bg-white" />}
+            {selected && <div className="w-2 h-2 rounded-full bg-[#0A0A0A]" />}
           </div>
         )}
       </button>
@@ -384,31 +384,31 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
       {/* Inject animation styles */}
       <style>{animationStyles}</style>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 flex flex-col overflow-hidden relative">
+      <div className="min-h-screen bg-[#0A0A0A] flex flex-col overflow-hidden relative">
         {/* Animated gradient orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
-            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-white/10 blur-3xl"
             style={{ animation: 'float-orb-1 20s ease-in-out infinite' }}
           />
           <div
-            className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-purple-600/10 blur-3xl"
+            className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-white/10 blur-3xl"
             style={{ animation: 'float-orb-2 25s ease-in-out infinite' }}
           />
           <div
-            className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full bg-indigo-500/5 blur-2xl"
+            className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full bg-white/5 blur-2xl"
             style={{ animation: 'float-orb-3 18s ease-in-out infinite' }}
           />
         </div>
 
         {/* Progress bar */}
-        <div className="fixed top-0 left-0 right-0 h-1.5 bg-slate-800/80 z-20 backdrop-blur-sm">
+        <div className="fixed top-0 left-0 right-0 h-1.5 bg-[#0A0A0A]/80 z-20 backdrop-blur-sm">
           <div
-            className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-400 transition-all duration-500 ease-out relative"
+            className="h-full bg-white transition-all duration-500 ease-out relative"
             style={{ width: `${progress}%` }}
           >
-            {/* Glow effect on leading edge */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-4 bg-indigo-400 blur-md" />
+            {/* Leading edge */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-4 bg-white/50 blur-md" />
           </div>
         </div>
 
@@ -423,15 +423,15 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                 disabled={!canGoBack}
                 className={`flex items-center gap-2 text-sm font-medium transition-all mb-4 ${
                   canGoBack
-                    ? 'text-slate-400 hover:text-white'
-                    : 'text-slate-700 cursor-not-allowed'
+                    ? 'text-[#666666] hover:text-white'
+                    : 'text-[#A0A0A0] cursor-not-allowed'
                 }`}
               >
                 <ChevronLeft size={18} />
                 {t('common.back')}
               </button>
 
-              <div className="text-slate-500 text-sm font-medium">
+              <div className="text-[#666666] text-sm font-medium">
                 {t('onboarding.questionProgress', { current: questionNumber, total: totalQuestions })}
               </div>
             </div>
@@ -442,27 +442,27 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                 {t(question.title)}
               </h1>
               {question.subtitle && (
-                <p className="text-lg text-slate-400">{t(question.subtitle)}</p>
+                <p className="text-lg text-[#666666]">{t(question.subtitle)}</p>
               )}
               {question.type === 'multi' && (
-                <p className="text-sm text-indigo-400 font-medium">{t('onboarding.selectAllThatApply')}</p>
+                <p className="text-sm text-[#666666] font-medium">{t('onboarding.selectAllThatApply')}</p>
               )}
             </div>
 
             {/* Keyboard hints - Desktop only */}
-            <div className="mt-auto pt-8 text-xs text-slate-600 hidden md:block">
+            <div className="mt-auto pt-8 text-xs text-[#A0A0A0] hidden md:block">
               <div className="flex flex-wrap items-center gap-4">
                 <span className="flex items-center gap-1.5">
-                  <kbd className="px-1.5 py-0.5 bg-slate-800/60 rounded text-slate-500 font-mono">1-9</kbd>
+                  <kbd className="px-1.5 py-0.5 bg-[#0A0A0A]/60 rounded text-[#666666] font-mono">1-9</kbd>
                   <span>{t('onboarding.select')}</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <kbd className="px-1.5 py-0.5 bg-slate-800/60 rounded text-slate-500 font-mono">Enter</kbd>
+                  <kbd className="px-1.5 py-0.5 bg-[#0A0A0A]/60 rounded text-[#666666] font-mono">Enter</kbd>
                   <span>{t('onboarding.continue')}</span>
                 </span>
                 {canGoBack && (
                   <span className="flex items-center gap-1.5">
-                    <kbd className="px-1.5 py-0.5 bg-slate-800/60 rounded text-slate-500 font-mono">Esc</kbd>
+                    <kbd className="px-1.5 py-0.5 bg-[#0A0A0A]/60 rounded text-[#666666] font-mono">Esc</kbd>
                     <span>{t('common.back')}</span>
                   </span>
                 )}
@@ -481,15 +481,15 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                   onChange={handleTextInputChange}
                   placeholder={t('onboarding.typeYourAnswer')}
                   autoFocus
-                  className="w-full px-6 py-5 text-lg bg-slate-800/50 border-2 border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="w-full px-6 py-5 text-lg bg-[#0A0A0A]/50 border-2 border-[#1F1F1F] rounded-xl text-white placeholder-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10/20 transition-all"
                 />
                 <button
                   onClick={handleTextInputSubmit}
                   disabled={!textInputValue.trim()}
                   className={`w-full py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center gap-2 ${
                     textInputValue.trim()
-                      ? 'bg-indigo-600 text-white hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30'
-                      : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                      ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                      : 'bg-[#0A0A0A] text-[#666666] cursor-not-allowed'
                   }`}
                 >
                   {t('onboarding.continue')}
@@ -517,8 +517,8 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                         group flex items-center gap-4 text-left
                         ${cardsVisible ? 'animate-[fade-in-up_300ms_ease-out_forwards]' : 'opacity-0'}
                         ${isSelected('other')
-                          ? 'border-indigo-500 bg-indigo-500/20 shadow-lg shadow-indigo-500/20'
-                          : 'border-slate-700 bg-slate-800/50 hover:border-indigo-400/50 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/50'
+                          ? 'border-[#333333] bg-white/20'
+                          : 'border-[#1F1F1F] bg-[#0A0A0A]/50 hover:border-[#333333]/50 hover:bg-[#0A0A0A]'
                         }
                         hover:scale-[1.02]
                       `}
@@ -526,8 +526,8 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                       <div
                         className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
                           isSelected('other')
-                            ? 'bg-indigo-500 text-white'
-                            : 'bg-slate-700 text-slate-400 group-hover:bg-slate-600 group-hover:text-slate-300'
+                            ? 'bg-white text-black'
+                            : 'bg-[#151515] text-[#666666] group-hover:bg-[#151515] group-hover:text-[#A0A0A0]'
                         }`}
                       >
                         0
@@ -536,12 +536,12 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                       <div className="flex-1 min-w-0">
                         <p
                           className={`font-semibold text-base ${
-                            isSelected('other') ? 'text-white' : 'text-slate-200 group-hover:text-white'
+                            isSelected('other') ? 'text-white' : 'text-[#A0A0A0] group-hover:text-white'
                           }`}
                         >
                           {t('onboarding.other')}
                         </p>
-                        <p className={`text-sm mt-1 ${isSelected('other') ? 'text-indigo-300' : 'text-slate-400'}`}>
+                        <p className={`text-sm mt-1 ${isSelected('other') ? 'text-[#A0A0A0]' : 'text-[#666666]'}`}>
                           {t('onboarding.specifyYourOwn')}
                         </p>
                       </div>
@@ -550,11 +550,11 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                         <div
                           className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
                             isSelected('other')
-                              ? 'border-indigo-500 bg-indigo-500'
-                              : 'border-slate-600 group-hover:border-slate-500'
+                              ? 'border-[#333333] bg-white'
+                              : 'border-[#1F1F1F] group-hover:border-[#1F1F1F]'
                           }`}
                         >
-                          {isSelected('other') && <div className="w-2 h-2 rounded-full bg-white" />}
+                          {isSelected('other') && <div className="w-2 h-2 rounded-full bg-[#0A0A0A]" />}
                         </div>
                       )}
                     </button>
@@ -568,7 +568,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                           onChange={handleOtherInputChange}
                           placeholder={t('onboarding.pleaseSpecify')}
                           autoFocus
-                          className="w-full px-4 py-3 text-sm bg-slate-800/50 border-2 border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                          className="w-full px-4 py-3 text-sm bg-[#0A0A0A]/50 border-2 border-[#1F1F1F] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10/20 transition-all"
                         />
                       </div>
                     )}
@@ -578,7 +578,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                 {/* Continue button for multi-select */}
                 {question.type === 'multi' && (
                   <div className="mt-6 flex items-center justify-between">
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-[#666666]">
                       {Array.isArray(currentAnswer) ? currentAnswer.length : 0} {t('onboarding.selected')}
                     </p>
                     <button
@@ -586,8 +586,8 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                       disabled={!canProceed}
                       className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
                         canProceed
-                          ? 'bg-indigo-600 text-white hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/30'
-                          : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                          ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                          : 'bg-[#0A0A0A] text-[#666666] cursor-not-allowed'
                       }`}
                     >
                       {t('onboarding.continue')}

@@ -109,18 +109,18 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
 
       {/* Modal */}
       <div
-        className="relative bg-white rounded-2xl shadow-xl max-w-md w-full mx-4"
+        className="relative bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F] max-w-md w-full mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
-          <div className="flex items-center gap-2 text-red-600">
+        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+          <div className="flex items-center gap-2 text-[#EF4444]">
             <LogOut size={20} />
             <h2 className="text-lg font-semibold">{t('community.leave.title')}</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors"
           >
             <X size={20} />
           </button>
@@ -130,19 +130,19 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
         <div className="p-6">
           {isLoading ? (
             <div className="flex items-center justify-center py-8">
-              <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
+              <Loader2 className="w-8 h-8 text-[#FAFAFA] animate-spin" />
             </div>
           ) : (
             <div className="space-y-4">
               {/* Warning message */}
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-[#EAB308]/5 border border-[#EAB308]/20 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="w-5 h-5 text-[#EAB308] flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-amber-800 font-medium">
+                    <p className="text-[#FAFAFA] font-medium">
                       {t('community.leave.warningTitle')}
                     </p>
-                    <p className="text-amber-700 text-sm mt-1">
+                    <p className="text-[#A0A0A0] text-sm mt-1">
                       {t('community.leave.warningMessage', { community: communityName })}
                     </p>
                   </div>
@@ -150,9 +150,9 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
               </div>
 
               {/* What will happen */}
-              <div className="text-sm text-slate-600 space-y-2">
-                <p className="font-medium text-slate-800">{t('community.leave.whatHappens')}</p>
-                <ul className="list-disc list-inside space-y-1 text-slate-600">
+              <div className="text-sm text-[#A0A0A0] space-y-2">
+                <p className="font-medium text-[#FAFAFA]">{t('community.leave.whatHappens')}</p>
+                <ul className="list-disc list-inside space-y-1 text-[#A0A0A0]">
                   <li>{t('community.leave.loseAccess')}</li>
                   <li>{t('community.leave.pointsLost')}</li>
                   <li>{t('community.leave.postsRemain')}</li>
@@ -162,17 +162,17 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
 
               {/* Active subscription warning */}
               {hasActiveSubscription && (
-                <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-                  <p className="text-indigo-800 font-medium mb-2">
+                <div className="bg-[#151515] border border-[#1F1F1F] rounded-lg p-4">
+                  <p className="text-[#FAFAFA] font-medium mb-2">
                     {t('community.leave.activeSubscription')}
                   </p>
-                  <p className="text-indigo-700 text-sm mb-3">
+                  <p className="text-[#A0A0A0] text-sm mb-3">
                     {t('community.leave.cancelFirst')}
                   </p>
                   <button
                     onClick={handleManageSubscription}
                     disabled={isOpeningPortal}
-                    className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:opacity-50"
+                    className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50"
                   >
                     {isOpeningPortal ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -186,8 +186,8 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
 
               {/* Error message */}
               {error && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                  <p className="text-red-700 text-sm">{error}</p>
+                <div className="bg-[#EF4444]/5 border border-[#EF4444]/20 rounded-lg p-3">
+                  <p className="text-[#EF4444] text-sm">{error}</p>
                 </div>
               )}
             </div>
@@ -195,17 +195,17 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-3 p-4 border-t border-slate-100 bg-slate-50 rounded-b-2xl">
+        <div className="flex items-center justify-end gap-3 p-4 border-t border-[#1F1F1F] rounded-b-2xl">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-slate-600 hover:bg-slate-200 rounded-lg text-sm font-medium transition-colors"
+            className="px-4 py-2 text-[#A0A0A0] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors"
           >
             {t('common.cancel')}
           </button>
           <button
             onClick={handleLeave}
             disabled={isLeaving || isLoading || hasActiveSubscription}
-            className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-4 py-2 bg-[#EF4444] text-white rounded-lg text-sm font-medium hover:bg-[#DC2626] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {isLeaving ? (
               <>

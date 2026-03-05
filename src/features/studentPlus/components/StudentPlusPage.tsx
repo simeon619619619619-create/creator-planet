@@ -79,11 +79,11 @@ export function StudentPlusPage() {
       <div className="max-w-4xl mx-auto py-8 px-4 space-y-8">
         {/* Success notification */}
         {showSuccessMessage && (
-          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center gap-3">
-            <CheckCircle className="w-6 h-6 text-emerald-600 shrink-0" />
+          <div className="bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-xl p-4 flex items-center gap-3">
+            <CheckCircle className="w-6 h-6 text-[#22C55E] shrink-0" />
             <div>
-              <p className="font-semibold text-emerald-800">{t('studentPlus.page.successTitle')}</p>
-              <p className="text-emerald-700 text-sm">{t('studentPlus.page.successMessage')}</p>
+              <p className="font-semibold text-[#22C55E]">{t('studentPlus.page.successTitle')}</p>
+              <p className="text-[#22C55E] text-sm">{t('studentPlus.page.successMessage')}</p>
             </div>
           </div>
         )}
@@ -98,27 +98,27 @@ export function StudentPlusPage() {
     <div className="max-w-4xl mx-auto py-12 px-4">
       {/* Cancel notification */}
       {showCancelMessage && (
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center gap-3 mb-8">
-          <XCircle className="w-6 h-6 text-amber-600 shrink-0" />
+        <div className="bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-xl p-4 flex items-center gap-3 mb-8">
+          <XCircle className="w-6 h-6 text-[#EAB308] shrink-0" />
           <div>
-            <p className="font-semibold text-amber-800">{t('studentPlus.page.canceledTitle')}</p>
-            <p className="text-amber-700 text-sm">{t('studentPlus.page.canceledMessage')}</p>
+            <p className="font-semibold text-[#FAFAFA]">{t('studentPlus.page.canceledTitle')}</p>
+            <p className="text-[#EAB308] text-sm">{t('studentPlus.page.canceledMessage')}</p>
           </div>
         </div>
       )}
 
       {/* Header */}
       <div className="text-center mb-12">
-        <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+        <div className="inline-block bg-[#1F1F1F] text-[#FAFAFA] text-sm font-semibold px-4 py-1 rounded-full mb-4">
           {t('studentPlus.page.tagline')}
         </div>
-        <h1 className="text-4xl font-bold mb-4 text-gray-900">{t('studentPlus.page.title')}</h1>
-        <p className="text-xl text-gray-600 mb-6">
+        <h1 className="text-4xl font-bold mb-4 text-[#FAFAFA]">{t('studentPlus.page.title')}</h1>
+        <p className="text-xl text-[#A0A0A0] mb-6">
           {t('studentPlus.page.subtitle')}
         </p>
-        <div className="text-4xl font-bold text-gray-900">
+        <div className="text-4xl font-bold text-[#FAFAFA]">
           {formatPrice(STUDENT_PLUS_CONFIG.product.amount)}
-          <span className="text-lg font-normal text-gray-500">{t('studentPlus.page.pricePerMonth')}</span>
+          <span className="text-lg font-normal text-[#666666]">{t('studentPlus.page.pricePerMonth')}</span>
         </div>
       </div>
 
@@ -147,8 +147,8 @@ export function StudentPlusPage() {
       </div>
 
       {/* Milestone Preview */}
-      <div className="bg-gray-50 rounded-2xl p-8 mb-12">
-        <h2 className="text-2xl font-bold mb-8 text-center text-gray-900">{t('studentPlus.page.milestonePreview.title')}</h2>
+      <div className="bg-[#0A0A0A] rounded-2xl p-8 mb-12">
+        <h2 className="text-2xl font-bold mb-8 text-center text-[#FAFAFA]">{t('studentPlus.page.milestonePreview.title')}</h2>
         <div className="flex justify-between items-center max-w-2xl mx-auto">
           {STUDENT_PLUS_CONFIG.milestones.map((milestone, index) => (
             <div key={milestone.months} className="flex items-center">
@@ -159,7 +159,7 @@ export function StudentPlusPage() {
                 name={milestone.name}
               />
               {index < STUDENT_PLUS_CONFIG.milestones.length - 1 && (
-                <div className="h-1 w-12 md:w-16 bg-gray-200 mx-2" />
+                <div className="h-1 w-12 md:w-16 bg-[#1F1F1F] mx-2" />
               )}
             </div>
           ))}
@@ -167,8 +167,8 @@ export function StudentPlusPage() {
       </div>
 
       {/* What You Get Section */}
-      <div className="bg-white border border-gray-200 rounded-2xl p-8 mb-12">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">{t('studentPlus.page.whatsIncluded.title')}</h2>
+      <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-2xl p-8 mb-12">
+        <h2 className="text-2xl font-bold mb-6 text-[#FAFAFA]">{t('studentPlus.page.whatsIncluded.title')}</h2>
         <ul className="space-y-4">
           <FeatureItem text={t('studentPlus.page.whatsIncluded.weeklyNewsletter')} />
           <FeatureItem text={t('studentPlus.page.whatsIncluded.monthlyPoints')} />
@@ -182,7 +182,7 @@ export function StudentPlusPage() {
       {/* CTA */}
       <div className="text-center">
         {checkoutError && (
-          <div className="mb-4 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2 inline-block">
+          <div className="mb-4 text-[#EF4444] bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg px-4 py-2 inline-block">
             {checkoutError}
           </div>
         )}
@@ -190,26 +190,26 @@ export function StudentPlusPage() {
         {!user ? (
           // Auth-gated: Show sign-in CTA for logged out users
           <div className="space-y-4">
-            <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 border-2 border-purple-200 rounded-2xl p-6 max-w-md mx-auto">
+            <div className="bg-[#0A0A0A] border-2 border-[#1F1F1F] rounded-2xl p-6 max-w-md mx-auto">
               <div className="flex items-center justify-center gap-2 mb-3">
-                <Sparkles className="w-5 h-5 text-purple-500" />
-                <span className="text-sm font-medium text-purple-700">{t('studentPlus.page.readyToJoin')}</span>
+                <Sparkles className="w-5 h-5 text-[#FAFAFA]" />
+                <span className="text-sm font-medium text-[#A0A0A0]">{t('studentPlus.page.readyToJoin')}</span>
               </div>
-              <p className="text-gray-600 text-sm mb-4">
+              <p className="text-[#A0A0A0] text-sm mb-4">
                 {t('studentPlus.page.signInRequired')}
               </p>
               <button
                 onClick={() => navigate('/signin?return=/student-plus')}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+                className="w-full bg-white text-black px-8 py-4 rounded-xl text-lg font-semibold hover:bg-[#E0E0E0] transition-all flex items-center justify-center gap-3"
               >
                 <LogIn className="w-5 h-5" />
                 {t('studentPlus.page.signInToSubscribe')}
               </button>
-              <p className="text-xs text-gray-500 mt-3">
+              <p className="text-xs text-[#666666] mt-3">
                 {t('studentPlus.page.noAccountYet')}{' '}
                 <button
                   onClick={() => navigate('/signup?return=/student-plus')}
-                  className="text-purple-600 hover:text-purple-700 font-medium underline underline-offset-2"
+                  className="text-[#FAFAFA] hover:text-[#A0A0A0] font-medium underline underline-offset-2"
                 >
                   {t('studentPlus.page.createAccount')}
                 </button>
@@ -222,7 +222,7 @@ export function StudentPlusPage() {
             <button
               onClick={handleSubscribe}
               disabled={isCheckingOut}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl text-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-white text-black px-8 py-4 rounded-xl text-xl font-semibold hover:bg-[#E0E0E0] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isCheckingOut ? (
                 <span className="flex items-center gap-2">
@@ -233,7 +233,7 @@ export function StudentPlusPage() {
                 t('studentPlus.page.startYourJourney')
               )}
             </button>
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-sm text-[#666666] mt-4">
               {t('studentPlus.page.cancelAnytime')}
             </p>
           </>
@@ -257,10 +257,10 @@ function BenefitCard({
   description: string;
 }) {
   return (
-    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F] hover:border-[#333333] transition-colors">
       <span className="text-4xl mb-4 block">{icon}</span>
-      <h3 className="font-semibold text-lg mb-2 text-gray-900">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="font-semibold text-lg mb-2 text-[#FAFAFA]">{title}</h3>
+      <p className="text-[#A0A0A0]">{description}</p>
     </div>
   );
 }
@@ -280,9 +280,9 @@ function MilestonePreview({
   return (
     <div className="text-center">
       <span className="text-3xl md:text-4xl block mb-2">{emoji}</span>
-      <div className="font-semibold text-gray-900">{name}</div>
-      <div className="text-xs text-gray-500">{months} {t('studentPlus.page.milestonePreview.months')}</div>
-      <div className="text-xs text-purple-600 font-medium">+{bonus} {t('studentPlus.page.milestonePreview.pts')}</div>
+      <div className="font-semibold text-[#FAFAFA]">{name}</div>
+      <div className="text-xs text-[#666666]">{months} {t('studentPlus.page.milestonePreview.months')}</div>
+      <div className="text-xs text-[#FAFAFA] font-medium">+{bonus} {t('studentPlus.page.milestonePreview.pts')}</div>
     </div>
   );
 }
@@ -290,8 +290,8 @@ function MilestonePreview({
 function FeatureItem({ text }: { text: string }) {
   return (
     <li className="flex items-start gap-3">
-      <span className="text-green-500 mt-0.5">✓</span>
-      <span className="text-gray-700">{text}</span>
+      <span className="text-[#22C55E] mt-0.5">✓</span>
+      <span className="text-[#A0A0A0]">{text}</span>
     </li>
   );
 }

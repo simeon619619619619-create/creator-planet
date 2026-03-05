@@ -61,7 +61,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
           onChange={(e) => onChange(e.target.value)}
           placeholder={question.placeholder || t('surveys.player.typeAnswer')}
           disabled={disabled}
-          className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-slate-100 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 border border-[#1F1F1F] rounded-xl focus:ring-1 focus:ring-white/10 focus:border-[#555555] disabled:bg-[#1F1F1F] disabled:cursor-not-allowed"
         />
       );
 
@@ -75,7 +75,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
           min={question.min_value ?? undefined}
           max={question.max_value ?? undefined}
           disabled={disabled}
-          className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-slate-100 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 border border-[#1F1F1F] rounded-xl focus:ring-1 focus:ring-white/10 focus:border-[#555555] disabled:bg-[#1F1F1F] disabled:cursor-not-allowed"
         />
       );
 
@@ -90,8 +90,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               disabled={disabled}
               className={`w-12 h-12 rounded-xl font-semibold transition-all ${
                 answer === String(num)
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200'
-                  : 'bg-slate-100 text-slate-700 hover:bg-indigo-100 hover:text-indigo-700'
+                  ? 'bg-white text-black'
+                  : 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               {num}
@@ -108,8 +108,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               key={index}
               className={`flex items-center gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 answer === option
-                  ? 'border-indigo-500 bg-indigo-50'
-                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                  ? 'border-[#333333] bg-[#151515]'
+                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -119,17 +119,17 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={answer === option}
                 onChange={() => !disabled && onChange(option)}
                 disabled={disabled}
-                className="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] focus:ring-white/10"
               />
-              <span className="text-slate-800">{option}</span>
+              <span className="text-[#FAFAFA]">{option}</span>
             </label>
           ))}
           {question.allow_other && (
             <label
               className={`flex items-start gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 answer === '__other__'
-                  ? 'border-indigo-500 bg-indigo-50'
-                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                  ? 'border-[#333333] bg-[#151515]'
+                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -139,10 +139,10 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={answer === '__other__'}
                 onChange={() => !disabled && onChange('__other__')}
                 disabled={disabled}
-                className="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500 mt-0.5"
+                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] focus:ring-white/10 mt-0.5"
               />
               <div className="flex-1">
-                <span className="text-slate-800">{t('surveys.player.other')}</span>
+                <span className="text-[#FAFAFA]">{t('surveys.player.other')}</span>
                 {answer === '__other__' && (
                   <input
                     type="text"
@@ -150,7 +150,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                     onChange={(e) => onChange('__other__', e.target.value)}
                     placeholder={t('surveys.player.specifyOther')}
                     disabled={disabled}
-                    className="mt-2 w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                    className="mt-2 w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
                   />
                 )}
               </div>
@@ -177,8 +177,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               key={index}
               className={`flex items-center gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 selectedValues.includes(option)
-                  ? 'border-indigo-500 bg-indigo-50'
-                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                  ? 'border-[#333333] bg-[#151515]'
+                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -187,17 +187,17 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={selectedValues.includes(option)}
                 onChange={() => toggleOption(option)}
                 disabled={disabled}
-                className="w-5 h-5 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500"
+                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10"
               />
-              <span className="text-slate-800">{option}</span>
+              <span className="text-[#FAFAFA]">{option}</span>
             </label>
           ))}
           {question.allow_other && (
             <label
               className={`flex items-start gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 selectedValues.includes('__other__')
-                  ? 'border-indigo-500 bg-indigo-50'
-                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                  ? 'border-[#333333] bg-[#151515]'
+                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -206,10 +206,10 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={selectedValues.includes('__other__')}
                 onChange={() => toggleOption('__other__')}
                 disabled={disabled}
-                className="w-5 h-5 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500 mt-0.5"
+                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10 mt-0.5"
               />
               <div className="flex-1">
-                <span className="text-slate-800">{t('surveys.player.other')}</span>
+                <span className="text-[#FAFAFA]">{t('surveys.player.other')}</span>
                 {selectedValues.includes('__other__') && (
                   <input
                     type="text"
@@ -217,7 +217,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                     onChange={(e) => onChange(selectedValues, e.target.value)}
                     placeholder={t('surveys.player.specifyOther')}
                     disabled={disabled}
-                    className="mt-2 w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                    className="mt-2 w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
                   />
                 )}
               </div>
@@ -272,7 +272,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
       const duration = 2000;
       const end = Date.now() + duration;
 
-      const colors = ['#22c55e', '#10b981', '#6366f1', '#8b5cf6', '#f59e0b', '#ec4899'];
+      const colors = ['#FFFFFF', '#A0A0A0', '#22C55E', '#FAFAFA', '#666666', '#333333'];
 
       const frame = () => {
         confetti({
@@ -484,10 +484,10 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
         <div className="text-center">
-          <Loader2 className="w-10 h-10 text-indigo-600 animate-spin mx-auto" />
-          <p className="mt-4 text-slate-600">{t('surveys.player.loading')}</p>
+          <Loader2 className="w-10 h-10 text-[#FAFAFA] animate-spin mx-auto" />
+          <p className="mt-4 text-[#A0A0A0]">{t('surveys.player.loading')}</p>
         </div>
       </div>
     );
@@ -496,17 +496,17 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   // Error state
   if (error || !survey) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
         <div className="text-center max-w-md">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
-          <h2 className="mt-4 text-xl font-semibold text-slate-900">
+          <AlertCircle className="w-12 h-12 text-[#EF4444] mx-auto" />
+          <h2 className="mt-4 text-xl font-semibold text-[#FAFAFA]">
             {t('surveys.player.errorTitle')}
           </h2>
-          <p className="mt-2 text-slate-600">{error}</p>
+          <p className="mt-2 text-[#A0A0A0]">{error}</p>
           {onClose && (
             <button
               onClick={onClose}
-              className="mt-6 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+              className="mt-6 px-6 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0]"
             >
               {t('common.goBack')}
             </button>
@@ -519,7 +519,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   // Submitted state with celebration
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 overflow-hidden">
+      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A] overflow-hidden">
         <div className="text-center max-w-md px-4">
           {/* Animated success icon */}
           <div
@@ -528,29 +528,29 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
             }`}
           >
             {/* Outer glow ring */}
-            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-green-400/30 animate-ping" />
+            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-[#22C55E]/30 animate-ping" />
 
             {/* Inner pulsing ring */}
-            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-green-400/20 animate-pulse" />
+            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-[#22C55E]/20 animate-pulse" />
 
             {/* Main icon container */}
             <div
-              className={`relative w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-2xl shadow-green-300/50 transition-transform duration-500 ${
+              className={`relative w-24 h-24 mx-auto bg-[#22C55E] rounded-full flex items-center justify-center transition-transform duration-500 ${
                 showCelebration ? 'animate-bounce' : ''
               }`}
               style={{ animationDuration: '1s', animationIterationCount: '2' }}
             >
-              <CheckCircle className="w-12 h-12 text-white drop-shadow-lg" />
+              <CheckCircle className="w-12 h-12 text-white" />
             </div>
 
             {/* Sparkle accents */}
             <Sparkles
-              className={`absolute -top-2 -right-2 w-6 h-6 text-amber-400 transition-all duration-500 delay-300 ${
+              className={`absolute -top-2 -right-2 w-6 h-6 text-[#EAB308] transition-all duration-500 delay-300 ${
                 showCelebration ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
               }`}
             />
             <Sparkles
-              className={`absolute -bottom-1 -left-3 w-5 h-5 text-amber-400 transition-all duration-500 delay-500 ${
+              className={`absolute -bottom-1 -left-3 w-5 h-5 text-[#EAB308] transition-all duration-500 delay-500 ${
                 showCelebration ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
               }`}
             />
@@ -558,7 +558,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
 
           {/* Thank you text with staggered animation */}
           <h2
-            className={`mt-8 text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent transition-all duration-500 delay-200 ${
+            className={`mt-8 text-3xl font-bold text-[#22C55E] transition-all duration-500 delay-200 ${
               showCelebration ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
@@ -567,7 +567,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
 
           {/* Subtitle message */}
           <p
-            className={`mt-3 text-lg text-slate-600 transition-all duration-500 delay-400 ${
+            className={`mt-3 text-lg text-[#A0A0A0] transition-all duration-500 delay-400 ${
               showCelebration ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
@@ -576,23 +576,21 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
 
           {/* Encouraging message */}
           <p
-            className={`mt-2 text-sm text-emerald-600 font-medium transition-all duration-500 delay-500 ${
+            className={`mt-2 text-sm text-[#22C55E] font-medium transition-all duration-500 delay-500 ${
               showCelebration ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
             {t('surveys.player.completionEncouragement')}
           </p>
 
-          {/* Continue button with glow effect */}
+          {/* Continue button */}
           {onClose && (
             <button
               onClick={onClose}
-              className={`mt-10 group relative px-10 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-2xl shadow-lg shadow-green-300/40 hover:shadow-xl hover:shadow-green-300/50 hover:scale-105 active:scale-100 transition-all duration-300 delay-700 ${
+              className={`mt-10 group relative px-10 py-4 bg-white text-black font-semibold rounded-2xl hover:bg-[#E0E0E0] hover:scale-105 active:scale-100 transition-all duration-300 delay-700 ${
                 showCelebration ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
-              {/* Button glow animation */}
-              <span className="absolute inset-0 rounded-2xl bg-white/20 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative flex items-center gap-2">
                 {t('surveys.player.continue')}
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -608,25 +606,25 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   const isLastSection = currentSectionIndex === sections.length - 1;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Scroll anchor - must be before sticky header for scrollIntoView to work */}
       <div ref={contentTopRef} className="h-0" aria-hidden="true" />
 
       {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1.5 sm:h-1 bg-slate-200 z-20">
+      <div className="fixed top-0 left-0 right-0 h-1.5 sm:h-1 bg-[#1F1F1F] z-20">
         <div
-          className="h-full bg-indigo-600 transition-all duration-300"
+          className="h-full bg-white transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
 
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-10">
+      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F] sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <h1 className="text-base sm:text-lg font-semibold text-slate-900 truncate">{survey.title}</h1>
-              <p className="text-sm text-slate-500">
+              <h1 className="text-base sm:text-lg font-semibold text-[#FAFAFA] truncate">{survey.title}</h1>
+              <p className="text-sm text-[#666666]">
                 {t('surveys.player.sectionProgress', {
                   current: currentSectionIndex + 1,
                   total: sections.length,
@@ -635,7 +633,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
             </div>
             <div className="flex items-center gap-3 ml-4">
               {isSaving && (
-                <div className="flex items-center gap-2 text-sm text-slate-500">
+                <div className="flex items-center gap-2 text-sm text-[#666666]">
                   <Loader2 className="w-4 h-4 animate-spin" />
                   {t('surveys.player.saving')}
                 </div>
@@ -643,7 +641,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
               {onClose && (
                 <button
                   onClick={onClose}
-                  className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                  className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg transition-colors"
                   title={t('surveys.player.close')}
                 >
                   <X className="w-5 h-5" />
@@ -659,9 +657,9 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
         {/* Section Header */}
         {currentSection?.section && (
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900">{currentSection.section.title}</h2>
+            <h2 className="text-2xl font-bold text-[#FAFAFA]">{currentSection.section.title}</h2>
             {currentSection.section.description && (
-              <p className="mt-2 text-slate-600">{currentSection.section.description}</p>
+              <p className="mt-2 text-[#A0A0A0]">{currentSection.section.description}</p>
             )}
           </div>
         )}
@@ -669,15 +667,15 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
         {/* Questions */}
         <div className="space-y-8">
           {currentSection?.questions.map((question, index) => (
-            <div key={question.id} className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6">
+            <div key={question.id} className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-4 sm:p-6">
               <div className="flex gap-3 mb-4">
-                <span className="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center font-semibold text-sm shrink-0">
+                <span className="w-8 h-8 bg-[#1F1F1F] text-[#FAFAFA] rounded-lg flex items-center justify-center font-semibold text-sm shrink-0">
                   {index + 1}
                 </span>
                 <div>
-                  <h3 className="font-medium text-slate-900">
+                  <h3 className="font-medium text-[#FAFAFA]">
                     {question.question_text}
-                    {question.is_required && <span className="text-red-500 ml-1">*</span>}
+                    {question.is_required && <span className="text-[#EF4444] ml-1">*</span>}
                   </h3>
                 </div>
               </div>
@@ -695,11 +693,11 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
         </div>
 
         {/* Navigation */}
-        <div className="sticky bottom-0 bg-slate-50 sm:static sm:bg-transparent pt-4 sm:pt-6 mt-6 sm:mt-8 pb-[env(safe-area-inset-bottom)] sm:pb-0 border-t border-slate-200 flex items-center justify-between">
+        <div className="sticky bottom-0 bg-[#0A0A0A] sm:static sm:bg-transparent pt-4 sm:pt-6 mt-6 sm:mt-8 pb-[env(safe-area-inset-bottom)] sm:pb-0 border-t border-[#1F1F1F] flex items-center justify-between">
           <button
             onClick={handlePrevious}
             disabled={currentSectionIndex === 0}
-            className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2 text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-5 h-5" />
             {t('surveys.player.previous')}
@@ -710,7 +708,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
               <button
                 onClick={handleSubmit}
                 disabled={!isSectionComplete() || isSaving}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#22C55E] text-white font-medium rounded-xl hover:bg-[#22C55E]/90 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSaving ? (
                   <Loader2 className="w-5 h-5 animate-spin" />
@@ -725,7 +723,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
               <button
                 onClick={handleNext}
                 disabled={!isSectionComplete()}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-xl hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {t('surveys.player.next')}
                 <ChevronRight className="w-5 h-5" />

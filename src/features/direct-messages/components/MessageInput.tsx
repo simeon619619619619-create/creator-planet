@@ -64,7 +64,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
   const showCharCount = message.length > maxLength * 0.8;
 
   return (
-    <div className="border-t border-slate-200 bg-white p-3">
+    <div className="border-t border-[#1F1F1F] bg-[#0A0A0A] p-3">
       <div className="flex gap-2 items-end">
         <div className="flex-1 relative">
           <textarea
@@ -75,15 +75,15 @@ const MessageInput: React.FC<MessageInputProps> = ({
             placeholder={placeholder || t('directMessages.input.placeholder')}
             disabled={disabled || isSending}
             rows={1}
-            className={`w-full px-3 py-2 bg-slate-50 border rounded-lg text-sm resize-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors
-              ${isOverLimit ? 'border-red-300 focus:ring-red-500' : 'border-slate-200'}
+            className={`w-full px-3 py-2 bg-[#0A0A0A] border rounded-lg text-sm resize-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-colors
+              ${isOverLimit ? 'border-red-300 focus:ring-red-500' : 'border-[#1F1F1F]'}
               ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
             `}
           />
           {showCharCount && (
             <span
               className={`absolute bottom-1 right-2 text-xs ${
-                isOverLimit ? 'text-red-500' : 'text-slate-400'
+                isOverLimit ? 'text-[#EF4444]' : 'text-[#666666]'
               }`}
             >
               {remainingChars}
@@ -93,7 +93,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
         <button
           onClick={handleSend}
           disabled={!message.trim() || isSending || disabled || isOverLimit}
-          className="shrink-0 p-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="shrink-0 p-2.5 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           title={t('directMessages.input.sendButton')}
         >
           {isSending ? (
@@ -103,7 +103,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
           )}
         </button>
       </div>
-      <p className="text-xs text-slate-400 mt-1.5 px-1">
+      <p className="text-xs text-[#666666] mt-1.5 px-1">
         {t('directMessages.input.hint')}
       </p>
     </div>

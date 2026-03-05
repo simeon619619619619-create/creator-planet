@@ -133,9 +133,9 @@ const StudentOnboardingPage: React.FC = () => {
   // Syncing state
   if (isSyncing) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-8 h-8 border-2 border-[#333333] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-white">{t('studentOnboarding.settingUp')}</p>
         </div>
       </div>

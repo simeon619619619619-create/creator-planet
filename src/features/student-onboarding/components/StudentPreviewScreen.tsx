@@ -130,7 +130,7 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
           {t('studentOnboarding.preview.title')}
         </h1>
-        <p className="text-slate-300 text-sm md:text-base max-w-md mx-auto">
+        <p className="text-[#A0A0A0] text-sm md:text-base max-w-md mx-auto">
           {t('studentOnboarding.preview.subtitle', { interest: interestDisplay.toLowerCase() })}
         </p>
       </div>
@@ -147,18 +147,18 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
         <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 blur-xl rounded-2xl" />
 
         {/* Main mockup */}
-        <div className="relative bg-slate-900/95 rounded-xl border border-slate-600/50 shadow-2xl overflow-hidden backdrop-blur-sm" style={{ minHeight: '55vh', maxHeight: '70vh' }}>
+        <div className="relative bg-[#0A0A0A]/95 rounded-xl border border-[#1F1F1F]/50 overflow-hidden backdrop-blur-sm" style={{ minHeight: '55vh', maxHeight: '70vh' }}>
           {/* Title bar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-800/80 border-b border-slate-700/50">
+          <div className="flex items-center justify-between px-4 py-3 bg-[#0A0A0A]/80 border-b border-[#1F1F1F]/50">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-[#EF4444]/100/80" />
+                <div className="w-3 h-3 rounded-full bg-[#EAB308]/100/80" />
+                <div className="w-3 h-3 rounded-full bg-[#22C55E]/100/80" />
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-emerald-500 rounded flex items-center justify-center">
+              <div className="w-5 h-5 bg-[#22C55E]/100 rounded flex items-center justify-center">
                 <span className="text-white text-xs font-bold">C</span>
               </div>
               <span className="text-white font-semibold text-sm">{t('studentOnboarding.preview.myLearning')}</span>
@@ -169,21 +169,21 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
           {/* Dashboard content */}
           <div className="flex flex-1">
             {/* Sidebar */}
-            <div className="w-14 md:w-16 bg-slate-800/60 border-r border-slate-700/30 py-4 px-2 space-y-3">
+            <div className="w-14 md:w-16 bg-[#0A0A0A]/60 border-r border-[#1F1F1F]/30 py-4 px-2 space-y-3">
               <div className="flex flex-col items-center p-2 rounded-lg bg-emerald-600/20 border border-emerald-500/30">
                 <BookOpen size={18} className="text-emerald-400" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <Users size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <Users size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <MessageCircle size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <MessageCircle size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <Calendar size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <Calendar size={18} className="text-[#666666]" />
               </div>
-              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-slate-700/30 transition-colors">
-                <Trophy size={18} className="text-slate-400" />
+              <div className="flex flex-col items-center p-2 rounded-lg hover:bg-[#151515]/30 transition-colors">
+                <Trophy size={18} className="text-[#666666]" />
               </div>
             </div>
 
@@ -194,7 +194,7 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
                 <h2 className="text-base md:text-lg font-semibold text-white">
                   {t('studentOnboarding.preview.welcomeBack')}
                 </h2>
-                <p className="text-slate-400 text-sm">
+                <p className="text-[#666666] text-sm">
                   {t('studentOnboarding.preview.continueJourney', { interest: interestDisplay.toLowerCase() })}
                 </p>
               </div>
@@ -202,19 +202,19 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
               {/* Stats cards with animated counting */}
               <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
                 {/* Courses */}
-                <div className="bg-slate-800/60 rounded-xl p-3 md:p-4 border border-slate-700/30 hover:border-emerald-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-emerald-500/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-[#22C55E]/100/20 rounded-lg flex items-center justify-center">
                       <BookOpen size={16} className="text-emerald-400 md:hidden" />
                       <BookOpen size={20} className="text-emerald-400 hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{coursesCount}</div>
-                  <div className="text-xs text-slate-400 mt-1">{t('studentOnboarding.preview.enrolledCourses')}</div>
+                  <div className="text-xs text-[#666666] mt-1">{t('studentOnboarding.preview.enrolledCourses')}</div>
                 </div>
 
                 {/* Progress */}
-                <div className="bg-slate-800/60 rounded-xl p-3 md:p-4 border border-slate-700/30 hover:border-cyan-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-cyan-500/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-8 h-8 md:w-10 md:h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
                       <TrendingUp size={16} className="text-cyan-400 md:hidden" />
@@ -222,26 +222,26 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{progressCount}%</div>
-                  <div className="text-xs text-slate-400 mt-1">{t('studentOnboarding.preview.avgProgress')}</div>
+                  <div className="text-xs text-[#666666] mt-1">{t('studentOnboarding.preview.avgProgress')}</div>
                 </div>
 
                 {/* Points */}
-                <div className="bg-slate-800/60 rounded-xl p-3 md:p-4 border border-slate-700/30 hover:border-amber-500/30 transition-colors">
+                <div className="bg-[#0A0A0A]/60 rounded-xl p-3 md:p-4 border border-[#1F1F1F]/30 hover:border-amber-500/30 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-amber-500/20 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-[#EAB308]/100/20 rounded-lg flex items-center justify-center">
                       <Trophy size={16} className="text-amber-400 md:hidden" />
                       <Trophy size={20} className="text-amber-400 hidden md:block" />
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{pointsCount}</div>
-                  <div className="text-xs text-slate-400 mt-1">{t('studentOnboarding.preview.pointsEarned')}</div>
+                  <div className="text-xs text-[#666666] mt-1">{t('studentOnboarding.preview.pointsEarned')}</div>
                 </div>
               </div>
 
               {/* Continue learning card - larger */}
               <div className="bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-xl p-4 border border-emerald-500/20 mt-auto">
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-14 md:w-24 md:h-16 bg-slate-700 rounded-lg flex items-center justify-center shrink-0">
+                  <div className="w-20 h-14 md:w-24 md:h-16 bg-[#151515] rounded-lg flex items-center justify-center shrink-0">
                     <Play size={20} className="text-emerald-400 md:hidden" />
                     <Play size={24} className="text-emerald-400 hidden md:block" />
                   </div>
@@ -249,7 +249,7 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
                     <p className="text-sm md:text-base font-medium text-white truncate">
                       {t('studentOnboarding.preview.continueLearning')}
                     </p>
-                    <p className="text-xs md:text-sm text-slate-400">
+                    <p className="text-xs md:text-sm text-[#666666]">
                       {t('studentOnboarding.preview.lesson5of12')}
                     </p>
                   </div>
@@ -271,7 +271,7 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
       >
         <button
           onClick={onContinue}
-          className="group px-8 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl shadow-lg shadow-emerald-500/30 transition-all duration-200 flex items-center gap-2 hover:scale-[1.02]"
+          className="group px-8 py-3.5 bg-emerald-600 hover:bg-[#22C55E]/100 text-white font-semibold rounded-xl shadow-emerald-500/30 transition-all duration-200 flex items-center gap-2 hover:scale-[1.02]"
         >
           <span>{t('studentOnboarding.continue')}</span>
           <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
@@ -280,7 +280,7 @@ const StudentPreviewScreen: React.FC<StudentPreviewScreenProps> = ({
 
       {/* Hint text */}
       <p
-        className={`mt-3 text-slate-400 text-sm relative z-10 transition-all duration-500 ease-out ${
+        className={`mt-3 text-[#666666] text-sm relative z-10 transition-all duration-500 ease-out ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ transitionDelay: '500ms' }}

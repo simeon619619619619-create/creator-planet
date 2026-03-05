@@ -137,8 +137,8 @@ const CreatorOnboardingPage: React.FC = () => {
   // Loading state
   if (sessionLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#333333] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -146,9 +146,9 @@ const CreatorOnboardingPage: React.FC = () => {
   // Syncing state
   if (isSyncing) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-8 h-8 border-2 border-[#333333] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-white">{t('onboarding.settingUp')}</p>
         </div>
       </div>

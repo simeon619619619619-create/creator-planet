@@ -255,7 +255,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
             <button
               onClick={handleZoomOut}
               disabled={zoom <= MIN_ZOOM}
-              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               title={t('imageCrop.zoomOut')}
             >
               <ZoomOut size={20} />
@@ -269,14 +269,14 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
                 step={ZOOM_STEP}
                 value={zoom}
                 onChange={(e) => setZoom(parseFloat(e.target.value))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                className="w-full h-2 bg-[#1F1F1F] rounded-lg appearance-none cursor-pointer accent-white"
               />
             </div>
 
             <button
               onClick={handleZoomIn}
               disabled={zoom >= MAX_ZOOM}
-              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               title={t('imageCrop.zoomIn')}
             >
               <ZoomIn size={20} />
@@ -284,7 +284,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
 
             <button
               onClick={handleReset}
-              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+              className="p-2 text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors"
               title={t('imageCrop.reset')}
             >
               <RotateCcw size={20} />
@@ -295,17 +295,17 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200">
+        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[#1F1F1F]">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
+            className="px-4 py-2 text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors"
           >
             {t('imageCrop.cancelButton')}
           </button>
           <button
             onClick={handleCrop}
             disabled={processing}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-black bg-white rounded-lg hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {processing ? (
               <>

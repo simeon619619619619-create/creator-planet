@@ -39,10 +39,10 @@ export function RewardsPage() {
     return (
       <div className="max-w-4xl mx-auto py-8 px-4">
         <div className="animate-pulse space-y-4">
-          <div className="h-8 w-48 bg-gray-200 rounded" />
+          <div className="h-8 w-48 bg-[#1F1F1F] rounded" />
           <div className="grid md:grid-cols-2 gap-4">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-48 bg-gray-200 rounded-xl" />
+              <div key={i} className="h-48 bg-[#1F1F1F] rounded-xl" />
             ))}
           </div>
         </div>
@@ -53,7 +53,7 @@ export function RewardsPage() {
   if (error) {
     return (
       <div className="max-w-4xl mx-auto py-8 px-4">
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700">
+        <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-xl p-4 text-[#EF4444]">
           {t('studentPlus.rewards.loadError')}
         </div>
       </div>
@@ -64,19 +64,19 @@ export function RewardsPage() {
     <div className="max-w-4xl mx-auto py-8 px-4">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">{t('studentPlus.rewards.title')}</h1>
-        <div className="bg-purple-100 text-purple-700 px-4 py-2 rounded-lg font-semibold">
+        <h1 className="text-3xl font-bold text-[#FAFAFA]">{t('studentPlus.rewards.title')}</h1>
+        <div className="bg-[#1F1F1F] text-[#A0A0A0] px-4 py-2 rounded-lg font-semibold">
           {balance.total_points.toLocaleString()} {t('studentPlus.rewards.pointsAvailable')}
         </div>
       </div>
 
       {/* Error Banner */}
       {redeemError && (
-        <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+        <div className="mb-6 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg p-4 text-[#EF4444]">
           {redeemError}
           <button
             onClick={() => setRedeemError(null)}
-            className="ml-2 text-red-500 hover:text-red-600"
+            className="ml-2 text-[#EF4444] hover:text-[#EF4444]"
           >
             {t('studentPlus.rewards.dismiss')}
           </button>
@@ -84,13 +84,13 @@ export function RewardsPage() {
       )}
 
       {/* Tabs */}
-      <div className="flex gap-4 mb-6 border-b border-gray-200">
+      <div className="flex gap-4 mb-6 border-b border-[#1F1F1F]">
         <button
           onClick={() => setActiveTab('available')}
           className={`pb-3 px-1 font-medium transition-colors ${
             activeTab === 'available'
-              ? 'border-b-2 border-purple-600 text-purple-600'
-              : 'text-gray-500 hover:text-gray-700'
+              ? 'border-b-2 border-[#1F1F1F] text-[#FAFAFA]'
+              : 'text-[#666666] hover:text-[#A0A0A0]'
           }`}
         >
           {t('studentPlus.rewards.tabs.availableRewards')}
@@ -99,8 +99,8 @@ export function RewardsPage() {
           onClick={() => setActiveTab('my-rewards')}
           className={`pb-3 px-1 font-medium transition-colors ${
             activeTab === 'my-rewards'
-              ? 'border-b-2 border-purple-600 text-purple-600'
-              : 'text-gray-500 hover:text-gray-700'
+              ? 'border-b-2 border-[#1F1F1F] text-[#FAFAFA]'
+              : 'text-[#666666] hover:text-[#A0A0A0]'
           }`}
         >
           {t('studentPlus.rewards.tabs.myRewards')} ({myRedemptions.length})
@@ -111,7 +111,7 @@ export function RewardsPage() {
       {activeTab === 'available' ? (
         <div className="grid md:grid-cols-2 gap-4">
           {rewards.length === 0 ? (
-            <div className="col-span-2 text-center py-12 text-gray-500">
+            <div className="col-span-2 text-center py-12 text-[#666666]">
               {t('studentPlus.rewards.noRewardsAvailable')}
             </div>
           ) : (
@@ -129,11 +129,11 @@ export function RewardsPage() {
       ) : (
         <div className="space-y-4">
           {myRedemptions.length === 0 ? (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-[#666666]">
               {t('studentPlus.rewards.noRedeemedRewards')}
               <button
                 onClick={() => setActiveTab('available')}
-                className="block mx-auto mt-2 text-purple-600 hover:text-purple-700 font-medium"
+                className="block mx-auto mt-2 text-[#FAFAFA] hover:text-[#A0A0A0] font-medium"
               >
                 {t('studentPlus.rewards.browseAvailableRewards')}
               </button>

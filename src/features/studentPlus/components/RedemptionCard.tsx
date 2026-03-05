@@ -11,11 +11,11 @@ interface RedemptionCardProps {
 }
 
 const statusColors: Record<RedemptionStatus, string> = {
-  pending: 'bg-yellow-100 text-yellow-800',
-  active: 'bg-green-100 text-green-800',
-  used: 'bg-gray-100 text-gray-600',
-  expired: 'bg-red-100 text-red-800',
-  revoked: 'bg-red-100 text-red-800',
+  pending: 'bg-[#EAB308]/10 text-[#EAB308]',
+  active: 'bg-[#22C55E]/10 text-[#22C55E]',
+  used: 'bg-[#1F1F1F] text-[#A0A0A0]',
+  expired: 'bg-[#EF4444]/10 text-[#EF4444]',
+  revoked: 'bg-[#EF4444]/10 text-[#EF4444]',
 };
 
 const rewardTypeIcons: Record<RewardType, string> = {
@@ -66,13 +66,13 @@ export function RedemptionCard({ redemption }: RedemptionCardProps) {
   const daysRemaining = getDaysRemaining();
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5">
+    <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl p-5">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-4">
           <div className="text-3xl">{rewardTypeIcons[redemption.reward_type]}</div>
           <div>
-            <h3 className="font-semibold text-gray-900">{rewardName}</h3>
-            <p className="text-sm text-gray-500 mt-1">
+            <h3 className="font-semibold text-[#FAFAFA]">{rewardName}</h3>
+            <p className="text-sm text-[#666666] mt-1">
               {t('studentPlus.redemption.redeemedOn')} {formatDate(redemption.created_at)}
             </p>
           </div>
@@ -84,15 +84,15 @@ export function RedemptionCard({ redemption }: RedemptionCardProps) {
 
       {/* Voucher Code Display */}
       {redemption.voucher_code && redemption.status === 'active' && (
-        <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
-          <div className="text-xs text-purple-600 font-medium mb-1">{t('studentPlus.redemption.yourVoucherCode')}</div>
+        <div className="mt-4 p-4 bg-[#151515] border border-[#1F1F1F] rounded-lg">
+          <div className="text-xs text-[#FAFAFA] font-medium mb-1">{t('studentPlus.redemption.yourVoucherCode')}</div>
           <div className="flex items-center gap-2">
-            <code className="text-lg font-mono font-bold text-purple-800">
+            <code className="text-lg font-mono font-bold text-[#FAFAFA]">
               {redemption.voucher_code}
             </code>
             <button
               onClick={() => navigator.clipboard.writeText(redemption.voucher_code!)}
-              className="text-purple-600 hover:text-purple-700 text-sm"
+              className="text-[#FAFAFA] hover:text-[#A0A0A0] text-sm"
             >
               {t('studentPlus.redemption.copy')}
             </button>
@@ -102,15 +102,15 @@ export function RedemptionCard({ redemption }: RedemptionCardProps) {
 
       {/* Validity Info */}
       {redemption.valid_until && redemption.status === 'active' && (
-        <div className={`mt-4 p-3 rounded-lg ${isExpiringSoon() ? 'bg-yellow-50 border border-yellow-200' : 'bg-gray-50'}`}>
+        <div className={`mt-4 p-3 rounded-lg ${isExpiringSoon() ? 'bg-[#EAB308]/10 border border-[#EAB308]/20' : 'bg-[#0A0A0A]'}`}>
           <div className="flex items-center justify-between">
-            <span className={`text-sm ${isExpiringSoon() ? 'text-yellow-700' : 'text-gray-600'}`}>
+            <span className={`text-sm ${isExpiringSoon() ? 'text-yellow-700' : 'text-[#A0A0A0]'}`}>
               {isExpiringSoon() ? t('studentPlus.redemption.expiresSoon') : t('studentPlus.redemption.validUntil')}
             </span>
-            <span className={`font-medium ${isExpiringSoon() ? 'text-yellow-800' : 'text-gray-900'}`}>
+            <span className={`font-medium ${isExpiringSoon() ? 'text-[#EAB308]' : 'text-[#FAFAFA]'}`}>
               {formatDate(redemption.valid_until)}
               {daysRemaining !== null && daysRemaining > 0 && (
-                <span className="text-sm font-normal text-gray-500 ml-1">
+                <span className="text-sm font-normal text-[#666666] ml-1">
                   ({daysRemaining === 1 ? t('studentPlus.redemption.daysLeft', { count: daysRemaining }) : t('studentPlus.redemption.daysLeftPlural', { count: daysRemaining })})
                 </span>
               )}
@@ -121,13 +121,13 @@ export function RedemptionCard({ redemption }: RedemptionCardProps) {
 
       {/* Used Info */}
       {redemption.status === 'used' && redemption.used_at && (
-        <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+        <div className="mt-4 p-3 bg-[#0A0A0A] rounded-lg">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">{t('studentPlus.redemption.usedOn')}</span>
-            <span className="font-medium text-gray-900">{formatDate(redemption.used_at)}</span>
+            <span className="text-sm text-[#A0A0A0]">{t('studentPlus.redemption.usedOn')}</span>
+            <span className="font-medium text-[#FAFAFA]">{formatDate(redemption.used_at)}</span>
           </div>
           {redemption.used_for_reference && (
-            <div className="text-xs text-gray-500 mt-1">
+            <div className="text-xs text-[#666666] mt-1">
               {t('studentPlus.redemption.reference')} {redemption.used_for_reference}
             </div>
           )}
@@ -136,7 +136,7 @@ export function RedemptionCard({ redemption }: RedemptionCardProps) {
 
       {/* Points Spent */}
       {redemption.points_spent > 0 && (
-        <div className="mt-4 text-sm text-gray-500">
+        <div className="mt-4 text-sm text-[#666666]">
           {t('studentPlus.redemption.pointsSpent')} {redemption.points_spent.toLocaleString()}
         </div>
       )}

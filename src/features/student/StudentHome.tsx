@@ -81,20 +81,20 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+        <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 text-white">
+      <div className="bg-[#0A0A0A] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
           <h1 className="text-2xl md:text-3xl font-bold">
             {t('studentHome.welcome.title', { firstName: profile?.full_name?.split(' ')[0] || 'Student' })}
           </h1>
-          <p className="mt-2 text-sm md:text-base text-indigo-100">
+          <p className="mt-2 text-sm md:text-base text-[#A0A0A0]">
             {t('studentHome.welcome.subtitle')}
           </p>
         </div>
@@ -103,38 +103,38 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8">
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
-          <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl p-4 md:p-6 border border-[#1F1F1F]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 md:p-3 bg-indigo-100 rounded-lg shrink-0">
-                <Users className="w-5 h-5 md:w-6 md:h-6 text-indigo-600" />
+              <div className="p-2.5 md:p-3 bg-[#1F1F1F] rounded-lg shrink-0">
+                <Users className="w-5 h-5 md:w-6 md:h-6 text-[#FAFAFA]" />
               </div>
               <div className="min-w-0">
-                <p className="text-xl md:text-2xl font-bold text-slate-900">{myCommunities.length}</p>
-                <p className="text-xs md:text-sm text-slate-600 truncate">{t('studentHome.stats.communitiesJoined')}</p>
+                <p className="text-xl md:text-2xl font-bold text-[#FAFAFA]">{myCommunities.length}</p>
+                <p className="text-xs md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.communitiesJoined')}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl p-4 md:p-6 border border-[#1F1F1F]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 md:p-3 bg-green-100 rounded-lg shrink-0">
-                <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
+              <div className="p-2.5 md:p-3 bg-[#22C55E]/10 rounded-lg shrink-0">
+                <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-[#22C55E]" />
               </div>
               <div className="min-w-0">
-                <p className="text-xl md:text-2xl font-bold text-slate-900">{enrolledCourses.length}</p>
-                <p className="text-xs md:text-sm text-slate-600 truncate">{t('studentHome.stats.coursesEnrolled')}</p>
+                <p className="text-xl md:text-2xl font-bold text-[#FAFAFA]">{enrolledCourses.length}</p>
+                <p className="text-xs md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.coursesEnrolled')}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-slate-200">
+          <div className="bg-[#0A0A0A] rounded-xl p-4 md:p-6 border border-[#1F1F1F]">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 md:p-3 bg-purple-100 rounded-lg shrink-0">
-                <Compass className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+              <div className="p-2.5 md:p-3 bg-[#1F1F1F] rounded-lg shrink-0">
+                <Compass className="w-5 h-5 md:w-6 md:h-6 text-[#FAFAFA]" />
               </div>
               <div className="min-w-0">
-                <p className="text-xl md:text-2xl font-bold text-slate-900">{discoverCommunities.length}</p>
-                <p className="text-xs md:text-sm text-slate-600 truncate">{t('studentHome.stats.communitiesToExplore')}</p>
+                <p className="text-xl md:text-2xl font-bold text-[#FAFAFA]">{discoverCommunities.length}</p>
+                <p className="text-xs md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.communitiesToExplore')}</p>
               </div>
             </div>
           </div>
@@ -151,10 +151,10 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
         {myCommunities.length > 0 && (
           <section className="mb-8 md:mb-10">
             <div className="flex items-center justify-between mb-3 md:mb-4">
-              <h2 className="text-lg md:text-xl font-semibold text-slate-900">{t('studentHome.myCommunities.title')}</h2>
+              <h2 className="text-lg md:text-xl font-semibold text-[#FAFAFA]">{t('studentHome.myCommunities.title')}</h2>
               <button
                 onClick={() => onNavigate('community')}
-                className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+                className="text-sm text-[#FAFAFA] hover:text-[#A0A0A0] font-medium flex items-center gap-1"
               >
                 {t('studentHome.myCommunities.viewAll')} <ChevronRight className="w-4 h-4" />
               </button>
@@ -164,7 +164,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 <div
                   key={community.id}
                   onClick={() => onNavigate('community')}
-                  className="bg-white rounded-xl p-5 shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer"
+                  className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F] hover:shadow-md hover:border-[#1F1F1F] transition-all cursor-pointer"
                 >
                   <div className="flex items-start gap-3">
                     {community.thumbnail_url ? (
@@ -174,13 +174,13 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                         className="w-12 h-12 rounded-lg object-cover"
                       />
                     ) : (
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-12 h-12 rounded-lg bg-[#1F1F1F] flex items-center justify-center text-white font-bold text-lg">
                         {community.name[0]}
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-slate-900 truncate">{community.name}</h3>
-                      <p className="text-sm text-slate-500 line-clamp-2 mt-1">
+                      <h3 className="font-semibold text-[#FAFAFA] truncate">{community.name}</h3>
+                      <p className="text-sm text-[#666666] line-clamp-2 mt-1">
                         {community.description || 'A great community to be part of'}
                       </p>
                     </div>
@@ -195,10 +195,10 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
         {enrolledCourses.length > 0 && (
           <section className="mb-8 md:mb-10">
             <div className="flex items-center justify-between mb-3 md:mb-4">
-              <h2 className="text-lg md:text-xl font-semibold text-slate-900">{t('studentHome.continueLearning.title')}</h2>
+              <h2 className="text-lg md:text-xl font-semibold text-[#FAFAFA]">{t('studentHome.continueLearning.title')}</h2>
               <button
                 onClick={() => onNavigate('courses')}
-                className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+                className="text-sm text-[#FAFAFA] hover:text-[#A0A0A0] font-medium flex items-center gap-1"
               >
                 {t('studentHome.continueLearning.viewAll')} <ChevronRight className="w-4 h-4" />
               </button>
@@ -208,7 +208,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 <div
                   key={course.id}
                   onClick={() => onNavigate('courses')}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer"
+                  className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:shadow-md hover:border-[#1F1F1F] transition-all cursor-pointer"
                 >
                   {course.thumbnail_url ? (
                     <img
@@ -222,8 +222,8 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                     </div>
                   )}
                   <div className="p-4">
-                    <h3 className="font-semibold text-slate-900 truncate">{course.title}</h3>
-                    <p className="text-sm text-slate-500 line-clamp-2 mt-1">
+                    <h3 className="font-semibold text-[#FAFAFA] truncate">{course.title}</h3>
+                    <p className="text-sm text-[#666666] line-clamp-2 mt-1">
                       {course.description || 'Continue your learning journey'}
                     </p>
                   </div>
@@ -237,14 +237,14 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
         <section>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
             <div>
-              <h2 className="text-lg md:text-xl font-semibold text-slate-900">{t('studentHome.discoverCommunities.title')}</h2>
-              <p className="text-xs md:text-sm text-slate-600 mt-1">
+              <h2 className="text-lg md:text-xl font-semibold text-[#FAFAFA]">{t('studentHome.discoverCommunities.title')}</h2>
+              <p className="text-xs md:text-sm text-[#A0A0A0] mt-1">
                 {t('studentHome.discoverCommunities.subtitle')}
               </p>
             </div>
             <button
               onClick={() => navigate('/communities')}
-              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+              className="text-sm text-[#FAFAFA] hover:text-[#A0A0A0] font-medium flex items-center gap-1"
             >
               {t('studentHome.discoverCommunities.browseAll')} <ArrowRight className="w-4 h-4" />
             </button>
@@ -253,25 +253,25 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
           {/* Search */}
           <div className="mb-6">
             <div className="relative max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666666]" />
               <input
                 type="text"
                 placeholder={t('studentHome.discoverCommunities.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2.5 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               />
             </div>
           </div>
 
           {/* Communities Grid */}
           {filteredDiscoverCommunities.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-xl border border-slate-200">
-              <Sparkles className="w-12 h-12 text-slate-300 mx-auto" />
-              <h3 className="mt-4 text-lg font-semibold text-slate-900">
+            <div className="text-center py-12 bg-[#0A0A0A] rounded-xl border border-[#1F1F1F]">
+              <Sparkles className="w-12 h-12 text-[#A0A0A0] mx-auto" />
+              <h3 className="mt-4 text-lg font-semibold text-[#FAFAFA]">
                 {searchQuery ? t('studentHome.discoverCommunities.noResultsTitle') : t('studentHome.discoverCommunities.allCaughtUpTitle')}
               </h3>
-              <p className="mt-2 text-slate-600">
+              <p className="mt-2 text-[#A0A0A0]">
                 {searchQuery
                   ? t('studentHome.discoverCommunities.noResultsSubtitle')
                   : t('studentHome.discoverCommunities.allCaughtUpSubtitle')}
@@ -279,7 +279,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="mt-4 text-indigo-600 hover:text-indigo-700 font-medium"
+                  className="mt-4 text-[#FAFAFA] hover:text-[#A0A0A0] font-medium"
                 >
                   {t('studentHome.discoverCommunities.clearSearch')}
                 </button>
@@ -298,7 +298,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                   <div
                     key={community.id}
                     onClick={() => navigate(`/community/${community.id}`)}
-                    className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer group"
+                    className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:shadow-md hover:border-[#1F1F1F] transition-all cursor-pointer group"
                   >
                     <div className="relative">
                       <img
@@ -309,8 +309,8 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                       {/* Pricing Badge */}
                       <div className={`absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${
                         isFree
-                          ? 'bg-green-500 text-white'
-                          : 'bg-white text-slate-900 shadow-sm'
+                          ? 'bg-[#22C55E]/100 text-white'
+                          : 'bg-[#0A0A0A] text-[#FAFAFA]'
                       }`}>
                         {isFree ? (
                           <Gift className="w-3 h-3" />
@@ -325,20 +325,20 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                     <div className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-slate-900 truncate">{community.name}</h3>
-                          <p className="text-sm text-slate-500 mt-1">
+                          <h3 className="font-semibold text-[#FAFAFA] truncate">{community.name}</h3>
+                          <p className="text-sm text-[#666666] mt-1">
                             {t('studentHome.communityCard.by', { creatorName: community.creator.full_name })}
                           </p>
                         </div>
-                        <div className="flex items-center gap-1 text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded-full">
+                        <div className="flex items-center gap-1 text-xs text-[#666666] bg-[#1F1F1F] px-2 py-1 rounded-full">
                           <Users className="w-3 h-3" />
                           {community.memberCount}
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 line-clamp-2 mt-2">
+                      <p className="text-sm text-[#A0A0A0] line-clamp-2 mt-2">
                         {community.description || 'Join this community to learn and connect'}
                       </p>
-                      <button className="mt-3 w-full py-2 bg-indigo-50 text-indigo-600 rounded-lg font-medium text-sm hover:bg-indigo-100 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
+                      <button className="mt-3 w-full py-2 bg-[#151515] text-[#FAFAFA] rounded-lg font-medium text-sm hover:bg-[#1F1F1F] transition-colors group-hover:bg-white group-hover:text-white">
                         {t('studentHome.communityCard.viewCommunity')}
                       </button>
                     </div>
@@ -353,7 +353,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
             <div className="text-center mt-6">
               <button
                 onClick={() => navigate('/communities')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
               >
                 <Compass className="w-5 h-5" />
                 {t('studentHome.exploreButton', { count: filteredDiscoverCommunities.length })}
@@ -365,16 +365,16 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
         {/* Empty State - No communities at all */}
         {myCommunities.length === 0 && discoverCommunities.length === 0 && (
           <div className="text-center py-16">
-            <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Compass className="w-10 h-10 text-indigo-600" />
+            <div className="w-20 h-20 bg-[#1F1F1F] rounded-full flex items-center justify-center mx-auto mb-6">
+              <Compass className="w-10 h-10 text-[#FAFAFA]" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900">{t('studentHome.emptyState.title')}</h2>
-            <p className="mt-2 text-slate-600 max-w-md mx-auto">
+            <h2 className="text-2xl font-bold text-[#FAFAFA]">{t('studentHome.emptyState.title')}</h2>
+            <p className="mt-2 text-[#A0A0A0] max-w-md mx-auto">
               {t('studentHome.emptyState.subtitle')}
             </p>
             <button
               onClick={() => navigate('/communities')}
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
             >
               <Sparkles className="w-5 h-5" />
               {t('studentHome.emptyState.browseButton')}

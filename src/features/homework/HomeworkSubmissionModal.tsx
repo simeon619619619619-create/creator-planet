@@ -33,15 +33,15 @@ const ACCEPTED_FILE_TYPES = [
 
 const getFileIcon = (file: File) => {
   if (file.type.startsWith('image/')) {
-    return <Image size={24} className="text-blue-500" />;
+    return <Image size={24} className="text-[#A0A0A0]" />;
   }
   if (file.type.startsWith('video/')) {
-    return <Film size={24} className="text-purple-500" />;
+    return <Film size={24} className="text-[#FAFAFA]" />;
   }
   if (file.type === 'application/pdf') {
-    return <FileText size={24} className="text-red-500" />;
+    return <FileText size={24} className="text-[#EF4444]" />;
   }
-  return <File size={24} className="text-slate-500" />;
+  return <File size={24} className="text-[#666666]" />;
 };
 
 const formatFileSize = (bytes: number): string => {
@@ -229,29 +229,29 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col overflow-hidden">
+      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
-          <h3 className="text-lg font-semibold text-slate-900">Submit Homework</h3>
+        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+          <h3 className="text-lg font-semibold text-[#FAFAFA]">Submit Homework</h3>
           <button
             onClick={handleClose}
-            className="p-1 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1 hover:bg-[#1F1F1F] rounded-lg transition-colors"
           >
-            <X size={20} className="text-slate-500" />
+            <X size={20} className="text-[#666666]" />
           </button>
         </div>
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {/* Assignment Info */}
-          <div className="bg-slate-50 rounded-lg p-4">
-            <h4 className="font-medium text-slate-900 mb-1">{assignment.title}</h4>
+          <div className="bg-[#0A0A0A] rounded-lg p-4">
+            <h4 className="font-medium text-[#FAFAFA] mb-1">{assignment.title}</h4>
             {assignment.description && (
-              <p className="text-sm text-slate-600 whitespace-pre-wrap">
+              <p className="text-sm text-[#A0A0A0] whitespace-pre-wrap">
                 {assignment.description}
               </p>
             )}
-            <div className="flex items-center gap-4 mt-2 text-xs text-slate-500">
+            <div className="flex items-center gap-4 mt-2 text-xs text-[#666666]">
               <span>Max Points: {assignment.max_points}</span>
               {assignment.due_date && (
                 <span>
@@ -263,27 +263,27 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg text-sm">
+            <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 text-[#EF4444] px-4 py-2 rounded-lg text-sm">
               {errorMessage}
             </div>
           )}
 
           {/* Text Response */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               Your Response
             </label>
             <textarea
               value={textResponse}
               onChange={(e) => setTextResponse(e.target.value)}
-              className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent h-32 resize-none"
+              className="w-full px-4 py-3 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-32 resize-none"
               placeholder="Write your response here..."
             />
           </div>
 
           {/* File Upload Area */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               Attachments
             </label>
             <div
@@ -295,8 +295,8 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
                 border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors
                 ${
                   isDragging
-                    ? 'border-indigo-500 bg-indigo-50'
-                    : 'border-slate-300 hover:border-slate-400 hover:bg-slate-50'
+                    ? 'border-[#333333] bg-[#151515]'
+                    : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
                 }
               `}
             >
@@ -310,12 +310,12 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
               />
               <Upload
                 size={32}
-                className={`mx-auto mb-2 ${isDragging ? 'text-indigo-500' : 'text-slate-400'}`}
+                className={`mx-auto mb-2 ${isDragging ? 'text-[#FAFAFA]' : 'text-[#666666]'}`}
               />
-              <p className="text-sm text-slate-600 mb-1">
+              <p className="text-sm text-[#A0A0A0] mb-1">
                 Drag and drop files here, or click to browse
               </p>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#666666]">
                 Images, videos, PDFs, and documents up to {MAX_FILE_SIZE_MB}MB each
               </p>
             </div>
@@ -328,8 +328,8 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
                     key={index}
                     className={`flex items-center gap-3 p-3 rounded-lg border ${
                       uploadedFile.error
-                        ? 'border-red-200 bg-red-50'
-                        : 'border-slate-200 bg-slate-50'
+                        ? 'border-[#EF4444]/20 bg-[#EF4444]/10'
+                        : 'border-[#1F1F1F] bg-[#0A0A0A]'
                     }`}
                   >
                     {/* File Preview/Icon */}
@@ -347,29 +347,29 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
 
                     {/* File Info */}
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-700 truncate">
+                      <p className="text-sm font-medium text-[#A0A0A0] truncate">
                         {uploadedFile.file.name}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-[#666666]">
                         {formatFileSize(uploadedFile.file.size)}
                         {uploadedFile.error && (
-                          <span className="text-red-600 ml-2">{uploadedFile.error}</span>
+                          <span className="text-[#EF4444] ml-2">{uploadedFile.error}</span>
                         )}
                       </p>
                     </div>
 
                     {/* Status/Actions */}
                     {uploadedFile.uploading ? (
-                      <Loader2 size={18} className="animate-spin text-indigo-500" />
+                      <Loader2 size={18} className="animate-spin text-[#FAFAFA]" />
                     ) : (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleRemoveFile(index);
                         }}
-                        className="p-1 hover:bg-slate-200 rounded transition-colors"
+                        className="p-1 hover:bg-[#151515] rounded transition-colors"
                       >
-                        <Trash2 size={18} className="text-slate-500 hover:text-red-500" />
+                        <Trash2 size={18} className="text-[#666666] hover:text-[#EF4444]" />
                       </button>
                     )}
                   </div>
@@ -380,17 +380,17 @@ const HomeworkSubmissionModal: React.FC<HomeworkSubmissionModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 p-4 border-t border-slate-100">
+        <div className="flex gap-3 p-4 border-t border-[#1F1F1F]">
           <button
             onClick={handleClose}
-            className="flex-1 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium text-slate-700"
+            className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#0A0A0A] font-medium text-[#A0A0A0]"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
             disabled={!canSubmit}
-            className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
+            className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 font-medium flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>

@@ -145,11 +145,11 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
   // Format level display
   const getLevelBadge = (level: number) => {
     const colors = [
-      'bg-slate-100 text-slate-600',     // Level 1
-      'bg-green-100 text-green-700',     // Level 2
-      'bg-blue-100 text-blue-700',       // Level 3
-      'bg-purple-100 text-purple-700',   // Level 4
-      'bg-amber-100 text-amber-700',     // Level 5+
+      'bg-[#1F1F1F] text-[#A0A0A0]',     // Level 1
+      'bg-[#22C55E]/10 text-[#22C55E]',     // Level 2
+      'bg-[#1F1F1F] text-[#A0A0A0]',       // Level 3
+      'bg-[#1F1F1F] text-[#A0A0A0]',   // Level 4
+      'bg-[#EAB308]/10 text-[#EAB308]',     // Level 5+
     ];
     const colorIndex = Math.min(level - 1, colors.length - 1);
     return colors[colorIndex];
@@ -158,24 +158,24 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+        <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
         <div className="max-w-6xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-indigo-100 rounded-xl">
-                <Users className="w-7 h-7 text-indigo-600" />
+              <div className="p-3 bg-[#1F1F1F] rounded-xl">
+                <Users className="w-7 h-7 text-[#FAFAFA]" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-900">{t('teamMembers.pageTitle')}</h1>
-                <p className="text-slate-600">
+                <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('teamMembers.pageTitle')}</h1>
+                <p className="text-[#A0A0A0]">
                   {t('teamMembers.pageSubtitle', { count: students.length })}
                 </p>
               </div>
@@ -188,12 +188,12 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
       <div className="max-w-6xl mx-auto px-6 py-6">
         {/* Error Banner */}
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
-            <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
-            <p className="text-red-700 text-sm">{error}</p>
+          <div className="mb-6 p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 text-[#EF4444] flex-shrink-0" />
+            <p className="text-[#EF4444] text-sm">{error}</p>
             <button
               onClick={() => setError(null)}
-              className="ml-auto text-red-400 hover:text-red-600"
+              className="ml-auto text-red-400 hover:text-[#EF4444]"
             >
               <X size={16} />
             </button>
@@ -203,26 +203,26 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
         {/* Search Bar */}
         <div className="mb-6">
           <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#666666]" />
             <input
               type="text"
               placeholder={t('teamMembers.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2.5 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
             />
           </div>
         </div>
 
         {/* Students Table */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
           {filteredStudents.length === 0 ? (
             <div className="p-12 text-center">
-              <Users className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <h3 className="text-lg font-medium text-slate-700">
+              <Users className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
+              <h3 className="text-lg font-medium text-[#A0A0A0]">
                 {searchQuery ? t('teamMembers.noSearchResults') : t('teamMembers.noMembers')}
               </h3>
-              <p className="text-slate-500 mt-1">
+              <p className="text-[#666666] mt-1">
                 {searchQuery
                   ? t('teamMembers.tryDifferentSearch')
                   : t('teamMembers.membersWillAppear')}
@@ -231,30 +231,30 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-slate-50 border-b border-slate-200">
+                <thead className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-semibold text-[#A0A0A0] uppercase tracking-wider">
                       {t('teamMembers.table.member')}
                     </th>
-                    <th className="px-6 py-3 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-center text-xs font-semibold text-[#A0A0A0] uppercase tracking-wider">
                       {t('teamMembers.table.level')}
                     </th>
-                    <th className="px-6 py-3 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-center text-xs font-semibold text-[#A0A0A0] uppercase tracking-wider">
                       {t('teamMembers.table.points')}
                     </th>
-                    <th className="px-6 py-3 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-center text-xs font-semibold text-[#A0A0A0] uppercase tracking-wider">
                       {t('teamMembers.table.submissions')}
                     </th>
                     {canAwardPoints && (
-                      <th className="px-6 py-3 text-right text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-right text-xs font-semibold text-[#A0A0A0] uppercase tracking-wider">
                         {t('teamMembers.table.actions')}
                       </th>
                     )}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[#1F1F1F]">
                   {filteredStudents.map((student) => (
-                    <tr key={student.profile.id} className="hover:bg-slate-50">
+                    <tr key={student.profile.id} className="hover:bg-[#0A0A0A]">
                       {/* Member Info */}
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
@@ -265,17 +265,17 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                               className="w-10 h-10 rounded-full object-cover"
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                              <span className="text-indigo-600 font-medium text-sm">
+                            <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center">
+                              <span className="text-[#FAFAFA] font-medium text-sm">
                                 {getInitials(student.profile.full_name)}
                               </span>
                             </div>
                           )}
                           <div>
-                            <p className="font-medium text-slate-900">
+                            <p className="font-medium text-[#FAFAFA]">
                               {student.profile.full_name || t('teamMembers.unnamed')}
                             </p>
-                            <p className="text-sm text-slate-500">{student.profile.email}</p>
+                            <p className="text-sm text-[#666666]">{student.profile.email}</p>
                           </div>
                         </div>
                       </td>
@@ -294,7 +294,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
 
                       {/* Points */}
                       <td className="px-6 py-4 text-center">
-                        <span className="font-semibold text-slate-900">
+                        <span className="font-semibold text-[#FAFAFA]">
                           {student.points?.total_points || 0}
                         </span>
                       </td>
@@ -302,11 +302,11 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                       {/* Submissions */}
                       <td className="px-6 py-4 text-center">
                         <div className="flex items-center justify-center gap-3">
-                          <span className="flex items-center gap-1 text-slate-600">
+                          <span className="flex items-center gap-1 text-[#A0A0A0]">
                             <FileText className="w-4 h-4" />
                             {student.submissionCount}
                           </span>
-                          <span className="flex items-center gap-1 text-green-600">
+                          <span className="flex items-center gap-1 text-[#22C55E]">
                             <CheckCircle className="w-4 h-4" />
                             {student.gradedCount}
                           </span>
@@ -318,7 +318,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                         <td className="px-6 py-4 text-right">
                           <button
                             onClick={() => handleBonusClick(student)}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-amber-700 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-[#EAB308] bg-[#EAB308]/10 rounded-lg hover:bg-[#EAB308]/10 transition-colors"
                           >
                             <Award className="w-4 h-4" />
                             {t('teamMembers.awardBonus')}
@@ -337,13 +337,13 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
       {/* Bonus Points Modal */}
       {isBonusModalOpen && selectedStudent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl max-w-md w-full">
-            <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-              <h2 className="text-lg font-bold text-slate-900">{t('teamMembers.bonusModal.title')}</h2>
+          <div className="bg-[#0A0A0A] rounded-xl max-w-md w-full">
+            <div className="p-6 border-b border-[#1F1F1F] flex justify-between items-center">
+              <h2 className="text-lg font-bold text-[#FAFAFA]">{t('teamMembers.bonusModal.title')}</h2>
               <button
                 onClick={handleCloseModal}
                 disabled={isAwarding}
-                className="text-slate-400 hover:text-slate-600 disabled:opacity-50"
+                className="text-[#666666] hover:text-[#A0A0A0] disabled:opacity-50"
               >
                 <X size={20} />
               </button>
@@ -351,7 +351,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
 
             <div className="p-6 space-y-4">
               {/* Student info */}
-              <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-[#0A0A0A] rounded-lg">
                 {selectedStudent.profile.avatar_url ? (
                   <img
                     src={selectedStudent.profile.avatar_url}
@@ -359,17 +359,17 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                     className="w-12 h-12 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <span className="text-indigo-600 font-medium">
+                  <div className="w-12 h-12 rounded-full bg-[#1F1F1F] flex items-center justify-center">
+                    <span className="text-[#FAFAFA] font-medium">
                       {getInitials(selectedStudent.profile.full_name)}
                     </span>
                   </div>
                 )}
                 <div>
-                  <p className="font-medium text-slate-900">
+                  <p className="font-medium text-[#FAFAFA]">
                     {selectedStudent.profile.full_name || t('teamMembers.unnamed')}
                   </p>
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-[#666666]">
                     {t('teamMembers.bonusModal.currentPoints', {
                       points: selectedStudent.points?.total_points || 0,
                     })}
@@ -379,7 +379,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
 
               {/* Points input */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
                   {t('teamMembers.bonusModal.pointsLabel')}
                 </label>
                 <div className="flex gap-2">
@@ -389,8 +389,8 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                       onClick={() => setBonusPoints(points)}
                       className={`flex-1 py-2 rounded-lg font-medium text-sm transition-colors ${
                         bonusPoints === points
-                          ? 'bg-indigo-600 text-white'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          ? 'bg-white text-black'
+                          : 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#151515]'
                       }`}
                     >
                       +{points}
@@ -401,7 +401,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
 
               {/* Reason input */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
                   {t('teamMembers.bonusModal.reasonLabel')}
                 </label>
                 <textarea
@@ -409,31 +409,31 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                   onChange={(e) => setBonusReason(e.target.value)}
                   placeholder={t('teamMembers.bonusModal.reasonPlaceholder')}
                   rows={3}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 />
               </div>
 
               {/* Error message */}
               {awardError && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
-                  <p className="text-red-700 text-sm">{awardError}</p>
+                <div className="p-3 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-[#EF4444] flex-shrink-0" />
+                  <p className="text-[#EF4444] text-sm">{awardError}</p>
                 </div>
               )}
             </div>
 
-            <div className="p-6 border-t border-slate-100 flex gap-3">
+            <div className="p-6 border-t border-[#1F1F1F] flex gap-3">
               <button
                 onClick={handleCloseModal}
                 disabled={isAwarding}
-                className="flex-1 border border-slate-200 text-slate-600 py-2 rounded-lg text-sm font-medium hover:bg-slate-50 disabled:opacity-50"
+                className="flex-1 border border-[#1F1F1F] text-[#A0A0A0] py-2 rounded-lg text-sm font-medium hover:bg-[#0A0A0A] disabled:opacity-50"
               >
                 {t('teamMembers.bonusModal.cancel')}
               </button>
               <button
                 onClick={handleAwardBonus}
                 disabled={isAwarding}
-                className="flex-1 bg-indigo-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 bg-white text-black py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isAwarding ? (
                   <>

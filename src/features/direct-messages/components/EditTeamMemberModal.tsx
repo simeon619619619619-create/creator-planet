@@ -89,35 +89,35 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col">
+      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
+        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
           <div className="flex items-center gap-2">
-            <Settings size={20} className="text-indigo-600" />
-            <h3 className="text-lg font-semibold text-slate-900">
+            <Settings size={20} className="text-[#FAFAFA]" />
+            <h3 className="text-lg font-semibold text-[#FAFAFA]">
               {t('team.edit.title')}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1 hover:bg-[#1F1F1F] rounded-lg transition-colors"
           >
-            <X size={20} className="text-slate-500" />
+            <X size={20} className="text-[#666666]" />
           </button>
         </div>
 
         {/* Member Info Header */}
-        <div className="flex items-center gap-3 p-4 bg-slate-50 border-b border-slate-100">
+        <div className="flex items-center gap-3 p-4 bg-[#0A0A0A] border-b border-[#1F1F1F]">
           <Avatar
             src={member.profile?.avatar_url}
             alt={member.profile?.full_name || ''}
             size="md"
           />
           <div>
-            <p className="font-medium text-slate-900">
+            <p className="font-medium text-[#FAFAFA]">
               {member.profile?.full_name || t('team.settings.unknownUser')}
             </p>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-[#666666]">
               {member.profile?.email}
             </p>
           </div>
@@ -127,15 +127,15 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
         <form onSubmit={handleSubmit} className="p-4 space-y-4 overflow-y-auto flex-1">
           {/* Error Message */}
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
-              <AlertCircle size={18} className="text-red-500 shrink-0 mt-0.5" />
-              <p className="text-sm text-red-700">{error}</p>
+            <div className="p-3 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg flex items-start gap-2">
+              <AlertCircle size={18} className="text-[#EF4444] shrink-0 mt-0.5" />
+              <p className="text-sm text-[#EF4444]">{error}</p>
             </div>
           )}
 
           {/* Role Selection */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
               {t('team.edit.roleLabel')}
             </label>
             <div className="space-y-2">
@@ -144,8 +144,8 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
                   key={config.key}
                   className={`flex items-start gap-3 p-3 border rounded-lg cursor-pointer transition-all ${
                     role === config.key
-                      ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-slate-200 hover:border-slate-300'
+                      ? 'border-[#333333] bg-[#151515]'
+                      : 'border-[#1F1F1F] hover:border-[#1F1F1F]'
                   }`}
                 >
                   <input
@@ -154,22 +154,22 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
                     value={config.key}
                     checked={role === config.key}
                     onChange={() => setRole(config.key)}
-                    className="mt-1 text-indigo-600 focus:ring-indigo-500"
+                    className="mt-1 text-[#FAFAFA] focus:ring-white/10"
                   />
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-slate-900">
+                      <span className="font-medium text-[#FAFAFA]">
                         {t(config.labelKey)}
                       </span>
                       <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
                         config.badgeType === 'team'
-                          ? 'bg-indigo-100 text-indigo-700'
-                          : 'bg-emerald-100 text-emerald-700'
+                          ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                          : 'bg-[#22C55E]/10 text-[#22C55E]'
                       }`}>
                         {t(`team.badges.${config.badgeType}`)}
                       </span>
                     </div>
-                    <p className="text-sm text-slate-500 mt-0.5">
+                    <p className="text-sm text-[#666666] mt-0.5">
                       {t(config.descriptionKey)}
                     </p>
                   </div>
@@ -180,16 +180,16 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               {t('team.edit.titleLabel')}
             </label>
             <div className="relative">
-              <Briefcase size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Briefcase size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#666666]" />
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 placeholder={t('team.edit.titlePlaceholder')}
               />
             </div>
@@ -197,25 +197,25 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
 
           {/* Bio */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
               {t('team.edit.bioLabel')}
             </label>
             <div className="relative">
-              <FileText size={18} className="absolute left-3 top-3 text-slate-400" />
+              <FileText size={18} className="absolute left-3 top-3 text-[#666666]" />
               <textarea
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none h-20"
+                className="w-full pl-10 pr-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-20"
                 placeholder={t('team.edit.bioPlaceholder')}
               />
             </div>
           </div>
 
           {/* Can Receive DMs Toggle */}
-          <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+          <div className="flex items-center justify-between p-3 bg-[#0A0A0A] rounded-lg">
             <div className="flex items-center gap-2">
-              <MessageSquare size={18} className="text-slate-500" />
-              <span className="text-sm font-medium text-slate-700">
+              <MessageSquare size={18} className="text-[#666666]" />
+              <span className="text-sm font-medium text-[#A0A0A0]">
                 {t('team.edit.canReceiveDMs')}
               </span>
             </div>
@@ -223,11 +223,11 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
               type="button"
               onClick={() => setCanReceiveDMs(!canReceiveDMs)}
               className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                canReceiveDMs ? 'bg-indigo-600' : 'bg-slate-200'
+                canReceiveDMs ? 'bg-white' : 'bg-[#1F1F1F]'
               }`}
             >
               <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                className={`inline-block h-4 w-4 transform rounded-full bg-[#0A0A0A] transition-transform ${
                   canReceiveDMs ? 'translate-x-6' : 'translate-x-1'
                 }`}
               />
@@ -235,11 +235,11 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
           </div>
 
           {/* Danger Zone */}
-          <div className="pt-4 border-t border-slate-200">
+          <div className="pt-4 border-t border-[#1F1F1F]">
             <button
               type="button"
               onClick={onDelete}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-red-200 text-red-600 rounded-lg hover:bg-red-50 font-medium transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-[#EF4444]/20 text-[#EF4444] rounded-lg hover:bg-[#EF4444]/10 font-medium transition-colors"
             >
               <Trash2 size={18} />
               {t('team.edit.removeFromTeam')}
@@ -251,14 +251,14 @@ const EditTeamMemberModal: React.FC<EditTeamMemberModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium text-slate-700"
+              className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#0A0A0A] font-medium text-[#A0A0A0]"
             >
               {t('common.cancel')}
             </button>
             <button
               type="submit"
               disabled={!hasChanges || isSubmitting}
-              className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
+              className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 font-medium flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
