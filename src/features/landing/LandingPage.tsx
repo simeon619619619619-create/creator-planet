@@ -200,7 +200,7 @@ const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 text-center">
             <div className="flex items-center gap-2">
-              <Users className="text-[#FAFAFA]" size={24} />
+              <Users className="text-[#A0A0A0]" size={24} />
               <div>
                 <span className="block text-2xl font-bold text-[#FAFAFA]">
                   {formatNumber(totalLearners > 0 ? totalLearners : 1000)}+
@@ -209,7 +209,7 @@ const LandingPage: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <BookOpen className="text-[#FAFAFA]" size={24} />
+              <BookOpen className="text-[#A0A0A0]" size={24} />
               <div>
                 <span className="block text-2xl font-bold text-[#FAFAFA]">
                   {courses.length > 0 ? courses.length : 50}+
@@ -225,7 +225,7 @@ const LandingPage: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <TrendingUp className="text-[#22C55E]" size={24} />
+              <TrendingUp className="text-[#A0A0A0]" size={24} />
               <div>
                 <span className="block text-2xl font-bold text-[#FAFAFA]">95%</span>
                 <span className="text-sm text-[#666666]">{t('exploreLanding.stats.completionRate')}</span>
@@ -296,14 +296,14 @@ const LandingPage: React.FC = () => {
           {/* Loading State */}
           {isLoading && (
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-10 h-10 text-[#FAFAFA] animate-spin" />
+              <Loader2 className="w-10 h-10 text-white animate-spin" />
             </div>
           )}
 
           {/* Empty State */}
           {!isLoading && filteredCourses.length === 0 && (
             <div className="text-center py-20">
-              <BookOpen className="w-16 h-16 text-[#666666] mx-auto mb-4" />
+              <BookOpen className="w-16 h-16 text-[#333333] mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-[#FAFAFA] mb-2">
                 {searchQuery ? t('exploreLanding.courseGrid.noCoursesFound') : t('exploreLanding.courseGrid.noCoursesAvailable')}
               </h3>
@@ -357,21 +357,21 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0A0A0A] text-white py-12 border-t border-[#1F1F1F]">
+      <footer className="bg-[#0A0A0A] border-t border-[#1F1F1F] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">
               <div className="mb-4">
                 <Logo variant="light" size="sm" showText={false} />
               </div>
-              <p className="text-[#666666] text-sm">
+              <p className="text-[#A0A0A0] text-sm">
                 {t('exploreLanding.footer.tagline')}
               </p>
             </div>
 
             <div>
               <h3 className="font-semibold mb-4">{t('exploreLanding.footer.learn')}</h3>
-              <ul className="space-y-2 text-sm text-[#666666]">
+              <ul className="space-y-2 text-sm text-[#A0A0A0]">
                 <li>
                   <a href="#courses" className="hover:text-white transition-colors">
                     {t('exploreLanding.footer.browseCourses')}
@@ -387,7 +387,7 @@ const LandingPage: React.FC = () => {
 
             <div>
               <h3 className="font-semibold mb-4">{t('exploreLanding.footer.teach')}</h3>
-              <ul className="space-y-2 text-sm text-[#666666]">
+              <ul className="space-y-2 text-sm text-[#A0A0A0]">
                 <li>
                   <Link to="/creators" className="hover:text-white transition-colors">
                     {t('exploreLanding.footer.becomeCreator')}
@@ -398,7 +398,7 @@ const LandingPage: React.FC = () => {
 
             <div>
               <h3 className="font-semibold mb-4">{t('exploreLanding.footer.support')}</h3>
-              <ul className="space-y-2 text-sm text-[#666666]">
+              <ul className="space-y-2 text-sm text-[#A0A0A0]">
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
                     {t('exploreLanding.footer.helpCenter')}
@@ -437,7 +437,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   return (
     <Link
       to={`/signup?course=${course.id}`}
-      className="group bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] hover:bg-[#151515] transition-all duration-200"
+      className="group bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] transition-all duration-200"
     >
       {/* Thumbnail */}
       <div className="relative aspect-video bg-[#1F1F1F] overflow-hidden">
@@ -449,7 +449,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <BookOpen className="w-12 h-12 text-white/50" />
+            <BookOpen className="w-12 h-12 text-[#333333]" />
           </div>
         )}
         {/* Play overlay on hover */}
@@ -486,7 +486,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                 className={
                   star <= Math.round(course.rating ?? 4.5)
                     ? 'text-[#EAB308] fill-[#EAB308]'
-                    : 'text-[#666666]'
+                    : 'text-[#333333]'
                 }
               />
             ))}
