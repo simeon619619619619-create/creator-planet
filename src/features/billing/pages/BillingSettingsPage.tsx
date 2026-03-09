@@ -24,8 +24,6 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../../core/contexts/AuthContext';
 import UpgradeModal from '../components/UpgradeModal';
-import BalanceCard from '../components/BalanceCard';
-import WithdrawalModal from '../components/WithdrawalModal';
 import type {
   BillingPlan,
   BillingDashboardData,
@@ -47,11 +45,6 @@ import {
   getConnectOnboardingLink,
   getConnectAccountStatus,
   createPlanSubscription,
-  getBalanceStatus,
-  requestWithdrawal,
-  getPayoutHistory,
-  type BalanceStatus,
-  type Payout,
 } from '../stripeService';
 
 const BillingSettingsPage: React.FC = () => {
@@ -64,8 +57,6 @@ const BillingSettingsPage: React.FC = () => {
   const [plans, setPlans] = useState<BillingPlan[]>([]);
   const [sales, setSales] = useState<CreatorSale[]>([]);
   const [connectStatus, setConnectStatus] = useState<ConnectAccountStatus | null>(null);
-  const [balanceStatus, setBalanceStatus] = useState<BalanceStatus | null>(null);
-  const [payouts, setPayouts] = useState<Payout[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -73,10 +64,8 @@ const BillingSettingsPage: React.FC = () => {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<BillingPlan | null>(null);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  const [showWithdrawalModal, setShowWithdrawalModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isConnectLoading, setIsConnectLoading] = useState(false);
-  const [isBalanceLoading, setIsBalanceLoading] = useState(false);
 
   // Load billing data
   useEffect(() => {
@@ -87,21 +76,17 @@ const BillingSettingsPage: React.FC = () => {
       setError(null);
 
       try {
-        const [dashboardData, plansData, salesData, connectData, balanceData, payoutData] = await Promise.all([
+        const [dashboardData, plansData, salesData, connectData] = await Promise.all([
           getBillingDashboard(profile.id),
           getPlans(),
           getSales(profile.id, { limit: 20 }),
           getConnectAccountStatus(profile.id),
-          getBalanceStatus(profile.id),
-          getPayoutHistory(profile.id, { limit: 20 }),
         ]);
 
         setDashboard(dashboardData);
         setPlans(plansData);
         setSales(salesData);
         setConnectStatus(connectData);
-        setBalanceStatus(balanceData);
-        setPayouts(payoutData);
       } catch (err) {
         console.error('Error loading billing data:', err);
         setError('Failed to load billing information');
@@ -112,41 +97,6 @@ const BillingSettingsPage: React.FC = () => {
 
     loadData();
   }, [profile?.id]);
-
-  // Refresh balance data
-  const refreshBalanceData = async () => {
-    if (!profile?.id) return;
-
-    setIsBalanceLoading(true);
-    try {
-      const [balanceData, payoutData] = await Promise.all([
-        getBalanceStatus(profile.id),
-        getPayoutHistory(profile.id, { limit: 20 }),
-      ]);
-      setBalanceStatus(balanceData);
-      setPayouts(payoutData);
-    } catch (err) {
-      console.error('Error refreshing balance data:', err);
-    } finally {
-      setIsBalanceLoading(false);
-    }
-  };
-
-  // Handle withdrawal request
-  const handleWithdrawal = async () => {
-    if (!profile?.id) {
-      return { success: false, error: 'Profile not found' };
-    }
-
-    const result = await requestWithdrawal(profile.id);
-
-    if (result.success) {
-      // Refresh balance data after successful withdrawal
-      await refreshBalanceData();
-    }
-
-    return result;
-  };
 
   // Handle opening Stripe billing portal
   const handleOpenBillingPortal = async () => {
@@ -763,28 +713,6 @@ const BillingSettingsPage: React.FC = () => {
         )}
       </div>
 
-      {/* Balance Card - Creator Wallet */}
-      {balanceStatus && (
-        <BalanceCard
-          balances={balanceStatus.balances}
-          nextPendingRelease={balanceStatus.nextPendingRelease}
-          reserveReleases={balanceStatus.reserveReleases}
-          connectStatus={balanceStatus.connectStatus}
-          isEligibleForWithdrawal={balanceStatus.eligibility.allowed}
-          withdrawalBlocker={
-            !balanceStatus.eligibility.allowed
-              ? {
-                  reason: balanceStatus.eligibility.reason || 'Unknown',
-                  message: balanceStatus.eligibility.message,
-                  cooldownEndsAt: balanceStatus.eligibility.cooldownEndsAt,
-                }
-              : null
-          }
-          onWithdraw={() => setShowWithdrawalModal(true)}
-          isLoading={isBalanceLoading}
-        />
-      )}
-
       {/* Revenue Overview */}
       <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
         <h2 className="text-lg font-semibold text-[#FAFAFA] mb-6">{t('billing.settings.sectionRevenue')}</h2>
@@ -850,28 +778,6 @@ const BillingSettingsPage: React.FC = () => {
         )}
       </div>
 
-      {/* Withdrawal History */}
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionWithdrawals')}</h2>
-            <p className="text-[#666666] text-sm">{t('billing.settings.withdrawalsSubtitle')}</p>
-          </div>
-        </div>
-
-        {payouts.length === 0 ? (
-          <p className="text-center text-[#666666] py-8">
-            {t('billing.settings.noWithdrawals')}
-          </p>
-        ) : (
-          <div className="divide-y divide-[#1F1F1F]">
-            {payouts.map((payout) => (
-              <PayoutRow key={payout.id} payout={payout} t={t} />
-            ))}
-          </div>
-        )}
-      </div>
-
       {/* Upgrade Modal */}
       {showUpgradeModal && selectedPlan && (
         <UpgradeModal
@@ -899,30 +805,6 @@ const BillingSettingsPage: React.FC = () => {
         />
       )}
 
-      {/* Withdrawal Modal */}
-      {balanceStatus && (
-        <WithdrawalModal
-          isOpen={showWithdrawalModal}
-          onClose={() => setShowWithdrawalModal(false)}
-          onConfirm={handleWithdrawal}
-          availableAmount={balanceStatus.balances.available}
-          withdrawableAmount={balanceStatus.balances.withdrawable}
-          negativeBalance={balanceStatus.balances.negative}
-          isEligible={balanceStatus.eligibility.allowed}
-          blocker={
-            !balanceStatus.eligibility.allowed
-              ? {
-                  reason: (balanceStatus.eligibility.reason as 'COOLDOWN_ACTIVE' | 'BELOW_MINIMUM' | 'CONNECT_NOT_ACTIVE' | 'NEGATIVE_BALANCE') || 'BELOW_MINIMUM',
-                  message: balanceStatus.eligibility.message,
-                  cooldownEndsAt: balanceStatus.eligibility.cooldownEndsAt,
-                  currentAmount: balanceStatus.eligibility.currentAmount,
-                  minimumAmount: balanceStatus.eligibility.minimumAmount,
-                }
-              : null
-          }
-          onSetupConnect={handleSetupPayouts}
-        />
-      )}
     </div>
   );
 };
@@ -974,58 +856,6 @@ const ConnectStatusBadge: React.FC<ConnectStatusBadgeProps> = ({ status, t }) =>
     <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${bg} ${text}`}>
       {t(labelKey)}
     </span>
-  );
-};
-
-interface PayoutRowProps {
-  payout: Payout;
-  t: (key: string) => string;
-}
-
-const PayoutRow: React.FC<PayoutRowProps> = ({ payout, t }) => {
-  const statusIcons: Record<string, React.ReactNode> = {
-    completed: <CheckCircle size={16} className="text-[#22C55E]" />,
-    processing: <Clock size={16} className="text-[#A0A0A0]" />,
-    pending: <Clock size={16} className="text-[#EAB308]" />,
-    failed: <XCircle size={16} className="text-[#EF4444]" />,
-  };
-
-  const statusLabels: Record<string, string> = {
-    completed: t('billing.settings.withdrawalStatus.completed'),
-    processing: t('billing.settings.withdrawalStatus.processing'),
-    pending: t('billing.settings.withdrawalStatus.pending'),
-    failed: t('billing.settings.withdrawalStatus.failed'),
-  };
-
-  const typeLabels: Record<string, string> = {
-    manual: t('billing.settings.withdrawalTypes.manual'),
-    automatic: t('billing.settings.withdrawalTypes.automatic'),
-  };
-
-  return (
-    <div className="flex items-center gap-4 py-4">
-      <div className="shrink-0">{statusIcons[payout.status] || statusIcons.pending}</div>
-      <div className="flex-1 min-w-0">
-        <p className="font-medium text-[#FAFAFA]">
-          {typeLabels[payout.type] || payout.type}
-        </p>
-        <p className="text-sm text-[#666666]">
-          {statusLabels[payout.status] || payout.status}
-          {' · '}
-          {new Date(payout.created_at).toLocaleDateString()}
-        </p>
-      </div>
-      <div className="text-right">
-        <p className="font-medium text-[#FAFAFA]">
-          -{formatAmount(payout.amount_cents, payout.currency)}
-        </p>
-        {payout.completed_at && (
-          <p className="text-xs text-[#666666]">
-            {new Date(payout.completed_at).toLocaleDateString()}
-          </p>
-        )}
-      </div>
-    </div>
   );
 };
 

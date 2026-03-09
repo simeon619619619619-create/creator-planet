@@ -183,26 +183,8 @@ async function handleChangePlan(
     });
   }
 
-  // Check if subscription exists (has first sale)
-  if (!billing.has_first_sale) {
-    // No first sale yet - just update the plan, no subscription needed
-    await supabase
-      .from('creator_billing')
-      .update({
-        plan_id: newPlan.id,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('creator_id', profileId);
-
-    return jsonResponse({
-      success: true,
-      effectiveDate: 'immediate',
-    });
-  }
-
-  // Has first sale but no subscription yet - need to create one
+  // No subscription yet — redirect to checkout to create one
   if (!billing.stripe_subscription_id) {
-    // Return indication that subscription needs to be created
     return jsonResponse({
       success: true,
       requiresCheckout: true,

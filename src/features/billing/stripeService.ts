@@ -318,7 +318,7 @@ export async function createActivationCheckout(creatorId: string): Promise<Check
 
 /**
  * Create subscription checkout for plan (Pro/Scale)
- * Only used after first sale when monthly fee needs to activate
+ * Monthly fee starts immediately with plan subscription
  */
 export async function createPlanSubscription(
   creatorId: string,
@@ -365,6 +365,7 @@ export async function createPlanSubscription(
  * Change creator's plan
  * - Upgrades: Immediate proration
  * - Downgrades: Takes effect at period end
+ * - If no subscription exists yet (Pro/Scale), returns requiresCheckout: true
  */
 export async function changePlan(
   creatorId: string,
@@ -394,27 +395,15 @@ export async function changePlan(
       return cancelSubscription(creatorId);
     }
 
-    if (!billing.has_first_sale) {
-      // No first sale yet - just update the plan, no subscription action needed
-      const { error } = await supabase
-        .from('creator_billing')
-        .update({
-          plan_id: newPlan.id,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('creator_id', creatorId);
-
-      if (error) {
-        throw error;
-      }
-
+    // If no active subscription, a checkout is required for Pro/Scale
+    if (!billing.stripe_subscription_id) {
       return {
         success: true,
-        effectiveDate: 'immediate',
+        requiresCheckout: true,
       };
     }
 
-    // Has first sale - need to modify subscription via Edge Function
+    // Has active subscription - modify it via Edge Function
     const { data, error } = await supabase.functions.invoke('stripe-subscription', {
       body: {
         action: 'change-plan',
@@ -430,7 +419,7 @@ export async function changePlan(
       throw new Error(data.error);
     }
 
-    // If checkout is required (no subscription yet), return that info
+    // If checkout is required (edge function determined), return that info
     if (data?.requiresCheckout) {
       return {
         success: true,
@@ -766,72 +755,6 @@ export async function createSalePaymentIntent(
 }
 
 // ============================================================================
-// FIRST SALE TRIGGER
-// ============================================================================
-
-/**
- * Handle first sale - triggers monthly fee for Pro/Scale
- * Called when a creator makes their first successful sale
- */
-export async function handleFirstSale(creatorId: string): Promise<void> {
-  // Validate profile ID before database operations
-  if (!creatorId || typeof creatorId !== 'string' || creatorId.trim() === '') {
-    console.error('handleFirstSale: Invalid creatorId provided');
-    return;
-  }
-
-  const billing = await getCreatorBilling(creatorId);
-  if (!billing || billing.has_first_sale) {
-    return; // Already handled or no billing record
-  }
-
-  // Update first sale flag
-  const { error } = await supabase
-    .from('creator_billing')
-    .update({
-      has_first_sale: true,
-      first_sale_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    })
-    .eq('creator_id', creatorId);
-
-  if (error) {
-    console.error('Error updating first sale flag:', error);
-    return;
-  }
-
-  // If on Pro or Scale, activate monthly fee
-  if (billing.plan?.tier !== 'starter') {
-    await activateMonthlyFee(creatorId);
-  }
-}
-
-/**
- * Activate monthly fee subscription for Pro/Scale
- */
-export async function activateMonthlyFee(
-  creatorId: string
-): Promise<{ activated: boolean; checkoutUrl?: string }> {
-  const billing = await getCreatorBilling(creatorId);
-  if (!billing || billing.monthly_fee_active) {
-    return { activated: false };
-  }
-
-  if (billing.plan?.tier === 'starter') {
-    return { activated: false }; // Starter has no monthly fee
-  }
-
-  // Create subscription checkout
-  const result = await createPlanSubscription(creatorId, billing.plan?.tier || 'pro');
-
-  if (result.success && result.checkoutUrl) {
-    return { activated: true, checkoutUrl: result.checkoutUrl };
-  }
-
-  return { activated: false };
-}
-
-// ============================================================================
 // TRANSACTION HISTORY
 // ============================================================================
 
@@ -964,51 +887,6 @@ export async function getRevenueAnalytics(
 }
 
 // ============================================================================
-// WEBHOOK PROCESSING - DEPRECATED
-// ============================================================================
-//
-// IMPORTANT: Webhook processing is now handled by the Supabase Edge Function
-// at supabase/functions/stripe-webhook/index.ts
-//
-// The Edge Function:
-// - Verifies webhook signatures using STRIPE_WEBHOOK_SECRET
-// - Provides idempotent processing via webhook_events table
-// - Handles all event types securely on the server side
-//
-// This client-side code is deprecated and should NOT be used.
-// It is kept only for reference during the transition period.
-// ============================================================================
-
-/**
- * @deprecated Use the stripe-webhook Edge Function instead.
- * This function lacks proper webhook signature verification.
- *
- * Webhooks should be received at: /functions/v1/stripe-webhook
- * Configure this URL in your Stripe Dashboard > Webhooks
- */
-export async function processWebhookEvent(
-  _event: { id: string; type: string; data: { object: Record<string, unknown> } }
-): Promise<{ processed: boolean; error?: string }> {
-  console.warn(
-    'DEPRECATED: processWebhookEvent is deprecated. ' +
-    'Webhooks are now processed by the stripe-webhook Edge Function with proper signature verification.'
-  );
-  return {
-    processed: false,
-    error: 'Client-side webhook processing is deprecated. Use the stripe-webhook Edge Function.',
-  };
-}
-
-/**
- * @deprecated Webhook handlers have moved to the stripe-webhook Edge Function.
- * See: supabase/functions/stripe-webhook/index.ts
- */
-export const webhookHandlers = {
-  // All handlers have been moved to the Edge Function
-  // This object is kept for backwards compatibility only
-};
-
-// ============================================================================
 // UTILITY FUNCTIONS
 // ============================================================================
 
@@ -1028,8 +906,8 @@ export function formatAmount(cents: number, currency: string = 'EUR'): string {
  */
 export function getRecommendedPlan(monthlyRevenue: number): PlanTier {
   // Break-even calculations from architecture design:
-  // Starter→Pro at ~€750/mo revenue (750 * 6.9% = 51.75 vs 30 + 750 * 3.9% = 59.25)
-  // Pro→Scale at ~€6,900/mo revenue (6900 * 3.9% = 269.1 vs 99 + 6900 * 1.9% = 230.1)
+  // Starter->Pro at ~€750/mo revenue (750 * 6.9% = 51.75 vs 30 + 750 * 3.9% = 59.25)
+  // Pro->Scale at ~€6,900/mo revenue (6900 * 3.9% = 269.1 vs 99 + 6900 * 1.9% = 230.1)
 
   if (monthlyRevenue >= 690000) {
     // €6,900 in cents
@@ -1095,181 +973,4 @@ export function getPlanLimit(
   resource: 'max_students' | 'max_courses' | 'max_communities'
 ): number {
   return PLAN_LIMITS[tier][resource];
-}
-
-// ============================================================================
-// BALANCE & WITHDRAWAL OPERATIONS
-// ============================================================================
-
-export interface BalanceData {
-  pending: number;
-  available: number;
-  reserved: number;
-  negative: number;
-  withdrawable: number;
-}
-
-export interface NextRelease {
-  date: string;
-  amount: number;
-}
-
-export interface ReserveRelease {
-  amount_cents: number;
-  release_at: string;
-}
-
-export interface WithdrawalBlocker {
-  reason: 'COOLDOWN_ACTIVE' | 'BELOW_MINIMUM' | 'CONNECT_NOT_ACTIVE' | 'NEGATIVE_BALANCE';
-  message: string;
-  cooldownEndsAt?: string;
-  currentAmount?: number;
-  minimumAmount?: number;
-}
-
-export interface WithdrawalEligibility {
-  allowed: boolean;
-  reason?: string;
-  message: string;
-  cooldownEndsAt?: string;
-  currentAmount?: number;
-  minimumAmount?: number;
-}
-
-export interface BalanceStatus {
-  balances: BalanceData;
-  eligibility: WithdrawalEligibility;
-  nextPendingRelease: NextRelease | null;
-  reserveReleases: ReserveRelease[];
-  connectStatus: string | null;
-}
-
-export interface WithdrawalResult {
-  success: boolean;
-  payout?: {
-    id: string;
-    amount: number;
-    currency: string;
-    status: string;
-    transferId: string;
-  };
-  newBalance?: {
-    available: number;
-    negative: number;
-  };
-  error?: string;
-}
-
-export interface Payout {
-  id: string;
-  creator_id: string;
-  amount_cents: number;
-  currency: string;
-  type: 'automatic' | 'manual';
-  status: 'pending' | 'processing' | 'completed' | 'failed';
-  stripe_transfer_id: string | null;
-  stripe_payout_id: string | null;
-  failure_code: string | null;
-  failure_message: string | null;
-  retry_count: number;
-  created_at: string;
-  processing_at: string | null;
-  completed_at: string | null;
-  failed_at: string | null;
-}
-
-/**
- * Get creator's balance status and withdrawal eligibility
- */
-export async function getBalanceStatus(creatorId: string): Promise<BalanceStatus | null> {
-  try {
-    validateProfileId(creatorId, 'getBalanceStatus');
-
-    const { data, error } = await supabase.functions.invoke('creator-withdrawal', {
-      body: {
-        action: 'status',
-      },
-    });
-
-    if (error) {
-      throw new Error(error.message || 'Failed to get balance status');
-    }
-
-    if (data?.error) {
-      throw new Error(data.error);
-    }
-
-    return data;
-  } catch (error) {
-    console.error('Error getting balance status:', error);
-    return null;
-  }
-}
-
-/**
- * Request a manual withdrawal
- */
-export async function requestWithdrawal(creatorId: string): Promise<WithdrawalResult> {
-  try {
-    validateProfileId(creatorId, 'requestWithdrawal');
-
-    const { data, error } = await supabase.functions.invoke('creator-withdrawal', {
-      body: {
-        action: 'withdraw',
-      },
-    });
-
-    if (error) {
-      throw new Error(error.message || 'Failed to process withdrawal');
-    }
-
-    if (data?.error) {
-      throw new Error(data.error);
-    }
-
-    return data;
-  } catch (error) {
-    console.error('Error requesting withdrawal:', error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Failed to process withdrawal',
-    };
-  }
-}
-
-/**
- * Get payout history for creator
- */
-export async function getPayoutHistory(
-  creatorId: string,
-  options?: { limit?: number; offset?: number }
-): Promise<Payout[]> {
-  try {
-    validateProfileId(creatorId, 'getPayoutHistory');
-
-    let query = supabase
-      .from('payouts')
-      .select('*')
-      .eq('creator_id', creatorId)
-      .order('created_at', { ascending: false });
-
-    if (options?.limit) {
-      query = query.limit(options.limit);
-    }
-    if (options?.offset) {
-      query = query.range(options.offset, options.offset + (options.limit || 10) - 1);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      console.error('Error fetching payout history:', error);
-      return [];
-    }
-
-    return data || [];
-  } catch (error) {
-    console.error('Error getting payout history:', error);
-    return [];
-  }
 }

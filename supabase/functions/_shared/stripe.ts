@@ -37,17 +37,17 @@ export function getWebhookSecret(): string {
 
 // ============================================================================
 // STRIPE CONFIGURATION CONSTANTS
-// KINGDOM LTD Business Account (acct_1SoV6VEHrm7Q2JIn)
+// European Fashion Institute Account (acct_1Sra05HH4asvT4B6)
 // ============================================================================
 
 /**
  * Stripe product and price configuration
- * All IDs are for the KINGDOM LTD business account (live mode)
+ * All IDs are for the European Fashion Institute account (live mode)
  */
 export const STRIPE_CONFIG = {
   activation: {
-    productId: 'prod_Tm3yvErLQFwjjM',
-    priceId: 'price_1Sput3EHrm7Q2JInE9dmsu4c',
+    productId: 'prod_U7OhnGQypJ2jxm',
+    priceId: 'price_1T99uIHH4asvT4B64GBdjLWI',
     amount: 990,
   },
   plans: {
@@ -58,22 +58,17 @@ export const STRIPE_CONFIG = {
       platformFeePercent: 6.9,
     },
     pro: {
-      productId: 'prod_Tm3yo6o2IkxEjW',
-      priceId: 'price_1SoVqmEHrm7Q2JIncZnyu9SY',
+      productId: 'prod_U7OhXerO5LD9ZL',
+      priceId: 'price_1T99uJHH4asvT4B6iDDYERzT',
       monthlyAmount: 3000,
       platformFeePercent: 3.9,
     },
     scale: {
-      productId: 'prod_Tm3yyZw4qEQRGI',
-      priceId: 'price_1SoVqmEHrm7Q2JInneH7wG9d',
+      productId: 'prod_U7OhTEVS1XIzWU',
+      priceId: 'price_1T99uJHH4asvT4B6dMW4xaK2',
       monthlyAmount: 9900,
       platformFeePercent: 1.9,
     },
-  },
-  studentPlus: {
-    productId: 'prod_Tm3yaCvF6DUXMN',
-    priceId: 'price_1SoVqnEHrm7Q2JInAADYSo3z',
-    monthlyAmount: 990,
   },
 } as const;
 

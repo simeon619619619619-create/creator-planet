@@ -79,18 +79,10 @@ export {
   // Sale processing
   createSalePaymentIntent,
 
-  // First sale trigger
-  handleFirstSale,
-  activateMonthlyFee,
-
   // Transaction history
   getTransactions,
   getSales,
   getRevenueAnalytics,
-
-  // Webhook processing
-  processWebhookEvent,
-  webhookHandlers,
 
   // Utility functions
   formatAmount,
