@@ -191,7 +191,7 @@ export default function WaitlistSection({
               <button
                 type="submit"
                 disabled={formState === 'submitting'}
-                className="w-full bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                className="cta-primary w-full bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
               >
                 {formState === 'submitting' ? (
                   <>

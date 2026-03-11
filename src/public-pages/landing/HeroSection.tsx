@@ -19,9 +19,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted, onWatchD
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl font-bold text-[#FAFAFA] mb-6 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold text-[#FAFAFA] mb-6 leading-tight tracking-tight">
           Replace 5+ Tools with{' '}
-          <span className="text-white">
+          <span className="heading-highlight">
             One Powerful Platform
           </span>
         </h1>
@@ -36,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted, onWatchD
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <button
             onClick={onGetStarted}
-            className="bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-150 flex items-center gap-2"
+            className="cta-primary bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg flex items-center gap-2"
           >
             Start Free Trial
             <ArrowRight className="w-5 h-5" />
@@ -45,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted, onWatchD
           {onWatchDemo && (
             <button
               onClick={onWatchDemo}
-              className="bg-transparent hover:bg-[#151515] text-[#FAFAFA] px-8 py-4 rounded-xl font-semibold text-lg border border-[#1F1F1F] hover:border-[#333333] transition-all duration-150 flex items-center gap-2"
+              className="cta-secondary bg-transparent hover:bg-[#151515] text-[#FAFAFA] px-8 py-4 rounded-xl font-semibold text-lg border border-[#1F1F1F] hover:border-[#333333] flex items-center gap-2"
             >
               <Play className="w-5 h-5" />
               Watch Demo

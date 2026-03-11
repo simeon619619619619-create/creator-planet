@@ -181,9 +181,9 @@ const LandingPage: React.FC = () => {
       <section className="bg-[#0A0A0A] py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#FAFAFA] mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#FAFAFA] mb-6 leading-tight tracking-tight">
               {t('exploreLanding.hero.titlePart1')}{' '}
-              <span className="text-white">
+              <span className="heading-highlight">
                 {t('exploreLanding.hero.titleHighlight')}
               </span>
             </h1>
@@ -193,14 +193,14 @@ const LandingPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/onboarding/student"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold text-black bg-white rounded-xl hover:bg-[#E0E0E0] transition-colors"
+                className="cta-primary inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold text-black bg-white rounded-xl hover:bg-[#E0E0E0]"
               >
                 <Play size={20} />
                 {t('exploreLanding.hero.startLearning')}
               </Link>
               <a
                 href="#courses"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold text-[#FAFAFA] bg-transparent rounded-xl border-2 border-[#1F1F1F] hover:border-[#333333] hover:bg-[#151515] transition-colors"
+                className="cta-secondary inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold text-[#FAFAFA] bg-transparent rounded-xl border-2 border-[#1F1F1F] hover:border-[#333333] hover:bg-[#151515]"
               >
                 {t('exploreLanding.hero.browseCourses')}
                 <ChevronRight size={20} />
@@ -400,7 +400,7 @@ const LandingPage: React.FC = () => {
           </p>
           <Link
             to="/signup"
-            className="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-black bg-white rounded-xl hover:bg-[#E0E0E0] transition-colors"
+            className="cta-primary inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-black bg-white rounded-xl hover:bg-[#E0E0E0]"
           >
             {t('exploreLanding.cta.createFreeAccount')}
             <ChevronRight size={20} />

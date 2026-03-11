@@ -270,10 +270,6 @@ const MarketingLandingPage: React.FC = () => {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-15px) rotate(5deg); }
         }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
         .glass-card {
@@ -289,20 +285,7 @@ const MarketingLandingPage: React.FC = () => {
         .text-gradient {
           color: #FAFAFA;
         }
-        .shimmer-btn {
-          position: relative;
-          overflow: hidden;
-        }
-        .shimmer-btn::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-          animation: shimmer 2s infinite;
-        }
+
       `}</style>
 
       {/* Navigation - Glassmorphism */}
@@ -326,7 +309,7 @@ const MarketingLandingPage: React.FC = () => {
               <LanguageSwitcher variant="minimal" />
               <button
                 onClick={handleGetStarted}
-                className="shimmer-btn bg-white hover:bg-[#E0E0E0] text-black px-6 py-2 rounded-lg font-semibold transition-all duration-150"
+                className="cta-primary bg-white hover:bg-[#E0E0E0] text-black px-6 py-2 rounded-lg font-semibold transition-all duration-150"
               >
                 {t('marketingLanding.nav.getStarted')}
               </button>
@@ -413,9 +396,9 @@ const MarketingLandingPage: React.FC = () => {
 
             <FadeInSection delay={100}>
               {/* Headline */}
-              <h1 className="text-5xl md:text-7xl font-bold text-[#FAFAFA] mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-[#FAFAFA] mb-6 leading-tight tracking-tight">
                 {t('marketingLanding.heroTitle')}{' '}
-                <span className="text-gradient animate-gradient">
+                <span className="text-gradient animate-gradient heading-highlight">
                   {t('marketingLanding.heroTitleHighlight')}
                 </span>
               </h1>
@@ -435,12 +418,12 @@ const MarketingLandingPage: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <button
                   onClick={handleGetStarted}
-                  className="group shimmer-btn bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-150 flex items-center justify-center gap-2"
+                  className="group cta-primary bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-150 flex items-center justify-center gap-2"
                 >
                   {t('marketingLanding.startFree')}
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="group bg-[#0A0A0A] hover:bg-[#E0E0E0] text-[#FAFAFA] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 border-2 border-[#1F1F1F] hover:border-[#333333] flex items-center justify-center gap-2 hover:-translate-y-1">
+                <button className="cta-secondary group bg-[#0A0A0A] hover:bg-[#E0E0E0] text-[#FAFAFA] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 border-2 border-[#1F1F1F] hover:border-[#333333] flex items-center justify-center gap-2 hover:-translate-y-1">
                   <Play size={20} className="text-[#FAFAFA]" />
                   {t('marketingLanding.watchDemo')}
                 </button>
@@ -1071,7 +1054,7 @@ const MarketingLandingPage: React.FC = () => {
           <FadeInSection>
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               {t('marketingLanding.cta.titlePrefix')}{' '}
-              <span className="text-gradient">{t('marketingLanding.cta.titleHighlight')}</span>{' '}
+              <span className="text-gradient heading-highlight">{t('marketingLanding.cta.titleHighlight')}</span>{' '}
               {t('marketingLanding.cta.titleSuffix')}
             </h2>
           </FadeInSection>
@@ -1083,7 +1066,7 @@ const MarketingLandingPage: React.FC = () => {
           <FadeInSection delay={200}>
             <button
               onClick={handleGetStarted}
-              className="group shimmer-btn bg-[#0A0A0A] hover:bg-[#E0E0E0] text-[#FAFAFA] px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300   hover: hover:-translate-y-1 inline-flex items-center gap-3"
+              className="group cta-primary bg-[#0A0A0A] hover:bg-[#E0E0E0] text-[#FAFAFA] px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300   hover: hover:-translate-y-1 inline-flex items-center gap-3"
             >
               {t('marketingLanding.cta.startNow')}
               <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />

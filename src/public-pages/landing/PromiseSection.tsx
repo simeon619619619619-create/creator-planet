@@ -121,7 +121,7 @@ export const PromiseSection: React.FC = () => {
           <p className="text-lg text-[#A0A0A0] mb-6">
             Plus payments, analytics, mobile apps, and more—all included
           </p>
-          <button className="bg-white text-black hover:bg-[#E0E0E0] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105">
+          <button className="cta-primary bg-white text-black hover:bg-[#E0E0E0] px-8 py-4 rounded-xl font-semibold text-lg">
             See All Features
           </button>
         </div>

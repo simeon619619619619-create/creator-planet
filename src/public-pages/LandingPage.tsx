@@ -138,9 +138,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
               {t('hero.badge')}
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-[#FAFAFA] mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-[#FAFAFA] mb-6 leading-tight tracking-tight">
               {t('hero.title')}{' '}
-              <span className="text-white">
+              <span className="heading-highlight">
                 {t('hero.titleHighlight')}
               </span>
             </h1>
@@ -152,12 +152,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
                 onClick={onGetStarted}
-                className="bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-150 flex items-center justify-center gap-2"
+                className="cta-primary bg-white hover:bg-[#E0E0E0] text-black px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2"
               >
                 {t('common.startFreeTrial')}
                 <ArrowRight size={20} />
               </button>
-              <button className="bg-transparent hover:bg-[#151515] text-[#FAFAFA] px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-150 border border-[#1F1F1F] hover:border-[#333333]">
+              <button className="cta-secondary bg-transparent hover:bg-[#151515] text-[#FAFAFA] px-8 py-4 rounded-xl font-semibold text-lg border border-[#1F1F1F] hover:border-[#333333]">
                 {t('common.watchDemo')}
               </button>
             </div>
@@ -609,7 +609,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
       {/* Final CTA Section */}
       <section className="py-20 px-4 bg-[#0A0A0A] border-t border-[#1F1F1F]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#FAFAFA] mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#FAFAFA] mb-6 tracking-tight">
             {t('cta.title')}
           </h2>
           <p className="text-xl text-[#A0A0A0] mb-10">
@@ -617,7 +617,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           </p>
           <button
             onClick={onGetStarted}
-            className="bg-white hover:bg-[#E0E0E0] text-black px-10 py-4 rounded-xl font-semibold text-lg transition-colors duration-150 inline-flex items-center gap-2"
+            className="cta-primary bg-white hover:bg-[#E0E0E0] text-black px-10 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-2"
           >
             {t('common.startFreeTrial')}
             <ArrowRight size={20} />

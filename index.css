@@ -45,3 +45,45 @@ button, a, input, select, textarea, [role="button"] {
   0% { opacity: 0.8; r: 4; }
   100% { opacity: 0; r: 16; }
 }
+
+/* Accent font for heading highlights */
+.heading-highlight {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  color: #FFFFFF;
+}
+
+/* Primary CTA: glow + shimmer */
+.cta-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+.cta-primary:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+.cta-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Secondary CTA: subtle lift */
+.cta-secondary {
+  transition: all 0.2s ease;
+}
+.cta-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
