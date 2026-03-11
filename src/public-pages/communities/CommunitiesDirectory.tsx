@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PublicLayout } from './PublicLayout';
 import { CommunityCard } from './CommunityCard';
+import { CategoryFilter } from '../../shared/components/CategoryFilter';
 import { getPublicCommunities } from '../../features/community/communityService';
 import type { CommunityListItem } from '../../core/types';
+import type { ContentCategory } from '../../core/supabase/database.types';
 import { Search, Loader2, Users, Sparkles, Filter } from 'lucide-react';
 
 type SortOption = 'newest' | 'popular' | 'name';
@@ -15,6 +17,7 @@ export const CommunitiesDirectory: React.FC = () => {
   const [communities, setCommunities] = useState<CommunityListItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<ContentCategory | null>(null);
   const [sortBy, setSortBy] = useState<SortOption>('newest');
 
   useEffect(() => {
@@ -35,6 +38,7 @@ export const CommunitiesDirectory: React.FC = () => {
   // Filter and sort communities
   const filteredCommunities = communities
     .filter((community) => {
+      if (selectedCategory && community.category !== selectedCategory) return false;
       if (!searchQuery) return true;
       const query = searchQuery.toLowerCase();
       return (
@@ -108,6 +112,14 @@ export const CommunitiesDirectory: React.FC = () => {
               </select>
             </div>
           </div>
+
+          {/* Category Filter */}
+          <div className="mt-3">
+            <CategoryFilter
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+            />
+          </div>
         </div>
       </section>
 
@@ -123,13 +135,13 @@ export const CommunitiesDirectory: React.FC = () => {
               <Sparkles className="w-16 h-16 text-[#333333] mx-auto" />
               <h3 className="mt-4 text-xl font-semibold text-[#FAFAFA]">{t('publicCommunities.directory.empty.title')}</h3>
               <p className="mt-2 text-[#A0A0A0]">
-                {searchQuery
+                {searchQuery || selectedCategory
                   ? t('publicCommunities.directory.empty.searchHint')
                   : t('publicCommunities.directory.empty.createHint')}
               </p>
-              {searchQuery && (
+              {(searchQuery || selectedCategory) && (
                 <button
-                  onClick={() => setSearchQuery('')}
+                  onClick={() => { setSearchQuery(''); setSelectedCategory(null); }}
                   className="mt-4 text-[#FAFAFA] hover:text-white font-medium transition-colors duration-150"
                 >
                   {t('publicCommunities.directory.empty.clearSearch')}

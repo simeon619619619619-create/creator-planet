@@ -1,9 +1,15 @@
 import { supabase } from '../../core/supabase/client';
-import { DbCourse, DbProfile } from '../../core/supabase/database.types';
+import type { DbProfile } from '../../core/supabase/database.types';
+import type { ContentCategory } from '../../shared/constants/categories';
 
 // ============================================================================
 // TYPES
 // ============================================================================
+
+export interface PublicCourseVoter {
+  full_name: string;
+  avatar_url: string | null;
+}
 
 export interface PublicCourse {
   id: string;
@@ -19,27 +25,10 @@ export interface PublicCourse {
   } | null;
   enrolled_count: number;
   rating: number | null;
+  community_members: PublicCourseVoter[];
   created_at: string;
+  category: ContentCategory | null;
 }
-
-export interface CourseCategory {
-  id: string;
-  name: string;
-  slug: string;
-  icon?: string;
-}
-
-// Default categories for the landing page
-export const COURSE_CATEGORIES: CourseCategory[] = [
-  { id: '1', name: 'Development', slug: 'development' },
-  { id: '2', name: 'Business', slug: 'business' },
-  { id: '3', name: 'Design', slug: 'design' },
-  { id: '4', name: 'Marketing', slug: 'marketing' },
-  { id: '5', name: 'Personal Development', slug: 'personal-development' },
-  { id: '6', name: 'Finance', slug: 'finance' },
-  { id: '7', name: 'Health & Fitness', slug: 'health-fitness' },
-  { id: '8', name: 'Music', slug: 'music' },
-];
 
 // ============================================================================
 // PUBLIC COURSE FETCHING (No Auth Required)
@@ -61,7 +50,9 @@ export async function getPublicCourses(): Promise<PublicCourse[]> {
         description,
         thumbnail_url,
         created_at,
-        creator_id
+        creator_id,
+        community_id,
+        category
       `)
       .eq('is_published', true)
       .not('community_id', 'is', null)
@@ -104,6 +95,25 @@ export async function getPublicCourses(): Promise<PublicCourse[]> {
       countMap.set(e.course_id, count + 1);
     });
 
+    // Fetch community members with profiles (for social proof voters)
+    const communityIds = [...new Set(courses.map(c => c.community_id).filter(Boolean))] as string[];
+    const membersMap = new Map<string, PublicCourseVoter[]>();
+    if (communityIds.length > 0) {
+      const { data: members } = await supabase
+        .from('memberships')
+        .select('community_id, user_id, profiles!memberships_user_id_fkey(full_name, avatar_url)')
+        .in('community_id', communityIds);
+
+      members?.forEach((m: any) => {
+        const profile = m.profiles;
+        if (profile?.full_name) {
+          const list = membersMap.get(m.community_id) || [];
+          list.push({ full_name: profile.full_name, avatar_url: profile.avatar_url });
+          membersMap.set(m.community_id, list);
+        }
+      });
+    }
+
     // Transform to PublicCourse format
     const publicCourses: PublicCourse[] = courses.map(course => {
       const creatorProfile = profileMap.get(course.creator_id);
@@ -122,7 +132,9 @@ export async function getPublicCourses(): Promise<PublicCourse[]> {
         } : null,
         enrolled_count: countMap.get(course.id) || 0,
         rating: null, // Can be extended with ratings table
+        community_members: membersMap.get(course.community_id!) || [],
         created_at: course.created_at,
+        category: (course.category as ContentCategory) ?? null,
       };
     });
 
@@ -151,7 +163,9 @@ export async function searchCourses(query: string): Promise<PublicCourse[]> {
         description,
         thumbnail_url,
         created_at,
-        creator_id
+        creator_id,
+        community_id,
+        category
       `)
       .eq('is_published', true)
       .not('community_id', 'is', null)
@@ -191,6 +205,25 @@ export async function searchCourses(query: string): Promise<PublicCourse[]> {
       countMap.set(e.course_id, count + 1);
     });
 
+    // Fetch community members for social proof
+    const communityIds = [...new Set(courses.map(c => c.community_id).filter(Boolean))] as string[];
+    const membersMap = new Map<string, PublicCourseVoter[]>();
+    if (communityIds.length > 0) {
+      const { data: members } = await supabase
+        .from('memberships')
+        .select('community_id, user_id, profiles!memberships_user_id_fkey(full_name, avatar_url)')
+        .in('community_id', communityIds);
+
+      members?.forEach((m: any) => {
+        const profile = m.profiles;
+        if (profile?.full_name) {
+          const list = membersMap.get(m.community_id) || [];
+          list.push({ full_name: profile.full_name, avatar_url: profile.avatar_url });
+          membersMap.set(m.community_id, list);
+        }
+      });
+    }
+
     return courses.map(course => {
       const creatorProfile = profileMap.get(course.creator_id);
 
@@ -208,7 +241,9 @@ export async function searchCourses(query: string): Promise<PublicCourse[]> {
         } : null,
         enrolled_count: countMap.get(course.id) || 0,
         rating: null,
+        community_members: membersMap.get(course.community_id!) || [],
         created_at: course.created_at,
+        category: (course.category as ContentCategory) ?? null,
       };
     });
   } catch (error) {

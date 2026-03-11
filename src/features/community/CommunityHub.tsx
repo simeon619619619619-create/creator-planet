@@ -38,7 +38,8 @@ import {
   getPointsForNextLevel,
 } from './pointsService';
 import { getGroupsWithCounts, getUserGroupsInCommunity } from './groupService';
-import type { DbCommunityChannel, DbPostWithAuthor, DbPoints, DbPostCommentWithAuthor, ChannelsByGroup, DbCommunityGroupWithCount } from '../../core/supabase/database.types';
+import type { DbCommunityChannel, DbPostWithAuthor, DbPoints, DbPostCommentWithAuthor, ChannelsByGroup, DbCommunityGroupWithCount, ContentCategory } from '../../core/supabase/database.types';
+import { CONTENT_CATEGORIES } from '../../shared/constants/categories';
 import { TeamSection, ChatPanel } from '../direct-messages/components';
 import TeamSettingsTab from '../direct-messages/pages/TeamSettingsTab';
 import { getTeamMembersWithUnread, isTeamMember } from '../direct-messages/dmService';
@@ -103,6 +104,8 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   const [settingsTab, setSettingsTab] = useState<'general' | 'team'>('general');
   const [editingCommunityName, setEditingCommunityName] = useState('');
   const [isSavingCommunityName, setIsSavingCommunityName] = useState(false);
+  const [editingCommunityCategory, setEditingCommunityCategory] = useState<ContentCategory | null>(null);
+  const [isSavingCommunityCategory, setIsSavingCommunityCategory] = useState(false);
 
   // Group management state
   const [channelsByGroup, setChannelsByGroup] = useState<ChannelsByGroup | null>(null);
@@ -892,6 +895,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   <button
                     onClick={() => {
                       setEditingCommunityName(selectedCommunity.name);
+                      setEditingCommunityCategory(selectedCommunity.category ?? null);
                       setShowPricingSettings(true);
                     }}
                     className="p-1.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors"
@@ -1867,6 +1871,47 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                       >
                         {isSavingCommunityName ? (
+                          <Loader2 size={16} className="animate-spin" />
+                        ) : (
+                          t('communityHub.buttons.save')
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Category Section */}
+                  <div>
+                    <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+                      {t('communityHub.modal.communitySettings.categoryLabel', 'Category')}
+                    </label>
+                    <div className="flex gap-2">
+                      <select
+                        value={editingCommunityCategory ?? ''}
+                        onChange={(e) => setEditingCommunityCategory((e.target.value || null) as ContentCategory | null)}
+                        className="flex-1 px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] bg-transparent text-[#FAFAFA]"
+                      >
+                        <option value="">{t('categories.selectPlaceholder', 'Select a category...')}</option>
+                        {CONTENT_CATEGORIES.map((cat) => (
+                          <option key={cat.value} value={cat.value}>
+                            {t(cat.labelKey)}
+                          </option>
+                        ))}
+                      </select>
+                      <button
+                        onClick={async () => {
+                          const newCategory = editingCommunityCategory || null;
+                          if (newCategory === (selectedCommunity.category ?? null)) return;
+                          setIsSavingCommunityCategory(true);
+                          const updated = await updateCommunity(selectedCommunity.id, { category: newCategory });
+                          if (updated) {
+                            await refreshCommunities();
+                          }
+                          setIsSavingCommunityCategory(false);
+                        }}
+                        disabled={isSavingCommunityCategory || editingCommunityCategory === (selectedCommunity.category ?? null)}
+                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                      >
+                        {isSavingCommunityCategory ? (
                           <Loader2 size={16} className="animate-spin" />
                         ) : (
                           t('communityHub.buttons.save')

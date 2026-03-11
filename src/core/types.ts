@@ -111,6 +111,7 @@ export interface CommunityListItem {
   memberCount: number;
   pricing_type: 'free' | 'one_time' | 'monthly';
   price_cents: number;
+  category: import('./supabase/database.types').ContentCategory | null;
   creator: {
     id: string;
     full_name: string;

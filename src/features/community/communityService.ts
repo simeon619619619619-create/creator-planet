@@ -121,7 +121,7 @@ export async function createCommunity(
 
 export async function updateCommunity(
   communityId: string,
-  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public'>>
+  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category'>>
 ): Promise<DbCommunity | null> {
   const { data, error } = await supabase
     .from('communities')
@@ -951,6 +951,7 @@ export async function getPublicCommunities(): Promise<CommunityListItem[]> {
       thumbnail_url,
       pricing_type,
       price_cents,
+      category,
       created_at,
       creator:profiles!creator_id(id, full_name, avatar_url)
     `)
@@ -974,6 +975,7 @@ export async function getPublicCommunities(): Promise<CommunityListItem[]> {
     memberCount: memberCounts.get(community.id) || 0,
     pricing_type: community.pricing_type || 'free',
     price_cents: community.price_cents || 0,
+    category: community.category || null,
     creator: {
       id: community.creator?.id || '',
       full_name: community.creator?.full_name || 'Unknown',

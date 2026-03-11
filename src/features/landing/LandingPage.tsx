@@ -11,16 +11,19 @@ import {
   Play,
   Award,
   TrendingUp,
+  Gift,
 } from 'lucide-react';
 import {
   getPublicCourses,
   searchCourses,
   getTotalLearnersCount,
-  COURSE_CATEGORIES,
   PublicCourse,
 } from './landingService';
 import { Logo } from '../../shared/Logo';
 import LanguageSwitcher from '../../shared/LanguageSwitcher';
+import { getCourseProof } from '../../shared/courseProof';
+import CategoryFilter from '../../shared/components/CategoryFilter';
+import type { ContentCategory } from '../../shared/constants/categories';
 
 const LandingPage: React.FC = () => {
   const { t } = useTranslation();
@@ -31,7 +34,7 @@ const LandingPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [totalLearners, setTotalLearners] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<ContentCategory | null>(null);
 
   // Load courses on mount
   useEffect(() => {
@@ -94,6 +97,11 @@ const LandingPage: React.FC = () => {
     }
     return num.toString();
   };
+
+  // Apply category filter on top of search results
+  const displayedCourses = selectedCategory
+    ? filteredCourses.filter((c) => c.category === selectedCategory)
+    : filteredCourses;
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
@@ -245,42 +253,10 @@ const LandingPage: React.FC = () => {
       {/* Category Navigation */}
       <section className="py-6 bg-[#0A0A0A] border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-            <button
-              onClick={() => {
-                setSelectedCategory(null);
-                setFilteredCourses(courses);
-              }}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                selectedCategory === null
-                  ? 'bg-white text-black'
-                  : 'bg-[#0A0A0A] text-[#A0A0A0] hover:bg-[#151515] border border-[#1F1F1F]'
-              }`}
-            >
-              {t('exploreLanding.categories.allCourses')}
-            </button>
-            {COURSE_CATEGORIES.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => {
-                  setSelectedCategory(category.slug);
-                  const filtered = courses.filter(
-                    (c) =>
-                      c.title.toLowerCase().includes(category.name.toLowerCase()) ||
-                      c.description?.toLowerCase().includes(category.name.toLowerCase())
-                  );
-                  setFilteredCourses(filtered.length > 0 ? filtered : courses);
-                }}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category.slug
-                    ? 'bg-white text-black'
-                    : 'bg-[#0A0A0A] text-[#A0A0A0] hover:bg-[#151515] border border-[#1F1F1F]'
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+          />
         </div>
       </section>
 
@@ -291,12 +267,10 @@ const LandingPage: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-[#FAFAFA]">
               {searchQuery
                 ? `${t('exploreLanding.courseGrid.resultsFor')} "${searchQuery}"`
-                : selectedCategory
-                ? `${COURSE_CATEGORIES.find((c) => c.slug === selectedCategory)?.name} ${t('exploreLanding.courseGrid.courses')}`
                 : t('exploreLanding.courseGrid.allCourses')}
             </h2>
             <span className="text-sm text-[#666666]">
-              {filteredCourses.length} {filteredCourses.length !== 1 ? t('exploreLanding.courseGrid.coursePlural') : t('exploreLanding.courseGrid.course')}
+              {displayedCourses.length} {displayedCourses.length !== 1 ? t('exploreLanding.courseGrid.coursePlural') : t('exploreLanding.courseGrid.course')}
             </span>
           </div>
 
@@ -308,7 +282,7 @@ const LandingPage: React.FC = () => {
           )}
 
           {/* Empty State */}
-          {!isLoading && filteredCourses.length === 0 && (
+          {!isLoading && displayedCourses.length === 0 && (
             <div className="text-center py-20">
               <BookOpen className="w-16 h-16 text-[#333333] mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-[#FAFAFA] mb-2">
@@ -334,13 +308,64 @@ const LandingPage: React.FC = () => {
           )}
 
           {/* Course Grid */}
-          {!isLoading && filteredCourses.length > 0 && (
+          {!isLoading && displayedCourses.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredCourses.map((course) => (
+              {displayedCourses.map((course) => (
                 <CourseCard key={course.id} course={course} />
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Certificates & Rewards Section */}
+      <section className="py-16 bg-[#0A0A0A] border-t border-[#1F1F1F]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Award className="w-12 h-12 text-[#EAB308] mx-auto mb-4" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#FAFAFA] mb-3">
+            {t('exploreLanding.certificates.title')}
+          </h2>
+          <p className="text-lg text-[#A0A0A0] mb-10">
+            {t('exploreLanding.certificates.subtitle')}
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-left">
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+              <div className="w-10 h-10 rounded-lg bg-[#EAB308]/10 flex items-center justify-center mb-3">
+                <Award className="w-5 h-5 text-[#EAB308]" />
+              </div>
+              <h3 className="font-semibold text-[#FAFAFA] mb-1">
+                {t('exploreLanding.certificates.european')}
+              </h3>
+              <p className="text-sm text-[#A0A0A0]">
+                {t('exploreLanding.certificates.europeanDesc')}
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+              <div className="w-10 h-10 rounded-lg bg-[#EAB308]/10 flex items-center justify-center mb-3">
+                <Gift className="w-5 h-5 text-[#EAB308]" />
+              </div>
+              <h3 className="font-semibold text-[#FAFAFA] mb-1">
+                {t('exploreLanding.certificates.rewards')}
+              </h3>
+              <p className="text-sm text-[#A0A0A0]">
+                {t('exploreLanding.certificates.rewardsDesc')}
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+              <div className="w-10 h-10 rounded-lg bg-[#EAB308]/10 flex items-center justify-center mb-3">
+                <TrendingUp className="w-5 h-5 text-[#EAB308]" />
+              </div>
+              <h3 className="font-semibold text-[#FAFAFA] mb-1">
+                {t('exploreLanding.certificates.career')}
+              </h3>
+              <p className="text-sm text-[#A0A0A0]">
+                {t('exploreLanding.certificates.careerDesc')}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -480,28 +505,64 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           </p>
         )}
 
-        {/* Rating */}
-        <div className="flex items-center gap-1 mb-2">
-          <span className="text-sm font-bold text-[#EAB308]">
-            {course.rating ?? 4.5}
-          </span>
-          <div className="flex items-center">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star
-                key={star}
-                size={14}
-                className={
-                  star <= Math.round(course.rating ?? 4.5)
-                    ? 'text-[#EAB308] fill-[#EAB308]'
-                    : 'text-[#333333]'
-                }
-              />
-            ))}
-          </div>
-          <span className="text-xs text-[#666666]">
-            ({course.enrolled_count > 0 ? course.enrolled_count : Math.floor(Math.random() * 500) + 50})
-          </span>
-        </div>
+        {/* Rating & real member voters */}
+        {(() => {
+          const proof = getCourseProof(course.id, course.community_members);
+          return (
+            <div className="mb-3">
+              {/* Stars row */}
+              <div className="flex items-center gap-1.5 mb-2">
+                <span className="text-sm font-bold text-[#EAB308]">
+                  {proof.rating}
+                </span>
+                <div className="flex items-center">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      size={14}
+                      className={
+                        star <= Math.round(proof.rating)
+                          ? 'text-[#EAB308] fill-[#EAB308]'
+                          : 'text-[#333333]'
+                      }
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-[#888888]">
+                  ({proof.votes})
+                </span>
+              </div>
+              {/* Voter avatars */}
+              {proof.displayVoters.length > 0 && (
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    {proof.displayVoters.map((voter, i) => (
+                      <div
+                        key={i}
+                        className="w-6 h-6 rounded-full border-2 border-[#0A0A0A] overflow-hidden bg-[#1F1F1F] flex-shrink-0"
+                        title={voter.full_name}
+                      >
+                        {voter.avatar_url ? (
+                          <img src={voter.avatar_url} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          <span className="flex items-center justify-center w-full h-full text-[10px] text-[#888888] font-medium">
+                            {voter.full_name.charAt(0)}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-[11px] text-[#888888] leading-tight">
+                    {proof.displayVoters.slice(0, 2).map(v => v.full_name.split(' ')[0]).join(', ')}
+                    {proof.votes > proof.displayVoters.length && (
+                      <> {t('exploreLanding.courseCard.andMore', { count: proof.votes - proof.displayVoters.length }) || `и още ${proof.votes - proof.displayVoters.length}`}</>
+                    )}
+                  </span>
+                </div>
+              )}
+            </div>
+          );
+        })()}
 
         {/* Price */}
         <div className="flex items-center justify-between">

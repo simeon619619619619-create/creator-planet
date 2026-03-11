@@ -356,7 +356,7 @@ export async function unpublishCourse(courseId: string): Promise<boolean> {
 
 export async function updateCourse(
   courseId: string,
-  updates: Partial<Pick<DbCourse, 'title' | 'description' | 'thumbnail_url' | 'is_published'>>
+  updates: Partial<Pick<DbCourse, 'title' | 'description' | 'thumbnail_url' | 'is_published' | 'category'>>
 ): Promise<DbCourse | null> {
   const { data, error } = await supabase
     .from('courses')

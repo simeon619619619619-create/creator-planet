@@ -1,4 +1,17 @@
 {
+  "categories": {
+    "all": "All",
+    "marketing": "Marketing",
+    "business": "Business",
+    "design": "Design",
+    "videoPhoto": "Video & Photo",
+    "personalDevelopment": "Personal Development",
+    "finance": "Finance",
+    "technology": "Technology",
+    "healthFitness": "Health & Fitness",
+    "label": "Category",
+    "selectPlaceholder": "Select a category..."
+  },
   "common": {
     "getStarted": "Get Started",
     "startFreeTrial": "Start Free Trial",
@@ -1412,7 +1425,7 @@
       "titlePart1": "Learn from the",
       "titleHighlight": "best creators",
       "subtitle": "Access courses from industry experts and transform your skills. Join thousands of learners on their journey to success.",
-      "startLearning": "Start Learning",
+      "startLearning": "Start Your Journey to Success",
       "browseCourses": "Browse Courses"
     },
     "stats": {
@@ -1437,9 +1450,9 @@
       "clearSearch": "Clear search"
     },
     "cta": {
-      "title": "Ready to start learning?",
-      "subtitle": "Join our community of learners and get access to all courses.",
-      "createFreeAccount": "Create Free Account"
+      "title": "Ready to transform your future?",
+      "subtitle": "Join thousands of ambitious learners already building the skills that set them apart.",
+      "createFreeAccount": "Start Your Journey"
     },
     "footer": {
       "tagline": "Learn from the best creators and transform your skills.",
@@ -1452,6 +1465,16 @@
       "helpCenter": "Help Center",
       "contactUs": "Contact Us",
       "copyright": "Founders Club. All rights reserved."
+    },
+    "certificates": {
+      "title": "Why complete your courses?",
+      "subtitle": "Gain real credentials that advance your career across Europe.",
+      "european": "European-recognized certificates",
+      "europeanDesc": "Earn certificates recognized throughout Europe upon course completion",
+      "rewards": "Rewards for completion",
+      "rewardsDesc": "Unlock exclusive rewards and badges as you finish courses",
+      "career": "Boost your career",
+      "careerDesc": "Add credentials to your LinkedIn and CV to stand out"
     },
     "courseCard": {
       "free": "Free"
@@ -1993,6 +2016,7 @@
         "subtitle": "Configure your community",
         "nameLabel": "Community Name",
         "namePlaceholder": "Enter community name",
+        "categoryLabel": "Category",
         "tabs": {
           "general": "General",
           "team": "Team"
@@ -2581,6 +2605,12 @@
       "connect": "Connect",
       "copyright": "Founders Club. All rights reserved."
     }
+  },
+  "recommendations": {
+    "title": "Recommended for you",
+    "enrolled_one": "{{count}} enrolled",
+    "enrolled_other": "{{count}} enrolled",
+    "viewCourse": "View course"
   },
   "billing": {
     "settings": {

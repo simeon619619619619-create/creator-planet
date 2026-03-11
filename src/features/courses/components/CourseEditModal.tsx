@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { X, Loader2, Upload, Trash2, AlertTriangle } from 'lucide-react';
-import { DbCourse } from '../../../core/supabase/database.types';
+import { useTranslation } from 'react-i18next';
+import type { DbCourse, ContentCategory } from '../../../core/supabase/database.types';
 import { updateCourse, deleteCourse, uploadCourseThumbnail } from '../courseService';
+import { CONTENT_CATEGORIES } from '../../../shared/constants/categories';
 
 // Draft persistence for course form data
 interface CourseDraft {
@@ -9,6 +11,7 @@ interface CourseDraft {
   description: string;
   thumbnailUrl: string;
   isPublished: boolean;
+  category: ContentCategory | null;
 }
 
 const DRAFT_STORAGE_PREFIX = 'course-draft-';
@@ -58,6 +61,8 @@ const CourseEditModal: React.FC<CourseEditModalProps> = ({
   onSave,
   onDelete,
 }) => {
+  const { t } = useTranslation();
+
   // Load draft or use course values
   const getInitialValue = useCallback(<T,>(field: keyof CourseDraft, defaultValue: T): T => {
     const draft = loadDraft(course.id);
@@ -71,6 +76,7 @@ const CourseEditModal: React.FC<CourseEditModalProps> = ({
   const [description, setDescription] = useState(() => getInitialValue('description', course.description || ''));
   const [thumbnailUrl, setThumbnailUrl] = useState(() => getInitialValue('thumbnailUrl', course.thumbnail_url || ''));
   const [isPublished, setIsPublished] = useState(() => getInitialValue('isPublished', course.is_published));
+  const [category, setCategory] = useState<ContentCategory | null>(() => getInitialValue('category', course.category ?? null));
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -86,9 +92,10 @@ const CourseEditModal: React.FC<CourseEditModalProps> = ({
       description,
       thumbnailUrl,
       isPublished,
+      category,
     };
     saveDraft(course.id, draft);
-  }, [isOpen, course.id, title, description, thumbnailUrl, isPublished]);
+  }, [isOpen, course.id, title, description, thumbnailUrl, isPublished, category]);
 
   if (!isOpen) return null;
 
@@ -116,6 +123,7 @@ const CourseEditModal: React.FC<CourseEditModalProps> = ({
       description: description.trim() || null,
       thumbnail_url: thumbnailUrl || null,
       is_published: isPublished,
+      category: category || null,
     });
 
     if (updated) {
@@ -263,6 +271,25 @@ const CourseEditModal: React.FC<CourseEditModalProps> = ({
               className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
               placeholder="Course description"
             />
+          </div>
+
+          {/* Category */}
+          <div>
+            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+              {t('categories.label', 'Category')}
+            </label>
+            <select
+              value={category ?? ''}
+              onChange={(e) => setCategory((e.target.value || null) as ContentCategory | null)}
+              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] bg-transparent text-[#FAFAFA]"
+            >
+              <option value="">{t('categories.selectPlaceholder', 'Select a category...')}</option>
+              {CONTENT_CATEGORIES.map((cat) => (
+                <option key={cat.value} value={cat.value}>
+                  {t(cat.labelKey)}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* Published Toggle */}

@@ -1,6 +1,7 @@
 // Database types generated from Supabase schema
 // These types match the Phase 2 database tables
 
+export type ContentCategory = 'marketing' | 'business' | 'design' | 'video_photo' | 'personal_development' | 'finance' | 'technology' | 'health_fitness';
 export type UserRole = 'superadmin' | 'creator' | 'student' | 'member';
 export type MembershipRole = 'admin' | 'moderator' | 'member';
 export type LessonType = 'video' | 'text' | 'file' | 'quiz';
@@ -46,6 +47,7 @@ export interface DbCommunity {
   description: string | null;
   thumbnail_url: string | null;
   is_public: boolean;
+  category: ContentCategory | null;
   created_at: string;
   updated_at: string;
   // Pricing fields
@@ -136,6 +138,7 @@ export interface DbCourse {
   description: string | null;
   thumbnail_url: string | null;
   is_published: boolean;
+  category: ContentCategory | null;
   created_at: string;
   updated_at: string;
 }
