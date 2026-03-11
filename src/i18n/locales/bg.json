@@ -1448,7 +1448,8 @@
       "careerDesc": "Добавете квалификации към LinkedIn и CV-то си, за да се отличите"
     },
     "courseCard": {
-      "free": "Безплатно"
+      "free": "Безплатно",
+      "andMore": "и още {{count}}"
     }
   },
   "studentHome": {

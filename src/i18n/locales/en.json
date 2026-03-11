@@ -1477,7 +1477,8 @@
       "careerDesc": "Add credentials to your LinkedIn and CV to stand out"
     },
     "courseCard": {
-      "free": "Free"
+      "free": "Free",
+      "andMore": "and {{count}} more"
     }
   },
   "studentHome": {
