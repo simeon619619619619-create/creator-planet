@@ -7,6 +7,7 @@ import { CommunityProvider } from './core/contexts/CommunityContext';
 import { Logo } from './shared/Logo';
 import ProtectedRoute from './public-pages/auth/ProtectedRoute';
 import Sidebar from './shared/Sidebar';
+import MobileBottomNav from './shared/MobileBottomNav';
 import { View, UserRole } from './core/types';
 import { canGradeHomework } from './features/team/teamPermissions';
 import { useCommunity } from './core/contexts/CommunityContext';
@@ -275,6 +276,26 @@ const AppLayout: React.FC = () => {
     }
   };
 
+  const handleBottomNavNavigate = useCallback((view: View) => {
+    const paths: Record<View, string> = {
+      [View.DASHBOARD]: '/dashboard',
+      [View.COMMUNITY]: '/community',
+      [View.COURSES]: '/courses',
+      [View.HOMEWORK]: '/homework',
+      [View.AI_CHAT]: '/ai-chat',
+      [View.CALENDAR]: '/calendar',
+      [View.AI_MANAGER]: '/ai-manager',
+      [View.STUDENT_MANAGER]: '/student-manager',
+      [View.SURVEYS]: '/surveys',
+      [View.DISCOUNTS]: '/discounts',
+      [View.SETTINGS]: '/settings',
+      [View.MESSAGES]: '/messages',
+      [View.MEMBERS]: '/members',
+    };
+    navigate(paths[view]);
+    setCurrentView(view);
+  }, [navigate]);
+
   return (
     <div className="flex h-screen bg-[#0A0A0A] font-sans text-[#FAFAFA]">
       <Sidebar
@@ -288,20 +309,24 @@ const AppLayout: React.FC = () => {
 
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Mobile Header */}
-        <header className="lg:hidden h-16 bg-[#0A0A0A] border-b border-[#1F1F1F] flex items-center px-4 justify-between shrink-0">
+        <header className="lg:hidden h-14 bg-[#0A0A0A] border-b border-[#1F1F1F] flex items-center px-4 justify-center shrink-0">
           <Logo variant="light" size="lg" showText={false} />
-          <button onClick={() => setIsSidebarOpen(true)} className="p-2 text-[#FAFAFA] hover:bg-[#151515] rounded-lg">
-            <Menu size={24} />
-          </button>
         </header>
 
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-auto">
+        {/* Main Content Area — extra bottom padding on mobile for bottom nav */}
+        <main className="flex-1 overflow-auto pb-16 lg:pb-0">
           <Suspense fallback={<LoadingScreen />}>
             {renderContent()}
           </Suspense>
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav
+        currentView={currentView}
+        onNavigate={handleBottomNavNavigate}
+        onOpenMenu={() => setIsSidebarOpen(true)}
+      />
     </div>
   );
 };

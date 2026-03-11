@@ -35,6 +35,11 @@ button, a, input, select, textarea, [role="button"] {
   transition: all 150ms ease;
 }
 
+/* Mobile bottom nav safe area for iPhones with home indicator */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* Live analytics map marker pulse */
 @keyframes marker-ping {
   0% { opacity: 0.8; r: 4; }

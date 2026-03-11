@@ -102,40 +102,40 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8">
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
-          <div className="bg-[#0A0A0A] rounded-xl p-4 md:p-6 border border-[#1F1F1F]">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 md:p-3 bg-[#1F1F1F] rounded-lg shrink-0">
-                <Users className="w-5 h-5 md:w-6 md:h-6 text-[#FAFAFA]" />
+        {/* Quick Stats — 3 columns on mobile, compact */}
+        <div className="grid grid-cols-3 gap-2 md:gap-4 mb-6 md:mb-8">
+          <div className="bg-[#0A0A0A] rounded-xl p-3 md:p-6 border border-[#1F1F1F]">
+            <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-1 md:gap-3">
+              <div className="p-2 md:p-3 bg-[#1F1F1F] rounded-lg shrink-0">
+                <Users className="w-4 h-4 md:w-6 md:h-6 text-[#FAFAFA]" />
               </div>
               <div className="min-w-0">
-                <p className="text-xl md:text-2xl font-bold text-[#FAFAFA]">{myCommunities.length}</p>
-                <p className="text-xs md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.communitiesJoined')}</p>
+                <p className="text-lg md:text-2xl font-bold text-[#FAFAFA]">{myCommunities.length}</p>
+                <p className="text-[10px] md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.communitiesJoined')}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#0A0A0A] rounded-xl p-4 md:p-6 border border-[#1F1F1F]">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 md:p-3 bg-[#22C55E]/10 rounded-lg shrink-0">
-                <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-[#22C55E]" />
+          <div className="bg-[#0A0A0A] rounded-xl p-3 md:p-6 border border-[#1F1F1F]">
+            <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-1 md:gap-3">
+              <div className="p-2 md:p-3 bg-[#22C55E]/10 rounded-lg shrink-0">
+                <BookOpen className="w-4 h-4 md:w-6 md:h-6 text-[#22C55E]" />
               </div>
               <div className="min-w-0">
-                <p className="text-xl md:text-2xl font-bold text-[#FAFAFA]">{enrolledCourses.length}</p>
-                <p className="text-xs md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.coursesEnrolled')}</p>
+                <p className="text-lg md:text-2xl font-bold text-[#FAFAFA]">{enrolledCourses.length}</p>
+                <p className="text-[10px] md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.coursesEnrolled')}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#0A0A0A] rounded-xl p-4 md:p-6 border border-[#1F1F1F]">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 md:p-3 bg-[#1F1F1F] rounded-lg shrink-0">
-                <Compass className="w-5 h-5 md:w-6 md:h-6 text-[#FAFAFA]" />
+          <div className="bg-[#0A0A0A] rounded-xl p-3 md:p-6 border border-[#1F1F1F]">
+            <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-1 md:gap-3">
+              <div className="p-2 md:p-3 bg-[#1F1F1F] rounded-lg shrink-0">
+                <Compass className="w-4 h-4 md:w-6 md:h-6 text-[#FAFAFA]" />
               </div>
               <div className="min-w-0">
-                <p className="text-xl md:text-2xl font-bold text-[#FAFAFA]">{discoverCommunities.length}</p>
-                <p className="text-xs md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.communitiesToExplore')}</p>
+                <p className="text-lg md:text-2xl font-bold text-[#FAFAFA]">{discoverCommunities.length}</p>
+                <p className="text-[10px] md:text-sm text-[#A0A0A0] truncate">{t('studentHome.stats.communitiesToExplore')}</p>
               </div>
             </div>
           </div>
@@ -160,12 +160,12 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 {t('studentHome.myCommunities.viewAll')} <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0">
               {myCommunities.slice(0, 3).map((community) => (
                 <div
                   key={community.id}
                   onClick={() => onNavigate('community')}
-                  className="bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer"
+                  className="min-w-[72vw] md:min-w-0 snap-start bg-[#0A0A0A] rounded-xl p-5 border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer shrink-0 md:shrink"
                 >
                   <div className="flex items-start gap-3">
                     {community.thumbnail_url ? (
@@ -192,7 +192,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
           </section>
         )}
 
-        {/* Continue Learning Section */}
+        {/* Continue Learning Section — horizontal scroll on mobile */}
         {enrolledCourses.length > 0 && (
           <section className="mb-8 md:mb-10">
             <div className="flex items-center justify-between mb-3 md:mb-4">
@@ -204,12 +204,13 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 {t('studentHome.continueLearning.viewAll')} <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {enrolledCourses.slice(0, 3).map((course) => (
+            {/* Mobile: horizontal scroll, Desktop: grid */}
+            <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0">
+              {enrolledCourses.slice(0, 6).map((course) => (
                 <div
                   key={course.id}
                   onClick={() => onNavigate('courses')}
-                  className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer"
+                  className="min-w-[72vw] md:min-w-0 snap-start bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer shrink-0 md:shrink"
                 >
                   {course.thumbnail_url ? (
                     <img

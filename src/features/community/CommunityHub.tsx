@@ -840,7 +840,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}
-        className="lg:hidden fixed bottom-4 left-4 z-40 bg-white text-black p-3 rounded-full hover:bg-[#E0E0E0] transition-colors flex items-center gap-2"
+        className="lg:hidden fixed bottom-20 left-4 z-40 bg-white text-black p-3 rounded-full hover:bg-[#E0E0E0] transition-colors shadow-lg flex items-center gap-2"
         aria-label="Open channels"
       >
         <Hash size={20} />

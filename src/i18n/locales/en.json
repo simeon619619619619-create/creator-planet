@@ -276,6 +276,9 @@
     "marketingOptIn": "Send me special offers, personalized recommendations, and learning tips.",
     "termsAgreement": "By signing up, you agree to our"
   },
+  "mobileNav": {
+    "more": "More"
+  },
   "sidebar": {
     "dashboard": "Dashboard",
     "community": "Community",

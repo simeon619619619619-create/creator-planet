@@ -1155,7 +1155,7 @@ const CourseLMS: React.FC = () => {
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}
-        className="lg:hidden fixed bottom-4 left-4 z-40 bg-white text-black p-3 rounded-full hover:bg-[#E0E0E0] transition-colors"
+        className="lg:hidden fixed bottom-20 left-4 z-40 bg-white text-black p-3 rounded-full hover:bg-[#E0E0E0] transition-colors shadow-lg"
         aria-label="Open course menu"
       >
         <Menu size={24} />
