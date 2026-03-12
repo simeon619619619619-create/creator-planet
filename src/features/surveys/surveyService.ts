@@ -718,34 +718,48 @@ export async function getStudentPendingSurveysForCommunity(
  * Used for the student dashboard widget
  */
 export async function getStudentPendingSurveys(studentId: string): Promise<PendingSurvey[]> {
-  const { data, error } = await supabase
-    .from('survey_responses')
-    .select(`
-      id,
-      survey_id,
-      created_at,
-      survey:surveys!survey_id(
+  // Fetch pending survey responses and the student's active memberships in parallel
+  const [responsesResult, membershipsResult] = await Promise.all([
+    supabase
+      .from('survey_responses')
+      .select(`
         id,
-        title,
-        description,
-        community_id,
-        community:communities!community_id(id, name)
-      )
-    `)
-    .eq('student_id', studentId)
-    .eq('is_complete', false)
-    .order('created_at', { ascending: false });
+        survey_id,
+        created_at,
+        survey:surveys!survey_id(
+          id,
+          title,
+          description,
+          community_id,
+          community:communities!community_id(id, name)
+        )
+      `)
+      .eq('student_id', studentId)
+      .eq('is_complete', false)
+      .order('created_at', { ascending: false }),
+    supabase
+      .from('memberships')
+      .select('community_id')
+      .eq('user_id', studentId),
+  ]);
 
-  if (error) throw error;
+  if (responsesResult.error) throw responsesResult.error;
+  if (membershipsResult.error) throw membershipsResult.error;
 
-  // Map to PendingSurvey type
-  return (data || []).map((r: any) => ({
-    id: r.id,
-    survey_id: r.survey_id,
-    survey_title: r.survey?.title || 'Untitled Survey',
-    survey_description: r.survey?.description || null,
-    community_id: r.survey?.community_id || null,
-    community_name: r.survey?.community?.name || null,
-    created_at: r.created_at,
-  }));
+  const memberCommunityIds = new Set(
+    (membershipsResult.data ?? []).map((m: any) => m.community_id)
+  );
+
+  // Only show surveys for communities the student is a member of
+  return (responsesResult.data || [])
+    .filter((r: any) => r.survey?.community_id && memberCommunityIds.has(r.survey.community_id))
+    .map((r: any) => ({
+      id: r.id,
+      survey_id: r.survey_id,
+      survey_title: r.survey?.title || 'Untitled Survey',
+      survey_description: r.survey?.description || null,
+      community_id: r.survey?.community_id || null,
+      community_name: r.survey?.community?.name || null,
+      created_at: r.created_at,
+    }));
 }
