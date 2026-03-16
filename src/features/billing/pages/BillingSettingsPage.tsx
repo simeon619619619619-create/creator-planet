@@ -401,8 +401,8 @@ const BillingSettingsPage: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Error Display */}
-      {error && (
+      {/* Error Display - hide raw Edge Function errors */}
+      {error && !error.includes('non-2xx') && !error.includes('Edge Function') && (
         <div className="p-4 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg text-[#EF4444] flex items-start gap-3">
           <AlertCircle size={20} className="shrink-0 mt-0.5" />
           <div>

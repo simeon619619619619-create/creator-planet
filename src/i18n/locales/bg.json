@@ -2604,6 +2604,17 @@
       "errorIncompleteSetup": "Завършете активацията на акаунта си, за да получите достъп до настройките за фактуриране.",
       "completeSetupButton": "Завърши настройката",
       "errorDismiss": "Затвори",
+      "checklist": {
+        "title": "Стъпки за настройка",
+        "activationFee": "Платете активационна такса",
+        "payActivation": "Платете сега",
+        "choosePlan": "Изберете план",
+        "selectPlan": "Избери план",
+        "connectPayout": "Свържете сметка за изплащания",
+        "connectAccount": "Свържи сметка",
+        "done": "Готово",
+        "progress": "{{done}} от {{total}} завършени"
+      },
       "sectionCurrentPlan": "Текущ план",
       "sectionSubtitle": "Управлявайте абонамента и фактурирането си",
       "viewAllPlansLink": "Виж всички планове",

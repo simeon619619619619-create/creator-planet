@@ -2633,6 +2633,17 @@
       "errorIncompleteSetup": "Complete your account activation to access billing settings.",
       "completeSetupButton": "Complete Setup",
       "errorDismiss": "Dismiss",
+      "checklist": {
+        "title": "Setup Checklist",
+        "activationFee": "Pay activation fee",
+        "payActivation": "Pay Now",
+        "choosePlan": "Choose a plan",
+        "selectPlan": "Select Plan",
+        "connectPayout": "Connect payout account",
+        "connectAccount": "Connect Account",
+        "done": "Done",
+        "progress": "{{done}} of {{total}} completed"
+      },
       "sectionCurrentPlan": "Current Plan",
       "sectionSubtitle": "Manage your subscription and billing",
       "viewAllPlansLink": "View all plans",
