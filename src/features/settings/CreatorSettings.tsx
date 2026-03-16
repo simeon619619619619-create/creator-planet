@@ -44,6 +44,7 @@ const CreatorSettings: React.FC = () => {
 
   useEffect(() => {
     if (profile?.id) {
+      setMessage(null); // Clear any stale error messages on load
       loadCreatorProfile();
       loadConnectStatus();
     }
@@ -93,7 +94,10 @@ const CreatorSettings: React.FC = () => {
         // Use profile.id for Stripe Connect account creation
         const result = await createConnectAccount(profile.id, profile.email);
         if (!result.success) {
-          setMessage({ type: 'error', text: result.error || t('creatorSettings.creator.payouts.error.failed') });
+          // Filter out raw Edge Function errors
+          const errText = result.error || '';
+          const isRawError = errText.includes('non-2xx') || errText.includes('Edge Function');
+          setMessage({ type: 'error', text: isRawError ? t('creatorSettings.creator.payouts.error.failed') : (errText || t('creatorSettings.creator.payouts.error.failed')) });
           return;
         }
       }
@@ -366,8 +370,8 @@ const CreatorSettings: React.FC = () => {
         </p>
       </div>
 
-      {/* Success/Error Message */}
-      {message && (
+      {/* Success/Error Message - hide raw technical errors */}
+      {message && !message.text.includes('non-2xx') && !message.text.includes('Edge Function') && (
         <div
           className={`p-4 rounded-lg ${
             message.type === 'success'
