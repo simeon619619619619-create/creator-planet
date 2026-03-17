@@ -32,6 +32,7 @@ import {
   sendMessage,
   markConversationAsRead,
 } from '../direct-messages/dmService';
+import UserProfilePopup from '../community/UserProfilePopup';
 import type { MessageWithSender, DbDirectConversation } from '../direct-messages/dmTypes';
 
 type TabType = 'students' | 'applications';
@@ -63,6 +64,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
   // Bonus points modal state
   const [isBonusModalOpen, setIsBonusModalOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<StudentWithCommunities | null>(null);
+  const [viewingStudentId, setViewingStudentId] = useState<string | null>(null);
   const [selectedCommunityId, setSelectedCommunityId] = useState<string>('');
   const [bonusPoints, setBonusPoints] = useState(5);
   const [bonusReason, setBonusReason] = useState('');
@@ -492,7 +494,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                               </div>
                             )}
                             <div>
-                              <p className="font-medium text-[#FAFAFA]">{studentName}</p>
+                              <p className="font-medium text-[#FAFAFA] cursor-pointer hover:underline" onClick={() => setViewingStudentId(student.profile.id)}>{studentName}</p>
                               {student.profile.full_name && (
                                 <p className="text-sm text-[#666666]">{student.profile.email}</p>
                               )}
@@ -1250,6 +1252,14 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             </div>
           </div>
         </div>
+      )}
+      {/* Student Profile Popup */}
+      {viewingStudentId && (
+        <UserProfilePopup
+          profileId={viewingStudentId}
+          isOpen={true}
+          onClose={() => setViewingStudentId(null)}
+        />
       )}
     </div>
   );
