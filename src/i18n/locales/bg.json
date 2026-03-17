@@ -303,6 +303,7 @@
     "settings": "Настройки",
     "messages": "Съобщения",
     "members": "Членове",
+    "admin": "Админ панел",
     "browseCommunities": "Разгледай общности",
     "createCommunity": "Създай общност",
     "yourCommunity": "Вашата общност"
@@ -4084,5 +4085,71 @@
     "exclusive": "Ексклузив",
     "planDistribution": "Разпределение по план",
     "usersInCity": "потребители"
+  },
+  "admin": {
+    "title": "Админ",
+    "pageTitle": "Админ панел",
+    "backToDashboard": "Към таблото",
+    "sections": {
+      "overview": "Преглед",
+      "creators": "Създатели",
+      "students": "Ученици",
+      "revenue": "Приходи",
+      "communities": "Общности"
+    },
+    "stats": {
+      "totalCreators": "Общо създатели",
+      "totalStudents": "Общо ученици",
+      "platformRevenue": "Приходи на платформата",
+      "totalCommunities": "Общо общности",
+      "activeCreators": "Активни създатели",
+      "inactiveCreators": "Неактивни създатели",
+      "totalEnrollments": "Общо записвания",
+      "activeEnrollments": "Активни записвания",
+      "avgCompletion": "Средно завършване",
+      "atRiskStudents": "Рискови ученици",
+      "grossRevenue": "Брутни приходи",
+      "mrr": "Месечни приходи",
+      "transactions": "Транзакции",
+      "publicCommunities": "Публични",
+      "privateCommunities": "Частни",
+      "avgMembers": "Средно членове"
+    },
+    "timeRange": {
+      "7d": "7 дни",
+      "30d": "30 дни",
+      "90d": "90 дни",
+      "all": "Всичко"
+    },
+    "table": {
+      "name": "Име",
+      "email": "Имейл",
+      "plan": "План",
+      "revenue": "Приходи",
+      "students": "Ученици",
+      "communities": "Общности",
+      "lastLogin": "Последно влизане",
+      "creator": "Създател",
+      "members": "Членове",
+      "posts": "Публикации",
+      "pricing": "Ценообразуване",
+      "visibility": "Видимост",
+      "created": "Създадена",
+      "public": "Публична",
+      "private": "Частна"
+    },
+    "charts": {
+      "revenueOverTime": "Приходи във времето",
+      "enrollmentTrends": "Тенденции на записвания",
+      "platformRevenue": "Приходи на платформата",
+      "grossRevenue": "Брутни приходи",
+      "newEnrollments": "Нови записвания"
+    },
+    "creatorsByPlan": "Създатели по план",
+    "studentHealth": "Здраве на учениците",
+    "topCreators": "Топ създатели",
+    "communityHealth": "Здраве на общностите",
+    "noData": "Няма данни",
+    "loading": "Зареждане на админ данни..."
   }
 }

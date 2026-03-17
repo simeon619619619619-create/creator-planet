@@ -58,6 +58,7 @@ const TeamProfilePage = React.lazy(() => import('./features/direct-messages/page
 const TeamDashboard = React.lazy(() => import('./features/team/TeamDashboard'));
 const TeamInboxPage = React.lazy(() => import('./features/team/TeamInboxPage'));
 const TeamMembersPage = React.lazy(() => import('./features/team/TeamMembersPage'));
+const AdminDashboard = React.lazy(() => import('./features/admin/pages/AdminDashboard'));
 
 // Loading component
 const LoadingScreen: React.FC = () => {
@@ -593,6 +594,16 @@ const AppRoutes: React.FC = () => {
 
       {/* Legacy redirect /app to role-based default */}
       <Route path="/app" element={<Navigate to="/dashboard" replace />} />
+
+      {/* Admin dashboard - superadmin only, standalone layout */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRouteWrapper allowedRoles={['superadmin']}>
+            <AdminDashboard />
+          </ProtectedRouteWrapper>
+        }
+      />
 
       {/* Catch-all redirect to home */}
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -303,6 +303,7 @@
     "settings": "Settings",
     "messages": "Messages",
     "members": "Members",
+    "admin": "Admin Panel",
     "browseCommunities": "Browse Communities",
     "createCommunity": "Create Community",
     "yourCommunity": "Your Community"
@@ -3979,5 +3980,71 @@
     "exclusive": "Exclusive",
     "planDistribution": "Plan Distribution",
     "usersInCity": "users"
+  },
+  "admin": {
+    "title": "Admin",
+    "pageTitle": "Platform Admin",
+    "backToDashboard": "Back to Dashboard",
+    "sections": {
+      "overview": "Overview",
+      "creators": "Creators",
+      "students": "Students",
+      "revenue": "Revenue",
+      "communities": "Communities"
+    },
+    "stats": {
+      "totalCreators": "Total Creators",
+      "totalStudents": "Total Students",
+      "platformRevenue": "Platform Revenue",
+      "totalCommunities": "Total Communities",
+      "activeCreators": "Active Creators",
+      "inactiveCreators": "Inactive Creators",
+      "totalEnrollments": "Total Enrollments",
+      "activeEnrollments": "Active Enrollments",
+      "avgCompletion": "Avg Completion",
+      "atRiskStudents": "At-Risk Students",
+      "grossRevenue": "Gross Revenue",
+      "mrr": "Monthly Recurring Revenue",
+      "transactions": "Transactions",
+      "publicCommunities": "Public",
+      "privateCommunities": "Private",
+      "avgMembers": "Avg Members"
+    },
+    "timeRange": {
+      "7d": "7 Days",
+      "30d": "30 Days",
+      "90d": "90 Days",
+      "all": "All Time"
+    },
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "plan": "Plan",
+      "revenue": "Revenue",
+      "students": "Students",
+      "communities": "Communities",
+      "lastLogin": "Last Login",
+      "creator": "Creator",
+      "members": "Members",
+      "posts": "Posts",
+      "pricing": "Pricing",
+      "visibility": "Visibility",
+      "created": "Created",
+      "public": "Public",
+      "private": "Private"
+    },
+    "charts": {
+      "revenueOverTime": "Revenue Over Time",
+      "enrollmentTrends": "Enrollment Trends",
+      "platformRevenue": "Platform Revenue",
+      "grossRevenue": "Gross Revenue",
+      "newEnrollments": "New Enrollments"
+    },
+    "creatorsByPlan": "Creators by Plan",
+    "studentHealth": "Student Health",
+    "topCreators": "Top Creators",
+    "communityHealth": "Community Health",
+    "noData": "No data available",
+    "loading": "Loading admin data..."
   }
 }
