@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, GraduationCap, Calendar, BrainCircuit, Settings, LogOut, ClipboardList, Bot, UserCog, Tag, ClipboardCheck, MessageSquare, UserCircle, Shield } from 'lucide-react';
+import { LayoutDashboard, Users, GraduationCap, Calendar, BrainCircuit, Settings, LogOut, ClipboardList, Bot, UserCog, Tag, ClipboardCheck, MessageSquare, UserCircle } from 'lucide-react';
 import { View } from '../core/types';
 import { NAV_ITEMS, CREATOR_NAV_ITEMS, TEAM_MEMBER_NAV_ITEMS } from '../core/constants';
 import { useAuth } from '../core/contexts/AuthContext';
@@ -41,9 +41,9 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
   const navigate = useNavigate();
   const { signOut, profile, role, teamMemberships, isTeamMemberOnly } = useAuth();
   const { selectedCommunity } = useCommunity();
-  const isCreator = role === 'creator' || role === 'superadmin';
+  const isCreator = role === 'creator';
 
-  // Check if user is a student (not creator or superadmin)
+  // Check if user is a student (not creator)
   const isStudent = role === 'student' || role === 'member';
 
   // Get team role for display (if team member)
@@ -203,18 +203,6 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
 
         {/* Footer */}
         <div className="p-4 border-t border-[#1F1F1F] space-y-2">
-          {role === 'superadmin' && (
-            <button
-              onClick={() => {
-                navigate('/admin');
-                setIsOpen(false);
-              }}
-              className="w-full flex items-center gap-3 px-4 py-3 text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors"
-            >
-              <Shield size={20} />
-              {t('sidebar.admin')}
-            </button>
-          )}
           <button
             onClick={() => {
               navigate('/settings');

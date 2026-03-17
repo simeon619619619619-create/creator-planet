@@ -22,7 +22,7 @@ const ROLE_EMOJIS: Record<string, string> = {
 const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbots }) => {
   const { t } = useTranslation();
   const { profile, role } = useAuth();
-  const isCreator = role === 'creator' || role === 'superadmin';
+  const isCreator = role === 'creator';
   const [chatbots, setChatbots] = useState<DbCommunityChatbot[]>([]);
   const [selectedChatbot, setSelectedChatbot] = useState<DbCommunityChatbot | null>(null);
   const [isLoading, setIsLoading] = useState(true);

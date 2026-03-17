@@ -4045,6 +4045,12 @@
     "topCreators": "Top Creators",
     "communityHealth": "Community Health",
     "noData": "No data available",
-    "loading": "Loading admin data..."
+    "loading": "Loading admin data...",
+    "enterPassword": "Enter admin password",
+    "passwordPlaceholder": "Password",
+    "wrongPassword": "Wrong password",
+    "noPasswordConfigured": "Admin password not configured",
+    "login": "Login",
+    "logout": "Logout"
   }
 }

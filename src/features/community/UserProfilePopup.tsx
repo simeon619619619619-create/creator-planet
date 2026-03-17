@@ -203,12 +203,6 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
             {t('communityHub.userProfile.role.creator')}
           </span>
         );
-      case 'superadmin':
-        return (
-          <span className="bg-[#1F1F1F] text-[#FAFAFA] text-xs px-2 py-0.5 rounded-full font-semibold">
-            {t('communityHub.userProfile.role.admin')}
-          </span>
-        );
       case 'student':
         return (
           <span className="bg-[#1F1F1F] text-[#A0A0A0] text-xs px-2 py-0.5 rounded-full font-semibold">
@@ -470,7 +464,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               </div>
 
               {/* Contact Info - visible only to admins/creators */}
-              {(currentUserRole === 'superadmin' || currentUserRole === 'creator') && (
+              {currentUserRole === 'creator' && (
                 <div className="space-y-1 mb-4 px-2">
                   {(profile as any).email && (
                     <p className="text-center text-[#A0A0A0] text-sm flex items-center justify-center gap-1.5">

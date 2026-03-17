@@ -84,7 +84,7 @@ export const CommunityProvider: React.FC<{ children: ReactNode }> = ({ children 
         if (teamCommunity) {
           communityList = [teamCommunity];
         }
-      } else if (role === 'creator' || role === 'superadmin') {
+      } else if (role === 'creator') {
         // Creators see ONLY their own communities
         communityList = await getCreatorCommunities(user.id);
       } else if (role === 'student' || role === 'member') {

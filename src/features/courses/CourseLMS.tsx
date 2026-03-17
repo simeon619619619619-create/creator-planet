@@ -456,7 +456,7 @@ const CourseLMS: React.FC = () => {
   // Load instructor info when course is selected (for students to message)
   useEffect(() => {
     const loadInstructor = async () => {
-      if (selectedCourse && role !== 'creator' && role !== 'superadmin') {
+      if (selectedCourse && role !== 'creator') {
         const instructor = await getCourseInstructor(selectedCourse.id);
         setCourseInstructor(instructor);
       } else {
@@ -480,7 +480,7 @@ const CourseLMS: React.FC = () => {
     try {
       let courseList: CourseWithModules[] = [];
 
-      if (role === 'creator' || role === 'superadmin') {
+      if (role === 'creator') {
         // Creators see their own courses filtered by selected community
         // Use profile.id because courses.creator_id references profiles.id
         const creatorCourses = await getCreatorCourses(profile!.id);
@@ -768,7 +768,7 @@ const CourseLMS: React.FC = () => {
   // Show empty state for enrolled courses - but show available courses if any
   if (!selectedCourse && courses.length === 0) {
     // For students with available courses, show them
-    if (role !== 'creator' && role !== 'superadmin' && availableCourses.length > 0) {
+    if (role !== 'creator' && availableCourses.length > 0) {
       return (
         <div className="max-w-7xl mx-auto p-6">
           <div className="mb-8">
@@ -946,9 +946,9 @@ const CourseLMS: React.FC = () => {
 
         {/* Enrolled Courses */}
         <h2 className="text-lg font-semibold text-[#FAFAFA] mb-4">
-          {role === 'creator' || role === 'superadmin' ? t('courseLms.section.yourCourses') : t('courseLms.section.continueLearning')}
+          {role === 'creator' ? t('courseLms.section.yourCourses') : t('courseLms.section.continueLearning')}
         </h2>
-        {(role === 'creator' || role === 'superadmin') ? (
+        {(role === 'creator') ? (
           // Creator view with drag-and-drop reordering
           <DndContext
             sensors={sensors}
@@ -1030,7 +1030,7 @@ const CourseLMS: React.FC = () => {
         )}
 
         {/* Available Courses for Students */}
-        {role !== 'creator' && role !== 'superadmin' && availableCourses.length > 0 && (
+        {role !== 'creator' && availableCourses.length > 0 && (
           <>
             <h2 className="text-lg font-semibold text-[#FAFAFA] mt-10 mb-4">{t('courseLms.section.availableCourses')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1204,7 +1204,7 @@ const CourseLMS: React.FC = () => {
 
         <div className="flex-1 py-2">
           {/* Add Module Button for Creators */}
-          {(role === 'creator' || role === 'superadmin') && (
+          {(role === 'creator') && (
             <button
               onClick={() => handleAddModule(selectedCourse.id)}
               className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#FAFAFA] hover:bg-[#1F1F1F] transition-colors"
@@ -1217,7 +1217,7 @@ const CourseLMS: React.FC = () => {
           {selectedCourse.modules.length === 0 ? (
             <div className="p-4 text-center text-[#666666]">
               <p className="text-sm">{t('courseLms.module.noModulesYet')}</p>
-              {(role === 'creator' || role === 'superadmin') && (
+              {(role === 'creator') && (
                 <p className="text-xs mt-1">{t('courseLms.module.addModulesToBuild')}</p>
               )}
             </div>
@@ -1234,7 +1234,7 @@ const CourseLMS: React.FC = () => {
                   </button>
 
                   {/* Module actions for creators */}
-                  {(role === 'creator' || role === 'superadmin') && (
+                  {(role === 'creator') && (
                     <div className="flex items-center gap-1 pr-2">
                       <button
                         onClick={() => handleMoveModule(module.id, 'up')}
@@ -1266,7 +1266,7 @@ const CourseLMS: React.FC = () => {
                 {activeModuleId === module.id && (
                   <div className="bg-[#0A0A0A]">
                     {/* Add Lesson Button for Creators */}
-                    {(role === 'creator' || role === 'superadmin') && (
+                    {(role === 'creator') && (
                       <button
                         onClick={() => handleAddLesson(module.id)}
                         className="w-full flex items-center gap-2 px-6 py-2 text-xs text-[#FAFAFA] hover:bg-[#1F1F1F] transition-colors border-l-4 border-transparent"
@@ -1321,7 +1321,7 @@ const CourseLMS: React.FC = () => {
                           </button>
 
                           {/* Lesson actions for creators */}
-                          {(role === 'creator' || role === 'superadmin') && (
+                          {(role === 'creator') && (
                             <div className="flex items-center gap-1 pr-3">
                               <button
                                 onClick={() => handleMoveLesson(lesson.id, module.id, 'up')}
@@ -1452,7 +1452,7 @@ const CourseLMS: React.FC = () => {
             )}
 
             {/* Instructor Section - only for students */}
-            {courseInstructor && courseInstructor.is_messageable && role !== 'creator' && role !== 'superadmin' && (
+            {courseInstructor && courseInstructor.is_messageable && role !== 'creator' && (
               <div className="mt-6 lg:mt-8 bg-[#0A0A0A] p-4 lg:p-6 rounded-xl border border-[#1F1F1F]">
                 <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4">{t('directMessages.course.instructor')}</h3>
                 <div className="flex items-center gap-4">
@@ -1500,7 +1500,7 @@ const CourseLMS: React.FC = () => {
       </div>
 
       {/* AI Helper for Students - only show when viewing a course */}
-      {selectedCourse && role !== 'creator' && role !== 'superadmin' && (
+      {selectedCourse && role !== 'creator' && (
         <CourseAiHelper
           courseId={selectedCourse.id}
           currentLesson={activeLesson ? { id: activeLesson.id, title: activeLesson.title } : null}

@@ -4150,6 +4150,12 @@
     "topCreators": "Топ създатели",
     "communityHealth": "Здраве на общностите",
     "noData": "Няма данни",
-    "loading": "Зареждане на админ данни..."
+    "loading": "Зареждане на админ данни...",
+    "enterPassword": "Въведете админ парола",
+    "passwordPlaceholder": "Парола",
+    "wrongPassword": "Грешна парола",
+    "noPasswordConfigured": "Админ паролата не е конфигурирана",
+    "login": "Вход",
+    "logout": "Изход"
   }
 }

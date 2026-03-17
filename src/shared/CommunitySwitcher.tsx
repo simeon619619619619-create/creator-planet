@@ -14,7 +14,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const isCreator = role === 'creator' || role === 'superadmin';
+  const isCreator = role === 'creator';
 
   useEffect(() => {
     if (!isOpen) return;

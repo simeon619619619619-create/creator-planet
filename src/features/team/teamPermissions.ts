@@ -17,8 +17,8 @@ export function canManageCommunity(
   teamMemberships: TeamMembershipInfo[] | null,
   allowedTeamRoles: TeamRole[] = ['lecturer', 'assistant']
 ): boolean {
-  // Creators and superadmins can always manage
-  if (role === 'creator' || role === 'superadmin') {
+  // Creators can always manage
+  if (role === 'creator') {
     return true;
   }
 

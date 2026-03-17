@@ -5,7 +5,14 @@ BEGIN;
 -- Adds is_superadmin() helper + SELECT policies for platform-wide queries
 -- ============================================================================
 
+-- Add is_admin column to profiles
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS is_admin boolean DEFAULT false;
+
+-- Set platform admin
+UPDATE public.profiles SET is_admin = true WHERE id = '9b258fa9-3dcb-4d04-8e2b-dc86a2b63279';
+
 -- Helper function for cleaner policy definitions
+-- Checks profiles.is_admin instead of JWT role for reliability
 CREATE OR REPLACE FUNCTION public.is_superadmin()
 RETURNS boolean
 LANGUAGE sql
@@ -13,7 +20,10 @@ STABLE
 SECURITY DEFINER
 SET search_path = public
 AS $$
-  SELECT (((auth.jwt() ->> 'user_metadata')::jsonb ->> 'role') = 'superadmin');
+  SELECT COALESCE(
+    (SELECT is_admin FROM profiles WHERE user_id = auth.uid()),
+    false
+  );
 $$;
 
 -- Grant execute to authenticated users

@@ -705,7 +705,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
     handleCloseMenu();
   };
 
-  const isCreator = role === 'creator' || role === 'superadmin';
+  const isCreator = role === 'creator';
 
   // Common emojis for quick picker
   const commonEmojis = ['😀', '😂', '❤️', '👍', '🎉', '🔥', '💪', '🙌', '✨', '👏', '🚀', '💯', '🤔', '😊', '🙏', '💡'];
@@ -1231,9 +1231,6 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       </button>
                       {post.author?.role === 'creator' && (
                         <span className="bg-[#1F1F1F] text-[#FAFAFA] text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.creator')}</span>
-                      )}
-                      {post.author?.role === 'superadmin' && (
-                        <span className="bg-[#1F1F1F] text-[#FAFAFA] text-[10px] px-2 py-0.5 rounded-full font-bold">{t('communityHub.badges.admin')}</span>
                       )}
                       {post.is_pinned && (
                         <span className="bg-[#EAB308]/10 text-[#EAB308] text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1">

@@ -46,7 +46,7 @@ const Settings: React.FC = () => {
   const [activeTab, setActiveTab] = useState<SettingsTab>('profile');
 
   // Check if user can access creator settings
-  const canAccessCreatorSettings = role === 'creator' || role === 'superadmin';
+  const canAccessCreatorSettings = role === 'creator';
 
   const tabs = [
     {

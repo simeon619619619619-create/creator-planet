@@ -28,7 +28,7 @@ const PricingPage: React.FC = () => {
   const [isChangingPlan, setIsChangingPlan] = useState(false);
 
   // Check if user is a creator
-  const isCreator = role === 'creator' || role === 'superadmin';
+  const isCreator = role === 'creator';
 
   // Load plans and billing info
   useEffect(() => {
