@@ -57,6 +57,7 @@ const SurveyList = React.lazy(() => import('./features/surveys').then(m => ({ de
 const TeamProfilePage = React.lazy(() => import('./features/direct-messages/pages/TeamProfilePage'));
 const TeamDashboard = React.lazy(() => import('./features/team/TeamDashboard'));
 const TeamInboxPage = React.lazy(() => import('./features/team/TeamInboxPage'));
+const CommunityMessagesPage = React.lazy(() => import('./features/direct-messages/pages/CommunityMessagesPage'));
 const TeamMembersPage = React.lazy(() => import('./features/team/TeamMembersPage'));
 const AdminDashboard = React.lazy(() => import('./features/admin/pages/AdminDashboard'));
 
@@ -265,8 +266,7 @@ const AppLayout: React.FC = () => {
       case View.SETTINGS:
         return <Settings />;
       case View.MESSAGES:
-        // Team member inbox page
-        return <TeamInboxPage />;
+        return <CommunityMessagesPage />;
       case View.MEMBERS:
         // Team member view of community members
         if (!selectedCommunity) {
