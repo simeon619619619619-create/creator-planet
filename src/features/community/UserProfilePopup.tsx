@@ -24,7 +24,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { selectedCommunity } = useCommunity();
-  const { profile: currentUserProfile } = useAuth();
+  const { profile: currentUserProfile, role: currentUserRole } = useAuth();
   const [profile, setProfile] = useState<UserProfilePopupData | null>(null);
   const [teamMember, setTeamMember] = useState<TeamMemberWithProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -468,6 +468,22 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                 </h3>
                 {getRoleBadge(profile.role)}
               </div>
+
+              {/* Contact Info - visible only to admins/creators */}
+              {(currentUserRole === 'superadmin' || currentUserRole === 'creator') && (
+                <div className="space-y-1 mb-4 px-2">
+                  {(profile as any).email && (
+                    <p className="text-center text-[#A0A0A0] text-sm flex items-center justify-center gap-1.5">
+                      <span className="text-[#666666]">✉</span> {(profile as any).email}
+                    </p>
+                  )}
+                  {(profile as any).phone && (
+                    <p className="text-center text-[#A0A0A0] text-sm flex items-center justify-center gap-1.5">
+                      <span className="text-[#666666]">📞</span> {(profile as any).phone}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* Bio */}
               {profile.bio && (

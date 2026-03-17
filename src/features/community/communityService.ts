@@ -1286,7 +1286,7 @@ export async function getUserProfileForPopup(profileId: string): Promise<UserPro
   // Get basic profile info including bio (for community member popups)
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
-    .select('id, full_name, avatar_url, role, created_at, bio')
+    .select('id, full_name, avatar_url, role, created_at, bio, email, phone')
     .eq('id', profileId)
     .single();
 
@@ -1313,6 +1313,8 @@ export async function getUserProfileForPopup(profileId: string): Promise<UserPro
     avatar_url: profile.avatar_url,
     role: profile.role,
     bio: profile.bio || null,
+    email: (profile as any).email || null,
+    phone: (profile as any).phone || null,
     joined_at: profile.created_at,
     postsCount: postsCount || 0,
     commentsCount: commentsCount || 0,

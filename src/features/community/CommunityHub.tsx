@@ -39,6 +39,7 @@ import {
 } from './pointsService';
 import { getGroupsWithCounts, getUserGroupsInCommunity } from './groupService';
 import type { DbCommunityChannel, DbPostWithAuthor, DbPoints, DbPostCommentWithAuthor, ChannelsByGroup, DbCommunityGroupWithCount, ContentCategory } from '../../core/supabase/database.types';
+import { supabase } from '../../core/supabase/client';
 import { CONTENT_CATEGORIES } from '../../shared/constants/categories';
 import { TeamSection, ChatPanel } from '../direct-messages/components';
 import TeamSettingsTab from '../direct-messages/pages/TeamSettingsTab';
@@ -1902,6 +1903,34 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         ) : (
                           t('communityHub.buttons.save')
                         )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Access Code Section */}
+                  <div>
+                    <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+                      Код за достъп
+                    </label>
+                    <p className="text-xs text-[#666666] mb-2">Студентите трябва да въведат този код за да се присъединят</p>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        defaultValue={(selectedCommunity as any).access_code || ''}
+                        placeholder="Оставете празно за свободен достъп"
+                        className="flex-1 px-3 py-2 bg-[#0A0A0A] text-[#FAFAFA] border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
+                        id="access-code-input"
+                      />
+                      <button
+                        onClick={async () => {
+                          const input = document.getElementById('access-code-input') as HTMLInputElement;
+                          const code = input?.value?.trim() || null;
+                          await supabase.from('communities').update({ access_code: code }).eq('id', selectedCommunity.id);
+                          await refreshCommunities();
+                        }}
+                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] transition-colors text-sm font-medium"
+                      >
+                        {t('communityHub.buttons.save')}
                       </button>
                     </div>
                   </div>
