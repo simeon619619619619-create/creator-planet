@@ -88,31 +88,31 @@ const CreatorSettings: React.FC = () => {
     if (!profile?.id || !profile?.email) return;
 
     setConnectLoading(true);
+    setMessage(null);
     try {
       // Create account if doesn't exist
       if (!connectStatus) {
-        // Use profile.id for Stripe Connect account creation
         const result = await createConnectAccount(profile.id, profile.email);
+        console.log('createConnectAccount result:', JSON.stringify(result));
         if (!result.success) {
-          // Filter out raw Edge Function errors
-          const errText = result.error || '';
-          const isRawError = errText.includes('non-2xx') || errText.includes('Edge Function');
-          setMessage({ type: 'error', text: isRawError ? t('creatorSettings.creator.payouts.error.failed') : (errText || t('creatorSettings.creator.payouts.error.failed')) });
+          console.error('createConnectAccount failed:', result.error);
+          setMessage({ type: 'error', text: result.error || t('creatorSettings.creator.payouts.error.failed') });
           return;
         }
       }
 
       // Get onboarding link
+      console.log('Getting onboarding link for:', profile.id);
       const onboardingUrl = await getConnectOnboardingLink(profile.id);
+      console.log('Onboarding URL:', onboardingUrl);
       if (onboardingUrl) {
         window.location.href = onboardingUrl;
       } else {
         setMessage({ type: 'error', text: t('creatorSettings.creator.payouts.error.onboardingLink') });
       }
     } catch (error) {
-      console.error('Error setting up payouts:', error);
-      // Show user-friendly error instead of raw Edge Function errors
-      setMessage({ type: 'error', text: t('creatorSettings.creator.payouts.error.setup') });
+      console.error('handleSetupPayouts error:', error);
+      setMessage({ type: 'error', text: error instanceof Error ? error.message : t('creatorSettings.creator.payouts.error.setup') });
     } finally {
       setConnectLoading(false);
     }
