@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { User, Mail, Lock, AlertCircle, CheckCircle, Eye, EyeOff } from 'lucide-react';
+import { User, Mail, Lock, AlertCircle, CheckCircle, Eye, EyeOff, Phone } from 'lucide-react';
 import { useAuth } from '../../core/contexts/AuthContext';
 import { UserRole } from '../../core/types';
 import { Logo } from '../../shared/Logo';
@@ -16,6 +16,7 @@ const SignupPage: React.FC = () => {
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [marketingOptIn, setMarketingOptIn] = useState(true);
@@ -46,6 +47,11 @@ const SignupPage: React.FC = () => {
       return;
     }
 
+    if (!phone.trim() || phone.trim().length < 6) {
+      setError('Моля, въведете валиден телефонен номер');
+      return;
+    }
+
     if (password.length < 6) {
       setError('Password must be at least 6 characters long');
       return;
@@ -54,7 +60,7 @@ const SignupPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const { error: signUpError } = await signUp(email, password, fullName, role, marketingOptIn);
+      const { error: signUpError } = await signUp(email, password, fullName, role, marketingOptIn, phone);
 
       if (signUpError) {
         setError(signUpError.message);
@@ -156,6 +162,27 @@ const SignupPage: React.FC = () => {
                   placeholder={t('auth.email')}
                   disabled={isLoading}
                   autoComplete="email"
+                />
+              </div>
+            </div>
+
+            {/* Phone Field */}
+            <div>
+              <label htmlFor="phone" className="sr-only">
+                Телефон
+              </label>
+              <div className="relative">
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <input
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                  className="w-full pl-12 pr-4 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  placeholder="Телефонен номер *"
+                  disabled={isLoading}
+                  autoComplete="tel"
                 />
               </div>
             </div>

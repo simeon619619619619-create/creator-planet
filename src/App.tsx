@@ -15,6 +15,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './core/queryClient';
 
 // Public pages (lazy-loaded)
+const AdminPanel = React.lazy(() => import('./features/admin/AdminPanel'));
 const LandingPage = React.lazy(() => import('./public-pages/LandingPage'));
 const MarketingLandingPage = React.lazy(() => import('./public-pages/MarketingLandingPage'));
 const WhopLandingPage = React.lazy(() => import('./public-pages/WhopLandingPage'));
@@ -432,6 +433,9 @@ const AppRoutes: React.FC = () => {
 
       {/* Student onboarding questionnaire (pre-signup) */}
       <Route path="/onboarding/student" element={<StudentOnboardingPage />} />
+
+      {/* Admin panel - standalone with own password */}
+      <Route path="/admin" element={<AdminPanel />} />
 
       {/* Creator onboarding (activation fee) */}
       <Route

@@ -25,7 +25,7 @@ interface AuthStateContextType {
 
 interface AuthActionsContextType {
   signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
-  signUp: (email: string, password: string, fullName: string, role: UserRole, marketingOptIn?: boolean) => Promise<{ error: AuthError | null }>;
+  signUp: (email: string, password: string, fullName: string, role: UserRole, marketingOptIn?: boolean, phone?: string) => Promise<{ error: AuthError | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>;
   updatePassword: (newPassword: string) => Promise<{ error: AuthError | null }>;
@@ -238,7 +238,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const signUp = useCallback(async (email: string, password: string, fullName: string, role: UserRole, marketingOptIn: boolean = false) => {
+  const signUp = useCallback(async (email: string, password: string, fullName: string, role: UserRole, marketingOptIn: boolean = false, phone?: string) => {
     try {
       // Determine the redirect URL based on environment
       const redirectUrl = import.meta.env.PROD
@@ -254,6 +254,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             full_name: fullName,
             role: role,
             marketing_opt_in: marketingOptIn,
+            phone: phone || '',
           },
           emailRedirectTo: redirectUrl,
         },
@@ -261,6 +262,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       if (authError) {
         return { error: authError };
+      }
+
+      // Save phone number to profile after signup
+      if (phone && authData?.user?.id) {
+        // Wait a moment for trigger to create profile, then update phone
+        setTimeout(async () => {
+          await supabase
+            .from('profiles')
+            .update({ phone })
+            .eq('user_id', authData.user!.id);
+        }, 1000);
       }
 
       // Profile is created automatically by the database trigger (handle_new_user)

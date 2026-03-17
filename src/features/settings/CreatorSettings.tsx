@@ -100,45 +100,29 @@ const CreatorSettings: React.FC = () => {
 
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 
+      const baseUrl = `${supabaseUrl}/functions/v1/stripe-connect`;
+      const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+
       // Step 1: Create Connect account if needed
       if (!connectStatus) {
-        const createRes = await fetch(`${supabaseUrl}/functions/v1/stripe-connect`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ action: 'create-account' }),
-        });
-        const createData = await createRes.json();
-        if (!createRes.ok || createData.error) {
-          setMessage({ type: 'error', text: createData.error || t('creatorSettings.creator.payouts.error.failed') });
+        const r1 = await fetch(baseUrl, { method: 'POST', headers, body: JSON.stringify({ action: 'create-account' }) });
+        const d1 = await r1.json().catch(() => ({ error: `HTTP ${r1.status}: ${r1.statusText}` }));
+        if (!r1.ok || d1.error) {
+          setMessage({ type: 'error', text: `Step 1 failed: ${d1.error || r1.statusText}` });
           return;
         }
       }
 
       // Step 2: Get onboarding link
-      const linkRes = await fetch(`${supabaseUrl}/functions/v1/stripe-connect`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'onboarding-link',
-          returnUrl: `${window.location.origin}/settings`,
-          refreshUrl: `${window.location.origin}/settings`,
-        }),
-      });
-      const linkData = await linkRes.json();
-      if (linkData.url) {
-        window.location.href = linkData.url;
+      const r2 = await fetch(baseUrl, { method: 'POST', headers, body: JSON.stringify({ action: 'onboarding-link', returnUrl: `${window.location.origin}/settings`, refreshUrl: `${window.location.origin}/settings` }) });
+      const d2 = await r2.json().catch(() => ({ error: `HTTP ${r2.status}: ${r2.statusText}` }));
+      if (d2.url) {
+        window.location.href = d2.url;
       } else {
-        setMessage({ type: 'error', text: linkData.error || t('creatorSettings.creator.payouts.error.onboardingLink') });
+        setMessage({ type: 'error', text: `Step 2 failed: ${d2.error || 'No URL returned'}` });
       }
     } catch (error) {
-      console.error('handleSetupPayouts error:', error);
-      setMessage({ type: 'error', text: t('creatorSettings.creator.payouts.error.setup') });
+      setMessage({ type: 'error', text: `Exception: ${error instanceof Error ? error.message : String(error)}` });
     } finally {
       setConnectLoading(false);
     }
