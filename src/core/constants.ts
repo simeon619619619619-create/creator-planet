@@ -157,6 +157,7 @@ export const NAV_ITEMS = [
   { id: View.COMMUNITY, label: 'Community', icon: 'Users' },
   { id: View.COURSES, label: 'Classroom', icon: 'GraduationCap' },
   { id: View.HOMEWORK, label: 'Homework', icon: 'ClipboardList' },
+  { id: View.MESSAGES, label: 'Messages', icon: 'MessageSquare' },
   { id: View.AI_CHAT, label: 'AI Chat', icon: 'Bot' },
   { id: View.CALENDAR, label: 'Calendar', icon: 'Calendar' },
   { id: View.AI_MANAGER, label: 'AI Success Manager', icon: 'BrainCircuit' },
