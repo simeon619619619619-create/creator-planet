@@ -577,13 +577,8 @@ const CourseLMS: React.FC = () => {
     }
   };
 
-  // Handler for opening the create course modal with limit check
+  // Handler for opening the create course modal
   const handleOpenCreateCourse = () => {
-    // Check if creator has reached their course limit
-    if (!courseLimit.allowed) {
-      setShowUpgradePrompt(true);
-      return;
-    }
     setShowCreateCourse(true);
   };
 
@@ -1566,17 +1561,7 @@ const CourseLMS: React.FC = () => {
         />
       )}
 
-      {/* Upgrade Prompt for Course Limit */}
-      {showUpgradePrompt && (
-        <UpgradePrompt
-          reason="course_limit"
-          onClose={() => setShowUpgradePrompt(false)}
-          currentUsage={{
-            current: courseLimit.current,
-            max: courseLimit.max,
-          }}
-        />
-      )}
+      {/* Billing limits removed */}
 
       {/* Course Purchase Modal */}
       {purchasingCourse && user && (

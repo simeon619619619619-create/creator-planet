@@ -426,7 +426,7 @@ const AppRoutes: React.FC = () => {
           </ProtectedRouteWrapper>
         }
       />
-      <Route path="/pricing" element={<PricingPage />} />
+      {/* Pricing page removed - no billing plans */}
 
       {/* Creator onboarding questionnaire (pre-signup) */}
       <Route path="/onboarding/creator" element={<CreatorOnboardingPage />} />

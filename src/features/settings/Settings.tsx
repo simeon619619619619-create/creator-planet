@@ -67,12 +67,7 @@ const Settings: React.FC = () => {
       icon: Sparkles,
       visible: canAccessCreatorSettings,
     },
-    {
-      id: 'billing' as SettingsTab,
-      label: t('settings.billing'),
-      icon: CreditCard,
-      visible: canAccessCreatorSettings,
-    },
+    // Billing tab removed
     {
       id: 'chatbots' as SettingsTab,
       label: t('creatorSettings.tabs.chatbots'),

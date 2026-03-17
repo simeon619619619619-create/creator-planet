@@ -161,13 +161,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   // Handle external showCreateModal prop
   useEffect(() => {
     if (showCreateModal) {
-      // Check limit before showing create modal
-      if (!communityLimit.allowed && !communityLimit.loading) {
-        setShowUpgradePrompt(true);
-        onCloseCreateModal?.();
-      } else {
-        setShowCreateCommunity(true);
-      }
+      setShowCreateCommunity(true);
     }
   }, [showCreateModal, communityLimit.allowed, communityLimit.loading, onCloseCreateModal]);
 
@@ -366,8 +360,8 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   const handleCreateCommunity = async () => {
     if (!user || !newCommunityName.trim()) return;
 
-    // Check plan limit before creating
-    if (!communityLimit.allowed) {
+    // Limits disabled - platform owner
+    if (false) {
       setShowCreateCommunity(false);
       setShowUpgradePrompt(true);
       return;
@@ -788,11 +782,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           {role === 'creator' && (
             <button
               onClick={() => {
-                if (!communityLimit.allowed) {
-                  setShowUpgradePrompt(true);
-                } else {
-                  setShowCreateCommunity(true);
-                }
+                setShowCreateCommunity(true);
               }}
               className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] inline-flex items-center gap-2"
             >
@@ -1039,11 +1029,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           {role === 'creator' && (
             <button
               onClick={() => {
-                if (!communityLimit.allowed) {
-                  setShowUpgradePrompt(true);
-                } else {
-                  setShowCreateCommunity(true);
-                }
+                setShowCreateCommunity(true);
               }}
               className="w-full mt-2 px-3 py-2 text-sm text-[#FAFAFA] hover:bg-[#151515] rounded-lg flex items-center gap-2"
             >
@@ -2028,17 +2014,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         />
       )}
 
-      {/* Upgrade prompt for community limit */}
-      {showUpgradePrompt && (
-        <UpgradePrompt
-          reason="community_limit"
-          currentUsage={{
-            current: communityLimit.current,
-            max: communityLimit.max,
-          }}
-          onClose={() => setShowUpgradePrompt(false)}
-        />
-      )}
+      {/* Upgrade prompt removed - no billing limits */}
     </div>
   );
 };
