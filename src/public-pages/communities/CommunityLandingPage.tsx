@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { PublicLayout } from './PublicLayout';
 import { JoinButton } from './JoinButton';
 import { useAuth } from '../../core/contexts/AuthContext';
-import { getCommunityPublicData, joinCommunity, getMembership } from '../../features/community/communityService';
+import { getCommunityPublicData, joinCommunity, getMembership, getCommunityAccessCode } from '../../features/community/communityService';
 import { DiscountCodeInput } from '../../features/discounts/components/DiscountCodeInput';
 import { TBIButton } from '../../features/billing/components/TBIButton';
 import { TBIApplicationModal } from '../../features/billing/components/TBIApplicationModal';
@@ -182,8 +182,19 @@ export const CommunityLandingPage: React.FC = () => {
           return;
         }
 
+        // Check access code
+        const requiredCode = await getCommunityAccessCode(communityId);
+        if (requiredCode) {
+          const enteredCode = prompt('Въведете код за достъп:');
+          if (!enteredCode || enteredCode !== requiredCode) {
+            alert('Невалиден код за достъп');
+            setIsAutoJoining(false);
+            return;
+          }
+        }
+
         // Join the community
-        const result = await joinCommunity(user.id, communityId);
+        const result = await joinCommunity(user.id, communityId, 'member', requiredCode || undefined);
         if (result) {
           navigate('/app/community');
         } else {

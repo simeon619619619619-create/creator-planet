@@ -359,11 +359,33 @@ export async function reorderChannels(
 // MEMBERSHIPS
 // ============================================================================
 
+/**
+ * Check if a community requires an access code
+ */
+export async function getCommunityAccessCode(communityId: string): Promise<string | null> {
+  const { data } = await supabase
+    .from('communities')
+    .select('access_code')
+    .eq('id', communityId)
+    .single();
+  return (data as any)?.access_code || null;
+}
+
 export async function joinCommunity(
   userId: string,
   communityId: string,
-  role: MembershipRole = 'member'
+  role: MembershipRole = 'member',
+  accessCode?: string
 ): Promise<DbMembership | null> {
+  // Check access code if community has one (skip for admin role - creator joining own community)
+  if (role === 'member') {
+    const requiredCode = await getCommunityAccessCode(communityId);
+    if (requiredCode && accessCode !== requiredCode) {
+      console.error('Invalid access code');
+      throw new Error('INVALID_ACCESS_CODE');
+    }
+  }
+
   // First, get the profile ID for this user (FK references profiles.id, not user_id)
   const { data: profile, error: profileError } = await supabase
     .from('profiles')

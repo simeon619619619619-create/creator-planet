@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../core/contexts/AuthContext';
-import { joinCommunity, getMembership, applyToCommunity, getApplication } from '../../features/community/communityService';
+import { joinCommunity, getMembership, applyToCommunity, getApplication, getCommunityAccessCode } from '../../features/community/communityService';
 import { createCommunityCheckout } from '../../features/community/communityPaymentService';
 import { formatCommunityPrice, type CommunityPricingType, type CommunityAccessType, type ApplicationStatus } from '../../features/community/communityTypes';
 import { supabase } from '../../core/supabase/client';
@@ -265,10 +265,20 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
       return;
     }
 
+    // Check if community has access code
+    const requiredCode = await getCommunityAccessCode(communityId);
+    if (requiredCode) {
+      const enteredCode = prompt('Въведете код за достъп:');
+      if (!enteredCode || enteredCode !== requiredCode) {
+        alert('Невалиден код за достъп');
+        return;
+      }
+    }
+
     // Open free community - join directly
     setIsJoining(true);
     try {
-      const result = await joinCommunity(user.id, communityId);
+      const result = await joinCommunity(user.id, communityId, 'member', requiredCode || undefined);
       if (result) {
         setMembershipStatus({ isMember: true, paymentStatus: null });
 
