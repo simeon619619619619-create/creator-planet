@@ -584,7 +584,8 @@ export async function removeStudentFromCommunity(
     const data = await response.json();
 
     if (!response.ok) {
-      return { success: false, error: data.error || 'Failed to remove student' };
+      console.error('Remove student failed:', { status: response.status, data });
+      return { success: false, error: data.error || data.message || `Failed to remove student (${response.status})` };
     }
 
     return { success: true };

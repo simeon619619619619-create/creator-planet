@@ -95,7 +95,7 @@ serve(async (req: Request): Promise<Response> => {
     // Get the student's membership (check it exists and get subscription info)
     const { data: membership, error: membershipError } = await supabase
       .from('memberships')
-      .select('id, user_id, stripe_subscription_id, stripe_customer_id, payment_status')
+      .select('id, user_id, stripe_subscription_id, payment_status')
       .eq('user_id', studentProfileId)
       .eq('community_id', communityId)
       .single();
