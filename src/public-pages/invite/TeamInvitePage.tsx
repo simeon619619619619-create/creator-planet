@@ -102,7 +102,7 @@ const TeamInvitePage: React.FC = () => {
   }, [state, user, navigate]);
 
   // Check if user is a creator (can't accept team invites)
-  const isCreator = profile?.role === 'creator';
+  const isCreator = profile?.role === 'creator' || profile?.role === 'superadmin';
 
   // Handle accept invitation
   const handleAccept = async () => {

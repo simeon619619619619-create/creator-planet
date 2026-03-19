@@ -335,7 +335,7 @@ const AppLayout: React.FC = () => {
 
 // Helper function to get the default redirect path based on user role
 export const getDefaultRedirectPath = (role: UserRole | null): string => {
-  if (role === 'creator') {
+  if (role === 'creator' || role === 'superadmin') {
     return '/dashboard';
   }
   // Students and members go to courses

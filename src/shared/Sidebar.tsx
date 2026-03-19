@@ -41,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
   const navigate = useNavigate();
   const { signOut, profile, role, teamMemberships, isTeamMemberOnly } = useAuth();
   const { selectedCommunity } = useCommunity();
-  const isCreator = role === 'creator';
+  const isCreator = role === 'creator' || role === 'superadmin';
 
   // Check if user is a student (not creator)
   const isStudent = role === 'student' || role === 'member';

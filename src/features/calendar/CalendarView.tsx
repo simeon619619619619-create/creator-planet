@@ -64,7 +64,7 @@ const CalendarView: React.FC = () => {
   const [newEventCommunityId, setNewEventCommunityId] = useState<string>('');
   const [newEventAttendeeId, setNewEventAttendeeId] = useState<string>('');
 
-  const isCreator = role === 'creator';
+  const isCreator = role === 'creator' || role === 'superadmin';
 
   // Team members (lecturers, assistants) can also manage calendar
   const isTeamMemberWithCalendarAccess = teamMemberships?.some(

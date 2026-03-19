@@ -705,7 +705,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
     handleCloseMenu();
   };
 
-  const isCreator = role === 'creator';
+  const isCreator = role === 'creator' || role === 'superadmin';
 
   // Common emojis for quick picker
   const commonEmojis = ['😀', '😂', '❤️', '👍', '🎉', '🔥', '💪', '🙌', '✨', '👏', '🚀', '💯', '🤔', '😊', '🙏', '💡'];
@@ -775,12 +775,12 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           <Users className="w-16 h-16 text-[#666666] mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">{t('communityHub.emptyState.noCommunitiesTitle')}</h2>
           <p className="text-[#A0A0A0] mb-6">
-            {role === 'creator'
+            {(role === 'creator' || role === 'superadmin')
               ? t('communityHub.emptyState.creatorPrompt')
               : t('communityHub.emptyState.studentPrompt')
             }
           </p>
-          {role === 'creator' && (
+          {(role === 'creator' || role === 'superadmin') && (
             <button
               onClick={() => {
                 setShowCreateCommunity(true);
@@ -1027,7 +1027,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           )}
 
           {/* Create Community button for creators */}
-          {role === 'creator' && (
+          {(role === 'creator' || role === 'superadmin') && (
             <button
               onClick={() => {
                 setShowCreateCommunity(true);

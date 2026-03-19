@@ -86,7 +86,7 @@ export interface AIMessage {
 }
 
 // Auth Types
-export type UserRole = 'creator' | 'student' | 'member';
+export type UserRole = 'creator' | 'student' | 'member' | 'superadmin';
 
 export interface Profile {
   id: string;

@@ -35,7 +35,7 @@ const OnboardingPage: React.FC = () => {
   const checkoutCanceled = searchParams.get('canceled') === 'true';
 
   // Check if user is a creator
-  const isCreator = role === 'creator';
+  const isCreator = role === 'creator' || role === 'superadmin';
 
   // Load existing billing status
   useEffect(() => {

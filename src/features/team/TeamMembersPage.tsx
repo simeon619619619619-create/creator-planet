@@ -45,7 +45,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
 
   // Get team role for permission checks
   const teamRole = getTeamRoleInCommunity(communityId, teamMemberships);
-  const canAwardPoints = role === 'creator' || teamRole === 'lecturer' || teamRole === 'assistant';
+  const canAwardPoints = role === 'creator' || role === 'superadmin' || teamRole === 'lecturer' || teamRole === 'assistant';
 
   // Load students
   const loadStudents = useCallback(async () => {

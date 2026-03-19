@@ -18,7 +18,7 @@ export function canManageCommunity(
   allowedTeamRoles: TeamRole[] = ['lecturer', 'assistant']
 ): boolean {
   // Creators can always manage
-  if (role === 'creator') {
+  if (role === 'creator' || role === 'superadmin') {
     return true;
   }
 
