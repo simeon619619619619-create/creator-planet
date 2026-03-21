@@ -160,6 +160,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Handle PKCE auth callback (email confirmation, password reset, magic link)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (code) {
+      supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+        if (error) {
+          console.error('Error exchanging code for session:', error);
+        }
+        // Clean up URL
+        const url = new URL(window.location.href);
+        url.searchParams.delete('code');
+        window.history.replaceState({}, '', url.pathname + url.hash);
+      });
+    }
+  }, []);
+
   // Listen to auth state changes
   useEffect(() => {
     // Get initial session
