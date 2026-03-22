@@ -38,6 +38,7 @@ import {
 } from '../../billing/stripeService';
 import type { ConnectAccountStatus } from '../../billing/stripeTypes';
 import { useAuth } from '../../../core/contexts/AuthContext';
+import FocalPointPicker from './FocalPointPicker';
 
 export type PricingType = 'free' | 'one_time' | 'monthly' | 'both';
 
@@ -64,6 +65,8 @@ interface CommunityData {
   monthly_price_cents: number | null;
   vsl_url: string | null;
   access_type: CommunityAccessType | null;
+  thumbnail_focal_x: number | null;
+  thumbnail_focal_y: number | null;
 }
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB for images
@@ -120,6 +123,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [isSaving, setIsSaving] = useState(false);
   const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
   const [isUploading, setIsUploading] = useState(false);
+  const [focalX, setFocalX] = useState(0.5);
+  const [focalY, setFocalY] = useState(0.5);
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -159,7 +164,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -192,6 +197,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setDescription(community.description || '');
         setSelectedType(community.pricing_type || 'free');
         setThumbnailUrl(community.thumbnail_url || '');
+        setFocalX(community.thumbnail_focal_x ?? 0.5);
+        setFocalY(community.thumbnail_focal_y ?? 0.5);
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -610,6 +617,25 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             </p>
           </div>
         </div>
+
+        {/* Focal Point Picker */}
+        {thumbnailUrl && (
+          <div className="mt-4">
+            <FocalPointPicker
+              imageUrl={thumbnailUrl}
+              focalX={focalX}
+              focalY={focalY}
+              onChange={async (x, y) => {
+                setFocalX(x);
+                setFocalY(y);
+                await updateCommunity(communityId, {
+                  thumbnail_focal_x: x,
+                  thumbnail_focal_y: y,
+                });
+              }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Community Description (About) */}

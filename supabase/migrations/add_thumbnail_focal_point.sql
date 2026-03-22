@@ -1,0 +1,3 @@
+ALTER TABLE public.communities
+ADD COLUMN IF NOT EXISTS thumbnail_focal_x DECIMAL(3,2) DEFAULT 0.50,
+ADD COLUMN IF NOT EXISTS thumbnail_focal_y DECIMAL(3,2) DEFAULT 0.50;

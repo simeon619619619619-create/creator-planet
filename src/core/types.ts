@@ -112,6 +112,8 @@ export interface CommunityListItem {
   pricing_type: 'free' | 'one_time' | 'monthly';
   price_cents: number;
   category: import('./supabase/database.types').ContentCategory | null;
+  thumbnail_focal_x?: number | null;
+  thumbnail_focal_y?: number | null;
   creator: {
     id: string;
     full_name: string;
@@ -160,6 +162,8 @@ export interface CommunityPublicData {
     vsl_url: string | null;
     access_type: 'open' | 'gated';
     tbi_enabled?: boolean;
+    thumbnail_focal_x?: number | null;
+    thumbnail_focal_y?: number | null;
   };
   memberCount: number;
   channelPreviews: ChannelPreview[];

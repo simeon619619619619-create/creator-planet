@@ -492,7 +492,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
       className="group bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] transition-all duration-200"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-[#1F1F1F] overflow-hidden">
+      <div className="relative aspect-[4/3] bg-[#1F1F1F] overflow-hidden">
         {course.thumbnail_url ? (
           <img
             src={course.thumbnail_url}

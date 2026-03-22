@@ -65,6 +65,9 @@ export interface DbCommunity {
   // TBI BNPL
   tbi_enabled?: boolean;
   tbi_min_amount_cents?: number;
+  // Thumbnail focal point
+  thumbnail_focal_x?: number | null;
+  thumbnail_focal_y?: number | null;
 }
 
 // Community Channels

@@ -454,6 +454,7 @@ export const CommunityLandingPage: React.FC = () => {
             src={community.thumbnail_url || placeholderImage}
             alt={community.name}
             className="w-full h-full object-cover"
+            style={{ objectPosition: `${community.thumbnail_focal_x != null ? community.thumbnail_focal_x * 100 : 50}% ${community.thumbnail_focal_y != null ? community.thumbnail_focal_y * 100 : 50}%` }}
           />
           <div className="absolute inset-0 bg-[#0A0A0A]/70" />
         </div>

@@ -24,11 +24,12 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
       className="group block w-full text-left bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] hover:bg-[#151515] transition-all duration-150"
     >
       {/* Thumbnail */}
-      <div className="aspect-video relative overflow-hidden">
+      <div className="aspect-[4/3] relative overflow-hidden">
         <img
           src={community.thumbnail_url || placeholderImage}
           alt={community.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          style={{ objectPosition: `${community.thumbnail_focal_x != null ? community.thumbnail_focal_x * 100 : 50}% ${community.thumbnail_focal_y != null ? community.thumbnail_focal_y * 100 : 50}%` }}
         />
         <div className="absolute inset-0 bg-black/50" />
 
