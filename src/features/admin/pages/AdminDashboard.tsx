@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import {
   Users, GraduationCap, Euro, Building2, TrendingUp,
-  AlertTriangle, Loader2, ArrowUpDown, Shield, Lock,
+  AlertTriangle, Loader2, ArrowUpDown,
 } from 'lucide-react';
 import AdminLayout from '../components/AdminLayout';
 import AdminStatCard from '../components/AdminStatCard';
@@ -208,29 +208,8 @@ const AdminDashboard: React.FC = () => {
   const { t } = useTranslation();
   const [timeRange, setTimeRange] = useState<TimeRange>('30d');
 
-  const [isAuthenticated, setIsAuthenticated] = useState(() =>
-    sessionStorage.getItem('admin_auth') === 'true'
-  );
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
-    if (!adminPassword) {
-      setPasswordError(t('admin.noPasswordConfigured') || 'Admin password not configured');
-      return;
-    }
-    if (password === adminPassword) {
-      setIsAuthenticated(true);
-      setPasswordError('');
-      sessionStorage.setItem('admin_auth', 'true');
-    } else {
-      setPasswordError(t('admin.wrongPassword') || 'Wrong password');
-    }
-  };
-
-  // All hooks called unconditionally at top level
+  // Auth is enforced by ProtectedRouteWrapper with allowedRoles=['superadmin']
+  // No client-side password check needed
   const { data: stats, isLoading: statsLoading } = useAdminOverview(timeRange);
   const { data: revenueData, isLoading: revenueLoading } = useRevenueChart(timeRange);
   const { data: enrollmentData, isLoading: enrollmentLoading } = useEnrollmentChart(timeRange);
@@ -246,42 +225,6 @@ const AdminDashboard: React.FC = () => {
     monthlyRecurringRevenue: 0, transactionCount: 0, totalCommunities: 0,
     publicCommunities: 0, privateCommunities: 0, avgMembersPerCommunity: 0, totalPosts: 0,
   };
-
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-4">
-        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 max-w-sm w-full">
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-[#1F1F1F] rounded-xl flex items-center justify-center">
-              <Shield size={24} className="text-[#FAFAFA]" />
-            </div>
-          </div>
-          <h1 className="text-xl font-bold text-[#FAFAFA] text-center mb-2">{t('admin.title')}</h1>
-          <p className="text-sm text-[#666666] text-center mb-6">{t('admin.enterPassword')}</p>
-          <form onSubmit={handleLogin}>
-            <div className="relative">
-              <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#666666]" />
-              <input
-                type="password"
-                placeholder={t('admin.passwordPlaceholder') || 'Password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-[#151515] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#333333]"
-                autoFocus
-              />
-            </div>
-            {passwordError && <p className="text-[#EF4444] text-sm mt-2">{passwordError}</p>}
-            <button
-              type="submit"
-              className="w-full mt-4 py-3 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
-            >
-              {t('admin.login') || 'Login'}
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <AdminLayout>

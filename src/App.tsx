@@ -594,11 +594,11 @@ const AppRoutes: React.FC = () => {
       {/* Legacy redirect /app to role-based default */}
       <Route path="/app" element={<Navigate to="/dashboard" replace />} />
 
-      {/* Admin dashboard - password-gated, any authenticated user */}
+      {/* Admin dashboard - superadmin only */}
       <Route
         path="/admin"
         element={
-          <ProtectedRouteWrapper>
+          <ProtectedRouteWrapper allowedRoles={['superadmin']}>
             <AdminDashboard />
           </ProtectedRouteWrapper>
         }

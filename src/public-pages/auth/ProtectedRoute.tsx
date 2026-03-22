@@ -36,7 +36,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   }
 
   // If allowedRoles is specified, check if user's role is allowed
-  if (allowedRoles && role && !allowedRoles.includes(role)) {
+  if (allowedRoles && (!role || !allowedRoles.includes(role))) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0A0A0A]">
         <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 max-w-md text-center">
