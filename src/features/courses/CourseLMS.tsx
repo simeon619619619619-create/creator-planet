@@ -479,31 +479,25 @@ const CourseLMS: React.FC = () => {
 
     try {
       let courseList: CourseWithModules[] = [];
+      if (!profile?.id) { setIsLoading(false); return; }
+      const pid = profile.id;
 
       if (role === 'creator' || role === 'superadmin') {
-        // Creators see their own courses filtered by selected community
-        // Use profile.id because courses.creator_id references profiles.id
-        const creatorCourses = await getCreatorCourses(profile!.id);
-        // Filter by selected community - only show courses for the selected community
+        const creatorCourses = await getCreatorCourses(pid);
         const filteredCourses = selectedCommunity
           ? creatorCourses.filter(c => c.community_id === selectedCommunity.id)
-          : []; // Don't show courses if no community is selected
-        // Get full details for each course
+          : [];
         for (const course of filteredCourses) {
-          const details = await getCourseWithDetails(course.id, profile!.id);
+          const details = await getCourseWithDetails(course.id, pid);
           if (details) courseList.push(details);
         }
       } else {
-        // Students see enrolled courses filtered by selected community
-        // Use profile.id because enrollments.user_id references profiles.id
-        const allEnrolledCourses = await getEnrolledCourses(profile!.id);
-        // Filter by selected community if one is selected
+        const allEnrolledCourses = await getEnrolledCourses(pid);
         courseList = selectedCommunity
           ? allEnrolledCourses.filter(c => c.community_id === selectedCommunity.id)
-          : []; // Don't show courses if no community is selected
+          : [];
 
-        // Also load available courses to enroll in, filtered by selected community
-        const allAvailable = await getAvailableCourses(profile!.id);
+        const allAvailable = await getAvailableCourses(pid);
         const filteredAvailable = selectedCommunity
           ? allAvailable.filter(c => c.community_id === selectedCommunity.id)
           : [];

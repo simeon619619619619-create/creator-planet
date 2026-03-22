@@ -3,9 +3,11 @@
 // Shared CORS configuration for all Edge Functions
 // ============================================================================
 
+const allowedOrigin = Deno.env.get('ALLOWED_ORIGIN') || 'https://founderclub.bg';
+
 export const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Origin': allowedOrigin,
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, stripe-signature',
   'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
 };
 

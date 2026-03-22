@@ -148,10 +148,13 @@ Deno.serve(async (req: Request) => {
 
     if (deleteProfileError) {
       console.error('Error deleting profile:', deleteProfileError);
-      // Continue anyway to delete auth user
+      return new Response(
+        JSON.stringify({ error: 'Failed to delete profile. Account deletion aborted. Please contact support.' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
-    // 3. Delete the auth user (this is the final step)
+    // 3. Delete the auth user (only if all prior steps succeeded)
     const { error: deleteAuthError } = await supabase.auth.admin.deleteUser(userId);
 
     if (deleteAuthError) {

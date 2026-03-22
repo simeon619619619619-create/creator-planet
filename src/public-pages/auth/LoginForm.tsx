@@ -131,6 +131,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onToggleForm }) => {
             </div>
           </div>
 
+          {/* Forgot Password */}
+          <div className="text-right">
+            <a href="/reset-password" className="text-sm text-[#A0A0A0] hover:text-white transition-colors">
+              {t('auth.forgotPassword') || 'Забравена парола?'}
+            </a>
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"

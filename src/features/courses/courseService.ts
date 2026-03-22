@@ -671,7 +671,7 @@ export async function uploadLessonVideo(
       const upload = new tus.Upload(file, {
         // Use direct storage hostname for better large file upload performance
         // See: https://supabase.com/docs/guides/storage/uploads/resumable-uploads
-        endpoint: `https://${projectId}.storage.supabase.co/storage/v1/upload/resumable`,
+        endpoint: `https://${projectId}.supabase.co/storage/v1/upload/resumable`,
         retryDelays: [0, 3000, 5000, 10000, 20000],
         headers: {
           authorization: `Bearer ${session.access_token}`,
