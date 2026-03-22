@@ -74,59 +74,59 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    // Find the target user by email
-    const { data: targetUsers, error: userError } = await supabase
+    // Find the target user by email — must be a student in caller's communities
+    const { data: targetProfile, error: targetError } = await supabase
       .from('profiles')
       .select('id, user_id, full_name, role')
       .eq('email', email)
-      .limit(1);
+      .single();
 
-    // If not found in profiles.email, try auth.users
-    let targetUserId: string | null = null;
-    let targetUserName: string | null = null;
-
-    if (targetUsers && targetUsers.length > 0) {
-      targetUserId = targetUsers[0].user_id;
-      targetUserName = targetUsers[0].full_name;
-    } else {
-      // Look up in auth.users directly
-      const { data: authUser } = await supabase.rpc('get_user_id_by_email', { target_email: email });
-
-      if (!authUser) {
-        // Fall back to direct query
-        const { data: directUser } = await supabase
-          .from('auth.users')
-          .select('id')
-          .eq('email', email)
-          .single();
-
-        if (directUser) {
-          targetUserId = directUser.id;
-        }
-      } else {
-        targetUserId = authUser;
-      }
-    }
-
-    // If still not found, try using admin API to list users
-    if (!targetUserId) {
-      const { data: { users }, error: listError } = await supabase.auth.admin.listUsers();
-
-      if (!listError && users) {
-        const foundUser = users.find(u => u.email?.toLowerCase() === email.toLowerCase());
-        if (foundUser) {
-          targetUserId = foundUser.id;
-          targetUserName = foundUser.user_metadata?.full_name || email;
-        }
-      }
-    }
-
-    if (!targetUserId) {
+    if (targetError || !targetProfile) {
       return new Response(
         JSON.stringify({ error: 'User not found with this email' }),
         { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
+
+    // Prevent resetting passwords for creators or superadmins
+    if (targetProfile.role === 'creator' || targetProfile.role === 'superadmin') {
+      return new Response(
+        JSON.stringify({ error: 'Cannot reset password for this user role' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Verify target user is a member of one of the caller's communities
+    const { data: callerCommunities } = await supabase
+      .from('communities')
+      .select('id')
+      .eq('creator_id', callerProfile.id);
+
+    const callerCommunityIds = (callerCommunities || []).map(c => c.id);
+
+    if (callerCommunityIds.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'You have no communities' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { data: membership } = await supabase
+      .from('community_members')
+      .select('id')
+      .eq('profile_id', targetProfile.id)
+      .in('community_id', callerCommunityIds)
+      .limit(1);
+
+    if (!membership || membership.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'This user is not a member of your communities' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const targetUserId = targetProfile.user_id;
+    const targetUserName = targetProfile.full_name;
 
     // Update the password using admin API
     const { error: updateError } = await supabase.auth.admin.updateUserById(
