@@ -6,7 +6,6 @@
 import { getDashboardStats, getAtRiskStudents, getCommunityStats, DashboardStats, AtRiskStudent } from './dashboardService';
 import { supabase } from '../../core/supabase/client';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 
 export interface DashboardReportData {
@@ -104,9 +103,6 @@ export async function gatherReportData(
  * Generate AI insights based on report data
  */
 async function generateAIInsights(data: DashboardReportData): Promise<string> {
-  if (!apiKey) {
-    return 'AI insights unavailable - API key not configured.';
-  }
 
   const prompt = `You are an expert business analyst for online course creators. Analyze this dashboard data and provide 3-4 actionable insights with specific recommendations.
 
@@ -143,16 +139,20 @@ Provide insights in this format:
 Keep each insight to 2-3 sentences maximum. Focus on growth opportunities and risk mitigation.`;
 
   try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) {
+      return 'AI insights unavailable - not authenticated.';
+    }
+
     const response = await fetch(`${supabaseUrl}/functions/v1/ai-chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        'Authorization': `Bearer ${session.access_token}`
       },
       body: JSON.stringify({
         messages: [{ role: 'user', content: prompt }],
         systemInstruction: 'You are a business analytics assistant. Provide clear, actionable insights. Be concise and data-driven.',
-        apiKey: apiKey
       })
     });
 

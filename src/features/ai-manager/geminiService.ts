@@ -2,7 +2,6 @@ import { Student } from "../../core/types";
 import { supabase } from "../../core/supabase/client";
 import { getDashboardStats, getCommunityStats } from "../dashboard/dashboardService";
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 
 const MENTOR_SYSTEM_INSTRUCTION = `You are the "AI Success Manager" for Founders Club.
@@ -59,6 +58,17 @@ export const getCreatorPrompt = async (creatorId: string): Promise<string | null
 };
 
 /**
+ * Get the current user's JWT token for authenticated edge function calls
+ */
+const getAuthToken = async (): Promise<string> => {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session?.access_token) {
+    throw new Error('Not authenticated');
+  }
+  return session.access_token;
+};
+
+/**
  * Inject platform stats context into user message
  */
 const injectStatsContext = async (userMessage: string, creatorId: string): Promise<string> => {
@@ -76,7 +86,7 @@ Community: ${communityStats.totalMembers} members, ${communityStats.totalPosts} 
     return `${userMessage}${statsContext}`;
   } catch (error) {
     console.error('Error injecting stats context:', error);
-    return userMessage; // Return original message if stats fetch fails
+    return userMessage;
   }
 };
 
@@ -90,18 +100,15 @@ export const sendMentorMessage = async (
   includeStats?: boolean,
   userName?: string
 ) => {
-  if (!apiKey) {
-    return "API Key is missing. Please check your environment configuration.";
-  }
-
   try {
+    const token = await getAuthToken();
+
     // Fetch creator's custom prompt if creatorId provided
     let creatorPrompt: string | null = null;
     if (creatorId) {
       creatorPrompt = await getCreatorPrompt(creatorId);
     }
 
-    // Build enhanced system instruction
     const systemInstruction = buildSystemInstruction(creatorPrompt);
 
     // Inject stats context if requested
@@ -110,7 +117,6 @@ export const sendMentorMessage = async (
       enhancedMessage = await injectStatsContext(message, creatorId);
     }
 
-    // Build messages array for Gemini
     const messages = [
       ...history.map(h => ({
         role: h.role === 'user' ? 'user' : 'assistant',
@@ -119,18 +125,16 @@ export const sendMentorMessage = async (
       { role: 'user', content: enhancedMessage }
     ];
 
-    // Call the Supabase Edge Function
     const response = await fetch(`${supabaseUrl}/functions/v1/ai-chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        messages: messages,
-        systemInstruction: systemInstruction,
-        apiKey: apiKey,
-        userName: userName
+        messages,
+        systemInstruction,
+        userName
       })
     });
 
@@ -149,8 +153,6 @@ export const sendMentorMessage = async (
 };
 
 export const analyzeStudentRisks = async (students: Student[]): Promise<string> => {
-  if (!apiKey) return "API Key missing.";
-
   const studentDataSummary = students.map(s =>
     `Name: ${s.name}, Last Login: ${s.lastLogin}, Progress: ${s.courseProgress}%, Engagement: ${s.communityEngagement}/100`
   ).join('\n');
@@ -164,16 +166,17 @@ export const analyzeStudentRisks = async (students: Student[]): Promise<string> 
   `;
 
   try {
+    const token = await getAuthToken();
+
     const response = await fetch(`${supabaseUrl}/functions/v1/ai-chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
         messages: [{ role: 'user', content: prompt }],
         systemInstruction: MENTOR_SYSTEM_INSTRUCTION,
-        apiKey: apiKey
       })
     });
 
@@ -246,7 +249,7 @@ const buildStudentMentorInstruction = (
   totalLessons: number,
   creatorPrompt: string | null
 ): string => {
-  const STUDENT_MENTOR_INSTRUCTION = `You are an AI Learning Assistant for "${courseTitle}".
+  return `You are an AI Learning Assistant for "${courseTitle}".
 
 COURSE CONTEXT:
 - Course: ${courseTitle}
@@ -258,8 +261,7 @@ STUDENT PROGRESS:
 - Modules completed: ${modulesCompleted.length > 0 ? modulesCompleted.join(', ') : 'None yet'}
 - Lessons completed: ${lessonsCompleted}/${totalLessons}
 
-${creatorPrompt ? `CREATOR GUIDANCE:\n${creatorPrompt}\n` : ''}
-YOUR ROLE:
+${creatorPrompt ? `CREATOR GUIDANCE:\n${creatorPrompt}\n` : ''}YOUR ROLE:
 - Help the student understand course concepts
 - Answer questions about lessons and modules
 - Encourage progress and completion
@@ -270,13 +272,10 @@ DO NOT:
 - Provide information outside the course scope
 - Make up content not in the course
 - Share other students' information`;
-
-  return STUDENT_MENTOR_INSTRUCTION;
 };
 
 /**
  * Send a message to the AI Learning Assistant for students
- * Provides course-specific context and student progress
  */
 export const sendStudentMentorMessage = async (
   message: string,
@@ -285,11 +284,9 @@ export const sendStudentMentorMessage = async (
   courseId: string,
   userName?: string
 ) => {
-  if (!apiKey) {
-    return "API Key is missing. Please check your environment configuration.";
-  }
-
   try {
+    const token = await getAuthToken();
+
     // Fetch course details
     const { data: course, error: courseError } = await supabase
       .from('courses')
@@ -302,7 +299,6 @@ export const sendStudentMentorMessage = async (
       return "I'm having trouble accessing the course information. Please try again later.";
     }
 
-    // Fetch community details if available
     let communityDescription: string | null = null;
     if (course.community_id) {
       const { data: community } = await supabase
@@ -314,13 +310,9 @@ export const sendStudentMentorMessage = async (
       communityDescription = community?.description || null;
     }
 
-    // Fetch creator's custom AI prompt
     const creatorPrompt = await getCreatorPrompt(course.creator_id);
-
-    // Fetch student progress
     const progress = await getStudentProgress(studentId, courseId);
 
-    // Build student-specific system instruction
     const systemInstruction = buildStudentMentorInstruction(
       course.title,
       course.description,
@@ -332,7 +324,6 @@ export const sendStudentMentorMessage = async (
       creatorPrompt
     );
 
-    // Build messages array for OpenAI
     const messages = [
       ...history.map(h => ({
         role: h.role === 'user' ? 'user' : 'assistant',
@@ -341,18 +332,16 @@ export const sendStudentMentorMessage = async (
       { role: 'user', content: message }
     ];
 
-    // Call the Supabase Edge Function
     const response = await fetch(`${supabaseUrl}/functions/v1/ai-chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        messages: messages,
-        systemInstruction: systemInstruction,
-        apiKey: apiKey,
-        userName: userName
+        messages,
+        systemInstruction,
+        userName
       })
     });
 

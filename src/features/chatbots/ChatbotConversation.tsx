@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Send, Loader2, Bot, User } from 'lucide-react';
 import { DbCommunityChatbot } from '../../core/supabase/database.types';
+import { supabase } from '../../core/supabase/client';
 import { useAuth } from '../../core/contexts/AuthContext';
 import {
   ChatMessage,
@@ -11,7 +12,6 @@ import {
   updateSessionTitle,
 } from './chatbotService';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 
 interface ChatbotConversationProps {
@@ -28,14 +28,14 @@ async function sendChatbotMessage(
   history: { role: 'user' | 'model'; text: string }[],
   systemPrompt: string,
   userName?: string,
-  errorMessages?: { apiKeyMissing: string; noResponse: string; connectionError: string }
+  errorMessages?: { apiKeyMissing: string; noResponse: string; connectionError: string },
+  authToken?: string
 ): Promise<string> {
-  if (!apiKey) {
-    return errorMessages?.apiKeyMissing || 'API Key is missing. Please check your environment configuration.';
+  if (!authToken) {
+    return errorMessages?.apiKeyMissing || 'Authentication required.';
   }
 
   try {
-    // Build messages array for the AI
     const messages = [
       ...history.map((h) => ({
         role: h.role === 'user' ? 'user' : 'assistant',
@@ -44,18 +44,16 @@ async function sendChatbotMessage(
       { role: 'user', content: message },
     ];
 
-    // Call the Supabase Edge Function
     const response = await fetch(`${supabaseUrl}/functions/v1/ai-chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        Authorization: `Bearer ${authToken}`,
       },
       body: JSON.stringify({
-        messages: messages,
+        messages,
         systemInstruction: systemPrompt,
-        apiKey: apiKey,
-        userName: userName,
+        userName,
       }),
     });
 
@@ -176,6 +174,10 @@ const ChatbotConversation: React.FC<ChatbotConversationProps> = ({
       const history = messages.map((m) => ({ role: m.role, text: m.content }));
 
       // Get bot response using chatbot's system prompt
+      // Get auth token for edge function
+      const { data: { session: authSession } } = await supabase.auth.getSession();
+      const token = authSession?.access_token;
+
       const botResponseText = await sendChatbotMessage(
         trimmedMessage,
         history,
@@ -185,7 +187,8 @@ const ChatbotConversation: React.FC<ChatbotConversationProps> = ({
           apiKeyMissing: t('chatbots.conversation.errors.apiKeyMissing'),
           noResponse: t('chatbots.conversation.errors.noResponse'),
           connectionError: t('chatbots.conversation.errors.connectionError'),
-        }
+        },
+        token
       );
 
       // Add bot response to database
