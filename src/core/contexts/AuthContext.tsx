@@ -284,15 +284,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return { error: authError };
       }
 
-      // Save phone number to profile after signup
+      // Save phone number to profile after signup (retry until trigger creates profile)
       if (phone && authData?.user?.id) {
-        // Wait a moment for trigger to create profile, then update phone
-        setTimeout(async () => {
-          await supabase
+        const uid = authData.user.id;
+        const updatePhone = async (retries = 5) => {
+          const { error: updateErr } = await supabase
             .from('profiles')
             .update({ phone })
-            .eq('user_id', authData.user!.id);
-        }, 1000);
+            .eq('user_id', uid);
+          if (updateErr && retries > 0) {
+            await new Promise(r => setTimeout(r, 500));
+            return updatePhone(retries - 1);
+          }
+        };
+        updatePhone().catch(console.error);
       }
 
       // Profile is created automatically by the database trigger (handle_new_user)

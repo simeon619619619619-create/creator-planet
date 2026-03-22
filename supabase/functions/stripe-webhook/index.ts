@@ -130,8 +130,8 @@ serve(async (req: Request): Promise<Response> => {
         })
         .eq('stripe_event_id', event.id);
 
-      // Return 200 to acknowledge receipt (Stripe will retry on 5xx)
-      return jsonResponse({ received: true, error: 'Processing failed' });
+      // Return 500 so Stripe retries (idempotency check prevents duplicate processing)
+      return serverErrorResponse('Event processing failed');
     }
 
   } catch (error) {
