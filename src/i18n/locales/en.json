@@ -2123,6 +2123,17 @@
         "remove": "Remove thumbnail",
         "hint": "Recommended: 400x400px, max 5MB"
       },
+      "focalPoint": {
+        "adjust": "Adjust",
+        "preview": "Preview",
+        "clickHint": "Click on the image to set the focal point"
+      },
+      "themeColor": {
+        "label": "Page Color",
+        "hint": "Choose an accent color for your community cover.",
+        "default": "Default",
+        "custom": "Custom color"
+      },
       "description": {
         "label": "About / Description",
         "hint": "This appears in the \"About\" section on your community landing page.",

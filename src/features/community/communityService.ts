@@ -121,7 +121,7 @@ export async function createCommunity(
 
 export async function updateCommunity(
   communityId: string,
-  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y'>>
+  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color'>>
 ): Promise<DbCommunity | null> {
   const { data, error } = await supabase
     .from('communities')
@@ -1267,6 +1267,9 @@ export async function getCommunityPublicData(communityId: string): Promise<Commu
       vsl_url: community.vsl_url || null,
       access_type: community.access_type || 'open',
       tbi_enabled: community.tbi_enabled || false,
+      thumbnail_focal_x: community.thumbnail_focal_x ?? null,
+      thumbnail_focal_y: community.thumbnail_focal_y ?? null,
+      theme_color: community.theme_color ?? null,
     },
     memberCount,
     channelPreviews,

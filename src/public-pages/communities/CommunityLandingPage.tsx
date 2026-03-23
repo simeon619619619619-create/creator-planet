@@ -456,7 +456,14 @@ export const CommunityLandingPage: React.FC = () => {
             className="w-full h-full object-cover"
             style={{ objectPosition: `${community.thumbnail_focal_x != null ? community.thumbnail_focal_x * 100 : 50}% ${community.thumbnail_focal_y != null ? community.thumbnail_focal_y * 100 : 50}%` }}
           />
-          <div className="absolute inset-0 bg-[#0A0A0A]/70" />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: community.theme_color
+                ? `${community.theme_color}B3`
+                : 'rgba(10, 10, 10, 0.7)',
+            }}
+          />
         </div>
 
         {/* Hero Content */}

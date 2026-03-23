@@ -164,6 +164,7 @@ export interface CommunityPublicData {
     tbi_enabled?: boolean;
     thumbnail_focal_x?: number | null;
     thumbnail_focal_y?: number | null;
+    theme_color?: string | null;
   };
   memberCount: number;
   channelPreviews: ChannelPreview[];

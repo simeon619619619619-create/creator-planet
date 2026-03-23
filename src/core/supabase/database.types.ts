@@ -68,6 +68,8 @@ export interface DbCommunity {
   // Thumbnail focal point
   thumbnail_focal_x?: number | null;
   thumbnail_focal_y?: number | null;
+  // Page theme color
+  theme_color?: string | null;
 }
 
 // Community Channels

@@ -25,6 +25,7 @@ import {
   FileText,
   ShieldCheck,
   CreditCard,
+  Palette,
 } from 'lucide-react';
 import { supabase } from '../../../core/supabase/client';
 import { updateCommunityPricing } from '../communityPaymentService';
@@ -67,6 +68,7 @@ interface CommunityData {
   access_type: CommunityAccessType | null;
   thumbnail_focal_x: number | null;
   thumbnail_focal_y: number | null;
+  theme_color: string | null;
 }
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB for images
@@ -125,6 +127,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [isUploading, setIsUploading] = useState(false);
   const [focalX, setFocalX] = useState(0.5);
   const [focalY, setFocalY] = useState(0.5);
+  const [themeColor, setThemeColor] = useState<string>('');
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -164,7 +167,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -199,6 +202,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setThumbnailUrl(community.thumbnail_url || '');
         setFocalX(community.thumbnail_focal_x ?? 0.5);
         setFocalY(community.thumbnail_focal_y ?? 0.5);
+        setThemeColor(community.theme_color || '');
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -618,13 +622,15 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           </div>
         </div>
 
-        {/* Focal Point Picker */}
+        {/* Focal Point Picker with Live Preview */}
         {thumbnailUrl && (
           <div className="mt-4">
             <FocalPointPicker
               imageUrl={thumbnailUrl}
               focalX={focalX}
               focalY={focalY}
+              communityName={communityName}
+              themeColor={themeColor || undefined}
               onChange={async (x, y) => {
                 setFocalX(x);
                 setFocalY(y);
@@ -636,6 +642,67 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             />
           </div>
         )}
+      </div>
+
+      {/* Page Theme Color */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[#FAFAFA]" />
+            {t('communityHub.pricing.themeColor.label')}
+          </span>
+        </label>
+        <p className="text-xs text-[#A0A0A0] mb-3">
+          {t('communityHub.pricing.themeColor.hint')}
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              '', // default (no color)
+              '#EF4444', // red
+              '#F97316', // orange
+              '#EAB308', // yellow
+              '#22C55E', // green
+              '#06B6D4', // cyan
+              '#3B82F6', // blue
+              '#8B5CF6', // violet
+              '#EC4899', // pink
+              '#D4A574', // gold/warm
+            ].map((color) => (
+              <button
+                key={color || 'default'}
+                onClick={async () => {
+                  setThemeColor(color);
+                  await updateCommunity(communityId, { theme_color: color || null });
+                }}
+                className={`w-8 h-8 rounded-full border-2 transition-all duration-150 ${
+                  themeColor === color
+                    ? 'border-white scale-110'
+                    : 'border-[#333333] hover:border-[#555555]'
+                }`}
+                style={{
+                  backgroundColor: color || '#0A0A0A',
+                  ...(color === '' ? { backgroundImage: 'linear-gradient(135deg, #333 25%, transparent 25%, transparent 50%, #333 50%, #333 75%, transparent 75%)', backgroundSize: '8px 8px' } : {}),
+                }}
+                title={color || t('communityHub.pricing.themeColor.default')}
+              />
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="color"
+              value={themeColor || '#3B82F6'}
+              onChange={(e) => setThemeColor(e.target.value)}
+              onBlur={async () => {
+                if (themeColor) {
+                  await updateCommunity(communityId, { theme_color: themeColor });
+                }
+              }}
+              className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
+              title={t('communityHub.pricing.themeColor.custom')}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Community Description (About) */}

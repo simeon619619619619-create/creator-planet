@@ -34,48 +34,56 @@ GRANT EXECUTE ON FUNCTION public.is_superadmin() TO authenticated;
 -- ============================================================================
 
 -- Enrollments (enrollment counts/trends)
+DROP POLICY IF EXISTS "Superadmins can view all enrollments" ON public.enrollments;
 CREATE POLICY "Superadmins can view all enrollments"
   ON public.enrollments FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Courses (all courses, not just published)
+DROP POLICY IF EXISTS "Superadmins can view all courses" ON public.courses;
 CREATE POLICY "Superadmins can view all courses"
   ON public.courses FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Student health (at-risk tracking)
+DROP POLICY IF EXISTS "Superadmins can view all student health" ON public.student_health;
 CREATE POLICY "Superadmins can view all student health"
   ON public.student_health FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Events
+DROP POLICY IF EXISTS "Superadmins can view all events" ON public.events;
 CREATE POLICY "Superadmins can view all events"
   ON public.events FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Event attendees
+DROP POLICY IF EXISTS "Superadmins can view all event attendees" ON public.event_attendees;
 CREATE POLICY "Superadmins can view all event attendees"
   ON public.event_attendees FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Posts (post counts across platform)
+DROP POLICY IF EXISTS "Superadmins can view all posts" ON public.posts;
 CREATE POLICY "Superadmins can view all posts"
   ON public.posts FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Points (engagement metrics)
+DROP POLICY IF EXISTS "Superadmins can view all points" ON public.points;
 CREATE POLICY "Superadmins can view all points"
   ON public.points FOR SELECT
   TO authenticated
   USING (is_superadmin());
 
 -- Lesson progress (completion tracking)
+DROP POLICY IF EXISTS "Superadmins can view all lesson progress" ON public.lesson_progress;
 CREATE POLICY "Superadmins can view all lesson progress"
   ON public.lesson_progress FOR SELECT
   TO authenticated
