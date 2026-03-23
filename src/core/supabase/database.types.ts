@@ -70,6 +70,8 @@ export interface DbCommunity {
   thumbnail_focal_y?: number | null;
   // Page theme color
   theme_color?: string | null;
+  // Page text color
+  text_color?: string | null;
   // Friendly URL slug
   slug?: string | null;
 }

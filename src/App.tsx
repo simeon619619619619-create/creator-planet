@@ -320,7 +320,7 @@ const AppLayout: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="flex h-screen font-sans text-[#FAFAFA]" style={{ backgroundColor: selectedCommunity?.theme_color || '#0A0A0A' }}>
+    <div className="flex h-screen font-sans" style={{ backgroundColor: selectedCommunity?.theme_color || '#0A0A0A', color: selectedCommunity?.text_color || '#FAFAFA' }}>
       <Sidebar
         currentView={currentView}
         setCurrentView={setCurrentView}

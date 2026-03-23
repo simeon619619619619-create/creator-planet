@@ -10,6 +10,7 @@ interface PublicLayoutProps {
   showNavigation?: boolean;
   showFooter?: boolean;
   themeColor?: string | null;
+  textColor?: string | null;
 }
 
 export const PublicLayout: React.FC<PublicLayoutProps> = ({
@@ -17,11 +18,12 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
   showNavigation = true,
   showFooter = true,
   themeColor,
+  textColor,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: themeColor || '#0A0A0A' }}>
+    <div className="min-h-screen" style={{ backgroundColor: themeColor || '#0A0A0A', color: textColor || undefined }}>
       {showNavigation && <PublicNavigation />}
 
       <main className={showNavigation ? 'pt-16' : ''}>

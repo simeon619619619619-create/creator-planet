@@ -2129,8 +2129,14 @@
         "clickHint": "Click on the image to set the focal point"
       },
       "themeColor": {
-        "label": "Page Color",
-        "hint": "Choose an accent color for your community cover.",
+        "label": "Background Color",
+        "hint": "Choose a background color for your community page.",
+        "default": "Default",
+        "custom": "Custom color"
+      },
+      "textColor": {
+        "label": "Text Color",
+        "hint": "Choose a text color for your community page.",
         "default": "Default",
         "custom": "Custom color"
       },

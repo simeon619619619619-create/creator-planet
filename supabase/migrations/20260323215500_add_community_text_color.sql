@@ -1,0 +1,1 @@
+ALTER TABLE public.communities ADD COLUMN IF NOT EXISTS text_color TEXT DEFAULT NULL;

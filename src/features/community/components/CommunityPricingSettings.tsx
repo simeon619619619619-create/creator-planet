@@ -69,6 +69,7 @@ interface CommunityData {
   thumbnail_focal_x: number | null;
   thumbnail_focal_y: number | null;
   theme_color: string | null;
+  text_color: string | null;
 }
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB for images
@@ -128,6 +129,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [focalX, setFocalX] = useState(0.5);
   const [focalY, setFocalY] = useState(0.5);
   const [themeColor, setThemeColor] = useState<string>('');
+  const [textColor, setTextColor] = useState<string>('');
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -167,7 +169,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -203,6 +205,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setFocalX(community.thumbnail_focal_x ?? 0.5);
         setFocalY(community.thumbnail_focal_y ?? 0.5);
         setThemeColor(community.theme_color || '');
+        setTextColor(community.text_color || '');
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -702,6 +705,65 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
               title={t('communityHub.pricing.themeColor.custom')}
             />
           </div>
+        </div>
+      </div>
+
+      {/* Text Color */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[#FAFAFA]" />
+            {t('communityHub.pricing.textColor.label')}
+          </span>
+        </label>
+        <p className="text-xs text-[#A0A0A0] mb-3">
+          {t('communityHub.pricing.textColor.hint')}
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              '',
+              '#FFFFFF',
+              '#FAFAFA',
+              '#E0E0E0',
+              '#A0A0A0',
+              '#000000',
+              '#1A1A1A',
+              '#F5E6D3',
+              '#FFD700',
+              '#00FF88',
+            ].map((color) => (
+              <button
+                key={color || 'default'}
+                onClick={async () => {
+                  setTextColor(color);
+                  await updateCommunity(communityId, { text_color: color || null });
+                }}
+                className={`w-8 h-8 rounded-full border-2 transition-all duration-150 ${
+                  textColor === color
+                    ? 'border-white scale-110'
+                    : 'border-[#333333] hover:border-[#555555]'
+                }`}
+                style={{
+                  backgroundColor: color || '#FAFAFA',
+                  ...(color === '' ? { backgroundImage: 'linear-gradient(135deg, #ccc 25%, transparent 25%, transparent 50%, #ccc 50%, #ccc 75%, transparent 75%)', backgroundSize: '8px 8px' } : {}),
+                }}
+                title={color || t('communityHub.pricing.textColor.default')}
+              />
+            ))}
+          </div>
+          <input
+            type="color"
+            value={textColor || '#FAFAFA'}
+            onChange={(e) => setTextColor(e.target.value)}
+            onBlur={async () => {
+              if (textColor) {
+                await updateCommunity(communityId, { text_color: textColor });
+              }
+            }}
+            className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
+            title={t('communityHub.pricing.textColor.custom')}
+          />
         </div>
       </div>
 
