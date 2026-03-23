@@ -182,7 +182,7 @@ export const UpgradePrompt: React.FC<UpgradePromptProps> = ({
             </button>
             <button
               onClick={handleUpgrade}
-              className="flex-1 px-4 py-3 bg-white text-black rounded-xl font-medium hover:bg-[#E0E0E0] transition-colors flex items-center justify-center gap-2"
+              className="flex-1 px-4 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-xl font-medium hover:bg-[#E0E0E0] transition-colors flex items-center justify-center gap-2"
             >
               <Zap size={18} />
               {t('billing.upgradePrompt.upgradeNowButton')}

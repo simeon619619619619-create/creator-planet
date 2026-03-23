@@ -72,7 +72,7 @@ const DayCell: React.FC<DayCellProps> = ({
           className={`
             inline-flex items-center justify-center w-7 h-7 text-sm font-medium rounded-full
             ${!isCurrentMonth ? 'text-[#666666]' : 'text-[#A0A0A0]'}
-            ${isToday ? 'bg-white text-black' : ''}
+            ${isToday ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]' : ''}
           `}
         >
           {day}

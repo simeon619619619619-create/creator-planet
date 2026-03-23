@@ -680,7 +680,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                         onClick={() => setCurrentPage(pageNum)}
                         className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
                           currentPage === pageNum
-                            ? 'bg-white text-black'
+                            ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
                             : 'text-[#A0A0A0] hover:bg-[#1F1F1F]'
                         }`}
                       >
@@ -964,7 +964,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                 <button
                   onClick={handleSendMessage}
                   disabled={!conversation || !messageContent.trim() || isSendingMessage}
-                  className="p-2.5 bg-white text-black rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSendingMessage ? (
                     <Loader2 className="w-5 h-5 animate-spin" />

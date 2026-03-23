@@ -265,7 +265,7 @@ function CheckoutForm({
         <button
           type="submit"
           disabled={!stripe || isProcessing}
-          className="flex-1 bg-white text-black px-4 py-3 rounded-xl font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+          className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-3 rounded-xl font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
         >
           {isProcessing ? (
             <>

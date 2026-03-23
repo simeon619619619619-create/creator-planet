@@ -172,7 +172,7 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
                   <button
                     onClick={handleManageSubscription}
                     disabled={isOpeningPortal}
-                    className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50"
+                    className="flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50"
                   >
                     {isOpeningPortal ? (
                       <Loader2 className="w-4 h-4 animate-spin" />

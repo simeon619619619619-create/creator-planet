@@ -135,7 +135,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             {teamMember.is_messageable && onSendMessage && (
               <button
                 onClick={onSendMessage}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
               >
                 <MessageCircle size={18} />
                 {t('directMessages.actions.sendMessage')}
@@ -147,7 +147,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
                 className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-colors ${
                   teamMember.is_messageable && onSendMessage
                     ? 'border border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
-                    : 'flex-1 bg-white text-black hover:bg-[#E0E0E0]'
+                    : 'flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                 }`}
               >
                 <User size={18} />

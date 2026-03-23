@@ -360,7 +360,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
             <div className="text-center mt-6">
               <button
                 onClick={() => navigate('/communities')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
               >
                 <Compass className="w-5 h-5" />
                 {t('studentHome.exploreButton', { count: filteredDiscoverCommunities.length })}
@@ -381,7 +381,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
             </p>
             <button
               onClick={() => navigate('/communities')}
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
             >
               <Sparkles className="w-5 h-5" />
               {t('studentHome.emptyState.browseButton')}

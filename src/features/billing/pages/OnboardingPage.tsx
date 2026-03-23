@@ -127,7 +127,7 @@ const OnboardingPage: React.FC = () => {
             </button>
             <button
               onClick={() => navigate('/signup?role=creator')}
-              className="px-6 py-2 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+              className="px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
             >
               {t('billing.onboarding.signUpButton')}
             </button>
@@ -151,7 +151,7 @@ const OnboardingPage: React.FC = () => {
           </p>
           <button
             onClick={() => navigate('/settings')}
-            className="px-6 py-2 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+            className="px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
           >
             {t('billing.onboarding.goToSettingsButton')}
           </button>
@@ -174,7 +174,7 @@ const OnboardingPage: React.FC = () => {
           </p>
           <button
             onClick={() => navigate('/app/dashboard')}
-            className="px-6 py-2 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+            className="px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
           >
             {t('billing.onboarding.goToBillingButton')}
           </button>
@@ -218,7 +218,7 @@ const OnboardingPage: React.FC = () => {
           <button
             onClick={handleActivate}
             disabled={isProcessing}
-            className="px-6 py-2 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+            className="px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
           >
             {t('billing.onboarding.tryAgainButton')}
           </button>
@@ -317,7 +317,7 @@ const OnboardingPage: React.FC = () => {
             <button
               onClick={handleActivate}
               disabled={isProcessing}
-              className="w-full py-4 bg-white text-black font-semibold rounded-xl hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-4 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-semibold rounded-xl hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {isProcessing ? (
                 <>

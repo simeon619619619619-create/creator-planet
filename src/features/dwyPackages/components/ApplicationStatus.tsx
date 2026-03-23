@@ -61,7 +61,7 @@ export function ApplicationStatus({ application, onWithdraw }: ApplicationStatus
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStep
-                        ? 'bg-white text-black'
+                        ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
                         : 'bg-[#1F1F1F] text-[#666666]'
                     }`}
                   >

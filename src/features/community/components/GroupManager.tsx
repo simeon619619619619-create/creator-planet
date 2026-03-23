@@ -215,7 +215,7 @@ const GroupManager: React.FC<GroupManagerProps> = ({
             <button
               onClick={editingGroup ? handleUpdateGroup : handleAddGroup}
               disabled={!newGroupName.trim() || isSaving}
-              className="flex-1 px-4 py-2 bg-white text-black rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:bg-[#333333] disabled:cursor-not-allowed"
+              className="flex-1 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:bg-[#333333] disabled:cursor-not-allowed"
             >
               {isSaving ? (
                 <Loader2 size={16} className="animate-spin mx-auto" />

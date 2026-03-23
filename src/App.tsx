@@ -329,9 +329,9 @@ const AppLayout: React.FC = () => {
         // CSS custom properties for themed colors
         '--fc-text': selectedCommunity?.text_color || '#FAFAFA',
         '--fc-muted': selectedCommunity?.secondary_color || '#A0A0A0',
-        '--fc-surface': selectedCommunity?.accent_color || '#0A0A0A',
-        '--fc-surface-hover': selectedCommunity?.accent_color ? `color-mix(in srgb, ${selectedCommunity.accent_color} 85%, white)` : '#151515',
-        '--fc-border': selectedCommunity?.accent_color ? `color-mix(in srgb, ${selectedCommunity.accent_color} 70%, white)` : '#1F1F1F',
+        '--fc-surface': selectedCommunity?.accent_color || selectedCommunity?.theme_color || '#0A0A0A',
+        '--fc-surface-hover': (selectedCommunity?.accent_color || selectedCommunity?.theme_color) ? `color-mix(in srgb, ${selectedCommunity?.accent_color || selectedCommunity?.theme_color} 85%, white)` : '#151515',
+        '--fc-border': (selectedCommunity?.accent_color || selectedCommunity?.theme_color) ? `color-mix(in srgb, ${selectedCommunity?.accent_color || selectedCommunity?.theme_color} 70%, white)` : '#1F1F1F',
       } as React.CSSProperties}
     >
       {selectedCommunity?.background_elements && selectedCommunity.background_elements.length > 0 && (

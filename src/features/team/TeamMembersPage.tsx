@@ -389,7 +389,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
                       onClick={() => setBonusPoints(points)}
                       className={`flex-1 py-2 rounded-lg font-medium text-sm transition-colors ${
                         bonusPoints === points
-                          ? 'bg-white text-black'
+                          ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
                           : 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#151515]'
                       }`}
                     >
@@ -433,7 +433,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
               <button
                 onClick={handleAwardBonus}
                 disabled={isAwarding}
-                className="flex-1 bg-white text-black py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isAwarding ? (
                   <>

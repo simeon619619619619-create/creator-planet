@@ -221,7 +221,7 @@ export function ApplicationForm({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors flex items-center gap-2"
+              className="px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors flex items-center gap-2"
             >
               {isSubmitting ? (
                 <>

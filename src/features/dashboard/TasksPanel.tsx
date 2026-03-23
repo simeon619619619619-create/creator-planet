@@ -97,9 +97,9 @@ const TasksPanel: React.FC = () => {
   const getStatusIcon = (status: TaskStatus) => {
     switch (status) {
       case 'todo':
-        return <Circle size={18} className="text-[#666666]" />;
+        return <Circle size={18} className="text-[var(--fc-muted,#666666)]" />;
       case 'in_progress':
-        return <Clock size={18} className="text-[#A0A0A0]" />;
+        return <Clock size={18} className="text-[var(--fc-muted,#A0A0A0)]" />;
       case 'done':
         return <CheckCircle2 size={18} className="text-[#22C55E]" />;
     }
@@ -120,7 +120,7 @@ const TasksPanel: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
+      <div className="bg-[var(--fc-surface,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-border,#1F1F1F)]">
         <div className="flex items-center justify-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
         </div>
@@ -129,13 +129,13 @@ const TasksPanel: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
+    <div className="bg-[var(--fc-surface,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-border,#1F1F1F)]">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-lg font-bold text-[#FAFAFA]">{t('creatorDashboard.tasks.title')}</h2>
+        <h2 className="text-lg font-bold text-[var(--fc-text,#FAFAFA)]">{t('creatorDashboard.tasks.title')}</h2>
         <button
           onClick={() => setShowNewTaskForm(!showNewTaskForm)}
-          className="flex items-center gap-2 bg-white text-black px-3 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
+          className="flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-3 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
         >
           {showNewTaskForm ? (
             <>
@@ -153,7 +153,7 @@ const TasksPanel: React.FC = () => {
 
       {/* New Task Form */}
       {showNewTaskForm && (
-        <form onSubmit={handleCreateTask} className="mb-6 p-4 bg-[#151515] rounded-lg border border-[#1F1F1F]">
+        <form onSubmit={handleCreateTask} className="mb-6 p-4 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <div className="space-y-3">
             <div>
               <input
@@ -161,7 +161,7 @@ const TasksPanel: React.FC = () => {
                 placeholder={t('creatorDashboard.tasks.form.titlePlaceholder')}
                 value={newTask.title}
                 onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-                className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-sm text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                 required
               />
             </div>
@@ -170,7 +170,7 @@ const TasksPanel: React.FC = () => {
                 placeholder={t('creatorDashboard.tasks.form.descriptionPlaceholder')}
                 value={newTask.description}
                 onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
-                className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-sm text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none"
+                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none"
                 rows={2}
               />
             </div>
@@ -179,12 +179,12 @@ const TasksPanel: React.FC = () => {
                 type="date"
                 value={newTask.dueDate}
                 onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}
-                className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-sm text-[#FAFAFA] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="w-full bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
             >
               {t('creatorDashboard.tasks.form.createButton')}
             </button>
@@ -208,8 +208,8 @@ const TasksPanel: React.FC = () => {
               onClick={() => setFilter(status)}
               className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
                 filter === status
-                  ? 'bg-[#151515] text-[#FAFAFA] border border-[#333333]'
-                  : 'bg-transparent text-[#A0A0A0] border border-[#1F1F1F] hover:bg-[#151515]'
+                  ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border border-[#333333]'
+                  : 'bg-transparent text-[var(--fc-muted,#A0A0A0)] border border-[var(--fc-border,#1F1F1F)] hover:bg-[#151515]'
               }`}
             >
               {label} ({taskCounts[status]})
@@ -224,7 +224,7 @@ const TasksPanel: React.FC = () => {
           filteredTasks.map((task) => (
             <div
               key={task.id}
-              className="group p-4 rounded-lg border border-[#1F1F1F] hover:border-[#333333] hover:bg-[#151515] transition-all"
+              className="group p-4 rounded-lg border border-[var(--fc-border,#1F1F1F)] hover:border-[#333333] hover:bg-[#151515] transition-all"
             >
               <div className="flex items-start gap-3">
                 {/* Status Icon - clickable to cycle through statuses */}
@@ -241,14 +241,14 @@ const TasksPanel: React.FC = () => {
                   <div className="flex items-start justify-between gap-2">
                     <h3
                       className={`text-sm font-semibold ${
-                        task.status === 'done' ? 'line-through text-[#666666]' : 'text-[#FAFAFA]'
+                        task.status === 'done' ? 'line-through text-[var(--fc-muted,#666666)]' : 'text-[var(--fc-text,#FAFAFA)]'
                       }`}
                     >
                       {task.title}
                     </h3>
                     <button
                       onClick={() => handleDeleteTask(task.id)}
-                      className="opacity-0 group-hover:opacity-100 text-[#666666] hover:text-[#EF4444] transition-all"
+                      className="opacity-0 group-hover:opacity-100 text-[var(--fc-muted,#666666)] hover:text-[#EF4444] transition-all"
                       title={t('creatorDashboard.tasks.deleteTooltip')}
                     >
                       <Trash2 size={16} />
@@ -256,7 +256,7 @@ const TasksPanel: React.FC = () => {
                   </div>
 
                   {task.description && (
-                    <p className="text-xs text-[#A0A0A0] mt-1 line-clamp-2">{task.description}</p>
+                    <p className="text-xs text-[var(--fc-muted,#A0A0A0)] mt-1 line-clamp-2">{task.description}</p>
                   )}
 
                   <div className="flex items-center gap-2 mt-2">
@@ -271,7 +271,7 @@ const TasksPanel: React.FC = () => {
                         className={`text-[10px] px-2 py-0.5 rounded-full font-medium flex items-center gap-1 ${
                           isOverdue(task.due_date) && task.status !== 'done'
                             ? 'bg-[#EF4444]/10 text-[#EF4444]'
-                            : 'bg-[#1F1F1F] text-[#A0A0A0]'
+                            : 'bg-[#1F1F1F] text-[var(--fc-muted,#A0A0A0)]'
                         }`}
                       >
                         {isOverdue(task.due_date) && task.status !== 'done' && (
@@ -286,7 +286,7 @@ const TasksPanel: React.FC = () => {
             </div>
           ))
         ) : (
-          <div className="text-center py-12 text-[#666666]">
+          <div className="text-center py-12 text-[var(--fc-muted,#666666)]">
             <Circle className="w-12 h-12 mx-auto mb-3 opacity-20" />
             <p className="text-sm font-medium">{t('creatorDashboard.tasks.empty.title')}</p>
             <p className="text-xs mt-1">

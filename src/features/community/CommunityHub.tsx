@@ -785,7 +785,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
               onClick={() => {
                 setShowCreateCommunity(true);
               }}
-              className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] inline-flex items-center gap-2"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] inline-flex items-center gap-2"
             >
               <Plus size={20} />
               {t('communityHub.buttons.createCommunity')}
@@ -814,7 +814,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                 </button>
                 <button
                   onClick={handleCreateCommunity}
-                  className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0]"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[#E0E0E0]"
                 >
                   {t('communityHub.buttons.create')}
                 </button>
@@ -831,7 +831,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}
-        className="lg:hidden fixed bottom-20 left-4 z-40 bg-white text-black p-3 rounded-full hover:bg-[#E0E0E0] transition-colors shadow-lg flex items-center gap-2"
+        className="lg:hidden fixed bottom-20 left-4 z-40 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] p-3 rounded-full hover:bg-[#E0E0E0] transition-colors shadow-lg flex items-center gap-2"
         aria-label="Open channels"
       >
         <Hash size={20} />
@@ -1078,7 +1078,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
             </div>
             <button
               onClick={handleJoinCommunity}
-              className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0]"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0]"
             >
               {t('communityHub.buttons.joinCommunity')}
             </button>
@@ -1177,7 +1177,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   <button
                     onClick={handleCreatePost}
                     disabled={(!newPost.trim() && !pendingImage) || isPostingLoading}
-                    className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isPostingLoading ? (
                       <>
@@ -1415,7 +1415,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         <button
                           onClick={() => handleSubmitComment(post.id)}
                           disabled={!newComment.get(post.id)?.trim() || submittingComment}
-                          className="px-3 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-3 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {submittingComment ? (
                             <Loader2 size={16} className="animate-spin" />
@@ -1458,7 +1458,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
               <button
                 onClick={handleCreateCommunity}
                 disabled={!newCommunityName.trim()}
-                className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
+                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
               >
                 {t('communityHub.buttons.create')}
               </button>
@@ -1544,7 +1544,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
               <button
                 onClick={handleSaveChannel}
                 disabled={!channelName.trim() || isSavingChannel}
-                className="flex-1 bg-white text-black px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isSavingChannel ? (
                   <>
@@ -1852,7 +1852,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           setIsSavingCommunityName(false);
                         }}
                         disabled={isSavingCommunityName || !editingCommunityName.trim() || editingCommunityName === selectedCommunity.name}
-                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                       >
                         {isSavingCommunityName ? (
                           <Loader2 size={16} className="animate-spin" />
@@ -1893,7 +1893,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           setIsSavingCommunityCategory(false);
                         }}
                         disabled={isSavingCommunityCategory || editingCommunityCategory === (selectedCommunity.category ?? null)}
-                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                       >
                         {isSavingCommunityCategory ? (
                           <Loader2 size={16} className="animate-spin" />
@@ -1929,7 +1929,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                             setTimeout(() => { btn.textContent = 'Запази'; }, 2000);
                           }
                         }}
-                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0] transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors text-sm font-medium"
                       >
                         {t('communityHub.buttons.save')}
                       </button>

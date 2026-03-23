@@ -454,7 +454,7 @@ const AiSuccessManager: React.FC = () => {
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isTyping}
-                  className="bg-white text-black p-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors"
+                  className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] p-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors"
                 >
                   <Send size={20} />
                 </button>
@@ -578,7 +578,7 @@ const AiSuccessManager: React.FC = () => {
               <button 
                 onClick={generateReport}
                 disabled={isLoadingReport}
-                className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] flex items-center gap-2 mx-auto disabled:opacity-70"
+                className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] flex items-center gap-2 mx-auto disabled:opacity-70"
               >
                 {isLoadingReport ? <Loader2 className="animate-spin" /> : <Sparkles size={18} />}
                 {isLoadingReport ? t('aiManager.buttons.analyzingData') : t('aiManager.buttons.runAnalysis')}

@@ -57,14 +57,14 @@ const PlanCard: React.FC<PlanCardProps> = ({
     >
       {/* Current Plan Badge */}
       {isCurrentPlan && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-sm font-medium">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-1 rounded-full text-sm font-medium">
           {t('billing.plans.button.current')}
         </div>
       )}
 
       {/* Recommended Badge */}
       {isRecommended && !isCurrentPlan && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-1 rounded-full text-sm font-medium flex items-center gap-1">
           <Star size={14} className="fill-current" />
           {t('billing.plans.badgeMostPopular')}
         </div>
@@ -124,7 +124,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
           ${
             isCurrentPlan
               ? 'bg-[#1F1F1F] text-[#666666] cursor-default'
-              : 'bg-white text-black hover:bg-[#E0E0E0] disabled:opacity-50'
+              : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0] disabled:opacity-50'
           }
           disabled:cursor-not-allowed
         `}

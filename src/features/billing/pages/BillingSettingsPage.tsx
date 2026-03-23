@@ -392,7 +392,7 @@ const BillingSettingsPage: React.FC = () => {
         </p>
         <button
           onClick={() => navigate('/onboarding')}
-          className="bg-white text-black px-6 py-2 rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+          className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-6 py-2 rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
         >
           {t('billing.settings.completeSetupButton')}
         </button>
@@ -510,7 +510,7 @@ const BillingSettingsPage: React.FC = () => {
           {currentTier !== 'scale' && (
             <button
               onClick={() => handlePlanChange(currentTier === 'starter' ? 'pro' : 'scale')}
-              className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
             >
               {t('billing.settings.upgradeButton')}
             </button>
@@ -602,7 +602,7 @@ const BillingSettingsPage: React.FC = () => {
                 <button
                   onClick={handleSetupPayouts}
                   disabled={isConnectLoading}
-                  className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors flex items-center gap-2 disabled:opacity-50"
+                  className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors flex items-center gap-2 disabled:opacity-50"
                 >
                   {isConnectLoading ? (
                     <>
@@ -643,7 +643,7 @@ const BillingSettingsPage: React.FC = () => {
                 <button
                   onClick={handleSetupPayouts}
                   disabled={isConnectLoading}
-                  className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                  className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
                 >
                   {isConnectLoading ? t('billing.settings.loadingButton') : t('billing.settings.completeSetupButtonAlt')}
                 </button>

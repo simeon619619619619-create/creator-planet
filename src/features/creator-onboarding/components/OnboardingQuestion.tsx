@@ -318,7 +318,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
         <div
           className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
             selected
-              ? 'bg-white text-black'
+              ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
               : 'bg-[#151515] text-[#666666] group-hover:bg-[#151515] group-hover:text-[#A0A0A0]'
           }`}
         >
@@ -488,7 +488,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                   disabled={!textInputValue.trim()}
                   className={`w-full py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center gap-2 ${
                     textInputValue.trim()
-                      ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                      ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                       : 'bg-[#0A0A0A] text-[#666666] cursor-not-allowed'
                   }`}
                 >
@@ -526,7 +526,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                       <div
                         className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
                           isSelected('other')
-                            ? 'bg-white text-black'
+                            ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
                             : 'bg-[#151515] text-[#666666] group-hover:bg-[#151515] group-hover:text-[#A0A0A0]'
                         }`}
                       >
@@ -586,7 +586,7 @@ const OnboardingQuestion: React.FC<OnboardingQuestionProps> = ({
                       disabled={!canProceed}
                       className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
                         canProceed
-                          ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                          ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                           : 'bg-[#0A0A0A] text-[#666666] cursor-not-allowed'
                       }`}
                     >

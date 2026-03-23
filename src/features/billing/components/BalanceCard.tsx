@@ -212,7 +212,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
             disabled={!isEligibleForWithdrawal || isLoading}
             className={`px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2 ${
               isEligibleForWithdrawal && !isLoading
-                ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                 : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
             }`}
           >

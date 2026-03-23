@@ -171,7 +171,7 @@ const ChatbotSettings: React.FC<ChatbotSettingsProps> = ({ communityId }) => {
         {canAddMore && (
           <button
             onClick={handleCreate}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-black text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
           >
             <Plus size={16} />
             {t('chatbots.settings.addBot')}
@@ -191,7 +191,7 @@ const ChatbotSettings: React.FC<ChatbotSettingsProps> = ({ communityId }) => {
             </p>
             <button
               onClick={handleCreate}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
             >
               <Plus size={16} />
               {t('chatbots.settings.emptyState.addFirst')}

@@ -333,7 +333,7 @@ const TeamInboxPage: React.FC = () => {
                   className={`
                     p-2 rounded-lg transition-colors
                     ${newMessage.trim() && !isSending
-                      ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                      ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                       : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'}
                   `}
                 >

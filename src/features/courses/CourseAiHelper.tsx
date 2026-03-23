@@ -78,7 +78,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-white text-black p-4 rounded-full hover:bg-[#E0E0E0] transition-all hover:scale-110 flex items-center gap-2"
+          className="fixed bottom-6 right-6 z-50 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] p-4 rounded-full hover:bg-[#E0E0E0] transition-all hover:scale-110 flex items-center gap-2"
           aria-label="Open AI Helper"
         >
           <MessageCircle size={24} />
@@ -172,7 +172,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isTyping}
-                className="bg-white text-black p-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] p-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 aria-label="Send message"
               >
                 {isTyping ? <Loader2 size={20} className="animate-spin" /> : <Send size={20} />}

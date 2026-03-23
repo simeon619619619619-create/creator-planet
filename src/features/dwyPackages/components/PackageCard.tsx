@@ -27,7 +27,7 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
       {/* Highlight badge */}
       {pkg.highlight_text && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="bg-white text-black text-sm font-medium px-4 py-1 rounded-full">
+          <span className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium px-4 py-1 rounded-full">
             {pkg.highlight_text}
           </span>
         </div>
@@ -102,8 +102,8 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
             : pkg.slots_available === 0
               ? 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
               : isGrowthPartner
-                ? 'bg-white text-black hover:bg-[#E0E0E0]'
-                : 'bg-white text-black hover:bg-[#E0E0E0]'
+                ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
+                : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
         }`}
       >
         {hasApplication

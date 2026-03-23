@@ -135,7 +135,7 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
             </div>
             <button
               onClick={handleClose}
-              className="w-full py-2.5 px-4 bg-white text-black font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+              className="w-full py-2.5 px-4 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
             >
               {t('common.close')}
             </button>
@@ -276,7 +276,7 @@ const WithdrawalModal: React.FC<WithdrawalModalProps> = ({
             disabled={!isEligible || isProcessing}
             className={`flex-1 py-2.5 px-4 font-medium rounded-lg transition-colors flex items-center justify-center gap-2 ${
               isEligible && !isProcessing
-                ? 'bg-white text-black hover:bg-[#E0E0E0]'
+                ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                 : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
             }`}
           >

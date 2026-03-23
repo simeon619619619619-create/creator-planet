@@ -220,7 +220,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
         <div className="p-3 border-b border-[#1F1F1F]">
           <button
             onClick={handleNewChat}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-black text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
           >
             <Plus className="w-4 h-4" />
             {t('chatbots.history.newChat')}

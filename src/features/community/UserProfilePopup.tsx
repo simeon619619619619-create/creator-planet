@@ -518,7 +518,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                 <div className="flex gap-2 mb-3">
                   <button
                     onClick={handleSendMessage}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
                   >
                     <MessageCircle size={18} />
                     {t('directMessages.actions.sendMessage')}
@@ -536,7 +536,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {teamMember && !teamMember.is_messageable && (
                 <button
                   onClick={handleViewProfile}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
                 >
                   <User size={18} />
                   {t('directMessages.actions.viewProfile')}
@@ -547,7 +547,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {canShowCreatorStudentDM && (
                 <button
                   onClick={handleSendCreatorStudentMessage}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
                 >
                   <MessageCircle size={18} />
                   {isViewerCreator

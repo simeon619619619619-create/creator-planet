@@ -399,7 +399,7 @@ const CalendarView: React.FC = () => {
           {canManageCalendar && viewMode === 'list' && !showHistory && (
             <button
               onClick={() => setShowCreateModal(true)}
-              className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] flex items-center gap-2"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] flex items-center gap-2"
             >
               <Plus size={16} /> {t('calendar.newEventButton')}
             </button>
@@ -506,7 +506,7 @@ const CalendarView: React.FC = () => {
                               href={locationUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="bg-white text-black text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#E0E0E0] flex items-center gap-2 whitespace-nowrap"
+                              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#E0E0E0] flex items-center gap-2 whitespace-nowrap"
                             >
                               {isInPerson ? <MapPin size={16} /> : <Video size={16} />}
                               {isInPerson ? t('calendar.viewLocationButton') : t('calendar.joinOnlineButton')}
@@ -625,7 +625,7 @@ const CalendarView: React.FC = () => {
                   onClick={() => dayInfo.isCurrentMonth && setSelectedDay(dayInfo.day)}
                   className={`py-2 rounded-full cursor-pointer relative
                     ${!dayInfo.isCurrentMonth ? 'text-[#666666]' : 'text-[#A0A0A0] hover:bg-[#0A0A0A]'}
-                    ${isToday ? 'bg-white text-black hover:bg-[#E0E0E0] font-bold' : ''}
+                    ${isToday ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0] font-bold' : ''}
                     ${selectedDay === dayInfo.day && dayInfo.isCurrentMonth && !isToday ? 'bg-[#1F1F1F]' : ''}
                   `}
                 >
@@ -910,7 +910,7 @@ const CalendarView: React.FC = () => {
               <button
                 onClick={handleCreateEvent}
                 disabled={creating || !newEventTitle || !newEventDate || !newEventStartTime || !newEventEndTime || (newEventType === 'one_on_one' && newEventCommunityId && !newEventAttendeeId)}
-                className="flex-1 bg-white text-black py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {creating ? (
                   <>
@@ -1135,7 +1135,7 @@ const CalendarView: React.FC = () => {
               <button
                 onClick={handleUpdateEvent}
                 disabled={updating || !newEventTitle || !newEventDate || !newEventStartTime || !newEventEndTime}
-                className="flex-1 bg-white text-black py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {updating ? (
                   <>

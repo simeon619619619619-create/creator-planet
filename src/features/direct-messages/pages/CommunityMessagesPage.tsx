@@ -259,7 +259,7 @@ const CommunityMessagesPage: React.FC = () => {
                     <div key={msg.id} className={`flex ${isMine ? 'justify-end' : 'justify-start'}`}>
                       <div className={`max-w-[70%] px-4 py-2 rounded-2xl text-sm ${
                         isMine
-                          ? 'bg-white text-black rounded-br-md'
+                          ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-br-md'
                           : 'bg-[#1F1F1F] text-[#FAFAFA] rounded-bl-md'
                       }`}>
                         <p>{msg.content}</p>
@@ -288,7 +288,7 @@ const CommunityMessagesPage: React.FC = () => {
                 <button
                   onClick={handleSend}
                   disabled={isSending || !newMessage.trim()}
-                  className="p-2 bg-white text-black rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors"
+                  className="p-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors"
                 >
                   <Send size={18} />
                 </button>

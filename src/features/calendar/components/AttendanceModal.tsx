@@ -267,7 +267,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
           <button
             onClick={handleSave}
             disabled={saving || attendanceChanges.size === 0}
-            className="flex-1 bg-white text-black py-2.5 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2.5 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {saving ? (
               <>

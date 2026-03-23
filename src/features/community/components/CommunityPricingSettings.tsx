@@ -945,7 +945,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           <button
             onClick={handleSaveDescription}
             disabled={isSavingDescription}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-black rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
           >
             {isSavingDescription ? (
               <>
@@ -1122,7 +1122,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
               <div
                 className={`
                   w-10 h-10 rounded-lg flex items-center justify-center shrink-0
-                  ${isSelected ? 'bg-white text-black' : 'bg-[#151515] text-[#A0A0A0]'}
+                  ${isSelected ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]' : 'bg-[#151515] text-[#A0A0A0]'}
                 `}
               >
                 <Icon size={20} />
@@ -1310,7 +1310,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   <button
                     onClick={handleSetupConnect}
                     disabled={isSettingUpConnect}
-                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
                   >
                     {isSettingUpConnect ? (
                       <>
@@ -1343,7 +1343,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                     <button
                       onClick={handleSetupConnect}
                       disabled={isSettingUpConnect}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
                     >
                       {isSettingUpConnect ? (
                         <>
@@ -1436,7 +1436,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         disabled={isSaving || !canSave}
         className="
           w-full py-3 px-4 rounded-lg font-medium transition-colors
-          bg-white text-black hover:bg-[#E0E0E0]
+          bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]
           disabled:bg-[#333333] disabled:text-[#A0A0A0] disabled:cursor-not-allowed
         "
       >

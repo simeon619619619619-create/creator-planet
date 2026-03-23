@@ -149,7 +149,7 @@ const CreatorSettings: React.FC = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[#A0A0A0]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-muted,#A0A0A0)]" />
       </div>
     );
   }
@@ -158,7 +158,7 @@ const CreatorSettings: React.FC = () => {
     <div className="space-y-6">
       {/* Brand Name */}
       <div>
-        <label htmlFor="brand_name" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+        <label htmlFor="brand_name" className="block text-xs font-medium text-[var(--fc-muted,#A0A0A0)] mb-2">
           {t('creatorSettings.creator.brandName.label')}
         </label>
         <input
@@ -166,17 +166,17 @@ const CreatorSettings: React.FC = () => {
           id="brand_name"
           value={formData.brand_name}
           onChange={(e) => setFormData({ ...formData, brand_name: e.target.value })}
-          className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
           placeholder={t('creatorSettings.creator.brandName.placeholder')}
         />
-        <p className="mt-1 text-xs text-[#666666]">
+        <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
           {t('creatorSettings.creator.brandName.hint')}
         </p>
       </div>
 
       {/* Biography */}
       <div>
-        <label htmlFor="bio" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+        <label htmlFor="bio" className="block text-xs font-medium text-[var(--fc-muted,#A0A0A0)] mb-2">
           {t('creatorSettings.creator.biography.label')}
         </label>
         <textarea
@@ -184,15 +184,15 @@ const CreatorSettings: React.FC = () => {
           value={formData.bio}
           onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
           rows={4}
-          className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none"
           placeholder={t('creatorSettings.creator.biography.placeholder')}
         />
-        <p className="mt-1 text-xs text-[#666666]">
+        <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
           {t('creatorSettings.creator.biography.hint')}
         </p>
-        <div className="mt-2 flex items-start gap-2 p-2 bg-[#151515] rounded-lg border border-[#1F1F1F]">
-          <Info size={14} className="text-[#A0A0A0] mt-0.5 shrink-0" />
-          <p className="text-xs text-[#A0A0A0]">
+        <div className="mt-2 flex items-start gap-2 p-2 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+          <Info size={14} className="text-[var(--fc-muted,#A0A0A0)] mt-0.5 shrink-0" />
+          <p className="text-xs text-[var(--fc-muted,#A0A0A0)]">
             {t('creatorSettings.creator.biography.visibilityHint')}
           </p>
         </div>
@@ -200,14 +200,14 @@ const CreatorSettings: React.FC = () => {
 
       {/* Timezone */}
       <div>
-        <label htmlFor="timezone" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+        <label htmlFor="timezone" className="block text-xs font-medium text-[var(--fc-muted,#A0A0A0)] mb-2">
           {t('creatorSettings.creator.timezone.label')}
         </label>
         <select
           id="timezone"
           value={formData.timezone}
           onChange={(e) => setFormData({ ...formData, timezone: e.target.value })}
-          className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
         >
           {TIMEZONES.map((tz) => (
             <option key={tz.value} value={tz.value}>
@@ -215,34 +215,34 @@ const CreatorSettings: React.FC = () => {
             </option>
           ))}
         </select>
-        <p className="mt-1 text-xs text-[#666666]">
+        <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
           {t('creatorSettings.creator.timezone.hint')}
         </p>
       </div>
 
       {/* Payout Status Section */}
-      <div className="pt-6 border-t border-[#1F1F1F]">
+      <div className="pt-6 border-t border-[var(--fc-border,#1F1F1F)]">
         <div className="flex items-center gap-2 mb-4">
-          <Wallet size={20} className="text-[#FAFAFA]" />
-          <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('creatorSettings.creator.payouts.section')}</h3>
+          <Wallet size={20} className="text-[var(--fc-text,#FAFAFA)]" />
+          <h3 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">{t('creatorSettings.creator.payouts.section')}</h3>
         </div>
 
         {!connectStatus ? (
           // No Connect account
-          <div className="p-4 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F]">
+          <div className="p-4 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-[#EAB308]/10 rounded-full flex items-center justify-center shrink-0">
                 <Clock size={20} className="text-[#EAB308]" />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-[#FAFAFA]">{t('creatorSettings.creator.payouts.notSetup.title')}</h4>
-                <p className="text-sm text-[#A0A0A0] mt-1">
+                <h4 className="font-medium text-[var(--fc-text,#FAFAFA)]">{t('creatorSettings.creator.payouts.notSetup.title')}</h4>
+                <p className="text-sm text-[var(--fc-muted,#A0A0A0)] mt-1">
                   {t('creatorSettings.creator.payouts.notSetup.description')}
                 </p>
                 <button
                   onClick={handleSetupPayouts}
                   disabled={connectLoading}
-                  className="mt-3 inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                  className="mt-3 inline-flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
                 >
                   {connectLoading ? (
                     <>
@@ -267,13 +267,13 @@ const CreatorSettings: React.FC = () => {
                 <CheckCircle size={20} className="text-[#22C55E]" />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-[#FAFAFA]">{t('creatorSettings.creator.payouts.active.title')}</h4>
+                <h4 className="font-medium text-[var(--fc-text,#FAFAFA)]">{t('creatorSettings.creator.payouts.active.title')}</h4>
                 <p className="text-sm text-[#22C55E] mt-1">
                   {t('creatorSettings.creator.payouts.active.description')}
                 </p>
                 <button
                   onClick={() => navigate('/settings/billing')}
-                  className="mt-3 text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA]"
+                  className="mt-3 text-sm font-medium text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)]"
                 >
                   {t('creatorSettings.creator.payouts.active.manageLink')}
                 </button>
@@ -288,14 +288,14 @@ const CreatorSettings: React.FC = () => {
                 <Clock size={20} className="text-[#EAB308]" />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-[#FAFAFA]">{t('creatorSettings.creator.payouts.pending.title')}</h4>
+                <h4 className="font-medium text-[var(--fc-text,#FAFAFA)]">{t('creatorSettings.creator.payouts.pending.title')}</h4>
                 <p className="text-sm text-[#EAB308] mt-1">
                   {t('creatorSettings.creator.payouts.pending.description')}
                 </p>
                 <button
                   onClick={handleSetupPayouts}
                   disabled={connectLoading}
-                  className="mt-3 inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                  className="mt-3 inline-flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
                 >
                   {connectLoading ? (
                     <>
@@ -320,7 +320,7 @@ const CreatorSettings: React.FC = () => {
                 <AlertTriangle size={20} className="text-[#EF4444]" />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-[#FAFAFA]">{t('creatorSettings.creator.payouts.restricted.title')}</h4>
+                <h4 className="font-medium text-[var(--fc-text,#FAFAFA)]">{t('creatorSettings.creator.payouts.restricted.title')}</h4>
                 <p className="text-sm text-[#EF4444] mt-1">
                   {t('creatorSettings.creator.payouts.restricted.description')}
                 </p>
@@ -349,8 +349,8 @@ const CreatorSettings: React.FC = () => {
 
       {/* AI Prompt */}
       <div>
-        <label htmlFor="ai_prompt" className="flex items-center gap-2 text-xs font-medium text-[#A0A0A0] mb-2">
-          <Sparkles size={16} className="text-[#FAFAFA]" />
+        <label htmlFor="ai_prompt" className="flex items-center gap-2 text-xs font-medium text-[var(--fc-muted,#A0A0A0)] mb-2">
+          <Sparkles size={16} className="text-[var(--fc-text,#FAFAFA)]" />
           {t('creatorSettings.creator.aiInstructions.label')}
         </label>
         <textarea
@@ -358,10 +358,10 @@ const CreatorSettings: React.FC = () => {
           value={formData.ai_prompt}
           onChange={(e) => setFormData({ ...formData, ai_prompt: e.target.value })}
           rows={6}
-          className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none font-mono text-sm"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none font-mono text-sm"
           placeholder={t('creatorSettings.creator.aiInstructions.placeholder')}
         />
-        <p className="mt-1 text-xs text-[#666666]">
+        <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
           {t('creatorSettings.creator.aiInstructions.hint')}
         </p>
       </div>
@@ -380,11 +380,11 @@ const CreatorSettings: React.FC = () => {
       )}
 
       {/* Save Button */}
-      <div className="flex justify-end pt-4 border-t border-[#1F1F1F]">
+      <div className="flex justify-end pt-4 border-t border-[var(--fc-border,#1F1F1F)]">
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-2.5 bg-white text-black rounded-lg font-medium hover:bg-[#E0E0E0] focus:outline-none focus:ring-1 focus:ring-white/10 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          className="px-6 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] focus:outline-none focus:ring-1 focus:ring-white/10 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
         >
           {saving ? (
             <>

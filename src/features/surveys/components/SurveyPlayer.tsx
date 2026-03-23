@@ -90,7 +90,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               disabled={disabled}
               className={`w-12 h-12 rounded-xl font-semibold transition-all ${
                 answer === String(num)
-                  ? 'bg-white text-black'
+                  ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
                   : 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
@@ -506,7 +506,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
           {onClose && (
             <button
               onClick={onClose}
-              className="mt-6 px-6 py-2 bg-white text-black rounded-lg hover:bg-[#E0E0E0]"
+              className="mt-6 px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0]"
             >
               {t('common.goBack')}
             </button>
@@ -587,7 +587,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
           {onClose && (
             <button
               onClick={onClose}
-              className={`mt-10 group relative px-10 py-4 bg-white text-black font-semibold rounded-2xl hover:bg-[#E0E0E0] hover:scale-105 active:scale-100 transition-all duration-300 delay-700 ${
+              className={`mt-10 group relative px-10 py-4 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-semibold rounded-2xl hover:bg-[#E0E0E0] hover:scale-105 active:scale-100 transition-all duration-300 delay-700 ${
                 showCelebration ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -723,7 +723,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
               <button
                 onClick={handleNext}
                 disabled={!isSectionComplete()}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-xl hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-xl hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {t('surveys.player.next')}
                 <ChevronRight className="w-5 h-5" />
