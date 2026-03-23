@@ -49,7 +49,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     },
     info: {
       iconBg: 'bg-[#1F1F1F]',
-      iconColor: 'text-[#FAFAFA]',
+      iconColor: 'text-[var(--fc-text,#FAFAFA)]',
       buttonBg: 'bg-white text-black hover:bg-[#E0E0E0]',
       defaultIcon: <XCircle size={20} />,
     },
@@ -83,12 +83,12 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
             <div className={`w-10 h-10 rounded-xl ${config.iconBg} ${config.iconColor} flex items-center justify-center`}>
               {displayIcon}
             </div>
-            <h2 className="text-lg font-semibold text-[#FAFAFA]">{title}</h2>
+            <h2 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">{title}</h2>
           </div>
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
+            className="p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
           >
             <X size={20} />
           </button>
@@ -104,7 +104,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="px-4 py-2.5 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[#FAFAFA] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            className="px-4 py-2.5 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
           >
             {cancelLabel || t('common.cancel')}
           </button>

@@ -58,7 +58,7 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-[#FAFAFA] group-hover:text-white transition-colors duration-150 line-clamp-1">
+        <h3 className="font-semibold text-[var(--fc-text,#FAFAFA)] group-hover:text-white transition-colors duration-150 line-clamp-1">
           {community.name}
         </h3>
 
@@ -81,7 +81,7 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
             </span>
           </div>
 
-          <ArrowRight className="w-4 h-4 text-[#666666] group-hover:text-[#FAFAFA] group-hover:translate-x-1 transition-all duration-150" />
+          <ArrowRight className="w-4 h-4 text-[#666666] group-hover:text-[var(--fc-text,#FAFAFA)] group-hover:translate-x-1 transition-all duration-150" />
         </div>
       </div>
     </button>

@@ -34,6 +34,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
       style={{
         backgroundColor: themeColor || '#0A0A0A',
         color: textColor || undefined,
+        '--fc-text': textColor || '#FAFAFA',
         '--fc-surface': accentColor || '#0A0A0A',
         '--fc-surface-hover': accentColor ? `color-mix(in srgb, ${accentColor} 85%, white)` : '#151515',
         '--fc-border': accentColor ? `color-mix(in srgb, ${accentColor} 70%, white)` : '#1F1F1F',
@@ -64,7 +65,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
 
               {/* Links */}
               <div>
-                <h4 className="font-semibold text-[#FAFAFA] mb-4">{t('publicCommunities.footer.platform')}</h4>
+                <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] mb-4">{t('publicCommunities.footer.platform')}</h4>
                 <ul className="space-y-2 text-sm text-[#A0A0A0]">
                   <li>
                     <Link to="/communities" className="hover:text-white transition-colors duration-150">
@@ -86,7 +87,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
 
               {/* Social */}
               <div>
-                <h4 className="font-semibold text-[#FAFAFA] mb-4">{t('publicCommunities.footer.connect')}</h4>
+                <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] mb-4">{t('publicCommunities.footer.connect')}</h4>
                 <div className="flex items-center gap-3">
                   <a
                     href="https://twitter.com"

@@ -165,7 +165,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-[#FAFAFA] truncate">
+                <p className="text-sm font-medium text-[var(--fc-text,#FAFAFA)] truncate">
                   {selectedCommunity?.name || teamMemberships?.[0]?.communityName || 'Community'}
                 </p>
                 {teamRole && (
@@ -191,8 +191,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
               className={`
                 w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
                 ${currentView === item.id
-                  ? 'bg-[#151515] text-[#FAFAFA] border-l-2 border-white'
-                  : 'text-[#A0A0A0] hover:bg-[#151515] hover:text-[#FAFAFA]'}
+                  ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
+                  : 'text-[#A0A0A0] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
               `}
             >
               {iconMap[item.icon]}
@@ -212,8 +212,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
             className={`
               w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
               ${currentView === View.SETTINGS
-                ? 'bg-[#151515] text-[#FAFAFA] border-l-2 border-white'
-                : 'text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#151515]'}
+                ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
+                : 'text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515]'}
             `}
           >
             <Settings size={20} />

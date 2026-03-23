@@ -35,12 +35,12 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
       <div className="relative w-full max-w-md bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
-          <h2 className="text-lg font-semibold text-[#FAFAFA]">
+          <h2 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">
             {t('publicCommunities.apply.title', { communityName })}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-full transition-colors duration-150"
+            className="p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-full transition-colors duration-150"
           >
             <X className="w-5 h-5" />
           </button>
@@ -67,7 +67,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder={t('publicCommunities.apply.messagePlaceholder')}
-              className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-sm text-[#FAFAFA] placeholder-[#666666]
+              className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666]
                 focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10
                 resize-none transition-colors duration-150"
               rows={4}
@@ -85,7 +85,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="flex-1 px-4 py-2 text-sm font-medium text-[#FAFAFA] bg-transparent
+              className="flex-1 px-4 py-2 text-sm font-medium text-[var(--fc-text,#FAFAFA)] bg-transparent
                 border border-[#1F1F1F] hover:bg-[#151515] hover:border-[#333333] rounded-lg transition-all duration-150 disabled:opacity-50"
             >
               {t('common.cancel')}

@@ -390,16 +390,16 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
     if (isPaidCommunity) {
       return variant === 'primary'
         ? 'bg-white text-black hover:bg-[#E0E0E0]'
-        : 'border-2 border-[#1F1F1F] text-[#FAFAFA] hover:bg-[#151515] hover:border-[#333333]';
+        : 'border-2 border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] hover:border-[#333333]';
     }
     if (isGatedCommunity) {
       return variant === 'primary'
         ? 'bg-white text-black hover:bg-[#E0E0E0]'
-        : 'border-2 border-[#1F1F1F] text-[#FAFAFA] hover:bg-[#151515] hover:border-[#333333]';
+        : 'border-2 border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] hover:border-[#333333]';
     }
     return variant === 'primary'
       ? 'bg-white text-black hover:bg-[#E0E0E0]'
-      : 'border border-[#1F1F1F] text-[#FAFAFA] hover:bg-[#151515]';
+      : 'border border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515]';
   };
 
   // Icon based on state
@@ -534,7 +534,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-full transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-full transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

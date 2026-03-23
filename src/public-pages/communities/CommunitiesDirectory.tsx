@@ -68,7 +68,7 @@ export const CommunitiesDirectory: React.FC = () => {
             <Users className="w-4 h-4" />
             {t('publicCommunities.directory.hero.available', { count: communities.length })}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAFAFA]">
+          <h1 className="text-4xl md:text-5xl font-bold text-[var(--fc-text,#FAFAFA)]">
             {t('publicCommunities.directory.hero.title')}
           </h1>
           <p className="mt-4 text-lg text-[#A0A0A0] max-w-2xl mx-auto">
@@ -84,7 +84,7 @@ export const CommunitiesDirectory: React.FC = () => {
                 placeholder={t('publicCommunities.directory.search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 transition-colors duration-150"
+                className="w-full pl-12 pr-4 py-3 bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 transition-colors duration-150"
               />
             </div>
           </div>
@@ -133,7 +133,7 @@ export const CommunitiesDirectory: React.FC = () => {
           ) : filteredCommunities.length === 0 ? (
             <div className="text-center py-20">
               <Sparkles className="w-16 h-16 text-[#333333] mx-auto" />
-              <h3 className="mt-4 text-xl font-semibold text-[#FAFAFA]">{t('publicCommunities.directory.empty.title')}</h3>
+              <h3 className="mt-4 text-xl font-semibold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.directory.empty.title')}</h3>
               <p className="mt-2 text-[#A0A0A0]">
                 {searchQuery || selectedCategory
                   ? t('publicCommunities.directory.empty.searchHint')
@@ -142,7 +142,7 @@ export const CommunitiesDirectory: React.FC = () => {
               {(searchQuery || selectedCategory) && (
                 <button
                   onClick={() => { setSearchQuery(''); setSelectedCategory(null); }}
-                  className="mt-4 text-[#FAFAFA] hover:text-white font-medium transition-colors duration-150"
+                  className="mt-4 text-[var(--fc-text,#FAFAFA)] hover:text-white font-medium transition-colors duration-150"
                 >
                   {t('publicCommunities.directory.empty.clearSearch')}
                 </button>
@@ -166,7 +166,7 @@ export const CommunitiesDirectory: React.FC = () => {
       {!isLoading && communities.length > 0 && (
         <section className="py-16 bg-[#0A0A0A] border-t border-[#1F1F1F]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-[#FAFAFA]">
+            <h2 className="text-3xl font-bold text-[var(--fc-text,#FAFAFA)]">
               {t('publicCommunities.directory.cta.title')}
             </h2>
             <p className="mt-4 text-lg text-[#A0A0A0]">

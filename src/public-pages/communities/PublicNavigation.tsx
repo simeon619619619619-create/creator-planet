@@ -24,7 +24,7 @@ export const PublicNavigation: React.FC = () => {
           <div className="hidden md:flex items-center gap-6">
             <Link
               to="/communities"
-              className="text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors duration-150"
+              className="text-sm font-medium text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] transition-colors duration-150"
             >
               {t('publicCommunities.nav.browseCommunities')}
             </Link>
@@ -40,7 +40,7 @@ export const PublicNavigation: React.FC = () => {
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => navigate('/login')}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-[#FAFAFA] border border-[#1F1F1F] hover:bg-[#151515] hover:border-[#333333]"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150 text-[var(--fc-text,#FAFAFA)] border border-[#1F1F1F] hover:bg-[#151515] hover:border-[#333333]"
                 >
                   <LogIn className="w-4 h-4" />
                   {t('publicCommunities.nav.signIn')}
@@ -59,7 +59,7 @@ export const PublicNavigation: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors duration-150"
+            className="md:hidden p-2 rounded-lg text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] transition-colors duration-150"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -73,7 +73,7 @@ export const PublicNavigation: React.FC = () => {
             <Link
               to="/communities"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors duration-150"
+              className="block px-4 py-2 text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors duration-150"
             >
               {t('publicCommunities.nav.browseCommunities')}
             </Link>
@@ -95,7 +95,7 @@ export const PublicNavigation: React.FC = () => {
                     setMobileMenuOpen(false);
                     navigate('/login');
                   }}
-                  className="w-full px-4 py-2 border border-[#1F1F1F] text-[#FAFAFA] rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors duration-150"
+                  className="w-full px-4 py-2 border border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors duration-150"
                 >
                   {t('publicCommunities.nav.signIn')}
                 </button>

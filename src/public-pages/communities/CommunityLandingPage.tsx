@@ -90,7 +90,7 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
             {/* Creator info */}
             <div className="space-y-4">
               <div>
-                <h2 className="text-2xl font-bold text-[#FAFAFA]">
+                <h2 className="text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">
                   {creator.brand_name || creator.full_name}
                 </h2>
                 {creator.brand_name && (
@@ -297,7 +297,7 @@ export const CommunityLandingPage: React.FC = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center max-w-md mx-auto px-4">
             <AlertCircle className="w-16 h-16 text-[#666666] mx-auto" />
-            <h1 className="mt-4 text-2xl font-bold text-[#FAFAFA]">{t('publicCommunities.landing.error.title')}</h1>
+            <h1 className="mt-4 text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.landing.error.title')}</h1>
             <p className="mt-2 text-[#A0A0A0]">
               {error || t('publicCommunities.landing.error.defaultMessage')}
             </p>
@@ -321,7 +321,7 @@ export const CommunityLandingPage: React.FC = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <Loader2 className="w-12 h-12 text-white animate-spin mx-auto" />
-            <p className="mt-4 text-lg font-medium text-[#FAFAFA]">
+            <p className="mt-4 text-lg font-medium text-[var(--fc-text,#FAFAFA)]">
               {t('publicCommunities.landing.joining.title', { name: communityData.community.name })}
             </p>
             <p className="mt-1 text-[#A0A0A0]">{t('publicCommunities.landing.joining.subtitle')}</p>
@@ -377,7 +377,7 @@ export const CommunityLandingPage: React.FC = () => {
 
               {/* Text content */}
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-[#FAFAFA] text-[15px]">
+                <p className="font-semibold text-[var(--fc-text,#FAFAFA)] text-[15px]">
                   {t('publicCommunities.landing.paymentSuccess.title')}
                 </p>
                 <p className="text-sm text-[#666666] mt-0.5">
@@ -428,7 +428,7 @@ export const CommunityLandingPage: React.FC = () => {
                 <XCircle className="w-6 h-6 text-white" strokeWidth={2.5} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-[#FAFAFA] text-[15px]">
+                <p className="font-semibold text-[var(--fc-text,#FAFAFA)] text-[15px]">
                   {t('publicCommunities.landing.paymentCanceled.title')}
                 </p>
                 <p className="text-sm text-[#666666] mt-0.5">
@@ -510,8 +510,8 @@ export const CommunityLandingPage: React.FC = () => {
             <section className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden">
               <div className="px-6 py-4 border-b border-[var(--fc-border,#1F1F1F)]">
                 <div className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[#FAFAFA]" />
-                  <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('publicCommunities.landing.about.title')}</h2>
+                  <FileText className="w-5 h-5 text-[var(--fc-text,#FAFAFA)]" />
+                  <h2 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.landing.about.title')}</h2>
                 </div>
               </div>
               <div className="p-6">
@@ -535,8 +535,8 @@ export const CommunityLandingPage: React.FC = () => {
               <section className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden">
                 <div className="px-6 py-4 border-b border-[var(--fc-border,#1F1F1F)]">
                   <div className="flex items-center gap-2">
-                    <Play className="w-5 h-5 text-[#FAFAFA]" />
-                    <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('publicCommunities.landing.video.title')}</h2>
+                    <Play className="w-5 h-5 text-[var(--fc-text,#FAFAFA)]" />
+                    <h2 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.landing.video.title')}</h2>
                   </div>
                 </div>
                 <div className="p-0">
@@ -560,7 +560,7 @@ export const CommunityLandingPage: React.FC = () => {
             <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('publicCommunities.landing.joinCta.title', { name: community.name })}</h3>
+                  <h3 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.landing.joinCta.title', { name: community.name })}</h3>
                   <p className="text-sm text-[#A0A0A0] mt-1">
                     {t('publicCommunities.landing.joinCta.subtitle')}
                   </p>
@@ -595,7 +595,7 @@ export const CommunityLandingPage: React.FC = () => {
                 <h3 className="text-sm font-medium text-[#666666] uppercase tracking-wide">
                   {t('publicCommunities.landing.creator.createdBy')}
                 </h3>
-                <ChevronRight className="w-4 h-4 text-[#666666] group-hover:text-[#FAFAFA] group-hover:translate-x-0.5 transition-all duration-150" />
+                <ChevronRight className="w-4 h-4 text-[#666666] group-hover:text-[var(--fc-text,#FAFAFA)] group-hover:translate-x-0.5 transition-all duration-150" />
               </div>
               <div className="flex items-center gap-4">
                 <img
@@ -604,7 +604,7 @@ export const CommunityLandingPage: React.FC = () => {
                   className="w-16 h-16 rounded-full object-cover ring-2 ring-transparent group-hover:ring-[#333333] transition-all duration-150"
                 />
                 <div>
-                  <h4 className="font-semibold text-[#FAFAFA] group-hover:text-white transition-colors duration-150">
+                  <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] group-hover:text-white transition-colors duration-150">
                     {creator.brand_name || creator.full_name}
                   </h4>
                   {creator.brand_name && (
@@ -634,7 +634,7 @@ export const CommunityLandingPage: React.FC = () => {
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'one_time'
                             ? 'bg-[var(--fc-surface,#0A0A0A)] text-[#A0A0A0] '
-                            : 'text-[#FAFAFA] hover:text-[#A0A0A0]'
+                            : 'text-[var(--fc-text,#FAFAFA)] hover:text-[#A0A0A0]'
                         }`}
                       >
                         {t('publicCommunities.landing.pricing.oneTimeTab')}
@@ -644,14 +644,14 @@ export const CommunityLandingPage: React.FC = () => {
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'monthly'
                             ? 'bg-[var(--fc-surface,#0A0A0A)] text-[#A0A0A0] '
-                            : 'text-[#FAFAFA] hover:text-[#A0A0A0]'
+                            : 'text-[var(--fc-text,#FAFAFA)] hover:text-[#A0A0A0]'
                         }`}
                       >
                         {t('publicCommunities.landing.pricing.monthlyTab')}
                       </button>
                     </div>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-[#FAFAFA]">
+                      <span className="text-3xl font-bold text-[var(--fc-text,#FAFAFA)]">
                         €{selectedCheckoutMode === 'monthly'
                           ? (community.monthly_price_cents / 100).toFixed(2)
                           : (community.price_cents / 100).toFixed(2)}
@@ -670,16 +670,16 @@ export const CommunityLandingPage: React.FC = () => {
                   <>
                     <div className="flex items-center gap-2 mb-3">
                       {community.pricing_type === 'monthly' ? (
-                        <Repeat className="w-5 h-5 text-[#FAFAFA]" />
+                        <Repeat className="w-5 h-5 text-[var(--fc-text,#FAFAFA)]" />
                       ) : (
-                        <CreditCard className="w-5 h-5 text-[#FAFAFA]" />
+                        <CreditCard className="w-5 h-5 text-[var(--fc-text,#FAFAFA)]" />
                       )}
                       <h3 className="text-sm font-medium text-[#A0A0A0] uppercase tracking-wide">
                         {community.pricing_type === 'monthly' ? t('publicCommunities.landing.pricing.subscription') : t('publicCommunities.landing.pricing.oneTime')}
                       </h3>
                     </div>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-[#FAFAFA]">
+                      <span className="text-3xl font-bold text-[var(--fc-text,#FAFAFA)]">
                         €{(community.price_cents / 100).toFixed(2)}
                       </span>
                       {community.pricing_type === 'monthly' && (
@@ -797,15 +797,15 @@ export const CommunityLandingPage: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.members')}</span>
-                  <span className="font-semibold text-[#FAFAFA]">{memberCount.toLocaleString()}</span>
+                  <span className="font-semibold text-[var(--fc-text,#FAFAFA)]">{memberCount.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.channels')}</span>
-                  <span className="font-semibold text-[#FAFAFA]">{channelPreviews.length}</span>
+                  <span className="font-semibold text-[var(--fc-text,#FAFAFA)]">{channelPreviews.length}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.created')}</span>
-                  <span className="font-semibold text-[#FAFAFA]">
+                  <span className="font-semibold text-[var(--fc-text,#FAFAFA)]">
                     {new Date(community.created_at).toLocaleDateString('en-US', {
                       month: 'short',
                       year: 'numeric',
@@ -861,7 +861,7 @@ export const CommunityLandingPage: React.FC = () => {
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#1F1F1F] rounded-full transition-colors duration-150"
+                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#1F1F1F] rounded-full transition-colors duration-150"
               >
                 <X className="w-5 h-5" />
               </button>
