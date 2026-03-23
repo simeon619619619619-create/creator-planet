@@ -94,18 +94,18 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
                   {creator.brand_name || creator.full_name}
                 </h2>
                 {creator.brand_name && (
-                  <p className="text-[#666666]">{creator.full_name}</p>
+                  <p className="text-[var(--fc-muted,#666666)]">{creator.full_name}</p>
                 )}
               </div>
 
               {creator.bio ? (
                 <div className="prose max-w-none">
-                  <p className="text-[#A0A0A0] whitespace-pre-wrap leading-relaxed">
+                  <p className="text-[var(--fc-muted,#A0A0A0)] whitespace-pre-wrap leading-relaxed">
                     {creator.bio}
                   </p>
                 </div>
               ) : (
-                <p className="text-[#666666] italic">
+                <p className="text-[var(--fc-muted,#666666)] italic">
                   {t('publicCommunities.landing.creator.noBio')}
                 </p>
               )}
@@ -283,7 +283,7 @@ export const CommunityLandingPage: React.FC = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <Loader2 className="w-12 h-12 text-white animate-spin mx-auto" />
-            <p className="mt-4 text-[#A0A0A0]">{t('publicCommunities.landing.loading')}</p>
+            <p className="mt-4 text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.loading')}</p>
           </div>
         </div>
       </PublicLayout>
@@ -296,9 +296,9 @@ export const CommunityLandingPage: React.FC = () => {
       <PublicLayout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center max-w-md mx-auto px-4">
-            <AlertCircle className="w-16 h-16 text-[#666666] mx-auto" />
+            <AlertCircle className="w-16 h-16 text-[var(--fc-muted,#666666)] mx-auto" />
             <h1 className="mt-4 text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.landing.error.title')}</h1>
-            <p className="mt-2 text-[#A0A0A0]">
+            <p className="mt-2 text-[var(--fc-muted,#A0A0A0)]">
               {error || t('publicCommunities.landing.error.defaultMessage')}
             </p>
             <button
@@ -324,7 +324,7 @@ export const CommunityLandingPage: React.FC = () => {
             <p className="mt-4 text-lg font-medium text-[var(--fc-text,#FAFAFA)]">
               {t('publicCommunities.landing.joining.title', { name: communityData.community.name })}
             </p>
-            <p className="mt-1 text-[#A0A0A0]">{t('publicCommunities.landing.joining.subtitle')}</p>
+            <p className="mt-1 text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.joining.subtitle')}</p>
           </div>
         </div>
       </PublicLayout>
@@ -335,7 +335,7 @@ export const CommunityLandingPage: React.FC = () => {
   const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(community.name)}&background=1F1F1F&color=FAFAFA&size=800`;
 
   return (
-    <PublicLayout themeColor={community.theme_color} textColor={community.text_color} accentColor={community.accent_color} backgroundElements={community.background_elements}>
+    <PublicLayout themeColor={community.theme_color} textColor={community.text_color} accentColor={community.accent_color} secondaryColor={community.secondary_color} backgroundElements={community.background_elements}>
       {/* Payment Success Notification */}
       {showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-6 px-4 pointer-events-none">
@@ -380,7 +380,7 @@ export const CommunityLandingPage: React.FC = () => {
                 <p className="font-semibold text-[var(--fc-text,#FAFAFA)] text-[15px]">
                   {t('publicCommunities.landing.paymentSuccess.title')}
                 </p>
-                <p className="text-sm text-[#666666] mt-0.5">
+                <p className="text-sm text-[var(--fc-muted,#666666)] mt-0.5">
                   {t('publicCommunities.landing.paymentSuccess.message', { name: community.name })}
                 </p>
               </div>
@@ -431,13 +431,13 @@ export const CommunityLandingPage: React.FC = () => {
                 <p className="font-semibold text-[var(--fc-text,#FAFAFA)] text-[15px]">
                   {t('publicCommunities.landing.paymentCanceled.title')}
                 </p>
-                <p className="text-sm text-[#666666] mt-0.5">
+                <p className="text-sm text-[var(--fc-muted,#666666)] mt-0.5">
                   {t('publicCommunities.landing.paymentCanceled.message')}
                 </p>
               </div>
               <button
                 onClick={() => setShowCancelMessage(false)}
-                className="flex-shrink-0 p-1.5 rounded-full text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] transition-colors duration-150"
+                className="flex-shrink-0 p-1.5 rounded-full text-[var(--fc-muted,#666666)] hover:text-[var(--fc-muted,#A0A0A0)] hover:bg-[#1F1F1F] transition-colors duration-150"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -517,14 +517,14 @@ export const CommunityLandingPage: React.FC = () => {
               <div className="p-6">
                 {community.description ? (
                   <div className="prose max-w-none">
-                    <p className="text-[#A0A0A0] whitespace-pre-wrap leading-relaxed">
+                    <p className="text-[var(--fc-muted,#A0A0A0)] whitespace-pre-wrap leading-relaxed">
                       {community.description}
                     </p>
                   </div>
                 ) : (
                   <div className="text-center py-8">
                     <FileText className="w-12 h-12 text-[#333333] mx-auto" />
-                    <p className="mt-3 text-[#666666]">{t('publicCommunities.landing.about.noDescription')}</p>
+                    <p className="mt-3 text-[var(--fc-muted,#666666)]">{t('publicCommunities.landing.about.noDescription')}</p>
                   </div>
                 )}
               </div>
@@ -561,7 +561,7 @@ export const CommunityLandingPage: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.landing.joinCta.title', { name: community.name })}</h3>
-                  <p className="text-sm text-[#A0A0A0] mt-1">
+                  <p className="text-sm text-[var(--fc-muted,#A0A0A0)] mt-1">
                     {t('publicCommunities.landing.joinCta.subtitle')}
                   </p>
                 </div>
@@ -592,10 +592,10 @@ export const CommunityLandingPage: React.FC = () => {
               className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6 w-full text-left hover:border-[#333333] hover:bg-[#151515] transition-all duration-150 group"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-medium text-[#666666] uppercase tracking-wide">
+                <h3 className="text-sm font-medium text-[var(--fc-muted,#666666)] uppercase tracking-wide">
                   {t('publicCommunities.landing.creator.createdBy')}
                 </h3>
-                <ChevronRight className="w-4 h-4 text-[#666666] group-hover:text-[var(--fc-text,#FAFAFA)] group-hover:translate-x-0.5 transition-all duration-150" />
+                <ChevronRight className="w-4 h-4 text-[var(--fc-muted,#666666)] group-hover:text-[var(--fc-text,#FAFAFA)] group-hover:translate-x-0.5 transition-all duration-150" />
               </div>
               <div className="flex items-center gap-4">
                 <img
@@ -608,16 +608,16 @@ export const CommunityLandingPage: React.FC = () => {
                     {creator.brand_name || creator.full_name}
                   </h4>
                   {creator.brand_name && (
-                    <p className="text-sm text-[#666666]">{creator.full_name}</p>
+                    <p className="text-sm text-[var(--fc-muted,#666666)]">{creator.full_name}</p>
                   )}
                 </div>
               </div>
               {creator.bio && (
-                <p className="mt-4 text-sm text-[#A0A0A0] line-clamp-2">
+                <p className="mt-4 text-sm text-[var(--fc-muted,#A0A0A0)] line-clamp-2">
                   {creator.bio}
                 </p>
               )}
-              <p className="mt-3 text-xs text-[#A0A0A0] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+              <p className="mt-3 text-xs text-[var(--fc-muted,#A0A0A0)] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                 {t('publicCommunities.landing.creator.learnMore')}
               </p>
             </button>
@@ -633,8 +633,8 @@ export const CommunityLandingPage: React.FC = () => {
                         onClick={() => setSelectedCheckoutMode('one_time')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'one_time'
-                            ? 'bg-[var(--fc-surface,#0A0A0A)] text-[#A0A0A0] '
-                            : 'text-[var(--fc-text,#FAFAFA)] hover:text-[#A0A0A0]'
+                            ? 'bg-[var(--fc-surface,#0A0A0A)] text-[var(--fc-muted,#A0A0A0)] '
+                            : 'text-[var(--fc-text,#FAFAFA)] hover:text-[var(--fc-muted,#A0A0A0)]'
                         }`}
                       >
                         {t('publicCommunities.landing.pricing.oneTimeTab')}
@@ -643,8 +643,8 @@ export const CommunityLandingPage: React.FC = () => {
                         onClick={() => setSelectedCheckoutMode('monthly')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'monthly'
-                            ? 'bg-[var(--fc-surface,#0A0A0A)] text-[#A0A0A0] '
-                            : 'text-[var(--fc-text,#FAFAFA)] hover:text-[#A0A0A0]'
+                            ? 'bg-[var(--fc-surface,#0A0A0A)] text-[var(--fc-muted,#A0A0A0)] '
+                            : 'text-[var(--fc-text,#FAFAFA)] hover:text-[var(--fc-muted,#A0A0A0)]'
                         }`}
                       >
                         {t('publicCommunities.landing.pricing.monthlyTab')}
@@ -657,10 +657,10 @@ export const CommunityLandingPage: React.FC = () => {
                           : (community.price_cents / 100).toFixed(2)}
                       </span>
                       {selectedCheckoutMode === 'monthly' && (
-                        <span className="text-[#A0A0A0]">{t('publicCommunities.landing.pricing.perMonth')}</span>
+                        <span className="text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.pricing.perMonth')}</span>
                       )}
                     </div>
-                    <p className="mt-2 text-sm text-[#A0A0A0]">
+                    <p className="mt-2 text-sm text-[var(--fc-muted,#A0A0A0)]">
                       {selectedCheckoutMode === 'monthly'
                         ? t('publicCommunities.landing.pricing.subscriptionDescription')
                         : t('publicCommunities.landing.pricing.oneTimeDescription')}
@@ -674,7 +674,7 @@ export const CommunityLandingPage: React.FC = () => {
                       ) : (
                         <CreditCard className="w-5 h-5 text-[var(--fc-text,#FAFAFA)]" />
                       )}
-                      <h3 className="text-sm font-medium text-[#A0A0A0] uppercase tracking-wide">
+                      <h3 className="text-sm font-medium text-[var(--fc-muted,#A0A0A0)] uppercase tracking-wide">
                         {community.pricing_type === 'monthly' ? t('publicCommunities.landing.pricing.subscription') : t('publicCommunities.landing.pricing.oneTime')}
                       </h3>
                     </div>
@@ -683,10 +683,10 @@ export const CommunityLandingPage: React.FC = () => {
                         €{(community.price_cents / 100).toFixed(2)}
                       </span>
                       {community.pricing_type === 'monthly' && (
-                        <span className="text-[#A0A0A0]">{t('publicCommunities.landing.pricing.perMonth')}</span>
+                        <span className="text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.pricing.perMonth')}</span>
                       )}
                     </div>
-                    <p className="mt-2 text-sm text-[#A0A0A0]">
+                    <p className="mt-2 text-sm text-[var(--fc-muted,#A0A0A0)]">
                       {community.pricing_type === 'monthly'
                         ? t('publicCommunities.landing.pricing.subscriptionDescription')
                         : t('publicCommunities.landing.pricing.oneTimeDescription')}
@@ -736,7 +736,7 @@ export const CommunityLandingPage: React.FC = () => {
                   <div className="mt-3">
                     <div className="flex items-center gap-2 my-2">
                       <div className="flex-1 h-px bg-[#1F1F1F]" />
-                      <span className="text-xs text-[#666666] uppercase">или</span>
+                      <span className="text-xs text-[var(--fc-muted,#666666)] uppercase">или</span>
                       <div className="flex-1 h-px bg-[#1F1F1F]" />
                     </div>
                     <TBIButton
@@ -770,7 +770,7 @@ export const CommunityLandingPage: React.FC = () => {
                     {t('publicCommunities.landing.pricing.freeCommunity')}
                   </h3>
                 </div>
-                <p className="text-sm text-[#A0A0A0]">
+                <p className="text-sm text-[var(--fc-muted,#A0A0A0)]">
                   {t('publicCommunities.landing.pricing.freeDescription')}
                 </p>
                 <div className="mt-4">
@@ -791,20 +791,20 @@ export const CommunityLandingPage: React.FC = () => {
 
             {/* Stats Card */}
             <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl  border border-[var(--fc-border,#1F1F1F)] p-6">
-              <h3 className="text-sm font-medium text-[#666666] uppercase tracking-wide mb-4">
+              <h3 className="text-sm font-medium text-[var(--fc-muted,#666666)] uppercase tracking-wide mb-4">
                 {t('publicCommunities.landing.communityStats.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.members')}</span>
+                  <span className="text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.communityStats.members')}</span>
                   <span className="font-semibold text-[var(--fc-text,#FAFAFA)]">{memberCount.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.channels')}</span>
+                  <span className="text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.communityStats.channels')}</span>
                   <span className="font-semibold text-[var(--fc-text,#FAFAFA)]">{channelPreviews.length}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#A0A0A0]">{t('publicCommunities.landing.communityStats.created')}</span>
+                  <span className="text-[var(--fc-muted,#A0A0A0)]">{t('publicCommunities.landing.communityStats.created')}</span>
                   <span className="font-semibold text-[var(--fc-text,#FAFAFA)]">
                     {new Date(community.created_at).toLocaleDateString('en-US', {
                       month: 'short',
@@ -861,7 +861,7 @@ export const CommunityLandingPage: React.FC = () => {
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#1F1F1F] rounded-full transition-colors duration-150"
+                className="absolute top-4 right-4 z-10 p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#1F1F1F] rounded-full transition-colors duration-150"
               >
                 <X className="w-5 h-5" />
               </button>

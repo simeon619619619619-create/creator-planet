@@ -24,7 +24,7 @@ export const PublicNavigation: React.FC = () => {
           <div className="hidden md:flex items-center gap-6">
             <Link
               to="/communities"
-              className="text-sm font-medium text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] transition-colors duration-150"
+              className="text-sm font-medium text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)] transition-colors duration-150"
             >
               {t('publicCommunities.nav.browseCommunities')}
             </Link>
@@ -59,7 +59,7 @@ export const PublicNavigation: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] transition-colors duration-150"
+            className="md:hidden p-2 rounded-lg text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)] transition-colors duration-150"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -73,7 +73,7 @@ export const PublicNavigation: React.FC = () => {
             <Link
               to="/communities"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors duration-150"
+              className="block px-4 py-2 text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors duration-150"
             >
               {t('publicCommunities.nav.browseCommunities')}
             </Link>

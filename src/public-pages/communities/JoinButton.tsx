@@ -384,8 +384,8 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
     }
     if (isRejectedApplication) {
       return variant === 'primary'
-        ? 'bg-[#333333] text-[#666666] cursor-not-allowed'
-        : 'border-2 border-[#333333] text-[#666666] cursor-not-allowed';
+        ? 'bg-[#333333] text-[var(--fc-muted,#666666)] cursor-not-allowed'
+        : 'border-2 border-[#333333] text-[var(--fc-muted,#666666)] cursor-not-allowed';
     }
     if (isPaidCommunity) {
       return variant === 'primary'
@@ -534,7 +534,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-full transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-full transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

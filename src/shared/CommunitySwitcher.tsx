@@ -53,7 +53,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
     ) : (
       <button
         onClick={onBrowseMore}
-        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#151515] hover:bg-[#1A1A1A] transition-colors text-sm text-[#A0A0A0]"
+        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#151515] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-muted,#A0A0A0)]"
       >
         <Search size={18} />
         <span>Browse Communities</span>
@@ -94,7 +94,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
         </span>
         <ChevronDown
           size={16}
-          className={`text-[#A0A0A0] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`text-[var(--fc-muted,#A0A0A0)] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -113,7 +113,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
                     w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors
                     ${isSelected
                       ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)]'
-                      : 'text-[#A0A0A0] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
+                      : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
                   `}
                 >
                   {community.thumbnail_url ? (
@@ -151,7 +151,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
             )}
             <button
               onClick={() => { onBrowseMore(); setIsOpen(false); }}
-              className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[#A0A0A0] hover:bg-[#151515] transition-colors"
+              className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] transition-colors"
             >
               <Search size={16} />
               <span>Browse More</span>

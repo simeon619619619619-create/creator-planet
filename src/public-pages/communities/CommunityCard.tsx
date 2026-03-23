@@ -63,7 +63,7 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
         </h3>
 
         {community.description && (
-          <p className="mt-1 text-sm text-[#A0A0A0] line-clamp-2">
+          <p className="mt-1 text-sm text-[var(--fc-muted,#A0A0A0)] line-clamp-2">
             {community.description}
           </p>
         )}
@@ -76,12 +76,12 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
               alt={community.creator.full_name}
               className="w-6 h-6 rounded-full object-cover"
             />
-            <span className="text-xs text-[#666666]">
-              {t('publicCommunities.card.creator.by')} <span className="font-medium text-[#A0A0A0]">{community.creator.full_name}</span>
+            <span className="text-xs text-[var(--fc-muted,#666666)]">
+              {t('publicCommunities.card.creator.by')} <span className="font-medium text-[var(--fc-muted,#A0A0A0)]">{community.creator.full_name}</span>
             </span>
           </div>
 
-          <ArrowRight className="w-4 h-4 text-[#666666] group-hover:text-[var(--fc-text,#FAFAFA)] group-hover:translate-x-1 transition-all duration-150" />
+          <ArrowRight className="w-4 h-4 text-[var(--fc-muted,#666666)] group-hover:text-[var(--fc-text,#FAFAFA)] group-hover:translate-x-1 transition-all duration-150" />
         </div>
       </div>
     </button>

@@ -64,21 +64,21 @@ export const CommunitiesDirectory: React.FC = () => {
       {/* Hero Section */}
       <section className="bg-[#0A0A0A] border-b border-[#1F1F1F] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1F1F1F] rounded-full text-[#A0A0A0] text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1F1F1F] rounded-full text-[var(--fc-muted,#A0A0A0)] text-sm font-medium mb-6">
             <Users className="w-4 h-4" />
             {t('publicCommunities.directory.hero.available', { count: communities.length })}
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--fc-text,#FAFAFA)]">
             {t('publicCommunities.directory.hero.title')}
           </h1>
-          <p className="mt-4 text-lg text-[#A0A0A0] max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-[var(--fc-muted,#A0A0A0)] max-w-2xl mx-auto">
             {t('publicCommunities.directory.hero.subtitle')}
           </p>
 
           {/* Search Bar */}
           <div className="mt-8 max-w-xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666666]" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--fc-muted,#666666)]" />
               <input
                 type="text"
                 placeholder={t('publicCommunities.directory.search.placeholder')}
@@ -95,16 +95,16 @@ export const CommunitiesDirectory: React.FC = () => {
       <section className="bg-[#0A0A0A] border-b border-[#1F1F1F] sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-[#A0A0A0]">
+            <p className="text-sm text-[var(--fc-muted,#A0A0A0)]">
               {t('publicCommunities.directory.filter.found', { count: filteredCommunities.length })}
             </p>
 
             <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-[#666666]" />
+              <Filter className="w-4 h-4 text-[var(--fc-muted,#666666)]" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="text-sm text-[#A0A0A0] bg-transparent border-0 focus:outline-none focus:ring-0 cursor-pointer"
+                className="text-sm text-[var(--fc-muted,#A0A0A0)] bg-transparent border-0 focus:outline-none focus:ring-0 cursor-pointer"
               >
                 <option value="newest">{t('publicCommunities.directory.sort.newest')}</option>
                 <option value="popular">{t('publicCommunities.directory.sort.popular')}</option>
@@ -134,7 +134,7 @@ export const CommunitiesDirectory: React.FC = () => {
             <div className="text-center py-20">
               <Sparkles className="w-16 h-16 text-[#333333] mx-auto" />
               <h3 className="mt-4 text-xl font-semibold text-[var(--fc-text,#FAFAFA)]">{t('publicCommunities.directory.empty.title')}</h3>
-              <p className="mt-2 text-[#A0A0A0]">
+              <p className="mt-2 text-[var(--fc-muted,#A0A0A0)]">
                 {searchQuery || selectedCategory
                   ? t('publicCommunities.directory.empty.searchHint')
                   : t('publicCommunities.directory.empty.createHint')}
@@ -169,7 +169,7 @@ export const CommunitiesDirectory: React.FC = () => {
             <h2 className="text-3xl font-bold text-[var(--fc-text,#FAFAFA)]">
               {t('publicCommunities.directory.cta.title')}
             </h2>
-            <p className="mt-4 text-lg text-[#A0A0A0]">
+            <p className="mt-4 text-lg text-[var(--fc-muted,#A0A0A0)]">
               {t('publicCommunities.directory.cta.subtitle')}
             </p>
             <button

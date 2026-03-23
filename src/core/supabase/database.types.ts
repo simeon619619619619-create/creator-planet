@@ -84,6 +84,8 @@ export interface DbCommunity {
   text_color?: string | null;
   // Card/surface accent color
   accent_color?: string | null;
+  // Secondary/muted text color
+  secondary_color?: string | null;
   // Background decorative elements (JSON array)
   background_elements?: BackgroundElement[] | null;
   // Friendly URL slug

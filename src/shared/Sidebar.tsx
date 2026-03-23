@@ -169,7 +169,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
                   {selectedCommunity?.name || teamMemberships?.[0]?.communityName || 'Community'}
                 </p>
                 {teamRole && (
-                  <p className="text-xs font-medium text-[#A0A0A0]">
+                  <p className="text-xs font-medium text-[var(--fc-muted,#A0A0A0)]">
                     {getTeamRoleDisplay()}
                   </p>
                 )}
@@ -192,7 +192,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
                 w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
                 ${currentView === item.id
                   ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
-                  : 'text-[#A0A0A0] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
+                  : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
               `}
             >
               {iconMap[item.icon]}
@@ -213,7 +213,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
               w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
               ${currentView === View.SETTINGS
                 ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
-                : 'text-[#A0A0A0] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515]'}
+                : 'text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515]'}
             `}
           >
             <Settings size={20} />
@@ -221,7 +221,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
           </button>
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center gap-3 px-4 py-3 text-[#A0A0A0] hover:text-[#EF4444] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors"
+            className="w-full flex items-center gap-3 px-4 py-3 text-[var(--fc-muted,#A0A0A0)] hover:text-[#EF4444] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors"
           >
             <LogOut size={20} />
             {t('common.logout')}
@@ -235,7 +235,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
             />
             <div className="flex-1 overflow-hidden">
               <p className="text-sm font-medium truncate">{profile?.full_name || 'User'}</p>
-              <p className="text-xs text-[#666666] truncate">
+              <p className="text-xs text-[var(--fc-muted,#666666)] truncate">
                 {isCreator ? (profile?.role || 'creator') : (isTeamMemberOnly ? (teamTitle || getTeamRoleDisplay()) : (profile?.role || 'Member'))}
               </p>
             </div>

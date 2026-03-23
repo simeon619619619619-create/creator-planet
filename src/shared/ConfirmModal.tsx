@@ -88,7 +88,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="p-2 text-[#666666] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
+            className="p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
           >
             <X size={20} />
           </button>
@@ -96,7 +96,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
         {/* Content */}
         <div className="p-6">
-          <p className="text-[#A0A0A0] leading-relaxed">{message}</p>
+          <p className="text-[var(--fc-muted,#A0A0A0)] leading-relaxed">{message}</p>
         </div>
 
         {/* Actions */}

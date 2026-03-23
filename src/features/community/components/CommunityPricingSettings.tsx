@@ -73,6 +73,7 @@ interface CommunityData {
   theme_color: string | null;
   text_color: string | null;
   accent_color: string | null;
+  secondary_color: string | null;
   background_elements: BackgroundElement[] | null;
 }
 
@@ -135,6 +136,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [themeColor, setThemeColor] = useState<string>('');
   const [textColor, setTextColor] = useState<string>('');
   const [accentColor, setAccentColor] = useState<string>('');
+  const [secondaryColor, setSecondaryColor] = useState<string>('');
   const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
 
   // VSL state
@@ -175,7 +177,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, background_elements, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, background_elements, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -213,6 +215,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setThemeColor(community.theme_color || '');
         setTextColor(community.text_color || '');
         setAccentColor(community.accent_color || '');
+        setSecondaryColor(community.secondary_color || '');
         setBgElements(community.background_elements || []);
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
@@ -771,6 +774,65 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             }}
             className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
             title={t('communityHub.pricing.textColor.custom')}
+          />
+        </div>
+      </div>
+
+      {/* Secondary / Muted Text Color */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[#FAFAFA]" />
+            {t('communityHub.pricing.secondaryColor.label')}
+          </span>
+        </label>
+        <p className="text-xs text-[#A0A0A0] mb-3">
+          {t('communityHub.pricing.secondaryColor.hint')}
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              '',
+              '#A0A0A0',
+              '#888888',
+              '#666666',
+              '#444444',
+              '#CCCCCC',
+              '#D4A574',
+              '#8B7355',
+              '#6B8E23',
+              '#708090',
+            ].map((color) => (
+              <button
+                key={color || 'default'}
+                onClick={async () => {
+                  setSecondaryColor(color);
+                  await updateCommunity(communityId, { secondary_color: color || null });
+                }}
+                className={`w-8 h-8 rounded-full border-2 transition-all duration-150 ${
+                  secondaryColor === color
+                    ? 'border-white scale-110'
+                    : 'border-[#333333] hover:border-[#555555]'
+                }`}
+                style={{
+                  backgroundColor: color || '#A0A0A0',
+                  ...(color === '' ? { backgroundImage: 'linear-gradient(135deg, #888 25%, transparent 25%, transparent 50%, #888 50%, #888 75%, transparent 75%)', backgroundSize: '8px 8px' } : {}),
+                }}
+                title={color || t('communityHub.pricing.secondaryColor.default')}
+              />
+            ))}
+          </div>
+          <input
+            type="color"
+            value={secondaryColor || '#A0A0A0'}
+            onChange={(e) => setSecondaryColor(e.target.value)}
+            onBlur={async () => {
+              if (secondaryColor) {
+                await updateCommunity(communityId, { secondary_color: secondaryColor });
+              }
+            }}
+            className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
+            title={t('communityHub.pricing.secondaryColor.custom')}
           />
         </div>
       </div>

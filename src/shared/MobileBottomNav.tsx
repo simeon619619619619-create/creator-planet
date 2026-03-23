@@ -30,7 +30,7 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentView, onNaviga
               onClick={() => onNavigate(view)}
               className={`
                 flex-1 flex flex-col items-center justify-center gap-0.5 py-2 pt-2.5 transition-colors relative
-                ${isActive ? 'text-white' : 'text-[#666666] active:text-[#999999]'}
+                ${isActive ? 'text-white' : 'text-[var(--fc-muted,#666666)] active:text-[#999999]'}
               `}
             >
               {isActive && (
@@ -44,7 +44,7 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentView, onNaviga
         {/* More / Menu button */}
         <button
           onClick={onOpenMenu}
-          className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 pt-2.5 text-[#666666] active:text-[#999999] transition-colors"
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 pt-2.5 text-[var(--fc-muted,#666666)] active:text-[#999999] transition-colors"
         >
           <Menu size={20} strokeWidth={1.5} />
           <span className="text-[10px] font-medium leading-tight">{t('mobileNav.more')}</span>
