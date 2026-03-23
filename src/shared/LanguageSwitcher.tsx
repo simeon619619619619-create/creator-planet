@@ -50,7 +50,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               i18n.language === lang.code
                 ? 'bg-[#151515] text-[#FAFAFA] border border-[#333333]'
-                : 'bg-transparent text-[#A0A0A0] border border-[#1F1F1F] hover:text-[#FAFAFA] hover:bg-[#151515]'
+                : 'bg-transparent text-[#A0A0A0] border border-[var(--fc-border,#1F1F1F)] hover:text-[#FAFAFA] hover:bg-[#151515]'
             }`}
           >
             {lang.label}
@@ -86,7 +86,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       </button>
       
       {isOpen && (
-        <div className="absolute right-0 mt-1 w-40 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F] z-50 py-1">
+        <div className="absolute right-0 mt-1 w-40 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)] z-50 py-1">
           {languages.map((lang) => (
             <button
               key={lang.code}

@@ -70,6 +70,7 @@ interface CommunityData {
   thumbnail_focal_y: number | null;
   theme_color: string | null;
   text_color: string | null;
+  accent_color: string | null;
 }
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB for images
@@ -130,6 +131,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [focalY, setFocalY] = useState(0.5);
   const [themeColor, setThemeColor] = useState<string>('');
   const [textColor, setTextColor] = useState<string>('');
+  const [accentColor, setAccentColor] = useState<string>('');
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -169,7 +171,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -206,6 +208,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setFocalY(community.thumbnail_focal_y ?? 0.5);
         setThemeColor(community.theme_color || '');
         setTextColor(community.text_color || '');
+        setAccentColor(community.accent_color || '');
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -574,7 +577,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           {t('communityHub.pricing.thumbnail.label')}
         </label>
         <div className="flex items-start gap-4">
-          <div className="w-24 h-24 bg-[#151515] rounded-lg overflow-hidden flex items-center justify-center border border-[#1F1F1F]">
+          <div className="w-24 h-24 bg-[#151515] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
@@ -767,6 +770,65 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         </div>
       </div>
 
+      {/* Accent / Card Color */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[#FAFAFA]" />
+            {t('communityHub.pricing.accentColor.label')}
+          </span>
+        </label>
+        <p className="text-xs text-[#A0A0A0] mb-3">
+          {t('communityHub.pricing.accentColor.hint')}
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              '',
+              '#1A1A2E',
+              '#16213E',
+              '#1B1B3A',
+              '#2D1B2E',
+              '#1B2D1B',
+              '#2E1B1B',
+              '#F8F0E3',
+              '#FFF0F5',
+              '#F0FFF0',
+            ].map((color) => (
+              <button
+                key={color || 'default'}
+                onClick={async () => {
+                  setAccentColor(color);
+                  await updateCommunity(communityId, { accent_color: color || null });
+                }}
+                className={`w-8 h-8 rounded-full border-2 transition-all duration-150 ${
+                  accentColor === color
+                    ? 'border-white scale-110'
+                    : 'border-[#333333] hover:border-[#555555]'
+                }`}
+                style={{
+                  backgroundColor: color || '#0A0A0A',
+                  ...(color === '' ? { backgroundImage: 'linear-gradient(135deg, #333 25%, transparent 25%, transparent 50%, #333 50%, #333 75%, transparent 75%)', backgroundSize: '8px 8px' } : {}),
+                }}
+                title={color || t('communityHub.pricing.accentColor.default')}
+              />
+            ))}
+          </div>
+          <input
+            type="color"
+            value={accentColor || '#0A0A0A'}
+            onChange={(e) => setAccentColor(e.target.value)}
+            onBlur={async () => {
+              if (accentColor) {
+                await updateCommunity(communityId, { accent_color: accentColor });
+              }
+            }}
+            className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
+            title={t('communityHub.pricing.accentColor.custom')}
+          />
+        </div>
+      </div>
+
       {/* Community Description (About) */}
       <div>
         <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
@@ -784,7 +846,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           placeholder={t('communityHub.pricing.description.placeholder')}
           rows={5}
           maxLength={2000}
-          className="w-full px-4 py-3 border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-colors resize-none"
+          className="w-full px-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-colors resize-none"
         />
         <div className="flex items-center justify-between mt-2">
           <div className="flex items-center gap-3">
@@ -883,7 +945,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         ) : (
           // No video - show upload prompt
           <div className="flex items-start gap-4">
-            <div className="w-32 h-20 bg-[#151515] rounded-lg overflow-hidden flex items-center justify-center border border-[#1F1F1F]">
+            <div className="w-32 h-20 bg-[#151515] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
               <Video size={32} className="text-[#666666]" />
             </div>
             <div className="flex flex-col gap-2">
@@ -918,7 +980,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
       </div>
 
       {/* Pricing Section Header */}
-      <div className="pt-4 border-t border-[#1F1F1F]">
+      <div className="pt-4 border-t border-[var(--fc-border,#1F1F1F)]">
         <h4 className="text-base font-medium text-[#FAFAFA] mb-1">{t('communityHub.pricing.title')}</h4>
         <p className="text-sm text-[#A0A0A0]">
           {t('communityHub.pricing.subtitle')}
@@ -962,7 +1024,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 ${
                   isSelected
                     ? 'border-white bg-[#151515]'
-                    : 'border-[#1F1F1F] hover:border-[#333333] bg-[#0A0A0A]'
+                    : 'border-[var(--fc-border,#1F1F1F)] hover:border-[#333333] bg-[var(--fc-surface,#0A0A0A)]'
                 }
               `}
             >
@@ -997,7 +1059,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
               <div
                 className={`
                   w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0
-                  ${isSelected ? 'border-white' : 'border-[#1F1F1F]'}
+                  ${isSelected ? 'border-white' : 'border-[var(--fc-border,#1F1F1F)]'}
                 `}
               >
                 {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-white" />}
@@ -1009,7 +1071,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Gated Access Toggle (only for free communities) */}
       {selectedType === 'free' && (
-        <div className="p-4 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F]">
+        <div className="p-4 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center shrink-0">
@@ -1079,7 +1141,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 onChange={handlePriceChange}
                 placeholder="0.00"
                 className="
-                  w-full pl-8 pr-4 py-3 border border-[#1F1F1F] rounded-lg
+                  w-full pl-8 pr-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg
                   text-[#FAFAFA] placeholder-[#666666]
                   focus:ring-1 focus:ring-white/10 focus:border-[#555555]
                   transition-colors
@@ -1123,7 +1185,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   onChange={handleMonthlyPriceChange}
                   placeholder="0.00"
                   className="
-                    w-full pl-8 pr-4 py-3 border border-[#1F1F1F] rounded-lg
+                    w-full pl-8 pr-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg
                     text-[#FAFAFA] placeholder-[#666666]
                     focus:ring-1 focus:ring-white/10 focus:border-[#555555]
                     transition-colors
@@ -1245,7 +1307,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Platform Fee Info Box */}
       {isPaidOption && priceEuros && parseFloat(priceEuros) >= 0.5 && (
-        <div className="p-4 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F]">
+        <div className="p-4 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <div className="flex items-start gap-3">
             <div className="w-8 h-8 rounded-full bg-[#1F1F1F] flex items-center justify-center shrink-0">
               <DollarSign size={16} className="text-[#FAFAFA]" />
@@ -1265,7 +1327,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 </p>
               </div>
               {selectedType === 'both' && monthlyPriceEuros && parseFloat(monthlyPriceEuros) >= 0.5 && (
-                <div className="pt-2 border-t border-[#1F1F1F]">
+                <div className="pt-2 border-t border-[var(--fc-border,#1F1F1F)]">
                   <p className="text-sm font-medium text-[#FAFAFA]">
                     {t('communityHub.pricing.earnings.perMonth')}
                   </p>
@@ -1369,7 +1431,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                     setDeleteError(null);
                   }}
                   disabled={isDeleting}
-                  className="flex-1 py-2 px-4 rounded-lg font-medium border border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A] transition-colors disabled:opacity-50"
+                  className="flex-1 py-2 px-4 rounded-lg font-medium border border-[var(--fc-border,#1F1F1F)] text-[#A0A0A0] hover:bg-[var(--fc-surface,#0A0A0A)] transition-colors disabled:opacity-50"
                 >
                   {t('communityHub.pricing.dangerZone.cancel')}
                 </button>

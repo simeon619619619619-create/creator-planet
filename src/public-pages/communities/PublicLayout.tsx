@@ -11,6 +11,7 @@ interface PublicLayoutProps {
   showFooter?: boolean;
   themeColor?: string | null;
   textColor?: string | null;
+  accentColor?: string | null;
 }
 
 export const PublicLayout: React.FC<PublicLayoutProps> = ({
@@ -19,11 +20,21 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
   showFooter = true,
   themeColor,
   textColor,
+  accentColor,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: themeColor || '#0A0A0A', color: textColor || undefined }}>
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundColor: themeColor || '#0A0A0A',
+        color: textColor || undefined,
+        '--fc-surface': accentColor || '#0A0A0A',
+        '--fc-surface-hover': accentColor ? `color-mix(in srgb, ${accentColor} 85%, white)` : '#151515',
+        '--fc-border': accentColor ? `color-mix(in srgb, ${accentColor} 70%, white)` : '#1F1F1F',
+      } as React.CSSProperties}
+    >
       {showNavigation && <PublicNavigation />}
 
       <main className={showNavigation ? 'pt-16' : ''}>
@@ -31,7 +42,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
       </main>
 
       {showFooter && (
-        <footer className="border-t border-[#1F1F1F] text-white" style={{ backgroundColor: themeColor || '#0A0A0A' }}>
+        <footer className="border-t border-[var(--fc-border,#1F1F1F)] text-white" style={{ backgroundColor: accentColor || themeColor || '#0A0A0A' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {/* Brand */}

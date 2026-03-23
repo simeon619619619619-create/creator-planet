@@ -72,6 +72,8 @@ export interface DbCommunity {
   theme_color?: string | null;
   // Page text color
   text_color?: string | null;
+  // Card/surface accent color
+  accent_color?: string | null;
   // Friendly URL slug
   slug?: string | null;
 }

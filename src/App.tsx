@@ -320,7 +320,17 @@ const AppLayout: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="flex h-screen font-sans" style={{ backgroundColor: selectedCommunity?.theme_color || '#0A0A0A', color: selectedCommunity?.text_color || '#FAFAFA' }}>
+    <div
+      className="flex h-screen font-sans"
+      style={{
+        backgroundColor: selectedCommunity?.theme_color || '#0A0A0A',
+        color: selectedCommunity?.text_color || '#FAFAFA',
+        // CSS custom properties for themed surface colors
+        '--fc-surface': selectedCommunity?.accent_color || '#0A0A0A',
+        '--fc-surface-hover': selectedCommunity?.accent_color ? `color-mix(in srgb, ${selectedCommunity.accent_color} 85%, white)` : '#151515',
+        '--fc-border': selectedCommunity?.accent_color ? `color-mix(in srgb, ${selectedCommunity.accent_color} 70%, white)` : '#1F1F1F',
+      } as React.CSSProperties}
+    >
       <Sidebar
         currentView={currentView}
         setCurrentView={setCurrentView}
@@ -332,7 +342,7 @@ const AppLayout: React.FC = () => {
 
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Mobile Header */}
-        <header className="lg:hidden h-14 border-b border-[#1F1F1F] flex items-center px-4 justify-center shrink-0" style={{ backgroundColor: selectedCommunity?.theme_color || '#0A0A0A' }}>
+        <header className="lg:hidden h-14 border-b border-[var(--fc-border,#1F1F1F)] flex items-center px-4 justify-center shrink-0" style={{ backgroundColor: 'var(--fc-surface, #0A0A0A)' }}>
           <Logo variant="light" size="lg" showText={false} />
         </header>
 

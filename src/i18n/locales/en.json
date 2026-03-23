@@ -2140,6 +2140,12 @@
         "default": "Default",
         "custom": "Custom color"
       },
+      "accentColor": {
+        "label": "Element Color",
+        "hint": "Color for cards, sidebar, modals, and other UI elements.",
+        "default": "Default",
+        "custom": "Custom color"
+      },
       "description": {
         "label": "About / Description",
         "hint": "This appears in the \"About\" section on your community landing page.",

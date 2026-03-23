@@ -166,6 +166,7 @@ export interface CommunityPublicData {
     thumbnail_focal_y?: number | null;
     theme_color?: string | null;
     text_color?: string | null;
+    accent_color?: string | null;
     slug?: string | null;
   };
   memberCount: number;

@@ -55,7 +55,7 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
 
       {/* Modal */}
       <div
-        className="relative bg-black/40 border border-[#1F1F1F] rounded-xl max-w-lg w-full mx-4 max-h-[85vh] flex flex-col"
+        className="relative bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-xl max-w-lg w-full mx-4 max-h-[85vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with gradient and avatar */}
@@ -66,7 +66,7 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors duration-150 z-10"
+            className="absolute top-4 right-4 p-2 rounded-full bg-black/20 hover:bg-[var(--fc-surface,#0A0A0A)] transition-colors duration-150 z-10"
           >
             <X className="w-5 h-5 text-white" />
           </button>
@@ -76,7 +76,7 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
             <img
               src={creator.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(creator.full_name)}&background=1F1F1F&color=FAFAFA&size=128`}
               alt={creator.full_name}
-              className="w-28 h-28 rounded-full object-cover border-4 border-[#0A0A0A] bg-black/40"
+              className="w-28 h-28 rounded-full object-cover border-4 border-[#0A0A0A] bg-[var(--fc-surface,#0A0A0A)]"
             />
           </div>
         </div>
@@ -303,7 +303,7 @@ export const CommunityLandingPage: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/communities')}
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-black/40 text-black rounded-lg hover:bg-[#E0E0E0] transition-colors duration-150"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] text-black rounded-lg hover:bg-[#E0E0E0] transition-colors duration-150"
             >
               <ArrowLeft className="w-4 h-4" />
               {t('publicCommunities.landing.error.browseCommunities')}
@@ -335,12 +335,12 @@ export const CommunityLandingPage: React.FC = () => {
   const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(community.name)}&background=1F1F1F&color=FAFAFA&size=800`;
 
   return (
-    <PublicLayout themeColor={community.theme_color} textColor={community.text_color}>
+    <PublicLayout themeColor={community.theme_color} textColor={community.text_color} accentColor={community.accent_color}>
       {/* Payment Success Notification */}
       {showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-6 px-4 pointer-events-none">
           <div
-            className="pointer-events-auto w-full max-w-md rounded-2xl bg-black/40 border border-[#1F1F1F] overflow-hidden"
+            className="pointer-events-auto w-full max-w-md rounded-2xl bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] overflow-hidden"
             style={{
               animation: 'successSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             }}
@@ -418,7 +418,7 @@ export const CommunityLandingPage: React.FC = () => {
       {showCancelMessage && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-6 px-4 pointer-events-none">
           <div
-            className="pointer-events-auto w-full max-w-md rounded-2xl bg-black/40 border border-[#1F1F1F] overflow-hidden"
+            className="pointer-events-auto w-full max-w-md rounded-2xl bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] overflow-hidden"
             style={{
               animation: 'successSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             }}
@@ -507,8 +507,8 @@ export const CommunityLandingPage: React.FC = () => {
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* About / Description */}
-            <section className="bg-black/40 rounded-xl border border-[#1F1F1F] overflow-hidden">
-              <div className="px-6 py-4 border-b border-[#1F1F1F]">
+            <section className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden">
+              <div className="px-6 py-4 border-b border-[var(--fc-border,#1F1F1F)]">
                 <div className="flex items-center gap-2">
                   <FileText className="w-5 h-5 text-[#FAFAFA]" />
                   <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('publicCommunities.landing.about.title')}</h2>
@@ -532,8 +532,8 @@ export const CommunityLandingPage: React.FC = () => {
 
             {/* VSL Video Player - Only shown if VSL exists */}
             {community.vsl_url && (
-              <section className="bg-black/40 rounded-xl border border-[#1F1F1F] overflow-hidden">
-                <div className="px-6 py-4 border-b border-[#1F1F1F]">
+              <section className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden">
+                <div className="px-6 py-4 border-b border-[var(--fc-border,#1F1F1F)]">
                   <div className="flex items-center gap-2">
                     <Play className="w-5 h-5 text-[#FAFAFA]" />
                     <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('publicCommunities.landing.video.title')}</h2>
@@ -557,7 +557,7 @@ export const CommunityLandingPage: React.FC = () => {
             )}
 
             {/* Join CTA Banner */}
-            <div className="bg-black/40 rounded-xl border border-[#1F1F1F] p-6">
+            <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('publicCommunities.landing.joinCta.title', { name: community.name })}</h3>
@@ -589,7 +589,7 @@ export const CommunityLandingPage: React.FC = () => {
             {/* Creator Card - Clickable */}
             <button
               onClick={() => setIsCreatorModalOpen(true)}
-              className="bg-black/40 rounded-xl border border-[#1F1F1F] p-6 w-full text-left hover:border-[#333333] hover:bg-[#151515] transition-all duration-150 group"
+              className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6 w-full text-left hover:border-[#333333] hover:bg-[#151515] transition-all duration-150 group"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-medium text-[#666666] uppercase tracking-wide">
@@ -624,7 +624,7 @@ export const CommunityLandingPage: React.FC = () => {
 
             {/* Pricing Card */}
             {community.pricing_type !== 'free' && community.price_cents > 0 && (
-              <div className="bg-black/40 rounded-xl border border-[#1F1F1F] p-6">
+              <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6">
                 {/* Dual pricing toggle tabs */}
                 {community.pricing_type === 'both' && community.monthly_price_cents && community.monthly_price_cents > 0 ? (
                   <>
@@ -633,7 +633,7 @@ export const CommunityLandingPage: React.FC = () => {
                         onClick={() => setSelectedCheckoutMode('one_time')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'one_time'
-                            ? 'bg-black/40 text-[#A0A0A0] '
+                            ? 'bg-[var(--fc-surface,#0A0A0A)] text-[#A0A0A0] '
                             : 'text-[#FAFAFA] hover:text-[#A0A0A0]'
                         }`}
                       >
@@ -643,7 +643,7 @@ export const CommunityLandingPage: React.FC = () => {
                         onClick={() => setSelectedCheckoutMode('monthly')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
                           selectedCheckoutMode === 'monthly'
-                            ? 'bg-black/40 text-[#A0A0A0] '
+                            ? 'bg-[var(--fc-surface,#0A0A0A)] text-[#A0A0A0] '
                             : 'text-[#FAFAFA] hover:text-[#A0A0A0]'
                         }`}
                       >
@@ -763,7 +763,7 @@ export const CommunityLandingPage: React.FC = () => {
 
             {/* Free Community Badge */}
             {(community.pricing_type === 'free' || community.price_cents === 0) && (
-              <div className="bg-black/40 rounded-xl border border-[#1F1F1F] p-6">
+              <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Gift className="w-5 h-5 text-[#22C55E]" />
                   <h3 className="text-sm font-medium text-[#22C55E] uppercase tracking-wide">
@@ -790,7 +790,7 @@ export const CommunityLandingPage: React.FC = () => {
             )}
 
             {/* Stats Card */}
-            <div className="bg-black/40 rounded-xl  border border-[#1F1F1F] p-6">
+            <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl  border border-[var(--fc-border,#1F1F1F)] p-6">
               <h3 className="text-sm font-medium text-[#666666] uppercase tracking-wide mb-4">
                 {t('publicCommunities.landing.communityStats.title')}
               </h3>
@@ -853,7 +853,7 @@ export const CommunityLandingPage: React.FC = () => {
             }}
           />
           {/* Modal Content */}
-          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-black/40 rounded-xl  overflow-hidden m-4">
+          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-[var(--fc-surface,#0A0A0A)] rounded-xl  overflow-hidden m-4">
             {/* Close button - only show if survey is not required */}
             {!intakeSurvey.is_required && (
               <button

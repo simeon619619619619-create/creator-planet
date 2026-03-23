@@ -100,7 +100,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full mt-1 z-50 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg overflow-hidden">
+        <div className="absolute left-0 right-0 top-full mt-1 z-50 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg overflow-hidden">
           {/* Community list */}
           <div className="max-h-52 overflow-y-auto py-1">
             {communities.map((community) => {
@@ -139,7 +139,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
           </div>
 
           {/* Actions */}
-          <div className="border-t border-[#1F1F1F] py-1">
+          <div className="border-t border-[var(--fc-border,#1F1F1F)] py-1">
             {isCreator && onCreateCommunity && (
               <button
                 onClick={() => { onCreateCommunity(); setIsOpen(false); }}

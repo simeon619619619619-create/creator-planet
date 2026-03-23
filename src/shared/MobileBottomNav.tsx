@@ -20,7 +20,7 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentView, onNaviga
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0A0A] border-t border-[#1F1F1F] safe-area-bottom">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[var(--fc-surface,#0A0A0A)] border-t border-[var(--fc-border,#1F1F1F)] safe-area-bottom">
       <div className="flex items-stretch">
         {tabs.map(({ view, icon: Icon, label }) => {
           const isActive = currentView === view;

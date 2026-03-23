@@ -74,11 +74,11 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
       {/* Modal */}
       <div
-        className="relative bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl max-w-md w-full mx-4 overflow-hidden"
+        className="relative bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-xl max-w-md w-full mx-4 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+        <div className="flex items-center justify-between p-4 border-b border-[var(--fc-border,#1F1F1F)]">
           <div className="flex items-center gap-3">
             <div className={`w-10 h-10 rounded-xl ${config.iconBg} ${config.iconColor} flex items-center justify-center`}>
               {displayIcon}
@@ -100,11 +100,11 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-3 p-4 border-t border-[#1F1F1F]">
+        <div className="flex items-center justify-end gap-3 p-4 border-t border-[var(--fc-border,#1F1F1F)]">
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="px-4 py-2.5 bg-transparent border border-[#1F1F1F] text-[#FAFAFA] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            className="px-4 py-2.5 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[#FAFAFA] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
           >
             {cancelLabel || t('common.cancel')}
           </button>

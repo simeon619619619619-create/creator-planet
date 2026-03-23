@@ -771,7 +771,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   if (communities.length === 0) {
     return (
       <div className="max-w-2xl mx-auto p-6 text-center">
-        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-12">
+        <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-12">
           <Users className="w-16 h-16 text-[#666666] mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">{t('communityHub.emptyState.noCommunitiesTitle')}</h2>
           <p className="text-[#A0A0A0] mb-6">
@@ -796,19 +796,19 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         {/* Create Community Modal */}
         {showCreateCommunity && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-[#0A0A0A] rounded-xl p-6 w-full max-w-md">
+            <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl p-6 w-full max-w-md">
               <h3 className="text-lg font-semibold mb-4">{t('communityHub.modal.createCommunity.title')}</h3>
               <input
                 type="text"
                 value={newCommunityName}
                 onChange={(e) => setNewCommunityName(e.target.value)}
                 placeholder={t('communityHub.modal.createCommunity.namePlaceholder')}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               />
               <div className="flex gap-3 mt-4">
                 <button
                   onClick={handleCloseCreateModal}
-                  className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#151515]"
+                  className="flex-1 px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg hover:bg-[#151515]"
                 >
                   {t('communityHub.buttons.cancel')}
                 </button>
@@ -852,7 +852,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         transform transition-transform duration-200 ease-in-out
         ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <div className="bg-[#0A0A0A] rounded-none lg:rounded-xl border-r lg:border border-[#1F1F1F] p-4 h-full lg:h-auto lg:sticky lg:top-6 overflow-y-auto">
+        <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-none lg:rounded-xl border-r lg:border border-[var(--fc-border,#1F1F1F)] p-4 h-full lg:h-auto lg:sticky lg:top-6 overflow-y-auto">
           {/* Mobile close button */}
           <button
             onClick={() => setIsMobileSidebarOpen(false)}
@@ -862,14 +862,14 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           </button>
           {/* Community Selector */}
           {communities.length > 1 && (
-            <div className="mb-4 pb-4 border-b border-[#1F1F1F]">
+            <div className="mb-4 pb-4 border-b border-[var(--fc-border,#1F1F1F)]">
               <select
                 value={selectedCommunity?.id || ''}
                 onChange={(e) => {
                   const comm = communities.find(c => c.id === e.target.value);
                   setSelectedCommunity(comm || null);
                 }}
-                className="w-full px-3 py-2 bg-[#151515] border border-[#1F1F1F] rounded-lg text-sm"
+                className="w-full px-3 py-2 bg-[#151515] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm"
               >
                 {communities.map(c => (
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -906,7 +906,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       <MoreHorizontal size={16} />
                     </button>
                     {showCommunityMenu && (
-                      <div className="absolute right-0 top-full mt-1 w-48 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F] py-1 z-50">
+                      <div className="absolute right-0 top-full mt-1 w-48 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)] py-1 z-50">
                         <button
                           onClick={() => {
                             setShowCommunityMenu(false);
@@ -927,8 +927,8 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
           {/* User Points Display */}
           {isMember && userPoints && (
-            <div className="mb-4 pb-4 border-b border-[#1F1F1F]">
-              <div className="bg-[#151515] rounded-lg p-3 border border-[#1F1F1F]">
+            <div className="mb-4 pb-4 border-b border-[var(--fc-border,#1F1F1F)]">
+              <div className="bg-[#151515] rounded-lg p-3 border border-[var(--fc-border,#1F1F1F)]">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <Zap className="w-4 h-4 text-white" />
@@ -1071,7 +1071,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
         {/* Join Banner (for non-members) */}
         {!isMember && selectedCommunity && (
-          <div className="bg-[#151515] border border-[#1F1F1F] rounded-xl p-4 flex items-center justify-between">
+          <div className="bg-[#151515] border border-[var(--fc-border,#1F1F1F)] rounded-xl p-4 flex items-center justify-between">
             <div>
               <p className="text-[#FAFAFA] font-medium">{t('communityHub.joinBanner.title')}</p>
               <p className="text-[#A0A0A0] text-sm">{t('communityHub.joinBanner.subtitle')}</p>
@@ -1087,7 +1087,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
         {/* Create Post */}
         {isMember && selectedChannel && (
-          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-4">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-4">
             <div className="flex gap-4">
               <img
                 src={profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile?.full_name || 'User')}&background=6366f1&color=fff`}
@@ -1100,7 +1100,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
                   placeholder={t('communityHub.createPost.placeholder')}
-                  className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg p-3 text-sm text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-24"
+                  className="w-full bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg p-3 text-sm text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-24"
                 />
 
                 {/* Image Preview */}
@@ -1109,7 +1109,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                     <img
                       src={pendingImagePreview}
                       alt={t('communityHub.createPost.imagePreviewAlt')}
-                      className="max-h-48 rounded-lg border border-[#1F1F1F]"
+                      className="max-h-48 rounded-lg border border-[var(--fc-border,#1F1F1F)]"
                     />
                     <button
                       onClick={handleRemoveImage}
@@ -1151,7 +1151,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       <>
                         <div className="fixed inset-0 z-40" onClick={() => setShowEmojiPicker(false)} />
                         <div
-                          className="absolute z-50 bg-[#0A0A0A] rounded-xl  border border-[#1F1F1F] p-3"
+                          className="absolute z-50 bg-[var(--fc-surface,#0A0A0A)] rounded-xl  border border-[var(--fc-border,#1F1F1F)] p-3"
                           style={{
                             bottom: 'calc(100% + 8px)',
                             left: '0',
@@ -1200,7 +1200,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
         {/* Posts */}
         <div className="space-y-4">
           {posts.length === 0 && selectedChannel && (
-            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+            <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-8 text-center">
               <MessageSquare className="w-12 h-12 text-[#666666] mx-auto mb-3" />
               <p className="text-[#A0A0A0]">{t('communityHub.emptyState.noPostsInChannel')}</p>
               {isMember && <p className="text-[#666666] text-sm mt-1">{t('communityHub.emptyState.beFirstToPost')}</p>}
@@ -1208,7 +1208,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
           )}
 
           {posts.map(post => (
-            <div key={post.id} className={`bg-[#0A0A0A] rounded-xl border p-5 ${post.is_pinned ? 'border-[#EAB308]/20 bg-[#EAB308]/5' : 'border-[#1F1F1F]'}`}>
+            <div key={post.id} className={`bg-[var(--fc-surface,#0A0A0A)] rounded-xl border p-5 ${post.is_pinned ? 'border-[#EAB308]/20 bg-[#EAB308]/5' : 'border-[var(--fc-border,#1F1F1F)]'}`}>
               <div className="flex justify-between items-start">
                 <div className="flex gap-3">
                   <button
@@ -1259,7 +1259,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         className="fixed inset-0 z-10"
                         onClick={handleCloseMenu}
                       />
-                      <div className="absolute right-0 top-8 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F] py-1 z-20 min-w-[160px]">
+                      <div className="absolute right-0 top-8 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)] py-1 z-20 min-w-[160px]">
                         {/* Copy Link - Available to everyone */}
                         <button
                           onClick={() => handleCopyPostLink(post.id)}
@@ -1279,7 +1279,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                               <Pin size={16} />
                               {post.is_pinned ? t('communityHub.postMenu.unpinPost') : t('communityHub.postMenu.pinPost')}
                             </button>
-                            <div className="border-t border-[#1F1F1F] my-1" />
+                            <div className="border-t border-[var(--fc-border,#1F1F1F)] my-1" />
                             <button
                               onClick={() => handleDeletePost(post.id)}
                               className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#EF4444] hover:bg-[#EF4444]/10 transition-colors"
@@ -1319,13 +1319,13 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   <img
                     src={post.image_url}
                     alt={t('communityHub.alt.postImage')}
-                    className="max-w-full rounded-lg border border-[#1F1F1F] cursor-pointer hover:opacity-95 transition-opacity"
+                    className="max-w-full rounded-lg border border-[var(--fc-border,#1F1F1F)] cursor-pointer hover:opacity-95 transition-opacity"
                     onClick={() => window.open(post.image_url!, '_blank')}
                   />
                 </div>
               )}
 
-              <div className="mt-5 pt-4 border-t border-[#1F1F1F] flex gap-6">
+              <div className="mt-5 pt-4 border-t border-[var(--fc-border,#1F1F1F)] flex gap-6">
                 <button
                   onClick={() => handleToggleLike(post.id, post.user_has_liked || false, post.author_id)}
                   className={`flex items-center gap-2 text-sm transition-colors ${
@@ -1351,7 +1351,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
 
               {/* Comments Section */}
               {expandedPostId === post.id && (
-                <div className="mt-4 pt-4 border-t border-[#1F1F1F]">
+                <div className="mt-4 pt-4 border-t border-[var(--fc-border,#1F1F1F)]">
                   {/* Loading state */}
                   {loadingComments.has(post.id) && (
                     <div className="flex justify-center py-4">
@@ -1410,7 +1410,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           onChange={(e) => handleCommentInputChange(post.id, e.target.value)}
                           onKeyPress={(e) => e.key === 'Enter' && handleSubmitComment(post.id)}
                           placeholder={t('communityHub.comments.placeholder')}
-                          className="flex-1 px-3 py-2 bg-[#151515] border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                          className="flex-1 px-3 py-2 bg-[#151515] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                         />
                         <button
                           onClick={() => handleSubmitComment(post.id)}
@@ -1438,20 +1438,20 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Create Community Modal */}
       {showCreateCommunity && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#0A0A0A] rounded-xl p-6 w-full max-w-md">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl p-6 w-full max-w-md">
             <h3 className="text-lg font-semibold mb-4">{t('communityHub.modal.createCommunity.title')}</h3>
             <input
               type="text"
               value={newCommunityName}
               onChange={(e) => setNewCommunityName(e.target.value)}
               placeholder={t('communityHub.modal.createCommunity.namePlaceholder')}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
               autoFocus
             />
             <div className="flex gap-3 mt-4">
               <button
                 onClick={handleCloseCreateModal}
-                className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#151515]"
+                className="flex-1 px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg hover:bg-[#151515]"
               >
                 {t('communityHub.buttons.cancel')}
               </button>
@@ -1470,7 +1470,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Channel Create/Edit Modal */}
       {showChannelModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#0A0A0A] rounded-xl p-6 w-full max-w-md">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl p-6 w-full max-w-md">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">
                 {editingChannel ? t('communityHub.modal.channel.editTitle') : t('communityHub.modal.channel.createTitle')}
@@ -1492,7 +1492,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={channelName}
                   onChange={(e) => setChannelName(e.target.value)}
                   placeholder={t('communityHub.modal.channel.namePlaceholder')}
-                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                  className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
                   autoFocus
                 />
                 <p className="text-xs text-[#A0A0A0] mt-1">
@@ -1507,7 +1507,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={channelDescription}
                   onChange={(e) => setChannelDescription(e.target.value)}
                   placeholder={t('communityHub.modal.channel.descriptionPlaceholder')}
-                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-20"
+                  className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-20"
                 />
               </div>
               {/* Group Selector */}
@@ -1519,7 +1519,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   <select
                     value={channelGroupId || ''}
                     onChange={(e) => setChannelGroupId(e.target.value || null)}
-                    className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10"
+                    className="w-full px-3 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10"
                   >
                     <option value="">{t('communityHub.modal.channel.allMembersOption')}</option>
                     {groups.map((g) => (
@@ -1537,7 +1537,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleCloseChannelModal}
-                className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#151515]"
+                className="flex-1 px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg hover:bg-[#151515]"
               >
                 {t('communityHub.buttons.cancel')}
               </button>
@@ -1570,8 +1570,8 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Leaderboard Modal */}
       {showLeaderboard && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-6">
-          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
-            <div className="p-6 border-b border-[#1F1F1F]">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
+            <div className="p-6 border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="bg-[#1F1F1F] p-2 rounded-lg">
@@ -1617,7 +1617,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         className={`flex items-center gap-4 p-4 rounded-lg border transition-all ${
                           isCurrentUser
                             ? 'bg-[#151515] border-[#333333] ring-1 ring-[#333333]'
-                            : 'bg-[#0A0A0A] border-[#1F1F1F] hover:border-[#333333]'
+                            : 'bg-[var(--fc-surface,#0A0A0A)] border-[var(--fc-border,#1F1F1F)] hover:border-[#333333]'
                         }`}
                       >
                         <div className={`flex items-center justify-center w-8 h-8 rounded-full ${rankColor} text-white font-bold text-sm shrink-0`}>
@@ -1682,9 +1682,9 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Give Points Modal */}
       {showGivePointsModal && givePointsTarget && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md ">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-md ">
             {/* Header */}
-            <div className="p-6 border-b border-[#1F1F1F]">
+            <div className="p-6 border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="bg-[#1F1F1F] p-2 rounded-lg">
@@ -1742,17 +1742,17 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   onChange={(e) => setGivePointsReason(e.target.value)}
                   placeholder={t('communityHub.givePoints.reasonPlaceholder')}
                   rows={2}
-                  className="w-full px-3 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-sm text-[#FAFAFA] placeholder-[#666666] resize-none"
+                  className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-sm text-[#FAFAFA] placeholder-[#666666] resize-none"
                 />
               </div>
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-[#1F1F1F] flex gap-3">
+            <div className="p-6 border-t border-[var(--fc-border,#1F1F1F)] flex gap-3">
               <button
                 onClick={handleCloseGivePoints}
                 disabled={isAwardingPoints}
-                className="flex-1 py-2.5 bg-transparent border border-[#1F1F1F] hover:bg-[#151515] hover:border-[#333333] text-[#FAFAFA] rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="flex-1 py-2.5 bg-transparent border border-[var(--fc-border,#1F1F1F)] hover:bg-[#151515] hover:border-[#333333] text-[#FAFAFA] rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {t('communityHub.givePoints.cancelButton')}
               </button>
@@ -1781,9 +1781,9 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Community Settings Modal */}
       {showPricingSettings && selectedCommunity && isOwner && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-6">
-          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col">
             {/* Header */}
-            <div className="p-6 border-b border-[#1F1F1F]">
+            <div className="p-6 border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-bold text-[#FAFAFA]">{t('communityHub.modal.communitySettings.title')}</h3>
@@ -1800,7 +1800,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                 </button>
               </div>
               {/* Tabs */}
-              <div className="flex gap-4 mt-4 border-b border-[#1F1F1F] -mb-6 -mx-6 px-6">
+              <div className="flex gap-4 mt-4 border-b border-[var(--fc-border,#1F1F1F)] -mb-6 -mx-6 px-6">
                 <button
                   onClick={() => setSettingsTab('general')}
                   className={`pb-3 text-sm font-medium border-b-2 transition-colors ${
@@ -1838,7 +1838,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         type="text"
                         value={editingCommunityName}
                         onChange={(e) => setEditingCommunityName(e.target.value)}
-                        className="flex-1 px-3 py-2 bg-[#0A0A0A] text-[#FAFAFA] border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
+                        className="flex-1 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] text-[#FAFAFA] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
                         placeholder={t('communityHub.modal.communitySettings.namePlaceholder')}
                       />
                       <button
@@ -1872,7 +1872,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       <select
                         value={editingCommunityCategory ?? ''}
                         onChange={(e) => setEditingCommunityCategory((e.target.value || null) as ContentCategory | null)}
-                        className="flex-1 px-3 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] bg-transparent text-[#FAFAFA]"
+                        className="flex-1 px-3 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] bg-transparent text-[#FAFAFA]"
                       >
                         <option value="">{t('categories.selectPlaceholder', 'Select a category...')}</option>
                         {CONTENT_CATEGORIES.map((cat) => (
@@ -1915,7 +1915,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         type="text"
                         defaultValue={(selectedCommunity as any).access_code || ''}
                         placeholder="Оставете празно за свободен достъп"
-                        className="flex-1 px-3 py-2 bg-[#0A0A0A] text-[#FAFAFA] border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
+                        className="flex-1 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] text-[#FAFAFA] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
                         id="access-code-input"
                       />
                       <button
@@ -1937,7 +1937,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-[#1F1F1F]" />
+                  <div className="border-t border-[var(--fc-border,#1F1F1F)]" />
 
                   {/* Pricing Settings */}
                   <CommunityPricingSettings
@@ -1966,7 +1966,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Group Manager Modal */}
       {showGroupManager && selectedCommunity && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#0A0A0A] rounded-xl  max-w-md w-full mx-4 p-6 max-h-[80vh] overflow-y-auto">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl  max-w-md w-full mx-4 p-6 max-h-[80vh] overflow-y-auto">
             {selectedGroupForAssign ? (
               <GroupMemberAssigner
                 communityId={selectedCommunity.id}
@@ -1990,7 +1990,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       {/* Delete Post Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[#0A0A0A] rounded-xl  max-w-sm w-full mx-4 p-6">
+          <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl  max-w-sm w-full mx-4 p-6">
             <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-[#EF4444]/10 rounded-full">
               <Trash2 className="w-6 h-6 text-[#EF4444]" />
             </div>
@@ -2004,7 +2004,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
               <button
                 onClick={cancelDeletePost}
                 disabled={isDeleting}
-                className="flex-1 px-4 py-2.5 border border-[#1F1F1F] rounded-lg hover:bg-[#151515] font-medium text-[#A0A0A0] transition-colors disabled:opacity-50"
+                className="flex-1 px-4 py-2.5 border border-[var(--fc-border,#1F1F1F)] rounded-lg hover:bg-[#151515] font-medium text-[#A0A0A0] transition-colors disabled:opacity-50"
               >
                 {t('communityHub.buttons.cancel')}
               </button>

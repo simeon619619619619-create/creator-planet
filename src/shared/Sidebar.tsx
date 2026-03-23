@@ -129,11 +129,11 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
 
       {/* Sidebar */}
       <div className={`
-        fixed lg:static inset-y-0 left-0 z-30 w-64 bg-[#0A0A0A] border-r border-[#1F1F1F] text-white transform transition-transform duration-200 ease-in-out flex flex-col
+        fixed lg:static inset-y-0 left-0 z-30 w-64 bg-[var(--fc-surface,#0A0A0A)] border-r border-[var(--fc-border,#1F1F1F)] text-white transform transition-transform duration-200 ease-in-out flex flex-col
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Header */}
-        <div className="h-16 flex items-center px-6 border-b border-[#1F1F1F]">
+        <div className="h-16 flex items-center px-6 border-b border-[var(--fc-border,#1F1F1F)]">
           <Logo variant="light" size="lg" showText={false} />
         </div>
 
@@ -202,7 +202,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#1F1F1F] space-y-2">
+        <div className="p-4 border-t border-[var(--fc-border,#1F1F1F)] space-y-2">
           <button
             onClick={() => {
               navigate('/settings');
