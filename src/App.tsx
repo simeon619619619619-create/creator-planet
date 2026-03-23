@@ -320,7 +320,7 @@ const AppLayout: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="flex h-screen bg-[#0A0A0A] font-sans text-[#FAFAFA]">
+    <div className="flex h-screen font-sans text-[#FAFAFA]" style={{ backgroundColor: selectedCommunity?.theme_color || '#0A0A0A' }}>
       <Sidebar
         currentView={currentView}
         setCurrentView={setCurrentView}
@@ -332,7 +332,7 @@ const AppLayout: React.FC = () => {
 
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Mobile Header */}
-        <header className="lg:hidden h-14 bg-[#0A0A0A] border-b border-[#1F1F1F] flex items-center px-4 justify-center shrink-0">
+        <header className="lg:hidden h-14 border-b border-[#1F1F1F] flex items-center px-4 justify-center shrink-0" style={{ backgroundColor: selectedCommunity?.theme_color || '#0A0A0A' }}>
           <Logo variant="light" size="lg" showText={false} />
         </header>
 

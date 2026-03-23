@@ -39,10 +39,6 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
   const leftPercent = `${focalX * 100}%`;
   const topPercent = `${focalY * 100}%`;
 
-  const overlayColor = themeColor
-    ? `${themeColor}B3` // ~70% opacity
-    : 'rgba(10, 10, 10, 0.7)';
-
   return (
     <div className="space-y-3">
       {/* Tab switcher */}
@@ -113,9 +109,13 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
           </p>
         </div>
       ) : (
-        /* Live Preview — simulates hero section */
-        <div className="w-full max-w-[500px] rounded-lg overflow-hidden border border-[#1F1F1F]">
-          <div className="relative h-48 md:h-56 overflow-hidden">
+        /* Live Preview — simulates page with theme color background */
+        <div
+          className="w-full max-w-[500px] rounded-lg overflow-hidden border border-[#1F1F1F]"
+          style={{ backgroundColor: themeColor || '#0A0A0A' }}
+        >
+          {/* Hero image */}
+          <div className="relative h-36 overflow-hidden">
             <img
               src={imageUrl}
               alt="Preview"
@@ -125,19 +125,15 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
                 objectPosition: `${focalX * 100}% ${focalY * 100}%`,
               }}
             />
-            {/* Overlay — uses theme color if set */}
-            <div
-              className="absolute inset-0"
-              style={{ backgroundColor: overlayColor }}
-            />
+            <div className="absolute inset-0 bg-black/60" />
 
-            {/* Simulated hero content */}
+            {/* Hero content */}
             <div className="absolute inset-0 flex items-end">
-              <div className="px-5 pb-5 w-full">
-                <div className="text-white font-bold text-xl md:text-2xl truncate">
+              <div className="px-4 pb-4 w-full">
+                <div className="text-white font-bold text-lg truncate">
                   {communityName || 'Community Name'}
                 </div>
-                <div className="mt-2 flex items-center gap-3 text-white/70 text-xs">
+                <div className="mt-1.5 flex items-center gap-3 text-white/70 text-xs">
                   <span className="inline-flex items-center gap-1">
                     <Users className="w-3 h-3" />
                     3 {t('publicCommunities.landing.stats.members', { defaultValue: 'члена' })}
@@ -148,6 +144,19 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
                   </span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Simulated page content area */}
+          <div className="p-4 space-y-2">
+            <div className="bg-black/40 rounded-lg border border-white/10 p-3">
+              <div className="text-white/80 text-xs font-medium">{t('publicCommunities.landing.about.title', { defaultValue: 'За нас' })}</div>
+              <div className="mt-1 h-2 w-3/4 bg-white/10 rounded" />
+              <div className="mt-1 h-2 w-1/2 bg-white/10 rounded" />
+            </div>
+            <div className="bg-black/40 rounded-lg border border-white/10 p-3">
+              <div className="text-white/80 text-xs font-medium">{t('publicCommunities.landing.channels.title', { defaultValue: 'Канали' })}</div>
+              <div className="mt-1 h-2 w-2/3 bg-white/10 rounded" />
             </div>
           </div>
         </div>

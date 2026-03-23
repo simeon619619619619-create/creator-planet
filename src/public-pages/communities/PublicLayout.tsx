@@ -9,17 +9,19 @@ interface PublicLayoutProps {
   children: React.ReactNode;
   showNavigation?: boolean;
   showFooter?: boolean;
+  themeColor?: string | null;
 }
 
 export const PublicLayout: React.FC<PublicLayoutProps> = ({
   children,
   showNavigation = true,
   showFooter = true,
+  themeColor,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen" style={{ backgroundColor: themeColor || '#0A0A0A' }}>
       {showNavigation && <PublicNavigation />}
 
       <main className={showNavigation ? 'pt-16' : ''}>
@@ -27,7 +29,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
       </main>
 
       {showFooter && (
-        <footer className="bg-[#0A0A0A] border-t border-[#1F1F1F] text-white">
+        <footer className="border-t border-[#1F1F1F] text-white" style={{ backgroundColor: themeColor || '#0A0A0A' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {/* Brand */}
