@@ -158,7 +158,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
           </div>
         ) : (
           <div className="px-4 pt-4 pb-2">
-            <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#151515]">
+            <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)]">
               <div className="w-7 h-7 rounded-md bg-[#333333] flex items-center justify-center shrink-0">
                 <span className="text-xs font-bold text-white">
                   {(selectedCommunity?.name || teamMemberships?.[0]?.communityName || 'C').charAt(0).toUpperCase()}
@@ -191,8 +191,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
               className={`
                 w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
                 ${currentView === item.id
-                  ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
-                  : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
+                  ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
+                  : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] hover:text-[var(--fc-text,#FAFAFA)]'}
               `}
             >
               {iconMap[item.icon]}
@@ -212,8 +212,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
             className={`
               w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
               ${currentView === View.SETTINGS
-                ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
-                : 'text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515]'}
+                ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
+                : 'text-[var(--fc-muted,#A0A0A0)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)]'}
             `}
           >
             <Settings size={20} />
@@ -221,7 +221,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
           </button>
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center gap-3 px-4 py-3 text-[var(--fc-muted,#A0A0A0)] hover:text-[#EF4444] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors"
+            className="w-full flex items-center gap-3 px-4 py-3 text-[var(--fc-muted,#A0A0A0)] hover:text-[#EF4444] hover:bg-[var(--fc-surface-hover,#151515)] rounded-lg text-sm font-medium transition-colors"
           >
             <LogOut size={20} />
             {t('common.logout')}

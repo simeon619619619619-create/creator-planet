@@ -37,7 +37,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
   }, [isOpen]);
 
   if (isLoading) {
-    return <div className="h-10 bg-[#151515] rounded-lg animate-pulse" />;
+    return <div className="h-10 bg-[var(--fc-surface-hover,#151515)] rounded-lg animate-pulse" />;
   }
 
   // Empty state: show create or browse action
@@ -45,7 +45,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
     return isCreator && onCreateCommunity ? (
       <button
         onClick={onCreateCommunity}
-        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#151515] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-text,#FAFAFA)]"
+        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-text,#FAFAFA)]"
       >
         <Plus size={18} />
         <span>New Community</span>
@@ -53,7 +53,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
     ) : (
       <button
         onClick={onBrowseMore}
-        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#151515] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-muted,#A0A0A0)]"
+        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-muted,#A0A0A0)]"
       >
         <Search size={18} />
         <span>Browse Communities</span>
@@ -73,7 +73,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
         onClick={() => setIsOpen(!isOpen)}
         className={`
           w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left
-          ${isOpen ? 'bg-[#1A1A1A]' : 'bg-[#151515] hover:bg-[#1A1A1A]'}
+          ${isOpen ? 'bg-[#1A1A1A]' : 'bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A]'}
         `}
       >
         {selectedCommunity?.thumbnail_url ? (
@@ -112,8 +112,8 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
                   className={`
                     w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors
                     ${isSelected
-                      ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)]'
-                      : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] hover:text-[var(--fc-text,#FAFAFA)]'}
+                      ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-text,#FAFAFA)]'
+                      : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] hover:text-[var(--fc-text,#FAFAFA)]'}
                   `}
                 >
                   {community.thumbnail_url ? (
@@ -143,7 +143,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
             {isCreator && onCreateCommunity && (
               <button
                 onClick={() => { onCreateCommunity(); setIsOpen(false); }}
-                className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] transition-colors"
+                className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
               >
                 <Plus size={16} />
                 <span>New Community</span>
@@ -151,7 +151,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
             )}
             <button
               onClick={() => { onBrowseMore(); setIsOpen(false); }}
-              className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] transition-colors"
+              className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
             >
               <Search size={16} />
               <span>Browse More</span>

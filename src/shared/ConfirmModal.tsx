@@ -88,7 +88,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
+            className="p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)] rounded-lg transition-colors disabled:opacity-50"
           >
             <X size={20} />
           </button>
@@ -104,7 +104,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="px-4 py-2.5 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            className="px-4 py-2.5 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)] rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
           >
             {cancelLabel || t('common.cancel')}
           </button>

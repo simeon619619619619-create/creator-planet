@@ -160,7 +160,7 @@ const SortableCourseCard: React.FC<SortableCourseCardProps> = ({
       )}
 
       <div
-        className="relative h-48 overflow-hidden bg-[#1F1F1F] cursor-pointer"
+        className="relative h-48 overflow-hidden bg-[var(--fc-surface-hover,#1F1F1F)] cursor-pointer"
         onClick={() => onSelect(course)}
       >
         {course.thumbnail_url ? (
@@ -204,7 +204,7 @@ const SortableCourseCard: React.FC<SortableCourseCardProps> = ({
                       {proof.displayVoters.map((voter, i) => (
                         <div
                           key={i}
-                          className="w-5 h-5 rounded-full border border-black/60 overflow-hidden bg-[#1F1F1F] flex-shrink-0"
+                          className="w-5 h-5 rounded-full border border-black/60 overflow-hidden bg-[var(--fc-surface-hover,#1F1F1F)] flex-shrink-0"
                           title={voter.full_name}
                         >
                           {voter.avatar_url ? (
@@ -260,7 +260,7 @@ const SortableCourseCard: React.FC<SortableCourseCardProps> = ({
           </span>
           {course.progress_percent !== undefined && (
             <div className="flex items-center gap-2">
-              <div className="w-20 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+              <div className="w-20 h-2 bg-[var(--fc-surface-hover,#1F1F1F)] rounded-full overflow-hidden">
                 <div
                   className="h-full bg-[#22C55E] transition-all"
                   style={{ width: `${course.progress_percent}%` }}
@@ -777,7 +777,7 @@ const CourseLMS: React.FC = () => {
                 key={course.id}
                 className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden"
               >
-                <div className="relative h-48 overflow-hidden bg-[#1F1F1F]">
+                <div className="relative h-48 overflow-hidden bg-[var(--fc-surface-hover,#1F1F1F)]">
                   {course.thumbnail_url ? (
                     <img src={course.thumbnail_url} alt={course.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   ) : (
@@ -980,7 +980,7 @@ const CourseLMS: React.FC = () => {
                   className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden hover:border-[#333333] transition-colors group"
                 >
                   <div
-                    className="relative h-48 overflow-hidden bg-[#1F1F1F] cursor-pointer"
+                    className="relative h-48 overflow-hidden bg-[var(--fc-surface-hover,#1F1F1F)] cursor-pointer"
                     onClick={() => handleSelectCourse(course)}
                   >
                     {course.thumbnail_url ? (
@@ -1006,7 +1006,7 @@ const CourseLMS: React.FC = () => {
                       </span>
                       {course.progress_percent !== undefined && (
                         <div className="flex items-center gap-2">
-                          <div className="w-20 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+                          <div className="w-20 h-2 bg-[var(--fc-surface-hover,#1F1F1F)] rounded-full overflow-hidden">
                             <div
                               className="h-full bg-[#22C55E] transition-all"
                               style={{ width: `${course.progress_percent}%` }}
@@ -1033,7 +1033,7 @@ const CourseLMS: React.FC = () => {
                   key={course.id}
                   className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden"
                 >
-                  <div className="relative h-48 overflow-hidden bg-[#1F1F1F]">
+                  <div className="relative h-48 overflow-hidden bg-[var(--fc-surface-hover,#1F1F1F)]">
                     {course.thumbnail_url ? (
                       <img src={course.thumbnail_url} alt={course.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                     ) : (
@@ -1185,7 +1185,7 @@ const CourseLMS: React.FC = () => {
           <h2 className="font-bold text-[var(--fc-text,#FAFAFA)] leading-tight">{selectedCourse.title}</h2>
           {selectedCourse.progress_percent !== undefined && (
             <div className="mt-2 flex items-center gap-2">
-              <div className="flex-1 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+              <div className="flex-1 h-2 bg-[var(--fc-surface-hover,#1F1F1F)] rounded-full overflow-hidden">
                 <div
                   className="h-full bg-[#22C55E] transition-all"
                   style={{ width: `${selectedCourse.progress_percent}%` }}
@@ -1201,7 +1201,7 @@ const CourseLMS: React.FC = () => {
           {(role === 'creator' || role === 'superadmin') && (
             <button
               onClick={() => handleAddModule(selectedCourse.id)}
-              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[var(--fc-text,#FAFAFA)] hover:bg-[#1F1F1F] transition-colors"
+              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#1F1F1F)] transition-colors"
             >
               <Plus size={16} />
               {t('courseLms.module.addModule')}
@@ -1218,7 +1218,7 @@ const CourseLMS: React.FC = () => {
           ) : (
             selectedCourse.modules.map((module, moduleIndex) => (
               <div key={module.id} className="mb-1">
-                <div className="flex items-center bg-[var(--fc-surface,#0A0A0A)] hover:bg-[#1F1F1F] transition-colors">
+                <div className="flex items-center bg-[var(--fc-surface,#0A0A0A)] hover:bg-[var(--fc-surface-hover,#1F1F1F)] transition-colors">
                   <button
                     onClick={() => setActiveModuleId(activeModuleId === module.id ? null : module.id)}
                     className="flex-1 flex items-center justify-between px-4 py-3"
@@ -1263,7 +1263,7 @@ const CourseLMS: React.FC = () => {
                     {(role === 'creator' || role === 'superadmin') && (
                       <button
                         onClick={() => handleAddLesson(module.id)}
-                        className="w-full flex items-center gap-2 px-6 py-2 text-xs text-[var(--fc-text,#FAFAFA)] hover:bg-[#1F1F1F] transition-colors border-l-4 border-transparent"
+                        className="w-full flex items-center gap-2 px-6 py-2 text-xs text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#1F1F1F)] transition-colors border-l-4 border-transparent"
                       >
                         <Plus size={14} />
                         {t('courseLms.lesson.addLesson')}
@@ -1280,7 +1280,7 @@ const CourseLMS: React.FC = () => {
                           key={lesson.id}
                           className={`flex items-center border-l-4 transition-colors
                             ${activeLesson?.id === lesson.id
-                              ? 'border-white bg-[#1F1F1F]/50'
+                              ? 'border-white bg-[var(--fc-surface-hover,#1F1F1F)]/50'
                               : 'border-transparent hover:bg-[var(--fc-surface,#0A0A0A)]'}
                           `}
                         >
@@ -1463,7 +1463,7 @@ const CourseLMS: React.FC = () => {
                       <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
                         getBadgeType(courseInstructor.role) === 'guest'
                           ? 'bg-[#EAB308]/10 text-[#EAB308]'
-                          : 'bg-[#1F1F1F] text-[var(--fc-text,#FAFAFA)]'
+                          : 'bg-[var(--fc-surface-hover,#1F1F1F)] text-[var(--fc-text,#FAFAFA)]'
                       }`}>
                         {t(`directMessages.badge.${getBadgeType(courseInstructor.role)}`)}
                       </span>
