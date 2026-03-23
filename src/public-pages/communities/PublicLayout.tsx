@@ -4,6 +4,8 @@ import { PublicNavigation } from './PublicNavigation';
 import { Link } from 'react-router-dom';
 import { Twitter, Github, Mail } from 'lucide-react';
 import { Logo } from '../../shared/Logo';
+import BackgroundElements from '../../features/community/components/BackgroundElements';
+import type { BackgroundElement } from '../../core/supabase/database.types';
 
 interface PublicLayoutProps {
   children: React.ReactNode;
@@ -12,6 +14,7 @@ interface PublicLayoutProps {
   themeColor?: string | null;
   textColor?: string | null;
   accentColor?: string | null;
+  backgroundElements?: BackgroundElement[] | null;
 }
 
 export const PublicLayout: React.FC<PublicLayoutProps> = ({
@@ -21,6 +24,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
   themeColor,
   textColor,
   accentColor,
+  backgroundElements,
 }) => {
   const { t } = useTranslation();
 
@@ -35,9 +39,12 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
         '--fc-border': accentColor ? `color-mix(in srgb, ${accentColor} 70%, white)` : '#1F1F1F',
       } as React.CSSProperties}
     >
+      {backgroundElements && backgroundElements.length > 0 && (
+        <BackgroundElements elements={backgroundElements} />
+      )}
       {showNavigation && <PublicNavigation />}
 
-      <main className={showNavigation ? 'pt-16' : ''}>
+      <main className={`relative z-[1] ${showNavigation ? 'pt-16' : ''}`}>
         {children}
       </main>
 

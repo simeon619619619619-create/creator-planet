@@ -2146,6 +2146,15 @@
         "default": "Default",
         "custom": "Custom color"
       },
+      "bgElements": {
+        "label": "Background Elements",
+        "add": "Add element",
+        "uploading": "Uploading...",
+        "hint": "Upload logos, icons, or decorative elements. They appear as background effects on the page. Max 10MB.",
+        "size": "Size",
+        "opacity": "Opacity",
+        "rotation": "Rotation"
+      },
       "description": {
         "label": "About / Description",
         "hint": "This appears in the \"About\" section on your community landing page.",

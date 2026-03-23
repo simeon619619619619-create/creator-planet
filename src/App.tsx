@@ -11,6 +11,7 @@ import MobileBottomNav from './shared/MobileBottomNav';
 import { View, UserRole } from './core/types';
 import { canGradeHomework } from './features/team/teamPermissions';
 import { useCommunity } from './core/contexts/CommunityContext';
+import BackgroundElements from './features/community/components/BackgroundElements';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './core/queryClient';
 
@@ -331,6 +332,9 @@ const AppLayout: React.FC = () => {
         '--fc-border': selectedCommunity?.accent_color ? `color-mix(in srgb, ${selectedCommunity.accent_color} 70%, white)` : '#1F1F1F',
       } as React.CSSProperties}
     >
+      {selectedCommunity?.background_elements && selectedCommunity.background_elements.length > 0 && (
+        <BackgroundElements elements={selectedCommunity.background_elements} />
+      )}
       <Sidebar
         currentView={currentView}
         setCurrentView={setCurrentView}

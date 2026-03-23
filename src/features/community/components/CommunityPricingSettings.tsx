@@ -40,6 +40,8 @@ import {
 import type { ConnectAccountStatus } from '../../billing/stripeTypes';
 import { useAuth } from '../../../core/contexts/AuthContext';
 import FocalPointPicker from './FocalPointPicker';
+import BackgroundElementsEditor from './BackgroundElementsEditor';
+import type { BackgroundElement } from '../../../core/supabase/database.types';
 
 export type PricingType = 'free' | 'one_time' | 'monthly' | 'both';
 
@@ -71,6 +73,7 @@ interface CommunityData {
   theme_color: string | null;
   text_color: string | null;
   accent_color: string | null;
+  background_elements: BackgroundElement[] | null;
 }
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB for images
@@ -132,6 +135,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [themeColor, setThemeColor] = useState<string>('');
   const [textColor, setTextColor] = useState<string>('');
   const [accentColor, setAccentColor] = useState<string>('');
+  const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -171,7 +175,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, background_elements, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -209,6 +213,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setThemeColor(community.theme_color || '');
         setTextColor(community.text_color || '');
         setAccentColor(community.accent_color || '');
+        setBgElements(community.background_elements || []);
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -827,6 +832,21 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             title={t('communityHub.pricing.accentColor.custom')}
           />
         </div>
+      </div>
+
+      {/* Background Decorative Elements */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Image size={16} className="text-[#FAFAFA]" />
+            {t('communityHub.pricing.bgElements.label')}
+          </span>
+        </label>
+        <BackgroundElementsEditor
+          communityId={communityId}
+          elements={bgElements}
+          onChange={setBgElements}
+        />
       </div>
 
       {/* Community Description (About) */}

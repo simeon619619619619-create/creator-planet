@@ -1,6 +1,16 @@
 // Database types generated from Supabase schema
 // These types match the Phase 2 database tables
 
+export interface BackgroundElement {
+  id: string;
+  image_url: string;
+  x: number;       // % from left (0-100)
+  y: number;       // % from top (0-100)
+  size: number;    // px width
+  opacity: number; // 0-1
+  rotation: number; // degrees
+}
+
 export type ContentCategory = 'marketing' | 'business' | 'design' | 'video_photo' | 'personal_development' | 'finance' | 'technology' | 'health_fitness';
 export type UserRole = 'creator' | 'student' | 'member' | 'superadmin';
 export type MembershipRole = 'admin' | 'moderator' | 'member';
@@ -74,6 +84,8 @@ export interface DbCommunity {
   text_color?: string | null;
   // Card/surface accent color
   accent_color?: string | null;
+  // Background decorative elements (JSON array)
+  background_elements?: BackgroundElement[] | null;
   // Friendly URL slug
   slug?: string | null;
 }

@@ -151,7 +151,7 @@ export async function createCommunity(
 
 export async function updateCommunity(
   communityId: string,
-  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color' | 'text_color' | 'accent_color'>>
+  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color' | 'text_color' | 'accent_color' | 'background_elements'>>
 ): Promise<DbCommunity | null> {
   const { data, error } = await supabase
     .from('communities')
@@ -184,6 +184,32 @@ export async function uploadCommunityThumbnail(
 
   if (error) {
     console.error('Error uploading community thumbnail:', error);
+    return null;
+  }
+
+  const { data: urlData } = supabase.storage
+    .from('community-thumbnails')
+    .getPublicUrl(data.path);
+
+  return urlData.publicUrl;
+}
+
+export async function uploadBackgroundElement(
+  communityId: string,
+  file: File
+): Promise<string | null> {
+  const fileExt = file.name.split('.').pop()?.toLowerCase() || 'png';
+  const fileName = `${communityId}/bg-element-${Date.now()}.${fileExt}`;
+
+  const { data, error } = await supabase.storage
+    .from('community-thumbnails')
+    .upload(fileName, file, {
+      cacheControl: '3600',
+      upsert: true,
+    });
+
+  if (error) {
+    console.error('Error uploading background element:', error);
     return null;
   }
 
@@ -1311,6 +1337,7 @@ export async function getCommunityPublicData(communityIdOrSlug: string): Promise
       theme_color: community.theme_color ?? null,
       text_color: community.text_color ?? null,
       accent_color: community.accent_color ?? null,
+      background_elements: community.background_elements ?? null,
       slug: community.slug ?? null,
     },
     memberCount,

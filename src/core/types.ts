@@ -167,6 +167,7 @@ export interface CommunityPublicData {
     theme_color?: string | null;
     text_color?: string | null;
     accent_color?: string | null;
+    background_elements?: import('./supabase/database.types').BackgroundElement[] | null;
     slug?: string | null;
   };
   memberCount: number;
