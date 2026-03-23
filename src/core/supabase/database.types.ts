@@ -11,6 +11,26 @@ export interface BackgroundElement {
   rotation: number; // degrees
 }
 
+export interface DbWallet {
+  id: string;
+  user_id: string;
+  community_id: string;
+  balance_cents: number;
+  currency: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DbWalletTransaction {
+  id: string;
+  wallet_id: string;
+  type: 'cashback' | 'spend' | 'topup' | 'refund';
+  amount_cents: number;
+  description: string | null;
+  reference_id: string | null;
+  created_at: string;
+}
+
 export type ContentCategory = 'marketing' | 'business' | 'design' | 'video_photo' | 'personal_development' | 'finance' | 'technology' | 'health_fitness';
 export type UserRole = 'creator' | 'student' | 'member' | 'superadmin';
 export type MembershipRole = 'admin' | 'moderator' | 'member';
@@ -88,6 +108,9 @@ export interface DbCommunity {
   secondary_color?: string | null;
   // Background decorative elements (JSON array)
   background_elements?: BackgroundElement[] | null;
+  // Cashback
+  cashback_enabled?: boolean;
+  cashback_percent?: number;
   // Friendly URL slug
   slug?: string | null;
 }

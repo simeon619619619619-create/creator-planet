@@ -2152,6 +2152,14 @@
         "default": "Default",
         "custom": "Custom color"
       },
+      "cashback": {
+        "title": "Cashback Settings",
+        "description": "Enable cashback so members get a percentage back from their payments.",
+        "enable": "Enable cashback",
+        "percent": "Cashback percentage",
+        "save": "Save",
+        "hint": "Members will receive {{percent}}% back from every payment as wallet balance."
+      },
       "bgElements": {
         "label": "Background Elements",
         "add": "Add element",

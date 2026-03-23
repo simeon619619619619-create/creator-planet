@@ -12,6 +12,7 @@ import { View, UserRole } from './core/types';
 import { canGradeHomework } from './features/team/teamPermissions';
 import { useCommunity } from './core/contexts/CommunityContext';
 import BackgroundElements from './features/community/components/BackgroundElements';
+import WalletBalance from './features/wallet/WalletBalance';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './core/queryClient';
 
@@ -348,12 +349,18 @@ const AppLayout: React.FC = () => {
 
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Mobile Header */}
-        <header className="lg:hidden h-14 border-b border-[var(--fc-border,#1F1F1F)] flex items-center px-4 justify-center shrink-0" style={{ backgroundColor: 'var(--fc-surface, #0A0A0A)' }}>
+        <header className="lg:hidden h-14 border-b border-[var(--fc-border,#1F1F1F)] flex items-center px-4 justify-between shrink-0" style={{ backgroundColor: 'var(--fc-surface, #0A0A0A)' }}>
+          <div className="w-10" />
           <Logo variant="light" size="lg" showText={false} />
+          <WalletBalance />
         </header>
 
         {/* Main Content Area — extra bottom padding on mobile for bottom nav */}
-        <main className="flex-1 overflow-auto pb-16 lg:pb-0">
+        <main className="flex-1 overflow-auto pb-16 lg:pb-0 relative">
+          {/* Desktop wallet balance — top right */}
+          <div className="hidden lg:block fixed top-4 right-4 z-20">
+            <WalletBalance />
+          </div>
           <Suspense fallback={<LoadingScreen />}>
             {renderContent()}
           </Suspense>
