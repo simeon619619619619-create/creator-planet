@@ -13,6 +13,10 @@
   ],
   "rewrites": [
     {
+      "source": "/community/:slug",
+      "destination": "/api/community/:slug"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

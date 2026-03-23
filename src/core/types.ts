@@ -165,6 +165,7 @@ export interface CommunityPublicData {
     thumbnail_focal_x?: number | null;
     thumbnail_focal_y?: number | null;
     theme_color?: string | null;
+    slug?: string | null;
   };
   memberCount: number;
   channelPreviews: ChannelPreview[];

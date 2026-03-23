@@ -101,6 +101,15 @@ export async function createCommunity(
     return null;
   }
 
+  // Generate slug from name
+  const baseSlug = name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  const slug = baseSlug || undefined;
+
   const { data, error } = await supabase
     .from('communities')
     .insert({
@@ -108,11 +117,32 @@ export async function createCommunity(
       name,
       description,
       is_public: isPublic,
+      slug,
     })
     .select()
     .single();
 
   if (error) {
+    // If slug conflicts, retry without slug (UUID will be used as fallback)
+    if (error.code === '23505' && slug) {
+      const { data: retryData, error: retryError } = await supabase
+        .from('communities')
+        .insert({
+          creator_id: profile.id,
+          name,
+          description,
+          is_public: isPublic,
+          slug: `${slug}-${Date.now().toString(36)}`,
+        })
+        .select()
+        .single();
+
+      if (retryError) {
+        console.error('Error creating community:', retryError);
+        return null;
+      }
+      return retryData;
+    }
     console.error('Error creating community:', error);
     return null;
   }
@@ -944,13 +974,22 @@ import type {
  * Get a public community by ID
  * Returns null if community doesn't exist or is not public
  */
-export async function getPublicCommunity(communityId: string): Promise<DbCommunity | null> {
-  const { data, error } = await supabase
+export async function getPublicCommunity(communityIdOrSlug: string): Promise<DbCommunity | null> {
+  // Try by UUID first, then by slug
+  const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(communityIdOrSlug);
+
+  const query = supabase
     .from('communities')
     .select('*')
-    .eq('id', communityId)
-    .eq('is_public', true)
-    .single();
+    .eq('is_public', true);
+
+  if (isUUID) {
+    query.eq('id', communityIdOrSlug);
+  } else {
+    query.eq('slug', communityIdOrSlug);
+  }
+
+  const { data, error } = await query.single();
 
   if (error) {
     console.error('Error fetching public community:', error);
@@ -1237,16 +1276,16 @@ export async function getCreatorPublicProfile(creatorId: string): Promise<Creato
 /**
  * Get complete public data for a community landing page
  */
-export async function getCommunityPublicData(communityId: string): Promise<CommunityPublicData | null> {
-  // Get community
-  const community = await getPublicCommunity(communityId);
+export async function getCommunityPublicData(communityIdOrSlug: string): Promise<CommunityPublicData | null> {
+  // Get community (supports both UUID and slug)
+  const community = await getPublicCommunity(communityIdOrSlug);
   if (!community) return null;
 
-  // Get all related data in parallel
+  // Get all related data in parallel (always use actual ID for related queries)
   const [memberCount, channelPreviews, recentPosts, creator] = await Promise.all([
-    getCommunityMemberCount(communityId),
-    getPublicChannelPreview(communityId),
-    getPublicPostsPreview(communityId, 5),
+    getCommunityMemberCount(community.id),
+    getPublicChannelPreview(community.id),
+    getPublicPostsPreview(community.id, 5),
     getCreatorPublicProfile(community.creator_id),
   ]);
 
@@ -1270,6 +1309,7 @@ export async function getCommunityPublicData(communityId: string): Promise<Commu
       thumbnail_focal_x: community.thumbnail_focal_x ?? null,
       thumbnail_focal_y: community.thumbnail_focal_y ?? null,
       theme_color: community.theme_color ?? null,
+      slug: community.slug ?? null,
     },
     memberCount,
     channelPreviews,
