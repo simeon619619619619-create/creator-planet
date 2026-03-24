@@ -33,8 +33,8 @@ const WorldMap: React.FC = () => {
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{
-          scale: 140,
-          center: [15, 35],
+          scale: 3500,
+          center: [25.5, 42.7],
         }}
         style={{ width: '100%', height: 'auto' }}
       >
