@@ -1436,10 +1436,10 @@
       "communities": "Communities"
     },
     "hero": {
-      "titlePart1": "Learn from the",
-      "titleHighlight": "best creators",
-      "subtitle": "Access courses from industry experts and transform your skills. Join thousands of learners on their journey to success.",
-      "startLearning": "Start Your Journey to Success",
+      "titlePart1": "Find",
+      "titleHighlight": "your community",
+      "subtitle": "Discover communities that match your interests and goals. Connect with like-minded people.",
+      "startLearning": "Explore Communities",
       "browseCourses": "Browse Courses"
     },
     "stats": {
@@ -1469,7 +1469,7 @@
       "createFreeAccount": "Start Your Journey"
     },
     "footer": {
-      "tagline": "Learn from the best creators and transform your skills.",
+      "tagline": "Find the community made for you.",
       "learn": "Learn",
       "browseCourses": "Browse Courses",
       "communities": "Communities",
