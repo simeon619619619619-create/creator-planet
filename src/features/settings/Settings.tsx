@@ -19,16 +19,16 @@ const LanguageSettings: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-[#FAFAFA] mb-2">{t('settings.language')}</h2>
-        <p className="text-[#A0A0A0] text-sm mb-4">
+        <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">{t('settings.language')}</h2>
+        <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm mb-4">
           {t('settings.preferences')}
         </p>
       </div>
-      <div className="bg-[#0A0A0A] rounded-lg p-6 border border-[#1F1F1F]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-lg p-6 border border-[var(--fc-section-border,#1F1F1F)]">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-medium text-[#FAFAFA]">{t('settings.language')}</h3>
-            <p className="text-sm text-[#666666] mt-1">
+            <h3 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('settings.language')}</h3>
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">
               {t('creatorSettings.languageDescription')}
             </p>
           </div>
@@ -119,14 +119,14 @@ const Settings: React.FC = () => {
     <div className="p-6 max-w-5xl mx-auto">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-[#FAFAFA]">{t('settings.title')}</h1>
-        <p className="text-[#A0A0A0] mt-1">{t('settings.preferences')}</p>
+        <h1 className="text-2xl font-semibold text-[var(--fc-text,#FAFAFA)]">{t('settings.title')}</h1>
+        <p className="text-[var(--fc-muted,#A0A0A0)] mt-1">{t('settings.preferences')}</p>
       </div>
 
       {/* Tabs and Content */}
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
         {/* Tab Navigation */}
-        <div className="border-b border-[#1F1F1F]">
+        <div className="border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div className="flex overflow-x-auto">
             {tabs
               .filter((tab) => tab.visible)
@@ -140,8 +140,8 @@ const Settings: React.FC = () => {
                       flex items-center gap-2 px-6 py-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap
                       ${
                         activeTab === tab.id
-                          ? 'border-white text-[#FAFAFA]'
-                          : 'border-transparent text-[#A0A0A0] hover:text-[#FAFAFA]'
+                          ? 'border-[var(--fc-section-text,white)] text-[var(--fc-section-text,#FAFAFA)]'
+                          : 'border-transparent text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)]'
                       }
                     `}
                   >

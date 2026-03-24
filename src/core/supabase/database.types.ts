@@ -135,6 +135,8 @@ export interface DbCommunity {
   accent_color?: string | null;
   // Secondary/muted text color
   secondary_color?: string | null;
+  // Section/content panel color (settings panels, content cards)
+  section_color?: string | null;
   // Background decorative elements (JSON array)
   background_elements?: BackgroundElement[] | null;
   // Shop

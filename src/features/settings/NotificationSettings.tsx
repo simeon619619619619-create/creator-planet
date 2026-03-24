@@ -21,7 +21,7 @@ const Toggle: React.FC<ToggleProps> = ({ enabled, onChange, disabled }) => (
     onClick={() => onChange(!enabled)}
     className={`
       relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent
-      transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-[#0A0A0A]
+      transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-[var(--fc-section,#0A0A0A)]
       ${enabled ? 'bg-white' : 'bg-[#333333]'}
       ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
     `}
@@ -30,7 +30,7 @@ const Toggle: React.FC<ToggleProps> = ({ enabled, onChange, disabled }) => (
       className={`
         pointer-events-none inline-block h-5 w-5 rounded-full shadow-lg ring-0
         transition duration-200 ease-in-out
-        ${enabled ? 'translate-x-5 bg-[#0A0A0A]' : 'translate-x-0 bg-[#666666]'}
+        ${enabled ? 'translate-x-5 bg-[var(--fc-section,#0A0A0A)]' : 'translate-x-0 bg-[#666666]'}
       `}
     />
   </button>
@@ -53,14 +53,14 @@ const CategoryToggle: React.FC<CategoryToggleProps> = ({
   onChange,
   disabled,
 }) => (
-  <div className="flex items-center justify-between py-4 border-b border-[#1F1F1F] last:border-0">
+  <div className="flex items-center justify-between py-4 border-b border-[var(--fc-section-border,#1F1F1F)] last:border-0">
     <div className="flex items-start gap-3">
-      <div className="mt-0.5 text-[#666666]">
+      <div className="mt-0.5 text-[var(--fc-section-muted,#666666)]">
         <Icon size={18} />
       </div>
       <div>
-        <p className="text-sm font-medium text-[#FAFAFA]">{label}</p>
-        <p className="text-xs text-[#666666] mt-0.5">{description}</p>
+        <p className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">{label}</p>
+        <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-0.5">{description}</p>
       </div>
     </div>
     <Toggle enabled={enabled} onChange={onChange} disabled={disabled} />
@@ -81,7 +81,7 @@ const NotificationSettings: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="animate-spin text-[#666666]" size={24} />
+        <Loader2 className="animate-spin text-[var(--fc-section-muted,#666666)]" size={24} />
       </div>
     );
   }
@@ -91,11 +91,11 @@ const NotificationSettings: React.FC = () => {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-lg font-semibold text-[#FAFAFA] mb-2">{t('notificationSettings.title')}</h2>
-          <p className="text-[#A0A0A0] text-sm">{t('notificationSettings.description')}</p>
+          <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">{t('notificationSettings.title')}</h2>
+          <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm">{t('notificationSettings.description')}</p>
         </div>
-        <div className="bg-[#0A0A0A] rounded-lg p-6 border border-[#1F1F1F]">
-          <div className="flex items-center gap-3 text-[#666666]">
+        <div className="bg-[var(--fc-section,#0A0A0A)] rounded-lg p-6 border border-[var(--fc-section-border,#1F1F1F)]">
+          <div className="flex items-center gap-3 text-[var(--fc-section-muted,#666666)]">
             <BellOff size={20} />
             <p className="text-sm">{t('notificationSettings.notSupported')}</p>
           </div>
@@ -122,20 +122,20 @@ const NotificationSettings: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-[#FAFAFA] mb-2">{t('notificationSettings.title')}</h2>
-        <p className="text-[#A0A0A0] text-sm">{t('notificationSettings.description')}</p>
+        <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">{t('notificationSettings.title')}</h2>
+        <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm">{t('notificationSettings.description')}</p>
       </div>
 
       {/* Push Notifications Toggle */}
-      <div className="bg-[#0A0A0A] rounded-lg p-6 border border-[#1F1F1F]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-lg p-6 border border-[var(--fc-section-border,#1F1F1F)]">
         <div className="flex items-center justify-between">
           <div className="flex items-start gap-3">
-            <div className="mt-0.5 text-[#FAFAFA]">
+            <div className="mt-0.5 text-[var(--fc-section-text,#FAFAFA)]">
               {push.isSubscribed ? <Bell size={20} /> : <BellOff size={20} />}
             </div>
             <div>
-              <h3 className="font-medium text-[#FAFAFA]">{t('notificationSettings.pushNotifications')}</h3>
-              <p className="text-sm text-[#666666] mt-1">{t('notificationSettings.pushDescription')}</p>
+              <h3 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('notificationSettings.pushNotifications')}</h3>
+              <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">{t('notificationSettings.pushDescription')}</p>
               {push.permission === 'denied' && (
                 <p className="text-xs text-[#EF4444] mt-2">{t('notificationSettings.permissionDenied')}</p>
               )}
@@ -147,7 +147,7 @@ const NotificationSettings: React.FC = () => {
             className={`
               px-4 py-2 rounded-lg text-sm font-medium transition-colors
               ${push.isSubscribed
-                ? 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#333333]'
+                ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#333333)]'
                 : 'bg-white text-[#0A0A0A] hover:bg-[#E0E0E0]'}
               disabled:opacity-50 disabled:cursor-not-allowed
             `}
@@ -165,10 +165,10 @@ const NotificationSettings: React.FC = () => {
 
       {/* Category Toggles */}
       {push.isSubscribed && prefs && (
-        <div className="bg-[#0A0A0A] rounded-lg border border-[#1F1F1F]">
-          <div className="px-6 py-4 border-b border-[#1F1F1F]">
-            <h3 className="font-medium text-[#FAFAFA]">{t('notificationSettings.categories')}</h3>
-            <p className="text-sm text-[#666666] mt-1">{t('notificationSettings.categoriesDescription')}</p>
+        <div className="bg-[var(--fc-section,#0A0A0A)] rounded-lg border border-[var(--fc-section-border,#1F1F1F)]">
+          <div className="px-6 py-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
+            <h3 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('notificationSettings.categories')}</h3>
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">{t('notificationSettings.categoriesDescription')}</p>
           </div>
           <div className="px-6">
             {categories.map((cat) => (

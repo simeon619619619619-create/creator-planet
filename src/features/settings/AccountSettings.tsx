@@ -38,23 +38,23 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] max-w-md w-full p-6">
-        <div className={`flex items-center gap-3 mb-4 ${isDangerous ? 'text-[#EF4444]' : 'text-[#FAFAFA]'}`}>
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] max-w-md w-full p-6">
+        <div className={`flex items-center gap-3 mb-4 ${isDangerous ? 'text-[#EF4444]' : 'text-[var(--fc-section-text,#FAFAFA)]'}`}>
           {isDangerous && <AlertTriangle size={24} />}
           <h3 className="text-lg font-semibold">{title}</h3>
         </div>
-        <p className="text-[#A0A0A0] mb-4">{message}</p>
+        <p className="text-[var(--fc-section-muted,#A0A0A0)] mb-4">{message}</p>
 
         {requireTypedConfirmation && (
           <div className="mb-4">
-            <label className="block text-xs font-medium text-[#A0A0A0] mb-2">
-              Type <span className="font-mono bg-[#1F1F1F] px-1 rounded text-[#FAFAFA]">{confirmText}</span> to confirm:
+            <label className="block text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
+              Type <span className="font-mono bg-[var(--fc-section-hover,#1F1F1F)] px-1 rounded text-[var(--fc-section-text,#FAFAFA)]">{confirmText}</span> to confirm:
             </label>
             <input
               type="text"
               value={typedConfirmation}
               onChange={(e) => setTypedConfirmation(e.target.value)}
-              className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+              className="w-full px-4 py-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
               placeholder={confirmText}
             />
           </div>
@@ -66,7 +66,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
               setTypedConfirmation('');
               onCancel();
             }}
-            className="px-4 py-2 text-[#FAFAFA] border border-[#1F1F1F] rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors"
+            className="px-4 py-2 text-[var(--fc-section-text,#FAFAFA)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section-hover,#151515)] hover:border-[var(--fc-section-border,#333333)] transition-colors"
           >
             {cancelButtonText}
           </button>
@@ -213,15 +213,15 @@ const AccountSettings: React.FC = () => {
     <div className="space-y-8">
       {/* Change Password Section */}
       <div>
-        <h3 className="text-lg font-semibold text-[#FAFAFA] mb-4 flex items-center gap-2">
-          <Lock size={20} className="text-[#FAFAFA]" />
+        <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-4 flex items-center gap-2">
+          <Lock size={20} className="text-[var(--fc-section-text,#FAFAFA)]" />
           {t('creatorSettings.account.password.title')}
         </h3>
 
         <div className="space-y-4">
           {/* Current Password */}
           <div>
-            <label htmlFor="current_password" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+            <label htmlFor="current_password" className="block text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
               {t('creatorSettings.account.password.currentLabel')}
             </label>
             <input
@@ -229,14 +229,14 @@ const AccountSettings: React.FC = () => {
               id="current_password"
               value={passwords.currentPassword}
               onChange={(e) => setPasswords({ ...passwords, currentPassword: e.target.value })}
-              className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+              className="w-full px-4 py-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
               placeholder={t('creatorSettings.account.password.currentPlaceholder')}
             />
           </div>
 
           {/* New Password */}
           <div>
-            <label htmlFor="new_password" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+            <label htmlFor="new_password" className="block text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
               {t('creatorSettings.account.password.newLabel')}
             </label>
             <input
@@ -244,14 +244,14 @@ const AccountSettings: React.FC = () => {
               id="new_password"
               value={passwords.newPassword}
               onChange={(e) => setPasswords({ ...passwords, newPassword: e.target.value })}
-              className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+              className="w-full px-4 py-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
               placeholder={t('creatorSettings.account.password.newPlaceholder')}
             />
           </div>
 
           {/* Confirm Password */}
           <div>
-            <label htmlFor="confirm_password" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+            <label htmlFor="confirm_password" className="block text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
               {t('creatorSettings.account.password.confirmLabel')}
             </label>
             <input
@@ -259,7 +259,7 @@ const AccountSettings: React.FC = () => {
               id="confirm_password"
               value={passwords.confirmPassword}
               onChange={(e) => setPasswords({ ...passwords, confirmPassword: e.target.value })}
-              className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+              className="w-full px-4 py-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
               placeholder={t('creatorSettings.account.password.confirmPlaceholder')}
             />
           </div>
@@ -302,26 +302,26 @@ const AccountSettings: React.FC = () => {
       </div>
 
       {/* Divider */}
-      <div className="border-t border-[#1F1F1F]" />
+      <div className="border-t border-[var(--fc-section-border,#1F1F1F)]" />
 
       {/* Change Email Section */}
       <div>
-        <h3 className="text-lg font-semibold text-[#FAFAFA] mb-4 flex items-center gap-2">
-          <Mail size={20} className="text-[#FAFAFA]" />
+        <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-4 flex items-center gap-2">
+          <Mail size={20} className="text-[var(--fc-section-text,#FAFAFA)]" />
           {t('creatorSettings.account.email.title')}
         </h3>
 
-        <p className="text-sm text-[#A0A0A0] mb-4">
+        <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mb-4">
           {t('creatorSettings.account.email.description')}
         </p>
 
-        <p className="text-sm text-[#666666] mb-4">
-          {t('creatorSettings.account.email.current')}: <span className="font-medium text-[#FAFAFA]">{profile?.email}</span>
+        <p className="text-sm text-[var(--fc-section-muted,#666666)] mb-4">
+          {t('creatorSettings.account.email.current')}: <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{profile?.email}</span>
         </p>
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="new_email" className="block text-xs font-medium text-[#A0A0A0] mb-2">
+            <label htmlFor="new_email" className="block text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
               {t('creatorSettings.account.email.newLabel')}
             </label>
             <input
@@ -329,7 +329,7 @@ const AccountSettings: React.FC = () => {
               id="new_email"
               value={newEmail}
               onChange={(e) => setNewEmail(e.target.value)}
-              className="w-full px-4 py-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+              className="w-full px-4 py-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
               placeholder={t('creatorSettings.account.email.newPlaceholder')}
             />
           </div>
@@ -371,16 +371,16 @@ const AccountSettings: React.FC = () => {
       </div>
 
       {/* Divider */}
-      <div className="border-t border-[#1F1F1F]" />
+      <div className="border-t border-[var(--fc-section-border,#1F1F1F)]" />
 
       {/* Sign Out Section */}
       <div>
-        <h3 className="text-lg font-semibold text-[#FAFAFA] mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-4 flex items-center gap-2">
           <LogOut size={20} className="text-[#EAB308]" />
           {t('creatorSettings.account.signOut.title')}
         </h3>
 
-        <p className="text-sm text-[#A0A0A0] mb-4">
+        <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mb-4">
           {t('creatorSettings.account.signOut.description')}
         </p>
 
@@ -394,7 +394,7 @@ const AccountSettings: React.FC = () => {
       </div>
 
       {/* Divider */}
-      <div className="border-t border-[#1F1F1F]" />
+      <div className="border-t border-[var(--fc-section-border,#1F1F1F)]" />
 
       {/* Danger Zone */}
       <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg p-6">

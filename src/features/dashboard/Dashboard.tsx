@@ -35,7 +35,7 @@ const StatCard = React.memo(({ title, value, change, icon: Icon, color, isPositi
         <p className="text-xs md:text-sm font-medium text-[var(--fc-muted,#A0A0A0)] truncate">{title}</p>
         <h3 className="text-xl md:text-2xl font-bold text-[var(--fc-text,#FAFAFA)] mt-1">{value}</h3>
       </div>
-      <div className="p-2 rounded-lg bg-[#1F1F1F] shrink-0 ml-2">
+      <div className="p-2 rounded-lg bg-[var(--fc-section-hover,#1F1F1F)] shrink-0 ml-2">
         <Icon size={20} className="text-white" />
       </div>
     </div>
@@ -228,7 +228,7 @@ const Dashboard: React.FC = () => {
             <div className="relative">
               <button
                 onClick={() => setShowCommunityDropdown(!showCommunityDropdown)}
-                className="flex items-center gap-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] px-3 py-2 rounded-lg text-sm font-medium text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] hover:border-[#333333] transition-colors"
+                className="flex items-center gap-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] px-3 py-2 rounded-lg text-sm font-medium text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
               >
                 <Building2 size={16} className="text-[var(--fc-muted,#A0A0A0)] shrink-0" />
                 <span className="max-w-[120px] sm:max-w-[180px] truncate">
@@ -246,8 +246,8 @@ const Dashboard: React.FC = () => {
                       setSelectedCommunityId(null);
                       setShowCommunityDropdown(false);
                     }}
-                    className={`w-full text-left px-4 py-2 text-sm hover:bg-[#151515] flex items-center gap-2 ${
-                      selectedCommunityId === null ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)]' : 'text-[var(--fc-muted,#A0A0A0)]'
+                    className={`w-full text-left px-4 py-2 text-sm hover:bg-[var(--fc-section-hover,#151515)] flex items-center gap-2 ${
+                      selectedCommunityId === null ? 'bg-[var(--fc-section-hover,#151515)] text-[var(--fc-text,#FAFAFA)]' : 'text-[var(--fc-muted,#A0A0A0)]'
                     }`}
                   >
                     <Building2 size={14} />
@@ -264,14 +264,14 @@ const Dashboard: React.FC = () => {
                         setSelectedCommunityId(community.id);
                         setShowCommunityDropdown(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-[#151515] flex items-center gap-2 ${
-                        selectedCommunityId === community.id ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)]' : 'text-[var(--fc-muted,#A0A0A0)]'
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-[var(--fc-section-hover,#151515)] flex items-center gap-2 ${
+                        selectedCommunityId === community.id ? 'bg-[var(--fc-section-hover,#151515)] text-[var(--fc-text,#FAFAFA)]' : 'text-[var(--fc-muted,#A0A0A0)]'
                       }`}
                     >
                       {community.image_url ? (
                         <img src={community.image_url} alt={community.name} className="w-5 h-5 rounded-full object-cover" loading="lazy" decoding="async" />
                       ) : (
-                        <div className="w-5 h-5 rounded-full bg-[#1F1F1F] flex items-center justify-center text-[var(--fc-text,#FAFAFA)] text-xs font-medium">
+                        <div className="w-5 h-5 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-[var(--fc-text,#FAFAFA)] text-xs font-medium">
                           {community.name.charAt(0).toUpperCase()}
                         </div>
                       )}
@@ -300,7 +300,7 @@ const Dashboard: React.FC = () => {
       {hasCommunity === false && (
         <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl p-6 text-white border border-[var(--fc-border,#1F1F1F)]">
           <div className="flex items-start gap-4">
-            <div className="bg-[#1F1F1F] p-3 rounded-lg">
+            <div className="bg-[var(--fc-section-hover,#1F1F1F)] p-3 rounded-lg">
               <Sparkles className="w-8 h-8" />
             </div>
             <div className="flex-1">
@@ -320,8 +320,8 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-[#151515] rounded-lg p-4 flex items-start gap-3 border border-[var(--fc-border,#1F1F1F)]">
-              <div className="bg-[#1F1F1F] p-2 rounded-lg">
+            <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 flex items-start gap-3 border border-[var(--fc-border,#1F1F1F)]">
+              <div className="bg-[var(--fc-section-hover,#1F1F1F)] p-2 rounded-lg">
                 <MessageSquare size={20} />
               </div>
               <div>
@@ -329,8 +329,8 @@ const Dashboard: React.FC = () => {
                 <p className="text-sm text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.onboarding.communityHubDescription')}</p>
               </div>
             </div>
-            <div className="bg-[#151515] rounded-lg p-4 flex items-start gap-3 border border-[var(--fc-border,#1F1F1F)]">
-              <div className="bg-[#1F1F1F] p-2 rounded-lg">
+            <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 flex items-start gap-3 border border-[var(--fc-border,#1F1F1F)]">
+              <div className="bg-[var(--fc-section-hover,#1F1F1F)] p-2 rounded-lg">
                 <BookOpen size={20} />
               </div>
               <div>
@@ -338,8 +338,8 @@ const Dashboard: React.FC = () => {
                 <p className="text-sm text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.onboarding.courseContentDescription')}</p>
               </div>
             </div>
-            <div className="bg-[#151515] rounded-lg p-4 flex items-start gap-3 border border-[var(--fc-border,#1F1F1F)]">
-              <div className="bg-[#1F1F1F] p-2 rounded-lg">
+            <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 flex items-start gap-3 border border-[var(--fc-border,#1F1F1F)]">
+              <div className="bg-[var(--fc-section-hover,#1F1F1F)] p-2 rounded-lg">
                 <Calendar size={20} />
               </div>
               <div>
@@ -359,7 +359,7 @@ const Dashboard: React.FC = () => {
           value={stats.totalCommunityMembers.toString()}
           change={stats.communityMembersChange !== null ? `${stats.communityMembersChange >= 0 ? '+' : ''}${stats.communityMembersChange}%` : null}
           icon={Users}
-          color="bg-[#1F1F1F]"
+          color="bg-[var(--fc-section-hover,#1F1F1F)]"
           isPositive={stats.communityMembersChange === null || stats.communityMembersChange >= 0}
           vsLastWeekText={t('creatorDashboard.stats.vsLastWeek')}
           noPreviousDataText={t('creatorDashboard.stats.noPreviousData')}
@@ -369,7 +369,7 @@ const Dashboard: React.FC = () => {
           value={stats.totalPosts.toString()}
           change={t('creatorDashboard.stats.communityEngagement')}
           icon={MessageSquare}
-          color="bg-[#1F1F1F]"
+          color="bg-[var(--fc-section-hover,#1F1F1F)]"
           showChange={false}
         />
         {/* Course Stats */}
@@ -378,7 +378,7 @@ const Dashboard: React.FC = () => {
           value={stats.totalStudents.toString()}
           change={stats.totalStudentsChange !== null ? `${stats.totalStudentsChange >= 0 ? '+' : ''}${stats.totalStudentsChange}%` : null}
           icon={BookOpen}
-          color="bg-[#1F1F1F]"
+          color="bg-[var(--fc-section-hover,#1F1F1F)]"
           isPositive={stats.totalStudentsChange === null || stats.totalStudentsChange >= 0}
           vsLastWeekText={t('creatorDashboard.stats.vsLastWeek')}
           noPreviousDataText={t('creatorDashboard.stats.noPreviousData')}
@@ -388,7 +388,7 @@ const Dashboard: React.FC = () => {
           value={`${stats.completionRate}%`}
           change={stats.completionRateChange !== null ? `${stats.completionRateChange >= 0 ? '+' : ''}${stats.completionRateChange}%` : null}
           icon={TrendingUp}
-          color="bg-[#1F1F1F]"
+          color="bg-[var(--fc-section-hover,#1F1F1F)]"
           isPositive={stats.completionRateChange === null || stats.completionRateChange >= 0}
           vsLastWeekText={t('creatorDashboard.stats.vsLastWeek')}
           noPreviousDataText={t('creatorDashboard.stats.noPreviousData')}
@@ -402,7 +402,7 @@ const Dashboard: React.FC = () => {
           value={stats.atRiskCount.toString()}
           change={stats.atRiskCount > 0 ? t('creatorDashboard.stats.needAttention', { count: stats.atRiskCount }) : t('creatorDashboard.stats.allHealthy')}
           icon={AlertTriangle}
-          color="bg-[#1F1F1F]"
+          color="bg-[var(--fc-section-hover,#1F1F1F)]"
           isPositive={stats.atRiskCount === 0}
           showChange={false}
         />
@@ -411,7 +411,7 @@ const Dashboard: React.FC = () => {
           value={stats.inactiveCount.toString()}
           change={stats.inactiveCount > 0 ? t('creatorDashboard.stats.needAttention', { count: stats.inactiveCount }) : t('creatorDashboard.stats.allActive')}
           icon={Clock}
-          color="bg-[#1F1F1F]"
+          color="bg-[var(--fc-section-hover,#1F1F1F)]"
           isPositive={stats.inactiveCount === 0}
           showChange={false}
         />
@@ -434,7 +434,7 @@ const Dashboard: React.FC = () => {
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1F1F1F" />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#666666'}} />
                   <YAxis axisLine={false} tickLine={false} tick={{fill: '#666666'}} />
-                  <Tooltip contentStyle={{ backgroundColor: '#151515', border: '1px solid #1F1F1F', borderRadius: '8px' }} labelStyle={{ color: '#FAFAFA' }} itemStyle={{ color: '#A0A0A0' }} />
+                  <Tooltip contentStyle={{ backgroundColor: 'var(--fc-section-hover, #151515)', border: '1px solid var(--fc-section-border, #1F1F1F)', borderRadius: '8px' }} labelStyle={{ color: '#FAFAFA' }} itemStyle={{ color: '#A0A0A0' }} />
                   <Area type="monotone" dataKey="active" stroke="#FAFAFA" fillOpacity={1} fill="url(#colorActive)" strokeWidth={2} />
                 </AreaChart>
               </ResponsiveContainer>
@@ -467,7 +467,7 @@ const Dashboard: React.FC = () => {
               </div>
               {stats.homeworkExpectedSubmissions > 0 && (
                 <div className="mt-2">
-                  <div className="h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+                  <div className="h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
                     <div
                       className="h-full bg-[#EAB308] rounded-full transition-all duration-300"
                       style={{
@@ -508,13 +508,13 @@ const Dashboard: React.FC = () => {
                       <button
                         key={student.id}
                         onClick={() => setSelectedHomeworkStudent(student)}
-                        className="w-full flex items-center justify-between bg-[#1F1F1F]/50 hover:bg-[#1F1F1F] rounded px-2 py-1.5 transition-colors cursor-pointer text-left"
+                        className="w-full flex items-center justify-between bg-[var(--fc-section-hover,#1F1F1F)]/50 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded px-2 py-1.5 transition-colors cursor-pointer text-left"
                       >
                         <div className="flex items-center gap-2 min-w-0">
                           {student.avatar_url ? (
                             <img src={student.avatar_url} alt={student.name} className="w-6 h-6 rounded-full object-cover" loading="lazy" decoding="async" />
                           ) : (
-                            <div className="w-6 h-6 rounded-full bg-[#1F1F1F] flex items-center justify-center text-[#EAB308] text-xs font-semibold">
+                            <div className="w-6 h-6 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-[#EAB308] text-xs font-semibold">
                               {student.name.charAt(0).toUpperCase()}
                             </div>
                           )}
@@ -541,11 +541,11 @@ const Dashboard: React.FC = () => {
           <div className="space-y-3 max-h-[420px] overflow-y-auto pr-1" style={{ scrollbarWidth: 'thin', scrollbarColor: '#333 transparent' }}>
             {atRiskStudents.length > 0 ? (
               atRiskStudents.map(student => (
-                <div key={student.id} className="flex items-start gap-3 p-3 rounded-lg border border-[var(--fc-border,#1F1F1F)] hover:bg-[#151515] transition-colors">
+                <div key={student.id} className="flex items-start gap-3 p-3 rounded-lg border border-[var(--fc-border,#1F1F1F)] hover:bg-[var(--fc-section-hover,#151515)] transition-colors">
                   {student.avatar_url ? (
                     <img src={student.avatar_url} alt={student.name} className="w-10 h-10 rounded-full" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center text-[var(--fc-muted,#A0A0A0)] font-semibold">
+                    <div className="w-10 h-10 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-[var(--fc-muted,#A0A0A0)] font-semibold">
                       {student.name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -565,7 +565,7 @@ const Dashboard: React.FC = () => {
                     <div className="mt-2 flex gap-2">
                       <button
                         onClick={() => setSelectedStudent(student)}
-                        className="flex-1 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-muted,#A0A0A0)] text-xs py-1 rounded hover:bg-[#151515] hover:border-[#333333]"
+                        className="flex-1 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-muted,#A0A0A0)] text-xs py-1 rounded hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333]"
                       >
                         {t('creatorDashboard.atRisk.profileButton')}
                       </button>
@@ -574,7 +574,7 @@ const Dashboard: React.FC = () => {
                           setSelectedStudent(student);
                           setShowMessageModal(true);
                         }}
-                        className="flex-1 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] text-xs py-1 rounded hover:bg-[#151515] hover:border-[#333333]"
+                        className="flex-1 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] text-xs py-1 rounded hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333]"
                       >
                         {t('creatorDashboard.atRisk.messageButton')}
                       </button>
@@ -602,13 +602,13 @@ const Dashboard: React.FC = () => {
       {selectedStudent && !showMessageModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-md overflow-hidden border border-[var(--fc-border,#1F1F1F)]">
-            <div className="bg-[#151515] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
+            <div className="bg-[var(--fc-section-hover,#151515)] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-4">
                   {selectedStudent.avatar_url ? (
                     <img src={selectedStudent.avatar_url} alt={selectedStudent.name} className="w-16 h-16 rounded-full border-2 border-[#333333]" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-[#1F1F1F] flex items-center justify-center text-2xl font-bold">
+                    <div className="w-16 h-16 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-2xl font-bold">
                       {selectedStudent.name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -619,14 +619,14 @@ const Dashboard: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setSelectedStudent(null)}
-                  className="p-1 hover:bg-[#1F1F1F] rounded-full transition-colors"
+                  className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
                 >
                   <X size={20} className="text-[var(--fc-muted,#A0A0A0)]" />
                 </button>
               </div>
             </div>
             <div className="p-6 space-y-4">
-              <div className="flex items-center justify-between p-3 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+              <div className="flex items-center justify-between p-3 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
                 <span className="text-sm text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.studentProfile.riskScore')}</span>
                 <span className={`text-sm font-bold px-2 py-1 rounded-full ${
                   selectedStudent.risk_score >= 80 ? 'bg-[#EF4444]/10 text-[#EF4444]' : 'bg-[#EAB308]/10 text-[#EAB308]'
@@ -634,7 +634,7 @@ const Dashboard: React.FC = () => {
                   {selectedStudent.risk_score}/100
                 </span>
               </div>
-              <div className="flex items-center justify-between p-3 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+              <div className="flex items-center justify-between p-3 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
                 <span className="text-sm text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.studentProfile.status')}</span>
                 <span className={`text-sm font-bold ${
                   selectedStudent.risk_score >= 80 ? 'text-[#EF4444]' : 'text-[#EAB308]'
@@ -642,7 +642,7 @@ const Dashboard: React.FC = () => {
                   {selectedStudent.risk_score >= 80 ? t('creatorDashboard.studentProfile.critical') : t('creatorDashboard.studentProfile.atRisk')}
                 </span>
               </div>
-              <div className="p-3 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+              <div className="p-3 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
                 <span className="text-sm text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.studentProfile.reasonForRisk')}</span>
                 <p className="text-sm text-[var(--fc-text,#FAFAFA)] mt-1">{selectedStudent.reason}</p>
               </div>
@@ -672,7 +672,7 @@ const Dashboard: React.FC = () => {
                   {selectedStudent.avatar_url ? (
                     <img src={selectedStudent.avatar_url} alt={selectedStudent.name} className="w-10 h-10 rounded-full" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center text-[var(--fc-text,#FAFAFA)] font-bold">
+                    <div className="w-10 h-10 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-[var(--fc-text,#FAFAFA)] font-bold">
                       {selectedStudent.name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -686,7 +686,7 @@ const Dashboard: React.FC = () => {
                     setShowMessageModal(false);
                     setMessageText('');
                   }}
-                  className="p-1 hover:bg-[#1F1F1F] rounded-full transition-colors"
+                  className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
                 >
                   <X size={20} className="text-[var(--fc-muted,#666666)]" />
                 </button>
@@ -713,7 +713,7 @@ const Dashboard: React.FC = () => {
                     setShowMessageModal(false);
                     setMessageText('');
                   }}
-                  className="flex-1 py-2 px-4 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] hover:border-[#333333] transition-colors"
+                  className="flex-1 py-2 px-4 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
                 >
                   {t('creatorDashboard.message.cancel')}
                 </button>
@@ -769,13 +769,13 @@ const Dashboard: React.FC = () => {
       {selectedHomeworkStudent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-md overflow-hidden border border-[var(--fc-border,#1F1F1F)]">
-            <div className="bg-[#151515] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
+            <div className="bg-[var(--fc-section-hover,#151515)] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-4">
                   {selectedHomeworkStudent.avatar_url ? (
                     <img src={selectedHomeworkStudent.avatar_url} alt={selectedHomeworkStudent.name} className="w-16 h-16 rounded-full border-2 border-[#333333] object-cover" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-[#1F1F1F] flex items-center justify-center text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">
+                    <div className="w-16 h-16 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">
                       {selectedHomeworkStudent.name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -801,7 +801,7 @@ const Dashboard: React.FC = () => {
                     {selectedHomeworkStudent.submittedCount} / {selectedHomeworkStudent.totalAssignments}
                   </span>
                 </div>
-                <div className="h-3 bg-[#1F1F1F] rounded-full overflow-hidden">
+                <div className="h-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
                   <div
                     className="h-full bg-[#EAB308] rounded-full transition-all duration-300"
                     style={{
@@ -822,7 +822,7 @@ const Dashboard: React.FC = () => {
 
               {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-3">
-                <div className="bg-[#151515] rounded-lg p-3 text-center border border-[var(--fc-border,#1F1F1F)]">
+                <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-3 text-center border border-[var(--fc-border,#1F1F1F)]">
                   <p className="text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">{selectedHomeworkStudent.totalAssignments}</p>
                   <p className="text-xs text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.homework.modal.totalAssignments')}</p>
                 </div>
@@ -837,7 +837,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Status */}
-              <div className="flex items-center justify-between p-3 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+              <div className="flex items-center justify-between p-3 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
                 <span className="text-sm text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.homework.modal.status')}</span>
                 <span className={`text-sm font-bold px-2 py-1 rounded-full ${
                   selectedHomeworkStudent.missingCount === 0
@@ -884,7 +884,7 @@ const Dashboard: React.FC = () => {
                     setSelectedHomeworkStudent(null);
                     setShowMessageModal(true);
                   }}
-                  className="flex-1 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#151515] hover:border-[#333333] transition-colors"
+                  className="flex-1 bg-transparent border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
                 >
                   <Mail size={16} />
                   {t('creatorDashboard.homework.modal.sendReminder')}
@@ -899,13 +899,13 @@ const Dashboard: React.FC = () => {
       {showLecturesView && selectedHomeworkStudent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col border border-[var(--fc-border,#1F1F1F)]">
-            <div className="bg-[#151515] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
+            <div className="bg-[var(--fc-section-hover,#151515)] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-4">
                   {selectedHomeworkStudent.avatar_url ? (
                     <img src={selectedHomeworkStudent.avatar_url} alt={selectedHomeworkStudent.name} className="w-16 h-16 rounded-full border-2 border-[#333333] object-cover" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-[#1F1F1F] flex items-center justify-center text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">
+                    <div className="w-16 h-16 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-2xl font-bold text-[var(--fc-text,#FAFAFA)]">
                       {selectedHomeworkStudent.name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -919,7 +919,7 @@ const Dashboard: React.FC = () => {
                     setShowLecturesView(false);
                     setLectureData(null);
                   }}
-                  className="p-1 hover:bg-[#1F1F1F] rounded-full transition-colors"
+                  className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
                 >
                   <X size={20} className="text-[var(--fc-muted,#A0A0A0)]" />
                 </button>
@@ -934,14 +934,14 @@ const Dashboard: React.FC = () => {
               ) : lectureData && lectureData.stats ? (
                 <>
                   {/* Attendance Stats */}
-                  <div className="bg-[#151515] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
+                  <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.lectures.attendance')}</span>
                       <span className="text-sm font-bold text-[var(--fc-text,#FAFAFA)]">
                         {lectureData.stats.attendedEvents} / {lectureData.stats.totalEvents}
                       </span>
                     </div>
-                    <div className="h-3 bg-[#1F1F1F] rounded-full overflow-hidden">
+                    <div className="h-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
                       <div
                         className="h-full bg-white rounded-full transition-all duration-300"
                         style={{ width: `${lectureData.stats.attendanceRate}%` }}
@@ -958,7 +958,7 @@ const Dashboard: React.FC = () => {
                       <p className="text-2xl font-bold text-[#22C55E]">{lectureData.stats.attendedEvents}</p>
                       <p className="text-xs text-[#22C55E]">{t('creatorDashboard.lectures.attended')}</p>
                     </div>
-                    <div className="bg-[#151515] rounded-lg p-3 text-center border border-[var(--fc-border,#1F1F1F)]">
+                    <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-3 text-center border border-[var(--fc-border,#1F1F1F)]">
                       <p className="text-2xl font-bold text-[var(--fc-muted,#A0A0A0)]">{lectureData.stats.totalEvents - lectureData.stats.attendedEvents}</p>
                       <p className="text-xs text-[var(--fc-muted,#666666)]">{t('creatorDashboard.lectures.missed')}</p>
                     </div>
@@ -980,7 +980,7 @@ const Dashboard: React.FC = () => {
                             className={`flex items-center justify-between p-3 rounded-lg border ${
                               event.attended
                                 ? 'bg-[#22C55E]/5 border-[#22C55E]/20'
-                                : 'bg-[#151515] border-[var(--fc-border,#1F1F1F)]'
+                                : 'bg-[var(--fc-section-hover,#151515)] border-[var(--fc-border,#1F1F1F)]'
                             }`}
                           >
                             <div className="min-w-0 flex-1">
@@ -1031,7 +1031,7 @@ const Dashboard: React.FC = () => {
       {showCreateCommunityModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-md overflow-hidden border border-[var(--fc-border,#1F1F1F)]">
-            <div className="bg-[#151515] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
+            <div className="bg-[var(--fc-section-hover,#151515)] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
               <h3 className="text-xl font-bold text-[var(--fc-text,#FAFAFA)]">{t('creatorDashboard.createCommunity.title')}</h3>
               <p className="text-[var(--fc-muted,#A0A0A0)] text-sm mt-1">{t('creatorDashboard.createCommunity.subtitle')}</p>
             </div>
@@ -1050,7 +1050,7 @@ const Dashboard: React.FC = () => {
                   {t('creatorDashboard.createCommunity.nameHint')}
                 </p>
               </div>
-              <div className="bg-[#151515] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
+              <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
                 <h4 className="text-sm font-medium text-[var(--fc-text,#FAFAFA)] mb-2">{t('creatorDashboard.createCommunity.whatYouGet')}</h4>
                 <ul className="text-sm text-[var(--fc-muted,#A0A0A0)] space-y-1">
                   <li className="flex items-center gap-2">
@@ -1070,7 +1070,7 @@ const Dashboard: React.FC = () => {
                     setShowCreateCommunityModal(false);
                     setNewCommunityName('');
                   }}
-                  className="flex-1 py-2.5 px-4 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-muted,#A0A0A0)] hover:bg-[#151515] hover:border-[#333333] transition-colors"
+                  className="flex-1 py-2.5 px-4 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
                 >
                   {t('creatorDashboard.createCommunity.cancel')}
                 </button>
@@ -1096,7 +1096,7 @@ const Dashboard: React.FC = () => {
       {showReportModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col border border-[var(--fc-border,#1F1F1F)]">
-            <div className="bg-[#151515] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
+            <div className="bg-[var(--fc-section-hover,#151515)] p-6 text-white border-b border-[var(--fc-border,#1F1F1F)]">
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="text-xl font-bold flex items-center gap-2">
@@ -1112,7 +1112,7 @@ const Dashboard: React.FC = () => {
                     setShowReportModal(false);
                     setReport(null);
                   }}
-                  className="p-1 hover:bg-[#1F1F1F] rounded-full transition-colors"
+                  className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -1129,13 +1129,13 @@ const Dashboard: React.FC = () => {
               ) : report ? (
                 <div className="space-y-6">
                   {/* Summary */}
-                  <div className="bg-[#151515] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
+                  <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
                     <p className="text-sm text-[var(--fc-muted,#A0A0A0)]">{report.summary}</p>
                   </div>
 
                   {/* Sections */}
                   {(report.sections ?? []).map((section, index) => (
-                    <div key={index} className="bg-[#151515] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
+                    <div key={index} className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
                       <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] mb-3">{section.title}</h4>
                       <div className="text-sm text-[var(--fc-muted,#A0A0A0)] whitespace-pre-wrap">
                         <AiResponseText text={section.content} />
@@ -1144,7 +1144,7 @@ const Dashboard: React.FC = () => {
                   ))}
 
                   {/* AI Insights */}
-                  <div className="bg-[#151515] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
+                  <div className="bg-[var(--fc-section-hover,#151515)] rounded-lg p-4 border border-[var(--fc-border,#1F1F1F)]">
                     <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] mb-3 flex items-center gap-2">
                       <Sparkles size={16} className="text-white" />
                       {t('creatorDashboard.report.aiInsightsTitle')}
@@ -1163,7 +1163,7 @@ const Dashboard: React.FC = () => {
 
             {/* Footer with actions */}
             {report && !isGeneratingReport && (
-              <div className="border-t border-[var(--fc-border,#1F1F1F)] p-4 flex justify-between items-center bg-[#151515]">
+              <div className="border-t border-[var(--fc-border,#1F1F1F)] p-4 flex justify-between items-center bg-[var(--fc-section-hover,#151515)]">
                 <p className="text-xs text-[var(--fc-muted,#666666)]">
                   {t('creatorDashboard.report.generatedAt', {
                     date: new Date(report.generatedAt).toLocaleString()

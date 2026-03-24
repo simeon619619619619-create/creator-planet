@@ -16,6 +16,7 @@ interface PublicLayoutProps {
   textColor?: string | null;
   accentColor?: string | null;
   secondaryColor?: string | null;
+  sectionColor?: string | null;
   backgroundElements?: BackgroundElement[] | null;
 }
 
@@ -27,13 +28,14 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
   textColor,
   accentColor,
   secondaryColor,
+  sectionColor,
   backgroundElements,
 }) => {
   const { t } = useTranslation();
 
   const themeVars = useMemo(() => computeThemeVars({
-    themeColor, textColor, secondaryColor, accentColor,
-  }), [themeColor, textColor, secondaryColor, accentColor]);
+    themeColor, textColor, secondaryColor, accentColor, sectionColor,
+  }), [themeColor, textColor, secondaryColor, accentColor, sectionColor]);
 
   return (
     <div

@@ -166,7 +166,7 @@ const CreatorSettings: React.FC = () => {
           id="brand_name"
           value={formData.brand_name}
           onChange={(e) => setFormData({ ...formData, brand_name: e.target.value })}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
           placeholder={t('creatorSettings.creator.brandName.placeholder')}
         />
         <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
@@ -184,13 +184,13 @@ const CreatorSettings: React.FC = () => {
           value={formData.bio}
           onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
           rows={4}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10 resize-none"
           placeholder={t('creatorSettings.creator.biography.placeholder')}
         />
         <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
           {t('creatorSettings.creator.biography.hint')}
         </p>
-        <div className="mt-2 flex items-start gap-2 p-2 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+        <div className="mt-2 flex items-start gap-2 p-2 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <Info size={14} className="text-[var(--fc-muted,#A0A0A0)] mt-0.5 shrink-0" />
           <p className="text-xs text-[var(--fc-muted,#A0A0A0)]">
             {t('creatorSettings.creator.biography.visibilityHint')}
@@ -207,7 +207,7 @@ const CreatorSettings: React.FC = () => {
           id="timezone"
           value={formData.timezone}
           onChange={(e) => setFormData({ ...formData, timezone: e.target.value })}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
         >
           {TIMEZONES.map((tz) => (
             <option key={tz.value} value={tz.value}>
@@ -358,7 +358,7 @@ const CreatorSettings: React.FC = () => {
           value={formData.ai_prompt}
           onChange={(e) => setFormData({ ...formData, ai_prompt: e.target.value })}
           rows={6}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none font-mono text-sm"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10 resize-none font-mono text-sm"
           placeholder={t('creatorSettings.creator.aiInstructions.placeholder')}
         />
         <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">

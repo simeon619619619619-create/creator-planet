@@ -339,7 +339,7 @@ export const CommunityLandingPage: React.FC = () => {
   const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(community.name)}&background=1F1F1F&color=FAFAFA&size=800`;
 
   return (
-    <PublicLayout themeColor={community.theme_color} textColor={community.text_color} accentColor={community.accent_color} secondaryColor={community.secondary_color} backgroundElements={community.background_elements}>
+    <PublicLayout themeColor={community.theme_color} textColor={community.text_color} accentColor={community.accent_color} secondaryColor={community.secondary_color} sectionColor={community.section_color} backgroundElements={community.background_elements}>
       {/* Payment Success Notification */}
       {showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-6 px-4 pointer-events-none">

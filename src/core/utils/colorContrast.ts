@@ -70,15 +70,19 @@ export function computeThemeVars(opts: {
   textColor?: string | null;
   secondaryColor?: string | null;
   accentColor?: string | null;
+  sectionColor?: string | null;
 }): Record<string, string> {
   const bg = opts.themeColor || '#0A0A0A';
   const surface = opts.accentColor || opts.themeColor || '#0A0A0A';
+  const section = opts.sectionColor || surface;
 
   // Auto-detect text colors based on backgrounds
   const autoTextOnBg = getContrastText(bg);
   const autoTextOnSurface = getContrastText(surface);
   const autoMutedOnBg = getContrastMuted(bg);
   const autoMutedOnSurface = getContrastMuted(surface);
+  const autoTextOnSection = getContrastText(section);
+  const autoMutedOnSection = getContrastMuted(section);
 
   // Use user-specified colors if set, otherwise auto-contrast
   const textColor = opts.textColor || autoTextOnBg;
@@ -93,6 +97,15 @@ export function computeThemeVars(opts: {
     ? `color-mix(in srgb, ${surface} 80%, black)`
     : `color-mix(in srgb, ${surface} 70%, white)`;
 
+  // Section hover/border
+  const isSectionLight = isLightColor(section);
+  const sectionHover = isSectionLight
+    ? `color-mix(in srgb, ${section} 85%, black)`
+    : `color-mix(in srgb, ${section} 85%, white)`;
+  const sectionBorder = isSectionLight
+    ? `color-mix(in srgb, ${section} 80%, black)`
+    : `color-mix(in srgb, ${section} 70%, white)`;
+
   return {
     '--fc-text': textColor,
     '--fc-muted': mutedColor,
@@ -105,5 +118,11 @@ export function computeThemeVars(opts: {
     // Auto-contrast text ON the background
     '--fc-bg-text': autoTextOnBg,
     '--fc-bg-muted': autoMutedOnBg,
+    // Section colors (content panels, settings, cards in main area)
+    '--fc-section': section,
+    '--fc-section-hover': sectionHover,
+    '--fc-section-border': sectionBorder,
+    '--fc-section-text': autoTextOnSection,
+    '--fc-section-muted': autoMutedOnSection,
   };
 }

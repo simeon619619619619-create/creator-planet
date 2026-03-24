@@ -161,7 +161,7 @@ const ProfileSettings: React.FC = () => {
             type="button"
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--fc-text,#FAFAFA)] border border-[var(--fc-border,#1F1F1F)] rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--fc-text,#FAFAFA)] border border-[var(--fc-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {uploading ? (
               <>
@@ -191,7 +191,7 @@ const ProfileSettings: React.FC = () => {
           id="full_name"
           value={formData.full_name}
           onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10"
           placeholder={t('creatorSettings.profile.fullName.placeholder')}
         />
       </div>
@@ -207,13 +207,13 @@ const ProfileSettings: React.FC = () => {
           onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
           rows={3}
           maxLength={500}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 resize-none"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10 resize-none"
           placeholder={t('creatorSettings.profile.bio.placeholder')}
         />
         <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
           {t('creatorSettings.profile.bio.characterCount', { count: formData.bio.length })}
         </p>
-        <div className="mt-2 flex items-start gap-2 p-2 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+        <div className="mt-2 flex items-start gap-2 p-2 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <Info size={14} className="text-[var(--fc-muted,#A0A0A0)] mt-0.5 shrink-0" />
           <p className="text-xs text-[var(--fc-muted,#A0A0A0)]">
             {t('creatorSettings.profile.bio.visibilityHint')}
@@ -231,7 +231,7 @@ const ProfileSettings: React.FC = () => {
           id="avatar_url"
           value={formData.avatar_url}
           onChange={(e) => setFormData({ ...formData, avatar_url: e.target.value })}
-          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 text-sm"
+          className="w-full px-4 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder:text-[var(--fc-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10 text-sm"
           placeholder={t('creatorSettings.profile.avatarUrl.placeholder')}
         />
         <p className="mt-1 text-xs text-[var(--fc-muted,#666666)]">
@@ -261,7 +261,7 @@ const ProfileSettings: React.FC = () => {
         <label className="block text-xs font-medium text-[var(--fc-muted,#A0A0A0)] mb-2">
           {t('creatorSettings.profile.role.label')}
         </label>
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1F1F1F] text-[var(--fc-muted,#A0A0A0)] rounded-full text-sm font-medium capitalize">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-muted,#A0A0A0)] rounded-full text-sm font-medium capitalize">
           <User size={14} />
           {authProfile?.role || 'Member'}
         </div>

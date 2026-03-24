@@ -142,6 +142,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [textColor, setTextColor] = useState<string>('');
   const [accentColor, setAccentColor] = useState<string>('');
   const [secondaryColor, setSecondaryColor] = useState<string>('');
+  const [sectionColor, setSectionColor] = useState<string>('');
   const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
   const [shopEnabled, setShopEnabled] = useState(false);
   const [cashbackEnabled, setCashbackEnabled] = useState(false);
@@ -185,7 +186,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -224,6 +225,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setTextColor(community.text_color || '');
         setAccentColor(community.accent_color || '');
         setSecondaryColor(community.secondary_color || '');
+        setSectionColor(community.section_color || '');
         setBgElements(community.background_elements || []);
         setShopEnabled(community.shop_enabled || false);
         setCashbackEnabled(community.cashback_enabled || false);
@@ -903,6 +905,67 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             }}
             className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
             title={t('communityHub.pricing.accentColor.custom')}
+          />
+        </div>
+      </div>
+
+      {/* Section / Content Panel Color */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[#FAFAFA]" />
+            {t('communityHub.pricing.sectionColor.label', { defaultValue: 'Цвят на секциите' })}
+          </span>
+        </label>
+        <p className="text-xs text-[#A0A0A0] mb-3">
+          {t('communityHub.pricing.sectionColor.hint', { defaultValue: 'Цвят на панелите, настройките, картите и input полетата в съдържанието.' })}
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              '',
+              '#0A0A0A',
+              '#1A1A2E',
+              '#16213E',
+              '#1B1B3A',
+              '#2D1B2E',
+              '#1B2D1B',
+              '#2E1B1B',
+              '#F8F0E3',
+              '#FFF0F5',
+              '#F0FFF0',
+              '#FFFFFF',
+            ].map((color) => (
+              <button
+                key={color || 'default'}
+                onClick={async () => {
+                  setSectionColor(color);
+                  await updateCommunity(communityId, { section_color: color || null });
+                }}
+                className={`w-8 h-8 rounded-full border-2 transition-all duration-150 ${
+                  sectionColor === color
+                    ? 'border-white scale-110'
+                    : 'border-[#333333] hover:border-[#555555]'
+                }`}
+                style={{
+                  backgroundColor: color || '#0A0A0A',
+                  ...(color === '' ? { backgroundImage: 'linear-gradient(135deg, #333 25%, transparent 25%, transparent 50%, #333 50%, #333 75%, transparent 75%)', backgroundSize: '8px 8px' } : {}),
+                }}
+                title={color || t('communityHub.pricing.sectionColor.default', { defaultValue: 'По подразбиране' })}
+              />
+            ))}
+          </div>
+          <input
+            type="color"
+            value={sectionColor || '#0A0A0A'}
+            onChange={(e) => setSectionColor(e.target.value)}
+            onBlur={async () => {
+              if (sectionColor) {
+                await updateCommunity(communityId, { section_color: sectionColor });
+              }
+            }}
+            className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
+            title={t('communityHub.pricing.sectionColor.custom', { defaultValue: 'Избери цвят' })}
           />
         </div>
       </div>
