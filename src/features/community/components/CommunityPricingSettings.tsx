@@ -27,6 +27,7 @@ import {
   CreditCard,
   Palette,
   Wallet,
+  ShoppingBag,
 } from 'lucide-react';
 import { supabase } from '../../../core/supabase/client';
 import { updateCommunityPricing } from '../communityPaymentService';
@@ -76,6 +77,7 @@ interface CommunityData {
   accent_color: string | null;
   secondary_color: string | null;
   background_elements: BackgroundElement[] | null;
+  shop_enabled: boolean | null;
   cashback_enabled: boolean | null;
   cashback_percent: number | null;
 }
@@ -141,6 +143,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [accentColor, setAccentColor] = useState<string>('');
   const [secondaryColor, setSecondaryColor] = useState<string>('');
   const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
+  const [shopEnabled, setShopEnabled] = useState(false);
   const [cashbackEnabled, setCashbackEnabled] = useState(false);
   const [cashbackPercent, setCashbackPercent] = useState(5);
 
@@ -182,7 +185,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, background_elements, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -222,6 +225,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setAccentColor(community.accent_color || '');
         setSecondaryColor(community.secondary_color || '');
         setBgElements(community.background_elements || []);
+        setShopEnabled(community.shop_enabled || false);
         setCashbackEnabled(community.cashback_enabled || false);
         setCashbackPercent(community.cashback_percent || 5);
         setVslUrl(community.vsl_url || '');
@@ -1456,6 +1460,36 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           t('communityHub.pricing.savePricing')
         )}
       </button>
+
+      {/* Shop Toggle */}
+      <div className="pt-6 mt-6 border-t border-[var(--fc-border,#1F1F1F)]">
+        <div className="flex items-center justify-between">
+          <div>
+            <h4 className="text-base font-medium text-[var(--fc-text,#FAFAFA)] flex items-center gap-2">
+              <ShoppingBag size={18} className="text-[#8B5CF6]" />
+              {t('communityHub.pricing.shop.title', { defaultValue: 'Магазин' })}
+            </h4>
+            <p className="text-sm text-[var(--fc-muted,#A0A0A0)] mt-1">
+              {t('communityHub.pricing.shop.description', { defaultValue: 'Активирайте магазин за продажба на продукти в общността.' })}
+            </p>
+          </div>
+          <button
+            onClick={async () => {
+              const newVal = !shopEnabled;
+              setShopEnabled(newVal);
+              await supabase
+                .from('communities')
+                .update({ shop_enabled: newVal })
+                .eq('id', communityId);
+            }}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+              shopEnabled ? 'bg-[#8B5CF6]' : 'bg-[#333333]'
+            }`}
+          >
+            <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${shopEnabled ? 'translate-x-6' : 'translate-x-1'}`} />
+          </button>
+        </div>
+      </div>
 
       {/* Cashback Settings */}
       <div className="pt-6 mt-6 border-t border-[var(--fc-border,#1F1F1F)]">

@@ -11,7 +11,8 @@ export enum View {
   SURVEYS = 'surveys',
   SETTINGS = 'SETTINGS',
   MESSAGES = 'messages',  // Team member inbox
-  MEMBERS = 'members'     // Team member view of community members
+  MEMBERS = 'members',    // Team member view of community members
+  SHOP = 'shop'           // Product shop
 }
 
 export enum RiskLevel {

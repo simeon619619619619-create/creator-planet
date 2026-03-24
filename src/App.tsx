@@ -62,6 +62,7 @@ const TeamInboxPage = React.lazy(() => import('./features/team/TeamInboxPage'));
 const CommunityMessagesPage = React.lazy(() => import('./features/direct-messages/pages/CommunityMessagesPage'));
 const TeamMembersPage = React.lazy(() => import('./features/team/TeamMembersPage'));
 const AdminDashboard = React.lazy(() => import('./features/admin/pages/AdminDashboard'));
+const ShopPage = React.lazy(() => import('./features/shop/ShopPage'));
 
 // Loading component
 const LoadingScreen: React.FC = () => {
@@ -107,6 +108,9 @@ const pathToView = (pathname: string): View => {
   }
   if (pathname.includes('/discounts')) {
     return View.DISCOUNTS;
+  }
+  if (pathname.includes('/shop')) {
+    return View.SHOP;
   }
   if (pathname.includes('/settings')) {
     return View.SETTINGS;
@@ -279,6 +283,8 @@ const AppLayout: React.FC = () => {
           return <div className="p-8 text-center text-[#A0A0A0]">Profile not found.</div>;
         }
         return <SurveyList creatorId={profile.id} />;
+      case View.SHOP:
+        return <ShopPage />;
       case View.SETTINGS:
         return <Settings />;
       case View.MESSAGES:
@@ -316,6 +322,7 @@ const AppLayout: React.FC = () => {
       [View.SETTINGS]: '/settings',
       [View.MESSAGES]: '/messages',
       [View.MEMBERS]: '/members',
+      [View.SHOP]: '/shop',
     };
     navigate(paths[view]);
     setCurrentView(view);
@@ -608,6 +615,16 @@ const AppRoutes: React.FC = () => {
         path="/discounts"
         element={
           <ProtectedRouteWrapper allowedRoles={['creator']}>
+            <CommunityProvider>
+              <AppLayout />
+            </CommunityProvider>
+          </ProtectedRouteWrapper>
+        }
+      />
+      <Route
+        path="/shop"
+        element={
+          <ProtectedRouteWrapper>
             <CommunityProvider>
               <AppLayout />
             </CommunityProvider>

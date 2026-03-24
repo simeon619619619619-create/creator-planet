@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, GraduationCap, Calendar, BrainCircuit, Settings, LogOut, ClipboardList, Bot, UserCog, Tag, ClipboardCheck, MessageSquare, UserCircle } from 'lucide-react';
+import { LayoutDashboard, Users, GraduationCap, Calendar, BrainCircuit, Settings, LogOut, ClipboardList, Bot, UserCog, Tag, ClipboardCheck, MessageSquare, UserCircle, ShoppingBag } from 'lucide-react';
 import { View } from '../core/types';
 import { NAV_ITEMS, CREATOR_NAV_ITEMS, TEAM_MEMBER_NAV_ITEMS } from '../core/constants';
 import { useAuth } from '../core/contexts/AuthContext';
@@ -199,6 +199,26 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
               {t(labelTranslationMap[item.id] || item.label)}
             </button>
           ))}
+
+          {/* Shop — only when enabled */}
+          {selectedCommunity?.shop_enabled && (
+            <button
+              onClick={() => {
+                navigate('/shop');
+                setCurrentView(View.SHOP);
+                setIsOpen(false);
+              }}
+              className={`
+                w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
+                ${currentView === View.SHOP
+                  ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-text,#FAFAFA)] border-l-2 border-white'
+                  : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] hover:text-[var(--fc-text,#FAFAFA)]'}
+              `}
+            >
+              <ShoppingBag size={20} />
+              {t('sidebar.shop', { defaultValue: 'Магазин' })}
+            </button>
+          )}
         </nav>
 
         {/* Footer */}

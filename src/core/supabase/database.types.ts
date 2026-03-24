@@ -31,6 +31,35 @@ export interface DbWalletTransaction {
   created_at: string;
 }
 
+export interface DbProduct {
+  id: string;
+  community_id: string;
+  creator_id: string;
+  name: string;
+  description: string | null;
+  image_url: string | null;
+  price_cents: number;
+  currency: string;
+  is_active: boolean;
+  stock: number | null;
+  stripe_product_id: string | null;
+  stripe_price_id: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DbProductPurchase {
+  id: string;
+  product_id: string;
+  buyer_id: string;
+  community_id: string;
+  amount_cents: number;
+  currency: string;
+  status: 'pending' | 'completed' | 'refunded';
+  stripe_payment_intent_id: string | null;
+  created_at: string;
+}
+
 export type ContentCategory = 'marketing' | 'business' | 'design' | 'video_photo' | 'personal_development' | 'finance' | 'technology' | 'health_fitness';
 export type UserRole = 'creator' | 'student' | 'member' | 'superadmin';
 export type MembershipRole = 'admin' | 'moderator' | 'member';
@@ -108,6 +137,8 @@ export interface DbCommunity {
   secondary_color?: string | null;
   // Background decorative elements (JSON array)
   background_elements?: BackgroundElement[] | null;
+  // Shop
+  shop_enabled?: boolean;
   // Cashback
   cashback_enabled?: boolean;
   cashback_percent?: number;
