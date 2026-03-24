@@ -827,7 +827,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-4 lg:p-6 h-full flex gap-6">
+    <div className="max-w-5xl mx-auto p-4 lg:p-6 h-full flex gap-6 bg-[var(--fc-section,#0A0A0A)]">
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}

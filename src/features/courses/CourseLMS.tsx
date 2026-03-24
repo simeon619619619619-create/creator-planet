@@ -1140,7 +1140,7 @@ const CourseLMS: React.FC = () => {
 
   // Course Player View
   return (
-    <div className="flex h-[calc(100dvh-64px)] overflow-hidden">
+    <div className="flex h-[calc(100dvh-64px)] overflow-hidden bg-[var(--fc-section,#0A0A0A)]">
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}

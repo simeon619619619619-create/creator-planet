@@ -116,7 +116,7 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6 max-w-5xl mx-auto min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-[var(--fc-text,#FAFAFA)]">{t('settings.title')}</h1>

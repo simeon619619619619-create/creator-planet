@@ -160,7 +160,7 @@ const CommunityMessagesPage: React.FC = () => {
   }
 
   return (
-    <div className="flex h-[calc(100vh-64px)]">
+    <div className="flex h-[calc(100vh-64px)] bg-[var(--fc-section,#0A0A0A)]">
       {/* Members List */}
       <div className="w-80 border-r border-[var(--fc-section-border,#1F1F1F)] flex flex-col">
         <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">

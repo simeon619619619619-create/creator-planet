@@ -323,7 +323,7 @@ const AiSuccessManager: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 h-[calc(100dvh-64px)] flex flex-col">
+    <div className="max-w-6xl mx-auto p-6 h-[calc(100dvh-64px)] flex flex-col bg-[var(--fc-section,#0A0A0A)] rounded-xl">
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] flex items-center gap-2">

@@ -216,7 +216,7 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-6 md:space-y-8">
+    <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-6 md:space-y-8 bg-[var(--fc-section,#0A0A0A)] min-h-screen">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
           <h1 className="text-xl md:text-2xl font-semibold text-[var(--fc-text,#FAFAFA)]">{t('creatorDashboard.pageTitle')}</h1>
