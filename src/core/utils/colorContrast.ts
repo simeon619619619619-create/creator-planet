@@ -75,7 +75,7 @@ export function computeThemeVars(opts: {
 }): Record<string, string> {
   const bg = opts.themeColor || '#0A0A0A';
   const surface = opts.accentColor || opts.themeColor || '#0A0A0A';
-  const section = opts.sectionColor || surface;
+  const section = opts.sectionColor || bg;
   const button = opts.buttonColor || '#1A1A1A';
 
   // Auto-detect text colors based on backgrounds
