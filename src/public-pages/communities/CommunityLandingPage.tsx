@@ -157,6 +157,10 @@ export const CommunityLandingPage: React.FC = () => {
           setError(t('publicCommunities.landing.error.privateOrNotExist'));
         } else {
           setCommunityData(data);
+          // Replace UUID URL with slug if available
+          if (data.community.slug && communityId !== data.community.slug) {
+            window.history.replaceState({}, '', `/community/${data.community.slug}`);
+          }
         }
       } catch (err) {
         setError(t('publicCommunities.landing.error.loadFailed'));
@@ -214,7 +218,7 @@ export const CommunityLandingPage: React.FC = () => {
     if (success === 'true') {
       setShowSuccessMessage(true);
       // Clear URL params without reload
-      window.history.replaceState({}, '', `/community/${communityId}`);
+      window.history.replaceState({}, '', `/community/${communityData?.community.slug || communityId}`);
 
       // Check for intake survey before redirecting
       const checkSurveyAndRedirect = async () => {
@@ -249,7 +253,7 @@ export const CommunityLandingPage: React.FC = () => {
 
     if (canceled === 'true') {
       setShowCancelMessage(true);
-      window.history.replaceState({}, '', `/community/${communityId}`);
+      window.history.replaceState({}, '', `/community/${communityData?.community.slug || communityId}`);
       setTimeout(() => setShowCancelMessage(false), 8000);
 
       // Clean up pending membership, then signal JoinButtons to re-fetch
@@ -483,6 +487,7 @@ export const CommunityLandingPage: React.FC = () => {
                 <JoinButton
                   communityId={community.id}
                   communityName={community.name}
+                  communitySlug={community.slug}
                   pricingType={community.pricing_type}
                   priceCents={community.price_cents}
                   currency={community.currency}
@@ -568,6 +573,7 @@ export const CommunityLandingPage: React.FC = () => {
                 <JoinButton
                   communityId={community.id}
                   communityName={community.name}
+                  communitySlug={community.slug}
                   pricingType={community.pricing_type}
                   priceCents={community.price_cents}
                   currency={community.currency}
@@ -749,7 +755,7 @@ export const CommunityLandingPage: React.FC = () => {
                       style="outline"
                       onClick={() => {
                         if (!user) {
-                          const returnUrl = encodeURIComponent(`/community/${community.id}`);
+                          const returnUrl = encodeURIComponent(`/community/${community.slug || community.id}`);
                           navigate(`/signup?return=${returnUrl}`);
                           return;
                         }
@@ -777,6 +783,7 @@ export const CommunityLandingPage: React.FC = () => {
                   <JoinButton
                     communityId={community.id}
                     communityName={community.name}
+                    communitySlug={community.slug}
                     pricingType="free"
                     priceCents={0}
                     currency={community.currency}

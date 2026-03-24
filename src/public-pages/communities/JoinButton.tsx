@@ -16,6 +16,7 @@ import { ApplyModal } from './ApplyModal';
 interface JoinButtonProps {
   communityId: string;
   communityName: string;
+  communitySlug?: string | null;
   // Optional pricing props - if provided, skip fetching from database
   pricingType?: CommunityPricingType;
   priceCents?: number;
@@ -39,6 +40,7 @@ interface JoinButtonProps {
 export const JoinButton: React.FC<JoinButtonProps> = ({
   communityId,
   communityName,
+  communitySlug,
   // Optional pricing props
   pricingType: propsPricingType,
   priceCents: propsPriceCents,
@@ -198,7 +200,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
 
     // If not authenticated, redirect to signup with return URL
     if (!user) {
-      const returnUrl = encodeURIComponent(`/community/${communityId}?action=join`);
+      const returnUrl = encodeURIComponent(`/community/${communitySlug || communityId}?action=join`);
       navigate(`/signup?return=${returnUrl}`);
       return;
     }
@@ -248,8 +250,8 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
 
         const result = await createCommunityCheckout({
           communityId,
-          successUrl: `${window.location.origin}/community/${communityId}?success=true`,
-          cancelUrl: `${window.location.origin}/community/${communityId}?canceled=true`,
+          successUrl: `${window.location.origin}/community/${communitySlug || communityId}?success=true`,
+          cancelUrl: `${window.location.origin}/community/${communitySlug || communityId}?canceled=true`,
           discountCode,
           checkoutMode: effectiveCheckoutMode,
           useWalletBalance: useWallet && walletBalance > 0,

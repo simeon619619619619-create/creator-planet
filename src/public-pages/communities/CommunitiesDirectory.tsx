@@ -154,7 +154,7 @@ export const CommunitiesDirectory: React.FC = () => {
                 <CommunityCard
                   key={community.id}
                   community={community}
-                  onClick={() => navigate(`/community/${community.id}`)}
+                  onClick={() => navigate(`/community/${community.slug || community.id}`)}
                 />
               ))}
             </div>

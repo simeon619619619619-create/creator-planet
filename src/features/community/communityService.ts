@@ -1039,6 +1039,7 @@ export async function getPublicCommunities(): Promise<CommunityListItem[]> {
       pricing_type,
       price_cents,
       category,
+      slug,
       created_at,
       creator:profiles!creator_id(id, full_name, avatar_url)
     `)
@@ -1063,6 +1064,7 @@ export async function getPublicCommunities(): Promise<CommunityListItem[]> {
     pricing_type: community.pricing_type || 'free',
     price_cents: community.price_cents || 0,
     category: community.category || null,
+    slug: community.slug || null,
     creator: {
       id: community.creator?.id || '',
       full_name: community.creator?.full_name || 'Unknown',

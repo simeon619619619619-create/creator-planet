@@ -294,8 +294,8 @@ const WhopLandingPage: React.FC = () => {
     navigate(`/communities?search=${encodeURIComponent(topic)}`);
   };
 
-  const handleCommunityClick = (communityId: string) => {
-    navigate(`/community/${communityId}`);
+  const handleCommunityClick = (slugOrId: string) => {
+    navigate(`/community/${slugOrId}`);
   };
 
   return (
@@ -460,7 +460,7 @@ const WhopLandingPage: React.FC = () => {
                       <FeaturedCommunityCard
                         key={community.id}
                         community={community}
-                        onClick={() => handleCommunityClick(community.id)}
+                        onClick={() => handleCommunityClick(community.slug || community.id)}
                       />
                     ))
                   ) : (

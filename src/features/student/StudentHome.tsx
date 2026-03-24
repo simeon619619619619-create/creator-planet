@@ -304,7 +304,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                 return (
                   <div
                     key={community.id}
-                    onClick={() => navigate(`/community/${community.id}`)}
+                    onClick={() => navigate(`/community/${community.slug || community.id}`)}
                     className="bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#1F1F1F] hover:border-[#333333] transition-all cursor-pointer group"
                   >
                     <div className="relative">

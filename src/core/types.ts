@@ -114,6 +114,7 @@ export interface CommunityListItem {
   category: import('./supabase/database.types').ContentCategory | null;
   thumbnail_focal_x?: number | null;
   thumbnail_focal_y?: number | null;
+  slug?: string | null;
   creator: {
     id: string;
     full_name: string;
