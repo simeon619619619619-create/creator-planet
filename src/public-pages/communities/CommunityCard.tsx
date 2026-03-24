@@ -21,7 +21,7 @@ export const CommunityCard: React.FC<CommunityCardProps> = ({ community, onClick
   return (
     <button
       onClick={onClick}
-      className="group block w-full text-left bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] hover:bg-[#151515] transition-all duration-150"
+      className="group block w-full text-left bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden hover:border-[#333333] hover:bg-[var(--fc-section-hover,#151515)] transition-all duration-150"
     >
       {/* Thumbnail */}
       <div className="aspect-[4/3] relative overflow-hidden">

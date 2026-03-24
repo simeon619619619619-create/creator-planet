@@ -54,7 +54,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       {/* Left: Today button */}
       <button
         onClick={onToday}
-        className="px-4 py-2 text-sm font-medium text-[#FAFAFA] bg-[#0A0A0A] border border-[#1F1F1F] rounded-full hover:bg-[#151515] hover:border-[#333333] transition-colors"
+        className="px-4 py-2 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-full hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
       >
         Today
       </button>
@@ -64,33 +64,33 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
         <div className="flex items-center gap-4">
           <button
             onClick={onPreviousMonth}
-            className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-full transition-colors"
+            className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
           >
             <ChevronLeft size={20} />
           </button>
-          <h2 className="text-lg font-semibold text-[#FAFAFA] min-w-[180px] text-center">
+          <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] min-w-[180px] text-center">
             {monthName}
           </h2>
           <button
             onClick={onNextMonth}
-            className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-full transition-colors"
+            className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
           >
             <ChevronRight size={20} />
           </button>
         </div>
-        <span className="text-sm text-[#666666] mt-1">
+        <span className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">
           {formattedTime} {simplifiedTimezone}
         </span>
       </div>
 
       {/* Right: View toggle */}
-      <div className="flex items-center bg-[#1F1F1F] rounded-lg p-1">
+      <div className="flex items-center bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg p-1">
         <button
           onClick={() => onViewModeChange('list')}
           className={`p-2 rounded-md transition-colors ${
             viewMode === 'list'
-              ? 'bg-[#0A0A0A] text-[#FAFAFA]'
-              : 'text-[#666666] hover:text-[#A0A0A0]'
+              ? 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-text,#FAFAFA)]'
+              : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
           }`}
           title="List view"
         >
@@ -100,8 +100,8 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
           onClick={() => onViewModeChange('expanded')}
           className={`p-2 rounded-md transition-colors ${
             viewMode === 'expanded'
-              ? 'bg-[#0A0A0A] text-[#FAFAFA]'
-              : 'text-[#666666] hover:text-[#A0A0A0]'
+              ? 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-text,#FAFAFA)]'
+              : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
           }`}
           title="Calendar view"
         >

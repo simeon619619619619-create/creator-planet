@@ -61,37 +61,37 @@ export function ApplicationForm({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-[#0A0A0A] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-[#1F1F1F]">
-          <h2 className="text-2xl font-bold text-[#FAFAFA]">{t('dwyPackages.applicationForm.applyFor', { packageName: pkg.name })}</h2>
-          <p className="text-[#A0A0A0] mt-1">{pkg.tagline}</p>
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="p-6 border-b border-[var(--fc-section-border,#1F1F1F)]">
+          <h2 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('dwyPackages.applicationForm.applyFor', { packageName: pkg.name })}</h2>
+          <p className="text-[var(--fc-section-muted,#A0A0A0)] mt-1">{pkg.tagline}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Business Info */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+              <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                 {t('dwyPackages.applicationForm.businessNameLabel')} <span className="text-[#EF4444]">*</span>
               </label>
               <input
                 type="text"
                 value={formData.business_name}
                 onChange={e => updateField('business_name', e.target.value)}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                 placeholder={t('dwyPackages.applicationForm.businessNamePlaceholder')}
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+              <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                 {t('dwyPackages.applicationForm.businessTypeLabel')} <span className="text-[#EF4444]">*</span>
               </label>
               <select
                 value={formData.business_type}
                 onChange={e => updateField('business_type', e.target.value)}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                 required
               >
                 <option value="">{t('dwyPackages.applicationForm.businessTypeSelectPlaceholder')}</option>
@@ -106,13 +106,13 @@ export function ApplicationForm({
 
           {/* Revenue */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('dwyPackages.applicationForm.currentRevenueLabel')} <span className="text-[#EF4444]">*</span>
             </label>
             <select
               value={formData.current_revenue}
               onChange={e => updateField('current_revenue', e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               required
             >
               <option value="">{t('dwyPackages.applicationForm.revenueSelectPlaceholder')}</option>
@@ -126,13 +126,13 @@ export function ApplicationForm({
 
           {/* Goals */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('dwyPackages.applicationForm.goalsLabel')} <span className="text-[#EF4444]">*</span>
             </label>
             <textarea
               value={formData.goals}
               onChange={e => updateField('goals', e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               rows={4}
               placeholder={t('dwyPackages.applicationForm.goalsPlaceholder')}
               required
@@ -141,13 +141,13 @@ export function ApplicationForm({
 
           {/* Timeline */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('dwyPackages.applicationForm.timelineLabel')} <span className="text-[#EF4444]">*</span>
             </label>
             <select
               value={formData.timeline}
               onChange={e => updateField('timeline', e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               required
             >
               <option value="">{t('dwyPackages.applicationForm.timelineSelectPlaceholder')}</option>
@@ -161,41 +161,41 @@ export function ApplicationForm({
 
           {/* Website URL */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('dwyPackages.applicationForm.websiteUrlLabel')}
             </label>
             <input
               type="url"
               value={formData.website_url}
               onChange={e => updateField('website_url', e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               placeholder={t('dwyPackages.applicationForm.websiteUrlPlaceholder')}
             />
           </div>
 
           {/* How heard */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('dwyPackages.applicationForm.howHeardLabel')}
             </label>
             <input
               type="text"
               value={formData.how_heard}
               onChange={e => updateField('how_heard', e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               placeholder={t('dwyPackages.applicationForm.howHeardPlaceholder')}
             />
           </div>
 
           {/* Additional notes */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('dwyPackages.applicationForm.additionalNotesLabel')}
             </label>
             <textarea
               value={formData.additional_notes}
               onChange={e => updateField('additional_notes', e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               rows={3}
               placeholder={t('dwyPackages.applicationForm.additionalNotesPlaceholder')}
             />
@@ -209,11 +209,11 @@ export function ApplicationForm({
           )}
 
           {/* Actions */}
-          <div className="flex gap-4 justify-end pt-4 border-t border-[#1F1F1F]">
+          <div className="flex gap-4 justify-end pt-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
             <button
               type="button"
               onClick={onCancel}
-              className="px-6 py-2 text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors"
+              className="px-6 py-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors"
               disabled={isSubmitting}
             >
               {t('dwyPackages.applicationForm.cancel')}

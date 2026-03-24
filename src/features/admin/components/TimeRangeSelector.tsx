@@ -18,7 +18,7 @@ const TimeRangeSelector: React.FC<TimeRangeSelectorProps> = ({ value, onChange }
   const { t } = useTranslation();
 
   return (
-    <div className="inline-flex rounded-lg border border-[#1F1F1F] bg-[#0A0A0A] p-1">
+    <div className="inline-flex rounded-lg border border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)] p-1">
       {ranges.map((range) => (
         <button
           key={range.value}
@@ -27,7 +27,7 @@ const TimeRangeSelector: React.FC<TimeRangeSelectorProps> = ({ value, onChange }
             px-3.5 py-1.5 text-sm font-medium rounded-md transition-colors
             ${value === range.value
               ? 'bg-[#FAFAFA] text-[#0A0A0A]'
-              : 'text-[#A0A0A0] hover:text-[#FAFAFA]'}
+              : 'text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)]'}
           `}
         >
           {t(range.labelKey)}

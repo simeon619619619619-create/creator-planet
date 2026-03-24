@@ -10,7 +10,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const [activeSection, setActiveSection] = useState<AdminSection>('overview');
 
   return (
-    <div className="flex h-screen bg-[#0A0A0A] font-sans text-[#FAFAFA]">
+    <div className="flex h-screen bg-[var(--fc-section,#0A0A0A)] font-sans text-[var(--fc-section-text,#FAFAFA)]">
       <AdminSidebar activeSection={activeSection} onSectionChange={setActiveSection} />
       <main className="flex-1 overflow-auto">
         {children(activeSection, setActiveSection)}

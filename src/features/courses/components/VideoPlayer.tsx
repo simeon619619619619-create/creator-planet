@@ -248,7 +248,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = React.memo(({ url, title, classN
 
   if (!url) {
     return (
-      <div className={`flex items-center justify-center bg-[#0A0A0A] ${className}`}>
+      <div className={`flex items-center justify-center bg-[var(--fc-section,#0A0A0A)] ${className}`}>
         <div className="text-center text-white">
           <PlayCircle size={64} className="mx-auto mb-4 opacity-80" />
           <p className="font-medium">Video Content</p>

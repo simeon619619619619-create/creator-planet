@@ -25,8 +25,8 @@ function getRoleBadgeClasses(role: TeamMemberRole): { bg: string; text: string }
     };
   }
   return {
-    bg: 'bg-[#1F1F1F]',
-    text: 'text-[#A0A0A0]',
+    bg: 'bg-[var(--fc-section-hover,#1F1F1F)]',
+    text: 'text-[var(--fc-section-muted,#A0A0A0)]',
   };
 }
 
@@ -96,10 +96,10 @@ const TeamProfilePage: React.FC = () => {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA] mx-auto mb-3" />
-          <p className="text-[#666666]">{t('directMessages.profilePage.loading')}</p>
+          <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)] mx-auto mb-3" />
+          <p className="text-[var(--fc-section-muted,#666666)]">{t('directMessages.profilePage.loading')}</p>
         </div>
       </div>
     );
@@ -108,15 +108,15 @@ const TeamProfilePage: React.FC = () => {
   // Error state
   if (error || !profileData) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 text-center">
+      <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] flex items-center justify-center p-6">
+        <div className="max-w-md w-full bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-8 text-center">
           <div className="w-16 h-16 bg-[#EF4444]/10 rounded-full flex items-center justify-center mx-auto mb-4">
             <AlertCircle className="w-8 h-8 text-[#EF4444]" />
           </div>
-          <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">
+          <h2 className="text-xl font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">
             {t('directMessages.profilePage.errorTitle')}
           </h2>
-          <p className="text-[#666666] mb-6">
+          <p className="text-[var(--fc-section-muted,#666666)] mb-6">
             {error || t('directMessages.profilePage.errorNotFound')}
           </p>
           <button
@@ -138,9 +138,9 @@ const TeamProfilePage: React.FC = () => {
   const badgeStyle = getRoleBadgeClasses(teamMember.role);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       {/* Header with gradient */}
-      <div className="bg-[#1F1F1F] h-48 relative">
+      <div className="bg-[var(--fc-section-hover,#1F1F1F)] h-48 relative">
         {/* Back button */}
         <button
           onClick={handleBackToCommunity}
@@ -157,7 +157,7 @@ const TeamProfilePage: React.FC = () => {
 
         {/* Avatar positioned at bottom */}
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2">
-          <div className="w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-[#0A0A0A]">
+          <div className="w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-[var(--fc-section,#0A0A0A)]">
             <Avatar
               src={profile?.avatar_url}
               name={displayName}
@@ -172,22 +172,22 @@ const TeamProfilePage: React.FC = () => {
       <div className="max-w-2xl mx-auto px-6 pt-20 pb-12">
         {/* Name, badge, title */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-[#FAFAFA] mb-2">{displayName}</h1>
+          <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">{displayName}</h1>
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className={`text-sm px-3 py-1 rounded-full font-semibold ${badgeStyle.bg} ${badgeStyle.text}`}>
               {t(`directMessages.badge.${getBadgeType(teamMember.role)}`)}
             </span>
           </div>
-          <p className="text-lg text-[#A0A0A0]">{title}</p>
+          <p className="text-lg text-[var(--fc-section-muted,#A0A0A0)]">{title}</p>
         </div>
 
         {/* Bio */}
         {teamMember.bio && (
-          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6 mb-6">
-            <h2 className="text-sm font-semibold text-[#666666] uppercase tracking-wide mb-3">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6 mb-6">
+            <h2 className="text-sm font-semibold text-[var(--fc-section-muted,#666666)] uppercase tracking-wide mb-3">
               {t('directMessages.profilePage.about')}
             </h2>
-            <p className="text-[#A0A0A0] leading-relaxed whitespace-pre-wrap">
+            <p className="text-[var(--fc-section-muted,#A0A0A0)] leading-relaxed whitespace-pre-wrap">
               {teamMember.bio}
             </p>
           </div>
@@ -208,8 +208,8 @@ const TeamProfilePage: React.FC = () => {
 
         {/* Courses they teach */}
         {courses.length > 0 && (
-          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
-            <h2 className="text-sm font-semibold text-[#666666] uppercase tracking-wide mb-4 flex items-center gap-2">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
+            <h2 className="text-sm font-semibold text-[var(--fc-section-muted,#666666)] uppercase tracking-wide mb-4 flex items-center gap-2">
               <BookOpen size={16} />
               {t('directMessages.profilePage.courses', { count: courses.length })}
             </h2>
@@ -218,10 +218,10 @@ const TeamProfilePage: React.FC = () => {
                 <Link
                   key={course.id}
                   to="/courses"
-                  className="flex items-center gap-3 p-3 rounded-lg border border-[#1F1F1F] hover:border-[#1F1F1F] hover:bg-[#151515]/50 transition-colors"
+                  className="flex items-center gap-3 p-3 rounded-lg border border-[var(--fc-section-border,#1F1F1F)] hover:border-[var(--fc-section-border,#1F1F1F)] hover:bg-[var(--fc-section-hover,#151515)]/50 transition-colors"
                 >
                   {/* Course thumbnail */}
-                  <div className="w-16 h-12 rounded-lg overflow-hidden bg-[#1F1F1F] flex-shrink-0">
+                  <div className="w-16 h-12 rounded-lg overflow-hidden bg-[var(--fc-section-hover,#1F1F1F)] flex-shrink-0">
                     {course.thumbnail_url ? (
                       <img
                         src={course.thumbnail_url}
@@ -234,7 +234,7 @@ const TeamProfilePage: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <span className="font-medium text-[#FAFAFA]">{course.title}</span>
+                  <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{course.title}</span>
                 </Link>
               ))}
             </div>

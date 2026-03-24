@@ -91,9 +91,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] flex flex-col">
       {/* Simple Header */}
-      <header className="border-b border-[#1F1F1F] bg-[#0A0A0A]">
+      <header className="border-b border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <Logo variant="light" size="md" showText={false} />
@@ -107,10 +107,10 @@ const LoginPage: React.FC = () => {
         <div className="w-full max-w-[400px]">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-[#FAFAFA] mb-2">
+            <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">
               {t('auth.loginTitle')}
             </h1>
-            <p className="text-[#A0A0A0]">{t('auth.loginSubtitle')}</p>
+            <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('auth.loginSubtitle')}</p>
           </div>
 
           {/* Error Message */}
@@ -129,14 +129,14 @@ const LoginPage: React.FC = () => {
                 {t('auth.email')}
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                 <input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pl-12 pr-4 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  className="w-full pl-12 pr-4 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                   placeholder={t('auth.email')}
                   disabled={isLoading}
                   autoComplete="email"
@@ -150,14 +150,14 @@ const LoginPage: React.FC = () => {
                 {t('auth.password')}
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full pl-12 pr-12 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  className="w-full pl-12 pr-12 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                   placeholder={t('auth.password')}
                   disabled={isLoading}
                   autoComplete="current-password"
@@ -165,7 +165,7 @@ const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#A0A0A0]"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                   tabIndex={-1}
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -177,7 +177,7 @@ const LoginPage: React.FC = () => {
             <div className="text-right">
               <button
                 type="button"
-                className="text-sm text-white hover:text-[#A0A0A0] font-medium"
+                className="text-sm text-white hover:text-[var(--fc-section-muted,#A0A0A0)] font-medium"
                 onClick={openForgotPassword}
               >
                 {t('auth.forgotPassword')}
@@ -202,12 +202,12 @@ const LoginPage: React.FC = () => {
           </form>
 
           {/* Sign Up Link */}
-          <div className="mt-8 text-center border-t border-[#1F1F1F] pt-6">
-            <p className="text-[#A0A0A0]">
+          <div className="mt-8 text-center border-t border-[var(--fc-section-border,#1F1F1F)] pt-6">
+            <p className="text-[var(--fc-section-muted,#A0A0A0)]">
               {t('auth.noAccount')}{' '}
               <Link
                 to={returnUrl ? `/signup?return=${encodeURIComponent(returnUrl)}` : '/signup'}
-                className="text-white hover:text-[#A0A0A0] font-bold underline"
+                className="text-white hover:text-[var(--fc-section-muted,#A0A0A0)] font-bold underline"
               >
                 {t('common.signUp')}
               </Link>
@@ -219,11 +219,11 @@ const LoginPage: React.FC = () => {
       {/* Forgot Password Modal */}
       {showForgotPassword && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F] w-full max-w-md p-6 relative">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-2xl border border-[var(--fc-section-border,#1F1F1F)] w-full max-w-md p-6 relative">
             {/* Close Button */}
             <button
               onClick={closeForgotPassword}
-              className="absolute top-4 right-4 text-[#666666] hover:text-[#A0A0A0]"
+              className="absolute top-4 right-4 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
             >
               <X size={24} />
             </button>
@@ -234,10 +234,10 @@ const LoginPage: React.FC = () => {
                 <div className="w-16 h-16 bg-[#22C55E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="text-[#22C55E]" size={32} />
                 </div>
-                <h2 className="text-xl font-bold text-[#FAFAFA] mb-2">
+                <h2 className="text-xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">
                   {t('auth.checkYourEmail')}
                 </h2>
-                <p className="text-[#A0A0A0] mb-6">
+                <p className="text-[var(--fc-section-muted,#A0A0A0)] mb-6">
                   {t('auth.resetEmailSent', { email: forgotEmail })}
                 </p>
                 <button
@@ -251,10 +251,10 @@ const LoginPage: React.FC = () => {
               /* Form State */
               <>
                 <div className="mb-6">
-                  <h2 className="text-xl font-bold text-[#FAFAFA] mb-2">
+                  <h2 className="text-xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">
                     {t('auth.forgotPasswordTitle')}
                   </h2>
-                  <p className="text-[#A0A0A0] text-sm">
+                  <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm">
                     {t('auth.forgotPasswordSubtitle')}
                   </p>
                 </div>
@@ -273,14 +273,14 @@ const LoginPage: React.FC = () => {
                       {t('auth.email')}
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                       <input
                         id="forgot-email"
                         type="email"
                         value={forgotEmail}
                         onChange={(e) => setForgotEmail(e.target.value)}
                         required
-                        className="w-full pl-12 pr-4 py-3 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                        className="w-full pl-12 pr-4 py-3 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                         placeholder={t('auth.email')}
                         disabled={forgotLoading}
                         autoComplete="email"
@@ -307,7 +307,7 @@ const LoginPage: React.FC = () => {
 
                 <button
                   onClick={closeForgotPassword}
-                  className="w-full mt-3 text-[#A0A0A0] hover:text-[#FAFAFA] text-sm font-medium flex items-center justify-center gap-1"
+                  className="w-full mt-3 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] text-sm font-medium flex items-center justify-center gap-1"
                 >
                   <ArrowLeft size={16} />
                   {t('auth.backToLogin')}

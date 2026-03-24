@@ -339,7 +339,7 @@ const CalendarView: React.FC = () => {
   if (loading) {
     return (
       <div className="max-w-5xl mx-auto p-6 flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
       </div>
     );
   }
@@ -348,8 +348,8 @@ const CalendarView: React.FC = () => {
     <div className={viewMode === 'expanded' ? 'max-w-7xl mx-auto p-6' : 'max-w-5xl mx-auto p-6'}>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('calendar.title')}</h1>
-          <p className="text-[#666666]">
+          <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('calendar.title')}</h1>
+          <p className="text-[var(--fc-section-muted,#666666)]">
             {canManageCalendar ? t('calendar.subtitleCreator') : t('calendar.subtitleStudent')}
           </p>
         </div>
@@ -360,8 +360,8 @@ const CalendarView: React.FC = () => {
               onClick={() => setShowHistory(!showHistory)}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 showHistory
-                  ? 'bg-[#333333] text-[#FAFAFA]'
-                  : 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#1F1F1F]'
+                  ? 'bg-[#333333] text-[var(--fc-section-text,#FAFAFA)]'
+                  : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)]'
               }`}
               title={showHistory ? t('calendar.showUpcomingTooltip') : t('calendar.showHistoryTooltip')}
             >
@@ -372,13 +372,13 @@ const CalendarView: React.FC = () => {
             </button>
           )}
           {/* View mode toggle */}
-          <div className="flex items-center bg-[#1F1F1F] rounded-lg p-1">
+          <div className="flex items-center bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg p-1">
             <button
               onClick={() => setViewMode('list')}
               className={`p-2 rounded-md transition-colors ${
                 viewMode === 'list'
-                  ? 'bg-[#0A0A0A] text-[#FAFAFA]'
-                  : 'text-[#666666] hover:text-[#A0A0A0]'
+                  ? 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-text,#FAFAFA)]'
+                  : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
               }`}
               title={t('calendar.listViewTooltip')}
             >
@@ -388,8 +388,8 @@ const CalendarView: React.FC = () => {
               onClick={() => setViewMode('expanded')}
               className={`p-2 rounded-md transition-colors ${
                 viewMode === 'expanded'
-                  ? 'bg-[#0A0A0A] text-[#FAFAFA]'
-                  : 'text-[#666666] hover:text-[#A0A0A0]'
+                  ? 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-text,#FAFAFA)]'
+                  : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
               }`}
               title={t('calendar.calendarViewTooltip')}
             >
@@ -424,7 +424,7 @@ const CalendarView: React.FC = () => {
       /* List View */
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
-          <h2 className="font-bold text-[#FAFAFA] mb-4">
+          <h2 className="font-bold text-[var(--fc-section-text,#FAFAFA)] mb-4">
             {showHistory
               ? (events.length > 0 ? t('calendar.pastEventsHeading') : t('calendar.noPastEventsHeading'))
               : (events.length > 0 ? t('calendar.upcomingEventsHeading') : t('calendar.noUpcomingEventsHeading'))}
@@ -436,8 +436,8 @@ const CalendarView: React.FC = () => {
               const isAttending = event.user_status === 'attending';
 
               return (
-                <div key={event.id} className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F] flex flex-col md:flex-row gap-6">
-                  <div className="bg-[#1F1F1F] rounded-lg p-4 flex flex-col items-center justify-center min-w-[100px] text-[#FAFAFA]">
+                <div key={event.id} className="bg-[var(--fc-section,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-section-border,#1F1F1F)] flex flex-col md:flex-row gap-6">
+                  <div className="bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg p-4 flex flex-col items-center justify-center min-w-[100px] text-[var(--fc-section-text,#FAFAFA)]">
                     <span className="text-xs font-bold uppercase">{dateInfo.month}</span>
                     <span className="text-2xl font-bold">{dateInfo.day}</span>
                   </div>
@@ -445,12 +445,12 @@ const CalendarView: React.FC = () => {
                   <div className="flex-1">
                     <div className="flex justify-between items-start">
                       <div>
-                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#1F1F1F] text-[#A0A0A0] mb-2">
+                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                           {event.event_type.toUpperCase().replace('_', ' ')}
                         </span>
-                        <h3 className="text-lg font-bold text-[#FAFAFA]">{event.title}</h3>
+                        <h3 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">{event.title}</h3>
                         {event.description && (
-                          <p className="text-sm text-[#666666] mt-1">{event.description}</p>
+                          <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">{event.description}</p>
                         )}
                       </div>
                       {/* Show edit/delete for creators (all events) or team members (their own events) */}
@@ -458,14 +458,14 @@ const CalendarView: React.FC = () => {
                         <div className="flex gap-1">
                           <button
                             onClick={() => handleEditEvent(event)}
-                            className="p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#1F1F1F] rounded-lg transition-colors"
+                            className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
                             title={t('calendar.editEventTooltip')}
                           >
                             <Pencil size={16} />
                           </button>
                           <button
                             onClick={() => setDeletingEventId(event.id)}
-                            className="p-2 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded-lg transition-colors"
+                            className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded-lg transition-colors"
                             title={t('calendar.deleteEventTooltip')}
                           >
                             <Trash2 size={16} />
@@ -474,7 +474,7 @@ const CalendarView: React.FC = () => {
                       )}
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-[#666666]">
+                    <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-[var(--fc-section-muted,#666666)]">
                       <div className="flex items-center gap-1">
                         <Clock size={16} /> {timeInfo}
                       </div>
@@ -489,7 +489,7 @@ const CalendarView: React.FC = () => {
                       )}
                       {/* Show community name for students (not for creators or team members managing) */}
                       {!canManageCalendar && event.community && (
-                        <div className="flex items-center gap-1 text-[#FAFAFA]">
+                        <div className="flex items-center gap-1 text-[var(--fc-section-text,#FAFAFA)]">
                           <Building2 size={16} /> {event.community.name}
                         </div>
                       )}
@@ -514,7 +514,7 @@ const CalendarView: React.FC = () => {
                           );
                         }
                         return (
-                          <button className="bg-[#333333] text-[#666666] text-sm font-medium px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap cursor-not-allowed" disabled>
+                          <button className="bg-[#333333] text-[var(--fc-section-muted,#666666)] text-sm font-medium px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap cursor-not-allowed" disabled>
                             {isInPerson ? <MapPin size={16} /> : <Video size={16} />}
                             {t('calendar.linkComingSoonButton')}
                           </button>
@@ -522,7 +522,7 @@ const CalendarView: React.FC = () => {
                       })()}
                       <button
                         onClick={() => downloadICS(event)}
-                        className="px-3 py-2 border border-[#1F1F1F] text-[#A0A0A0] rounded-lg text-sm font-medium hover:bg-[#0A0A0A] flex items-center gap-2 whitespace-nowrap"
+                        className="px-3 py-2 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded-lg text-sm font-medium hover:bg-[var(--fc-section,#0A0A0A)] flex items-center gap-2 whitespace-nowrap"
                         title={t('calendar.addToCalendarButton')}
                       >
                         <Download size={16} />
@@ -555,7 +555,7 @@ const CalendarView: React.FC = () => {
                             className={`px-4 py-2 border rounded-lg text-sm font-medium whitespace-nowrap ${
                               isAttending
                                 ? 'border-[#EF4444]/20 text-[#EF4444] hover:bg-[#EF4444]/10'
-                                : 'border-[#1F1F1F] hover:bg-[#0A0A0A]'
+                                : 'border-[var(--fc-section-border,#1F1F1F)] hover:bg-[var(--fc-section,#0A0A0A)]'
                             }`}
                           >
                             {isAttending ? t('calendar.cancelRsvpButton') : t('calendar.rsvpButton')}
@@ -568,9 +568,9 @@ const CalendarView: React.FC = () => {
               );
             })
           ) : (
-            <div className="bg-[#0A0A0A] p-12 rounded-xl border border-[#1F1F1F] text-center">
-              <CalendarIcon className="w-12 h-12 mx-auto text-[#666666] mb-4" />
-              <p className="text-[#666666]">
+            <div className="bg-[var(--fc-section,#0A0A0A)] p-12 rounded-xl border border-[var(--fc-section-border,#1F1F1F)] text-center">
+              <CalendarIcon className="w-12 h-12 mx-auto text-[var(--fc-section-muted,#666666)] mb-4" />
+              <p className="text-[var(--fc-section-muted,#666666)]">
                 {canManageCalendar
                   ? t('calendar.emptyStateCreator')
                   : t('calendar.emptyStateStudent')}
@@ -579,22 +579,22 @@ const CalendarView: React.FC = () => {
           )}
         </div>
 
-        <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F] h-fit">
+        <div className="bg-[var(--fc-section,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-section-border,#1F1F1F)] h-fit">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-[#FAFAFA] flex items-center gap-2">
-              <CalendarIcon size={20} className="text-[#666666]" />
+            <h3 className="font-bold text-[var(--fc-section-text,#FAFAFA)] flex items-center gap-2">
+              <CalendarIcon size={20} className="text-[var(--fc-section-muted,#666666)]" />
               {monthName}
             </h3>
             <div className="flex gap-1">
               <button
                 onClick={goToPreviousMonth}
-                className="p-1 hover:bg-[#1F1F1F] rounded"
+                className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded"
               >
                 <ChevronLeft size={16} />
               </button>
               <button
                 onClick={goToNextMonth}
-                className="p-1 hover:bg-[#1F1F1F] rounded"
+                className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded"
               >
                 <ChevronRight size={16} />
               </button>
@@ -603,7 +603,7 @@ const CalendarView: React.FC = () => {
 
           <div className="grid grid-cols-7 gap-1 text-center text-sm mb-2">
             {(t('calendar.miniCalendar.dayAbbreviations', { returnObjects: true }) as string[]).map(d => (
-              <div key={d} className="text-[#666666] font-medium py-1">{d}</div>
+              <div key={d} className="text-[var(--fc-section-muted,#666666)] font-medium py-1">{d}</div>
             ))}
           </div>
           <div className="grid grid-cols-7 gap-1 text-center text-sm">
@@ -624,9 +624,9 @@ const CalendarView: React.FC = () => {
                   key={index}
                   onClick={() => dayInfo.isCurrentMonth && setSelectedDay(dayInfo.day)}
                   className={`py-2 rounded-full cursor-pointer relative
-                    ${!dayInfo.isCurrentMonth ? 'text-[#666666]' : 'text-[#A0A0A0] hover:bg-[#0A0A0A]'}
+                    ${!dayInfo.isCurrentMonth ? 'text-[var(--fc-section-muted,#666666)]' : 'text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'}
                     ${isToday ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0] font-bold' : ''}
-                    ${selectedDay === dayInfo.day && dayInfo.isCurrentMonth && !isToday ? 'bg-[#1F1F1F]' : ''}
+                    ${selectedDay === dayInfo.day && dayInfo.isCurrentMonth && !isToday ? 'bg-[var(--fc-section-hover,#1F1F1F)]' : ''}
                   `}
                 >
                   {dayInfo.day}
@@ -639,20 +639,20 @@ const CalendarView: React.FC = () => {
           </div>
 
           {selectedDay && (
-            <div className="mt-4 pt-4 border-t border-[#1F1F1F]">
-              <h4 className="text-sm font-semibold text-[#A0A0A0] mb-2">
+            <div className="mt-4 pt-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
+              <h4 className="text-sm font-semibold text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                 {t('calendar.miniCalendar.eventsOnDayText', { month: currentDate.toLocaleDateString('en-US', { month: 'short' }), day: selectedDay })}
               </h4>
               {getEventsForDay(events, currentDate.getFullYear(), currentDate.getMonth(), selectedDay).length > 0 ? (
                 <div className="space-y-2">
                   {getEventsForDay(events, currentDate.getFullYear(), currentDate.getMonth(), selectedDay).map(event => (
-                    <div key={event.id} className="text-xs bg-[#1F1F1F] text-[#FAFAFA] p-2 rounded">
+                    <div key={event.id} className="text-xs bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] p-2 rounded">
                       {event.title}
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-[#666666]">{t('calendar.miniCalendar.noEventsOnDay')}</p>
+                <p className="text-xs text-[var(--fc-section-muted,#666666)]">{t('calendar.miniCalendar.noEventsOnDay')}</p>
               )}
             </div>
           )}
@@ -663,15 +663,15 @@ const CalendarView: React.FC = () => {
       {/* Create Event Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#0A0A0A] rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-[#1F1F1F] flex justify-between items-center">
-              <h2 className="text-lg font-bold text-[#FAFAFA]">{t('calendar.createEventModal.title')}</h2>
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-[var(--fc-section-border,#1F1F1F)] flex justify-between items-center">
+              <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('calendar.createEventModal.title')}</h2>
               <button
                 onClick={() => {
                   setShowCreateModal(false);
                   resetForm();
                 }}
-                className="text-[#666666] hover:text-[#A0A0A0]"
+                className="text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
               >
                 <X size={20} />
               </button>
@@ -679,7 +679,7 @@ const CalendarView: React.FC = () => {
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.createEventModal.eventTitleLabel')}
                 </label>
                 <input
@@ -687,12 +687,12 @@ const CalendarView: React.FC = () => {
                   value={newEventTitle}
                   onChange={e => setNewEventTitle(e.target.value)}
                   placeholder={t('calendar.createEventModal.eventTitlePlaceholder')}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.createEventModal.descriptionLabel')}
                 </label>
                 <textarea
@@ -700,14 +700,14 @@ const CalendarView: React.FC = () => {
                   onChange={e => setNewEventDescription(e.target.value)}
                   placeholder={t('calendar.createEventModal.descriptionPlaceholder')}
                   rows={3}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 />
               </div>
 
               {/* Community Selector */}
               {communities.length > 0 && (
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.createEventModal.communityLabel')}
                   </label>
                   <select
@@ -716,7 +716,7 @@ const CalendarView: React.FC = () => {
                       setNewEventCommunityId(e.target.value);
                       setNewEventAttendeeId(''); // Reset attendee when community changes
                     }}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                   >
                     <option value="">{t('calendar.createEventModal.communitySelectPlaceholder')}</option>
                     {communities.map(community => (
@@ -725,14 +725,14 @@ const CalendarView: React.FC = () => {
                       </option>
                     ))}
                   </select>
-                  <p className="text-xs text-[#666666] mt-1">
+                  <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1">
                     {t('calendar.createEventModal.communityHelpText')}
                   </p>
                 </div>
               )}
 
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.createEventModal.eventTypeLabel')}
                 </label>
                 <select
@@ -741,7 +741,7 @@ const CalendarView: React.FC = () => {
                     setNewEventType(e.target.value as EventType);
                     setNewEventAttendeeId(''); // Reset attendee when type changes
                   }}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 >
                   <option value="group">{t('calendar.createEventModal.eventTypeGroup')}</option>
                   <option value="one_on_one">{t('calendar.createEventModal.eventTypeOneOnOne')}</option>
@@ -751,11 +751,11 @@ const CalendarView: React.FC = () => {
               {/* User Selector for 1:1 events */}
               {newEventType === 'one_on_one' && newEventCommunityId && (
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.createEventModal.scheduleWithLabel')}
                   </label>
                   {loadingMembers ? (
-                    <div className="flex items-center gap-2 text-[#666666] text-sm py-2">
+                    <div className="flex items-center gap-2 text-[var(--fc-section-muted,#666666)] text-sm py-2">
                       <Loader2 size={14} className="animate-spin" />
                       {t('calendar.createEventModal.loadingMembers')}
                     </div>
@@ -763,7 +763,7 @@ const CalendarView: React.FC = () => {
                     <select
                       value={newEventAttendeeId}
                       onChange={e => setNewEventAttendeeId(e.target.value)}
-                      className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                      className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                     >
                       <option value="">{t('calendar.createEventModal.scheduleWithPlaceholder')}</option>
                       {communityMembers.map(member => (
@@ -783,8 +783,8 @@ const CalendarView: React.FC = () => {
               )}
 
               {newEventType === 'one_on_one' && !newEventCommunityId && (
-                <div className="bg-[#1F1F1F] border border-[#333333] rounded-lg p-3">
-                  <p className="text-sm text-[#FAFAFA] flex items-center gap-2">
+                <div className="bg-[var(--fc-section-hover,#1F1F1F)] border border-[#333333] rounded-lg p-3">
+                  <p className="text-sm text-[var(--fc-section-text,#FAFAFA)] flex items-center gap-2">
                     <User size={16} />
                     {t('calendar.createEventModal.selectCommunityFirst')}
                   </p>
@@ -792,7 +792,7 @@ const CalendarView: React.FC = () => {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.createEventModal.dateLabel')}
                 </label>
                 <input
@@ -800,13 +800,13 @@ const CalendarView: React.FC = () => {
                   value={newEventDate}
                   onChange={e => setNewEventDate(e.target.value)}
                   onClick={e => (e.target as HTMLInputElement).showPicker()}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.createEventModal.startTimeLabel')}
                   </label>
                   <input
@@ -814,11 +814,11 @@ const CalendarView: React.FC = () => {
                     value={newEventStartTime}
                     onChange={e => setNewEventStartTime(e.target.value)}
                     onClick={e => (e.target as HTMLInputElement).showPicker()}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.createEventModal.endTimeLabel')}
                   </label>
                   <input
@@ -826,14 +826,14 @@ const CalendarView: React.FC = () => {
                     value={newEventEndTime}
                     onChange={e => setNewEventEndTime(e.target.value)}
                     onClick={e => (e.target as HTMLInputElement).showPicker()}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
                   />
                 </div>
               </div>
 
               {/* Location Type Toggle */}
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                   {t('calendar.createEventModal.locationTypeLabel')}
                 </label>
                 <div className="flex gap-2">
@@ -842,8 +842,8 @@ const CalendarView: React.FC = () => {
                     onClick={() => setNewEventLocationType('online')}
                     className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border text-sm font-medium transition-colors ${
                       newEventLocationType === 'online'
-                        ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                        : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                        ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                        : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                     }`}
                   >
                     <Video size={16} />
@@ -854,8 +854,8 @@ const CalendarView: React.FC = () => {
                     onClick={() => setNewEventLocationType('in_person')}
                     className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border text-sm font-medium transition-colors ${
                       newEventLocationType === 'in_person'
-                        ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                        : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                        ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                        : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                     }`}
                   >
                     <MapPin size={16} />
@@ -867,7 +867,7 @@ const CalendarView: React.FC = () => {
               {/* Conditional Location Input */}
               {newEventLocationType === 'online' ? (
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.createEventModal.meetingLinkLabel')}
                   </label>
                   <input
@@ -875,12 +875,12 @@ const CalendarView: React.FC = () => {
                     value={newEventLink}
                     onChange={e => setNewEventLink(e.target.value)}
                     placeholder={t('calendar.createEventModal.meetingLinkPlaceholder')}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                   />
                 </div>
               ) : (
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.createEventModal.addressLabel')}
                   </label>
                   <input
@@ -888,22 +888,22 @@ const CalendarView: React.FC = () => {
                     value={newEventAddress}
                     onChange={e => setNewEventAddress(e.target.value)}
                     placeholder={t('calendar.createEventModal.addressPlaceholder')}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                   />
-                  <p className="text-xs text-[#666666] mt-1">
+                  <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1">
                     {t('calendar.createEventModal.addressHelpText')}
                   </p>
                 </div>
               )}
             </div>
 
-            <div className="p-6 border-t border-[#1F1F1F] flex gap-3">
+            <div className="p-6 border-t border-[var(--fc-section-border,#1F1F1F)] flex gap-3">
               <button
                 onClick={() => {
                   setShowCreateModal(false);
                   resetForm();
                 }}
-                className="flex-1 border border-[#1F1F1F] text-[#A0A0A0] py-2 rounded-lg text-sm font-medium hover:bg-[#0A0A0A]"
+                className="flex-1 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-section,#0A0A0A)]"
               >
                 {t('calendar.createEventModal.cancelButton')}
               </button>
@@ -928,15 +928,15 @@ const CalendarView: React.FC = () => {
       {/* Edit Event Modal */}
       {editingEvent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#0A0A0A] rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-[#1F1F1F] flex justify-between items-center">
-              <h2 className="text-lg font-bold text-[#FAFAFA]">{t('calendar.editEventModal.title')}</h2>
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-[var(--fc-section-border,#1F1F1F)] flex justify-between items-center">
+              <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('calendar.editEventModal.title')}</h2>
               <button
                 onClick={() => {
                   setEditingEvent(null);
                   resetForm();
                 }}
-                className="text-[#666666] hover:text-[#A0A0A0]"
+                className="text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
               >
                 <X size={20} />
               </button>
@@ -945,12 +945,12 @@ const CalendarView: React.FC = () => {
             <div className="p-6 space-y-4">
               {/* Attendee selector for 1:1 events */}
               {editingEvent.event_type === 'one_on_one' && editingEvent.community_id && (
-                <div className="bg-[#1F1F1F] border border-[#333333] rounded-lg p-4">
-                  <label className="block text-sm font-medium text-[#FAFAFA] mb-2">
+                <div className="bg-[var(--fc-section-hover,#1F1F1F)] border border-[#333333] rounded-lg p-4">
+                  <label className="block text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] mb-2">
                     {t('calendar.editEventModal.scheduledWithLabel')}
                   </label>
                   {loadingMembers ? (
-                    <div className="flex items-center gap-2 text-[#FAFAFA] text-sm">
+                    <div className="flex items-center gap-2 text-[var(--fc-section-text,#FAFAFA)] text-sm">
                       <Loader2 size={14} className="animate-spin" />
                       {t('calendar.editEventModal.loadingMembers')}
                     </div>
@@ -958,7 +958,7 @@ const CalendarView: React.FC = () => {
                     <select
                       value={newEventAttendeeId}
                       onChange={e => setNewEventAttendeeId(e.target.value)}
-                      className="w-full border border-[#555555] rounded-lg px-3 py-2 text-sm bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-white/10"
+                      className="w-full border border-[#555555] rounded-lg px-3 py-2 text-sm bg-[var(--fc-section,#0A0A0A)] focus:outline-none focus:ring-1 focus:ring-white/10"
                     >
                       <option value="">{t('calendar.editEventModal.scheduledWithPlaceholder')}</option>
                       {communityMembers.map(member => (
@@ -968,7 +968,7 @@ const CalendarView: React.FC = () => {
                       ))}
                     </select>
                   ) : (
-                    <div className="flex items-center gap-2 text-[#FAFAFA] text-sm">
+                    <div className="flex items-center gap-2 text-[var(--fc-section-text,#FAFAFA)] text-sm">
                       <User size={16} />
                       {editingEvent.attendee?.full_name || t('calendar.editEventModal.noAttendeeAssigned')}
                     </div>
@@ -977,13 +977,13 @@ const CalendarView: React.FC = () => {
               )}
               {/* Show read-only for 1:1 events without community */}
               {editingEvent.event_type === 'one_on_one' && !editingEvent.community_id && (
-                <div className="bg-[#1F1F1F] border border-[#333333] rounded-lg p-4">
-                  <label className="block text-sm font-medium text-[#FAFAFA] mb-1">
+                <div className="bg-[var(--fc-section-hover,#1F1F1F)] border border-[#333333] rounded-lg p-4">
+                  <label className="block text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] mb-1">
                     {t('calendar.editEventModal.scheduledWithLabel')}
                   </label>
                   <div className="flex items-center gap-2">
-                    <User size={16} className="text-[#FAFAFA]" />
-                    <span className="text-sm font-medium text-[#FAFAFA]">
+                    <User size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
+                    <span className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">
                       {editingEvent.attendee?.full_name || t('calendar.editEventModal.noAttendeeAssigned')}
                     </span>
                   </div>
@@ -991,7 +991,7 @@ const CalendarView: React.FC = () => {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.editEventModal.eventTitleLabel')}
                 </label>
                 <input
@@ -999,12 +999,12 @@ const CalendarView: React.FC = () => {
                   value={newEventTitle}
                   onChange={e => setNewEventTitle(e.target.value)}
                   placeholder={t('calendar.editEventModal.eventTitlePlaceholder')}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.editEventModal.descriptionLabel')}
                 </label>
                 <textarea
@@ -1012,12 +1012,12 @@ const CalendarView: React.FC = () => {
                   onChange={e => setNewEventDescription(e.target.value)}
                   placeholder={t('calendar.editEventModal.descriptionPlaceholder')}
                   rows={3}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.editEventModal.dateLabel')}
                 </label>
                 <input
@@ -1025,13 +1025,13 @@ const CalendarView: React.FC = () => {
                   value={newEventDate}
                   onChange={e => setNewEventDate(e.target.value)}
                   onClick={e => (e.target as HTMLInputElement).showPicker()}
-                  className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
+                  className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.editEventModal.startTimeLabel')}
                   </label>
                   <input
@@ -1039,11 +1039,11 @@ const CalendarView: React.FC = () => {
                     value={newEventStartTime}
                     onChange={e => setNewEventStartTime(e.target.value)}
                     onClick={e => (e.target as HTMLInputElement).showPicker()}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.editEventModal.endTimeLabel')}
                   </label>
                   <input
@@ -1051,14 +1051,14 @@ const CalendarView: React.FC = () => {
                     value={newEventEndTime}
                     onChange={e => setNewEventEndTime(e.target.value)}
                     onClick={e => (e.target as HTMLInputElement).showPicker()}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10 cursor-pointer"
                   />
                 </div>
               </div>
 
               {/* Location Type Toggle */}
               <div>
-                <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                   {t('calendar.editEventModal.locationTypeLabel')}
                 </label>
                 <div className="flex gap-2">
@@ -1067,8 +1067,8 @@ const CalendarView: React.FC = () => {
                     onClick={() => setNewEventLocationType('online')}
                     className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border text-sm font-medium transition-colors ${
                       newEventLocationType === 'online'
-                        ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                        : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                        ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                        : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                     }`}
                   >
                     <Video size={16} />
@@ -1079,8 +1079,8 @@ const CalendarView: React.FC = () => {
                     onClick={() => setNewEventLocationType('in_person')}
                     className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border text-sm font-medium transition-colors ${
                       newEventLocationType === 'in_person'
-                        ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                        : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                        ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                        : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                     }`}
                   >
                     <MapPin size={16} />
@@ -1092,7 +1092,7 @@ const CalendarView: React.FC = () => {
               {/* Conditional Location Input */}
               {newEventLocationType === 'online' ? (
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.editEventModal.meetingLinkLabel')}
                   </label>
                   <input
@@ -1100,12 +1100,12 @@ const CalendarView: React.FC = () => {
                     value={newEventLink}
                     onChange={e => setNewEventLink(e.target.value)}
                     placeholder={t('calendar.editEventModal.meetingLinkPlaceholder')}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                   />
                 </div>
               ) : (
                 <div>
-                  <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+                  <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     {t('calendar.editEventModal.addressLabel')}
                   </label>
                   <input
@@ -1113,22 +1113,22 @@ const CalendarView: React.FC = () => {
                     value={newEventAddress}
                     onChange={e => setNewEventAddress(e.target.value)}
                     placeholder={t('calendar.editEventModal.addressPlaceholder')}
-                    className="w-full border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+                    className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                   />
-                  <p className="text-xs text-[#666666] mt-1">
+                  <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1">
                     {t('calendar.editEventModal.addressHelpText')}
                   </p>
                 </div>
               )}
             </div>
 
-            <div className="p-6 border-t border-[#1F1F1F] flex gap-3">
+            <div className="p-6 border-t border-[var(--fc-section-border,#1F1F1F)] flex gap-3">
               <button
                 onClick={() => {
                   setEditingEvent(null);
                   resetForm();
                 }}
-                className="flex-1 border border-[#1F1F1F] text-[#A0A0A0] py-2 rounded-lg text-sm font-medium hover:bg-[#0A0A0A]"
+                className="flex-1 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-section,#0A0A0A)]"
               >
                 {t('calendar.editEventModal.cancelButton')}
               </button>
@@ -1153,24 +1153,24 @@ const CalendarView: React.FC = () => {
       {/* Delete Confirmation Modal */}
       {deletingEventId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#0A0A0A] rounded-xl max-w-sm w-full">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl max-w-sm w-full">
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-[#EF4444]/10 flex items-center justify-center">
                   <AlertTriangle className="w-5 h-5 text-[#EF4444]" />
                 </div>
-                <h2 className="text-lg font-bold text-[#FAFAFA]">{t('calendar.deleteEventModal.title')}</h2>
+                <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('calendar.deleteEventModal.title')}</h2>
               </div>
-              <p className="text-[#A0A0A0] text-sm">
+              <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm">
                 {t('calendar.deleteEventModal.confirmationText')}
               </p>
             </div>
 
-            <div className="p-4 border-t border-[#1F1F1F] flex gap-3">
+            <div className="p-4 border-t border-[var(--fc-section-border,#1F1F1F)] flex gap-3">
               <button
                 onClick={() => setDeletingEventId(null)}
                 disabled={deleting}
-                className="flex-1 border border-[#1F1F1F] text-[#A0A0A0] py-2 rounded-lg text-sm font-medium hover:bg-[#0A0A0A] disabled:opacity-50"
+                className="flex-1 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-section,#0A0A0A)] disabled:opacity-50"
               >
                 {t('calendar.deleteEventModal.cancelButton')}
               </button>

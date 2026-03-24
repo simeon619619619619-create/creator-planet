@@ -141,7 +141,7 @@ export function DiscountCodeInput({
     return (
       <button
         onClick={() => setIsExpanded(true)}
-        className="flex items-center gap-2 text-sm text-[#FAFAFA] hover:text-[#A0A0A0]"
+        className="flex items-center gap-2 text-sm text-[var(--fc-section-text,#FAFAFA)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
       >
         <Tag className="h-4 w-4" />
         {t('discounts.input.collapsed.label')}
@@ -152,9 +152,9 @@ export function DiscountCodeInput({
 
   // Expanded state - input form
   return (
-    <div className="rounded-lg border border-[#1F1F1F] bg-[#0A0A0A] p-4">
+    <div className="rounded-lg border border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)] p-4">
       <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2 text-sm font-medium text-[#A0A0A0]">
+        <div className="flex items-center gap-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)]">
           <Tag className="h-4 w-4" />
           {t('discounts.input.expanded.label')}
         </div>
@@ -164,7 +164,7 @@ export function DiscountCodeInput({
             setCode('');
             setError(null);
           }}
-          className="text-[#666666] hover:text-[#A0A0A0]"
+          className="text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
         >
           <ChevronUp className="h-4 w-4" />
         </button>
@@ -181,12 +181,12 @@ export function DiscountCodeInput({
           onKeyDown={handleKeyDown}
           placeholder={t('discounts.input.expanded.placeholder')}
           disabled={isValidating}
-          className="flex-1 rounded-lg border border-[#1F1F1F] px-3 py-2 text-sm uppercase placeholder:normal-case focus:border-[#555555] focus:ring-white/10 disabled:bg-[#1F1F1F]"
+          className="flex-1 rounded-lg border border-[var(--fc-section-border,#1F1F1F)] px-3 py-2 text-sm uppercase placeholder:normal-case focus:border-[var(--fc-section-text,#555555)] focus:ring-white/10 disabled:bg-[var(--fc-section-hover,#1F1F1F)]"
         />
         <button
           onClick={handleApply}
           disabled={isValidating || !code.trim()}
-          className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-black hover:bg-[#E0E0E0] disabled:bg-[#1F1F1F] disabled:text-[#666666] disabled:cursor-not-allowed"
+          className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-black hover:bg-[#E0E0E0] disabled:bg-[var(--fc-section-hover,#1F1F1F)] disabled:text-[var(--fc-section-muted,#666666)] disabled:cursor-not-allowed"
         >
           {isValidating ? (
             <Loader2 className="h-4 w-4 animate-spin" />

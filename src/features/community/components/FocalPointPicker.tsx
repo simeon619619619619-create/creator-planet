@@ -42,13 +42,13 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
   return (
     <div className="space-y-3">
       {/* Tab switcher */}
-      <div className="flex gap-1 bg-[#0A0A0A] rounded-lg p-0.5 w-fit border border-[#1F1F1F]">
+      <div className="flex gap-1 bg-[var(--fc-section,#0A0A0A)] rounded-lg p-0.5 w-fit border border-[var(--fc-section-border,#1F1F1F)]">
         <button
           onClick={() => setActiveTab('adjust')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
             activeTab === 'adjust'
-              ? 'bg-[#1F1F1F] text-[#FAFAFA]'
-              : 'text-[#666666] hover:text-[#A0A0A0]'
+              ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)]'
+              : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
           }`}
         >
           <Crosshair size={12} />
@@ -58,8 +58,8 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
           onClick={() => setActiveTab('preview')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
             activeTab === 'preview'
-              ? 'bg-[#1F1F1F] text-[#FAFAFA]'
-              : 'text-[#666666] hover:text-[#A0A0A0]'
+              ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)]'
+              : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
           }`}
         >
           <Eye size={12} />
@@ -73,7 +73,7 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
           <div
             ref={containerRef}
             onClick={handleClick}
-            className="relative aspect-video w-full max-w-[400px] rounded-lg overflow-hidden border border-[#1F1F1F] cursor-crosshair"
+            className="relative aspect-video w-full max-w-[400px] rounded-lg overflow-hidden border border-[var(--fc-section-border,#1F1F1F)] cursor-crosshair"
           >
             <img
               src={imageUrl}
@@ -104,14 +104,14 @@ const FocalPointPicker: React.FC<FocalPointPickerProps> = ({
               }}
             />
           </div>
-          <p className="text-xs text-[#A0A0A0] mt-2">
+          <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mt-2">
             {t('communityHub.pricing.focalPoint.clickHint')}
           </p>
         </div>
       ) : (
         /* Live Preview — simulates page with theme color background */
         <div
-          className="w-full max-w-[500px] rounded-lg overflow-hidden border border-[#1F1F1F]"
+          className="w-full max-w-[500px] rounded-lg overflow-hidden border border-[var(--fc-section-border,#1F1F1F)]"
           style={{ backgroundColor: themeColor || '#0A0A0A' }}
         >
           {/* Hero image */}

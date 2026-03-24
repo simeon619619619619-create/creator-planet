@@ -56,20 +56,20 @@ const ConversationList: React.FC<ConversationListProps> = ({
   const chatCount = conversations.length;
 
   return (
-    <div className="flex flex-col h-full bg-[#0A0A0A]">
+    <div className="flex flex-col h-full bg-[var(--fc-section,#0A0A0A)]">
       {/* Header */}
-      <div className="border-b border-[#1F1F1F] px-4 py-3">
+      <div className="border-b border-[var(--fc-section-border,#1F1F1F)] px-4 py-3">
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="p-1.5 hover:bg-[#1F1F1F] rounded-lg transition-colors"
+            className="p-1.5 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
             title={t('directMessages.conversationList.back')}
           >
-            <ArrowLeft size={20} className="text-[#A0A0A0]" />
+            <ArrowLeft size={20} className="text-[var(--fc-section-muted,#A0A0A0)]" />
           </button>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h2 className="font-semibold text-[#FAFAFA] truncate">
+              <h2 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] truncate">
                 {isCreatorView && teamMember
                   ? t('directMessages.conversationList.inboxOf', { name: headerName })
                   : t('directMessages.conversationList.myInbox')
@@ -79,7 +79,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                 <span
                   className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold shrink-0
                     ${getBadgeType(teamMember.role) === 'team'
-                      ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                      ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]'
                       : 'bg-[#EAB308]/10 text-[#EAB308]'
                     }
                   `}
@@ -91,7 +91,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                 </span>
               )}
             </div>
-            <p className="text-sm text-[#666666]">
+            <p className="text-sm text-[var(--fc-section-muted,#666666)]">
               {t('directMessages.conversationList.chatCount', { count: chatCount })}
             </p>
           </div>
@@ -102,19 +102,19 @@ const ConversationList: React.FC<ConversationListProps> = ({
       <div className="flex-1 overflow-y-auto">
         {isLoading && (
           <div className="flex items-center justify-center py-12">
-            <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
+            <Loader2 className="w-6 h-6 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
           </div>
         )}
 
         {!isLoading && conversations.length === 0 && (
           <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-            <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mb-4">
-              <MessageCircle className="w-8 h-8 text-[#666666]" />
+            <div className="w-16 h-16 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full flex items-center justify-center mb-4">
+              <MessageCircle className="w-8 h-8 text-[var(--fc-section-muted,#666666)]" />
             </div>
-            <p className="text-[#666666] font-medium">
+            <p className="text-[var(--fc-section-muted,#666666)] font-medium">
               {t('directMessages.conversationList.noConversations')}
             </p>
-            <p className="text-[#666666] text-sm mt-1">
+            <p className="text-[var(--fc-section-muted,#666666)] text-sm mt-1">
               {t('directMessages.conversationList.noConversationsHint')}
             </p>
           </div>
@@ -137,7 +137,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                   key={conv.id}
                   onClick={() => onSelectConversation(conv)}
                   className={`w-full flex items-center gap-3 px-4 py-3 transition-colors text-left
-                    ${isSelected ? 'bg-[#151515]' : 'hover:bg-[#0A0A0A]'}
+                    ${isSelected ? 'bg-[var(--fc-section-hover,#151515)]' : 'hover:bg-[var(--fc-section,#0A0A0A)]'}
                   `}
                 >
                   {/* Avatar with unread dot */}
@@ -155,20 +155,20 @@ const ConversationList: React.FC<ConversationListProps> = ({
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
-                      <span className={`font-medium truncate ${hasUnread ? 'text-[#FAFAFA]' : 'text-[#A0A0A0]'}`}>
+                      <span className={`font-medium truncate ${hasUnread ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-muted,#A0A0A0)]'}`}>
                         {studentName}
                       </span>
-                      <span className="text-xs text-[#666666] shrink-0">
+                      <span className="text-xs text-[var(--fc-section-muted,#666666)] shrink-0">
                         {formatTimestamp(conv.last_message_at)}
                       </span>
                     </div>
                     {lastMessage && (
-                      <p className={`text-sm truncate mt-0.5 ${hasUnread ? 'text-[#A0A0A0] font-medium' : 'text-[#666666]'}`}>
+                      <p className={`text-sm truncate mt-0.5 ${hasUnread ? 'text-[var(--fc-section-muted,#A0A0A0)] font-medium' : 'text-[var(--fc-section-muted,#666666)]'}`}>
                         {truncateMessage(lastMessage)}
                       </p>
                     )}
                     {!lastMessage && (
-                      <p className="text-sm text-[#666666] italic mt-0.5">
+                      <p className="text-sm text-[var(--fc-section-muted,#666666)] italic mt-0.5">
                         {t('directMessages.conversationList.noMessagesYet')}
                       </p>
                     )}

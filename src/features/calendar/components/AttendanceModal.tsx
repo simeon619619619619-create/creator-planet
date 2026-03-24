@@ -147,33 +147,33 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-lg max-h-[90vh] flex flex-col">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl w-full max-w-lg max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="p-6 border-b border-[#1F1F1F]">
+        <div className="p-6 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div className="flex justify-between items-start">
             <div>
-              <h2 className="text-lg font-bold text-[#FAFAFA]">
+              <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">
                 {t('calendar.attendance.modalTitle')}
               </h2>
-              <p className="text-sm text-[#666666] mt-1">{eventTitle}</p>
+              <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">{eventTitle}</p>
             </div>
             <button
               onClick={onClose}
-              className="p-1 hover:bg-[#1F1F1F] rounded-full transition-colors"
+              className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors"
             >
-              <X size={20} className="text-[#666666]" />
+              <X size={20} className="text-[var(--fc-section-muted,#666666)]" />
             </button>
           </div>
 
           {/* Search */}
           <div className="mt-4 relative">
-            <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#666666]" />
+            <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" />
             <input
               type="text"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               placeholder={t('calendar.attendance.searchPlaceholder')}
-              className="w-full pl-10 pr-4 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
+              className="w-full pl-10 pr-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
             />
           </div>
 
@@ -183,7 +183,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
               <UserCheck size={16} />
               <span>{t('calendar.attendance.attendedCount', { count: attendedCount })}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-[#666666]">
+            <div className="flex items-center gap-1.5 text-[var(--fc-section-muted,#666666)]">
               <Users size={16} />
               <span>{t('calendar.attendance.totalCount', { count: totalCount })}</span>
             </div>
@@ -194,10 +194,10 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
         <div className="flex-1 overflow-y-auto p-4">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA]" />
+              <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
             </div>
           ) : filteredMembers.length === 0 ? (
-            <div className="text-center py-12 text-[#666666]">
+            <div className="text-center py-12 text-[var(--fc-section-muted,#666666)]">
               <Users className="w-12 h-12 mx-auto mb-3 opacity-50" />
               <p className="text-sm">
                 {searchQuery
@@ -214,7 +214,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
                   className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-colors text-left ${
                     member.attended
                       ? 'bg-[#22C55E]/10 border-[#22C55E]/20 hover:bg-[#22C55E]/10'
-                      : 'bg-[#0A0A0A] border-[#1F1F1F] hover:bg-[#0A0A0A]'
+                      : 'bg-[var(--fc-section,#0A0A0A)] border-[var(--fc-section-border,#1F1F1F)] hover:bg-[var(--fc-section,#0A0A0A)]'
                   }`}
                 >
                   {/* Avatar */}
@@ -225,15 +225,15 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
                       className="w-10 h-10 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center text-[#666666] font-semibold">
+                    <div className="w-10 h-10 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center text-[var(--fc-section-muted,#666666)] font-semibold">
                       {member.name.charAt(0).toUpperCase()}
                     </div>
                   )}
 
                   {/* Name and status */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-[#FAFAFA] truncate">{member.name}</p>
-                    <p className="text-xs text-[#666666]">
+                    <p className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] truncate">{member.name}</p>
+                    <p className="text-xs text-[var(--fc-section-muted,#666666)]">
                       {member.isAttendee
                         ? t('calendar.attendance.rsvpYes')
                         : t('calendar.attendance.rsvpNo')}
@@ -245,7 +245,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
                     className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
                       member.attended
                         ? 'bg-[#22C55E] text-white'
-                        : 'bg-[#1F1F1F] text-[#666666]'
+                        : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)]'
                     }`}
                   >
                     {member.attended ? <Check size={14} /> : null}
@@ -257,10 +257,10 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#1F1F1F] flex gap-3">
+        <div className="p-4 border-t border-[var(--fc-section-border,#1F1F1F)] flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 border border-[#1F1F1F] text-[#A0A0A0] py-2.5 rounded-lg text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
+            className="flex-1 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] py-2.5 rounded-lg text-sm font-medium hover:bg-[var(--fc-section,#0A0A0A)] transition-colors"
           >
             {t('calendar.attendance.cancelButton')}
           </button>

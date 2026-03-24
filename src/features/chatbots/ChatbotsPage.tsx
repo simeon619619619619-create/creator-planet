@@ -85,7 +85,7 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin" />
+        <Loader2 className="w-12 h-12 text-[var(--fc-section-text,#FAFAFA)] animate-spin" />
       </div>
     );
   }
@@ -94,10 +94,10 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
   if (loadError) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <p className="text-[#A0A0A0]">{t('chatbots.errorLoading', 'Failed to load chatbots. Please try again.')}</p>
+        <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('chatbots.errorLoading', 'Failed to load chatbots. Please try again.')}</p>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-[#1F1F1F] text-[#FAFAFA] rounded-lg hover:bg-[#333333] transition-colors"
+          className="px-4 py-2 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] rounded-lg hover:bg-[#333333] transition-colors"
         >
           {t('common.retry', 'Retry')}
         </button>
@@ -108,17 +108,17 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
   // Empty state - no active chatbots
   if (chatbots.length === 0) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A]">
+      <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
         {/* Header */}
-        <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
+        <div className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div className="max-w-5xl mx-auto px-6 py-6">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-[#1F1F1F] rounded-xl">
-                <Bot className="w-7 h-7 text-[#FAFAFA]" />
+              <div className="p-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded-xl">
+                <Bot className="w-7 h-7 text-[var(--fc-section-text,#FAFAFA)]" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('chatbots.page.title')}</h1>
-                <p className="text-[#A0A0A0]">{t('chatbots.page.subtitle')}</p>
+                <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('chatbots.page.title')}</h1>
+                <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('chatbots.page.subtitle')}</p>
               </div>
             </div>
           </div>
@@ -126,12 +126,12 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
 
         {/* Empty State */}
         <div className="max-w-5xl mx-auto px-6 py-16">
-          <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-12 text-center">
-            <MessageCircle className="w-16 h-16 text-[#666666] mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-[#FAFAFA] mb-2">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-12 text-center">
+            <MessageCircle className="w-16 h-16 text-[var(--fc-section-muted,#666666)] mx-auto mb-4" />
+            <h2 className="text-xl font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">
               {t('chatbots.page.emptyState.title')}
             </h2>
-            <p className="text-[#A0A0A0] max-w-md mx-auto">
+            <p className="text-[var(--fc-section-muted,#A0A0A0)] max-w-md mx-auto">
               {t('chatbots.page.emptyState.description')}
             </p>
           </div>
@@ -141,25 +141,25 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] flex flex-col">
       {/* Header */}
-      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 sm:p-3 bg-[#1F1F1F] rounded-xl">
-                <Bot className="w-6 h-6 sm:w-7 sm:h-7 text-[#FAFAFA]" />
+              <div className="p-2 sm:p-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded-xl">
+                <Bot className="w-6 h-6 sm:w-7 sm:h-7 text-[var(--fc-section-text,#FAFAFA)]" />
               </div>
               <div>
-                <h1 className="text-xl sm:text-2xl font-bold text-[#FAFAFA]">{t('chatbots.page.title')}</h1>
-                <p className="hidden sm:block text-[#A0A0A0]">{t('chatbots.page.subtitle')}</p>
+                <h1 className="text-xl sm:text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('chatbots.page.title')}</h1>
+                <p className="hidden sm:block text-[var(--fc-section-muted,#A0A0A0)]">{t('chatbots.page.subtitle')}</p>
               </div>
             </div>
             {/* Manage Chatbots button for creators */}
             {isCreator && onManageChatbots && (
               <button
                 onClick={onManageChatbots}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA] bg-[#0A0A0A] hover:bg-[#1F1F1F] border border-[#1F1F1F] hover:border-[#333333] rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] bg-[var(--fc-section,#0A0A0A)] hover:bg-[var(--fc-section-hover,#1F1F1F)] border border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] rounded-lg transition-colors"
               >
                 <Settings size={18} />
                 {t('chatbots.page.manageBots')}
@@ -170,7 +170,7 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex gap-1 overflow-x-auto">
             {chatbots.map((chatbot) => (
@@ -179,8 +179,8 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
                 onClick={() => handleSelectChatbot(chatbot)}
                 className={`px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors flex items-center gap-2 ${
                   selectedChatbot?.id === chatbot.id
-                    ? 'border-white text-[#FAFAFA] bg-[#1F1F1F]/50'
-                    : 'border-transparent text-[#A0A0A0] hover:text-[#FAFAFA] hover:bg-[#0A0A0A]'
+                    ? 'border-white text-[var(--fc-section-text,#FAFAFA)] bg-[var(--fc-section-hover,#1F1F1F)]/50'
+                    : 'border-transparent text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section,#0A0A0A)]'
                 }`}
               >
                 {/* Avatar - custom image, emoji, or hidden */}
@@ -210,7 +210,7 @@ const ChatbotsPage: React.FC<ChatbotsPageProps> = ({ communityId, onManageChatbo
 
       {/* Chat Area with Sidebar */}
       <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-5">
-        <div className="h-[calc(100dvh-180px)] sm:h-[calc(100dvh-270px)] bg-[#0A0A0A] border border-[#1F1F1F] rounded-2xl overflow-hidden flex relative">
+        <div className="h-[calc(100dvh-180px)] sm:h-[calc(100dvh-270px)] bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-2xl overflow-hidden flex relative">
           {/* Chat History Sidebar */}
           {selectedChatbot && profile?.id && (
             <ChatHistorySidebar

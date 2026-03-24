@@ -17,7 +17,7 @@ const colorMap = {
   amber: 'text-[#F59E0B]',
   red: 'text-[#DC2626]',
   blue: 'text-[#2563EB]',
-  default: 'text-[#FAFAFA]',
+  default: 'text-[var(--fc-section-text,#FAFAFA)]',
 };
 
 const bgColorMap = {
@@ -25,7 +25,7 @@ const bgColorMap = {
   amber: 'bg-[#F59E0B]/10',
   red: 'bg-[#DC2626]/10',
   blue: 'bg-[#2563EB]/10',
-  default: 'bg-[#1F1F1F]',
+  default: 'bg-[var(--fc-section-hover,#1F1F1F)]',
 };
 
 const AdminStatCard: React.FC<AdminStatCardProps> = ({
@@ -36,11 +36,11 @@ const AdminStatCard: React.FC<AdminStatCardProps> = ({
   color = 'default',
 }) => {
   return (
-    <div className="bg-[#0A0A0A] p-5 rounded-xl border border-[#1F1F1F] hover:border-[#333333] transition-colors">
+    <div className="bg-[var(--fc-section,#0A0A0A)] p-5 rounded-xl border border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] transition-colors">
       <div className="flex justify-between items-start">
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">{label}</p>
-          <h3 className="text-2xl font-bold text-[#FAFAFA] mt-2">{value}</h3>
+          <p className="text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">{label}</p>
+          <h3 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mt-2">{value}</h3>
         </div>
         <div className={`p-2.5 rounded-lg ${bgColorMap[color]} shrink-0 ml-3`}>
           <Icon size={20} className={colorMap[color]} />

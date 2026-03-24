@@ -274,7 +274,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({
   // Render inbox view
   if (effectiveViewMode === 'inbox' && !selectedConversation) {
     return (
-      <div className="h-full flex flex-col bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+      <div className="h-full flex flex-col bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
         <ConversationList
           conversations={conversations}
           isLoading={isLoadingConversations}
@@ -336,18 +336,18 @@ const ChatPanel: React.FC<ChatPanelProps> = ({
     : currentUserProfileId;
 
   return (
-    <div className="h-full flex flex-col bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+    <div className="h-full flex flex-col bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
       {/* Header */}
-      <div className="border-b border-[#1F1F1F] px-4 py-3">
+      <div className="border-b border-[var(--fc-section-border,#1F1F1F)] px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             {selectedConversation && (
               <button
                 onClick={handleBackFromConversation}
-                className="p-1.5 hover:bg-[#1F1F1F] rounded-lg transition-colors shrink-0"
+                className="p-1.5 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors shrink-0"
                 title={t('directMessages.chatPanel.backToInbox')}
               >
-                <svg className="w-5 h-5 text-[#A0A0A0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[var(--fc-section-muted,#A0A0A0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
@@ -361,14 +361,14 @@ const ChatPanel: React.FC<ChatPanelProps> = ({
                 />
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h2 className="font-semibold text-[#FAFAFA] truncate">
+                    <h2 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] truncate">
                       {headerInfo.name}
                     </h2>
                     {headerInfo.badgeType && (
                       <span
                         className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold shrink-0
                           ${headerInfo.badgeType === 'team'
-                            ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                            ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]'
                             : 'bg-[#EAB308]/10 text-[#EAB308]'
                           }
                         `}
@@ -380,14 +380,14 @@ const ChatPanel: React.FC<ChatPanelProps> = ({
                       </span>
                     )}
                     {headerInfo.isOversightView && (
-                      <span className="flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full font-semibold bg-[#1F1F1F] text-[#A0A0A0] shrink-0">
+                      <span className="flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full font-semibold bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] shrink-0">
                         <Eye size={10} />
                         {t('directMessages.chatPanel.oversightMode')}
                       </span>
                     )}
                   </div>
                   {headerInfo.title && (
-                    <p className="text-sm text-[#666666] truncate">{headerInfo.title}</p>
+                    <p className="text-sm text-[var(--fc-section-muted,#666666)] truncate">{headerInfo.title}</p>
                   )}
                 </div>
               </>
@@ -395,10 +395,10 @@ const ChatPanel: React.FC<ChatPanelProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 hover:bg-[#1F1F1F] rounded-lg transition-colors shrink-0"
+            className="p-1.5 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors shrink-0"
             title={t('directMessages.chatPanel.close')}
           >
-            <X size={20} className="text-[#A0A0A0]" />
+            <X size={20} className="text-[var(--fc-section-muted,#A0A0A0)]" />
           </button>
         </div>
       </div>
@@ -419,8 +419,8 @@ const ChatPanel: React.FC<ChatPanelProps> = ({
           disabled={!currentConversationId || isLoadingMessages}
         />
       ) : (
-        <div className="border-t border-[#1F1F1F] bg-[#0A0A0A] px-4 py-3">
-          <p className="text-sm text-[#666666] text-center">
+        <div className="border-t border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)] px-4 py-3">
+          <p className="text-sm text-[var(--fc-section-muted,#666666)] text-center">
             {t('directMessages.chatPanel.oversightOnlyHint')}
           </p>
         </div>

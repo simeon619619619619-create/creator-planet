@@ -79,9 +79,9 @@ const SignupPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] flex flex-col">
       {/* Simple Header */}
-      <header className="border-b border-[#1F1F1F] bg-[#0A0A0A]">
+      <header className="border-b border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <Logo variant="light" size="md" showText={false} />
@@ -95,10 +95,10 @@ const SignupPage: React.FC = () => {
         <div className="w-full max-w-[400px]">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-[#FAFAFA] mb-2">
+            <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">
               {t('auth.signupTitle')}
             </h1>
-            <p className="text-[#A0A0A0]">{t('auth.signupSubtitle')}</p>
+            <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('auth.signupSubtitle')}</p>
           </div>
 
           {/* Success Message */}
@@ -130,14 +130,14 @@ const SignupPage: React.FC = () => {
                 {t('auth.fullName')}
               </label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                 <input
                   id="fullName"
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
-                  className="w-full pl-12 pr-4 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  className="w-full pl-12 pr-4 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                   placeholder={t('auth.fullName')}
                   disabled={isLoading}
                   autoComplete="name"
@@ -151,14 +151,14 @@ const SignupPage: React.FC = () => {
                 {t('auth.email')}
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                 <input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pl-12 pr-4 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  className="w-full pl-12 pr-4 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                   placeholder={t('auth.email')}
                   disabled={isLoading}
                   autoComplete="email"
@@ -172,14 +172,14 @@ const SignupPage: React.FC = () => {
                 Телефон
               </label>
               <div className="relative">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                 <input
                   id="phone"
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
-                  className="w-full pl-12 pr-4 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  className="w-full pl-12 pr-4 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                   placeholder="Телефонен номер *"
                   disabled={isLoading}
                   autoComplete="tel"
@@ -193,14 +193,14 @@ const SignupPage: React.FC = () => {
                 {t('auth.password')}
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full pl-12 pr-12 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                  className="w-full pl-12 pr-12 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                   placeholder={t('auth.password')}
                   disabled={isLoading}
                   autoComplete="new-password"
@@ -208,7 +208,7 @@ const SignupPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#A0A0A0]"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                   tabIndex={-1}
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -218,7 +218,7 @@ const SignupPage: React.FC = () => {
 
             {/* Role Selection */}
             <div className="pt-2">
-              <label className="block text-sm font-medium text-[#A0A0A0] mb-3">
+              <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-3">
                 {t('auth.iAmA')}
               </label>
               <div className="grid grid-cols-2 gap-3">
@@ -227,26 +227,26 @@ const SignupPage: React.FC = () => {
                   onClick={() => setRole('student')}
                   className={`p-3 border-2 rounded transition-all text-left ${
                     role === 'student'
-                      ? 'border-white bg-[#151515]'
-                      : 'border-[#1F1F1F] hover:border-[#333333]'
+                      ? 'border-white bg-[var(--fc-section-hover,#151515)]'
+                      : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333]'
                   }`}
                   disabled={isLoading}
                 >
-                  <div className="font-semibold text-[#FAFAFA] text-sm">{t('auth.student')}</div>
-                  <div className="text-xs text-[#666666] mt-0.5">{t('auth.studentDesc')}</div>
+                  <div className="font-semibold text-[var(--fc-section-text,#FAFAFA)] text-sm">{t('auth.student')}</div>
+                  <div className="text-xs text-[var(--fc-section-muted,#666666)] mt-0.5">{t('auth.studentDesc')}</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => setRole('creator')}
                   className={`p-3 border-2 rounded transition-all text-left ${
                     role === 'creator'
-                      ? 'border-white bg-[#151515]'
-                      : 'border-[#1F1F1F] hover:border-[#333333]'
+                      ? 'border-white bg-[var(--fc-section-hover,#151515)]'
+                      : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333]'
                   }`}
                   disabled={isLoading}
                 >
-                  <div className="font-semibold text-[#FAFAFA] text-sm">{t('auth.creator')}</div>
-                  <div className="text-xs text-[#666666] mt-0.5">{t('auth.creatorDescShort')}</div>
+                  <div className="font-semibold text-[var(--fc-section-text,#FAFAFA)] text-sm">{t('auth.creator')}</div>
+                  <div className="text-xs text-[var(--fc-section-muted,#666666)] mt-0.5">{t('auth.creatorDescShort')}</div>
                 </button>
               </div>
             </div>
@@ -258,10 +258,10 @@ const SignupPage: React.FC = () => {
                 type="checkbox"
                 checked={marketingOptIn}
                 onChange={(e) => setMarketingOptIn(e.target.checked)}
-                className="mt-1 h-4 w-4 text-white border-[#1F1F1F] rounded focus:ring-white/10 bg-[#0A0A0A]"
+                className="mt-1 h-4 w-4 text-white border-[var(--fc-section-border,#1F1F1F)] rounded focus:ring-white/10 bg-[var(--fc-section,#0A0A0A)]"
                 disabled={isLoading}
               />
-              <label htmlFor="marketing" className="text-sm text-[#A0A0A0]">
+              <label htmlFor="marketing" className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                 {t('auth.marketingOptIn')}
               </label>
             </div>
@@ -284,25 +284,25 @@ const SignupPage: React.FC = () => {
           </form>
 
           {/* Terms Text */}
-          <p className="text-xs text-[#666666] text-center mt-4">
+          <p className="text-xs text-[var(--fc-section-muted,#666666)] text-center mt-4">
             {t('auth.termsAgreement')}{' '}
-            <a href="#" className="text-[#FAFAFA] hover:underline">
+            <a href="#" className="text-[var(--fc-section-text,#FAFAFA)] hover:underline">
               {t('nav.terms')}
             </a>{' '}
             {t('common.and')}{' '}
-            <a href="#" className="text-[#FAFAFA] hover:underline">
+            <a href="#" className="text-[var(--fc-section-text,#FAFAFA)] hover:underline">
               {t('nav.privacy')}
             </a>
             .
           </p>
 
           {/* Login Link */}
-          <div className="mt-8 text-center border-t border-[#1F1F1F] pt-6">
-            <p className="text-[#A0A0A0]">
+          <div className="mt-8 text-center border-t border-[var(--fc-section-border,#1F1F1F)] pt-6">
+            <p className="text-[var(--fc-section-muted,#A0A0A0)]">
               {t('auth.hasAccount')}{' '}
               <Link
                 to={returnUrl ? `/login?return=${encodeURIComponent(returnUrl)}` : '/login'}
-                className="text-[#FAFAFA] hover:text-white font-bold underline"
+                className="text-[var(--fc-section-text,#FAFAFA)] hover:text-white font-bold underline"
               >
                 {t('common.logIn')}
               </Link>

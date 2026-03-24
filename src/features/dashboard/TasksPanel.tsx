@@ -153,7 +153,7 @@ const TasksPanel: React.FC = () => {
 
       {/* New Task Form */}
       {showNewTaskForm && (
-        <form onSubmit={handleCreateTask} className="mb-6 p-4 bg-[#151515] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
+        <form onSubmit={handleCreateTask} className="mb-6 p-4 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <div className="space-y-3">
             <div>
               <input
@@ -161,7 +161,7 @@ const TasksPanel: React.FC = () => {
                 placeholder={t('creatorDashboard.tasks.form.titlePlaceholder')}
                 value={newTask.title}
                 onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                 required
               />
             </div>
@@ -170,7 +170,7 @@ const TasksPanel: React.FC = () => {
                 placeholder={t('creatorDashboard.tasks.form.descriptionPlaceholder')}
                 value={newTask.description}
                 onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
-                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none"
+                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] resize-none"
                 rows={2}
               />
             </div>
@@ -179,7 +179,7 @@ const TasksPanel: React.FC = () => {
                 type="date"
                 value={newTask.dueDate}
                 onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}
-                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               />
             </div>
             <button
@@ -208,8 +208,8 @@ const TasksPanel: React.FC = () => {
               onClick={() => setFilter(status)}
               className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
                 filter === status
-                  ? 'bg-[#151515] text-[var(--fc-text,#FAFAFA)] border border-[#333333]'
-                  : 'bg-transparent text-[var(--fc-muted,#A0A0A0)] border border-[var(--fc-border,#1F1F1F)] hover:bg-[#151515]'
+                  ? 'bg-[var(--fc-section-hover,#151515)] text-[var(--fc-text,#FAFAFA)] border border-[#333333]'
+                  : 'bg-transparent text-[var(--fc-muted,#A0A0A0)] border border-[var(--fc-border,#1F1F1F)] hover:bg-[var(--fc-section-hover,#151515)]'
               }`}
             >
               {label} ({taskCounts[status]})
@@ -224,7 +224,7 @@ const TasksPanel: React.FC = () => {
           filteredTasks.map((task) => (
             <div
               key={task.id}
-              className="group p-4 rounded-lg border border-[var(--fc-border,#1F1F1F)] hover:border-[#333333] hover:bg-[#151515] transition-all"
+              className="group p-4 rounded-lg border border-[var(--fc-border,#1F1F1F)] hover:border-[#333333] hover:bg-[var(--fc-section-hover,#151515)] transition-all"
             >
               <div className="flex items-start gap-3">
                 {/* Status Icon - clickable to cycle through statuses */}
@@ -271,7 +271,7 @@ const TasksPanel: React.FC = () => {
                         className={`text-[10px] px-2 py-0.5 rounded-full font-medium flex items-center gap-1 ${
                           isOverdue(task.due_date) && task.status !== 'done'
                             ? 'bg-[#EF4444]/10 text-[#EF4444]'
-                            : 'bg-[#1F1F1F] text-[var(--fc-muted,#A0A0A0)]'
+                            : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-muted,#A0A0A0)]'
                         }`}
                       >
                         {isOverdue(task.due_date) && task.status !== 'done' && (

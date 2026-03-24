@@ -11,14 +11,14 @@ interface RecommendedCoursesProps {
 
 const SkeletonCard: React.FC = () => (
   <div className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] overflow-hidden animate-pulse min-w-[240px] flex-shrink-0">
-    <div className="h-32 bg-[#1F1F1F]" />
+    <div className="h-32 bg-[var(--fc-section-hover,#1F1F1F)]" />
     <div className="p-4 space-y-3">
-      <div className="h-4 bg-[#1F1F1F] rounded w-3/4" />
+      <div className="h-4 bg-[var(--fc-section-hover,#1F1F1F)] rounded w-3/4" />
       <div className="flex items-center gap-2">
-        <div className="w-6 h-6 rounded-full bg-[#1F1F1F]" />
-        <div className="h-3 bg-[#1F1F1F] rounded w-1/2" />
+        <div className="w-6 h-6 rounded-full bg-[var(--fc-section-hover,#1F1F1F)]" />
+        <div className="h-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded w-1/2" />
       </div>
-      <div className="h-3 bg-[#1F1F1F] rounded w-1/3" />
+      <div className="h-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded w-1/3" />
     </div>
   </div>
 );
@@ -64,7 +64,7 @@ const RecommendedCourses: React.FC<RecommendedCoursesProps> = ({ profileId }) =>
                 decoding="async"
               />
             ) : (
-              <div className="w-full h-32 bg-[#1F1F1F] flex items-center justify-center">
+              <div className="w-full h-32 bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center">
                 <BookOpen size={32} className="text-[var(--fc-muted,#666666)]" />
               </div>
             )}

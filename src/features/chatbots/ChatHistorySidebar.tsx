@@ -181,10 +181,10 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
       {!isOpen && (
         <button
           onClick={onToggle}
-          className="absolute left-2 top-2 z-10 p-2 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg hover:bg-[#0A0A0A] transition-colors sm:left-4 sm:top-4"
+          className="absolute left-2 top-2 z-10 p-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section,#0A0A0A)] transition-colors sm:left-4 sm:top-4"
           aria-label={t('chatbots.history.aria.openHistory')}
         >
-          <PanelLeft className="w-5 h-5 text-[#A0A0A0]" />
+          <PanelLeft className="w-5 h-5 text-[var(--fc-section-muted,#A0A0A0)]" />
         </button>
       )}
 
@@ -199,17 +199,17 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
       {/* Sidebar */}
       <div
         className={`
-          flex flex-col bg-[#0A0A0A] border-r border-[#1F1F1F] transition-all duration-300 ease-in-out overflow-hidden
+          flex flex-col bg-[var(--fc-section,#0A0A0A)] border-r border-[var(--fc-section-border,#1F1F1F)] transition-all duration-300 ease-in-out overflow-hidden
           fixed inset-y-0 left-0 z-30 w-[280px] sm:relative sm:z-auto
           ${isOpen ? 'translate-x-0' : '-translate-x-full sm:translate-x-0 sm:w-0'}
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-[#1F1F1F]">
-          <h2 className="text-sm font-semibold text-[#FAFAFA]">{t('chatbots.history.title')}</h2>
+        <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--fc-section-border,#1F1F1F)]">
+          <h2 className="text-sm font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('chatbots.history.title')}</h2>
           <button
             onClick={onToggle}
-            className="p-1.5 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg transition-colors"
+            className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
             aria-label={t('chatbots.history.aria.closeHistory')}
           >
             <PanelLeftClose className="w-5 h-5" />
@@ -217,7 +217,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
         </div>
 
         {/* New Chat Button */}
-        <div className="p-3 border-b border-[#1F1F1F]">
+        <div className="p-3 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <button
             onClick={handleNewChat}
             className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
@@ -232,14 +232,14 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
           {isLoading ? (
             // Loading state
             <div className="flex items-center justify-center py-12">
-              <Loader2 className="w-6 h-6 text-[#FAFAFA] animate-spin" />
+              <Loader2 className="w-6 h-6 text-[var(--fc-section-text,#FAFAFA)] animate-spin" />
             </div>
           ) : sessions.length === 0 ? (
             // Empty state
             <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-              <MessageSquare className="w-10 h-10 text-[#666666] mb-3" />
-              <p className="text-sm text-[#666666]">{t('chatbots.history.emptyState.title')}</p>
-              <p className="text-xs text-[#666666] mt-1">{t('chatbots.history.emptyState.subtitle')}</p>
+              <MessageSquare className="w-10 h-10 text-[var(--fc-section-muted,#666666)] mb-3" />
+              <p className="text-sm text-[var(--fc-section-muted,#666666)]">{t('chatbots.history.emptyState.title')}</p>
+              <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1">{t('chatbots.history.emptyState.subtitle')}</p>
             </div>
           ) : (
             // Sessions list
@@ -257,15 +257,15 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                     className={`
                       group relative flex items-start gap-3 px-4 py-3 text-left transition-colors cursor-pointer
                       ${isSelected
-                        ? 'bg-[#1F1F1F] border-r-2 border-white'
-                        : 'hover:bg-[#0A0A0A]'
+                        ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-r-2 border-white'
+                        : 'hover:bg-[var(--fc-section,#0A0A0A)]'
                       }
                     `}
                     onClick={() => !isEditing && !isDeleting && onSelectSession(session.id)}
                   >
                     <MessageSquare
                       className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                        isSelected ? 'text-[#FAFAFA]' : 'text-[#666666]'
+                        isSelected ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-muted,#666666)]'
                       }`}
                     />
                     <div className="flex-1 min-w-0">
@@ -290,7 +290,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                           </button>
                           <button
                             onClick={handleCancelEdit}
-                            className="p-1 text-[#666666] hover:bg-[#1F1F1F] rounded"
+                            className="p-1 text-[var(--fc-section-muted,#666666)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded"
                             title={t('common.cancel')}
                           >
                             <X size={14} />
@@ -310,7 +310,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                           </button>
                           <button
                             onClick={handleCancelDelete}
-                            className="px-2 py-0.5 text-xs bg-[#1F1F1F] text-[#A0A0A0] rounded hover:bg-[#333333]"
+                            className="px-2 py-0.5 text-xs bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded hover:bg-[#333333]"
                           >
                             {t('common.cancel')}
                           </button>
@@ -320,7 +320,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                         <>
                           <p
                             className={`text-sm font-medium truncate ${
-                              isSelected ? 'text-[#FAFAFA]' : 'text-[#FAFAFA]'
+                              isSelected ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-text,#FAFAFA)]'
                             }`}
                             title={title}
                           >
@@ -328,7 +328,7 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                           </p>
                           <p
                             className={`text-xs mt-0.5 ${
-                              isSelected ? 'text-[#FAFAFA]' : 'text-[#666666]'
+                              isSelected ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-muted,#666666)]'
                             }`}
                           >
                             {relativeDate}
@@ -342,14 +342,14 @@ const ChatHistorySidebar: React.FC<ChatHistorySidebarProps> = ({
                       <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button
                           onClick={(e) => handleStartEdit(session, e)}
-                          className="p-1.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#1F1F1F] rounded transition-colors"
+                          className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded transition-colors"
                           title={t('chatbots.history.rename')}
                         >
                           <Pencil size={14} />
                         </button>
                         <button
                           onClick={(e) => handleStartDelete(session.id, e)}
-                          className="p-1.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded transition-colors"
+                          className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded transition-colors"
                           title={t('chatbots.history.delete')}
                         >
                           <Trash2 size={14} />

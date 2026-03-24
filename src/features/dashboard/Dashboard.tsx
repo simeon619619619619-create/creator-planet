@@ -704,7 +704,7 @@ const Dashboard: React.FC = () => {
                   value={messageText}
                   onChange={(e) => setMessageText(e.target.value)}
                   placeholder={t('creatorDashboard.message.placeholder')}
-                  className="w-full h-32 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none"
+                  className="w-full h-32 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] resize-none"
                 />
               </div>
               <div className="flex gap-3">
@@ -1043,7 +1043,7 @@ const Dashboard: React.FC = () => {
                   value={newCommunityName}
                   onChange={(e) => setNewCommunityName(e.target.value)}
                   placeholder={t('creatorDashboard.createCommunity.namePlaceholder')}
-                  className="w-full px-4 py-3 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                  className="w-full px-4 py-3 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                   autoFocus
                 />
                 <p className="text-xs text-[var(--fc-muted,#666666)] mt-2">

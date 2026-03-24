@@ -402,16 +402,16 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
     if (isPaidCommunity) {
       return variant === 'primary'
         ? 'bg-white text-black hover:bg-[#E0E0E0]'
-        : 'border-2 border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] hover:border-[#333333]';
+        : 'border-2 border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333]';
     }
     if (isGatedCommunity) {
       return variant === 'primary'
         ? 'bg-white text-black hover:bg-[#E0E0E0]'
-        : 'border-2 border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] hover:border-[#333333]';
+        : 'border-2 border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333]';
     }
     return variant === 'primary'
       ? 'bg-white text-black hover:bg-[#E0E0E0]'
-      : 'border border-[#1F1F1F] text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515]';
+      : 'border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)]';
   };
 
   // Icon based on state
@@ -555,7 +555,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
             }}
           />
           {/* Modal Content */}
-          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl overflow-hidden m-4">
+          <div className="relative w-full h-full max-w-4xl max-h-[90vh] bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-xl overflow-hidden m-4">
             {/* Close button - only show if survey is not required */}
             {!intakeSurvey.is_required && (
               <button
@@ -563,7 +563,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#151515] rounded-full transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-full transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

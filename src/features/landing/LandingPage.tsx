@@ -104,9 +104,9 @@ const LandingPage: React.FC = () => {
     : filteredCourses;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       {/* Header Navigation */}
-      <header className="sticky top-0 z-50 bg-[#0A0A0A] border-b border-[#1F1F1F]">
+      <header className="sticky top-0 z-50 bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo */}
@@ -118,7 +118,7 @@ const LandingPage: React.FC = () => {
             <div className="hidden sm:flex flex-1 max-w-2xl">
               <div className="relative w-full">
                 <Search
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]"
                   size={20}
                 />
                 <input
@@ -127,11 +127,11 @@ const LandingPage: React.FC = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={t('exploreLanding.searchPlaceholder')}
-                  className="w-full pl-12 pr-4 py-2.5 bg-[#0A0A0A] border border-[#1F1F1F] rounded-full text-sm text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-all"
+                  className="w-full pl-12 pr-4 py-2.5 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-full text-sm text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] transition-all"
                 />
                 {isSearching && (
                   <Loader2
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#FAFAFA] animate-spin"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-text,#FAFAFA)] animate-spin"
                     size={18}
                   />
                 )}
@@ -140,7 +140,7 @@ const LandingPage: React.FC = () => {
 
             {/* Navigation & Auth Buttons */}
             <div className="flex items-center gap-3 shrink-0">
-              <Link to="/analytics" className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors">
+              <Link to="/analytics" className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75 animate-ping" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#22C55E]" />
@@ -149,20 +149,20 @@ const LandingPage: React.FC = () => {
               </Link>
               <Link
                 to="/creators"
-                className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors"
+                className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors"
               >
                 {t('exploreLanding.nav.forCreators')}
               </Link>
               <Link
                 to="/communities"
-                className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors"
+                className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors"
               >
                 {t('exploreLanding.nav.communities')}
               </Link>
-              <LanguageSwitcher variant="minimal" className="text-[#A0A0A0]" />
+              <LanguageSwitcher variant="minimal" className="text-[var(--fc-section-muted,#A0A0A0)]" />
               <Link
                 to="/login"
-                className="px-4 py-2 text-sm font-medium text-[#FAFAFA] border border-[#1F1F1F] rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors"
+                className="px-4 py-2 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
               >
                 {t('auth.signIn')}
               </Link>
@@ -178,16 +178,16 @@ const LandingPage: React.FC = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-[#0A0A0A] py-16 sm:py-20">
+      <section className="bg-[var(--fc-section,#0A0A0A)] py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#FAFAFA] mb-6 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-6 leading-tight tracking-tight">
               {t('exploreLanding.hero.titlePart1')}{' '}
               <span className="heading-highlight">
                 {t('exploreLanding.hero.titleHighlight')}
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-[#A0A0A0] mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl text-[var(--fc-section-muted,#A0A0A0)] mb-8 leading-relaxed">
               {t('exploreLanding.hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -200,7 +200,7 @@ const LandingPage: React.FC = () => {
               </Link>
               <a
                 href="#courses"
-                className="cta-secondary inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold text-[#FAFAFA] bg-transparent rounded-xl border-2 border-[#1F1F1F] hover:border-[#333333] hover:bg-[#151515]"
+                className="cta-secondary inline-flex items-center justify-center gap-2 px-8 py-3 text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] bg-transparent rounded-xl border-2 border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] hover:bg-[var(--fc-section-hover,#151515)]"
               >
                 {t('exploreLanding.hero.browseCourses')}
                 <ChevronRight size={20} />
@@ -211,39 +211,39 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-8 bg-[#0A0A0A] border-b border-[#1F1F1F]">
+      <section className="py-8 bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 text-center">
             <div className="flex items-center gap-2">
-              <Users className="text-[#A0A0A0]" size={24} />
+              <Users className="text-[var(--fc-section-muted,#A0A0A0)]" size={24} />
               <div>
-                <span className="block text-2xl font-bold text-[#FAFAFA]">
+                <span className="block text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
                   {formatNumber(totalLearners > 0 ? totalLearners : 1000)}+
                 </span>
-                <span className="text-sm text-[#666666]">{t('exploreLanding.stats.learners')}</span>
+                <span className="text-sm text-[var(--fc-section-muted,#666666)]">{t('exploreLanding.stats.learners')}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <BookOpen className="text-[#A0A0A0]" size={24} />
+              <BookOpen className="text-[var(--fc-section-muted,#A0A0A0)]" size={24} />
               <div>
-                <span className="block text-2xl font-bold text-[#FAFAFA]">
+                <span className="block text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
                   {courses.length > 0 ? courses.length : 50}+
                 </span>
-                <span className="text-sm text-[#666666]">{t('exploreLanding.stats.courses')}</span>
+                <span className="text-sm text-[var(--fc-section-muted,#666666)]">{t('exploreLanding.stats.courses')}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Award className="text-[#EAB308]" size={24} />
               <div>
-                <span className="block text-2xl font-bold text-[#FAFAFA]">4.8</span>
-                <span className="text-sm text-[#666666]">{t('exploreLanding.stats.avgRating')}</span>
+                <span className="block text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">4.8</span>
+                <span className="text-sm text-[var(--fc-section-muted,#666666)]">{t('exploreLanding.stats.avgRating')}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <TrendingUp className="text-[#A0A0A0]" size={24} />
+              <TrendingUp className="text-[var(--fc-section-muted,#A0A0A0)]" size={24} />
               <div>
-                <span className="block text-2xl font-bold text-[#FAFAFA]">95%</span>
-                <span className="text-sm text-[#666666]">{t('exploreLanding.stats.completionRate')}</span>
+                <span className="block text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">95%</span>
+                <span className="text-sm text-[var(--fc-section-muted,#666666)]">{t('exploreLanding.stats.completionRate')}</span>
               </div>
             </div>
           </div>
@@ -251,7 +251,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Category Navigation */}
-      <section className="py-6 bg-[#0A0A0A] border-b border-[#1F1F1F]">
+      <section className="py-6 bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <CategoryFilter
             selectedCategory={selectedCategory}
@@ -261,15 +261,15 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Course Catalog Grid */}
-      <section id="courses" className="py-12 sm:py-16 bg-[#0A0A0A]">
+      <section id="courses" className="py-12 sm:py-16 bg-[var(--fc-section,#0A0A0A)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#FAFAFA]">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
               {searchQuery
                 ? `${t('exploreLanding.courseGrid.resultsFor')} "${searchQuery}"`
                 : t('exploreLanding.courseGrid.allCourses')}
             </h2>
-            <span className="text-sm text-[#666666]">
+            <span className="text-sm text-[var(--fc-section-muted,#666666)]">
               {displayedCourses.length} {displayedCourses.length !== 1 ? t('exploreLanding.courseGrid.coursePlural') : t('exploreLanding.courseGrid.course')}
             </span>
           </div>
@@ -285,10 +285,10 @@ const LandingPage: React.FC = () => {
           {!isLoading && displayedCourses.length === 0 && (
             <div className="text-center py-20">
               <BookOpen className="w-16 h-16 text-[#333333] mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-[#FAFAFA] mb-2">
+              <h3 className="text-xl font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">
                 {searchQuery ? t('exploreLanding.courseGrid.noCoursesFound') : t('exploreLanding.courseGrid.noCoursesAvailable')}
               </h3>
-              <p className="text-[#666666] mb-6">
+              <p className="text-[var(--fc-section-muted,#666666)] mb-6">
                 {searchQuery
                   ? t('exploreLanding.courseGrid.tryAdjustingSearch')
                   : t('exploreLanding.courseGrid.checkBackSoon')}
@@ -299,7 +299,7 @@ const LandingPage: React.FC = () => {
                     setSearchQuery('');
                     setFilteredCourses(courses);
                   }}
-                  className="text-[#FAFAFA] font-medium hover:text-white"
+                  className="text-[var(--fc-section-text,#FAFAFA)] font-medium hover:text-white"
                 >
                   {t('exploreLanding.courseGrid.clearSearch')}
                 </button>
@@ -319,7 +319,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Certificates & Rewards Section */}
-      <section className="py-20 bg-[#0A0A0A] border-t border-[#1F1F1F]">
+      <section className="py-20 bg-[var(--fc-section,#0A0A0A)] border-t border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Certificate Image */}
@@ -334,10 +334,10 @@ const LandingPage: React.FC = () => {
 
             {/* Text Content */}
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#FAFAFA] mb-3">
+              <h2 className="text-3xl sm:text-4xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-3">
                 {t('exploreLanding.certificates.title')}
               </h2>
-              <p className="text-lg text-[#A0A0A0] mb-8">
+              <p className="text-lg text-[var(--fc-section-muted,#A0A0A0)] mb-8">
                 {t('exploreLanding.certificates.subtitle')}
               </p>
 
@@ -347,10 +347,10 @@ const LandingPage: React.FC = () => {
                     <Award className="w-5 h-5 text-[#EAB308]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#FAFAFA] mb-1">
+                    <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-1">
                       {t('exploreLanding.certificates.european')}
                     </h3>
-                    <p className="text-sm text-[#A0A0A0]">
+                    <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                       {t('exploreLanding.certificates.europeanDesc')}
                     </p>
                   </div>
@@ -361,10 +361,10 @@ const LandingPage: React.FC = () => {
                     <Gift className="w-5 h-5 text-[#EAB308]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#FAFAFA] mb-1">
+                    <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-1">
                       {t('exploreLanding.certificates.rewards')}
                     </h3>
-                    <p className="text-sm text-[#A0A0A0]">
+                    <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                       {t('exploreLanding.certificates.rewardsDesc')}
                     </p>
                   </div>
@@ -375,10 +375,10 @@ const LandingPage: React.FC = () => {
                     <TrendingUp className="w-5 h-5 text-[#EAB308]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#FAFAFA] mb-1">
+                    <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-1">
                       {t('exploreLanding.certificates.career')}
                     </h3>
-                    <p className="text-sm text-[#A0A0A0]">
+                    <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                       {t('exploreLanding.certificates.careerDesc')}
                     </p>
                   </div>
@@ -390,12 +390,12 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#0A0A0A] border-t border-[#1F1F1F]">
+      <section className="py-16 bg-[var(--fc-section,#0A0A0A)] border-t border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#FAFAFA] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-4">
             {t('exploreLanding.cta.title')}
           </h2>
-          <p className="text-lg text-[#A0A0A0] mb-8">
+          <p className="text-lg text-[var(--fc-section-muted,#A0A0A0)] mb-8">
             {t('exploreLanding.cta.subtitle')}
           </p>
           <Link
@@ -409,21 +409,21 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0A0A0A] border-t border-[#1F1F1F] text-white py-12">
+      <footer className="bg-[var(--fc-section,#0A0A0A)] border-t border-[var(--fc-section-border,#1F1F1F)] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">
               <div className="mb-4">
                 <Logo variant="light" size="sm" showText={false} />
               </div>
-              <p className="text-[#A0A0A0] text-sm">
+              <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm">
                 {t('exploreLanding.footer.tagline')}
               </p>
             </div>
 
             <div>
               <h3 className="font-semibold mb-4">{t('exploreLanding.footer.learn')}</h3>
-              <ul className="space-y-2 text-sm text-[#A0A0A0]">
+              <ul className="space-y-2 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                 <li>
                   <a href="#courses" className="hover:text-white transition-colors">
                     {t('exploreLanding.footer.browseCourses')}
@@ -439,7 +439,7 @@ const LandingPage: React.FC = () => {
 
             <div>
               <h3 className="font-semibold mb-4">{t('exploreLanding.footer.teach')}</h3>
-              <ul className="space-y-2 text-sm text-[#A0A0A0]">
+              <ul className="space-y-2 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                 <li>
                   <Link to="/creators" className="hover:text-white transition-colors">
                     {t('exploreLanding.footer.becomeCreator')}
@@ -450,7 +450,7 @@ const LandingPage: React.FC = () => {
 
             <div>
               <h3 className="font-semibold mb-4">{t('exploreLanding.footer.support')}</h3>
-              <ul className="space-y-2 text-sm text-[#A0A0A0]">
+              <ul className="space-y-2 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
                     {t('exploreLanding.footer.helpCenter')}
@@ -465,8 +465,8 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="border-t border-[#1F1F1F] pt-8">
-            <p className="text-center text-sm text-[#666666]">
+          <div className="border-t border-[var(--fc-section-border,#1F1F1F)] pt-8">
+            <p className="text-center text-sm text-[var(--fc-section-muted,#666666)]">
               {new Date().getFullYear()} {t('exploreLanding.footer.copyright')}
             </p>
           </div>
@@ -489,10 +489,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   return (
     <Link
       to={`/signup?course=${course.id}`}
-      className="group bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden hover:border-[#333333] transition-all duration-200"
+      className="group bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden hover:border-[#333333] transition-all duration-200"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-[4/3] bg-[#1F1F1F] overflow-hidden">
+      <div className="relative aspect-[4/3] bg-[var(--fc-section-hover,#1F1F1F)] overflow-hidden">
         {course.thumbnail_url ? (
           <img
             src={course.thumbnail_url}
@@ -514,13 +514,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-[#FAFAFA] mb-1 line-clamp-2 group-hover:text-white transition-colors">
+        <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-1 line-clamp-2 group-hover:text-white transition-colors">
           {course.title}
         </h3>
 
         {/* Creator */}
         {course.creator && (
-          <p className="text-sm text-[#666666] mb-2">
+          <p className="text-sm text-[var(--fc-section-muted,#666666)] mb-2">
             {course.creator.full_name}
           </p>
         )}
@@ -559,7 +559,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                     {proof.displayVoters.map((voter, i) => (
                       <div
                         key={i}
-                        className="w-6 h-6 rounded-full border-2 border-[#0A0A0A] overflow-hidden bg-[#1F1F1F] flex-shrink-0"
+                        className="w-6 h-6 rounded-full border-2 border-[#0A0A0A] overflow-hidden bg-[var(--fc-section-hover,#1F1F1F)] flex-shrink-0"
                         title={voter.full_name}
                       >
                         {voter.avatar_url ? (
@@ -586,7 +586,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
         {/* Price */}
         <div className="flex items-center justify-between">
-          <span className="font-bold text-[#FAFAFA]">
+          <span className="font-bold text-[var(--fc-section-text,#FAFAFA)]">
             {course.is_free || course.price === 0 ? (
               <span className="text-[#22C55E]">{t('exploreLanding.courseCard.free')}</span>
             ) : (

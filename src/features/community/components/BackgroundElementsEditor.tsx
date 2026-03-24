@@ -64,11 +64,11 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
       {elements.map((el) => (
         <div
           key={el.id}
-          className="bg-[#151515] rounded-lg border border-[#1F1F1F] p-3 space-y-3"
+          className="bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-section-border,#1F1F1F)] p-3 space-y-3"
         >
           <div className="flex items-center gap-3">
             {/* Preview */}
-            <div className="w-12 h-12 rounded bg-[#0A0A0A] border border-[#1F1F1F] flex items-center justify-center overflow-hidden flex-shrink-0">
+            <div className="w-12 h-12 rounded bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] flex items-center justify-center overflow-hidden flex-shrink-0">
               <img
                 src={el.image_url}
                 alt=""
@@ -78,12 +78,12 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
             </div>
 
             <div className="flex-1 min-w-0">
-              <p className="text-xs text-[#A0A0A0] truncate">{el.image_url.split('/').pop()}</p>
+              <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] truncate">{el.image_url.split('/').pop()}</p>
             </div>
 
             <button
               onClick={() => removeElement(el.id)}
-              className="p-1.5 text-[#A0A0A0] hover:text-[#EF4444] transition-colors"
+              className="p-1.5 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[#EF4444] transition-colors"
             >
               <Trash2 size={14} />
             </button>
@@ -93,7 +93,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
           <div className="grid grid-cols-2 gap-2">
             {/* Position X */}
             <div>
-              <label className="text-[10px] text-[#666666] uppercase tracking-wider">X %</label>
+              <label className="text-[10px] text-[var(--fc-section-muted,#666666)] uppercase tracking-wider">X %</label>
               <input
                 type="range"
                 min="0"
@@ -105,7 +105,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
             </div>
             {/* Position Y */}
             <div>
-              <label className="text-[10px] text-[#666666] uppercase tracking-wider">Y %</label>
+              <label className="text-[10px] text-[var(--fc-section-muted,#666666)] uppercase tracking-wider">Y %</label>
               <input
                 type="range"
                 min="0"
@@ -117,7 +117,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
             </div>
             {/* Size */}
             <div>
-              <label className="text-[10px] text-[#666666] uppercase tracking-wider flex items-center gap-1">
+              <label className="text-[10px] text-[var(--fc-section-muted,#666666)] uppercase tracking-wider flex items-center gap-1">
                 {t('communityHub.pricing.bgElements.size')}
               </label>
               <input
@@ -131,7 +131,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
             </div>
             {/* Opacity */}
             <div>
-              <label className="text-[10px] text-[#666666] uppercase tracking-wider">
+              <label className="text-[10px] text-[var(--fc-section-muted,#666666)] uppercase tracking-wider">
                 {t('communityHub.pricing.bgElements.opacity')}
               </label>
               <input
@@ -145,7 +145,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
             </div>
             {/* Rotation */}
             <div className="col-span-2">
-              <label className="text-[10px] text-[#666666] uppercase tracking-wider flex items-center gap-1">
+              <label className="text-[10px] text-[var(--fc-section-muted,#666666)] uppercase tracking-wider flex items-center gap-1">
                 <RotateCw size={10} />
                 {t('communityHub.pricing.bgElements.rotation')}
               </label>
@@ -164,7 +164,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
 
       {/* Add button */}
       <label className="cursor-pointer">
-        <span className="inline-flex items-center gap-2 px-3 py-2 bg-[#151515] hover:bg-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] transition-colors border border-dashed border-[#333333]">
+        <span className="inline-flex items-center gap-2 px-3 py-2 bg-[var(--fc-section-hover,#151515)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] transition-colors border border-dashed border-[#333333]">
           {isUploading ? (
             <>
               <Loader2 size={14} className="animate-spin" />
@@ -185,7 +185,7 @@ const BackgroundElementsEditor: React.FC<BackgroundElementsEditorProps> = ({
           disabled={isUploading}
         />
       </label>
-      <p className="text-xs text-[#A0A0A0]">
+      <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)]">
         {t('communityHub.pricing.bgElements.hint')}
       </p>
     </div>

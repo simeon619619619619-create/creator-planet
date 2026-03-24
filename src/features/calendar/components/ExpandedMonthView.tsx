@@ -91,9 +91,9 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
   };
 
   return (
-    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+    <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
       {/* Header */}
-      <div className="p-4 border-b border-[#1F1F1F]">
+      <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
         <CalendarHeader
           currentDate={currentDate}
           viewMode={viewMode}
@@ -105,11 +105,11 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
       </div>
 
       {/* Week day headers */}
-      <div className="grid grid-cols-7 border-b border-[#1F1F1F]">
+      <div className="grid grid-cols-7 border-b border-[var(--fc-section-border,#1F1F1F)]">
         {weekDays.map((day) => (
           <div
             key={day}
-            className="py-3 text-center text-sm font-medium text-[#A0A0A0] border-r border-[#1F1F1F] last:border-r-0"
+            className="py-3 text-center text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] border-r border-[var(--fc-section-border,#1F1F1F)] last:border-r-0"
           >
             {day}
           </div>
@@ -148,9 +148,9 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
 
       {/* Expandable day detail panel */}
       {selectedDay && selectedDayDate && (
-        <div className="border-t border-[#1F1F1F] p-6 bg-[#0A0A0A]">
+        <div className="border-t border-[var(--fc-section-border,#1F1F1F)] p-6 bg-[var(--fc-section,#0A0A0A)]">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-[#FAFAFA]">
+            <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">
               {formatFullDate(selectedDayDate)}
             </h3>
             {isCreator && (
@@ -173,19 +173,19 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
                 return (
                   <div
                     key={event.id}
-                    className="bg-[#0A0A0A] rounded-lg p-4 border border-[#1F1F1F] flex flex-col sm:flex-row sm:items-center gap-4"
+                    className="bg-[var(--fc-section,#0A0A0A)] rounded-lg p-4 border border-[var(--fc-section-border,#1F1F1F)] flex flex-col sm:flex-row sm:items-center gap-4"
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#1F1F1F] text-[#A0A0A0]">
+                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]">
                           {event.event_type.toUpperCase().replace('_', ' ')}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-[#FAFAFA]">{event.title}</h4>
+                      <h4 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">{event.title}</h4>
                       {event.description && (
-                        <p className="text-sm text-[#666666] mt-1 line-clamp-2">{event.description}</p>
+                        <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1 line-clamp-2">{event.description}</p>
                       )}
-                      <div className="flex items-center gap-4 mt-2 text-sm text-[#666666]">
+                      <div className="flex items-center gap-4 mt-2 text-sm text-[var(--fc-section-muted,#666666)]">
                         <div className="flex items-center gap-1">
                           <Clock size={14} />
                           {timeInfo}
@@ -225,7 +225,7 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
                       })()}
                       <button
                         onClick={() => downloadICS(event)}
-                        className="p-2 border border-[#1F1F1F] text-[#A0A0A0] rounded-lg hover:bg-[#151515]"
+                        className="p-2 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded-lg hover:bg-[var(--fc-section-hover,#151515)]"
                         title="Add to Calendar"
                       >
                         <Download size={14} />
@@ -236,7 +236,7 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
                           className={`px-3 py-2 border rounded-lg text-sm font-medium ${
                             isAttending
                               ? 'border-[#EF4444]/20 text-[#EF4444] hover:bg-[#EF4444]/10'
-                              : 'border-[#1F1F1F] hover:bg-[#0A0A0A]'
+                              : 'border-[var(--fc-section-border,#1F1F1F)] hover:bg-[var(--fc-section,#0A0A0A)]'
                           }`}
                         >
                           {isAttending ? 'Cancel' : 'RSVP'}
@@ -249,11 +249,11 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-[#666666]">No events scheduled for this day.</p>
+              <p className="text-[var(--fc-section-muted,#666666)]">No events scheduled for this day.</p>
               {isCreator && (
                 <button
                   onClick={() => handleQuickCreate(selectedDay)}
-                  className="mt-3 text-[#FAFAFA] hover:text-[#FAFAFA] text-sm font-medium"
+                  className="mt-3 text-[var(--fc-section-text,#FAFAFA)] hover:text-[var(--fc-section-text,#FAFAFA)] text-sm font-medium"
                 >
                   + Create an event
                 </button>

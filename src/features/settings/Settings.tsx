@@ -102,7 +102,7 @@ const Settings: React.FC = () => {
         return selectedCommunity ? (
           <ChatbotSettings communityId={selectedCommunity.id} />
         ) : (
-          <div className="text-center py-8 text-[#666666]">
+          <div className="text-center py-8 text-[var(--fc-section-muted,#666666)]">
             {t('errors.selectCommunity')}
           </div>
         );

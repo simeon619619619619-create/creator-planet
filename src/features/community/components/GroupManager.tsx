@@ -118,7 +118,7 @@ const GroupManager: React.FC<GroupManagerProps> = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
+        <Loader2 className="w-6 h-6 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
       </div>
     );
   }
@@ -127,16 +127,16 @@ const GroupManager: React.FC<GroupManagerProps> = ({
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-[#FAFAFA]">{t('communityHub.groups.title')}</h3>
+        <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('communityHub.groups.title')}</h3>
         <button
           onClick={onClose}
-          className="p-1 text-[#666666] hover:text-[#FAFAFA]"
+          className="p-1 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)]"
         >
           <X size={20} />
         </button>
       </div>
 
-      <p className="text-sm text-[#A0A0A0]">
+      <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
         {t('communityHub.groups.description')}
       </p>
 
@@ -145,49 +145,49 @@ const GroupManager: React.FC<GroupManagerProps> = ({
         {groups.map((group) => (
           <div
             key={group.id}
-            className="flex items-center gap-3 p-3 bg-[#151515] rounded-lg group"
+            className="flex items-center gap-3 p-3 bg-[var(--fc-section-hover,#151515)] rounded-lg group"
           >
-            <GripVertical size={16} className="text-[#666666] cursor-grab" />
+            <GripVertical size={16} className="text-[var(--fc-section-muted,#666666)] cursor-grab" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <span className="font-medium text-[#FAFAFA]">{group.name}</span>
-                <span className="text-xs text-[#A0A0A0] bg-[#1F1F1F] px-2 py-0.5 rounded-full">
+                <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{group.name}</span>
+                <span className="text-xs text-[var(--fc-section-muted,#A0A0A0)] bg-[var(--fc-section-hover,#1F1F1F)] px-2 py-0.5 rounded-full">
                   {group.member_count === 1 ? t('communityHub.groups.memberCount', { count: group.member_count }) : t('communityHub.groups.memberCountPlural', { count: group.member_count })}
                 </span>
               </div>
               {group.description && (
-                <p className="text-sm text-[#A0A0A0] truncate">{group.description}</p>
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] truncate">{group.description}</p>
               )}
             </div>
             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
                 onClick={() => onSelectGroup(group.id)}
-                className="p-1.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded"
+                className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded"
                 title={t('communityHub.groups.tooltip.manageMembers')}
               >
                 <Users size={16} />
               </button>
               <button
                 onClick={() => startEdit(group)}
-                className="p-1.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded"
+                className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded"
                 title={t('communityHub.groups.tooltip.editGroup')}
               >
                 <Edit3 size={16} />
               </button>
               <button
                 onClick={() => handleDeleteGroup(group.id)}
-                className="p-1.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded"
+                className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded"
                 title={t('communityHub.groups.tooltip.deleteGroup')}
               >
                 <Trash2 size={16} />
               </button>
             </div>
-            <ChevronRight size={16} className="text-[#666666]" />
+            <ChevronRight size={16} className="text-[var(--fc-section-muted,#666666)]" />
           </div>
         ))}
 
         {groups.length === 0 && !showAddForm && (
-          <p className="text-sm text-[#A0A0A0] text-center py-4">
+          <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] text-center py-4">
             {t('communityHub.groups.emptyState')}
           </p>
         )}
@@ -195,13 +195,13 @@ const GroupManager: React.FC<GroupManagerProps> = ({
 
       {/* Add/Edit Form */}
       {(showAddForm || editingGroup) && (
-        <div className="p-4 bg-[#151515] rounded-lg border border-[#1F1F1F] space-y-3">
+        <div className="p-4 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-section-border,#1F1F1F)] space-y-3">
           <input
             type="text"
             value={newGroupName}
             onChange={(e) => setNewGroupName(e.target.value)}
             placeholder={t('communityHub.groups.form.namePlaceholder')}
-            className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+            className="w-full px-3 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
             autoFocus
           />
           <input
@@ -209,7 +209,7 @@ const GroupManager: React.FC<GroupManagerProps> = ({
             value={newGroupDescription}
             onChange={(e) => setNewGroupDescription(e.target.value)}
             placeholder={t('communityHub.groups.form.descriptionPlaceholder')}
-            className="w-full px-3 py-2 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+            className="w-full px-3 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
           />
           <div className="flex gap-2">
             <button
@@ -230,7 +230,7 @@ const GroupManager: React.FC<GroupManagerProps> = ({
                 setShowAddForm(false);
                 cancelEdit();
               }}
-              className="px-4 py-2 bg-[#1F1F1F] text-[#A0A0A0] rounded-lg text-sm font-medium hover:bg-[#333333]"
+              className="px-4 py-2 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded-lg text-sm font-medium hover:bg-[#333333]"
             >
               {t('communityHub.groups.form.cancel')}
             </button>
@@ -242,7 +242,7 @@ const GroupManager: React.FC<GroupManagerProps> = ({
       {!showAddForm && !editingGroup && (
         <button
           onClick={() => setShowAddForm(true)}
-          className="w-full py-2 px-4 border-2 border-dashed border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-[#333333] hover:text-[#FAFAFA] flex items-center justify-center gap-2 transition-colors"
+          className="w-full py-2 px-4 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-muted,#A0A0A0)] hover:border-[#333333] hover:text-[var(--fc-section-text,#FAFAFA)] flex items-center justify-center gap-2 transition-colors"
         >
           <Plus size={18} />
           {t('communityHub.groups.addGroup')}

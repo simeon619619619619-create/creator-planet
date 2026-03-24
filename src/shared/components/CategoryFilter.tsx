@@ -22,7 +22,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
           className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedCategory === null
               ? 'bg-[#22C55E] text-black'
-              : 'bg-[#0A0A0A] text-[#A0A0A0] hover:bg-[var(--fc-surface-hover,#151515)] border border-[#1F1F1F]'
+              : 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)]'
           }`}
         >
           {t('categories.all')}
@@ -34,7 +34,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
             className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               selectedCategory === cat.value
                 ? 'bg-[#22C55E] text-black'
-                : 'bg-[#0A0A0A] text-[#A0A0A0] hover:bg-[var(--fc-surface-hover,#151515)] border border-[#1F1F1F]'
+                : 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)]'
             }`}
           >
             {t(cat.labelKey)}
@@ -42,7 +42,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
         ))}
       </div>
       {selectedCategory && (
-        <p className="mt-3 text-sm text-[#A0A0A0] animate-[fadeIn_0.3s_ease-in-out]">
+        <p className="mt-3 text-sm text-[var(--fc-section-muted,#A0A0A0)] animate-[fadeIn_0.3s_ease-in-out]">
           {t(`categoryBenefits.${selectedCategory}`)}
         </p>
       )}

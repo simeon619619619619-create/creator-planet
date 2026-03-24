@@ -87,16 +87,16 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
 
       {/* Chat Panel */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-[500px] z-50 bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] flex flex-col overflow-hidden">
+        <div className="fixed bottom-6 right-6 w-96 h-[500px] z-50 bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-[#151515] border-b border-[#1F1F1F] text-[#FAFAFA] p-4 flex items-center justify-between">
+          <div className="bg-[var(--fc-section-hover,#151515)] border-b border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Bot size={20} />
               <h3 className="font-semibold">Course AI Helper</h3>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="hover:bg-[#1F1F1F] p-1 rounded transition-colors"
+              className="hover:bg-[var(--fc-section-hover,#1F1F1F)] p-1 rounded transition-colors"
               aria-label="Close chat"
             >
               <X size={20} />
@@ -104,7 +104,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#0A0A0A]">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[var(--fc-section,#0A0A0A)]">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
@@ -113,7 +113,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
                     msg.role === 'model'
-                      ? 'bg-[#1F1F1F] text-[#FAFAFA]'
+                      ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)]'
                       : 'bg-[#FAFAFA] text-black'
                   }`}
                 >
@@ -122,7 +122,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
                 <div
                   className={`max-w-[80%] p-3 rounded-2xl ${
                     msg.role === 'model'
-                      ? 'bg-[#151515] border border-[#1F1F1F] text-[#A0A0A0] rounded-tl-none'
+                      ? 'bg-[var(--fc-section-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded-tl-none'
                       : 'bg-[#FAFAFA] text-black rounded-tr-none'
                   }`}
                 >
@@ -136,10 +136,10 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
             ))}
             {isTyping && (
               <div className="flex gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#1F1F1F] text-[#FAFAFA] flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] flex items-center justify-center shrink-0">
                   <Bot size={18} />
                 </div>
-                <div className="bg-[#151515] border border-[#1F1F1F] p-3 rounded-2xl rounded-tl-none flex gap-1">
+                <div className="bg-[var(--fc-section-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)] p-3 rounded-2xl rounded-tl-none flex gap-1">
                   <span
                     className="w-2 h-2 bg-white rounded-full animate-bounce"
                     style={{ animationDelay: '0ms' }}
@@ -159,7 +159,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
           </div>
 
           {/* Input Area */}
-          <div className="p-4 bg-[#0A0A0A] border-t border-[#1F1F1F]">
+          <div className="p-4 bg-[var(--fc-section,#0A0A0A)] border-t border-[var(--fc-section-border,#1F1F1F)]">
             <div className="flex gap-2">
               <input
                 type="text"
@@ -167,7 +167,7 @@ const CourseAiHelper: React.FC<CourseAiHelperProps> = ({
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
                 placeholder="Ask me anything about this course..."
-                className="flex-1 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg px-3 py-2 text-sm text-[#FAFAFA] placeholder:text-[#666666] focus:border-[#555555] focus:ring-1 focus:ring-white/10 focus:outline-none"
+                className="flex-1 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:border-[var(--fc-section-text,#555555)] focus:ring-1 focus:ring-white/10 focus:outline-none"
               />
               <button
                 onClick={handleSend}

@@ -37,89 +37,89 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-3xl mx-4 overflow-hidden max-h-[90vh] flex flex-col">
-        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl w-full max-w-3xl mx-4 overflow-hidden max-h-[90vh] flex flex-col">
+        <div className="flex items-center justify-between p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div>
-            <h3 className="text-lg font-semibold text-[#FAFAFA]">Course Analytics</h3>
-            <p className="text-sm text-[#666666]">{courseName}</p>
+            <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">Course Analytics</h3>
+            <p className="text-sm text-[var(--fc-section-muted,#666666)]">{courseName}</p>
           </div>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-[#1F1F1F] rounded-lg transition-colors"
+            className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
           >
-            <X size={20} className="text-[#666666]" />
+            <X size={20} className="text-[var(--fc-section-muted,#666666)]" />
           </button>
         </div>
 
         <div className="flex-1 overflow-y-auto p-4">
           {isLoading ? (
             <div className="flex items-center justify-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA]" />
+              <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
             </div>
           ) : analytics ? (
             <div className="space-y-6">
               {/* Overview Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-[#1F1F1F] rounded-xl p-4">
-                  <div className="flex items-center gap-2 text-[#FAFAFA] mb-1">
+                <div className="bg-[var(--fc-section-hover,#1F1F1F)] rounded-xl p-4">
+                  <div className="flex items-center gap-2 text-[var(--fc-section-text,#FAFAFA)] mb-1">
                     <Users size={18} />
                     <span className="text-sm font-medium">Enrolled</span>
                   </div>
-                  <p className="text-2xl font-bold text-[#FAFAFA]">{analytics.enrolledCount}</p>
+                  <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{analytics.enrolledCount}</p>
                 </div>
                 <div className="bg-[#22C55E]/10 rounded-xl p-4">
                   <div className="flex items-center gap-2 text-[#22C55E] mb-1">
                     <TrendingUp size={18} />
                     <span className="text-sm font-medium">Completion</span>
                   </div>
-                  <p className="text-2xl font-bold text-[#FAFAFA]">{analytics.completionRate}%</p>
+                  <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{analytics.completionRate}%</p>
                 </div>
-                <div className="bg-[#1F1F1F] rounded-xl p-4">
-                  <div className="flex items-center gap-2 text-[#A0A0A0] mb-1">
+                <div className="bg-[var(--fc-section-hover,#1F1F1F)] rounded-xl p-4">
+                  <div className="flex items-center gap-2 text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                     <Activity size={18} />
                     <span className="text-sm font-medium">Active (7d)</span>
                   </div>
-                  <p className="text-2xl font-bold text-[#FAFAFA]">{analytics.activeStudents}</p>
+                  <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{analytics.activeStudents}</p>
                 </div>
                 <div className="bg-[#EAB308]/10 rounded-xl p-4">
                   <div className="flex items-center gap-2 text-[#EAB308] mb-1">
                     <TrendingUp size={18} />
                     <span className="text-sm font-medium">Avg Progress</span>
                   </div>
-                  <p className="text-2xl font-bold text-[#FAFAFA]">{analytics.averageProgress}%</p>
+                  <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{analytics.averageProgress}%</p>
                 </div>
               </div>
 
               {/* Lesson Completion Rates */}
-              <div className="bg-[#0A0A0A] rounded-xl p-4">
+              <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl p-4">
                 <button
                   onClick={() => setExpandedLessons(!expandedLessons)}
                   className="w-full flex items-center justify-between mb-3"
                 >
-                  <h4 className="font-semibold text-[#FAFAFA]">Lesson Completion Rates</h4>
+                  <h4 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">Lesson Completion Rates</h4>
                   {expandedLessons ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </button>
 
                 {analytics.lessonCompletionRates.length === 0 ? (
-                  <p className="text-sm text-[#666666]">No lessons in this course yet</p>
+                  <p className="text-sm text-[var(--fc-section-muted,#666666)]">No lessons in this course yet</p>
                 ) : (
                   <div className={`space-y-2 ${!expandedLessons ? 'max-h-40 overflow-hidden' : ''}`}>
                     {analytics.lessonCompletionRates.map((lesson) => (
                       <div key={lesson.lessonId} className="flex items-center gap-3">
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-[#A0A0A0] truncate">
+                          <p className="text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] truncate">
                             {lesson.lessonTitle}
                           </p>
-                          <p className="text-xs text-[#666666]">{lesson.moduleName}</p>
+                          <p className="text-xs text-[var(--fc-section-muted,#666666)]">{lesson.moduleName}</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+                          <div className="w-24 h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
                             <div
                               className="h-full bg-[#22C55E] transition-all"
                               style={{ width: `${lesson.completionRate}%` }}
                             />
                           </div>
-                          <span className="text-xs font-medium text-[#A0A0A0] w-10 text-right">
+                          <span className="text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] w-10 text-right">
                             {lesson.completionRate}%
                           </span>
                         </div>
@@ -130,17 +130,17 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
               </div>
 
               {/* Student Progress */}
-              <div className="bg-[#0A0A0A] rounded-xl p-4">
+              <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl p-4">
                 <button
                   onClick={() => setExpandedStudents(!expandedStudents)}
                   className="w-full flex items-center justify-between mb-3"
                 >
-                  <h4 className="font-semibold text-[#FAFAFA]">Student Progress</h4>
+                  <h4 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">Student Progress</h4>
                   {expandedStudents ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </button>
 
                 {analytics.studentProgress.length === 0 ? (
-                  <p className="text-sm text-[#666666]">No students enrolled yet</p>
+                  <p className="text-sm text-[var(--fc-section-muted,#666666)]">No students enrolled yet</p>
                 ) : (
                   <div className={`space-y-3 ${!expandedStudents ? 'max-h-48 overflow-hidden' : ''}`}>
                     {analytics.studentProgress
@@ -153,9 +153,9 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
                         return (
                           <div
                             key={student.userId}
-                            className="flex items-center gap-3 bg-[#0A0A0A] rounded-lg p-3 border border-[#1F1F1F]"
+                            className="flex items-center gap-3 bg-[var(--fc-section,#0A0A0A)] rounded-lg p-3 border border-[var(--fc-section-border,#1F1F1F)]"
                           >
-                            <div className="w-8 h-8 rounded-full bg-[#1F1F1F] flex items-center justify-center overflow-hidden">
+                            <div className="w-8 h-8 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center overflow-hidden">
                               {student.avatarUrl ? (
                                 <img
                                   src={student.avatarUrl}
@@ -163,13 +163,13 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
                                   className="w-full h-full object-cover"
                                 />
                               ) : (
-                                <span className="text-xs font-semibold text-[#666666]">
+                                <span className="text-xs font-semibold text-[var(--fc-section-muted,#666666)]">
                                   {student.userName.charAt(0).toUpperCase()}
                                 </span>
                               )}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-[#A0A0A0] truncate flex items-center gap-2">
+                              <p className="text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] truncate flex items-center gap-2">
                                 {student.userName}
                                 {isInactive && (
                                   <span className="text-xs px-1.5 py-0.5 bg-[#EAB308]/10 text-[#EAB308] rounded">
@@ -177,12 +177,12 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
                                   </span>
                                 )}
                               </p>
-                              <p className="text-xs text-[#666666]">
+                              <p className="text-xs text-[var(--fc-section-muted,#666666)]">
                                 {student.completedLessons}/{student.totalLessons} lessons
                               </p>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="w-20 h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+                              <div className="w-20 h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
                                 <div
                                   className={`h-full transition-all ${
                                     student.progressPercent >= 80
@@ -194,7 +194,7 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
                                   style={{ width: `${student.progressPercent}%` }}
                                 />
                               </div>
-                              <span className="text-xs font-medium text-[#A0A0A0] w-10 text-right">
+                              <span className="text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] w-10 text-right">
                                 {student.progressPercent}%
                               </span>
                             </div>
@@ -206,14 +206,14 @@ const CourseAnalyticsPanel: React.FC<CourseAnalyticsPanelProps> = ({
               </div>
             </div>
           ) : (
-            <p className="text-center text-[#666666] py-12">Failed to load analytics</p>
+            <p className="text-center text-[var(--fc-section-muted,#666666)] py-12">Failed to load analytics</p>
           )}
         </div>
 
-        <div className="p-4 border-t border-[#1F1F1F]">
+        <div className="p-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
           <button
             onClick={onClose}
-            className="w-full px-4 py-2 bg-[#1F1F1F] hover:bg-[#1F1F1F] rounded-lg font-medium text-[#A0A0A0]"
+            className="w-full px-4 py-2 bg-[var(--fc-section-hover,#1F1F1F)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg font-medium text-[var(--fc-section-muted,#A0A0A0)]"
           >
             Close
           </button>

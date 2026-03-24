@@ -240,24 +240,24 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin" />
+        <Loader2 className="w-12 h-12 text-[var(--fc-section-text,#FAFAFA)] animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       {/* Header */}
-      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)]">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-[#1F1F1F] rounded-xl">
-                <ClipboardList className="w-7 h-7 text-[#FAFAFA]" />
+              <div className="p-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded-xl">
+                <ClipboardList className="w-7 h-7 text-[var(--fc-section-text,#FAFAFA)]" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('homeworkManagement.pageTitle')}</h1>
-                <p className="text-[#A0A0A0]">
+                <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('homeworkManagement.pageTitle')}</h1>
+                <p className="text-[var(--fc-section-muted,#A0A0A0)]">
                   {t('homeworkManagement.pageSubtitle')}
                 </p>
               </div>
@@ -290,19 +290,19 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
         <div className="grid grid-cols-12 gap-6">
           {/* Left Column - Assignment List */}
           <div className="col-span-4">
-            <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
-              <div className="p-4 border-b border-[#1F1F1F]">
-                <h2 className="font-semibold text-[#FAFAFA] flex items-center gap-2">
-                  <ClipboardList className="w-5 h-5 text-[#A0A0A0]" />
+            <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
+              <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
+                <h2 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] flex items-center gap-2">
+                  <ClipboardList className="w-5 h-5 text-[var(--fc-section-muted,#A0A0A0)]" />
                   {t('homeworkManagement.assignments.title')}
                 </h2>
               </div>
 
               {assignments.length === 0 ? (
                 <div className="p-8 text-center">
-                  <ClipboardList className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
-                  <h3 className="text-lg font-medium text-[#A0A0A0]">{t('homeworkManagement.assignments.emptyTitle')}</h3>
-                  <p className="text-[#666666] mt-1 mb-4">
+                  <ClipboardList className="w-12 h-12 text-[var(--fc-section-muted,#A0A0A0)] mx-auto mb-3" />
+                  <h3 className="text-lg font-medium text-[var(--fc-section-muted,#A0A0A0)]">{t('homeworkManagement.assignments.emptyTitle')}</h3>
+                  <p className="text-[var(--fc-section-muted,#666666)] mt-1 mb-4">
                     {t('homeworkManagement.assignments.emptyDescription')}
                   </p>
                   <button
@@ -321,13 +321,13 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                       onClick={() => handleAssignmentClick(assignment)}
                       className={`p-4 cursor-pointer transition-colors ${
                         selectedAssignment?.id === assignment.id
-                          ? 'bg-[#151515] border-l-4 border-white'
-                          : 'hover:bg-[#0A0A0A]'
+                          ? 'bg-[var(--fc-section-hover,#151515)] border-l-4 border-white'
+                          : 'hover:bg-[var(--fc-section,#0A0A0A)]'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-medium text-[#FAFAFA] truncate">
+                          <h3 className="font-medium text-[var(--fc-section-text,#FAFAFA)] truncate">
                             {assignment.title}
                           </h3>
                           <div className="flex items-center gap-2 mt-1">
@@ -337,7 +337,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                                 {t('homeworkManagement.status.published')}
                               </span>
                             ) : (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#1F1F1F] text-[#A0A0A0] rounded text-xs font-medium">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded text-xs font-medium">
                                 <EyeOff className="w-3 h-3" />
                                 {t('homeworkManagement.status.draft')}
                               </span>
@@ -351,7 +351,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                         </div>
                         <button
                           onClick={(e) => handleEditClick(e, assignment)}
-                          className="p-1.5 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg transition-colors"
+                          className="p-1.5 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>
@@ -366,20 +366,20 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
           {/* Right Column - Submissions Queue */}
           <div className="col-span-8">
             {selectedAssignment ? (
-              <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
+              <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
                 {/* Assignment Header */}
-                <div className="p-4 border-b border-[#1F1F1F]">
+                <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h2 className="font-semibold text-[#FAFAFA] text-lg">
+                      <h2 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] text-lg">
                         {selectedAssignment.title}
                       </h2>
                       {selectedAssignment.description && (
-                        <p className="text-[#A0A0A0] text-sm mt-1 line-clamp-2">
+                        <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm mt-1 line-clamp-2">
                           {selectedAssignment.description}
                         </p>
                       )}
-                      <div className="flex items-center gap-3 mt-2 text-sm text-[#666666]">
+                      <div className="flex items-center gap-3 mt-2 text-sm text-[var(--fc-section-muted,#666666)]">
                         <span className="flex items-center gap-1">
                           <Award className="w-4 h-4" />
                           {selectedAssignment.max_points} {t('homeworkManagement.assignment.points')}
@@ -402,7 +402,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                       onClick={handleTogglePublish}
                       className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium text-sm transition-colors ${
                         selectedAssignment.is_published
-                          ? 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#151515]'
+                          ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)]'
                           : 'bg-[#22C55E] text-white hover:bg-[#22C55E]/80'
                       }`}
                     >
@@ -422,19 +422,19 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                 </div>
 
                 {/* Filter Bar */}
-                <div className="p-4 border-b border-[#1F1F1F] bg-[#0A0A0A]">
+                <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-[#A0A0A0]">{t('homeworkManagement.filter.label')}</span>
+                    <span className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">{t('homeworkManagement.filter.label')}</span>
                     <select
                       value={submissionFilter}
                       onChange={(e) => setSubmissionFilter(e.target.value as SubmissionFilter)}
-                      className="px-3 py-1.5 border border-[#1F1F1F] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555] bg-[#0A0A0A]"
+                      className="px-3 py-1.5 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] bg-[var(--fc-section,#0A0A0A)]"
                     >
                       <option value="pending">{t('homeworkManagement.filter.pendingReview')}</option>
                       <option value="graded">{t('homeworkManagement.filter.graded')}</option>
                       <option value="all">{t('homeworkManagement.filter.allSubmissions')}</option>
                     </select>
-                    <span className="text-sm text-[#666666] ml-2">
+                    <span className="text-sm text-[var(--fc-section-muted,#666666)] ml-2">
                       {filteredSubmissions.length} {t('homeworkManagement.assignment.submissions')}
                     </span>
                   </div>
@@ -444,19 +444,19 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                 <div className="divide-y divide-[#1F1F1F] max-h-[calc(100dvh-400px)] overflow-y-auto">
                   {isLoadingSubmissions ? (
                     <div className="p-8 flex items-center justify-center">
-                      <Loader2 className="w-8 h-8 text-[#FAFAFA] animate-spin" />
+                      <Loader2 className="w-8 h-8 text-[var(--fc-section-text,#FAFAFA)] animate-spin" />
                     </div>
                   ) : filteredSubmissions.length === 0 ? (
                     <div className="p-8 text-center">
-                      <Users className="w-12 h-12 text-[#A0A0A0] mx-auto mb-3" />
-                      <h3 className="text-lg font-medium text-[#A0A0A0]">
+                      <Users className="w-12 h-12 text-[var(--fc-section-muted,#A0A0A0)] mx-auto mb-3" />
+                      <h3 className="text-lg font-medium text-[var(--fc-section-muted,#A0A0A0)]">
                         {submissionFilter === 'pending'
                           ? t('homeworkManagement.submissions.empty.pendingTitle')
                           : submissionFilter === 'graded'
                           ? t('homeworkManagement.submissions.empty.gradedTitle')
                           : t('homeworkManagement.submissions.empty.allTitle')}
                       </h3>
-                      <p className="text-[#666666] mt-1">
+                      <p className="text-[var(--fc-section-muted,#666666)] mt-1">
                         {submissionFilter === 'pending'
                           ? t('homeworkManagement.submissions.empty.pendingDescription')
                           : submissionFilter === 'graded'
@@ -480,7 +480,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                       return (
                         <div
                           key={submission.id}
-                          className="p-4 hover:bg-[#0A0A0A] transition-colors"
+                          className="p-4 hover:bg-[var(--fc-section,#0A0A0A)] transition-colors"
                         >
                           <div className="flex items-start gap-3">
                             {/* Avatar */}
@@ -491,8 +491,8 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                                 className="w-10 h-10 rounded-full object-cover"
                               />
                             ) : (
-                              <div className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center flex-shrink-0">
-                                <span className="text-[#FAFAFA] font-medium text-sm">
+                              <div className="w-10 h-10 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center flex-shrink-0">
+                                <span className="text-[var(--fc-section-text,#FAFAFA)] font-medium text-sm">
                                   {studentName.charAt(0).toUpperCase()}
                                 </span>
                               </div>
@@ -501,7 +501,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                             {/* Content */}
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2">
-                                <h4 className="font-medium text-[#FAFAFA]">
+                                <h4 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
                                   {studentName}
                                 </h4>
                                 {submission.status === 'graded' && (
@@ -511,10 +511,10 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                                   </span>
                                 )}
                               </div>
-                              <p className="text-sm text-[#666666] mt-0.5">
+                              <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-0.5">
                                 {t('homeworkManagement.submissions.submitted')} {submittedDate}
                               </p>
-                              <p className="text-sm text-[#A0A0A0] mt-2 line-clamp-2">
+                              <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-2 line-clamp-2">
                                 {textPreview}
                               </p>
                             </div>
@@ -536,7 +536,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                                   </div>
                                   <button
                                     onClick={() => handleGradeClick(submission)}
-                                    className="text-xs text-[#666666] hover:text-[#FAFAFA] mt-1"
+                                    className="text-xs text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] mt-1"
                                   >
                                     {t('homeworkManagement.buttons.editGrade')}
                                   </button>
@@ -551,12 +551,12 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-12 text-center">
-                <ClipboardList className="w-16 h-16 text-[#A0A0A0] mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-[#A0A0A0]">
+              <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-12 text-center">
+                <ClipboardList className="w-16 h-16 text-[var(--fc-section-muted,#A0A0A0)] mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-[var(--fc-section-muted,#A0A0A0)]">
                   {t('homeworkManagement.selectAssignment.title')}
                 </h3>
-                <p className="text-[#666666] mt-2 max-w-md mx-auto">
+                <p className="text-[var(--fc-section-muted,#666666)] mt-2 max-w-md mx-auto">
                   {t('homeworkManagement.selectAssignment.description')}
                 </p>
               </div>

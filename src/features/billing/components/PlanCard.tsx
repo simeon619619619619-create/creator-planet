@@ -51,8 +51,8 @@ const PlanCard: React.FC<PlanCardProps> = ({
   return (
     <div
       className={`
-        relative bg-[#0A0A0A] rounded-xl border p-6 flex flex-col transition-all
-        ${isCurrentPlan ? 'border-[#333333]' : 'border-[#1F1F1F]'}
+        relative bg-[var(--fc-section,#0A0A0A)] rounded-xl border p-6 flex flex-col transition-all
+        ${isCurrentPlan ? 'border-[#333333]' : 'border-[var(--fc-section-border,#1F1F1F)]'}
       `}
     >
       {/* Current Plan Badge */}
@@ -72,22 +72,22 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Plan Header */}
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-[#FAFAFA] mb-1">{plan.name}</h3>
-        <p className="text-[#666666] text-sm">{plan.description || t(`billing.plans.${plan.tier}.description`)}</p>
+        <h3 className="text-xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-1">{plan.name}</h3>
+        <p className="text-[var(--fc-section-muted,#666666)] text-sm">{plan.description || t(`billing.plans.${plan.tier}.description`)}</p>
       </div>
 
       {/* Pricing */}
       <div className="text-center mb-6">
         <div className="flex items-baseline justify-center gap-1">
-          <span className="text-3xl font-bold text-[#FAFAFA]">
+          <span className="text-3xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
             {plan.price_monthly_cents === 0 ? t('billing.plans.freeLabel') : `${plan.price_monthly_cents / 100}`}
           </span>
           {plan.price_monthly_cents > 0 && (
-            <span className="text-[#666666] text-lg">{t('billing.plans.monthlySuffix')}</span>
+            <span className="text-[var(--fc-section-muted,#666666)] text-lg">{t('billing.plans.monthlySuffix')}</span>
           )}
         </div>
-        <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 bg-[#1F1F1F] rounded-full">
-          <span className="text-sm font-medium text-[#A0A0A0]">
+        <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full">
+          <span className="text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)]">
             {t('billing.plans.platformFeeLabel', { fee: plan.platform_fee_percent })}
           </span>
         </div>
@@ -95,8 +95,8 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
       {/* Break-even Info */}
       {displayInfo.breakEvenRevenue && (
-        <div className="text-center mb-4 px-3 py-2 bg-[#151515] rounded-lg border border-[#1F1F1F]">
-          <p className="text-xs text-[#A0A0A0]">
+        <div className="text-center mb-4 px-3 py-2 bg-[var(--fc-section-hover,#151515)] rounded-lg border border-[var(--fc-section-border,#1F1F1F)]">
+          <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)]">
             {t('billing.plans.breakEvenInfo', { amount: displayInfo.breakEvenRevenue.replace('€', '') })}
           </p>
         </div>
@@ -108,9 +108,9 @@ const PlanCard: React.FC<PlanCardProps> = ({
           <li key={index} className="flex items-start gap-3">
             <Check
               size={18}
-              className="shrink-0 mt-0.5 text-[#A0A0A0]"
+              className="shrink-0 mt-0.5 text-[var(--fc-section-muted,#A0A0A0)]"
             />
-            <span className="text-sm text-[#A0A0A0]">{feature}</span>
+            <span className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">{feature}</span>
           </li>
         ))}
       </ul>
@@ -123,7 +123,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
           w-full py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2
           ${
             isCurrentPlan
-              ? 'bg-[#1F1F1F] text-[#666666] cursor-default'
+              ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-default'
               : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0] disabled:opacity-50'
           }
           disabled:cursor-not-allowed

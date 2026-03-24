@@ -857,14 +857,14 @@ const CourseLMS: React.FC = () => {
                 value={newCourseName}
                 onChange={(e) => setNewCourseName(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseTitle')}
-                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] mb-3"
+                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] mb-3"
                 disabled={!selectedCommunity}
               />
               <textarea
                 value={newCourseDescription}
                 onChange={(e) => setNewCourseDescription(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseDescription')}
-                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
+                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] h-24 resize-none"
                 disabled={!selectedCommunity}
               />
               <div className="flex gap-3 mt-4">
@@ -1080,7 +1080,7 @@ const CourseLMS: React.FC = () => {
                 value={newCourseName}
                 onChange={(e) => setNewCourseName(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseTitle')}
-                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] mb-3"
+                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] mb-3"
                 autoFocus
                 disabled={!selectedCommunity}
               />
@@ -1088,7 +1088,7 @@ const CourseLMS: React.FC = () => {
                 value={newCourseDescription}
                 onChange={(e) => setNewCourseDescription(e.target.value)}
                 placeholder={t('courseLms.createCourseModal.courseDescription')}
-                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
+                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] h-24 resize-none"
                 disabled={!selectedCommunity}
               />
               <div className="flex gap-3 mt-4">

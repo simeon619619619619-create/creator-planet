@@ -111,35 +111,35 @@ export const UpgradePrompt: React.FC<UpgradePromptProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#0A0A0A] rounded-2xl w-full max-w-md overflow-hidden">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-2xl w-full max-w-md overflow-hidden">
         {/* Header */}
-        <div className="bg-[#151515] p-6 text-[#FAFAFA] relative">
+        <div className="bg-[var(--fc-section-hover,#151515)] p-6 text-[var(--fc-section-text,#FAFAFA)] relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-1 rounded-full hover:bg-[#0A0A0A]/20 transition-colors"
+            className="absolute top-4 right-4 p-1 rounded-full hover:bg-[var(--fc-section,#0A0A0A)]/20 transition-colors"
             aria-label="Close"
           >
             <X size={20} />
           </button>
 
           <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 bg-[#0A0A0A]/20 rounded-lg">
+            <div className="p-2 bg-[var(--fc-section,#0A0A0A)]/20 rounded-lg">
               {isLimitBased ? <Lock size={24} /> : <Zap size={24} />}
             </div>
             <h2 className="text-xl font-bold">{message.title}</h2>
           </div>
 
           {currentUsage && (
-            <div className="bg-[#0A0A0A]/10 rounded-lg p-3 mt-3">
+            <div className="bg-[var(--fc-section,#0A0A0A)]/10 rounded-lg p-3 mt-3">
               <div className="flex justify-between items-center text-sm">
                 <span>{t('billing.upgradePrompt.currentUsage')}</span>
                 <span className="font-semibold">
                   {currentUsage.current} / {currentUsage.max}
                 </span>
               </div>
-              <div className="mt-2 h-2 bg-[#0A0A0A]/20 rounded-full overflow-hidden">
+              <div className="mt-2 h-2 bg-[var(--fc-section,#0A0A0A)]/20 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#0A0A0A] rounded-full transition-all"
+                  className="h-full bg-[var(--fc-section,#0A0A0A)] rounded-full transition-all"
                   style={{ width: `${Math.min((currentUsage.current / currentUsage.max) * 100, 100)}%` }}
                 />
               </div>
@@ -149,26 +149,26 @@ export const UpgradePrompt: React.FC<UpgradePromptProps> = ({
 
         {/* Body */}
         <div className="p-6">
-          <p className="text-[#A0A0A0] mb-6">{message.description}</p>
+          <p className="text-[var(--fc-section-muted,#A0A0A0)] mb-6">{message.description}</p>
 
           {/* Recommendation */}
-          <div className="bg-[#0A0A0A] rounded-xl p-4 mb-6">
-            <div className="flex items-center gap-2 text-sm text-[#666666] mb-2">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl p-4 mb-6">
+            <div className="flex items-center gap-2 text-sm text-[var(--fc-section-muted,#666666)] mb-2">
               <Zap size={14} className="text-[#EAB308]" />
               <span>{t('billing.upgradePrompt.recommendedUpgrade')}</span>
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-bold text-[#FAFAFA]">
+                <h3 className="font-bold text-[var(--fc-section-text,#FAFAFA)]">
                   {getPlanDisplayName(recommendedPlan, t)}{t('billing.upgradePrompt.planSuffix')}
                 </h3>
                 {limitType && (
-                  <p className="text-sm text-[#666666]">
+                  <p className="text-sm text-[var(--fc-section-muted,#666666)]">
                     {getLimitForPlan(recommendedPlan, limitType, t)}{t(`billing.upgradePrompt.limits.${limitType}`)}
                   </p>
                 )}
               </div>
-              <ArrowRight size={20} className="text-[#666666]" />
+              <ArrowRight size={20} className="text-[var(--fc-section-muted,#666666)]" />
             </div>
           </div>
 
@@ -176,7 +176,7 @@ export const UpgradePrompt: React.FC<UpgradePromptProps> = ({
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 px-4 py-3 border border-[#1F1F1F] rounded-xl font-medium text-[#A0A0A0] hover:bg-[#0A0A0A] transition-colors"
+              className="flex-1 px-4 py-3 border border-[var(--fc-section-border,#1F1F1F)] rounded-xl font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)] transition-colors"
             >
               {t('billing.upgradePrompt.maybeLaterButton')}
             </button>

@@ -61,7 +61,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
           onChange={(e) => onChange(e.target.value)}
           placeholder={question.placeholder || t('surveys.player.typeAnswer')}
           disabled={disabled}
-          className="w-full px-4 py-3 border border-[#1F1F1F] rounded-xl focus:ring-1 focus:ring-white/10 focus:border-[#555555] disabled:bg-[#1F1F1F] disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 border border-[var(--fc-section-border,#1F1F1F)] rounded-xl focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] disabled:bg-[var(--fc-section-hover,#1F1F1F)] disabled:cursor-not-allowed"
         />
       );
 
@@ -75,7 +75,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
           min={question.min_value ?? undefined}
           max={question.max_value ?? undefined}
           disabled={disabled}
-          className="w-full px-4 py-3 border border-[#1F1F1F] rounded-xl focus:ring-1 focus:ring-white/10 focus:border-[#555555] disabled:bg-[#1F1F1F] disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 border border-[var(--fc-section-border,#1F1F1F)] rounded-xl focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] disabled:bg-[var(--fc-section-hover,#1F1F1F)] disabled:cursor-not-allowed"
         />
       );
 
@@ -91,7 +91,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               className={`w-12 h-12 rounded-xl font-semibold transition-all ${
                 answer === String(num)
                   ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]'
-                  : 'bg-[#1F1F1F] text-[#A0A0A0] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]'
+                  : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               {num}
@@ -108,8 +108,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               key={index}
               className={`flex items-center gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 answer === option
-                  ? 'border-[#333333] bg-[#151515]'
-                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
+                  ? 'border-[#333333] bg-[var(--fc-section-hover,#151515)]'
+                  : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] hover:bg-[var(--fc-section,#0A0A0A)]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -119,17 +119,17 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={answer === option}
                 onChange={() => !disabled && onChange(option)}
                 disabled={disabled}
-                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] focus:ring-white/10"
+                className="w-5 h-5 text-[var(--fc-section-text,#FAFAFA)] border-[var(--fc-section-border,#1F1F1F)] focus:ring-white/10"
               />
-              <span className="text-[#FAFAFA]">{option}</span>
+              <span className="text-[var(--fc-section-text,#FAFAFA)]">{option}</span>
             </label>
           ))}
           {question.allow_other && (
             <label
               className={`flex items-start gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 answer === '__other__'
-                  ? 'border-[#333333] bg-[#151515]'
-                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
+                  ? 'border-[#333333] bg-[var(--fc-section-hover,#151515)]'
+                  : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] hover:bg-[var(--fc-section,#0A0A0A)]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -139,10 +139,10 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={answer === '__other__'}
                 onChange={() => !disabled && onChange('__other__')}
                 disabled={disabled}
-                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] focus:ring-white/10 mt-0.5"
+                className="w-5 h-5 text-[var(--fc-section-text,#FAFAFA)] border-[var(--fc-section-border,#1F1F1F)] focus:ring-white/10 mt-0.5"
               />
               <div className="flex-1">
-                <span className="text-[#FAFAFA]">{t('surveys.player.other')}</span>
+                <span className="text-[var(--fc-section-text,#FAFAFA)]">{t('surveys.player.other')}</span>
                 {answer === '__other__' && (
                   <input
                     type="text"
@@ -150,7 +150,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                     onChange={(e) => onChange('__other__', e.target.value)}
                     placeholder={t('surveys.player.specifyOther')}
                     disabled={disabled}
-                    className="mt-2 w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
+                    className="mt-2 w-full px-3 py-2 text-sm border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10"
                   />
                 )}
               </div>
@@ -177,8 +177,8 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
               key={index}
               className={`flex items-center gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 selectedValues.includes(option)
-                  ? 'border-[#333333] bg-[#151515]'
-                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
+                  ? 'border-[#333333] bg-[var(--fc-section-hover,#151515)]'
+                  : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] hover:bg-[var(--fc-section,#0A0A0A)]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -187,17 +187,17 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={selectedValues.includes(option)}
                 onChange={() => toggleOption(option)}
                 disabled={disabled}
-                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10"
+                className="w-5 h-5 text-[var(--fc-section-text,#FAFAFA)] border-[var(--fc-section-border,#1F1F1F)] rounded focus:ring-white/10"
               />
-              <span className="text-[#FAFAFA]">{option}</span>
+              <span className="text-[var(--fc-section-text,#FAFAFA)]">{option}</span>
             </label>
           ))}
           {question.allow_other && (
             <label
               className={`flex items-start gap-3 p-3 sm:p-4 border rounded-xl cursor-pointer transition-all ${
                 selectedValues.includes('__other__')
-                  ? 'border-[#333333] bg-[#151515]'
-                  : 'border-[#1F1F1F] hover:border-[#333333] hover:bg-[#0A0A0A]'
+                  ? 'border-[#333333] bg-[var(--fc-section-hover,#151515)]'
+                  : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] hover:bg-[var(--fc-section,#0A0A0A)]'
               } ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
             >
               <input
@@ -206,10 +206,10 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                 checked={selectedValues.includes('__other__')}
                 onChange={() => toggleOption('__other__')}
                 disabled={disabled}
-                className="w-5 h-5 text-[#FAFAFA] border-[#1F1F1F] rounded focus:ring-white/10 mt-0.5"
+                className="w-5 h-5 text-[var(--fc-section-text,#FAFAFA)] border-[var(--fc-section-border,#1F1F1F)] rounded focus:ring-white/10 mt-0.5"
               />
               <div className="flex-1">
-                <span className="text-[#FAFAFA]">{t('surveys.player.other')}</span>
+                <span className="text-[var(--fc-section-text,#FAFAFA)]">{t('surveys.player.other')}</span>
                 {selectedValues.includes('__other__') && (
                   <input
                     type="text"
@@ -217,7 +217,7 @@ const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                     onChange={(e) => onChange(selectedValues, e.target.value)}
                     placeholder={t('surveys.player.specifyOther')}
                     disabled={disabled}
-                    className="mt-2 w-full px-3 py-2 text-sm border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10"
+                    className="mt-2 w-full px-3 py-2 text-sm border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10"
                   />
                 )}
               </div>
@@ -484,10 +484,10 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--fc-section,#0A0A0A)]">
         <div className="text-center">
-          <Loader2 className="w-10 h-10 text-[#FAFAFA] animate-spin mx-auto" />
-          <p className="mt-4 text-[#A0A0A0]">{t('surveys.player.loading')}</p>
+          <Loader2 className="w-10 h-10 text-[var(--fc-section-text,#FAFAFA)] animate-spin mx-auto" />
+          <p className="mt-4 text-[var(--fc-section-muted,#A0A0A0)]">{t('surveys.player.loading')}</p>
         </div>
       </div>
     );
@@ -496,13 +496,13 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   // Error state
   if (error || !survey) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--fc-section,#0A0A0A)]">
         <div className="text-center max-w-md">
           <AlertCircle className="w-12 h-12 text-[#EF4444] mx-auto" />
-          <h2 className="mt-4 text-xl font-semibold text-[#FAFAFA]">
+          <h2 className="mt-4 text-xl font-semibold text-[var(--fc-section-text,#FAFAFA)]">
             {t('surveys.player.errorTitle')}
           </h2>
-          <p className="mt-2 text-[#A0A0A0]">{error}</p>
+          <p className="mt-2 text-[var(--fc-section-muted,#A0A0A0)]">{error}</p>
           {onClose && (
             <button
               onClick={onClose}
@@ -519,7 +519,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   // Submitted state with celebration
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A] overflow-hidden">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--fc-section,#0A0A0A)] overflow-hidden">
         <div className="text-center max-w-md px-4">
           {/* Animated success icon */}
           <div
@@ -567,7 +567,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
 
           {/* Subtitle message */}
           <p
-            className={`mt-3 text-lg text-[#A0A0A0] transition-all duration-500 delay-400 ${
+            className={`mt-3 text-lg text-[var(--fc-section-muted,#A0A0A0)] transition-all duration-500 delay-400 ${
               showCelebration ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
@@ -606,12 +606,12 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
   const isLastSection = currentSectionIndex === sections.length - 1;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       {/* Scroll anchor - must be before sticky header for scrollIntoView to work */}
       <div ref={contentTopRef} className="h-0" aria-hidden="true" />
 
       {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1.5 sm:h-1 bg-[#1F1F1F] z-20">
+      <div className="fixed top-0 left-0 right-0 h-1.5 sm:h-1 bg-[var(--fc-section-hover,#1F1F1F)] z-20">
         <div
           className="h-full bg-white transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -619,12 +619,12 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
       </div>
 
       {/* Header */}
-      <div className="bg-[#0A0A0A] border-b border-[#1F1F1F] sticky top-0 z-10">
+      <div className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)] sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <h1 className="text-base sm:text-lg font-semibold text-[#FAFAFA] truncate">{survey.title}</h1>
-              <p className="text-sm text-[#666666]">
+              <h1 className="text-base sm:text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] truncate">{survey.title}</h1>
+              <p className="text-sm text-[var(--fc-section-muted,#666666)]">
                 {t('surveys.player.sectionProgress', {
                   current: currentSectionIndex + 1,
                   total: sections.length,
@@ -633,7 +633,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
             </div>
             <div className="flex items-center gap-3 ml-4">
               {isSaving && (
-                <div className="flex items-center gap-2 text-sm text-[#666666]">
+                <div className="flex items-center gap-2 text-sm text-[var(--fc-section-muted,#666666)]">
                   <Loader2 className="w-4 h-4 animate-spin" />
                   {t('surveys.player.saving')}
                 </div>
@@ -641,7 +641,7 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
               {onClose && (
                 <button
                   onClick={onClose}
-                  className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg transition-colors"
+                  className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
                   title={t('surveys.player.close')}
                 >
                   <X className="w-5 h-5" />
@@ -657,9 +657,9 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
         {/* Section Header */}
         {currentSection?.section && (
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-[#FAFAFA]">{currentSection.section.title}</h2>
+            <h2 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{currentSection.section.title}</h2>
             {currentSection.section.description && (
-              <p className="mt-2 text-[#A0A0A0]">{currentSection.section.description}</p>
+              <p className="mt-2 text-[var(--fc-section-muted,#A0A0A0)]">{currentSection.section.description}</p>
             )}
           </div>
         )}
@@ -667,13 +667,13 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
         {/* Questions */}
         <div className="space-y-8">
           {currentSection?.questions.map((question, index) => (
-            <div key={question.id} className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-4 sm:p-6">
+            <div key={question.id} className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-4 sm:p-6">
               <div className="flex gap-3 mb-4">
-                <span className="w-8 h-8 bg-[#1F1F1F] text-[#FAFAFA] rounded-lg flex items-center justify-center font-semibold text-sm shrink-0">
+                <span className="w-8 h-8 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] rounded-lg flex items-center justify-center font-semibold text-sm shrink-0">
                   {index + 1}
                 </span>
                 <div>
-                  <h3 className="font-medium text-[#FAFAFA]">
+                  <h3 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
                     {question.question_text}
                     {question.is_required && <span className="text-[#EF4444] ml-1">*</span>}
                   </h3>
@@ -693,11 +693,11 @@ const SurveyPlayer: React.FC<SurveyPlayerProps> = ({
         </div>
 
         {/* Navigation */}
-        <div className="sticky bottom-0 bg-[#0A0A0A] sm:static sm:bg-transparent pt-4 sm:pt-6 mt-6 sm:mt-8 pb-[env(safe-area-inset-bottom)] sm:pb-0 border-t border-[#1F1F1F] flex items-center justify-between">
+        <div className="sticky bottom-0 bg-[var(--fc-section,#0A0A0A)] sm:static sm:bg-transparent pt-4 sm:pt-6 mt-6 sm:mt-8 pb-[env(safe-area-inset-bottom)] sm:pb-0 border-t border-[var(--fc-section-border,#1F1F1F)] flex items-center justify-between">
           <button
             onClick={handlePrevious}
             disabled={currentSectionIndex === 0}
-            className="flex items-center gap-2 px-4 py-2 text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2 text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-5 h-5" />
             {t('surveys.player.previous')}

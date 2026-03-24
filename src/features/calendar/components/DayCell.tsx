@@ -61,9 +61,9 @@ const DayCell: React.FC<DayCellProps> = ({
     <div
       onClick={handleCellClick}
       className={`
-        min-h-[100px] p-2 border-b border-r border-[#1F1F1F] transition-colors
-        ${isCurrentMonth ? 'bg-[#0A0A0A] cursor-pointer hover:bg-[#151515]' : 'bg-[#0A0A0A]'}
-        ${isSelected && isCurrentMonth ? 'bg-[#1F1F1F] hover:bg-[#1F1F1F]' : ''}
+        min-h-[100px] p-2 border-b border-r border-[var(--fc-section-border,#1F1F1F)] transition-colors
+        ${isCurrentMonth ? 'bg-[var(--fc-section,#0A0A0A)] cursor-pointer hover:bg-[var(--fc-section-hover,#151515)]' : 'bg-[var(--fc-section,#0A0A0A)]'}
+        ${isSelected && isCurrentMonth ? 'bg-[var(--fc-section-hover,#1F1F1F)] hover:bg-[var(--fc-section-hover,#1F1F1F)]' : ''}
       `}
     >
       {/* Day number */}
@@ -71,7 +71,7 @@ const DayCell: React.FC<DayCellProps> = ({
         <span
           className={`
             inline-flex items-center justify-center w-7 h-7 text-sm font-medium rounded-full
-            ${!isCurrentMonth ? 'text-[#666666]' : 'text-[#A0A0A0]'}
+            ${!isCurrentMonth ? 'text-[var(--fc-section-muted,#666666)]' : 'text-[var(--fc-section-muted,#A0A0A0)]'}
             ${isToday ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]' : ''}
           `}
         >
@@ -85,7 +85,7 @@ const DayCell: React.FC<DayCellProps> = ({
           <div
             key={event.id}
             onClick={(e) => handleEventClick(e, event)}
-            className="event-item text-xs text-[#FAFAFA] hover:text-[#FAFAFA] cursor-pointer truncate"
+            className="event-item text-xs text-[var(--fc-section-text,#FAFAFA)] hover:text-[var(--fc-section-text,#FAFAFA)] cursor-pointer truncate"
           >
             <span className="font-medium">{formatEventTime(event.start_time)}</span>
             <span className="mx-1">-</span>
@@ -93,7 +93,7 @@ const DayCell: React.FC<DayCellProps> = ({
           </div>
         ))}
         {hiddenCount > 0 && (
-          <div className="text-xs text-[#666666] font-medium">
+          <div className="text-xs text-[var(--fc-section-muted,#666666)] font-medium">
             +{hiddenCount} more
           </div>
         )}

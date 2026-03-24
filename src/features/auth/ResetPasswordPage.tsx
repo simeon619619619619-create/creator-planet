@@ -101,9 +101,9 @@ const ResetPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] flex flex-col">
       {/* Simple Header */}
-      <header className="border-b border-[#1F1F1F] bg-[#0A0A0A]">
+      <header className="border-b border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <Logo variant="light" size="md" showText={false} />
@@ -119,7 +119,7 @@ const ResetPasswordPage: React.FC = () => {
           {isWaitingForRecovery ? (
             <div className="text-center">
               <div className="w-8 h-8 border-3 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-              <p className="text-[#A0A0A0]">{t('common.loading')}</p>
+              <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('common.loading')}</p>
             </div>
           ) : !isRecoveryReady && !isSuccess ? (
             <div className="text-center">
@@ -127,7 +127,7 @@ const ResetPasswordPage: React.FC = () => {
                 <AlertCircle className="text-[#EF4444] mt-0.5 flex-shrink-0" size={20} />
                 <p className="text-[#EF4444] text-sm">{t('auth.invalidRecoveryLink')}</p>
               </div>
-              <Link to="/login" className="text-white hover:text-[#A0A0A0] font-medium">
+              <Link to="/login" className="text-white hover:text-[var(--fc-section-muted,#A0A0A0)] font-medium">
                 {t('auth.backToLogin')}
               </Link>
             </div>
@@ -135,10 +135,10 @@ const ResetPasswordPage: React.FC = () => {
           <>
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-[#FAFAFA] mb-2">
+            <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">
               {t('auth.resetPasswordTitle')}
             </h1>
-            <p className="text-[#A0A0A0]">{t('auth.resetPasswordSubtitle')}</p>
+            <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('auth.resetPasswordSubtitle')}</p>
           </div>
 
           {/* Success Message */}
@@ -150,7 +150,7 @@ const ResetPasswordPage: React.FC = () => {
               </div>
               <Link
                 to="/login"
-                className="text-white hover:text-[#A0A0A0] font-medium"
+                className="text-white hover:text-[var(--fc-section-muted,#A0A0A0)] font-medium"
               >
                 {t('auth.backToLogin')}
               </Link>
@@ -169,11 +169,11 @@ const ResetPasswordPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* New Password Field */}
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-[#A0A0A0] mb-2">
+                  <label htmlFor="password" className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                     {t('auth.newPassword')}
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                     <input
                       id="password"
                       type={showPassword ? 'text' : 'password'}
@@ -181,7 +181,7 @@ const ResetPasswordPage: React.FC = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       minLength={6}
-                      className="w-full pl-12 pr-12 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                      className="w-full pl-12 pr-12 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                       placeholder="••••••••"
                       disabled={isLoading}
                       autoComplete="new-password"
@@ -189,7 +189,7 @@ const ResetPasswordPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#A0A0A0]"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                       tabIndex={-1}
                     >
                       {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -199,11 +199,11 @@ const ResetPasswordPage: React.FC = () => {
 
                 {/* Confirm Password Field */}
                 <div>
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#A0A0A0] mb-2">
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                     {t('auth.confirmPassword')}
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]" size={20} />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" size={20} />
                     <input
                       id="confirmPassword"
                       type={showConfirmPassword ? 'text' : 'password'}
@@ -211,7 +211,7 @@ const ResetPasswordPage: React.FC = () => {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
                       minLength={6}
-                      className="w-full pl-12 pr-12 py-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-base"
+                      className="w-full pl-12 pr-12 py-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-base"
                       placeholder="••••••••"
                       disabled={isLoading}
                       autoComplete="new-password"
@@ -219,7 +219,7 @@ const ResetPasswordPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#A0A0A0]"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                       tabIndex={-1}
                     >
                       {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -248,7 +248,7 @@ const ResetPasswordPage: React.FC = () => {
               <div className="mt-6 text-center">
                 <Link
                   to="/login"
-                  className="text-[#A0A0A0] hover:text-[#FAFAFA] text-sm"
+                  className="text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] text-sm"
                 >
                   {t('auth.backToLogin')}
                 </Link>

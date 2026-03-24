@@ -61,7 +61,7 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
         {/* Header with gradient and avatar */}
         <div className="relative flex-shrink-0">
           {/* Gradient background */}
-          <div className="h-28 bg-[#1F1F1F] rounded-t-xl" />
+          <div className="h-28 bg-[var(--fc-section-hover,#1F1F1F)] rounded-t-xl" />
 
           {/* Close button */}
           <button
@@ -350,7 +350,7 @@ export const CommunityLandingPage: React.FC = () => {
             }}
           >
             {/* Progress bar */}
-            <div className="h-1 bg-[#1F1F1F]">
+            <div className="h-1 bg-[var(--fc-section-hover,#1F1F1F)]">
               <div
                 className="h-full bg-[#22C55E] rounded-full"
                 style={{
@@ -441,7 +441,7 @@ export const CommunityLandingPage: React.FC = () => {
               </div>
               <button
                 onClick={() => setShowCancelMessage(false)}
-                className="flex-shrink-0 p-1.5 rounded-full text-[var(--fc-muted,#666666)] hover:text-[var(--fc-muted,#A0A0A0)] hover:bg-[#1F1F1F] transition-colors duration-150"
+                className="flex-shrink-0 p-1.5 rounded-full text-[var(--fc-muted,#666666)] hover:text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] transition-colors duration-150"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -595,7 +595,7 @@ export const CommunityLandingPage: React.FC = () => {
             {/* Creator Card - Clickable */}
             <button
               onClick={() => setIsCreatorModalOpen(true)}
-              className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6 w-full text-left hover:border-[#333333] hover:bg-[#151515] transition-all duration-150 group"
+              className="bg-[var(--fc-surface,#0A0A0A)] rounded-xl border border-[var(--fc-border,#1F1F1F)] p-6 w-full text-left hover:border-[#333333] hover:bg-[var(--fc-section-hover,#151515)] transition-all duration-150 group"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-medium text-[var(--fc-muted,#666666)] uppercase tracking-wide">
@@ -634,7 +634,7 @@ export const CommunityLandingPage: React.FC = () => {
                 {/* Dual pricing toggle tabs */}
                 {community.pricing_type === 'both' && community.monthly_price_cents && community.monthly_price_cents > 0 ? (
                   <>
-                    <div className="flex rounded-lg bg-[#1F1F1F] p-1 mb-4">
+                    <div className="flex rounded-lg bg-[var(--fc-section-hover,#1F1F1F)] p-1 mb-4">
                       <button
                         onClick={() => setSelectedCheckoutMode('one_time')}
                         className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all ${
@@ -741,9 +741,9 @@ export const CommunityLandingPage: React.FC = () => {
                 {community.tbi_enabled && community.price_cents >= 5000 && (community.pricing_type !== 'both' || selectedCheckoutMode === 'one_time') && (
                   <div className="mt-3">
                     <div className="flex items-center gap-2 my-2">
-                      <div className="flex-1 h-px bg-[#1F1F1F]" />
+                      <div className="flex-1 h-px bg-[var(--fc-section-hover,#1F1F1F)]" />
                       <span className="text-xs text-[var(--fc-muted,#666666)] uppercase">или</span>
-                      <div className="flex-1 h-px bg-[#1F1F1F]" />
+                      <div className="flex-1 h-px bg-[var(--fc-section-hover,#1F1F1F)]" />
                     </div>
                     <TBIButton
                       amountCents={community.price_cents}
@@ -868,7 +868,7 @@ export const CommunityLandingPage: React.FC = () => {
                   setShowSurveyModal(false);
                   navigate('/app/community');
                 }}
-                className="absolute top-4 right-4 z-10 p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[#1F1F1F] rounded-full transition-colors duration-150"
+                className="absolute top-4 right-4 z-10 p-2 text-[var(--fc-muted,#666666)] hover:text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-full transition-colors duration-150"
               >
                 <X className="w-5 h-5" />
               </button>

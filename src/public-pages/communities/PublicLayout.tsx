@@ -99,7 +99,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
                     href="https://twitter.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-[#1F1F1F] rounded-lg hover:bg-[#333333] transition-colors duration-150"
+                    className="p-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg hover:bg-[#333333] transition-colors duration-150"
                   >
                     <Twitter className="w-5 h-5" />
                   </a>
@@ -107,13 +107,13 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
                     href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-[#1F1F1F] rounded-lg hover:bg-[#333333] transition-colors duration-150"
+                    className="p-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg hover:bg-[#333333] transition-colors duration-150"
                   >
                     <Github className="w-5 h-5" />
                   </a>
                   <a
                     href="mailto:hello@creatorclub.app"
-                    className="p-2 bg-[#1F1F1F] rounded-lg hover:bg-[#333333] transition-colors duration-150"
+                    className="p-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg hover:bg-[#333333] transition-colors duration-150"
                   >
                     <Mail className="w-5 h-5" />
                   </a>
@@ -121,7 +121,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-[#1F1F1F] text-center text-sm text-[var(--fc-muted,#666666)]">
+            <div className="mt-12 pt-8 border-t border-[var(--fc-section-border,#1F1F1F)] text-center text-sm text-[var(--fc-muted,#666666)]">
               <p>{t('publicCommunities.footer.copyright', { year: new Date().getFullYear() })}</p>
             </div>
           </div>

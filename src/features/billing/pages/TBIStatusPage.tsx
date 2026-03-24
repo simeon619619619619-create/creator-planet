@@ -11,12 +11,12 @@ const TBIStatusPage: React.FC = () => {
 
   if (!applicationId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--fc-section,#0A0A0A)]">
         <div className="text-center">
-          <p className="text-[#A0A0A0]">Application not found</p>
+          <p className="text-[var(--fc-section-muted,#A0A0A0)]">Application not found</p>
           <button
             onClick={() => navigate('/')}
-            className="mt-4 text-[#FAFAFA] hover:text-white"
+            className="mt-4 text-[var(--fc-section-text,#FAFAFA)] hover:text-white"
           >
             Go home
           </button>
@@ -26,11 +26,11 @@ const TBIStatusPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       <div className="max-w-2xl mx-auto px-4 py-12">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-1 text-[#A0A0A0] hover:text-[#FAFAFA] mb-6 text-sm transition-colors duration-150"
+          className="flex items-center gap-1 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] mb-6 text-sm transition-colors duration-150"
         >
           <ArrowLeft className="w-4 h-4" />
           Back

@@ -11,8 +11,8 @@ interface EngagementMilestonesProps {
 }
 
 const statusColors = {
-  pending: 'bg-[#1F1F1F] text-[#A0A0A0]',
-  in_progress: 'bg-[#1F1F1F] text-[#A0A0A0]',
+  pending: 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]',
+  in_progress: 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]',
   completed: 'bg-[#22C55E]/10 text-[#22C55E]',
 };
 
@@ -38,14 +38,14 @@ export function EngagementMilestones({ milestones }: EngagementMilestonesProps) 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h4 className="font-medium text-[#FAFAFA]">{t('dwyPackages.engagementMilestones.title')}</h4>
-        <span className="text-sm text-[#666666]">
+        <h4 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('dwyPackages.engagementMilestones.title')}</h4>
+        <span className="text-sm text-[var(--fc-section-muted,#666666)]">
           {t('dwyPackages.engagementMilestones.completedOf', { completed: completedCount, total: milestones.length })}
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="h-2 bg-[#1F1F1F] rounded-full mb-6 overflow-hidden">
+      <div className="h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full mb-6 overflow-hidden">
         <div
           className="h-full bg-white rounded-full transition-all duration-500"
           style={{ width: `${progressPercent}%` }}
@@ -61,7 +61,7 @@ export function EngagementMilestones({ milestones }: EngagementMilestonesProps) 
             <div
               key={index}
               className={`flex items-center gap-3 p-3 rounded-lg ${
-                milestone.status === 'in_progress' ? 'bg-[#151515]' : 'bg-[#0A0A0A]'
+                milestone.status === 'in_progress' ? 'bg-[var(--fc-section-hover,#151515)]' : 'bg-[var(--fc-section,#0A0A0A)]'
               }`}
             >
               {/* Status icon */}
@@ -79,8 +79,8 @@ export function EngagementMilestones({ milestones }: EngagementMilestonesProps) 
 
               {/* Milestone info */}
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-[#FAFAFA]">{milestone.name}</div>
-                <div className="text-xs text-[#666666]">
+                <div className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{milestone.name}</div>
+                <div className="text-xs text-[var(--fc-section-muted,#666666)]">
                   {milestone.status === 'completed' && milestone.completed_at && (
                     <>{t('dwyPackages.engagementMilestones.completedOn', { date: formatDate(milestone.completed_at) })}</>
                   )}

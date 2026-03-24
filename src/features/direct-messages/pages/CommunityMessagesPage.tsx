@@ -153,7 +153,7 @@ const CommunityMessagesPage: React.FC = () => {
 
   if (!selectedCommunity) {
     return (
-      <div className="flex items-center justify-center h-full text-[#666666]">
+      <div className="flex items-center justify-center h-full text-[var(--fc-section-muted,#666666)]">
         <p>Изберете общност</p>
       </div>
     );
@@ -162,21 +162,21 @@ const CommunityMessagesPage: React.FC = () => {
   return (
     <div className="flex h-[calc(100vh-64px)]">
       {/* Members List */}
-      <div className="w-80 border-r border-[#1F1F1F] flex flex-col">
-        <div className="p-4 border-b border-[#1F1F1F]">
+      <div className="w-80 border-r border-[var(--fc-section-border,#1F1F1F)] flex flex-col">
+        <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div className="flex items-center gap-2 mb-3">
-            <Users size={20} className="text-[#A0A0A0]" />
-            <h2 className="font-semibold text-[#FAFAFA]">Членове</h2>
-            <span className="text-xs text-[#666666]">({members.length})</span>
+            <Users size={20} className="text-[var(--fc-section-muted,#A0A0A0)]" />
+            <h2 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">Членове</h2>
+            <span className="text-xs text-[var(--fc-section-muted,#666666)]">({members.length})</span>
           </div>
           <div className="relative">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#666666]" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" />
             <input
               type="text"
               placeholder="Търси..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-[#151515] border border-[#1F1F1F] rounded-lg text-sm text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none"
+              className="w-full pl-9 pr-3 py-2 bg-[var(--fc-section-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-sm text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none"
             />
           </div>
         </div>
@@ -187,7 +187,7 @@ const CommunityMessagesPage: React.FC = () => {
               <div className="w-6 h-6 border-2 border-[#FAFAFA] border-t-transparent rounded-full animate-spin" />
             </div>
           ) : filteredMembers.length === 0 ? (
-            <div className="text-center py-8 text-[#666666]">
+            <div className="text-center py-8 text-[var(--fc-section-muted,#666666)]">
               <Mail size={32} className="mx-auto mb-2 opacity-50" />
               <p className="text-sm">Няма членове</p>
             </div>
@@ -196,8 +196,8 @@ const CommunityMessagesPage: React.FC = () => {
               <button
                 key={member.id}
                 onClick={() => handleSelectMember(member)}
-                className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-[#151515] transition-colors text-left ${
-                  selectedMember?.id === member.id ? 'bg-[#151515] border-l-2 border-white' : ''
+                className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-[var(--fc-section-hover,#151515)] transition-colors text-left ${
+                  selectedMember?.id === member.id ? 'bg-[var(--fc-section-hover,#151515)] border-l-2 border-white' : ''
                 }`}
               >
                 <Avatar
@@ -206,7 +206,7 @@ const CommunityMessagesPage: React.FC = () => {
                   size="sm"
                 />
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-[#FAFAFA] text-sm truncate">
+                  <p className="font-medium text-[var(--fc-section-text,#FAFAFA)] text-sm truncate">
                     {member.full_name || member.email}
                   </p>
                   {roleBadge(member.role)}
@@ -221,7 +221,7 @@ const CommunityMessagesPage: React.FC = () => {
       <div className="flex-1 flex flex-col">
         {!selectedMember ? (
           <div className="flex-1 flex items-center justify-center">
-            <div className="text-center text-[#666666]">
+            <div className="text-center text-[var(--fc-section-muted,#666666)]">
               <MessageSquare size={48} className="mx-auto mb-3 opacity-50" />
               <p className="font-medium">Изберете член</p>
               <p className="text-sm mt-1">Изберете човек отляво за да чатите</p>
@@ -230,14 +230,14 @@ const CommunityMessagesPage: React.FC = () => {
         ) : (
           <>
             {/* Chat Header */}
-            <div className="px-4 py-3 border-b border-[#1F1F1F] flex items-center gap-3">
+            <div className="px-4 py-3 border-b border-[var(--fc-section-border,#1F1F1F)] flex items-center gap-3">
               <Avatar
                 src={selectedMember.avatar_url}
                 name={selectedMember.full_name || selectedMember.email}
                 size="sm"
               />
               <div>
-                <p className="font-medium text-[#FAFAFA]">{selectedMember.full_name}</p>
+                <p className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{selectedMember.full_name}</p>
                 {roleBadge(selectedMember.role)}
               </div>
             </div>
@@ -249,7 +249,7 @@ const CommunityMessagesPage: React.FC = () => {
                   <div className="w-6 h-6 border-2 border-[#FAFAFA] border-t-transparent rounded-full animate-spin" />
                 </div>
               ) : messages.length === 0 ? (
-                <div className="text-center py-8 text-[#666666]">
+                <div className="text-center py-8 text-[var(--fc-section-muted,#666666)]">
                   <p className="text-sm">Няма съобщения. Напишете първото!</p>
                 </div>
               ) : (
@@ -260,10 +260,10 @@ const CommunityMessagesPage: React.FC = () => {
                       <div className={`max-w-[70%] px-4 py-2 rounded-2xl text-sm ${
                         isMine
                           ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-br-md'
-                          : 'bg-[#1F1F1F] text-[#FAFAFA] rounded-bl-md'
+                          : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] rounded-bl-md'
                       }`}>
                         <p>{msg.content}</p>
-                        <p className={`text-xs mt-1 ${isMine ? 'text-gray-500' : 'text-[#666666]'}`}>
+                        <p className={`text-xs mt-1 ${isMine ? 'text-gray-500' : 'text-[var(--fc-section-muted,#666666)]'}`}>
                           {new Date(msg.created_at).toLocaleTimeString('bg-BG', { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
@@ -274,7 +274,7 @@ const CommunityMessagesPage: React.FC = () => {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-[#1F1F1F]">
+            <div className="p-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -282,7 +282,7 @@ const CommunityMessagesPage: React.FC = () => {
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
                   placeholder="Напишете съобщение..."
-                  className="flex-1 px-4 py-2 bg-[#151515] border border-[#1F1F1F] rounded-full text-[#FAFAFA] placeholder:text-[#666666] focus:outline-none focus:border-[#555555]"
+                  className="flex-1 px-4 py-2 bg-[var(--fc-section-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)] rounded-full text-[var(--fc-section-text,#FAFAFA)] placeholder:text-[var(--fc-section-muted,#666666)] focus:outline-none focus:border-[var(--fc-section-text,#555555)]"
                   disabled={isSending}
                 />
                 <button

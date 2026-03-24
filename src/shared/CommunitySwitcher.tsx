@@ -124,7 +124,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
                     />
                   ) : (
                     <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${
-                      isSelected ? 'bg-[#333333]' : 'bg-[#1F1F1F]'
+                      isSelected ? 'bg-[#333333]' : 'bg-[var(--fc-section-hover,#1F1F1F)]'
                     }`}>
                       <span className="text-[10px] font-bold">
                         {community.name.charAt(0).toUpperCase()}

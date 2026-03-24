@@ -20,8 +20,8 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
     <div
       className={`relative rounded-2xl border-2 p-8 transition-shadow  ${
         isGrowthPartner
-          ? 'border-[#1F1F1F] bg-[#0A0A0A]'
-          : 'border-[#1F1F1F] bg-[#0A0A0A]'
+          ? 'border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]'
+          : 'border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]'
       }`}
     >
       {/* Highlight badge */}
@@ -35,23 +35,23 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
 
       {/* Package header */}
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-[#FAFAFA] mb-2">{pkg.name}</h3>
-        <p className="text-[#A0A0A0]">{pkg.tagline}</p>
+        <h3 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">{pkg.name}</h3>
+        <p className="text-[var(--fc-section-muted,#A0A0A0)]">{pkg.tagline}</p>
       </div>
 
       {/* Price display */}
       {pkg.price_display && (
         <div className="text-center mb-6">
-          <div className="text-3xl font-bold text-[#FAFAFA]">{pkg.price_display}</div>
+          <div className="text-3xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{pkg.price_display}</div>
           {pkg.price_note && (
-            <p className="text-sm text-[#666666] mt-1">{pkg.price_note}</p>
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">{pkg.price_note}</p>
           )}
         </div>
       )}
 
       {/* Description */}
       {pkg.description && (
-        <p className="text-[#A0A0A0] text-center mb-8">{pkg.description}</p>
+        <p className="text-[var(--fc-section-muted,#A0A0A0)] text-center mb-8">{pkg.description}</p>
       )}
 
       {/* Features list */}
@@ -74,8 +74,8 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
               </svg>
             </div>
             <div>
-              <div className="font-medium text-[#FAFAFA]">{feature.title}</div>
-              <div className="text-sm text-[#666666]">{feature.description}</div>
+              <div className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{feature.title}</div>
+              <div className="text-sm text-[var(--fc-section-muted,#666666)]">{feature.description}</div>
             </div>
           </div>
         ))}
@@ -98,9 +98,9 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
         disabled={hasApplication || pkg.slots_available === 0}
         className={`w-full py-3 rounded-lg font-semibold transition-colors ${
           hasApplication
-            ? 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
+            ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-not-allowed'
             : pkg.slots_available === 0
-              ? 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
+              ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-not-allowed'
               : isGrowthPartner
                 ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
                 : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'

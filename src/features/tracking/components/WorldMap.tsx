@@ -29,7 +29,7 @@ const WorldMap: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative bg-[#0A0A0A] border border-[#1F1F1F] rounded-2xl p-4 md:p-6 overflow-hidden">
+    <div className="relative bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-2xl p-4 md:p-6 overflow-hidden">
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{

@@ -224,16 +224,16 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-md mx-4 overflow-hidden">
-        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
-          <h3 className="text-lg font-semibold text-[#FAFAFA]">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl w-full max-w-md mx-4 overflow-hidden">
+        <div className="flex items-center justify-between p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
+          <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">
             {isEditMode ? 'Edit Module' : 'Add Module'}
           </h3>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-[#1F1F1F] rounded-lg transition-colors"
+            className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
           >
-            <X size={20} className="text-[#666666]" />
+            <X size={20} className="text-[var(--fc-section-muted,#666666)]" />
           </button>
         </div>
 
@@ -247,14 +247,14 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               Title <span className="text-[#EF4444]">*</span>
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               placeholder="Module title"
               autoFocus
             />
@@ -262,13 +262,13 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               Description
             </label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-20 resize-none"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] h-20 resize-none"
               placeholder="Brief description of this module"
             />
           </div>
@@ -276,11 +276,11 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
           {/* Thumbnail (only in edit mode - need module ID for upload path) */}
           {isEditMode && (
             <div>
-              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+              <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                 Module Thumbnail
               </label>
               <div className="flex items-start gap-4">
-                <div className="w-24 h-16 bg-[#1F1F1F] rounded-lg overflow-hidden flex items-center justify-center border border-[#1F1F1F]">
+                <div className="w-24 h-16 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-section-border,#1F1F1F)]">
                   {thumbnailUrl ? (
                     <img
                       src={thumbnailUrl}
@@ -288,12 +288,12 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="text-[#666666] text-xs">No image</span>
+                    <span className="text-[var(--fc-section-muted,#666666)] text-xs">No image</span>
                   )}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="cursor-pointer">
-                    <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#1F1F1F] hover:bg-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] transition-colors">
+                    <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-section-hover,#1F1F1F)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] transition-colors">
                       {isUploading ? (
                         <>
                           <Loader2 size={14} className="animate-spin" />
@@ -317,7 +317,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                   {thumbnailUrl && (
                     <button
                       onClick={() => setThumbnailUrl('')}
-                      className="text-xs text-[#666666] hover:text-[#EF4444] text-left"
+                      className="text-xs text-[var(--fc-section-muted,#666666)] hover:text-[#EF4444] text-left"
                     >
                       Remove
                     </button>
@@ -329,7 +329,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
 
           {/* Unlock Settings */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
               Unlock Condition
             </label>
             <div className="grid grid-cols-4 gap-2">
@@ -338,8 +338,8 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                 onClick={() => setUnlockType('immediate')}
                 className={`px-3 py-2 text-sm rounded-lg border transition-colors ${
                   unlockType === 'immediate'
-                    ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                    : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                    ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                    : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                 }`}
               >
                 Immediate
@@ -349,8 +349,8 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                 onClick={() => setUnlockType('date')}
                 className={`px-3 py-2 text-sm rounded-lg border transition-colors ${
                   unlockType === 'date'
-                    ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                    : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                    ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                    : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                 }`}
               >
                 On Date
@@ -360,8 +360,8 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                 onClick={() => setUnlockType('progress')}
                 className={`px-3 py-2 text-sm rounded-lg border transition-colors ${
                   unlockType === 'progress'
-                    ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
-                    : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                    ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
+                    : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                 }`}
               >
                 After %
@@ -372,10 +372,10 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                 disabled={isFirstModule}
                 className={`px-3 py-2 text-sm rounded-lg border transition-colors flex items-center justify-center gap-1 ${
                   unlockType === 'quiz'
-                    ? 'bg-[#1F1F1F] border-[#555555] text-[#FAFAFA]'
+                    ? 'bg-[var(--fc-section-hover,#1F1F1F)] border-[#555555] text-[var(--fc-section-text,#FAFAFA)]'
                     : isFirstModule
-                    ? 'border-[#1F1F1F] text-[#666666] cursor-not-allowed'
-                    : 'border-[#1F1F1F] text-[#A0A0A0] hover:bg-[#0A0A0A]'
+                    ? 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-not-allowed'
+                    : 'border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)]'
                 }`}
                 title={isFirstModule ? 'Quiz unlock not available for first module' : 'Require quiz completion'}
               >
@@ -391,7 +391,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                   type="date"
                   value={unlockValue}
                   onChange={(e) => setUnlockValue(e.target.value)}
-                  className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                  className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                 />
               </div>
             )}
@@ -403,16 +403,16 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                   max="100"
                   value={unlockValue}
                   onChange={(e) => setUnlockValue(e.target.value)}
-                  className="w-24 px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                  className="w-24 px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                   placeholder="50"
                 />
-                <span className="text-sm text-[#666666]">% completion of previous module</span>
+                <span className="text-sm text-[var(--fc-section-muted,#666666)]">% completion of previous module</span>
               </div>
             )}
             {unlockType === 'quiz' && (
               <div className="mt-2">
                 {isLoadingQuizzes ? (
-                  <div className="flex items-center gap-2 text-[#666666] text-sm">
+                  <div className="flex items-center gap-2 text-[var(--fc-section-muted,#666666)] text-sm">
                     <Loader2 size={14} className="animate-spin" />
                     Loading quizzes...
                   </div>
@@ -421,7 +421,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                     <select
                       value={unlockValue}
                       onChange={(e) => setUnlockValue(e.target.value)}
-                      className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                      className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                     >
                       <option value="">Select a quiz...</option>
                       {quizLessons.map((quiz) => (
@@ -430,7 +430,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                         </option>
                       ))}
                     </select>
-                    <p className="text-xs text-[#666666] mt-1">
+                    <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1">
                       Students must pass this quiz to unlock this module
                     </p>
                   </>
@@ -448,7 +448,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
 
         {/* Delete Section (edit mode only) */}
         {isEditMode && onDelete && (
-          <div className="p-4 border-t border-[#1F1F1F] bg-[#0A0A0A]">
+          <div className="p-4 border-t border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
             {showDeleteConfirm ? (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-[#EF4444]">
@@ -458,7 +458,7 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
                 <div className="flex gap-2">
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
-                    className="px-3 py-1.5 text-sm text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg"
+                    className="px-3 py-1.5 text-sm text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg"
                     disabled={isDeleting}
                   >
                     Cancel
@@ -492,10 +492,10 @@ const ModuleEditModal: React.FC<ModuleEditModalProps> = ({
         )}
 
         {/* Actions */}
-        <div className="flex gap-3 p-4 border-t border-[#1F1F1F]">
+        <div className="flex gap-3 p-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#0A0A0A] font-medium text-[#A0A0A0]"
+            className="flex-1 px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section,#0A0A0A)] font-medium text-[var(--fc-section-muted,#A0A0A0)]"
           >
             Cancel
           </button>

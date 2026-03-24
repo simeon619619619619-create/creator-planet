@@ -95,19 +95,19 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
   };
 
   return (
-    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
+    <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
       {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h2 className="text-lg font-semibold text-[#FAFAFA]">
+          <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">
             {t('billing.balance.title')}
           </h2>
-          <p className="text-[#666666] text-sm">
+          <p className="text-[var(--fc-section-muted,#666666)] text-sm">
             {t('billing.balance.subtitle')}
           </p>
         </div>
-        <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
-          <Wallet size={20} className="text-[#FAFAFA]" />
+        <div className="w-10 h-10 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg flex items-center justify-center">
+          <Wallet size={20} className="text-[var(--fc-section-text,#FAFAFA)]" />
         </div>
       </div>
 
@@ -117,12 +117,12 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
         <div className="p-4 bg-[#EAB308]/10 border border-[#EAB308]/20 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
             <Clock size={18} className="text-[#EAB308]" />
-            <span className="font-medium text-[#FAFAFA]">
+            <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
               {t('billing.balance.pending')}
             </span>
             <div className="group relative ml-auto">
-              <Info size={14} className="text-[#666666] cursor-help" />
-              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-[#0A0A0A] text-white text-xs rounded z-10">
+              <Info size={14} className="text-[var(--fc-section-muted,#666666)] cursor-help" />
+              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-[var(--fc-section,#0A0A0A)] text-white text-xs rounded z-10">
                 {t('billing.balance.pendingTooltip')}
               </div>
             </div>
@@ -141,7 +141,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
         <div className="p-4 bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp size={18} className="text-[#22C55E]" />
-            <span className="font-medium text-[#FAFAFA]">
+            <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
               {t('billing.balance.available')}
             </span>
           </div>
@@ -154,24 +154,24 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
         </div>
 
         {/* Reserved Balance */}
-        <div className="p-4 bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg">
+        <div className="p-4 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg">
           <div className="flex items-center gap-2 mb-2">
-            <Shield size={18} className="text-[#A0A0A0]" />
-            <span className="font-medium text-[#FAFAFA]">
+            <Shield size={18} className="text-[var(--fc-section-muted,#A0A0A0)]" />
+            <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
               {t('billing.balance.reserved')}
             </span>
             <div className="group relative ml-auto">
-              <Info size={14} className="text-[#666666] cursor-help" />
-              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-[#0A0A0A] text-white text-xs rounded z-10">
+              <Info size={14} className="text-[var(--fc-section-muted,#666666)] cursor-help" />
+              <div className="hidden group-hover:block absolute right-0 top-6 w-48 p-2 bg-[var(--fc-section,#0A0A0A)] text-white text-xs rounded z-10">
                 {t('billing.balance.reservedTooltip')}
               </div>
             </div>
           </div>
-          <p className="text-2xl font-bold text-[#A0A0A0]">
+          <p className="text-2xl font-bold text-[var(--fc-section-muted,#A0A0A0)]">
             {formatAmount(balances.reserved)}
           </p>
           {nextReserveRelease && daysUntilReserveRelease !== null && (
-            <p className="text-sm text-[#666666] mt-1">
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">
               {t('billing.balance.releasedInDays', { days: daysUntilReserveRelease })}
             </p>
           )}
@@ -197,13 +197,13 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
       </div>
 
       {/* Withdrawal Section */}
-      <div className="border-t border-[#1F1F1F] pt-6">
+      <div className="border-t border-[var(--fc-section-border,#1F1F1F)] pt-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-[#666666]">
+            <p className="text-sm text-[var(--fc-section-muted,#666666)]">
               {t('billing.balance.withdrawableAmount')}
             </p>
-            <p className="text-xl font-bold text-[#FAFAFA]">
+            <p className="text-xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
               {formatAmount(balances.withdrawable)}
             </p>
           </div>
@@ -213,7 +213,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
             className={`px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2 ${
               isEligibleForWithdrawal && !isLoading
                 ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
-                : 'bg-[#1F1F1F] text-[#666666] cursor-not-allowed'
+                : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-not-allowed'
             }`}
           >
             {isLoading ? (
@@ -229,8 +229,8 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
 
         {/* Withdrawal Blocker Message */}
         {withdrawalBlocker && !isEligibleForWithdrawal && (
-          <div className="mt-4 p-3 bg-[#0A0A0A] rounded-lg">
-            <p className="text-sm text-[#A0A0A0]">
+          <div className="mt-4 p-3 bg-[var(--fc-section,#0A0A0A)] rounded-lg">
+            <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
               {withdrawalBlocker.reason === 'COOLDOWN_ACTIVE' && getCooldownTimeRemaining() ? (
                 <>
                   {t('billing.withdrawal.cooldownMessage', { time: getCooldownTimeRemaining() })}

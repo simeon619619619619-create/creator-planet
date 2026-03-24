@@ -56,26 +56,26 @@ const CreatorsTable: React.FC<{ creators: CreatorRow[] }> = ({ creators }) => {
   ];
 
   return (
-    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
-      <div className="p-6 border-b border-[#1F1F1F]">
-        <h2 className="text-lg font-bold text-[#FAFAFA]">{t('admin.creatorsTable.title')}</h2>
+    <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
+      <div className="p-6 border-b border-[var(--fc-section-border,#1F1F1F)]">
+        <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('admin.creatorsTable.title')}</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-[#1F1F1F]">
+            <tr className="border-b border-[var(--fc-section-border,#1F1F1F)]">
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider ${
-                    col.sortable ? 'cursor-pointer hover:text-[#FAFAFA] transition-colors' : ''
+                  className={`px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider ${
+                    col.sortable ? 'cursor-pointer hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors' : ''
                   }`}
                   onClick={() => col.sortable && setSortBy(col.key)}
                 >
                   <span className="flex items-center gap-1">
                     {col.label}
                     {col.sortable && (
-                      <ArrowUpDown size={14} className={sortBy === col.key ? 'text-[#FAFAFA]' : 'text-[#333333]'} />
+                      <ArrowUpDown size={14} className={sortBy === col.key ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[#333333]'} />
                     )}
                   </span>
                 </th>
@@ -84,27 +84,27 @@ const CreatorsTable: React.FC<{ creators: CreatorRow[] }> = ({ creators }) => {
           </thead>
           <tbody className="divide-y divide-[#1F1F1F]">
             {sorted.map((creator) => (
-              <tr key={creator.id} className="hover:bg-[#151515] transition-colors">
+              <tr key={creator.id} className="hover:bg-[var(--fc-section-hover,#151515)] transition-colors">
                 <td className="px-6 py-4">
                   <div>
-                    <p className="text-sm font-medium text-[#FAFAFA]">{creator.name}</p>
-                    <p className="text-xs text-[#666666]">{creator.email}</p>
+                    <p className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">{creator.name}</p>
+                    <p className="text-xs text-[var(--fc-section-muted,#666666)]">{creator.email}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#1F1F1F] text-[#A0A0A0] capitalize">
+                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] capitalize">
                     {creator.plan}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm text-[#FAFAFA]">{formatCents(creator.totalRevenue)}</td>
-                <td className="px-6 py-4 text-sm text-[#FAFAFA]">{creator.studentCount}</td>
-                <td className="px-6 py-4 text-sm text-[#FAFAFA]">{creator.communityCount}</td>
-                <td className="px-6 py-4 text-sm text-[#A0A0A0]">{formatDate(creator.lastLogin)}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-text,#FAFAFA)]">{formatCents(creator.totalRevenue)}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-text,#FAFAFA)]">{creator.studentCount}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-text,#FAFAFA)]">{creator.communityCount}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-muted,#A0A0A0)]">{formatDate(creator.lastLogin)}</td>
               </tr>
             ))}
             {sorted.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-6 py-8 text-center text-sm text-[#666666]">
+                <td colSpan={6} className="px-6 py-8 text-center text-sm text-[var(--fc-section-muted,#666666)]">
                   {t('admin.creatorsTable.empty')}
                 </td>
               </tr>
@@ -124,53 +124,53 @@ const CommunityTable: React.FC<{ communities: CommunityRow[] }> = ({ communities
   const { t } = useTranslation();
 
   return (
-    <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] overflow-hidden">
-      <div className="p-6 border-b border-[#1F1F1F]">
-        <h2 className="text-lg font-bold text-[#FAFAFA]">{t('admin.communityTable.title')}</h2>
+    <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
+      <div className="p-6 border-b border-[var(--fc-section-border,#1F1F1F)]">
+        <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('admin.communityTable.title')}</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-[#1F1F1F]">
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+            <tr className="border-b border-[var(--fc-section-border,#1F1F1F)]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.name')}
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.creator')}
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.members')}
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.posts')}
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.pricing')}
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.visibility')}
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[#A0A0A0] uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider">
                 {t('admin.communityTable.created')}
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#1F1F1F]">
             {communities.map((community) => (
-              <tr key={community.id} className="hover:bg-[#151515] transition-colors">
+              <tr key={community.id} className="hover:bg-[var(--fc-section-hover,#151515)] transition-colors">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#1F1F1F] flex items-center justify-center shrink-0">
-                      <span className="text-xs font-bold text-[#FAFAFA]">{community.name.charAt(0).toUpperCase()}</span>
+                    <div className="w-8 h-8 rounded-lg bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center shrink-0">
+                      <span className="text-xs font-bold text-[var(--fc-section-text,#FAFAFA)]">{community.name.charAt(0).toUpperCase()}</span>
                     </div>
-                    <span className="text-sm font-medium text-[#FAFAFA]">{community.name}</span>
+                    <span className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">{community.name}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-sm text-[#A0A0A0]">{community.creatorName}</td>
-                <td className="px-6 py-4 text-sm text-[#FAFAFA]">{community.memberCount}</td>
-                <td className="px-6 py-4 text-sm text-[#FAFAFA]">{community.postCount}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-muted,#A0A0A0)]">{community.creatorName}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-text,#FAFAFA)]">{community.memberCount}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-text,#FAFAFA)]">{community.postCount}</td>
                 <td className="px-6 py-4">
-                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#1F1F1F] text-[#A0A0A0] capitalize">
+                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] capitalize">
                     {community.pricingType}
                   </span>
                 </td>
@@ -183,12 +183,12 @@ const CommunityTable: React.FC<{ communities: CommunityRow[] }> = ({ communities
                     {community.isPublic ? t('admin.communityTable.public') : t('admin.communityTable.private')}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm text-[#A0A0A0]">{formatDate(community.createdAt)}</td>
+                <td className="px-6 py-4 text-sm text-[var(--fc-section-muted,#A0A0A0)]">{formatDate(community.createdAt)}</td>
               </tr>
             ))}
             {communities.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-6 py-8 text-center text-sm text-[#666666]">
+                <td colSpan={7} className="px-6 py-8 text-center text-sm text-[var(--fc-section-muted,#666666)]">
                   {t('admin.communityTable.empty')}
                 </td>
               </tr>
@@ -231,8 +231,8 @@ const AdminDashboard: React.FC = () => {
       {(_activeSection: AdminSection) => (
         <>
           {/* Header bar */}
-          <div className="flex items-center justify-between p-6 border-b border-[#1F1F1F]">
-            <h1 className="text-2xl font-semibold text-[#FAFAFA]">{t('admin.pageTitle')}</h1>
+          <div className="flex items-center justify-between p-6 border-b border-[var(--fc-section-border,#1F1F1F)]">
+            <h1 className="text-2xl font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('admin.pageTitle')}</h1>
             <TimeRangeSelector value={timeRange} onChange={setTimeRange} />
           </div>
 
@@ -276,8 +276,8 @@ const AdminDashboard: React.FC = () => {
               </div>
 
               {/* Revenue Chart */}
-              <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-5">
-                <h2 className="text-lg font-bold text-[#FAFAFA] mb-6">{t('admin.chart.revenueTitle')}</h2>
+              <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-5">
+                <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)] mb-6">{t('admin.chart.revenueTitle')}</h2>
                 <div className="w-full" style={{ height: 320 }}>
                   {revenueData && revenueData.length > 0 ? (
                     <ResponsiveContainer width="100%" height={320}>
@@ -301,7 +301,7 @@ const AdminDashboard: React.FC = () => {
                           tickFormatter={(v: number) => `\u20AC${(v / 100).toFixed(0)}`}
                         />
                         <Tooltip
-                          contentStyle={{ backgroundColor: '#151515', border: '1px solid #1F1F1F', borderRadius: '8px' }}
+                          contentStyle={{ backgroundColor: 'var(--fc-section-hover, #151515)', border: '1px solid var(--fc-section-border, #1F1F1F)', borderRadius: '8px' }}
                           labelStyle={{ color: '#FAFAFA' }}
                           itemStyle={{ color: '#A0A0A0' }}
                           formatter={(value: number, name: string) => [
@@ -328,7 +328,7 @@ const AdminDashboard: React.FC = () => {
                       </AreaChart>
                     </ResponsiveContainer>
                   ) : (
-                    <div className="h-full flex items-center justify-center text-[#666666]">
+                    <div className="h-full flex items-center justify-center text-[var(--fc-section-muted,#666666)]">
                       {t('admin.chart.noData')}
                     </div>
                   )}
@@ -338,8 +338,8 @@ const AdminDashboard: React.FC = () => {
               {/* Two-column grid: Creators by Plan + Student Health */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Creators by Plan */}
-                <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
-                  <h2 className="text-lg font-bold text-[#FAFAFA] mb-4">{t('admin.creatorsByPlan.title')}</h2>
+                <div className="bg-[var(--fc-section,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-section-border,#1F1F1F)]">
+                  <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)] mb-4">{t('admin.creatorsByPlan.title')}</h2>
                   <div className="space-y-4">
                     {([
                       { plan: 'starter' as const, color: '#A0A0A0' },
@@ -352,13 +352,13 @@ const AdminDashboard: React.FC = () => {
                       return (
                         <div key={plan}>
                           <div className="flex justify-between items-center mb-1.5">
-                            <span className="flex items-center gap-2 text-sm font-medium text-[#FAFAFA]">
+                            <span className="flex items-center gap-2 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">
                               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
                               {t(`admin.plans.${plan}`)}
                             </span>
-                            <span className="text-sm text-[#A0A0A0]">{count} ({pct}%)</span>
+                            <span className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">{count} ({pct}%)</span>
                           </div>
-                          <div className="h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+                          <div className="h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
                             <div
                               className="h-full rounded-full transition-all duration-300"
                               style={{ width: `${pct}%`, backgroundColor: color }}
@@ -367,41 +367,41 @@ const AdminDashboard: React.FC = () => {
                         </div>
                       );
                     })}
-                    <div className="pt-3 border-t border-[#1F1F1F] flex justify-between text-sm">
-                      <span className="text-[#A0A0A0]">{t('admin.creatorsByPlan.inactive')}</span>
-                      <span className="text-[#A0A0A0]">{s.inactiveCreators}</span>
+                    <div className="pt-3 border-t border-[var(--fc-section-border,#1F1F1F)] flex justify-between text-sm">
+                      <span className="text-[var(--fc-section-muted,#A0A0A0)]">{t('admin.creatorsByPlan.inactive')}</span>
+                      <span className="text-[var(--fc-section-muted,#A0A0A0)]">{s.inactiveCreators}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Student Health */}
-                <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
-                  <h2 className="text-lg font-bold text-[#FAFAFA] mb-4">{t('admin.studentHealth.title')}</h2>
+                <div className="bg-[var(--fc-section,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-section-border,#1F1F1F)]">
+                  <h2 className="text-lg font-bold text-[var(--fc-section-text,#FAFAFA)] mb-4">{t('admin.studentHealth.title')}</h2>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 rounded-lg bg-[#16A34A]/10">
                           <GraduationCap size={18} className="text-[#16A34A]" />
                         </div>
-                        <span className="text-sm text-[#FAFAFA]">{t('admin.studentHealth.totalEnrollments')}</span>
+                        <span className="text-sm text-[var(--fc-section-text,#FAFAFA)]">{t('admin.studentHealth.totalEnrollments')}</span>
                       </div>
-                      <span className="text-sm font-semibold text-[#FAFAFA]">{s.totalEnrollments}</span>
+                      <span className="text-sm font-semibold text-[var(--fc-section-text,#FAFAFA)]">{s.totalEnrollments}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 rounded-lg bg-[#2563EB]/10">
                           <TrendingUp size={18} className="text-[#2563EB]" />
                         </div>
-                        <span className="text-sm text-[#FAFAFA]">{t('admin.studentHealth.avgCompletion')}</span>
+                        <span className="text-sm text-[var(--fc-section-text,#FAFAFA)]">{t('admin.studentHealth.avgCompletion')}</span>
                       </div>
-                      <span className="text-sm font-semibold text-[#FAFAFA]">{s.avgCompletionRate}%</span>
+                      <span className="text-sm font-semibold text-[var(--fc-section-text,#FAFAFA)]">{s.avgCompletionRate}%</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 rounded-lg bg-[#DC2626]/10">
                           <AlertTriangle size={18} className="text-[#DC2626]" />
                         </div>
-                        <span className="text-sm text-[#FAFAFA]">{t('admin.studentHealth.atRisk')}</span>
+                        <span className="text-sm text-[var(--fc-section-text,#FAFAFA)]">{t('admin.studentHealth.atRisk')}</span>
                       </div>
                       <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#DC2626]/10 text-[#DC2626]">
                         {s.atRiskStudentCount}
@@ -409,8 +409,8 @@ const AdminDashboard: React.FC = () => {
                     </div>
                     {/* Enrollment Trends mini chart */}
                     {enrollmentData && enrollmentData.length > 0 && (
-                      <div className="pt-3 border-t border-[#1F1F1F]">
-                        <p className="text-xs font-medium text-[#A0A0A0] uppercase tracking-wider mb-2">
+                      <div className="pt-3 border-t border-[var(--fc-section-border,#1F1F1F)]">
+                        <p className="text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider mb-2">
                           {t('admin.studentHealth.enrollmentTrend')}
                         </p>
                         <ResponsiveContainer width="100%" height={120}>

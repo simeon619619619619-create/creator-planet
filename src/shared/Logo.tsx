@@ -45,11 +45,11 @@ export const Logo: React.FC<LogoProps> = ({
       />
       {showText && (
         <div className="flex flex-col">
-          <span className={`font-bold ${config.textSize} ${variant === 'light' ? 'text-[#FAFAFA]' : 'text-[#0A0A0A]'}`}>
+          <span className={`font-bold ${config.textSize} ${variant === 'light' ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[#0A0A0A]'}`}>
             Founders Club
           </span>
           {showTagline && (
-            <span className={`text-xs tracking-wider ${variant === 'light' ? 'text-[#A0A0A0]' : 'text-[#666666]'}`}>
+            <span className={`text-xs tracking-wider ${variant === 'light' ? 'text-[var(--fc-section-muted,#A0A0A0)]' : 'text-[var(--fc-section-muted,#666666)]'}`}>
               COURSES & COMMUNITIES
             </span>
           )}

@@ -32,7 +32,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
       {/* Section Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="group w-full flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-[#666666] hover:text-[#A0A0A0] uppercase tracking-wider"
+        className="group w-full flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] uppercase tracking-wider"
       >
         {isExpanded ? (
           <ChevronDown size={14} />
@@ -40,7 +40,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
           <ChevronRight size={14} />
         )}
         <span className="flex-1 text-left">{t('directMessages.teamSection.title')}</span>
-        <MessageCircle size={12} className="text-[#666666]" />
+        <MessageCircle size={12} className="text-[var(--fc-section-muted,#666666)]" />
       </button>
 
       {/* Team Members List */}
@@ -59,7 +59,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                 key={member.id}
                 onClick={() => onSelectTeamMember(member)}
                 className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors text-left
-                  ${isSelected ? 'bg-[#151515]' : 'hover:bg-[#0A0A0A]'}
+                  ${isSelected ? 'bg-[var(--fc-section-hover,#151515)]' : 'hover:bg-[var(--fc-section,#0A0A0A)]'}
                 `}
               >
                 {/* Avatar with unread indicator */}
@@ -77,13 +77,13 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                 {/* Name and title */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <span className={`text-sm font-medium truncate ${isSelected ? 'text-[#A0A0A0]' : 'text-[#A0A0A0]'}`}>
+                    <span className={`text-sm font-medium truncate ${isSelected ? 'text-[var(--fc-section-muted,#A0A0A0)]' : 'text-[var(--fc-section-muted,#A0A0A0)]'}`}>
                       {displayName}
                     </span>
                     <span
                       className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold shrink-0
                         ${badgeType === 'team'
-                          ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                          ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]'
                           : 'bg-[#EAB308]/10 text-[#EAB308]'
                         }
                       `}
@@ -95,7 +95,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                     </span>
                   </div>
                   {member.title && (
-                    <p className="text-xs text-[#666666] truncate">{member.title}</p>
+                    <p className="text-xs text-[var(--fc-section-muted,#666666)] truncate">{member.title}</p>
                   )}
                 </div>
               </button>

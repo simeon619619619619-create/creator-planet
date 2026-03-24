@@ -803,7 +803,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                 value={newCommunityName}
                 onChange={(e) => setNewCommunityName(e.target.value)}
                 placeholder={t('communityHub.modal.createCommunity.namePlaceholder')}
-                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               />
               <div className="flex gap-3 mt-4">
                 <button
@@ -1100,7 +1100,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
                   placeholder={t('communityHub.createPost.placeholder')}
-                  className="w-full bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg p-3 text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-24"
+                  className="w-full bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg p-3 text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] resize-none h-24"
                 />
 
                 {/* Image Preview */}
@@ -1410,7 +1410,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                           onChange={(e) => handleCommentInputChange(post.id, e.target.value)}
                           onKeyPress={(e) => e.key === 'Enter' && handleSubmitComment(post.id)}
                           placeholder={t('communityHub.comments.placeholder')}
-                          className="flex-1 px-3 py-2 bg-[var(--fc-surface-hover,#151515)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                          className="flex-1 px-3 py-2 bg-[var(--fc-surface-hover,#151515)] border border-[var(--fc-border,#1F1F1F)] rounded-lg text-sm focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                         />
                         <button
                           onClick={() => handleSubmitComment(post.id)}
@@ -1445,7 +1445,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
               value={newCommunityName}
               onChange={(e) => setNewCommunityName(e.target.value)}
               placeholder={t('communityHub.modal.createCommunity.namePlaceholder')}
-              className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               autoFocus
             />
             <div className="flex gap-3 mt-4">
@@ -1492,7 +1492,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={channelName}
                   onChange={(e) => setChannelName(e.target.value)}
                   placeholder={t('communityHub.modal.channel.namePlaceholder')}
-                  className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                  className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
                   autoFocus
                 />
                 <p className="text-xs text-[var(--fc-muted,#A0A0A0)] mt-1">
@@ -1507,7 +1507,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   value={channelDescription}
                   onChange={(e) => setChannelDescription(e.target.value)}
                   placeholder={t('communityHub.modal.channel.descriptionPlaceholder')}
-                  className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] resize-none h-20"
+                  className="w-full px-4 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] resize-none h-20"
                 />
               </div>
               {/* Group Selector */}
@@ -1742,7 +1742,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                   onChange={(e) => setGivePointsReason(e.target.value)}
                   placeholder={t('communityHub.givePoints.reasonPlaceholder')}
                   rows={2}
-                  className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] resize-none"
+                  className="w-full px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-sm text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] resize-none"
                 />
               </div>
             </div>
@@ -1838,7 +1838,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         type="text"
                         value={editingCommunityName}
                         onChange={(e) => setEditingCommunityName(e.target.value)}
-                        className="flex-1 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] text-[var(--fc-text,#FAFAFA)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
+                        className="flex-1 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] text-[var(--fc-text,#FAFAFA)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] focus:outline-none"
                         placeholder={t('communityHub.modal.communitySettings.namePlaceholder')}
                       />
                       <button
@@ -1872,7 +1872,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                       <select
                         value={editingCommunityCategory ?? ''}
                         onChange={(e) => setEditingCommunityCategory((e.target.value || null) as ContentCategory | null)}
-                        className="flex-1 px-3 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] bg-transparent text-[var(--fc-text,#FAFAFA)]"
+                        className="flex-1 px-3 py-2 border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] bg-transparent text-[var(--fc-text,#FAFAFA)]"
                       >
                         <option value="">{t('categories.selectPlaceholder', 'Select a category...')}</option>
                         {CONTENT_CATEGORIES.map((cat) => (
@@ -1915,7 +1915,7 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
                         type="text"
                         defaultValue={(selectedCommunity as any).access_code || ''}
                         placeholder="Оставете празно за свободен достъп"
-                        className="flex-1 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] text-[var(--fc-text,#FAFAFA)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] focus:outline-none"
+                        className="flex-1 px-3 py-2 bg-[var(--fc-surface,#0A0A0A)] text-[var(--fc-text,#FAFAFA)] border border-[var(--fc-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] focus:outline-none"
                         id="access-code-input"
                       />
                       <button

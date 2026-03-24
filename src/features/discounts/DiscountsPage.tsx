@@ -147,7 +147,7 @@ export function DiscountsPage() {
   const getStatusBadge = (code: DiscountCodeWithDetails) => {
     if (!code.is_active) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-full bg-[#1F1F1F] px-2 py-0.5 text-xs font-medium text-[#A0A0A0]">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] px-2 py-0.5 text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)]">
           <XCircle className="h-3 w-3" /> {t('discounts.status.inactive')}
         </span>
       );
@@ -189,19 +189,19 @@ export function DiscountsPage() {
   if (!profile) {
     return (
       <div className="flex h-full items-center justify-center">
-        <p className="text-[#666666]">{t('discounts.page.loginRequired')}</p>
+        <p className="text-[var(--fc-section-muted,#666666)]">{t('discounts.page.loginRequired')}</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] p-6">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)] p-6">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-[#FAFAFA]">{t('discounts.page.title')}</h1>
-            <p className="mt-1 text-sm text-[#666666]">
+            <h1 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{t('discounts.page.title')}</h1>
+            <p className="mt-1 text-sm text-[var(--fc-section-muted,#666666)]">
               {t('discounts.page.subtitle')}
             </p>
           </div>
@@ -217,21 +217,21 @@ export function DiscountsPage() {
         {/* Filters */}
         <div className="mb-6 flex flex-wrap items-center gap-4">
           <div className="relative flex-1 min-w-[200px]">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#666666]" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('discounts.page.searchPlaceholder')}
-              className="w-full rounded-lg border border-[#1F1F1F] py-2 pl-10 pr-4 text-sm focus:border-[#555555] focus:ring-white/10"
+              className="w-full rounded-lg border border-[var(--fc-section-border,#1F1F1F)] py-2 pl-10 pr-4 text-sm focus:border-[var(--fc-section-text,#555555)] focus:ring-white/10"
             />
           </div>
           <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4 text-[#666666]" />
+            <Filter className="h-4 w-4 text-[var(--fc-section-muted,#666666)]" />
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as FilterStatus)}
-              className="rounded-lg border border-[#1F1F1F] py-2 px-3 text-sm focus:border-[#555555] focus:ring-white/10"
+              className="rounded-lg border border-[var(--fc-section-border,#1F1F1F)] py-2 px-3 text-sm focus:border-[var(--fc-section-text,#555555)] focus:ring-white/10"
             >
               <option value="all">{t('discounts.page.filterAll')}</option>
               <option value="active">{t('discounts.page.filterActive')}</option>
@@ -255,14 +255,14 @@ export function DiscountsPage() {
           </div>
         ) : filteredCodes.length === 0 ? (
           /* Empty State */
-          <div className="flex h-64 flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#1F1F1F] bg-[#0A0A0A]">
-            <Tag className="mb-3 h-12 w-12 text-[#A0A0A0]" />
-            <h3 className="text-lg font-medium text-[#FAFAFA]">
+          <div className="flex h-64 flex-col items-center justify-center rounded-xl border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
+            <Tag className="mb-3 h-12 w-12 text-[var(--fc-section-muted,#A0A0A0)]" />
+            <h3 className="text-lg font-medium text-[var(--fc-section-text,#FAFAFA)]">
               {searchQuery || filterStatus !== 'all'
                 ? t('discounts.page.empty.withFilters')
                 : t('discounts.page.empty.noFilters')}
             </h3>
-            <p className="mt-1 text-sm text-[#666666]">
+            <p className="mt-1 text-sm text-[var(--fc-section-muted,#666666)]">
               {searchQuery || filterStatus !== 'all'
                 ? t('discounts.page.empty.hintWithFilters')
                 : t('discounts.page.empty.hintNoFilters')}
@@ -283,43 +283,43 @@ export function DiscountsPage() {
             {filteredCodes.map((code) => (
               <div
                 key={code.id}
-                className="rounded-xl border border-[#1F1F1F] bg-[#0A0A0A] p-5 transition-shadow hover:border-[#333333]"
+                className="rounded-xl border border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)] p-5 transition-shadow hover:border-[#333333]"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     {/* Code and Status */}
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-lg font-bold text-[#FAFAFA]">
+                      <span className="font-mono text-lg font-bold text-[var(--fc-section-text,#FAFAFA)]">
                         {code.code}
                       </span>
                       {getStatusBadge(code)}
                     </div>
 
                     {/* Details */}
-                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-[#A0A0A0]">
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                       <span className="flex items-center gap-1">
-                        <Percent className="h-4 w-4 text-[#FAFAFA]" />
+                        <Percent className="h-4 w-4 text-[var(--fc-section-text,#FAFAFA)]" />
                         {code.discount_percent}{t('discounts.codeDetails.offLabel')}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4 text-[#FAFAFA]" />
+                        <Calendar className="h-4 w-4 text-[var(--fc-section-text,#FAFAFA)]" />
                         {getDurationLabel(code.duration_months)}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Users className="h-4 w-4 text-[#FAFAFA]" />
+                        <Users className="h-4 w-4 text-[var(--fc-section-text,#FAFAFA)]" />
                         {code.current_uses}
                         {code.max_uses !== null ? `/${code.max_uses}` : ''} {t('discounts.codeDetails.usesLabel')}
                       </span>
                     </div>
 
                     {/* Target */}
-                    <p className="mt-2 text-sm text-[#666666]">
+                    <p className="mt-2 text-sm text-[var(--fc-section-muted,#666666)]">
                       {getTargetLabel(code)}
                     </p>
 
                     {/* Expiry */}
                     {code.valid_until && (
-                      <p className="mt-1 text-xs text-[#666666]">
+                      <p className="mt-1 text-xs text-[var(--fc-section-muted,#666666)]">
                         {isExpired(code) ? t('discounts.codeDetails.expiryExpired') : t('discounts.codeDetails.expiryExpires')}{' '}
                         {new Date(code.valid_until).toLocaleDateString()}
                       </p>
@@ -330,7 +330,7 @@ export function DiscountsPage() {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleCopyCode(code.code, code.id)}
-                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
+                      className="rounded-lg p-2 text-[var(--fc-section-muted,#666666)] hover:bg-[var(--fc-section-hover,#1F1F1F)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                       title={t('discounts.actions.copyTitle')}
                     >
                       {copiedId === code.id ? (
@@ -341,14 +341,14 @@ export function DiscountsPage() {
                     </button>
                     <button
                       onClick={() => handleEdit(code)}
-                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
+                      className="rounded-lg p-2 text-[var(--fc-section-muted,#666666)] hover:bg-[var(--fc-section-hover,#1F1F1F)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                       title={t('discounts.actions.editTitle')}
                     >
                       <Edit2 className="h-5 w-5" />
                     </button>
                     <button
                       onClick={() => handleToggleActive(code)}
-                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#A0A0A0]"
+                      className="rounded-lg p-2 text-[var(--fc-section-muted,#666666)] hover:bg-[var(--fc-section-hover,#1F1F1F)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                       title={code.is_active ? t('discounts.actions.deactivateTitle') : t('discounts.actions.activateTitle')}
                     >
                       {code.is_active ? (
@@ -359,7 +359,7 @@ export function DiscountsPage() {
                     </button>
                     <button
                       onClick={() => handleDelete(code)}
-                      className="rounded-lg p-2 text-[#666666] hover:bg-[#1F1F1F] hover:text-[#EF4444]"
+                      className="rounded-lg p-2 text-[var(--fc-section-muted,#666666)] hover:bg-[var(--fc-section-hover,#1F1F1F)] hover:text-[#EF4444]"
                       title={t('discounts.actions.deleteTitle')}
                     >
                       <Trash2 className="h-5 w-5" />

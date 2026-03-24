@@ -74,14 +74,14 @@ const LockedFallback: React.FC<LockedFallbackProps> = ({ feature, onUpgradeClick
   };
 
   return (
-    <div className="bg-[#0A0A0A] border-2 border-dashed border-[#1F1F1F] rounded-xl p-6 text-center">
-      <div className="inline-flex items-center justify-center w-12 h-12 bg-[#1F1F1F] rounded-full mb-3">
-        <Lock className="w-6 h-6 text-[#666666]" />
+    <div className="bg-[var(--fc-section,#0A0A0A)] border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-xl p-6 text-center">
+      <div className="inline-flex items-center justify-center w-12 h-12 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full mb-3">
+        <Lock className="w-6 h-6 text-[var(--fc-section-muted,#666666)]" />
       </div>
-      <h3 className="font-semibold text-[#A0A0A0] mb-1">
+      <h3 className="font-semibold text-[var(--fc-section-muted,#A0A0A0)] mb-1">
         {t(featureLabelKeys[feature])}
       </h3>
-      <p className="text-sm text-[#666666] mb-4">
+      <p className="text-sm text-[var(--fc-section-muted,#666666)] mb-4">
         {t('billing.gate.lockedMessage')}
       </p>
       <button
@@ -121,12 +121,12 @@ const LockedOverlay: React.FC<LockedOverlayProps> = ({ children, feature, onUpgr
       <div className="pointer-events-none select-none opacity-50 blur-[1px]">
         {children}
       </div>
-      <div className="absolute inset-0 flex items-center justify-center bg-[#0A0A0A]/60 backdrop-blur-[2px] rounded-lg">
+      <div className="absolute inset-0 flex items-center justify-center bg-[var(--fc-section,#0A0A0A)]/60 backdrop-blur-[2px] rounded-lg">
         <div className="text-center p-4">
-          <div className="inline-flex items-center justify-center w-10 h-10 bg-[#1F1F1F] rounded-full mb-2">
-            <Lock className="w-5 h-5 text-[#FAFAFA]" />
+          <div className="inline-flex items-center justify-center w-10 h-10 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full mb-2">
+            <Lock className="w-5 h-5 text-[var(--fc-section-text,#FAFAFA)]" />
           </div>
-          <p className="text-sm font-medium text-[#A0A0A0] mb-2">
+          <p className="text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
             {t('billing.gate.lockedLabel', { feature: t(featureLabelKeys[feature]) })}
           </p>
           <button

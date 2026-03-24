@@ -372,8 +372,8 @@ const BillingSettingsPage: React.FC = () => {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
-          <Loader2 size={32} className="text-[#FAFAFA] animate-spin mx-auto mb-4" />
-          <p className="text-[#A0A0A0]">{t('billing.settings.loading')}</p>
+          <Loader2 size={32} className="text-[var(--fc-section-text,#FAFAFA)] animate-spin mx-auto mb-4" />
+          <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('billing.settings.loading')}</p>
         </div>
       </div>
     );
@@ -384,10 +384,10 @@ const BillingSettingsPage: React.FC = () => {
     return (
       <div className="text-center py-12">
         <AlertCircle size={48} className="text-[#EAB308] mx-auto mb-4" />
-        <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2">
+        <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">
           {t('billing.settings.errorNotSetup')}
         </h3>
-        <p className="text-[#A0A0A0] mb-6">
+        <p className="text-[var(--fc-section-muted,#A0A0A0)] mb-6">
           {t('billing.settings.errorIncompleteSetup')}
         </p>
         <button
@@ -423,8 +423,8 @@ const BillingSettingsPage: React.FC = () => {
 
       {/* Setup Checklist */}
       {setupChecklist && (
-        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
-          <h2 className="text-lg font-semibold text-[#FAFAFA] mb-4">
+        <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
+          <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-4">
             {t('billing.settings.checklist.title')}
           </h2>
 
@@ -437,7 +437,7 @@ const BillingSettingsPage: React.FC = () => {
                   ) : (
                     <div className="w-5 h-5 rounded-full border-2 border-[#666666]" />
                   )}
-                  <span className={item.done ? 'text-[#A0A0A0]' : 'text-[#FAFAFA]'}>
+                  <span className={item.done ? 'text-[var(--fc-section-muted,#A0A0A0)]' : 'text-[var(--fc-section-text,#FAFAFA)]'}>
                     {item.label}
                   </span>
                 </div>
@@ -446,7 +446,7 @@ const BillingSettingsPage: React.FC = () => {
                 ) : (
                   <button
                     onClick={item.action}
-                    className="flex items-center gap-1 text-sm font-medium text-[#FAFAFA] hover:text-white bg-[#1F1F1F] hover:bg-[#333333] px-3 py-1.5 rounded-lg transition-colors"
+                    className="flex items-center gap-1 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] hover:text-white bg-[var(--fc-section-hover,#1F1F1F)] hover:bg-[#333333] px-3 py-1.5 rounded-lg transition-colors"
                   >
                     {item.actionLabel}
                     <ArrowRight size={14} />
@@ -459,11 +459,11 @@ const BillingSettingsPage: React.FC = () => {
           {/* Progress bar */}
           <div>
             <div className="flex items-center justify-between text-sm mb-2">
-              <span className="text-[#A0A0A0]">
+              <span className="text-[var(--fc-section-muted,#A0A0A0)]">
                 {t('billing.settings.checklist.progress', { done: setupChecklist.completedCount, total: 3 })}
               </span>
             </div>
-            <div className="h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+            <div className="h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
               <div
                 className="h-full bg-[#22C55E] rounded-full transition-all duration-500"
                 style={{ width: `${(setupChecklist.completedCount / 3) * 100}%` }}
@@ -474,33 +474,33 @@ const BillingSettingsPage: React.FC = () => {
       )}
 
       {/* Current Plan Section */}
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionCurrentPlan')}</h2>
-            <p className="text-[#666666] text-sm">
+            <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.sectionCurrentPlan')}</h2>
+            <p className="text-[var(--fc-section-muted,#666666)] text-sm">
               {t('billing.settings.sectionSubtitle')}
             </p>
           </div>
           <button
             onClick={() => navigate('/pricing')}
-            className="text-[#FAFAFA] hover:text-white text-sm font-medium flex items-center gap-1"
+            className="text-[var(--fc-section-text,#FAFAFA)] hover:text-white text-sm font-medium flex items-center gap-1"
           >
             {t('billing.settings.viewAllPlansLink')}
             <ArrowUpRight size={16} />
           </button>
         </div>
 
-        <div className="flex items-center gap-4 p-4 bg-[#0A0A0A] rounded-lg mb-6">
-          <div className="w-12 h-12 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
-            <CreditCard size={24} className="text-[#FAFAFA]" />
+        <div className="flex items-center gap-4 p-4 bg-[var(--fc-section,#0A0A0A)] rounded-lg mb-6">
+          <div className="w-12 h-12 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg flex items-center justify-center">
+            <CreditCard size={24} className="text-[var(--fc-section-text,#FAFAFA)]" />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-[#FAFAFA]">{currentPlan.name}</h3>
+              <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">{currentPlan.name}</h3>
               <StatusBadge status={billing.status} t={t} />
             </div>
-            <p className="text-sm text-[#A0A0A0]">
+            <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
               {currentPlan.price_monthly_cents === 0
                 ? t('billing.settings.freePlanLabel')
                 : `${formatAmount(currentPlan.price_monthly_cents)}/month`}{' '}
@@ -523,7 +523,7 @@ const BillingSettingsPage: React.FC = () => {
             <div className="flex items-start gap-3">
               <AlertTriangle size={20} className="text-[#EAB308] shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-[#FAFAFA]">{t('billing.settings.cancellationNoticeTitle')}</p>
+                <p className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.cancellationNoticeTitle')}</p>
                 <p className="text-sm text-[#EAB308] mt-1">
                   {t('billing.settings.cancellationNoticeMessage', {
                     date: billing.current_period_end
@@ -534,7 +534,7 @@ const BillingSettingsPage: React.FC = () => {
                 <button
                   onClick={handleResumeSubscription}
                   disabled={isProcessing}
-                  className="mt-3 text-sm font-medium text-[#FAFAFA] underline hover:no-underline disabled:opacity-50"
+                  className="mt-3 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] underline hover:no-underline disabled:opacity-50"
                 >
                   {t('billing.settings.resumeSubscriptionButton')}
                 </button>
@@ -549,7 +549,7 @@ const BillingSettingsPage: React.FC = () => {
             <button
               onClick={handleOpenBillingPortal}
               disabled={isProcessing}
-              className="flex items-center gap-2 px-4 py-2 border border-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] hover:bg-[#0A0A0A] transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)] transition-colors disabled:opacity-50"
             >
               <ExternalLink size={16} />
               {t('billing.settings.managePaymentButton')}
@@ -567,11 +567,11 @@ const BillingSettingsPage: React.FC = () => {
       </div>
 
       {/* Payouts Section (Stripe Connect) */}
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionPayouts')}</h2>
-            <p className="text-[#666666] text-sm">
+            <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.sectionPayouts')}</h2>
+            <p className="text-[var(--fc-section-muted,#666666)] text-sm">
               {t('billing.settings.payoutsSubtitle')}
             </p>
           </div>
@@ -579,7 +579,7 @@ const BillingSettingsPage: React.FC = () => {
             <button
               onClick={handleRefreshConnectStatus}
               disabled={isConnectLoading}
-              className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#151515] rounded-lg transition-colors disabled:opacity-50"
+              className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors disabled:opacity-50"
               title={t('billing.settings.refreshStatusTitle')}
             >
               <RefreshCw size={16} className={isConnectLoading ? 'animate-spin' : ''} />
@@ -589,14 +589,14 @@ const BillingSettingsPage: React.FC = () => {
 
         {!connectStatus ? (
           // No Connect account - show setup prompt
-          <div className="p-6 bg-[#0A0A0A] rounded-lg border border-[#1F1F1F]">
+          <div className="p-6 bg-[var(--fc-section,#0A0A0A)] rounded-lg border border-[var(--fc-section-border,#1F1F1F)]">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-[#1F1F1F] rounded-lg flex items-center justify-center shrink-0">
-                <Wallet size={24} className="text-[#FAFAFA]" />
+              <div className="w-12 h-12 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg flex items-center justify-center shrink-0">
+                <Wallet size={24} className="text-[var(--fc-section-text,#FAFAFA)]" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-[#FAFAFA] mb-1">{t('billing.settings.payoutsSetupTitle')}</h3>
-                <p className="text-sm text-[#A0A0A0] mb-4">
+                <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-1">{t('billing.settings.payoutsSetupTitle')}</h3>
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mb-4">
                   {t('billing.settings.payoutsSetupMessage')}
                 </p>
                 <button
@@ -622,16 +622,16 @@ const BillingSettingsPage: React.FC = () => {
         ) : (
           // Has Connect account - show status
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 bg-[#0A0A0A] rounded-lg">
-              <div className="w-12 h-12 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
-                <Wallet size={24} className="text-[#FAFAFA]" />
+            <div className="flex items-center gap-4 p-4 bg-[var(--fc-section,#0A0A0A)] rounded-lg">
+              <div className="w-12 h-12 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg flex items-center justify-center">
+                <Wallet size={24} className="text-[var(--fc-section-text,#FAFAFA)]" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-semibold text-[#FAFAFA]">{t('billing.settings.payoutAccountTitle')}</h3>
+                  <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.payoutAccountTitle')}</h3>
                   <ConnectStatusBadge status={connectStatus.status} t={t} />
                 </div>
-                <p className="text-sm text-[#A0A0A0]">
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                   {connectStatus.status === 'active'
                     ? t('billing.settings.payoutAccountActive')
                     : connectStatus.status === 'pending'
@@ -652,48 +652,48 @@ const BillingSettingsPage: React.FC = () => {
 
             {/* Status details */}
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 border border-[#1F1F1F] rounded-lg">
+              <div className="p-4 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.chargesEnabled ? (
                     <CheckCircle size={18} className="text-[#22C55E]" />
                   ) : (
                     <Clock size={18} className="text-[#EAB308]" />
                   )}
-                  <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutChargesEnabled')}</span>
+                  <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.payoutChargesEnabled')}</span>
                 </div>
-                <p className="text-sm text-[#A0A0A0]">
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                   {connectStatus.chargesEnabled
                     ? t('billing.settings.payoutChargesReady')
                     : t('billing.settings.payoutChargesPending')}
                 </p>
               </div>
 
-              <div className="p-4 border border-[#1F1F1F] rounded-lg">
+              <div className="p-4 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.payoutsEnabled ? (
                     <CheckCircle size={18} className="text-[#22C55E]" />
                   ) : (
                     <Clock size={18} className="text-[#EAB308]" />
                   )}
-                  <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutPayoutsEnabled')}</span>
+                  <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.payoutPayoutsEnabled')}</span>
                 </div>
-                <p className="text-sm text-[#A0A0A0]">
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                   {connectStatus.payoutsEnabled
                     ? t('billing.settings.payoutPayoutsReady')
                     : t('billing.settings.payoutPayoutsPending')}
                 </p>
               </div>
 
-              <div className="p-4 border border-[#1F1F1F] rounded-lg">
+              <div className="p-4 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   {connectStatus.detailsSubmitted ? (
                     <CheckCircle size={18} className="text-[#22C55E]" />
                   ) : (
                     <Clock size={18} className="text-[#EAB308]" />
                   )}
-                  <span className="font-medium text-[#FAFAFA]">{t('billing.settings.payoutIdentityVerified')}</span>
+                  <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.payoutIdentityVerified')}</span>
                 </div>
-                <p className="text-sm text-[#A0A0A0]">
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                   {connectStatus.detailsSubmitted
                     ? t('billing.settings.payoutIdentityVerifiedComplete')
                     : t('billing.settings.payoutIdentityPending')}
@@ -705,43 +705,43 @@ const BillingSettingsPage: React.FC = () => {
       </div>
 
       {/* Revenue Overview */}
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
-        <h2 className="text-lg font-semibold text-[#FAFAFA] mb-6">{t('billing.settings.sectionRevenue')}</h2>
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
+        <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-6">{t('billing.settings.sectionRevenue')}</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-4 bg-[#0A0A0A] rounded-lg">
-            <div className="flex items-center gap-2 text-[#666666] text-sm mb-2">
+          <div className="p-4 bg-[var(--fc-section,#0A0A0A)] rounded-lg">
+            <div className="flex items-center gap-2 text-[var(--fc-section-muted,#666666)] text-sm mb-2">
               <TrendingUp size={16} />
               {t('billing.settings.revenueThisMonth')}
             </div>
-            <p className="text-2xl font-bold text-[#FAFAFA]">
+            <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
               {formatAmount(dashboard.currentPeriodRevenue)}
             </p>
-            <p className="text-sm text-[#666666] mt-1">
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">
               {t('billing.settings.revenueFeesLabel', { amount: formatAmount(dashboard.platformFeesThisPeriod) })}
             </p>
           </div>
 
-          <div className="p-4 bg-[#0A0A0A] rounded-lg">
-            <div className="flex items-center gap-2 text-[#666666] text-sm mb-2">
+          <div className="p-4 bg-[var(--fc-section,#0A0A0A)] rounded-lg">
+            <div className="flex items-center gap-2 text-[var(--fc-section-muted,#666666)] text-sm mb-2">
               <Receipt size={16} />
               {t('billing.settings.revenueAllTime')}
             </div>
-            <p className="text-2xl font-bold text-[#FAFAFA]">
+            <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
               {formatAmount(dashboard.totalRevenue)}
             </p>
           </div>
 
           {dashboard.nextInvoiceDate && dashboard.nextInvoiceAmount && (
-            <div className="p-4 bg-[#0A0A0A] rounded-lg">
-              <div className="flex items-center gap-2 text-[#666666] text-sm mb-2">
+            <div className="p-4 bg-[var(--fc-section,#0A0A0A)] rounded-lg">
+              <div className="flex items-center gap-2 text-[var(--fc-section-muted,#666666)] text-sm mb-2">
                 <Clock size={16} />
                 {t('billing.settings.revenueNextInvoice')}
               </div>
-              <p className="text-2xl font-bold text-[#FAFAFA]">
+              <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
                 {formatAmount(dashboard.nextInvoiceAmount)}
               </p>
-              <p className="text-sm text-[#666666] mt-1">
+              <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">
                 {t('billing.settings.revenueDueDate', { date: new Date(dashboard.nextInvoiceDate).toLocaleDateString() })}
               </p>
             </div>
@@ -750,14 +750,14 @@ const BillingSettingsPage: React.FC = () => {
       </div>
 
       {/* Community Sales */}
-      <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6">
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.sectionSales')}</h2>
-          <p className="text-[#666666] text-sm">{t('billing.settings.salesSubtitle')}</p>
+          <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.sectionSales')}</h2>
+          <p className="text-[var(--fc-section-muted,#666666)] text-sm">{t('billing.settings.salesSubtitle')}</p>
         </div>
 
         {sales.length === 0 ? (
-          <p className="text-center text-[#666666] py-8">
+          <p className="text-center text-[var(--fc-section-muted,#666666)] py-8">
             {t('billing.settings.noSales')}
           </p>
         ) : (
@@ -811,11 +811,11 @@ interface StatusBadgeProps {
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status, t }) => {
   const config: Record<string, { bg: string; text: string; labelKey: string }> = {
     active: { bg: 'bg-[#22C55E]/10', text: 'text-[#22C55E]', labelKey: 'billing.settings.status.active' },
-    trialing: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.status.trial' },
+    trialing: { bg: 'bg-[var(--fc-section-hover,#1F1F1F)]', text: 'text-[var(--fc-section-muted,#A0A0A0)]', labelKey: 'billing.settings.status.trial' },
     past_due: { bg: 'bg-[#EF4444]/10', text: 'text-[#EF4444]', labelKey: 'billing.settings.status.pastDue' },
-    canceled: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.status.canceled' },
+    canceled: { bg: 'bg-[var(--fc-section-hover,#1F1F1F)]', text: 'text-[var(--fc-section-muted,#A0A0A0)]', labelKey: 'billing.settings.status.canceled' },
     incomplete: { bg: 'bg-[#EAB308]/10', text: 'text-[#EAB308]', labelKey: 'billing.settings.status.incomplete' },
-    paused: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.status.paused' },
+    paused: { bg: 'bg-[var(--fc-section-hover,#1F1F1F)]', text: 'text-[var(--fc-section-muted,#A0A0A0)]', labelKey: 'billing.settings.status.paused' },
   };
 
   const { bg, text, labelKey } = config[status] || config.incomplete;
@@ -837,7 +837,7 @@ const ConnectStatusBadge: React.FC<ConnectStatusBadgeProps> = ({ status, t }) =>
     active: { bg: 'bg-[#22C55E]/10', text: 'text-[#22C55E]', labelKey: 'billing.settings.connectStatus.active' },
     pending: { bg: 'bg-[#EAB308]/10', text: 'text-[#EAB308]', labelKey: 'billing.settings.connectStatus.pending' },
     restricted: { bg: 'bg-[#EF4444]/10', text: 'text-[#EF4444]', labelKey: 'billing.settings.connectStatus.restricted' },
-    disabled: { bg: 'bg-[#1F1F1F]', text: 'text-[#A0A0A0]', labelKey: 'billing.settings.connectStatus.disabled' },
+    disabled: { bg: 'bg-[var(--fc-section-hover,#1F1F1F)]', text: 'text-[var(--fc-section-muted,#A0A0A0)]', labelKey: 'billing.settings.connectStatus.disabled' },
   };
 
   const { bg, text, labelKey } = config[status] || config.pending;
@@ -866,17 +866,17 @@ const SaleRow: React.FC<SaleRowProps> = ({ sale, t }) => {
     completed: <CheckCircle size={16} className="text-[#22C55E]" />,
     pending: <Clock size={16} className="text-[#EAB308]" />,
     failed: <XCircle size={16} className="text-[#EF4444]" />,
-    refunded: <AlertCircle size={16} className="text-[#666666]" />,
+    refunded: <AlertCircle size={16} className="text-[var(--fc-section-muted,#666666)]" />,
   };
 
   return (
     <div className="flex items-center gap-4 py-4">
       <div className="shrink-0">{statusIcons[sale.status] || statusIcons.pending}</div>
       <div className="flex-1 min-w-0">
-        <p className="font-medium text-[#FAFAFA]">
+        <p className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
           {sale.product_name}
         </p>
-        <p className="text-sm text-[#666666]">
+        <p className="text-sm text-[var(--fc-section-muted,#666666)]">
           {typeLabels[sale.product_type] || sale.product_type}
           {' · '}
           {new Date(sale.created_at).toLocaleDateString()}
@@ -886,7 +886,7 @@ const SaleRow: React.FC<SaleRowProps> = ({ sale, t }) => {
         <p className="font-medium text-[#22C55E]">
           +{formatAmount(sale.sale_amount_cents, sale.currency)}
         </p>
-        <p className="text-xs text-[#666666]">
+        <p className="text-xs text-[var(--fc-section-muted,#666666)]">
           {t('billing.settings.saleNet', { amount: formatAmount(sale.net_amount_cents, sale.currency) })}
         </p>
       </div>
@@ -914,21 +914,21 @@ const CancelModal: React.FC<CancelModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={onCancel} />
-      <div className="relative bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] max-w-md w-full p-6">
+      <div className="relative bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] max-w-md w-full p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 bg-[#EF4444]/10 rounded-full flex items-center justify-center">
             <AlertTriangle size={20} className="text-[#EF4444]" />
           </div>
-          <h2 className="text-lg font-semibold text-[#FAFAFA]">{t('billing.settings.cancelModal.title')}</h2>
+          <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('billing.settings.cancelModal.title')}</h2>
         </div>
 
-        <p className="text-[#A0A0A0] mb-4">
+        <p className="text-[var(--fc-section-muted,#A0A0A0)] mb-4">
           {t('billing.settings.cancelModal.message', { planName })}
         </p>
 
-        <ul className="space-y-2 mb-6 text-sm text-[#A0A0A0]">
+        <ul className="space-y-2 mb-6 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
           <li className="flex items-start gap-2">
-            <span className="text-[#666666]">-</span>
+            <span className="text-[var(--fc-section-muted,#666666)]">-</span>
             <span>
               {t('billing.settings.cancelModal.accessUntil', {
                 date: periodEnd ? new Date(periodEnd).toLocaleDateString() : 'the end of your billing period'
@@ -936,11 +936,11 @@ const CancelModal: React.FC<CancelModalProps> = ({
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#666666]">-</span>
+            <span className="text-[var(--fc-section-muted,#666666)]">-</span>
             <span>{t('billing.settings.cancelModal.downgradeNotice')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#666666]">-</span>
+            <span className="text-[var(--fc-section-muted,#666666)]">-</span>
             <span>{t('billing.settings.cancelModal.resubscribe')}</span>
           </li>
         </ul>
@@ -949,7 +949,7 @@ const CancelModal: React.FC<CancelModalProps> = ({
           <button
             onClick={onCancel}
             disabled={isLoading}
-            className="flex-1 py-2.5 px-4 border border-[#1F1F1F] text-[#FAFAFA] font-medium rounded-lg hover:bg-[#151515] hover:border-[#333333] transition-colors disabled:opacity-50"
+            className="flex-1 py-2.5 px-4 border border-[var(--fc-section-border,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)] font-medium rounded-lg hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors disabled:opacity-50"
           >
             {t('billing.settings.cancelModal.keepButton')}
           </button>

@@ -94,16 +94,16 @@ export function CoursePurchaseModal({
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#0A0A0A] rounded-2xl w-full max-w-md">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-2xl w-full max-w-md">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-[#1F1F1F]">
+        <div className="flex items-center justify-between p-6 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div>
-            <h2 className="text-xl font-bold text-[#FAFAFA]">Purchase Course</h2>
-            <p className="text-sm text-[#666666] mt-1">{course.title}</p>
+            <h2 className="text-xl font-bold text-[var(--fc-section-text,#FAFAFA)]">Purchase Course</h2>
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-1">{course.title}</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg transition-colors"
+            className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
           >
             <X size={20} />
           </button>
@@ -112,18 +112,18 @@ export function CoursePurchaseModal({
         {/* Content */}
         <div className="p-6">
           {/* Price Summary */}
-          <div className="bg-[#0A0A0A] rounded-xl p-4 mb-6">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl p-4 mb-6">
             <div className="flex justify-between items-center">
-              <span className="text-[#A0A0A0]">Course price</span>
-              <span className="text-xl font-bold text-[#FAFAFA]">{priceDisplay}</span>
+              <span className="text-[var(--fc-section-muted,#A0A0A0)]">Course price</span>
+              <span className="text-xl font-bold text-[var(--fc-section-text,#FAFAFA)]">{priceDisplay}</span>
             </div>
           </div>
 
           {/* Loading State */}
           {isLoading && (
             <div className="flex flex-col items-center py-8">
-              <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA] mb-3" />
-              <p className="text-[#666666]">Preparing secure checkout...</p>
+              <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)] mb-3" />
+              <p className="text-[var(--fc-section-muted,#666666)]">Preparing secure checkout...</p>
             </div>
           )}
 
@@ -157,7 +157,7 @@ export function CoursePurchaseModal({
           )}
 
           {/* Security Badge */}
-          <div className="flex items-center justify-center gap-2 mt-6 text-xs text-[#666666]">
+          <div className="flex items-center justify-center gap-2 mt-6 text-xs text-[var(--fc-section-muted,#666666)]">
             <ShieldCheck size={14} />
             <span>Secure payment powered by Stripe</span>
           </div>
@@ -230,8 +230,8 @@ function CheckoutForm({
         <div className="w-16 h-16 bg-[#22C55E]/10 rounded-full flex items-center justify-center mb-4">
           <CheckCircle className="w-8 h-8 text-[#22C55E]" />
         </div>
-        <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2">Payment Successful!</h3>
-        <p className="text-[#666666] text-center">
+        <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">Payment Successful!</h3>
+        <p className="text-[var(--fc-section-muted,#666666)] text-center">
           You now have access to <span className="font-medium">{course.title}</span>
         </p>
       </div>
@@ -258,7 +258,7 @@ function CheckoutForm({
           type="button"
           onClick={onClose}
           disabled={isProcessing}
-          className="flex-1 px-4 py-3 border border-[#1F1F1F] rounded-xl font-medium text-[#A0A0A0] hover:bg-[#0A0A0A] transition-colors disabled:opacity-50"
+          className="flex-1 px-4 py-3 border border-[var(--fc-section-border,#1F1F1F)] rounded-xl font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section,#0A0A0A)] transition-colors disabled:opacity-50"
         >
           Cancel
         </button>

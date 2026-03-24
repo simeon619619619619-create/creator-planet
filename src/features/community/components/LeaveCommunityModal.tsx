@@ -109,18 +109,18 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
 
       {/* Modal */}
       <div
-        className="relative bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F] max-w-md w-full mx-4"
+        className="relative bg-[var(--fc-section,#0A0A0A)] rounded-2xl border border-[var(--fc-section-border,#1F1F1F)] max-w-md w-full mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
+        <div className="flex items-center justify-between p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <div className="flex items-center gap-2 text-[#EF4444]">
             <LogOut size={20} />
             <h2 className="text-lg font-semibold">{t('community.leave.title')}</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-lg transition-colors"
+            className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors"
           >
             <X size={20} />
           </button>
@@ -130,7 +130,7 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
         <div className="p-6">
           {isLoading ? (
             <div className="flex items-center justify-center py-8">
-              <Loader2 className="w-8 h-8 text-[#FAFAFA] animate-spin" />
+              <Loader2 className="w-8 h-8 text-[var(--fc-section-text,#FAFAFA)] animate-spin" />
             </div>
           ) : (
             <div className="space-y-4">
@@ -139,10 +139,10 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-[#EAB308] flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-[#FAFAFA] font-medium">
+                    <p className="text-[var(--fc-section-text,#FAFAFA)] font-medium">
                       {t('community.leave.warningTitle')}
                     </p>
-                    <p className="text-[#A0A0A0] text-sm mt-1">
+                    <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm mt-1">
                       {t('community.leave.warningMessage', { community: communityName })}
                     </p>
                   </div>
@@ -150,9 +150,9 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
               </div>
 
               {/* What will happen */}
-              <div className="text-sm text-[#A0A0A0] space-y-2">
-                <p className="font-medium text-[#FAFAFA]">{t('community.leave.whatHappens')}</p>
-                <ul className="list-disc list-inside space-y-1 text-[#A0A0A0]">
+              <div className="text-sm text-[var(--fc-section-muted,#A0A0A0)] space-y-2">
+                <p className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('community.leave.whatHappens')}</p>
+                <ul className="list-disc list-inside space-y-1 text-[var(--fc-section-muted,#A0A0A0)]">
                   <li>{t('community.leave.loseAccess')}</li>
                   <li>{t('community.leave.pointsLost')}</li>
                   <li>{t('community.leave.postsRemain')}</li>
@@ -162,11 +162,11 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
 
               {/* Active subscription warning */}
               {hasActiveSubscription && (
-                <div className="bg-[#151515] border border-[#1F1F1F] rounded-lg p-4">
-                  <p className="text-[#FAFAFA] font-medium mb-2">
+                <div className="bg-[var(--fc-section-hover,#151515)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg p-4">
+                  <p className="text-[var(--fc-section-text,#FAFAFA)] font-medium mb-2">
                     {t('community.leave.activeSubscription')}
                   </p>
-                  <p className="text-[#A0A0A0] text-sm mb-3">
+                  <p className="text-[var(--fc-section-muted,#A0A0A0)] text-sm mb-3">
                     {t('community.leave.cancelFirst')}
                   </p>
                   <button
@@ -195,10 +195,10 @@ const LeaveCommunityModal: React.FC<LeaveCommunityModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-3 p-4 border-t border-[#1F1F1F] rounded-b-2xl">
+        <div className="flex items-center justify-end gap-3 p-4 border-t border-[var(--fc-section-border,#1F1F1F)] rounded-b-2xl">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-[#A0A0A0] hover:bg-[#151515] rounded-lg text-sm font-medium transition-colors"
+            className="px-4 py-2 text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg text-sm font-medium transition-colors"
           >
             {t('common.cancel')}
           </button>

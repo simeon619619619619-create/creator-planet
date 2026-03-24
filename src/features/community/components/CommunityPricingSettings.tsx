@@ -567,7 +567,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
       </div>
     );
   }
@@ -586,19 +586,19 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
       )}
 
       <div>
-        <h4 className="text-base font-medium text-[#FAFAFA] mb-1">{t('communityHub.pricing.sectionTitle')}</h4>
-        <p className="text-sm text-[#A0A0A0]">
+        <h4 className="text-base font-medium text-[var(--fc-section-text,#FAFAFA)] mb-1">{t('communityHub.pricing.sectionTitle')}</h4>
+        <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
           {t('communityHub.pricing.sectionDescription', { communityName })}
         </p>
       </div>
 
       {/* Community Thumbnail */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           {t('communityHub.pricing.thumbnail.label')}
         </label>
         <div className="flex items-start gap-4">
-          <div className="w-24 h-24 bg-[#151515] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
+          <div className="w-24 h-24 bg-[var(--fc-section-hover,#151515)] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
@@ -606,12 +606,12 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 className="w-full h-full object-cover"
               />
             ) : (
-              <Image size={32} className="text-[#666666]" />
+              <Image size={32} className="text-[var(--fc-section-muted,#666666)]" />
             )}
           </div>
           <div className="flex flex-col gap-2">
             <label className="cursor-pointer">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#151515] hover:bg-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] transition-colors">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-section-hover,#151515)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] transition-colors">
                 {isUploading ? (
                   <>
                     <Loader2 size={14} className="animate-spin" />
@@ -638,12 +638,12 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   setThumbnailUrl('');
                   await updateCommunity(communityId, { thumbnail_url: null });
                 }}
-                className="text-xs text-[#A0A0A0] hover:text-[#EF4444] text-left"
+                className="text-xs text-[var(--fc-section-muted,#A0A0A0)] hover:text-[#EF4444] text-left"
               >
                 {t('communityHub.pricing.thumbnail.remove')}
               </button>
             )}
-            <p className="text-xs text-[#A0A0A0]">
+            <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)]">
               {t('communityHub.pricing.thumbnail.hint')}
             </p>
           </div>
@@ -673,13 +673,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Page Theme Color */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <Palette size={16} className="text-[#FAFAFA]" />
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.themeColor.label')}
           </span>
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-3">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
           {t('communityHub.pricing.themeColor.hint')}
         </p>
         <div className="flex items-center gap-3">
@@ -734,13 +734,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Text Color */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <Palette size={16} className="text-[#FAFAFA]" />
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.textColor.label')}
           </span>
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-3">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
           {t('communityHub.pricing.textColor.hint')}
         </p>
         <div className="flex items-center gap-3">
@@ -793,13 +793,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Secondary / Muted Text Color */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <Palette size={16} className="text-[#FAFAFA]" />
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.secondaryColor.label')}
           </span>
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-3">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
           {t('communityHub.pricing.secondaryColor.hint')}
         </p>
         <div className="flex items-center gap-3">
@@ -852,13 +852,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Accent / Card Color */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <Palette size={16} className="text-[#FAFAFA]" />
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.accentColor.label')}
           </span>
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-3">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
           {t('communityHub.pricing.accentColor.hint')}
         </p>
         <div className="flex items-center gap-3">
@@ -911,13 +911,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Section / Content Panel Color */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <Palette size={16} className="text-[#FAFAFA]" />
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.sectionColor.label', { defaultValue: 'Цвят на секциите' })}
           </span>
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-3">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
           {t('communityHub.pricing.sectionColor.hint', { defaultValue: 'Цвят на панелите, настройките, картите и input полетата в съдържанието.' })}
         </p>
         <div className="flex items-center gap-3">
@@ -972,9 +972,9 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Background Decorative Elements */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <Image size={16} className="text-[#FAFAFA]" />
+            <Image size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.bgElements.label')}
           </span>
         </label>
@@ -987,13 +987,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Community Description (About) */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           <span className="flex items-center gap-2">
-            <FileText size={16} className="text-[#FAFAFA]" />
+            <FileText size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             {t('communityHub.pricing.description.label')}
           </span>
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-2">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           {t('communityHub.pricing.description.hint')}
         </p>
         <textarea
@@ -1002,11 +1002,11 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           placeholder={t('communityHub.pricing.description.placeholder')}
           rows={5}
           maxLength={2000}
-          className="w-full px-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[#555555] transition-colors resize-none"
+          className="w-full px-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] transition-colors resize-none"
         />
         <div className="flex items-center justify-between mt-2">
           <div className="flex items-center gap-3">
-            <p className="text-xs text-[#A0A0A0]">
+            <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)]">
               {t('communityHub.pricing.description.charCount', { count: description.length })}
             </p>
             {descriptionSaved && (
@@ -1035,10 +1035,10 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* VSL (Video Sales Letter) */}
       <div>
-        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
           {t('communityHub.pricing.vsl.label')}
         </label>
-        <p className="text-xs text-[#A0A0A0] mb-3">
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
           {t('communityHub.pricing.vsl.hint')}
         </p>
 
@@ -1058,7 +1058,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             </div>
             <div className="flex gap-2">
               <label className="cursor-pointer">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#151515] hover:bg-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] transition-colors">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-section-hover,#151515)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] transition-colors">
                   {isVslUploading ? (
                     <>
                       <Loader2 size={14} className="animate-spin" />
@@ -1101,12 +1101,12 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         ) : (
           // No video - show upload prompt
           <div className="flex items-start gap-4">
-            <div className="w-32 h-20 bg-[#151515] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
-              <Video size={32} className="text-[#666666]" />
+            <div className="w-32 h-20 bg-[var(--fc-section-hover,#151515)] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
+              <Video size={32} className="text-[var(--fc-section-muted,#666666)]" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="cursor-pointer">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#151515] hover:bg-[#1F1F1F] rounded-lg text-sm font-medium text-[#A0A0A0] transition-colors">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-section-hover,#151515)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] transition-colors">
                   {isVslUploading ? (
                     <>
                       <Loader2 size={14} className="animate-spin" />
@@ -1127,7 +1127,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   disabled={isVslUploading}
                 />
               </label>
-              <p className="text-xs text-[#A0A0A0]">
+              <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)]">
                 {t('communityHub.pricing.vsl.formatHint')}
               </p>
             </div>
@@ -1137,8 +1137,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
 
       {/* Pricing Section Header */}
       <div className="pt-4 border-t border-[var(--fc-border,#1F1F1F)]">
-        <h4 className="text-base font-medium text-[#FAFAFA] mb-1">{t('communityHub.pricing.title')}</h4>
-        <p className="text-sm text-[#A0A0A0]">
+        <h4 className="text-base font-medium text-[var(--fc-section-text,#FAFAFA)] mb-1">{t('communityHub.pricing.title')}</h4>
+        <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
           {t('communityHub.pricing.subtitle')}
         </p>
       </div>
@@ -1149,8 +1149,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           <div className="flex items-start gap-3">
             <AlertCircle className="text-[#EAB308] shrink-0 mt-0.5" size={20} />
             <div>
-              <p className="font-medium text-[#FAFAFA]">{t('communityHub.pricing.billingGate.title')}</p>
-              <p className="text-sm text-[#A0A0A0] mt-1">
+              <p className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('communityHub.pricing.billingGate.title')}</p>
+              <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-1">
                 {t('communityHub.pricing.billingGate.description')}
               </p>
               <button
@@ -1179,7 +1179,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 ${isPaidAndGated ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
                 ${
                   isSelected
-                    ? 'border-white bg-[#151515]'
+                    ? 'border-white bg-[var(--fc-section-hover,#151515)]'
                     : 'border-[var(--fc-border,#1F1F1F)] hover:border-[#333333] bg-[var(--fc-surface,#0A0A0A)]'
                 }
               `}
@@ -1196,7 +1196,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
               <div
                 className={`
                   w-10 h-10 rounded-lg flex items-center justify-center shrink-0
-                  ${isSelected ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]' : 'bg-[#151515] text-[#A0A0A0]'}
+                  ${isSelected ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)]' : 'bg-[var(--fc-section-hover,#151515)] text-[var(--fc-section-muted,#A0A0A0)]'}
                 `}
               >
                 <Icon size={20} />
@@ -1205,12 +1205,12 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 <span
                   className={`
                     block font-medium
-                    ${isSelected ? 'text-[#FAFAFA]' : 'text-[#FAFAFA]'}
+                    ${isSelected ? 'text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-text,#FAFAFA)]'}
                   `}
                 >
                   {t(option.labelKey)}
                 </span>
-                <span className="text-sm text-[#A0A0A0]">{t(option.descriptionKey)}</span>
+                <span className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">{t(option.descriptionKey)}</span>
               </div>
               <div
                 className={`
@@ -1230,14 +1230,14 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         <div className="p-4 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center shrink-0">
-                <ShieldCheck size={20} className="text-[#FAFAFA]" />
+              <div className="w-10 h-10 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg flex items-center justify-center shrink-0">
+                <ShieldCheck size={20} className="text-[var(--fc-section-text,#FAFAFA)]" />
               </div>
               <div>
-                <h4 className="font-medium text-[#FAFAFA]">
+                <h4 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
                   {t('communityHub.pricing.gatedAccess.title')}
                 </h4>
-                <p className="text-sm text-[#A0A0A0] mt-0.5">
+                <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-0.5">
                   {t('communityHub.pricing.gatedAccess.description')}
                 </p>
               </div>
@@ -1269,7 +1269,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             </button>
           </div>
           {accessType === 'gated' && (
-            <p className="mt-3 text-xs text-[#A0A0A0] bg-[#151515] px-3 py-2 rounded-lg">
+            <p className="mt-3 text-xs text-[var(--fc-section-muted,#A0A0A0)] bg-[var(--fc-section-hover,#151515)] px-3 py-2 rounded-lg">
               {t('communityHub.pricing.gatedAccess.enabledHint')}
             </p>
           )}
@@ -1280,14 +1280,14 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
       {isPaidOption && (
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
               {selectedType === 'both'
                 ? t('communityHub.pricing.price.oneTimeLabel')
                 : t('communityHub.pricing.price.label')}
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-[#A0A0A0] text-lg font-medium">€</span>
+                <span className="text-[var(--fc-section-muted,#A0A0A0)] text-lg font-medium">€</span>
               </div>
               <input
                 type="number"
@@ -1298,13 +1298,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                 placeholder="0.00"
                 className="
                   w-full pl-8 pr-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg
-                  text-[#FAFAFA] placeholder-[#666666]
-                  focus:ring-1 focus:ring-white/10 focus:border-[#555555]
+                  text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666]
+                  focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]
                   transition-colors
                 "
               />
             </div>
-            <p className="mt-2 text-sm text-[#A0A0A0]">
+            <p className="mt-2 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
               {selectedType === 'both'
                 ? t('communityHub.pricing.price.bothOneTimeHint')
                 : selectedType === 'one_time'
@@ -1326,12 +1326,12 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           {/* Monthly price input (only when 'both' is selected) */}
           {selectedType === 'both' && (
             <div>
-              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+              <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
                 {t('communityHub.pricing.price.monthlyLabel')}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-[#A0A0A0] text-lg font-medium">€</span>
+                  <span className="text-[var(--fc-section-muted,#A0A0A0)] text-lg font-medium">€</span>
                 </div>
                 <input
                   type="number"
@@ -1342,13 +1342,13 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   placeholder="0.00"
                   className="
                     w-full pl-8 pr-4 py-3 border border-[var(--fc-border,#1F1F1F)] rounded-lg
-                    text-[#FAFAFA] placeholder-[#666666]
-                    focus:ring-1 focus:ring-white/10 focus:border-[#555555]
+                    text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666]
+                    focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]
                     transition-colors
                   "
                 />
               </div>
-              <p className="mt-2 text-sm text-[#A0A0A0]">
+              <p className="mt-2 text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                 {t('communityHub.pricing.price.bothMonthlyHint')}
               </p>
               {monthlyPriceEuros && parseFloat(monthlyPriceEuros) > 0 && parseFloat(monthlyPriceEuros) < 0.5 && (
@@ -1377,8 +1377,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   <Wallet size={20} className="text-[#EAB308]" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-medium text-[#FAFAFA]">{t('communityHub.pricing.connect.setupTitle')}</h4>
-                  <p className="text-sm text-[#A0A0A0] mt-1">
+                  <h4 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('communityHub.pricing.connect.setupTitle')}</h4>
+                  <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-1">
                     {t('communityHub.pricing.connect.setupDescription')}
                   </p>
                   <button
@@ -1409,8 +1409,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   <Wallet size={20} className="text-[#EAB308]" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-medium text-[#FAFAFA]">{t('communityHub.pricing.connect.completeTitle')}</h4>
-                  <p className="text-sm text-[#A0A0A0] mt-1">
+                  <h4 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('communityHub.pricing.connect.completeTitle')}</h4>
+                  <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-1">
                     {t('communityHub.pricing.connect.completeDescription')}
                   </p>
                   <div className="mt-3 flex items-center gap-3">
@@ -1434,7 +1434,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                     <button
                       onClick={refreshConnectStatus}
                       disabled={isConnectLoading}
-                      className="text-sm text-[#A0A0A0] hover:text-[#A0A0A0] disabled:opacity-50"
+                      className="text-sm text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-muted,#A0A0A0)] disabled:opacity-50"
                     >
                       {isConnectLoading ? t('communityHub.pricing.connect.checking') : t('communityHub.pricing.connect.refreshStatus')}
                     </button>
@@ -1450,8 +1450,8 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   <CheckCircle size={20} className="text-[#22C55E]" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-[#FAFAFA]">{t('communityHub.pricing.connect.enabledTitle')}</h4>
-                  <p className="text-sm text-[#A0A0A0]">
+                  <h4 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('communityHub.pricing.connect.enabledTitle')}</h4>
+                  <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                     {t('communityHub.pricing.connect.enabledDescription')}
                   </p>
                 </div>
@@ -1465,18 +1465,18 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
       {isPaidOption && priceEuros && parseFloat(priceEuros) >= 0.5 && (
         <div className="p-4 bg-[var(--fc-surface,#0A0A0A)] rounded-lg border border-[var(--fc-border,#1F1F1F)]">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#1F1F1F] flex items-center justify-center shrink-0">
-              <DollarSign size={16} className="text-[#FAFAFA]" />
+            <div className="w-8 h-8 rounded-full bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center shrink-0">
+              <DollarSign size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
             </div>
             <div className="space-y-2">
               <div>
-                <p className="text-sm font-medium text-[#FAFAFA]">
+                <p className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">
                   {selectedType === 'both' ? t('communityHub.pricing.earnings.perSale') : selectedType === 'monthly' ? t('communityHub.pricing.earnings.perMonth') : t('communityHub.pricing.earnings.perSale')}
                 </p>
-                <p className="text-2xl font-bold text-[#FAFAFA] mt-1">
+                <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mt-1">
                   {'\u20AC'}{calculateEarnings()}
                 </p>
-                <p className="text-xs text-[#A0A0A0] mt-1">
+                <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mt-1">
                   {platformFeePercent > 0
                     ? t('communityHub.pricing.earnings.afterFee', { feePercent: platformFeePercent, feeAmount: (parseFloat(priceEuros) * platformFeePercent / 100).toFixed(2) })
                     : t('communityHub.pricing.earnings.noFee', { defaultValue: 'Без платформена такса' })}
@@ -1484,17 +1484,17 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
               </div>
               {selectedType === 'both' && monthlyPriceEuros && parseFloat(monthlyPriceEuros) >= 0.5 && (
                 <div className="pt-2 border-t border-[var(--fc-border,#1F1F1F)]">
-                  <p className="text-sm font-medium text-[#FAFAFA]">
+                  <p className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)]">
                     {t('communityHub.pricing.earnings.perMonth')}
                   </p>
-                  <p className="text-2xl font-bold text-[#FAFAFA] mt-1">
+                  <p className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mt-1">
                     {'\u20AC'}{(() => {
                       const price = parseFloat(monthlyPriceEuros);
                       const fee = price * (platformFeePercent / 100);
                       return (price - fee).toFixed(2);
                     })()}
                   </p>
-                  <p className="text-xs text-[#A0A0A0] mt-1">
+                  <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mt-1">
                     {t('communityHub.pricing.earnings.afterFee', { feePercent: platformFeePercent, feeAmount: (parseFloat(monthlyPriceEuros) * platformFeePercent / 100).toFixed(2) })}
                   </p>
                 </div>
@@ -1511,7 +1511,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         className="
           w-full py-3 px-4 rounded-lg font-medium transition-colors
           bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]
-          disabled:bg-[#333333] disabled:text-[#A0A0A0] disabled:cursor-not-allowed
+          disabled:bg-[#333333] disabled:text-[var(--fc-section-muted,#A0A0A0)] disabled:cursor-not-allowed
         "
       >
         {isSaving ? (
@@ -1643,7 +1643,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
       <div className="pt-6 mt-6 border-t border-[#EF4444]/20">
         <div className="space-y-4">
           <div>
-            <h4 className="text-base font-medium text-[#FAFAFA] flex items-center gap-2">
+            <h4 className="text-base font-medium text-[var(--fc-section-text,#FAFAFA)] flex items-center gap-2">
               <AlertCircle size={18} className="text-[#EF4444]" />
               {t('communityHub.pricing.dangerZone.title')}
             </h4>
@@ -1667,7 +1667,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   <AlertCircle size={20} className="text-[#EF4444]" />
                 </div>
                 <div className="flex-1">
-                  <h5 className="font-medium text-[#FAFAFA]">{t('communityHub.pricing.dangerZone.confirmTitle')}</h5>
+                  <h5 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">{t('communityHub.pricing.dangerZone.confirmTitle')}</h5>
                   <p className="text-sm text-[#EF4444] mt-1">
                     {t('communityHub.pricing.dangerZone.confirmWarning', { communityName })}
                   </p>
@@ -1689,7 +1689,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   value={deleteConfirmName}
                   onChange={(e) => setDeleteConfirmName(e.target.value)}
                   placeholder={communityName}
-                  className="w-full px-4 py-2 border border-[#EF4444]/30 rounded-lg text-[#FAFAFA] placeholder-[#666666] focus:ring-1 focus:ring-[#EF4444]/50 focus:border-[#EF4444]"
+                  className="w-full px-4 py-2 border border-[#EF4444]/30 rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:ring-1 focus:ring-[#EF4444]/50 focus:border-[#EF4444]"
                   disabled={isDeleting}
                 />
               </div>
@@ -1702,7 +1702,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                     setDeleteError(null);
                   }}
                   disabled={isDeleting}
-                  className="flex-1 py-2 px-4 rounded-lg font-medium border border-[var(--fc-border,#1F1F1F)] text-[#A0A0A0] hover:bg-[var(--fc-surface,#0A0A0A)] transition-colors disabled:opacity-50"
+                  className="flex-1 py-2 px-4 rounded-lg font-medium border border-[var(--fc-border,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-surface,#0A0A0A)] transition-colors disabled:opacity-50"
                 >
                   {t('communityHub.pricing.dangerZone.cancel')}
                 </button>

@@ -174,10 +174,10 @@ const TeamSettingsTab: React.FC = () => {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <div className="w-14 h-14 rounded-2xl bg-[#1F1F1F] flex items-center justify-center mx-auto mb-4">
+          <div className="w-14 h-14 rounded-2xl bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center mx-auto mb-4">
             <Loader2 size={24} className="text-white animate-spin" />
           </div>
-          <p className="text-[#A0A0A0] font-medium">{t('common.loading')}</p>
+          <p className="text-[var(--fc-section-muted,#A0A0A0)] font-medium">{t('common.loading')}</p>
         </div>
       </div>
     );
@@ -188,14 +188,14 @@ const TeamSettingsTab: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-[#1F1F1F] flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center">
             <Users size={22} className="text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-[#FAFAFA]">
+            <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">
               {t('team.settings.title')}
             </h2>
-            <p className="text-sm text-[#666666] mt-0.5">
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] mt-0.5">
               {t('team.settings.subtitle')}
             </p>
           </div>
@@ -228,29 +228,29 @@ const TeamSettingsTab: React.FC = () => {
       )}
 
       {/* Team Members List */}
-      <div className="border border-[#1F1F1F] rounded-xl overflow-hidden bg-[#0A0A0A]">
+      <div className="border border-[var(--fc-section-border,#1F1F1F)] rounded-xl overflow-hidden bg-[var(--fc-section,#0A0A0A)]">
         {teamMembers.length === 0 && pendingInvites.length === 0 ? (
           <div className="py-16 px-8">
             <div className="max-w-sm mx-auto text-center">
               {/* Decorative Icon */}
               <div className="relative inline-flex mb-6">
-                <div className="w-20 h-20 rounded-2xl bg-[#1F1F1F] flex items-center justify-center border border-[#1F1F1F]/50">
-                  <Users size={36} className="text-[#666666]" />
+                <div className="w-20 h-20 rounded-2xl bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center border border-[var(--fc-section-border,#1F1F1F)]/50">
+                  <Users size={36} className="text-[var(--fc-section-muted,#666666)]" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-lg bg-[#1F1F1F] flex items-center justify-center border-2 border-white">
-                  <UserPlus size={14} className="text-[#FAFAFA]" />
+                <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-lg bg-[var(--fc-section-hover,#1F1F1F)] flex items-center justify-center border-2 border-white">
+                  <UserPlus size={14} className="text-[var(--fc-section-text,#FAFAFA)]" />
                 </div>
               </div>
 
-              <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2">
+              <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)] mb-2">
                 {t('team.settings.emptyTitle')}
               </h3>
-              <p className="text-[#666666] text-sm leading-relaxed mb-6">
+              <p className="text-[var(--fc-section-muted,#666666)] text-sm leading-relaxed mb-6">
                 {t('team.settings.emptyMessage')}
               </p>
               <button
                 onClick={() => setShowInviteModal(true)}
-                className="inline-flex items-center gap-2 text-[#FAFAFA] font-medium hover:text-[#A0A0A0] transition-colors group"
+                className="inline-flex items-center gap-2 text-[var(--fc-section-text,#FAFAFA)] font-medium hover:text-[var(--fc-section-muted,#A0A0A0)] transition-colors group"
               >
                 <span>{t('team.settings.inviteFirstMember')}</span>
                 <span className="group-hover:translate-x-0.5 transition-transform">→</span>
@@ -360,7 +360,7 @@ const TeamMemberRow: React.FC<TeamMemberRowProps> = ({
   const badgeType = getBadgeType(member.role);
 
   return (
-    <div className="px-5 py-4 flex items-center gap-4 hover:bg-[#0A0A0A]/80 transition-colors group">
+    <div className="px-5 py-4 flex items-center gap-4 hover:bg-[var(--fc-section,#0A0A0A)]/80 transition-colors group">
       {/* Avatar */}
       <div className="relative">
         <Avatar
@@ -378,20 +378,20 @@ const TeamMemberRow: React.FC<TeamMemberRowProps> = ({
       {/* Info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="font-semibold text-[#FAFAFA] truncate">
+          <span className="font-semibold text-[var(--fc-section-text,#FAFAFA)] truncate">
             {member.profile?.full_name || t('team.settings.unknownUser')}
           </span>
           <TeamBadge type={badgeType} t={t} />
         </div>
-        <div className="flex items-center gap-2 text-sm text-[#666666] mt-0.5">
-          <span className="text-[#FAFAFA] font-medium">
+        <div className="flex items-center gap-2 text-sm text-[var(--fc-section-muted,#666666)] mt-0.5">
+          <span className="text-[var(--fc-section-text,#FAFAFA)] font-medium">
             {t(`team.roles.${member.role}`)}
           </span>
-          <span className="text-[#A0A0A0]">•</span>
+          <span className="text-[var(--fc-section-muted,#A0A0A0)]">•</span>
           <span className="truncate">{member.profile?.email}</span>
         </div>
         {member.title && (
-          <p className="text-sm text-[#A0A0A0] mt-1 truncate">{member.title}</p>
+          <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-1 truncate">{member.title}</p>
         )}
       </div>
 
@@ -399,7 +399,7 @@ const TeamMemberRow: React.FC<TeamMemberRowProps> = ({
       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={onEdit}
-          className="p-2.5 text-[#666666] hover:text-[#FAFAFA] hover:bg-[#151515] rounded-xl transition-all"
+          className="p-2.5 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-xl transition-all"
           title={t('common.edit')}
         >
           <Settings size={18} />
@@ -407,7 +407,7 @@ const TeamMemberRow: React.FC<TeamMemberRowProps> = ({
         <button
           onClick={onRemove}
           disabled={isRemoving}
-          className="p-2.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded-xl transition-all disabled:opacity-50"
+          className="p-2.5 text-[var(--fc-section-muted,#666666)] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded-xl transition-all disabled:opacity-50"
           title={t('common.delete')}
         >
           {isRemoving ? (
@@ -484,12 +484,12 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
         <div className="flex-1 min-w-0">
           {/* Header Row: Role + Badge + Status */}
           <div className="flex items-center gap-2 flex-wrap mb-1">
-            <span className="font-semibold text-[#FAFAFA]">
+            <span className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">
               {t(`team.roles.${invite.role}`)}
             </span>
             <span className={`inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-md ${
               badgeType === 'team'
-                ? 'bg-[#1F1F1F] text-[#A0A0A0]'
+                ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)]'
                 : 'bg-[#22C55E]/10 text-[#22C55E]'
             }`}>
               {t(`team.badges.${badgeType}`)}
@@ -502,15 +502,15 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
 
           {/* Title if provided */}
           {invite.title && (
-            <div className="flex items-center gap-1.5 text-sm text-[#A0A0A0] mb-1">
-              <Briefcase size={14} className="text-[#666666]" />
+            <div className="flex items-center gap-1.5 text-sm text-[var(--fc-section-muted,#A0A0A0)] mb-1">
+              <Briefcase size={14} className="text-[var(--fc-section-muted,#666666)]" />
               <span>{invite.title}</span>
             </div>
           )}
 
           {/* Bio preview if provided */}
           {invite.bio && (
-            <p className="text-sm text-[#666666] line-clamp-1 mb-2">
+            <p className="text-sm text-[var(--fc-section-muted,#666666)] line-clamp-1 mb-2">
               {invite.bio}
             </p>
           )}
@@ -518,9 +518,9 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
           {/* Invite Link Section */}
           {inviteLink && (
             <div className="flex items-center gap-2 mt-2">
-              <div className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 bg-[#0A0A0A]/80 border border-[#1F1F1F] rounded-lg">
-                <Link size={14} className="text-[#666666] shrink-0" />
-                <span className="text-xs text-[#A0A0A0] truncate font-mono">
+              <div className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 bg-[var(--fc-section,#0A0A0A)]/80 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg">
+                <Link size={14} className="text-[var(--fc-section-muted,#666666)] shrink-0" />
+                <span className="text-xs text-[var(--fc-section-muted,#A0A0A0)] truncate font-mono">
                   {inviteLink}
                 </span>
               </div>
@@ -556,7 +556,7 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
               </span>
             )}
             {invite.is_messageable && (
-              <span className="inline-flex items-center gap-1 text-[#666666]">
+              <span className="inline-flex items-center gap-1 text-[var(--fc-section-muted,#666666)]">
                 <MessageSquare size={12} />
                 {t('team.settings.canReceiveDMs')}
               </span>
@@ -568,7 +568,7 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
         <button
           onClick={onCancel}
           disabled={isRemoving}
-          className="shrink-0 p-2.5 text-[#666666] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded-xl transition-all disabled:opacity-50"
+          className="shrink-0 p-2.5 text-[var(--fc-section-muted,#666666)] hover:text-[#EF4444] hover:bg-[#EF4444]/10 rounded-xl transition-all disabled:opacity-50"
           title={t('team.settings.cancelInvite')}
         >
           {isRemoving ? (
@@ -590,9 +590,9 @@ interface TeamBadgeProps {
 const TeamBadge: React.FC<TeamBadgeProps> = ({ type, t }) => {
   const config = {
     team: {
-      bg: 'bg-[#151515]',
-      border: 'border-[#1F1F1F]',
-      text: 'text-[#A0A0A0]',
+      bg: 'bg-[var(--fc-section-hover,#151515)]',
+      border: 'border-[var(--fc-section-border,#1F1F1F)]',
+      text: 'text-[var(--fc-section-muted,#A0A0A0)]',
       label: t('team.badges.team'),
     },
     guest: {

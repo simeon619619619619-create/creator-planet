@@ -122,17 +122,17 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-[#0A0A0A] rounded-xl w-full max-w-lg mx-4 overflow-hidden">
+      <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl w-full max-w-lg mx-4 overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-[#1F1F1F]">
-          <h3 className="text-lg font-semibold text-[#FAFAFA]">
+        <div className="flex items-center justify-between p-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
+          <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">
             {isEditMode ? t('homeworkManagement.assignmentModal.titleEdit') : t('homeworkManagement.assignmentModal.titleCreate')}
           </h3>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-[#1F1F1F] rounded-lg transition-colors"
+            className="p-1 hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
           >
-            <X size={20} className="text-[#666666]" />
+            <X size={20} className="text-[var(--fc-section-muted,#666666)]" />
           </button>
         </div>
 
@@ -147,14 +147,14 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('homeworkManagement.assignmentModal.titleLabel')} <span className="text-[#EF4444]">*</span>
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               placeholder={t('homeworkManagement.assignmentModal.titlePlaceholder')}
               maxLength={MAX_TITLE_LENGTH}
             />
@@ -162,24 +162,24 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('homeworkManagement.assignmentModal.instructionsLabel')}
             </label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] h-24 resize-none"
+              className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] h-24 resize-none"
               placeholder={t('homeworkManagement.assignmentModal.instructionsPlaceholder')}
               maxLength={MAX_DESCRIPTION_LENGTH}
             />
-            <p className="text-xs text-[#666666] mt-1">
+            <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1">
               {t('homeworkManagement.assignmentModal.charactersCount', { count: description.length, max: MAX_DESCRIPTION_LENGTH })}
             </p>
           </div>
 
           {/* Max Points */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
               {t('homeworkManagement.assignmentModal.maxPointsLabel')}
             </label>
             <div className="flex items-center gap-2">
@@ -189,9 +189,9 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
                 onChange={handlePointsChange}
                 min={MIN_POINTS}
                 max={MAX_POINTS}
-                className="w-24 px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555]"
+                className="w-24 px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)]"
               />
-              <span className="text-sm text-[#666666]">
+              <span className="text-sm text-[var(--fc-section-muted,#666666)]">
                 {t('homeworkManagement.assignmentModal.pointsRange', { min: MIN_POINTS, max: MAX_POINTS })}
               </span>
             </div>
@@ -199,25 +199,25 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
 
           {/* Due Date */}
           <div>
-            <label className="block text-sm font-medium text-[#A0A0A0] mb-1">
-              {t('homeworkManagement.assignmentModal.dueDateLabel')} <span className="text-[#666666]">{t('homeworkManagement.assignmentModal.dueDateOptional')}</span>
+            <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
+              {t('homeworkManagement.assignmentModal.dueDateLabel')} <span className="text-[var(--fc-section-muted,#666666)]">{t('homeworkManagement.assignmentModal.dueDateOptional')}</span>
             </label>
             <div className="relative">
               <input
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full px-4 py-2 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] pl-10"
+                className="w-full px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] pl-10"
               />
               <Calendar
                 size={18}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#666666]"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--fc-section-muted,#666666)]"
               />
             </div>
             {dueDate && (
               <button
                 onClick={() => setDueDate('')}
-                className="text-xs text-[#666666] hover:text-[#A0A0A0] mt-1"
+                className="text-xs text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] mt-1"
               >
                 {t('homeworkManagement.assignmentModal.clearDueDate')}
               </button>
@@ -227,7 +227,7 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
 
         {/* Delete Section - Only show in edit mode */}
         {isEditMode && onDelete && (
-          <div className="p-4 border-t border-[#1F1F1F] bg-[#0A0A0A]">
+          <div className="p-4 border-t border-[var(--fc-section-border,#1F1F1F)] bg-[var(--fc-section,#0A0A0A)]">
             {showDeleteConfirm ? (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-[#EF4444]">
@@ -237,7 +237,7 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
                 <div className="flex gap-2">
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
-                    className="px-3 py-1.5 text-sm text-[#A0A0A0] hover:bg-[#151515] rounded-lg"
+                    className="px-3 py-1.5 text-sm text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg"
                     disabled={isDeleting}
                   >
                     {t('homeworkManagement.assignmentModal.cancelButton')}
@@ -271,10 +271,10 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
         )}
 
         {/* Actions */}
-        <div className="flex gap-3 p-4 border-t border-[#1F1F1F]">
+        <div className="flex gap-3 p-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-2 border border-[#1F1F1F] rounded-lg hover:bg-[#0A0A0A] font-medium text-[#A0A0A0]"
+            className="flex-1 px-4 py-2 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section,#0A0A0A)] font-medium text-[var(--fc-section-muted,#A0A0A0)]"
           >
             {t('homeworkManagement.assignmentModal.cancelButton')}
           </button>

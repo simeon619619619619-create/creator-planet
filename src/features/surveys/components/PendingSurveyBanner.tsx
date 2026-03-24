@@ -115,7 +115,7 @@ const PendingSurveyBanner: React.FC<PendingSurveyBannerProps> = ({
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-[#FAFAFA]">
+            <h3 className="font-semibold text-[var(--fc-section-text,#FAFAFA)]">
               {t('surveys.banner.title')}
             </h3>
             <p className="text-sm text-[#EAB308] mt-0.5">
@@ -127,7 +127,7 @@ const PendingSurveyBanner: React.FC<PendingSurveyBannerProps> = ({
           <div className="shrink-0 flex items-center gap-2">
             <button
               onClick={handleDismiss}
-              className="px-3 py-1.5 text-sm text-[#EAB308] hover:text-[#FAFAFA] hover:bg-[#EAB308]/10 rounded-lg transition-colors"
+              className="px-3 py-1.5 text-sm text-[#EAB308] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[#EAB308]/10 rounded-lg transition-colors"
             >
               {t('surveys.banner.dismiss')}
             </button>
@@ -154,15 +154,15 @@ const PendingSurveyBanner: React.FC<PendingSurveyBannerProps> = ({
       {/* Survey Player Modal */}
       {showSurveyPlayer && currentSurveyId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#0A0A0A] rounded-xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
             {/* Modal Header */}
-            <div className="p-4 border-b border-[#1F1F1F] flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-[#FAFAFA]">
+            <div className="p-4 border-b border-[var(--fc-section-border,#1F1F1F)] flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">
                 {pendingSurveys.find(s => s.survey_id === currentSurveyId)?.survey_title || t('surveys.banner.title')}
               </h2>
               <button
                 onClick={handleSurveyClose}
-                className="p-2 text-[#666666] hover:text-[#A0A0A0] hover:bg-[#1F1F1F] rounded-lg transition-colors"
+                className="p-2 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

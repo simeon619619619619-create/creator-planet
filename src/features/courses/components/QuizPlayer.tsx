@@ -143,7 +143,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
   if (state === 'loading') {
     return (
       <div className="flex items-center justify-center py-16">
-        <Loader2 className="w-8 h-8 animate-spin text-[#FAFAFA]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
       </div>
     );
   }
@@ -152,12 +152,12 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
   if (state === 'intro') {
     return (
       <div className="max-w-lg mx-auto text-center py-8">
-        <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mx-auto mb-6">
-          <HelpCircle className="w-8 h-8 text-[#FAFAFA]" />
+        <div className="w-16 h-16 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full flex items-center justify-center mx-auto mb-6">
+          <HelpCircle className="w-8 h-8 text-[var(--fc-section-text,#FAFAFA)]" />
         </div>
 
-        <h2 className="text-2xl font-bold text-[#FAFAFA] mb-2">{lessonTitle}</h2>
-        <p className="text-[#666666] mb-6">Quiz</p>
+        <h2 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">{lessonTitle}</h2>
+        <p className="text-[var(--fc-section-muted,#666666)] mb-6">Quiz</p>
 
         {error ? (
           <div className="bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg p-4 mb-6">
@@ -165,22 +165,22 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
           </div>
         ) : (
           <>
-            <div className="bg-[#0A0A0A] rounded-xl p-6 mb-6">
+            <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl p-6 mb-6">
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div>
-                  <p className="text-sm text-[#666666]">Questions</p>
-                  <p className="text-xl font-semibold text-[#FAFAFA]">{questions.length}</p>
+                  <p className="text-sm text-[var(--fc-section-muted,#666666)]">Questions</p>
+                  <p className="text-xl font-semibold text-[var(--fc-section-text,#FAFAFA)]">{questions.length}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-[#666666]">Pass Score</p>
-                  <p className="text-xl font-semibold text-[#FAFAFA]">{PASSING_THRESHOLD}%</p>
+                  <p className="text-sm text-[var(--fc-section-muted,#666666)]">Pass Score</p>
+                  <p className="text-xl font-semibold text-[var(--fc-section-text,#FAFAFA)]">{PASSING_THRESHOLD}%</p>
                 </div>
               </div>
 
               {bestAttempt && (
-                <div className="mt-4 pt-4 border-t border-[#1F1F1F]">
+                <div className="mt-4 pt-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-[#666666]">Your best score</span>
+                    <span className="text-sm text-[var(--fc-section-muted,#666666)]">Your best score</span>
                     <span
                       className={`text-lg font-semibold ${
                         bestAttempt.passed ? 'text-[#22C55E]' : 'text-[#EAB308]'
@@ -196,13 +196,13 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
               )}
             </div>
 
-            <ul className="text-left text-sm text-[#A0A0A0] mb-8 space-y-2">
+            <ul className="text-left text-sm text-[var(--fc-section-muted,#A0A0A0)] mb-8 space-y-2">
               <li className="flex items-start gap-2">
-                <Target size={16} className="text-[#FAFAFA] mt-0.5 shrink-0" />
+                <Target size={16} className="text-[var(--fc-section-text,#FAFAFA)] mt-0.5 shrink-0" />
                 Answer at least {PASSING_THRESHOLD}% correctly to pass
               </li>
               <li className="flex items-start gap-2">
-                <RefreshCw size={16} className="text-[#FAFAFA] mt-0.5 shrink-0" />
+                <RefreshCw size={16} className="text-[var(--fc-section-text,#FAFAFA)] mt-0.5 shrink-0" />
                 Unlimited retries - questions shuffle each attempt
               </li>
             </ul>
@@ -225,13 +225,13 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
       <div className="max-w-2xl mx-auto">
         {/* Progress bar */}
         <div className="mb-6">
-          <div className="flex items-center justify-between text-sm text-[#666666] mb-2">
+          <div className="flex items-center justify-between text-sm text-[var(--fc-section-muted,#666666)] mb-2">
             <span>
               Question {currentIndex + 1} of {totalQuestions}
             </span>
             <span>{answeredCount} answered</span>
           </div>
-          <div className="h-2 bg-[#1F1F1F] rounded-full overflow-hidden">
+          <div className="h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full overflow-hidden">
             <div
               className="h-full bg-white transition-all duration-300"
               style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
@@ -240,8 +240,8 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
         </div>
 
         {/* Question */}
-        <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-6 mb-6">
-          <p className="text-lg font-medium text-[#FAFAFA] mb-6">
+        <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] p-6 mb-6">
+          <p className="text-lg font-medium text-[var(--fc-section-text,#FAFAFA)] mb-6">
             {currentQuestion?.question_text}
           </p>
 
@@ -252,7 +252,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
               placeholder="Write your answer..."
               rows={4}
               disabled={state === 'submitting'}
-              className="w-full px-4 py-3 border border-[#1F1F1F] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[#555555] text-[#FAFAFA] resize-none"
+              className="w-full px-4 py-3 border border-[var(--fc-section-border,#1F1F1F)] rounded-lg focus:ring-1 focus:ring-white/10 focus:border-[var(--fc-section-text,#555555)] text-[var(--fc-section-text,#FAFAFA)] resize-none"
             />
           ) : (
             <div className="space-y-3">
@@ -265,8 +265,8 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
                     disabled={state === 'submitting'}
                     className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                       isSelected
-                        ? 'border-white bg-[#1F1F1F]'
-                        : 'border-[#1F1F1F] hover:border-[#333333] bg-[#0A0A0A]'
+                        ? 'border-white bg-[var(--fc-section-hover,#1F1F1F)]'
+                        : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333] bg-[var(--fc-section,#0A0A0A)]'
                     } ${state === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     <div className="flex items-center gap-3">
@@ -278,10 +278,10 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
                         }`}
                       >
                         {isSelected && (
-                          <div className="w-2 h-2 rounded-full bg-[#0A0A0A]" />
+                          <div className="w-2 h-2 rounded-full bg-[var(--fc-section,#0A0A0A)]" />
                         )}
                       </div>
-                      <span className="text-[#A0A0A0]">{option.option_text}</span>
+                      <span className="text-[var(--fc-section-muted,#A0A0A0)]">{option.option_text}</span>
                     </div>
                   </button>
                 );
@@ -295,7 +295,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
           <button
             onClick={() => goToQuestion(currentIndex - 1)}
             disabled={currentIndex === 0 || state === 'submitting'}
-            className="flex items-center gap-1 px-4 py-2 text-[#A0A0A0] hover:text-[#FAFAFA] disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex items-center gap-1 px-4 py-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <ChevronLeft size={18} />
             Previous
@@ -313,8 +313,8 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
                     : (q.question_type === 'free_answer'
                         ? (answers[q.id] || '').trim().length > 0
                         : !!answers[q.id])
-                      ? 'bg-[#1F1F1F] text-[#FAFAFA]'
-                      : 'bg-[#1F1F1F] text-[#666666] hover:bg-[#1F1F1F]'
+                      ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-text,#FAFAFA)]'
+                      : 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] hover:bg-[var(--fc-section-hover,#1F1F1F)]'
                 }`}
               >
                 {i + 1}
@@ -326,7 +326,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
             <button
               onClick={() => goToQuestion(currentIndex + 1)}
               disabled={state === 'submitting'}
-              className="flex items-center gap-1 px-4 py-2 text-[#FAFAFA] hover:text-[#FAFAFA] disabled:opacity-50"
+              className="flex items-center gap-1 px-4 py-2 text-[var(--fc-section-text,#FAFAFA)] hover:text-[var(--fc-section-text,#FAFAFA)] disabled:opacity-50"
             >
               Next
               <ChevronRight size={18} />
@@ -382,11 +382,11 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
             )}
           </div>
 
-          <h2 className="text-2xl font-bold text-[#FAFAFA] mb-2">
+          <h2 className="text-2xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-2">
             {result.passed ? 'Congratulations!' : 'Keep Learning!'}
           </h2>
 
-          <p className="text-[#666666]">
+          <p className="text-[var(--fc-section-muted,#666666)]">
             {result.passed
               ? 'You passed the quiz!'
               : `You need ${PASSING_THRESHOLD}% to pass. Try again!`}
@@ -394,7 +394,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
         </div>
 
         {/* Score card */}
-        <div className="bg-[#0A0A0A] rounded-xl p-6 mb-6">
+        <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl p-6 mb-6">
           <div className="flex items-center justify-center gap-8">
             <div className="text-center">
               <p
@@ -404,21 +404,21 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
               >
                 {result.score_percent}%
               </p>
-              <p className="text-sm text-[#666666]">Your Score</p>
+              <p className="text-sm text-[var(--fc-section-muted,#666666)]">Your Score</p>
             </div>
-            <div className="h-12 w-px bg-[#1F1F1F]" />
+            <div className="h-12 w-px bg-[var(--fc-section-hover,#1F1F1F)]" />
             <div className="text-center">
-              <p className="text-4xl font-bold text-[#FAFAFA]">
+              <p className="text-4xl font-bold text-[var(--fc-section-text,#FAFAFA)]">
                 {result.correct_answers}/{result.total_questions}
               </p>
-              <p className="text-sm text-[#666666]">Correct</p>
+              <p className="text-sm text-[var(--fc-section-muted,#666666)]">Correct</p>
             </div>
           </div>
         </div>
 
         {/* Answer review */}
         <div className="space-y-3 mb-8">
-          <h3 className="font-medium text-[#FAFAFA]">Answer Review</h3>
+          <h3 className="font-medium text-[var(--fc-section-text,#FAFAFA)]">Answer Review</h3>
           {result.question_results.map((qr, index) => (
             <div
               key={qr.question_id}
@@ -441,14 +441,14 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
                   )}
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-[#FAFAFA] mb-1">
+                  <p className="text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] mb-1">
                     Q{index + 1}: {qr.question_text}
                   </p>
                   {qr.question_type === 'free_answer' ? (
-                    <div className="text-xs text-[#A0A0A0] space-y-1">
+                    <div className="text-xs text-[var(--fc-section-muted,#A0A0A0)] space-y-1">
                       <p>
                         Your answer:{' '}
-                        <span className="font-medium text-[#FAFAFA]">
+                        <span className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
                           {qr.selected_answer_text || 'N/A'}
                         </span>
                       </p>

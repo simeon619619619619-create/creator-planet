@@ -28,13 +28,13 @@ const TrackingPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[var(--fc-section,#0A0A0A)]">
       {/* Simple nav */}
-      <nav className="fixed top-0 w-full bg-[#0A0A0A]/80 backdrop-blur-md border-b border-[#1F1F1F] z-50">
+      <nav className="fixed top-0 w-full bg-[var(--fc-section,#0A0A0A)]/80 backdrop-blur-md border-b border-[var(--fc-section-border,#1F1F1F)] z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-4">
-              <Link to="/" className="text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors duration-150">
+              <Link to="/" className="text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors duration-150">
                 <ArrowLeft size={20} />
               </Link>
               <Logo variant="light" size="sm" showText={false} />
@@ -43,7 +43,7 @@ const TrackingPage: React.FC = () => {
               <LanguageSwitcher variant="minimal" />
               <Link
                 to="/"
-                className="text-[#A0A0A0] hover:text-[#FAFAFA] transition-colors duration-150 text-sm font-medium"
+                className="text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors duration-150 text-sm font-medium"
               >
                 {t('common.back')}
               </Link>
@@ -58,7 +58,7 @@ const TrackingPage: React.FC = () => {
           {/* Header */}
           <div className="text-center mb-12">
             {/* Live badge */}
-            <div className="inline-flex items-center gap-2 bg-[#1F1F1F] text-[#A0A0A0] px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] px-4 py-2 rounded-full text-sm font-medium mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22C55E]" />
@@ -66,10 +66,10 @@ const TrackingPage: React.FC = () => {
               {t('tracking.badge')}
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-[#FAFAFA] mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-[var(--fc-section-text,#FAFAFA)] mb-4">
               {t('tracking.title')}
             </h1>
-            <p className="text-lg md:text-xl text-[#A0A0A0] max-w-2xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-[var(--fc-section-muted,#A0A0A0)] max-w-2xl mx-auto mb-6">
               {t('tracking.subtitle')}
             </p>
 

@@ -90,7 +90,7 @@ const MessageThread: React.FC<MessageThreadProps> = ({
           <button
             onClick={onLoadMore}
             disabled={isLoading}
-            className="text-sm text-[#FAFAFA] hover:text-[#A0A0A0] disabled:opacity-50"
+            className="text-sm text-[var(--fc-section-text,#FAFAFA)] hover:text-[var(--fc-section-muted,#A0A0A0)] disabled:opacity-50"
           >
             {isLoading ? (
               <span className="flex items-center gap-2 justify-center">
@@ -107,16 +107,16 @@ const MessageThread: React.FC<MessageThreadProps> = ({
       {/* Loading Spinner (initial load) */}
       {isLoading && messages.length === 0 && (
         <div className="flex items-center justify-center py-8">
-          <Loader2 className="w-6 h-6 animate-spin text-[#FAFAFA]" />
+          <Loader2 className="w-6 h-6 animate-spin text-[var(--fc-section-text,#FAFAFA)]" />
         </div>
       )}
 
       {/* Empty State */}
       {!isLoading && messages.length === 0 && (
         <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-[#1F1F1F] rounded-full flex items-center justify-center mb-4">
+          <div className="w-16 h-16 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full flex items-center justify-center mb-4">
             <svg
-              className="w-8 h-8 text-[#666666]"
+              className="w-8 h-8 text-[var(--fc-section-muted,#666666)]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -129,10 +129,10 @@ const MessageThread: React.FC<MessageThreadProps> = ({
               />
             </svg>
           </div>
-          <p className="text-[#666666] font-medium">
+          <p className="text-[var(--fc-section-muted,#666666)] font-medium">
             {t('directMessages.thread.noMessages')}
           </p>
-          <p className="text-[#666666] text-sm mt-1">
+          <p className="text-[var(--fc-section-muted,#666666)] text-sm mt-1">
             {t('directMessages.thread.startConversation')}
           </p>
         </div>
@@ -143,11 +143,11 @@ const MessageThread: React.FC<MessageThreadProps> = ({
         <div key={group.date}>
           {/* Date Divider */}
           <div className="flex items-center gap-3 my-4">
-            <div className="flex-1 h-px bg-[#1F1F1F]" />
-            <span className="text-xs text-[#666666] font-medium">
+            <div className="flex-1 h-px bg-[var(--fc-section-hover,#1F1F1F)]" />
+            <span className="text-xs text-[var(--fc-section-muted,#666666)] font-medium">
               {formatDate(group.date)}
             </span>
-            <div className="flex-1 h-px bg-[#1F1F1F]" />
+            <div className="flex-1 h-px bg-[var(--fc-section-hover,#1F1F1F)]" />
           </div>
 
           {/* Messages */}
@@ -176,11 +176,11 @@ const MessageThread: React.FC<MessageThreadProps> = ({
                     className={`max-w-[75%] rounded-2xl px-4 py-2 ${
                       isSelf
                         ? 'bg-[#FAFAFA] text-black rounded-br-md'
-                        : 'bg-[#151515] text-[#A0A0A0] rounded-bl-md'
+                        : 'bg-[var(--fc-section-hover,#151515)] text-[var(--fc-section-muted,#A0A0A0)] rounded-bl-md'
                     }`}
                   >
                     {!isSelf && (
-                      <p className="text-xs font-medium text-[#A0A0A0] mb-1">
+                      <p className="text-xs font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                         {senderName}
                       </p>
                     )}
@@ -189,7 +189,7 @@ const MessageThread: React.FC<MessageThreadProps> = ({
                     </p>
                     <p
                       className={`text-[10px] mt-1 ${
-                        isSelf ? 'text-[#A0A0A0]' : 'text-[#666666]'
+                        isSelf ? 'text-[var(--fc-section-muted,#A0A0A0)]' : 'text-[var(--fc-section-muted,#666666)]'
                       }`}
                     >
                       {formatTime(msg.created_at)}

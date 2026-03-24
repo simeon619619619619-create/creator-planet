@@ -62,9 +62,9 @@ export const CommunitiesDirectory: React.FC = () => {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="bg-[#0A0A0A] border-b border-[#1F1F1F] py-16 md:py-24">
+      <section className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1F1F1F] rounded-full text-[var(--fc-muted,#A0A0A0)] text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-full text-[var(--fc-muted,#A0A0A0)] text-sm font-medium mb-6">
             <Users className="w-4 h-4" />
             {t('publicCommunities.directory.hero.available', { count: communities.length })}
           </div>
@@ -84,7 +84,7 @@ export const CommunitiesDirectory: React.FC = () => {
                 placeholder={t('publicCommunities.directory.search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 transition-colors duration-150"
+                className="w-full pl-12 pr-4 py-3 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-xl text-[var(--fc-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:border-[#555555] focus:ring-1 focus:ring-white/10 transition-colors duration-150"
               />
             </div>
           </div>
@@ -92,7 +92,7 @@ export const CommunitiesDirectory: React.FC = () => {
       </section>
 
       {/* Filter Bar */}
-      <section className="bg-[#0A0A0A] border-b border-[#1F1F1F] sticky top-16 z-40">
+      <section className="bg-[var(--fc-section,#0A0A0A)] border-b border-[var(--fc-section-border,#1F1F1F)] sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <p className="text-sm text-[var(--fc-muted,#A0A0A0)]">
@@ -124,7 +124,7 @@ export const CommunitiesDirectory: React.FC = () => {
       </section>
 
       {/* Communities Grid */}
-      <section className="py-12 bg-[#0A0A0A]">
+      <section className="py-12 bg-[var(--fc-section,#0A0A0A)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {isLoading ? (
             <div className="flex items-center justify-center py-20">
@@ -164,7 +164,7 @@ export const CommunitiesDirectory: React.FC = () => {
 
       {/* CTA Section */}
       {!isLoading && communities.length > 0 && (
-        <section className="py-16 bg-[#0A0A0A] border-t border-[#1F1F1F]">
+        <section className="py-16 bg-[var(--fc-section,#0A0A0A)] border-t border-[var(--fc-section-border,#1F1F1F)]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-[var(--fc-text,#FAFAFA)]">
               {t('publicCommunities.directory.cta.title')}

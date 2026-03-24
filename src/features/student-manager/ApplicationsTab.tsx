@@ -97,7 +97,7 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
   if (isLoading) {
     return (
       <div className="p-12 text-center">
-        <Loader2 className="w-12 h-12 text-[#FAFAFA] animate-spin mx-auto" />
+        <Loader2 className="w-12 h-12 text-[var(--fc-section-text,#FAFAFA)] animate-spin mx-auto" />
       </div>
     );
   }
@@ -105,11 +105,11 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
   if (applications.length === 0) {
     return (
       <div className="p-12 text-center">
-        <Inbox className="w-16 h-16 text-[#A0A0A0] mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-[#A0A0A0]">
+        <Inbox className="w-16 h-16 text-[var(--fc-section-muted,#A0A0A0)] mx-auto mb-4" />
+        <h3 className="text-xl font-semibold text-[var(--fc-section-muted,#A0A0A0)]">
           {t('studentManager.applications.empty.title')}
         </h3>
-        <p className="text-[#666666] mt-2">
+        <p className="text-[var(--fc-section-muted,#666666)] mt-2">
           {t('studentManager.applications.empty.description')}
         </p>
       </div>
@@ -124,7 +124,7 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
         const hasMessage = application.message && application.message.trim().length > 0;
 
         return (
-          <div key={application.id} className="p-4 hover:bg-[#0A0A0A] transition-colors">
+          <div key={application.id} className="p-4 hover:bg-[var(--fc-section,#0A0A0A)] transition-colors">
             <div className="flex items-start gap-4">
               {/* Avatar */}
               <Avatar
@@ -137,15 +137,15 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-medium text-[#FAFAFA]">
+                    <p className="font-medium text-[var(--fc-section-text,#FAFAFA)]">
                       {application.applicant.full_name || 'Unknown User'}
                     </p>
                     {application.community && (
-                      <span className="inline-flex items-center px-2 py-0.5 mt-1 bg-[#1F1F1F] text-[#A0A0A0] rounded text-xs font-medium">
+                      <span className="inline-flex items-center px-2 py-0.5 mt-1 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] rounded text-xs font-medium">
                         {application.community.name}
                       </span>
                     )}
-                    <div className="flex items-center gap-3 mt-1 text-sm text-[#666666]">
+                    <div className="flex items-center gap-3 mt-1 text-sm text-[var(--fc-section-muted,#666666)]">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
                         {formatDate(application.applied_at)}
@@ -153,7 +153,7 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
                       {hasMessage && (
                         <button
                           onClick={() => setExpandedId(isExpanded ? null : application.id)}
-                          className="flex items-center gap-1 text-[#FAFAFA] hover:text-[#A0A0A0]"
+                          className="flex items-center gap-1 text-[var(--fc-section-text,#FAFAFA)] hover:text-[var(--fc-section-muted,#A0A0A0)]"
                         >
                           <MessageSquare className="w-3.5 h-3.5" />
                           {t('studentManager.applications.viewMessage')}
@@ -198,7 +198,7 @@ export const ApplicationsTab: React.FC<ApplicationsTabProps> = ({
 
                 {/* Expanded Message */}
                 {isExpanded && hasMessage && (
-                  <div className="mt-3 p-3 bg-[#1F1F1F] rounded-lg text-sm text-[#A0A0A0]">
+                  <div className="mt-3 p-3 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm text-[var(--fc-section-muted,#A0A0A0)]">
                     <p className="whitespace-pre-wrap">{application.message}</p>
                   </div>
                 )}

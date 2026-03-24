@@ -39,19 +39,19 @@ const BUTTON_STYLES = {
     border: 'border-transparent',
   },
   dark: {
-    container: 'bg-[#0A0A0A] border-2 border-orange-500 hover:bg-[#EAB308]/10',
-    text: 'text-[#FAFAFA]',
+    container: 'bg-[var(--fc-section,#0A0A0A)] border-2 border-orange-500 hover:bg-[#EAB308]/10',
+    text: 'text-[var(--fc-section-text,#FAFAFA)]',
     logo: TBI_LOGOS.dark,
     border: 'border-orange-500',
   },
   outline: {
-    container: 'bg-[#0A0A0A]/90 backdrop-blur border-2 border-white hover:bg-[#0A0A0A]',
-    text: 'text-[#FAFAFA]',
+    container: 'bg-[var(--fc-section,#0A0A0A)]/90 backdrop-blur border-2 border-white hover:bg-[var(--fc-section,#0A0A0A)]',
+    text: 'text-[var(--fc-section-text,#FAFAFA)]',
     logo: TBI_LOGOS.dark,
     border: 'border-white',
   },
   minimal: {
-    container: 'bg-[#0A0A0A] hover:bg-[#0A0A0A]',
+    container: 'bg-[var(--fc-section,#0A0A0A)] hover:bg-[var(--fc-section,#0A0A0A)]',
     text: 'text-white',
     logo: TBI_LOGOS.logo2,
     border: 'border-transparent',
@@ -185,7 +185,7 @@ export function TBIButton({
 
       {/* Minimum amount indicator (optional) */}
       {amountCents < TBI_CONFIG.minAmountCents && (
-        <p className="text-xs text-[#666666] mt-1 text-center">
+        <p className="text-xs text-[var(--fc-section-muted,#666666)] mt-1 text-center">
           Минимум {TBI_CONFIG.minAmountCents / 100} {currency} за вноски
         </p>
       )}
