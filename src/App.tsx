@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useCallback, useEffect } from 'react';
+import React, { Suspense, useState, useCallback, useEffect, useMemo } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu } from 'lucide-react';
@@ -13,6 +13,7 @@ import { canGradeHomework } from './features/team/teamPermissions';
 import { useCommunity } from './core/contexts/CommunityContext';
 import BackgroundElements from './features/community/components/BackgroundElements';
 import WalletBalance from './features/wallet/WalletBalance';
+import { computeThemeVars } from './core/utils/colorContrast';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './core/queryClient';
 
@@ -130,6 +131,14 @@ const AppLayout: React.FC = () => {
   const { selectedCommunity } = useCommunity();
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Compute themed CSS variables with auto-contrast
+  const themeVars = useMemo(() => computeThemeVars({
+    themeColor: selectedCommunity?.theme_color,
+    textColor: selectedCommunity?.text_color,
+    secondaryColor: selectedCommunity?.secondary_color,
+    accentColor: selectedCommunity?.accent_color,
+  }), [selectedCommunity?.theme_color, selectedCommunity?.text_color, selectedCommunity?.secondary_color, selectedCommunity?.accent_color]);
 
   // Check if current user is the creator of the selected community
   const isCreatorOfCommunity = !!(
@@ -333,13 +342,8 @@ const AppLayout: React.FC = () => {
       className="flex h-screen font-sans"
       style={{
         backgroundColor: selectedCommunity?.theme_color || '#0A0A0A',
-        color: selectedCommunity?.text_color || '#FAFAFA',
-        // CSS custom properties for themed colors
-        '--fc-text': selectedCommunity?.text_color || '#FAFAFA',
-        '--fc-muted': selectedCommunity?.secondary_color || '#A0A0A0',
-        '--fc-surface': selectedCommunity?.accent_color || selectedCommunity?.theme_color || '#0A0A0A',
-        '--fc-surface-hover': (selectedCommunity?.accent_color || selectedCommunity?.theme_color) ? `color-mix(in srgb, ${selectedCommunity?.accent_color || selectedCommunity?.theme_color} 85%, white)` : '#151515',
-        '--fc-border': (selectedCommunity?.accent_color || selectedCommunity?.theme_color) ? `color-mix(in srgb, ${selectedCommunity?.accent_color || selectedCommunity?.theme_color} 70%, white)` : '#1F1F1F',
+        color: selectedCommunity?.text_color || themeVars['--fc-bg-text'],
+        ...themeVars,
       } as React.CSSProperties}
     >
       {selectedCommunity?.background_elements && selectedCommunity.background_elements.length > 0 && (

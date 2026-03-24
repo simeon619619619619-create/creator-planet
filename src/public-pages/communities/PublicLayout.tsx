@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PublicNavigation } from './PublicNavigation';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Twitter, Github, Mail } from 'lucide-react';
 import { Logo } from '../../shared/Logo';
 import BackgroundElements from '../../features/community/components/BackgroundElements';
 import type { BackgroundElement } from '../../core/supabase/database.types';
+import { computeThemeVars } from '../../core/utils/colorContrast';
 
 interface PublicLayoutProps {
   children: React.ReactNode;
@@ -30,17 +31,17 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const themeVars = useMemo(() => computeThemeVars({
+    themeColor, textColor, secondaryColor, accentColor,
+  }), [themeColor, textColor, secondaryColor, accentColor]);
+
   return (
     <div
       className="min-h-screen"
       style={{
         backgroundColor: themeColor || '#0A0A0A',
-        color: textColor || undefined,
-        '--fc-text': textColor || '#FAFAFA',
-        '--fc-muted': secondaryColor || '#A0A0A0',
-        '--fc-surface': accentColor || '#0A0A0A',
-        '--fc-surface-hover': accentColor ? `color-mix(in srgb, ${accentColor} 85%, white)` : '#151515',
-        '--fc-border': accentColor ? `color-mix(in srgb, ${accentColor} 70%, white)` : '#1F1F1F',
+        color: textColor || themeVars['--fc-bg-text'],
+        ...themeVars,
       } as React.CSSProperties}
     >
       {backgroundElements && backgroundElements.length > 0 && (
@@ -53,7 +54,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
       </main>
 
       {showFooter && (
-        <footer className="border-t border-[var(--fc-border,#1F1F1F)] text-white" style={{ backgroundColor: accentColor || themeColor || '#0A0A0A' }}>
+        <footer className="border-t border-[var(--fc-border,#1F1F1F)] text-[var(--fc-surface-text,#FAFAFA)]" style={{ backgroundColor: accentColor || themeColor || '#0A0A0A' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {/* Brand */}
@@ -71,17 +72,17 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({
                 <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] mb-4">{t('publicCommunities.footer.platform')}</h4>
                 <ul className="space-y-2 text-sm text-[var(--fc-muted,#A0A0A0)]">
                   <li>
-                    <Link to="/communities" className="hover:text-white transition-colors duration-150">
+                    <Link to="/communities" className="hover:text-[var(--fc-surface-text,#FAFAFA)] transition-colors duration-150">
                       {t('publicCommunities.footer.browseCommunities')}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/signup" className="hover:text-white transition-colors duration-150">
+                    <Link to="/signup" className="hover:text-[var(--fc-surface-text,#FAFAFA)] transition-colors duration-150">
                       {t('publicCommunities.footer.getStarted')}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/login" className="hover:text-white transition-colors duration-150">
+                    <Link to="/login" className="hover:text-[var(--fc-surface-text,#FAFAFA)] transition-colors duration-150">
                       {t('publicCommunities.footer.signIn')}
                     </Link>
                   </li>

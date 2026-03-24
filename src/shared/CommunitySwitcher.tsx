@@ -45,7 +45,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
     return isCreator && onCreateCommunity ? (
       <button
         onClick={onCreateCommunity}
-        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-text,#FAFAFA)]"
+        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-surface-text,#FAFAFA)]"
       >
         <Plus size={18} />
         <span>New Community</span>
@@ -53,7 +53,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
     ) : (
       <button
         onClick={onBrowseMore}
-        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-muted,#A0A0A0)]"
+        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-surface-muted,#A0A0A0)]"
       >
         <Search size={18} />
         <span>Browse Communities</span>
@@ -84,17 +84,17 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
           />
         ) : (
           <div className="w-7 h-7 rounded-md bg-[#333333] flex items-center justify-center shrink-0">
-            <span className="text-xs font-bold text-white">
+            <span className="text-xs font-bold text-[var(--fc-surface-text,#FAFAFA)]">
               {selectedCommunity?.name?.charAt(0)?.toUpperCase() || 'C'}
             </span>
           </div>
         )}
-        <span className="flex-1 text-sm font-medium text-[var(--fc-text,#FAFAFA)] truncate">
+        <span className="flex-1 text-sm font-medium text-[var(--fc-surface-text,#FAFAFA)] truncate">
           {selectedCommunity?.name || 'Select Community'}
         </span>
         <ChevronDown
           size={16}
-          className={`text-[var(--fc-muted,#A0A0A0)] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`text-[var(--fc-surface-muted,#A0A0A0)] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -112,8 +112,8 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
                   className={`
                     w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors
                     ${isSelected
-                      ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-text,#FAFAFA)]'
-                      : 'text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] hover:text-[var(--fc-text,#FAFAFA)]'}
+                      ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-surface-text,#FAFAFA)]'
+                      : 'text-[var(--fc-surface-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] hover:text-[var(--fc-surface-text,#FAFAFA)]'}
                   `}
                 >
                   {community.thumbnail_url ? (
@@ -132,7 +132,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
                     </div>
                   )}
                   <span className="flex-1 text-left truncate">{community.name}</span>
-                  {isSelected && <Check size={14} className="text-[var(--fc-text,#FAFAFA)] shrink-0" />}
+                  {isSelected && <Check size={14} className="text-[var(--fc-surface-text,#FAFAFA)] shrink-0" />}
                 </button>
               );
             })}
@@ -143,7 +143,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
             {isCreator && onCreateCommunity && (
               <button
                 onClick={() => { onCreateCommunity(); setIsOpen(false); }}
-                className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
+                className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-surface-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
               >
                 <Plus size={16} />
                 <span>New Community</span>
@@ -151,7 +151,7 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
             )}
             <button
               onClick={() => { onBrowseMore(); setIsOpen(false); }}
-              className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
+              className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-surface-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
             >
               <Search size={16} />
               <span>Browse More</span>
