@@ -162,6 +162,7 @@ export async function createCommunityCheckout(
         cancelUrl: request.cancelUrl,
         discountCode: request.discountCode,
         checkoutMode: request.checkoutMode, // Required when pricing_type is 'both'
+        useWalletBalance: request.useWalletBalance,
       },
     });
 

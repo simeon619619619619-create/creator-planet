@@ -157,6 +157,7 @@ export interface CommunityCheckoutRequest {
   cancelUrl: string;                          // Redirect URL if user cancels
   discountCode?: string;                      // Optional discount code to apply
   checkoutMode?: 'one_time' | 'monthly';     // Required when pricing_type is 'both'
+  useWalletBalance?: boolean;                 // Apply wallet balance to reduce charge
 }
 
 /**

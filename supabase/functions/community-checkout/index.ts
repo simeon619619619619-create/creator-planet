@@ -27,6 +27,7 @@ interface CommunityCheckoutRequest {
   cancelUrl: string;
   discountCode?: string; // Optional discount code
   checkoutMode?: 'one_time' | 'monthly'; // Required when pricing_type is 'both'
+  useWalletBalance?: boolean; // Apply wallet balance to reduce charge
 }
 
 interface DiscountCodeData {
@@ -58,7 +59,7 @@ serve(async (req: Request): Promise<Response> => {
 
     // Parse request body
     const body: CommunityCheckoutRequest = await req.json();
-    const { communityId, successUrl, cancelUrl, discountCode, checkoutMode } = body;
+    const { communityId, successUrl, cancelUrl, discountCode, checkoutMode, useWalletBalance } = body;
 
     if (!communityId || !successUrl || !cancelUrl) {
       return errorResponse('Missing required fields: communityId, successUrl, cancelUrl');
@@ -388,11 +389,118 @@ serve(async (req: Request): Promise<Response> => {
       });
     }
 
+    // ========================================================================
+    // WALLET BALANCE DEDUCTION
+    // ========================================================================
+    let walletDeductionCents = 0;
+    let chargeAmountCents = finalPriceCents;
+
+    if (useWalletBalance && profileId) {
+      const { data: wallet } = await supabase
+        .from('wallets')
+        .select('id, balance_cents')
+        .eq('user_id', profileId)
+        .eq('community_id', communityId)
+        .single();
+
+      if (wallet && wallet.balance_cents > 0) {
+        walletDeductionCents = Math.min(wallet.balance_cents, finalPriceCents);
+        chargeAmountCents = finalPriceCents - walletDeductionCents;
+
+        // If wallet covers full amount — grant free access
+        if (chargeAmountCents <= 0) {
+          // Deduct from wallet
+          await supabase
+            .from('wallets')
+            .update({
+              balance_cents: wallet.balance_cents - walletDeductionCents,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('id', wallet.id);
+
+          // Record spend transaction
+          await supabase
+            .from('wallet_transactions')
+            .insert({
+              wallet_id: wallet.id,
+              type: 'spend',
+              amount_cents: -walletDeductionCents,
+              description: `Payment for ${community.name}`,
+            });
+
+          // Create/update membership as paid
+          let membershipId: string;
+          if (existingMembership) {
+            await supabase
+              .from('memberships')
+              .update({ payment_status: 'paid', paid_at: new Date().toISOString() })
+              .eq('id', existingMembership.id);
+            membershipId = existingMembership.id;
+          } else {
+            const { data: newMem } = await supabase
+              .from('memberships')
+              .insert({
+                community_id: communityId,
+                user_id: profileId,
+                role: 'member',
+                payment_status: 'paid',
+              })
+              .select('id')
+              .single();
+            membershipId = newMem?.id || '';
+          }
+
+          await supabase.from('community_purchases').insert({
+            community_id: communityId,
+            buyer_id: profileId,
+            creator_id: community.creator_id,
+            membership_id: membershipId,
+            purchase_type: 'one_time',
+            amount_cents: 0,
+            currency: community.currency,
+            platform_fee_cents: 0,
+            stripe_fee_cents: 0,
+            creator_payout_cents: 0,
+            status: 'completed',
+          });
+
+          console.log(`Full wallet payment: ${walletDeductionCents} cents from wallet for community ${communityId}`);
+
+          return jsonResponse({
+            checkoutUrl: successUrl,
+            sessionId: null,
+            freeAccess: true,
+            walletUsed: walletDeductionCents,
+          });
+        }
+
+        // Partial wallet deduction — deduct now, charge remainder via Stripe
+        await supabase
+          .from('wallets')
+          .update({
+            balance_cents: wallet.balance_cents - walletDeductionCents,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', wallet.id);
+
+        await supabase
+          .from('wallet_transactions')
+          .insert({
+            wallet_id: wallet.id,
+            type: 'spend',
+            amount_cents: -walletDeductionCents,
+            description: `Partial payment for ${community.name}`,
+          });
+
+        console.log(`Partial wallet deduction: ${walletDeductionCents} cents, remaining charge: ${chargeAmountCents} cents`);
+      }
+    }
+
     // Calculate platform fee based on creator's plan
     // CRITICAL: Platform fee is calculated on the FINAL (discounted) price, not original
     // This ensures the fee percentage remains accurate for both creator and platform
     const feePercent = creatorBilling.plan?.platform_fee_percent ?? 6.9;
-    const platformFee = Math.round(finalPriceCents * (feePercent / 100));
+    const platformFee = Math.round(chargeAmountCents * (feePercent / 100));
 
     // Create or get Stripe product/price for this community
     let stripeProductId = community.stripe_product_id;
@@ -454,6 +562,21 @@ serve(async (req: Request): Promise<Response> => {
       }
     }
 
+    // If wallet partially used, create a one-time price for the reduced amount
+    if (walletDeductionCents > 0 && chargeAmountCents > 0 && effectiveMode !== 'monthly') {
+      const reducedPrice = await stripe.prices.create({
+        product: stripeProductId,
+        currency: community.currency.toLowerCase(),
+        unit_amount: chargeAmountCents,
+        metadata: {
+          community_id: communityId,
+          wallet_deduction_cents: walletDeductionCents.toString(),
+          original_amount_cents: finalPriceCents.toString(),
+        },
+      });
+      stripePriceId = reducedPrice.id;
+    }
+
     // Create or update pending membership
     const membershipData = {
       community_id: communityId,
@@ -513,6 +636,7 @@ serve(async (req: Request): Promise<Response> => {
         discount_percent: validatedDiscount?.discount_percent?.toString() || '',
         original_amount_cents: originalPriceCents.toString(),
         discount_amount_cents: discountAmountCents.toString(),
+        wallet_deduction_cents: walletDeductionCents.toString(),
       },
     };
 

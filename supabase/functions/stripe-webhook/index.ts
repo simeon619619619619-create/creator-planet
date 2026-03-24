@@ -817,6 +817,65 @@ async function handleCommunityCheckoutComplete(
     }
   }
 
+  // ========== 5. CREDIT CASHBACK IF ENABLED ==========
+  if (buyerId && communityId) {
+    try {
+      const { data: communitySettings } = await supabase
+        .from('communities')
+        .select('cashback_enabled, cashback_percent')
+        .eq('id', communityId)
+        .single();
+
+      if (communitySettings?.cashback_enabled && communitySettings.cashback_percent > 0) {
+        const paidAmount = (session.amount_total as number) || 0;
+        const cashbackAmount = Math.round(paidAmount * communitySettings.cashback_percent / 100);
+
+        if (cashbackAmount > 0) {
+          // Get or create wallet
+          let { data: wallet } = await supabase
+            .from('wallets')
+            .select('id, balance_cents')
+            .eq('user_id', buyerId)
+            .eq('community_id', communityId)
+            .single();
+
+          if (!wallet) {
+            const { data: newWallet } = await supabase
+              .from('wallets')
+              .insert({ user_id: buyerId, community_id: communityId, balance_cents: 0 })
+              .select('id, balance_cents')
+              .single();
+            wallet = newWallet;
+          }
+
+          if (wallet) {
+            await supabase
+              .from('wallets')
+              .update({
+                balance_cents: wallet.balance_cents + cashbackAmount,
+                updated_at: new Date().toISOString(),
+              })
+              .eq('id', wallet.id);
+
+            await supabase
+              .from('wallet_transactions')
+              .insert({
+                wallet_id: wallet.id,
+                type: 'cashback',
+                amount_cents: cashbackAmount,
+                description: `${communitySettings.cashback_percent}% cashback`,
+                reference_id: session.id as string,
+              });
+
+            console.log(`Cashback credited: ${cashbackAmount} cents (${communitySettings.cashback_percent}%) to wallet for buyer ${buyerId}`);
+          }
+        }
+      }
+    } catch (cashbackError) {
+      console.error('Error processing cashback:', cashbackError);
+    }
+  }
+
   console.log(`Community checkout completed: membership ${membershipId} now has paid access`);
 }
 

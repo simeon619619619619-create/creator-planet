@@ -6,7 +6,8 @@ import { joinCommunity, getMembership, applyToCommunity, getApplication, getComm
 import { createCommunityCheckout } from '../../features/community/communityPaymentService';
 import { formatCommunityPrice, type CommunityPricingType, type CommunityAccessType, type ApplicationStatus } from '../../features/community/communityTypes';
 import { supabase } from '../../core/supabase/client';
-import { UserPlus, Check, Loader2, ArrowRight, CreditCard, Repeat, Clock, X, FileText, XCircle } from 'lucide-react';
+import { UserPlus, Check, Loader2, ArrowRight, CreditCard, Repeat, Clock, X, FileText, XCircle, Wallet } from 'lucide-react';
+import { getWalletBalance } from '../../features/wallet/walletService';
 import { getCommunityIntakeSurvey, hasCompletedSurvey } from '../../features/surveys/surveyService';
 import type { Survey } from '../../features/surveys/surveyTypes';
 import SurveyPlayer from '../../features/surveys/components/SurveyPlayer';
@@ -73,6 +74,8 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
   const [applicationStatus, setApplicationStatus] = useState<ApplicationStatus | null>(null);
   const [showApplyModal, setShowApplyModal] = useState(false);
   const [isApplying, setIsApplying] = useState(false);
+  const [walletBalance, setWalletBalance] = useState(0);
+  const [useWallet, setUseWallet] = useState(true);
   const [communityPricing, setCommunityPricing] = useState<{
     pricing_type: CommunityPricingType;
     price_cents: number;
@@ -91,6 +94,12 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
   );
 
   // Fetch community pricing and access type when component mounts (only if not provided via props)
+  // Fetch wallet balance
+  useEffect(() => {
+    if (!profile?.id) return;
+    getWalletBalance(profile.id, communityId).then(setWalletBalance);
+  }, [profile?.id, communityId]);
+
   useEffect(() => {
     // Skip fetch if pricing was provided via props
     if (propsPricingType !== undefined) {
@@ -243,6 +252,7 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
           cancelUrl: `${window.location.origin}/community/${communityId}?canceled=true`,
           discountCode,
           checkoutMode: effectiveCheckoutMode,
+          useWalletBalance: useWallet && walletBalance > 0,
         });
 
         if (result.success && result.checkoutUrl) {
@@ -490,8 +500,25 @@ export const JoinButton: React.FC<JoinButtonProps> = ({
     return t('publicCommunities.join.joinCommunity');
   };
 
+  const walletFormatted = (walletBalance / 100).toFixed(2);
+
   return (
-    <div className="flex flex-col items-start gap-1">
+    <div className="flex flex-col items-start gap-2">
+      {/* Wallet balance indicator */}
+      {walletBalance > 0 && communityPricing?.pricing_type !== 'free' && (
+        <label className="flex items-center gap-2 cursor-pointer text-sm">
+          <input
+            type="checkbox"
+            checked={useWallet}
+            onChange={(e) => setUseWallet(e.target.checked)}
+            className="rounded border-[#333] accent-[#22C55E]"
+          />
+          <Wallet size={14} className="text-[#22C55E]" />
+          <span className="text-[var(--fc-text,#FAFAFA)]">
+            {t('joinButton.useWallet', { amount: walletFormatted, defaultValue: `Използвай €${walletFormatted} от портфейла` })}
+          </span>
+        </label>
+      )}
       <button
         onClick={handleClick}
         disabled={isJoining || isPendingApplication || isRejectedApplication}
