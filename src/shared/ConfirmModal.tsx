@@ -50,7 +50,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
     info: {
       iconBg: 'bg-[var(--fc-section-hover,#1F1F1F)]',
       iconColor: 'text-[var(--fc-text,#FAFAFA)]',
-      buttonBg: 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]',
+      buttonBg: 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]',
       defaultIcon: <XCircle size={20} />,
     },
   };

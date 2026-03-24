@@ -287,7 +287,7 @@ const QuestionEditor: React.FC<QuestionEditorProps> = ({
             <button
               onClick={handleSave}
               disabled={isLoading}
-              className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center gap-2"
+              className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 flex items-center gap-2"
             >
               {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -366,7 +366,7 @@ const SectionEditor: React.FC<SectionEditorProps> = ({
               <button
                 onClick={handleSaveSection}
                 disabled={isLoading}
-                className="px-3 py-1.5 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
+                className="px-3 py-1.5 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50"
               >
                 {t('common.save')}
               </button>
@@ -865,7 +865,7 @@ const SurveyBuilder: React.FC<SurveyBuilderProps> = ({
               <button
                 onClick={handleSaveSettings}
                 disabled={isLoading}
-                className="px-4 py-2 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50"
+                className="px-4 py-2 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50"
               >
                 {t('common.save')}
               </button>

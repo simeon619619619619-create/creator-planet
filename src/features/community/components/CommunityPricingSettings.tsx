@@ -143,6 +143,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [accentColor, setAccentColor] = useState<string>('');
   const [secondaryColor, setSecondaryColor] = useState<string>('');
   const [sectionColor, setSectionColor] = useState<string>('');
+  const [buttonColor, setButtonColor] = useState<string>('');
   const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
   const [shopEnabled, setShopEnabled] = useState(false);
   const [cashbackEnabled, setCashbackEnabled] = useState(false);
@@ -186,7 +187,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -226,6 +227,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setAccentColor(community.accent_color || '');
         setSecondaryColor(community.secondary_color || '');
         setSectionColor(community.section_color || '');
+        setButtonColor(community.button_color || '');
         setBgElements(community.background_elements || []);
         setShopEnabled(community.shop_enabled || false);
         setCashbackEnabled(community.cashback_enabled || false);
@@ -970,6 +972,66 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         </div>
       </div>
 
+      {/* Button Color */}
+      <div>
+        <label className="block text-sm font-medium text-[#A0A0A0] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
+            {t('communityHub.pricing.buttonColor.label', { defaultValue: 'Цвят на бутоните' })}
+          </span>
+        </label>
+        <p className="text-xs text-[#A0A0A0] mb-3">
+          {t('communityHub.pricing.buttonColor.hint', { defaultValue: 'Цвят на бутоните за действие (Създай, Добави, Запази и др.).' })}
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              '',
+              '#1A1A1A',
+              '#FFFFFF',
+              '#EF4444',
+              '#F97316',
+              '#EAB308',
+              '#22C55E',
+              '#3B82F6',
+              '#8B5CF6',
+              '#EC4899',
+              '#D4A574',
+            ].map((color) => (
+              <button
+                key={color || 'default'}
+                onClick={async () => {
+                  setButtonColor(color);
+                  await updateCommunity(communityId, { button_color: color || null });
+                }}
+                className={`w-8 h-8 rounded-full border-2 transition-all duration-150 ${
+                  buttonColor === color
+                    ? 'border-white scale-110'
+                    : 'border-[#333333] hover:border-[#555555]'
+                }`}
+                style={{
+                  backgroundColor: color || '#1A1A1A',
+                  ...(color === '' ? { backgroundImage: 'linear-gradient(135deg, #333 25%, transparent 25%, transparent 50%, #333 50%, #333 75%, transparent 75%)', backgroundSize: '8px 8px' } : {}),
+                }}
+                title={color || t('communityHub.pricing.buttonColor.default', { defaultValue: 'По подразбиране' })}
+              />
+            ))}
+          </div>
+          <input
+            type="color"
+            value={buttonColor || '#1A1A1A'}
+            onChange={(e) => setButtonColor(e.target.value)}
+            onBlur={async () => {
+              if (buttonColor) {
+                await updateCommunity(communityId, { button_color: buttonColor });
+              }
+            }}
+            className="w-8 h-8 rounded cursor-pointer border border-[#333333] bg-transparent"
+            title={t('communityHub.pricing.buttonColor.custom', { defaultValue: 'Избери цвят' })}
+          />
+        </div>
+      </div>
+
       {/* Background Decorative Elements */}
       <div>
         <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
@@ -1019,7 +1081,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           <button
             onClick={handleSaveDescription}
             disabled={isSavingDescription}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50"
           >
             {isSavingDescription ? (
               <>
@@ -1384,7 +1446,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                   <button
                     onClick={handleSetupConnect}
                     disabled={isSettingUpConnect}
-                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50"
                   >
                     {isSettingUpConnect ? (
                       <>
@@ -1417,7 +1479,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
                     <button
                       onClick={handleSetupConnect}
                       disabled={isSettingUpConnect}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors disabled:opacity-50"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50"
                     >
                       {isSettingUpConnect ? (
                         <>
@@ -1510,7 +1572,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         disabled={isSaving || !canSave}
         className="
           w-full py-3 px-4 rounded-lg font-medium transition-colors
-          bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]
+          bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]
           disabled:bg-[#333333] disabled:text-[var(--fc-section-muted,#A0A0A0)] disabled:cursor-not-allowed
         "
       >

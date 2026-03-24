@@ -964,7 +964,7 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                 <button
                   onClick={handleSendMessage}
                   disabled={!conversation || !messageContent.trim() || isSendingMessage}
-                  className="p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSendingMessage ? (
                     <Loader2 className="w-5 h-5 animate-spin" />

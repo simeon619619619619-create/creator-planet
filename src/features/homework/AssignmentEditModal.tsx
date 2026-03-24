@@ -281,7 +281,7 @@ const AssignmentEditModal: React.FC<AssignmentEditModalProps> = ({
           <button
             onClick={handleSave}
             disabled={!title.trim() || isSaving}
-            className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 font-medium flex items-center justify-center gap-2"
+            className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 font-medium flex items-center justify-center gap-2"
           >
             {isSaving ? (
               <>

@@ -275,7 +275,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
               {/* New Assignment Button */}
               <button
                 onClick={handleCreateClick}
-                className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors font-medium"
               >
                 <Plus className="w-5 h-5" />
                 {t('homeworkManagement.buttons.newAssignment')}
@@ -307,7 +307,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                   </p>
                   <button
                     onClick={handleCreateClick}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors font-medium"
                   >
                     <Plus className="w-4 h-4" />
                     {t('homeworkManagement.buttons.createAssignment')}
@@ -524,7 +524,7 @@ const HomeworkManagement: React.FC<HomeworkManagementProps> = ({
                               {submission.status === 'pending' ? (
                                 <button
                                   onClick={() => handleGradeClick(submission)}
-                                  className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors font-medium text-sm"
+                                  className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors font-medium text-sm"
                                 >
                                   {t('homeworkManagement.buttons.grade')}
                                 </button>

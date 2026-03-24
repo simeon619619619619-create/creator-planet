@@ -209,7 +209,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
 
             <button
               onClick={startQuiz}
-              className="w-full py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="w-full py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
             >
               {bestAttempt ? 'Try Again' : 'Start Quiz'}
             </button>
@@ -335,7 +335,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
             <button
               onClick={submitQuiz}
               disabled={!allAnswered || state === 'submitting'}
-              className="flex items-center gap-2 px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {state === 'submitting' ? (
                 <>
@@ -476,7 +476,7 @@ const QuizPlayer: React.FC<QuizPlayerProps> = ({
           {!result.passed && (
             <button
               onClick={startQuiz}
-              className="flex-1 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] flex items-center justify-center gap-2"
+              className="flex-1 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] flex items-center justify-center gap-2"
             >
               <RefreshCw size={18} />
               Try Again

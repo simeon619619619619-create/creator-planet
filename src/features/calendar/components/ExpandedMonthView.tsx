@@ -156,7 +156,7 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
             {isCreator && (
               <button
                 onClick={() => handleQuickCreate(selectedDay)}
-                className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
               >
                 <Plus size={16} />
                 Create Event
@@ -214,7 +214,7 @@ const ExpandedMonthView: React.FC<ExpandedMonthViewProps> = ({
                               href={locationUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-3 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0]"
+                              className="flex items-center gap-2 px-3 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)]"
                             >
                               {isInPerson ? <MapPin size={14} /> : <Video size={14} />}
                               {isInPerson ? 'Location' : 'Join'}

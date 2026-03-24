@@ -139,7 +139,8 @@ const AppLayout: React.FC = () => {
     secondaryColor: selectedCommunity?.secondary_color,
     accentColor: selectedCommunity?.accent_color,
     sectionColor: selectedCommunity?.section_color,
-  }), [selectedCommunity?.theme_color, selectedCommunity?.text_color, selectedCommunity?.secondary_color, selectedCommunity?.accent_color, selectedCommunity?.section_color]);
+    buttonColor: selectedCommunity?.button_color,
+  }), [selectedCommunity?.theme_color, selectedCommunity?.text_color, selectedCommunity?.secondary_color, selectedCommunity?.accent_color, selectedCommunity?.section_color, selectedCommunity?.button_color]);
 
   // Check if current user is the creator of the selected community
   const isCreatorOfCommunity = !!(

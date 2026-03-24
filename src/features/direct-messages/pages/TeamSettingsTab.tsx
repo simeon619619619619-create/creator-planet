@@ -202,7 +202,7 @@ const TeamSettingsTab: React.FC = () => {
         </div>
         <button
           onClick={() => setShowInviteModal(true)}
-          className="flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-5 py-2.5 rounded-xl font-medium hover:bg-[#E0E0E0] active:scale-[0.98] transition-all"
+          className="flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-5 py-2.5 rounded-xl font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] active:scale-[0.98] transition-all"
         >
           <UserPlus size={18} />
           {t('team.settings.inviteButton')}
@@ -529,7 +529,7 @@ const PendingInviteRow: React.FC<PendingInviteRowProps> = ({
                 className={`shrink-0 px-3 py-2 rounded-lg font-medium text-xs flex items-center gap-1.5 transition-all ${
                   copied
                     ? 'bg-[#22C55E]/10 text-[#22C55E]'
-                    : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0] active:scale-[0.98]'
+                    : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)] active:scale-[0.98]'
                 }`}
               >
                 {copied ? (

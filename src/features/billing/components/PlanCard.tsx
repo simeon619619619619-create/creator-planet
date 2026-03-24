@@ -124,7 +124,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
           ${
             isCurrentPlan
               ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-default'
-              : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0] disabled:opacity-50'
+              : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50'
           }
           disabled:cursor-not-allowed
         `}

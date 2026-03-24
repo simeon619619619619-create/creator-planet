@@ -433,7 +433,7 @@ const TeamMembersPage: React.FC<TeamMembersPageProps> = ({ communityId }) => {
               <button
                 onClick={handleAwardBonus}
                 disabled={isAwarding}
-                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {isAwarding ? (
                   <>

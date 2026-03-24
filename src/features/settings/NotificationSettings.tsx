@@ -148,7 +148,7 @@ const NotificationSettings: React.FC = () => {
               px-4 py-2 rounded-lg text-sm font-medium transition-colors
               ${push.isSubscribed
                 ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#333333)]'
-                : 'bg-white text-[#0A0A0A] hover:bg-[#E0E0E0]'}
+                : 'bg-white text-[#0A0A0A] hover:bg-[var(--fc-button-hover,#E0E0E0)]'}
               disabled:opacity-50 disabled:cursor-not-allowed
             `}
           >

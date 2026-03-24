@@ -175,7 +175,7 @@ const UpgradeModal: React.FC<UpgradeModalProps> = ({
             disabled={isLoading}
             className={`
               flex-1 py-3 px-4 font-medium rounded-lg transition-colors flex items-center justify-center gap-2
-              ${'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'}
+              ${'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]'}
               disabled:opacity-50 disabled:cursor-not-allowed
             `}
           >

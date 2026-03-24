@@ -102,8 +102,8 @@ export function PackageCard({ package: pkg, hasApplication, onApply }: PackageCa
             : pkg.slots_available === 0
               ? 'bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#666666)] cursor-not-allowed'
               : isGrowthPartner
-                ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
-                : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'
+                ? 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]'
+                : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]'
         }`}
       >
         {hasApplication

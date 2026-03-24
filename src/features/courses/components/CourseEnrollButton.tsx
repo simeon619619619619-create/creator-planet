@@ -44,7 +44,7 @@ export function CourseEnrollButton({
     <button
       onClick={handleClick}
       disabled={isEnrolling}
-      className="w-full bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg font-medium hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center justify-center gap-2"
+      className="w-full bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 flex items-center justify-center gap-2"
     >
       {isEnrolling ? (
         <>

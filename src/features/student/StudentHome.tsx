@@ -345,7 +345,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
                       <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] line-clamp-2 mt-2">
                         {community.description || 'Join this community to learn and connect'}
                       </p>
-                      <button className="mt-3 w-full py-2 bg-[var(--fc-section-hover,#151515)] text-[var(--fc-section-text,#FAFAFA)] rounded-lg font-medium text-sm hover:bg-[var(--fc-section-hover,#1F1F1F)] transition-colors group-hover:bg-white group-hover:text-black">
+                      <button className="mt-3 w-full py-2 bg-[var(--fc-section-hover,#151515)] text-[var(--fc-section-text,#FAFAFA)] rounded-lg font-medium text-sm hover:bg-[var(--fc-section-hover,#1F1F1F)] transition-colors group-hover:bg-[var(--fc-button,white)] group-hover:text-[var(--fc-button-text,black)]">
                         {t('studentHome.communityCard.viewCommunity')}
                       </button>
                     </div>
@@ -360,7 +360,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
             <div className="text-center mt-6">
               <button
                 onClick={() => navigate('/communities')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
               >
                 <Compass className="w-5 h-5" />
                 {t('studentHome.exploreButton', { count: filteredDiscoverCommunities.length })}
@@ -381,7 +381,7 @@ const StudentHome: React.FC<StudentHomeProps> = ({ onNavigate }) => {
             </p>
             <button
               onClick={() => navigate('/communities')}
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
             >
               <Sparkles className="w-5 h-5" />
               {t('studentHome.emptyState.browseButton')}

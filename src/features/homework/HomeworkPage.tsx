@@ -326,7 +326,7 @@ const HomeworkPage: React.FC<HomeworkPageProps> = ({ communityId }) => {
                     </div>
                     <button
                       onClick={() => setSelectedAssignment(assignment)}
-                      className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors font-medium whitespace-nowrap"
+                      className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors font-medium whitespace-nowrap"
                     >
                       {t('homework.pendingAssignments.submitButton')}
                       <ChevronRight className="w-4 h-4" />

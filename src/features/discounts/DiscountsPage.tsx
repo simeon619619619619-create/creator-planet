@@ -207,7 +207,7 @@ export function DiscountsPage() {
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-black hover:bg-[#E0E0E0]"
+            className="flex items-center gap-2 rounded-lg bg-[var(--fc-button,white)] px-4 py-2.5 text-sm font-medium text-[var(--fc-button-text,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]"
           >
             <Plus className="h-4 w-4" />
             {t('discounts.page.createButton')}
@@ -270,7 +270,7 @@ export function DiscountsPage() {
             {!searchQuery && filterStatus === 'all' && (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="mt-4 flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black hover:bg-[#E0E0E0]"
+                className="mt-4 flex items-center gap-2 rounded-lg bg-[var(--fc-button,white)] px-4 py-2 text-sm font-medium text-[var(--fc-button-text,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]"
               >
                 <Plus className="h-4 w-4" />
                 {t('discounts.page.createButton')}

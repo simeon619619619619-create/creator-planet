@@ -405,7 +405,7 @@ export function CreateDiscountModal({
             <button
               type="submit"
               disabled={isLoading || !!codeError}
-              className="flex-1 rounded-lg bg-white py-2.5 text-sm font-medium text-black hover:bg-[#E0E0E0] disabled:opacity-50"
+              className="flex-1 rounded-lg bg-[var(--fc-button,white)] py-2.5 text-sm font-medium text-[var(--fc-button-text,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50"
             >
               {isLoading ? t('discounts.modal.savingButton') : isEditing ? t('discounts.modal.saveButton') : t('discounts.modal.createButton')}
             </button>

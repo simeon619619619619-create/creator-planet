@@ -71,10 +71,12 @@ export function computeThemeVars(opts: {
   secondaryColor?: string | null;
   accentColor?: string | null;
   sectionColor?: string | null;
+  buttonColor?: string | null;
 }): Record<string, string> {
   const bg = opts.themeColor || '#0A0A0A';
   const surface = opts.accentColor || opts.themeColor || '#0A0A0A';
   const section = opts.sectionColor || surface;
+  const button = opts.buttonColor || '#1A1A1A';
 
   // Auto-detect text colors based on backgrounds
   const autoTextOnBg = getContrastText(bg);
@@ -124,5 +126,11 @@ export function computeThemeVars(opts: {
     '--fc-section-border': sectionBorder,
     '--fc-section-text': autoTextOnSection,
     '--fc-section-muted': autoMutedOnSection,
+    // Button colors
+    '--fc-button': button,
+    '--fc-button-hover': isLightColor(button)
+      ? `color-mix(in srgb, ${button} 85%, black)`
+      : `color-mix(in srgb, ${button} 85%, white)`,
+    '--fc-button-text': getContrastText(button),
   };
 }

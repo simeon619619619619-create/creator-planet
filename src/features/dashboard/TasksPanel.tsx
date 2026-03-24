@@ -135,7 +135,7 @@ const TasksPanel: React.FC = () => {
         <h2 className="text-lg font-bold text-[var(--fc-text,#FAFAFA)]">{t('creatorDashboard.tasks.title')}</h2>
         <button
           onClick={() => setShowNewTaskForm(!showNewTaskForm)}
-          className="flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-3 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
+          className="flex items-center gap-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-3 py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
         >
           {showNewTaskForm ? (
             <>
@@ -184,7 +184,7 @@ const TasksPanel: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="w-full bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
             >
               {t('creatorDashboard.tasks.form.createButton')}
             </button>

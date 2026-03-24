@@ -205,7 +205,7 @@ const GroupMemberAssigner: React.FC<GroupMemberAssignerProps> = ({
       <button
         onClick={handleSave}
         disabled={!hasChanges || isSaving}
-        className="w-full py-2.5 px-4 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[#E0E0E0] disabled:bg-[#333333] disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full py-2.5 px-4 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:bg-[#333333] disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isSaving ? (
           <>

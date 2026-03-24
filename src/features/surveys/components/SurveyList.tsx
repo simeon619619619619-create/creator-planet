@@ -168,7 +168,7 @@ const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
           <button
             onClick={handleSubmit}
             disabled={isSubmitting || !formData.title.trim()}
-            className="px-5 py-2.5 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
+            className="px-5 py-2.5 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
           >
             {isSubmitting ? (
               <>
@@ -444,7 +444,7 @@ const SendSurveyModal: React.FC<SendSurveyModalProps> = ({
             <button
               onClick={handleSend}
               disabled={isSending || selectedIds.size === 0}
-              className="px-4 py-2 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center gap-2"
+              className="px-4 py-2 text-sm bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 flex items-center gap-2"
             >
               {isSending ? (
                 <>
@@ -728,7 +728,7 @@ const SurveyList: React.FC<SurveyListProps> = ({ creatorId, communityId }) => {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] hover:border-[#333333] transition-all"
+          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] hover:border-[#333333] transition-all"
         >
           <Plus className="w-5 h-5" />
           {t('surveys.list.create')}
@@ -757,7 +757,7 @@ const SurveyList: React.FC<SurveyListProps> = ({ creatorId, communityId }) => {
           </p>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[#E0E0E0] hover:border-[#333333] transition-all"
+            className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] hover:border-[#333333] transition-all"
           >
             <Plus className="w-5 h-5" />
             {t('surveys.list.createFirst')}

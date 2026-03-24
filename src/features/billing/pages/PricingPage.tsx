@@ -264,7 +264,7 @@ const PricingPage: React.FC = () => {
           <div className="text-center mt-12">
             <button
               onClick={() => navigate('/signup')}
-              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-8 py-4 rounded-lg font-semibold hover:bg-[#E0E0E0] transition-colors text-lg"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-8 py-4 rounded-lg font-semibold hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors text-lg"
             >
               {t('billing.pricing.getStartedButton')}
             </button>

@@ -288,7 +288,7 @@ const CommunityMessagesPage: React.FC = () => {
                 <button
                   onClick={handleSend}
                   disabled={isSending || !newMessage.trim()}
-                  className="p-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 transition-colors"
+                  className="p-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 transition-colors"
                 >
                   <Send size={18} />
                 </button>

@@ -207,7 +207,7 @@ const Dashboard: React.FC = () => {
         <div className="text-center space-y-4">
           <AlertTriangle className="w-12 h-12 text-[#EAB308] mx-auto" />
           <p className="text-[var(--fc-muted,#A0A0A0)]">{t('creatorDashboard.errorLoading', 'Failed to load dashboard data')}</p>
-          <button onClick={() => refetchDashboard()} className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors text-sm">
+          <button onClick={() => refetchDashboard()} className="px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors text-sm">
             {t('common.retry', 'Retry')}
           </button>
         </div>
@@ -287,7 +287,7 @@ const Dashboard: React.FC = () => {
           )}
           <button
             onClick={handleGenerateReport}
-            className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-3 sm:px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#E0E0E0] transition-colors flex items-center gap-2"
+            className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-3 sm:px-4 py-2 rounded-lg text-sm font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors flex items-center gap-2"
           >
             <FileText size={16} className="shrink-0" />
             <span className="hidden sm:inline">{t('creatorDashboard.generateReport')}</span>
@@ -311,7 +311,7 @@ const Dashboard: React.FC = () => {
               <div className="flex flex-wrap gap-3">
                 <button
                   onClick={() => setShowCreateCommunityModal(true)}
-                  className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-5 py-2.5 rounded-lg font-semibold hover:bg-[#E0E0E0] transition-colors flex items-center gap-2"
+                  className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-5 py-2.5 rounded-lg font-semibold hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors flex items-center gap-2"
                 >
                   <Plus size={18} />
                   {t('creatorDashboard.onboarding.createCommunityButton')}
@@ -651,7 +651,7 @@ const Dashboard: React.FC = () => {
                   onClick={() => {
                     setShowMessageModal(true);
                   }}
-                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#E0E0E0] transition-colors"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
                 >
                   <Mail size={16} />
                   {t('creatorDashboard.studentProfile.sendMessage')}
@@ -750,7 +750,7 @@ const Dashboard: React.FC = () => {
                     }
                   }}
                   disabled={!messageText.trim() || sendingMessage || !selectedStudent.community_id}
-                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {sendingMessage ? (
                     <Loader2 size={16} className="animate-spin" />
@@ -858,7 +858,7 @@ const Dashboard: React.FC = () => {
               <div className="flex gap-3">
                 <button
                   onClick={() => handleViewLectures(selectedHomeworkStudent)}
-                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#E0E0E0] transition-colors"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
                 >
                   <Video size={16} />
                   {t('creatorDashboard.lectures.viewLectures')}
@@ -1077,7 +1077,7 @@ const Dashboard: React.FC = () => {
                 <button
                   onClick={handleCreateCommunity}
                   disabled={!newCommunityName.trim() || creatingCommunity}
-                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {creatingCommunity ? (
                     <Loader2 size={18} className="animate-spin" />
@@ -1179,7 +1179,7 @@ const Dashboard: React.FC = () => {
                   </button>
                   <button
                     onClick={handleGenerateReport}
-                    className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] transition-colors text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors text-sm font-medium"
                   >
                     <Sparkles size={16} />
                     {t('creatorDashboard.report.regenerate')}

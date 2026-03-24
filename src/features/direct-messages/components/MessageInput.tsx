@@ -93,7 +93,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
         <button
           onClick={handleSend}
           disabled={!message.trim() || isSending || disabled || isOverLimit}
-          className="shrink-0 p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="shrink-0 p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           title={t('directMessages.input.sendButton')}
         >
           {isSending ? (

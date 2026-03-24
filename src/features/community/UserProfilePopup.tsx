@@ -518,7 +518,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                 <div className="flex gap-2 mb-3">
                   <button
                     onClick={handleSendMessage}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
                   >
                     <MessageCircle size={18} />
                     {t('directMessages.actions.sendMessage')}
@@ -536,7 +536,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {teamMember && !teamMember.is_messageable && (
                 <button
                   onClick={handleViewProfile}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors mb-3"
                 >
                   <User size={18} />
                   {t('directMessages.actions.viewProfile')}
@@ -547,7 +547,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
               {canShowCreatorStudentDM && (
                 <button
                   onClick={handleSendCreatorStudentMessage}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors mb-3"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors mb-3"
                 >
                   <MessageCircle size={18} />
                   {isViewerCreator
@@ -574,7 +574,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                   {!showGivePoints ? (
                     <button
                       onClick={() => setShowGivePoints(true)}
-                      className="w-full flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-[#E0E0E0] text-black rounded-lg font-medium transition-colors"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 bg-[var(--fc-button,white)] hover:bg-[var(--fc-button-hover,#E0E0E0)] text-[var(--fc-button-text,black)] rounded-lg font-medium transition-colors"
                     >
                       <Award size={18} />
                       {t('communityHub.givePoints.buttonLabel')}
@@ -625,7 +625,7 @@ const UserProfilePopup: React.FC<UserProfilePopupProps> = ({
                       <button
                         onClick={handleAwardPoints}
                         disabled={isAwardingPoints || givePointsAmount < 1}
-                        className="w-full py-2 bg-white hover:bg-[#E0E0E0] text-black rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                        className="w-full py-2 bg-[var(--fc-button,white)] hover:bg-[var(--fc-button-hover,#E0E0E0)] text-[var(--fc-button-text,black)] rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                       >
                         {isAwardingPoints ? (
                           <>

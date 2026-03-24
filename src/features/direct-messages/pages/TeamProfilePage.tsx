@@ -121,7 +121,7 @@ const TeamProfilePage: React.FC = () => {
           </p>
           <button
             onClick={handleBackToCommunity}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
           >
             <ArrowLeft size={18} />
             {t('directMessages.profilePage.backToCommunity')}
@@ -198,7 +198,7 @@ const TeamProfilePage: React.FC = () => {
           <div className="mb-8">
             <button
               onClick={handleSendMessage}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-xl font-medium hover:bg-[#E0E0E0] transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-xl font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
             >
               <MessageCircle size={20} />
               {t('directMessages.actions.sendMessage')}

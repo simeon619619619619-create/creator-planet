@@ -830,7 +830,7 @@ const CourseLMS: React.FC = () => {
           {(role === 'creator' || role === 'superadmin') && selectedCommunity && (
             <button
               onClick={handleOpenCreateCourse}
-              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] inline-flex items-center gap-2"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-6 py-3 rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] inline-flex items-center gap-2"
             >
               <Plus size={20} />
               {t('courseLms.button.createCourse')}
@@ -877,7 +877,7 @@ const CourseLMS: React.FC = () => {
                 <button
                   onClick={handleCreateCourse}
                   disabled={!selectedCommunity}
-                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {t('courseLms.button.create')}
                 </button>
@@ -930,7 +930,7 @@ const CourseLMS: React.FC = () => {
           {(role === 'creator' || role === 'superadmin') && (
             <button
               onClick={handleOpenCreateCourse}
-              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg font-medium hover:bg-[#E0E0E0] inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+              className="bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] inline-flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <Plus size={18} />
               {t('courseLms.button.newCourse')}
@@ -1105,7 +1105,7 @@ const CourseLMS: React.FC = () => {
                 <button
                   onClick={handleCreateCourse}
                   disabled={!newCourseName.trim() || !selectedCommunity}
-                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] px-4 py-2 rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {t('courseLms.button.create')}
                 </button>
@@ -1144,7 +1144,7 @@ const CourseLMS: React.FC = () => {
       {/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setIsMobileSidebarOpen(true)}
-        className="lg:hidden fixed bottom-20 left-4 z-40 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] p-3 rounded-full hover:bg-[#E0E0E0] transition-colors shadow-lg"
+        className="lg:hidden fixed bottom-20 left-4 z-40 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] p-3 rounded-full hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors shadow-lg"
         aria-label="Open course menu"
       >
         <Menu size={24} />
@@ -1419,7 +1419,7 @@ const CourseLMS: React.FC = () => {
                     flex items-center justify-center gap-2 px-4 lg:px-6 py-2.5 lg:py-3 rounded-lg font-medium transition-colors w-full sm:w-auto
                     ${activeLesson.is_completed
                       ? 'bg-[#22C55E]/10 text-[#22C55E] hover:bg-[#22C55E]/20'
-                      : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[#E0E0E0]'}
+                      : 'bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] hover:bg-[var(--fc-button-hover,#E0E0E0)]'}
                     ${isUpdating ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
                 >
@@ -1474,7 +1474,7 @@ const CourseLMS: React.FC = () => {
                   </div>
                   <button
                     onClick={handleMessageInstructor}
-                    className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg font-medium hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
                   >
                     <MessageCircle size={18} />
                     {t('directMessages.course.messageInstructor')}

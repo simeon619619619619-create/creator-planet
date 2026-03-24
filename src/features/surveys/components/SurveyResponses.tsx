@@ -206,7 +206,7 @@ const SurveyResponses: React.FC<SurveyResponsesProps> = ({ surveyId, onClose }) 
           <p className="mt-4 text-[var(--fc-section-muted,#A0A0A0)]">{error}</p>
           <button
             onClick={onClose}
-            className="mt-4 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[#E0E0E0]"
+            className="mt-4 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)]"
           >
             {t('common.goBack')}
           </button>

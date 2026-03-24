@@ -86,7 +86,7 @@ const LockedFallback: React.FC<LockedFallbackProps> = ({ feature, onUpgradeClick
       </p>
       <button
         onClick={onUpgradeClick}
-        className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+        className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-sm font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
       >
         <Zap size={16} />
         {t('billing.gate.unlockButton')}
@@ -131,7 +131,7 @@ const LockedOverlay: React.FC<LockedOverlayProps> = ({ children, feature, onUpgr
           </p>
           <button
             onClick={onUpgradeClick}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-xs font-medium rounded-lg hover:bg-[#E0E0E0] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] text-xs font-medium rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors"
           >
             <Zap size={12} />
             {t('billing.gate.upgradeButtonShort')}

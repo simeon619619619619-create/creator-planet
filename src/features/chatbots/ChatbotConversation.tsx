@@ -332,7 +332,7 @@ const ChatbotConversation: React.FC<ChatbotConversationProps> = ({
           <button
             onClick={handleSend}
             disabled={!inputValue.trim() || isSending}
-            className="p-3 sm:p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[#E0E0E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="p-3 sm:p-2.5 bg-[var(--fc-text,white)] text-[var(--fc-surface,black)] rounded-full hover:bg-[var(--fc-button-hover,#E0E0E0)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isSending ? (
               <Loader2 size={20} className="animate-spin" />
