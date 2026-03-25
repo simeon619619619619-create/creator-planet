@@ -216,40 +216,7 @@ const SignupPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Role Selection */}
-            <div className="pt-2">
-              <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-3">
-                {t('auth.iAmA')}
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setRole('student')}
-                  className={`p-3 border-2 rounded transition-all text-left ${
-                    role === 'student'
-                      ? 'border-white bg-[var(--fc-section-hover,#151515)]'
-                      : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333]'
-                  }`}
-                  disabled={isLoading}
-                >
-                  <div className="font-semibold text-[var(--fc-section-text,#FAFAFA)] text-sm">{t('auth.student')}</div>
-                  <div className="text-xs text-[var(--fc-section-muted,#666666)] mt-0.5">{t('auth.studentDesc')}</div>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setRole('creator')}
-                  className={`p-3 border-2 rounded transition-all text-left ${
-                    role === 'creator'
-                      ? 'border-white bg-[var(--fc-section-hover,#151515)]'
-                      : 'border-[var(--fc-section-border,#1F1F1F)] hover:border-[#333333]'
-                  }`}
-                  disabled={isLoading}
-                >
-                  <div className="font-semibold text-[var(--fc-section-text,#FAFAFA)] text-sm">{t('auth.creator')}</div>
-                  <div className="text-xs text-[var(--fc-section-muted,#666666)] mt-0.5">{t('auth.creatorDescShort')}</div>
-                </button>
-              </div>
-            </div>
+            {/* Role is always student — creators upgrade by creating a community */}
 
             {/* Marketing Opt-in */}
             <div className="flex items-start gap-3 pt-2">
