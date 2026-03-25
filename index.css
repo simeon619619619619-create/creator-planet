@@ -35,19 +35,28 @@ button, a, input, select, textarea, [role="button"] {
   transition: all 150ms ease;
 }
 
-/* Fix input contrast in dark modals - ensure all form elements have dark bg */
+/* Form elements inherit section colors */
 input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
 textarea,
 select {
-  background-color: #0A0A0A;
-  color: #FAFAFA;
+  background-color: var(--fc-section, #0A0A0A);
+  color: var(--fc-section-text, #FAFAFA);
 }
 input::placeholder, textarea::placeholder {
-  color: #666666;
+  color: var(--fc-section-muted, #666666);
 }
 select option {
-  background-color: #0A0A0A;
-  color: #FAFAFA;
+  background-color: var(--fc-section, #0A0A0A);
+  color: var(--fc-section-text, #FAFAFA);
+}
+
+/* Hide scrollbar for horizontal scroll areas */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Mobile bottom nav safe area for iPhones with home indicator */

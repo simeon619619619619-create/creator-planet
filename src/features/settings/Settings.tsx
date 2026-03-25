@@ -127,7 +127,7 @@ const Settings: React.FC = () => {
       <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
         {/* Tab Navigation */}
         <div className="border-b border-[var(--fc-section-border,#1F1F1F)]">
-          <div className="flex overflow-x-auto">
+          <div className="flex overflow-x-auto scrollbar-hide">
             {tabs
               .filter((tab) => tab.visible)
               .map((tab) => {
@@ -137,7 +137,7 @@ const Settings: React.FC = () => {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`
-                      flex items-center gap-2 px-6 py-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap
+                      flex items-center gap-2 px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium border-b-2 transition-colors whitespace-nowrap shrink-0
                       ${
                         activeTab === tab.id
                           ? 'border-[var(--fc-section-text,white)] text-[var(--fc-section-text,#FAFAFA)]'
