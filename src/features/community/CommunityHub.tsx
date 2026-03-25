@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Heart, MessageSquare, MoreHorizontal, Image as ImageIcon, Smile, Send, Plus, Users, Loader2, Trophy, Star, Zap, Pin, Trash2, Copy, Flag, Edit3, X, Settings, GripVertical, LogOut, MessageCircle, Menu, Hash, Award } from 'lucide-react';
 import { useAuth } from '../../core/contexts/AuthContext';
+import { updateProfile } from '../settings/profileService';
 import { useCommunity } from '../../core/contexts/CommunityContext';
 import {
   getChannels,
@@ -361,11 +362,14 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
   const handleCreateCommunity = async () => {
     if (!user || !newCommunityName.trim()) return;
 
-    // Limits disabled - platform owner
-    if (false) {
-      setShowCreateCommunity(false);
-      setShowUpgradePrompt(true);
-      return;
+    // Upgrade student to creator role if needed
+    if (role === 'student' || role === 'member') {
+      try {
+        await updateProfile(user.id, { role: 'creator' } as any);
+        // Force page reload to refresh auth context with new role
+      } catch (err) {
+        console.error('Failed to upgrade role:', err);
+      }
     }
 
     const community = await createCommunity(user.id, newCommunityName.trim());
@@ -381,6 +385,11 @@ const CommunityHub: React.FC<CommunityHubProps> = ({ showCreateModal = false, on
       setNewCommunityName('');
       setShowCreateCommunity(false);
       onCloseCreateModal?.();
+
+      // If role was upgraded, reload to refresh auth context
+      if (role === 'student' || role === 'member') {
+        window.location.reload();
+      }
     }
   };
 

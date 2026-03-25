@@ -42,13 +42,13 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
 
   // Empty state: show create or browse action
   if (communities.length === 0) {
-    return isCreator && onCreateCommunity ? (
+    return onCreateCommunity ? (
       <button
         onClick={onCreateCommunity}
         className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[var(--fc-surface-hover,#151515)] hover:bg-[#1A1A1A] transition-colors text-sm text-[var(--fc-surface-text,#FAFAFA)]"
       >
         <Plus size={18} />
-        <span>New Community</span>
+        <span>{isCreator ? 'New Community' : 'Създай общност'}</span>
       </button>
     ) : (
       <button
@@ -140,13 +140,13 @@ const CommunitySwitcher: React.FC<CommunitySwitcherProps> = ({ onBrowseMore, onC
 
           {/* Actions */}
           <div className="border-t border-[var(--fc-border,#1F1F1F)] py-1">
-            {isCreator && onCreateCommunity && (
+            {onCreateCommunity && (
               <button
                 onClick={() => { onCreateCommunity(); setIsOpen(false); }}
                 className="w-full flex items-center gap-3 px-3 py-2 text-sm text-[var(--fc-surface-text,#FAFAFA)] hover:bg-[var(--fc-surface-hover,#151515)] transition-colors"
               >
                 <Plus size={16} />
-                <span>New Community</span>
+                <span>{isCreator ? 'New Community' : 'Създай общност'}</span>
               </button>
             )}
             <button

@@ -161,6 +161,12 @@ const LandingPage: React.FC = () => {
               </Link>
               <LanguageSwitcher variant="minimal" className="text-[var(--fc-section-muted,#A0A0A0)]" />
               <Link
+                to="/onboarding/creator"
+                className="hidden md:inline-flex px-4 py-2 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] border border-[#22C55E] rounded-lg hover:bg-[#22C55E]/10 transition-colors"
+              >
+                {t('nav.startBusiness', { defaultValue: 'Започни бизнес' })}
+              </Link>
+              <Link
                 to="/login"
                 className="px-4 py-2 text-sm font-medium text-[var(--fc-section-text,#FAFAFA)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg hover:bg-[var(--fc-section-hover,#151515)] hover:border-[#333333] transition-colors"
               >

@@ -147,13 +147,13 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
                 }
                 setIsOpen(false);
               }}
-              onCreateCommunity={isCreator ? () => {
+              onCreateCommunity={() => {
                 setCurrentView(View.COMMUNITY);
                 if (onCreateCommunity) {
                   onCreateCommunity();
                 }
                 setIsOpen(false);
-              } : undefined}
+              }}
             />
           </div>
         ) : (
