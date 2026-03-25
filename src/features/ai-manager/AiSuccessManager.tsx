@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Send, Bot, User, Sparkles, AlertTriangle, FileText, Loader2, RefreshCw, CheckCircle, Star, Users, Plus, History, X } from 'lucide-react';
+import { Send, Bot, User, Sparkles, AlertTriangle, FileText, Loader2, RefreshCw, CheckCircle, Star, Users, Plus, History, X, PenTool } from 'lucide-react';
 import { sendMentorMessage, analyzeStudentRisks } from './geminiService';
 import { AIMessage, Student, RiskLevel, AIConversation, AIMessageRecord } from '../../core/types';
 import { getAtRiskStudents, getStudentsByStatus, getAllStudents, AtRiskStudent } from '../dashboard/dashboardService';
@@ -11,9 +11,11 @@ import { useCommunity } from '../../core/contexts/CommunityContext';
 import AiResponseText from '../../components/ui/AiResponseText';
 import { StudentStatus } from '../../core/supabase/database.types';
 
+const GhostWriterTab = lazy(() => import('../ghost-writer/components/GhostWriterTab'));
+
 const AiSuccessManager: React.FC = () => {
   const { t } = useTranslation();
-  const { user, profile, isTeamMemberOnly } = useAuth();
+  const { user, profile, role, isTeamMemberOnly } = useAuth();
   const { selectedCommunity } = useCommunity();
 
   // For team members (lecturers), use the community creator's ID for data queries
@@ -21,7 +23,9 @@ const AiSuccessManager: React.FC = () => {
   const effectiveCreatorId = isTeamMemberOnly && selectedCommunity
     ? selectedCommunity.creator_id
     : profile?.id;
-  const [activeTab, setActiveTab] = useState<'chat' | 'report'>('chat');
+  const [activeTab, setActiveTab] = useState<'chat' | 'report' | 'ai-author'>('chat');
+
+  const showAiAuthorTab = role === 'creator' || role === 'superadmin';
 
   // Chat State - initial message set in useEffect after t() is available
   const [messages, setMessages] = useState<AIMessage[]>([]);
@@ -404,11 +408,30 @@ const AiSuccessManager: React.FC = () => {
             >
               {t('aiManager.buttons.successReport')}
             </button>
+            {showAiAuthorTab && (
+              <button
+                onClick={() => setActiveTab('ai-author')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-1.5 ${activeTab === 'ai-author' ? 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)]'}`}
+              >
+                <PenTool size={14} />
+                {t('aiManager.buttons.aiAuthor', { defaultValue: 'AI Автор' })}
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {activeTab === 'chat' ? (
+      {activeTab === 'ai-author' ? (
+        <Suspense
+          fallback={
+            <div className="flex-1 flex items-center justify-center">
+              <Loader2 className="animate-spin text-[var(--fc-section-muted,#666666)]" />
+            </div>
+          }
+        >
+          <GhostWriterTab />
+        </Suspense>
+      ) : activeTab === 'chat' ? (
         <div className="flex-1 flex gap-4 overflow-hidden">
           {/* Chat Section */}
           <div className="flex-1 bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden flex flex-col">

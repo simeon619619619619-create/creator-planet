@@ -390,7 +390,7 @@ export interface Subscription {
 // AI CONVERSATION TYPES
 // ============================================================================
 
-export type AIContextType = 'course' | 'community' | 'support' | 'success_manager';
+export type AIContextType = 'course' | 'community' | 'support' | 'success_manager' | 'ghost_writer';
 
 export interface AIMessageRecord {
   role: 'user' | 'assistant' | 'system';
