@@ -22,6 +22,7 @@ import {
   CreditCard,
   Calendar,
   Info,
+  ClipboardList,
 } from 'lucide-react';
 import { getAllCreatorStudents, addBonusPoints, removeStudentFromCommunity, getCreatorCommunities, StudentWithCommunities, PaginatedStudents, CommunityInfo, MembershipPaymentInfo } from './studentManagerService';
 import { getPendingApplicationsCount } from '../community/communityService';
@@ -33,9 +34,10 @@ import {
   markConversationAsRead,
 } from '../direct-messages/dmService';
 import UserProfilePopup from '../community/UserProfilePopup';
+import StudentDossierTab from '../ghost-writer/components/StudentDossierTab';
 import type { MessageWithSender, DbDirectConversation } from '../direct-messages/dmTypes';
 
-type TabType = 'students' | 'applications';
+type TabType = 'students' | 'applications' | 'dossier';
 
 interface StudentManagerPageProps {
   creatorId: string;
@@ -91,6 +93,10 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
   const [paymentDetailOpen, setPaymentDetailOpen] = useState(false);
   const [paymentDetailStudent, setPaymentDetailStudent] = useState<StudentWithCommunities | null>(null);
   const [paymentDetailInfo, setPaymentDetailInfo] = useState<MembershipPaymentInfo | null>(null);
+
+  // Dossier state
+  const [dossierStudent, setDossierStudent] = useState<StudentWithCommunities | null>(null);
+  const [dossierCommunityId, setDossierCommunityId] = useState<string>('');
 
   // Debounce search query
   useEffect(() => {
@@ -366,6 +372,24 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                 )}
               </div>
             </button>
+            {dossierStudent && (
+              <button
+                onClick={() => setActiveTab('dossier')}
+                className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
+                  activeTab === 'dossier'
+                    ? 'border-white text-[var(--fc-section-text,#FAFAFA)]'
+                    : 'border-transparent text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-muted,#A0A0A0)]'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <ClipboardList className="w-4 h-4" />
+                  {t('studentManager.tabs.dossier', { defaultValue: 'Досие' })}
+                  <span className="text-xs text-[var(--fc-section-muted,#666666)] truncate max-w-[120px]">
+                    — {dossierStudent.profile.full_name || dossierStudent.profile.email}
+                  </span>
+                </div>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -378,6 +402,16 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
             <ApplicationsTab
               creatorId={creatorId}
               onApplicationsChange={loadApplicationsCount}
+            />
+          </div>
+        )}
+
+        {/* Dossier Tab */}
+        {activeTab === 'dossier' && dossierStudent && (
+          <div className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
+            <StudentDossierTab
+              studentId={dossierStudent.profile.id}
+              communityId={dossierCommunityId}
             />
           </div>
         )}
@@ -606,6 +640,17 @@ const StudentManagerPage: React.FC<StudentManagerPageProps> = ({ creatorId }) =>
                             >
                               <MessageSquare className="w-4 h-4" />
                               {t('studentManager.actions.message')}
+                            </button>
+                            <button
+                              onClick={() => {
+                                setDossierStudent(student);
+                                setDossierCommunityId(student.communities[0]?.id || '');
+                                setActiveTab('dossier');
+                              }}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--fc-section-hover,#1F1F1F)] text-[var(--fc-section-muted,#A0A0A0)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg font-medium text-sm transition-colors"
+                              title={t('studentManager.actions.dossier', { defaultValue: 'Досие' })}
+                            >
+                              <ClipboardList className="w-4 h-4" />
                             </button>
                             <button
                               onClick={() => handleBonusClick(student)}
