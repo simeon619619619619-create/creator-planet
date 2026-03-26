@@ -194,6 +194,32 @@ export async function uploadCommunityThumbnail(
   return urlData.publicUrl;
 }
 
+export async function uploadCommunityLogo(
+  communityId: string,
+  file: File
+): Promise<string | null> {
+  const fileExt = file.name.split('.').pop()?.toLowerCase() || 'png';
+  const fileName = `${communityId}/logo-${Date.now()}.${fileExt}`;
+
+  const { data, error } = await supabase.storage
+    .from('community-thumbnails')
+    .upload(fileName, file, {
+      cacheControl: '3600',
+      upsert: true,
+    });
+
+  if (error) {
+    console.error('Error uploading community logo:', error);
+    return null;
+  }
+
+  const { data: urlData } = supabase.storage
+    .from('community-thumbnails')
+    .getPublicUrl(data.path);
+
+  return urlData.publicUrl;
+}
+
 export async function uploadBackgroundElement(
   communityId: string,
   file: File

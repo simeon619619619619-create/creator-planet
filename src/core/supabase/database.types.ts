@@ -148,6 +148,8 @@ export interface DbCommunity {
   cashback_percent?: number;
   // Friendly URL slug
   slug?: string | null;
+  // Community logo (shown in sidebar when viewing this community)
+  logo_url?: string | null;
 }
 
 // Community Channels

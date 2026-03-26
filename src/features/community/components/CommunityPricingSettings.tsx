@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../../../core/supabase/client';
 import { updateCommunityPricing } from '../communityPaymentService';
-import { updateCommunity, uploadCommunityThumbnail, uploadCommunityVSL, deleteCommunityVSL, deleteCommunity, updateCommunityAccessType } from '../communityService';
+import { updateCommunity, uploadCommunityThumbnail, uploadCommunityLogo, uploadCommunityVSL, deleteCommunityVSL, deleteCommunity, updateCommunityAccessType } from '../communityService';
 import type { CommunityAccessType } from '../communityTypes';
 import {
   getConnectAccountStatus,
@@ -65,6 +65,7 @@ interface CommunityData {
   name: string;
   description: string | null;
   thumbnail_url: string | null;
+  logo_url: string | null;
   pricing_type: PricingType | null;
   price_cents: number | null;
   monthly_price_cents: number | null;
@@ -135,7 +136,9 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [monthlyPriceEuros, setMonthlyPriceEuros] = useState<string>('');
   const [isSaving, setIsSaving] = useState(false);
   const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
+  const [logoUrl, setLogoUrl] = useState<string>('');
   const [isUploading, setIsUploading] = useState(false);
+  const [isLogoUploading, setIsLogoUploading] = useState(false);
   const [focalX, setFocalX] = useState(0.5);
   const [focalY, setFocalY] = useState(0.5);
   const [themeColor, setThemeColor] = useState<string>('');
@@ -187,7 +190,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, logo_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -220,6 +223,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setDescription(community.description || '');
         setSelectedType(community.pricing_type || 'free');
         setThumbnailUrl(community.thumbnail_url || '');
+        setLogoUrl(community.logo_url || '');
         setFocalX(community.thumbnail_focal_x ?? 0.5);
         setFocalY(community.thumbnail_focal_y ?? 0.5);
         setThemeColor(community.theme_color || '');
@@ -432,6 +436,33 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
       setError(t('communityHub.pricing.errors.thumbnailUploadFailed'));
     }
     setIsUploading(false);
+  };
+
+  const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setError(null);
+
+    if (!file.type.startsWith('image/')) {
+      setError(t('communityHub.pricing.errors.uploadImage'));
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setError(t('communityHub.pricing.errors.imageTooLarge'));
+      return;
+    }
+
+    setIsLogoUploading(true);
+    const url = await uploadCommunityLogo(communityId, file);
+    if (url) {
+      setLogoUrl(url);
+      await updateCommunity(communityId, { logo_url: url });
+    } else {
+      setError(t('communityHub.pricing.errors.thumbnailUploadFailed'));
+    }
+    setIsLogoUploading(false);
   };
 
   const handleVslUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -648,6 +679,64 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
             <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)]">
               {t('communityHub.pricing.thumbnail.hint')}
             </p>
+          </div>
+        </div>
+
+        {/* Community Logo */}
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
+            {t('communityHub.pricing.logo.label', 'Community Logo')}
+          </label>
+          <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-2">
+            {t('communityHub.pricing.logo.hint', 'Shown in the sidebar when members view your community. Replaces the default Founders Club logo.')}
+          </p>
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-[var(--fc-section-hover,#151515)] rounded-lg overflow-hidden flex items-center justify-center border border-[var(--fc-border,#1F1F1F)]">
+              {logoUrl ? (
+                <img
+                  src={logoUrl}
+                  alt={t('communityHub.pricing.logo.label', 'Community Logo')}
+                  className="w-full h-full object-contain p-1"
+                />
+              ) : (
+                <Image size={24} className="text-[var(--fc-section-muted,#666666)]" />
+              )}
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="cursor-pointer">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--fc-section-hover,#151515)] hover:bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] transition-colors">
+                  {isLogoUploading ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      {t('communityHub.pricing.thumbnail.uploading', 'Uploading...')}
+                    </>
+                  ) : (
+                    <>
+                      <Upload size={14} />
+                      {t('communityHub.pricing.logo.upload', 'Upload Logo')}
+                    </>
+                  )}
+                </span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleLogoUpload}
+                  className="hidden"
+                  disabled={isLogoUploading}
+                />
+              </label>
+              {logoUrl && (
+                <button
+                  onClick={async () => {
+                    setLogoUrl('');
+                    await updateCommunity(communityId, { logo_url: null });
+                  }}
+                  className="text-xs text-[var(--fc-section-muted,#A0A0A0)] hover:text-[#EF4444] text-left"
+                >
+                  {t('communityHub.pricing.logo.remove', 'Remove logo')}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 

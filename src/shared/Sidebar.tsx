@@ -134,7 +134,15 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
       `}>
         {/* Header */}
         <div className="h-16 flex items-center px-6 border-b border-[var(--fc-border,#1F1F1F)]">
-          <Logo variant="light" size="lg" showText={false} />
+          {selectedCommunity?.logo_url ? (
+            <img
+              src={selectedCommunity.logo_url}
+              alt={selectedCommunity.name}
+              className="h-10 w-auto object-contain max-w-[180px]"
+            />
+          ) : (
+            <Logo variant="light" size="lg" showText={false} />
+          )}
         </div>
 
         {/* Community Selector */}
