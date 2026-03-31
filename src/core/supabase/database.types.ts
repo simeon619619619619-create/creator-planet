@@ -24,7 +24,7 @@ export interface DbWallet {
 export interface DbWalletTransaction {
   id: string;
   wallet_id: string;
-  type: 'cashback' | 'spend' | 'topup' | 'refund';
+  type: 'spend' | 'topup' | 'refund';
   amount_cents: number;
   description: string | null;
   reference_id: string | null;
@@ -143,9 +143,6 @@ export interface DbCommunity {
   background_elements?: BackgroundElement[] | null;
   // Shop
   shop_enabled?: boolean;
-  // Cashback
-  cashback_enabled?: boolean;
-  cashback_percent?: number;
   // Friendly URL slug
   slug?: string | null;
   // Community logo (shown in sidebar when viewing this community)

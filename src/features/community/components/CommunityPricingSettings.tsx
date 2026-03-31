@@ -26,7 +26,6 @@ import {
   ShieldCheck,
   CreditCard,
   Palette,
-  Wallet,
   ShoppingBag,
 } from 'lucide-react';
 import { supabase } from '../../../core/supabase/client';
@@ -79,8 +78,6 @@ interface CommunityData {
   secondary_color: string | null;
   background_elements: BackgroundElement[] | null;
   shop_enabled: boolean | null;
-  cashback_enabled: boolean | null;
-  cashback_percent: number | null;
 }
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB for images
@@ -149,8 +146,6 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [buttonColor, setButtonColor] = useState<string>('');
   const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
   const [shopEnabled, setShopEnabled] = useState(false);
-  const [cashbackEnabled, setCashbackEnabled] = useState(false);
-  const [cashbackPercent, setCashbackPercent] = useState(5);
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -190,7 +185,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, logo_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, cashback_enabled, cashback_percent, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, logo_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -234,8 +229,6 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setButtonColor(community.button_color || '');
         setBgElements(community.background_elements || []);
         setShopEnabled(community.shop_enabled || false);
-        setCashbackEnabled(community.cashback_enabled || false);
-        setCashbackPercent(community.cashback_percent || 5);
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -1702,91 +1695,6 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           >
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${shopEnabled ? 'translate-x-6' : 'translate-x-1'}`} />
           </button>
-        </div>
-      </div>
-
-      {/* Cashback Settings */}
-      <div className="pt-6 mt-6 border-t border-[var(--fc-border,#1F1F1F)]">
-        <div className="space-y-4">
-          <div>
-            <h4 className="text-base font-medium text-[var(--fc-text,#FAFAFA)] flex items-center gap-2">
-              <Wallet size={18} className="text-[#22C55E]" />
-              {t('communityHub.pricing.cashback.title')}
-            </h4>
-            <p className="text-sm text-[var(--fc-muted,#A0A0A0)] mt-1">
-              {t('communityHub.pricing.cashback.description')}
-            </p>
-          </div>
-
-          {/* Enable/disable toggle */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-[var(--fc-text,#FAFAFA)]">
-              {t('communityHub.pricing.cashback.enable')}
-            </span>
-            <button
-              onClick={async () => {
-                const newVal = !cashbackEnabled;
-                setCashbackEnabled(newVal);
-                await supabase
-                  .from('communities')
-                  .update({ cashback_enabled: newVal })
-                  .eq('id', communityId);
-              }}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                cashbackEnabled ? 'bg-[#22C55E]' : 'bg-[#333333]'
-              }`}
-            >
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  cashbackEnabled ? 'translate-x-6' : 'translate-x-1'
-                }`}
-              />
-            </button>
-          </div>
-
-          {/* Cashback percent */}
-          {cashbackEnabled && (
-            <div className="space-y-2">
-              <label className="text-sm text-[var(--fc-muted,#A0A0A0)]">
-                {t('communityHub.pricing.cashback.percent')}
-              </label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="range"
-                  min="1"
-                  max="30"
-                  value={cashbackPercent}
-                  onChange={(e) => setCashbackPercent(Number(e.target.value))}
-                  className="flex-1 h-1 accent-[#22C55E]"
-                />
-                <div className="flex items-center gap-1">
-                  <input
-                    type="number"
-                    min="1"
-                    max="30"
-                    value={cashbackPercent}
-                    onChange={(e) => setCashbackPercent(Math.min(30, Math.max(1, Number(e.target.value))))}
-                    className="w-14 px-2 py-1 bg-[var(--fc-surface,#0A0A0A)] border border-[var(--fc-border,#1F1F1F)] rounded text-center text-sm text-[var(--fc-text,#FAFAFA)]"
-                  />
-                  <span className="text-sm text-[var(--fc-muted,#A0A0A0)]">%</span>
-                </div>
-              </div>
-              <button
-                onClick={async () => {
-                  await supabase
-                    .from('communities')
-                    .update({ cashback_percent: cashbackPercent })
-                    .eq('id', communityId);
-                }}
-                className="px-4 py-1.5 bg-[#22C55E] text-white rounded-lg text-sm font-medium hover:bg-[#16A34A] transition-colors"
-              >
-                {t('communityHub.pricing.cashback.save')}
-              </button>
-              <p className="text-xs text-[var(--fc-muted,#666666)]">
-                {t('communityHub.pricing.cashback.hint', { percent: cashbackPercent })}
-              </p>
-            </div>
-          )}
         </div>
       </div>
 

@@ -75,51 +75,6 @@ export async function getTotalBalance(userId: string): Promise<number> {
 }
 
 /**
- * Credit cashback to a wallet
- */
-export async function creditCashback(
-  userId: string,
-  communityId: string,
-  amountCents: number,
-  description: string,
-  referenceId?: string
-): Promise<boolean> {
-  const wallet = await getOrCreateWallet(userId, communityId);
-  if (!wallet) return false;
-
-  // Update balance
-  const { error: updateError } = await supabase
-    .from('wallets')
-    .update({
-      balance_cents: wallet.balance_cents + amountCents,
-      updated_at: new Date().toISOString(),
-    })
-    .eq('id', wallet.id);
-
-  if (updateError) {
-    console.error('Error crediting wallet:', updateError);
-    return false;
-  }
-
-  // Record transaction
-  const { error: txError } = await supabase
-    .from('wallet_transactions')
-    .insert({
-      wallet_id: wallet.id,
-      type: 'cashback',
-      amount_cents: amountCents,
-      description,
-      reference_id: referenceId ?? null,
-    });
-
-  if (txError) {
-    console.error('Error recording transaction:', txError);
-  }
-
-  return true;
-}
-
-/**
  * Spend from wallet (at checkout)
  */
 export async function spendFromWallet(

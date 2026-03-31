@@ -17,13 +17,6 @@ const WalletBalance: React.FC = () => {
       return;
     }
 
-    // Only show if community has cashback enabled
-    if (!selectedCommunity.cashback_enabled) {
-      setBalance(0);
-      setIsLoading(false);
-      return;
-    }
-
     const fetchBalance = async () => {
       const bal = await getWalletBalance(profile.id, selectedCommunity.id);
       setBalance(bal);
@@ -31,10 +24,10 @@ const WalletBalance: React.FC = () => {
     };
 
     fetchBalance();
-  }, [profile?.id, selectedCommunity?.id, selectedCommunity?.cashback_enabled]);
+  }, [profile?.id, selectedCommunity?.id]);
 
-  // Don't render if cashback not enabled or no balance
-  if (!selectedCommunity?.cashback_enabled || (balance === 0 && !isLoading)) {
+  // Don't render if no balance
+  if (balance === 0 && !isLoading) {
     return null;
   }
 
