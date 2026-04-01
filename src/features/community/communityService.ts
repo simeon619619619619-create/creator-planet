@@ -151,7 +151,7 @@ export async function createCommunity(
 
 export async function updateCommunity(
   communityId: string,
-  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color' | 'text_color' | 'accent_color' | 'secondary_color' | 'section_color' | 'button_color' | 'background_elements'>>
+  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color' | 'text_color' | 'accent_color' | 'secondary_color' | 'section_color' | 'button_color' | 'background_elements' | 'display_member_count'>>
 ): Promise<DbCommunity | null> {
   const { data, error } = await supabase
     .from('communities')
@@ -1066,6 +1066,7 @@ export async function getPublicCommunities(): Promise<CommunityListItem[]> {
       price_cents,
       category,
       slug,
+      display_member_count,
       created_at,
       creator:profiles!creator_id(id, full_name, avatar_url)
     `)
@@ -1086,7 +1087,7 @@ export async function getPublicCommunities(): Promise<CommunityListItem[]> {
     name: community.name,
     description: community.description,
     thumbnail_url: community.thumbnail_url,
-    memberCount: memberCounts.get(community.id) || 0,
+    memberCount: community.display_member_count ?? memberCounts.get(community.id) ?? 0,
     pricing_type: community.pricing_type || 'free',
     price_cents: community.price_cents || 0,
     category: community.category || null,
@@ -1369,7 +1370,7 @@ export async function getCommunityPublicData(communityIdOrSlug: string): Promise
       background_elements: community.background_elements ?? null,
       slug: community.slug ?? null,
     },
-    memberCount,
+    memberCount: community.display_member_count ?? memberCount,
     channelPreviews,
     recentPosts,
     creator,

@@ -146,6 +146,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
   const [buttonColor, setButtonColor] = useState<string>('');
   const [bgElements, setBgElements] = useState<BackgroundElement[]>([]);
   const [shopEnabled, setShopEnabled] = useState(false);
+  const [displayMemberCount, setDisplayMemberCount] = useState<string>('');
 
   // VSL state
   const [vslUrl, setVslUrl] = useState<string>('');
@@ -185,7 +186,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         const [communityResult, connectResult, billingResult] = await Promise.all([
           supabase
             .from('communities')
-            .select('id, name, description, thumbnail_url, logo_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type')
+            .select('id, name, description, thumbnail_url, logo_url, thumbnail_focal_x, thumbnail_focal_y, theme_color, text_color, accent_color, secondary_color, section_color, button_color, background_elements, shop_enabled, pricing_type, price_cents, monthly_price_cents, vsl_url, access_type, display_member_count')
             .eq('id', communityId)
             .single(),
           getConnectAccountStatus(profile.id),
@@ -229,6 +230,7 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         setButtonColor(community.button_color || '');
         setBgElements(community.background_elements || []);
         setShopEnabled(community.shop_enabled || false);
+        setDisplayMemberCount(community.display_member_count != null ? String(community.display_member_count) : '');
         setVslUrl(community.vsl_url || '');
         setAccessType(community.access_type || 'open');
         if (community.price_cents && community.price_cents > 0) {
@@ -1695,6 +1697,51 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
           >
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${shopEnabled ? 'translate-x-6' : 'translate-x-1'}`} />
           </button>
+        </div>
+      </div>
+
+      {/* Display Member Count Override */}
+      <div className="pt-6 mt-6 border-t border-[var(--fc-section-border,#1F1F1F)]">
+        <div className="flex items-center justify-between">
+          <div>
+            <h4 className="text-base font-medium text-[var(--fc-section-text,#FAFAFA)] flex items-center gap-2">
+              <Users size={18} />
+              Показвана бройка студенти
+            </h4>
+            <p className="text-sm text-[var(--fc-section-muted,#A0A0A0)] mt-1">
+              Задай ръчно бройката, която се показва на посетителите. Остави празно за реалната бройка.
+            </p>
+          </div>
+        </div>
+        <div className="mt-3 flex items-center gap-3">
+          <input
+            type="number"
+            min="0"
+            value={displayMemberCount}
+            onChange={(e) => setDisplayMemberCount(e.target.value)}
+            placeholder="Реална бройка"
+            className="w-40 px-3 py-2 bg-[var(--fc-section,#0A0A0A)] border border-[var(--fc-section-border,#1F1F1F)] rounded-lg text-[var(--fc-section-text,#FAFAFA)] placeholder-[#666666] focus:outline-none focus:ring-1 focus:ring-white/10"
+          />
+          <button
+            onClick={async () => {
+              const val = displayMemberCount.trim() === '' ? null : parseInt(displayMemberCount, 10);
+              await updateCommunity(communityId, { display_member_count: isNaN(val as number) ? null : val });
+            }}
+            className="px-4 py-2 bg-[var(--fc-button,white)] text-[var(--fc-button-text,black)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            Запази
+          </button>
+          {displayMemberCount !== '' && (
+            <button
+              onClick={async () => {
+                setDisplayMemberCount('');
+                await updateCommunity(communityId, { display_member_count: null });
+              }}
+              className="px-4 py-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] text-sm transition-colors"
+            >
+              Нулирай
+            </button>
+          )}
         </div>
       </div>
 

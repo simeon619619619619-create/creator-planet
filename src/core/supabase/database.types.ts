@@ -147,6 +147,8 @@ export interface DbCommunity {
   slug?: string | null;
   // Community logo (shown in sidebar when viewing this community)
   logo_url?: string | null;
+  // Override displayed member count (null = show real count)
+  display_member_count?: number | null;
 }
 
 // Community Channels
