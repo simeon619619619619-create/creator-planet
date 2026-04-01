@@ -125,7 +125,7 @@ const ProfileSettings: React.FC = () => {
           <img
             src={formData.avatar_url || authProfile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(formData.full_name || authProfile?.full_name || 'User')}&background=6366f1&color=fff&size=96&bold=true`}
             alt="Profile"
-            className="w-24 h-24 rounded-full border-2 border-[#333333] object-cover"
+            className="w-24 h-24 rounded-full border-2 border-[#333333] object-contain bg-black"
             onError={(e) => {
               (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(formData.full_name || 'User')}&background=6366f1&color=fff&size=96&bold=true`;
             }}
