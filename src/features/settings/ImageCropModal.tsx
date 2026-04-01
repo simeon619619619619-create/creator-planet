@@ -8,7 +8,7 @@ interface ImageCropModalProps {
   onClose: () => void;
 }
 
-const MIN_ZOOM = 1;
+const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 3;
 const ZOOM_STEP = 0.1;
 const CROP_SIZE = 256; // Output size in pixels
@@ -152,6 +152,10 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
         sourceImg.onerror = () => reject(new Error('Failed to load image'));
         sourceImg.src = imageUrl!;
       });
+
+      // Fill background (for logos with transparency or zoom < 1)
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, CROP_SIZE, CROP_SIZE);
 
       // Draw the cropped portion
       ctx.drawImage(
