@@ -757,6 +757,63 @@ const CommunityPricingSettings: React.FC<CommunityPricingSettingsProps> = ({
         )}
       </div>
 
+      {/* Color Theme Presets */}
+      <div>
+        <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
+          <span className="flex items-center gap-2">
+            <Palette size={16} className="text-[var(--fc-section-text,#FAFAFA)]" />
+            Цветови теми
+          </span>
+        </label>
+        <p className="text-xs text-[var(--fc-section-muted,#A0A0A0)] mb-3">
+          Избери готова цветова комбинация или настрой отделните цветове по-долу
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {([
+            { name: 'Синьо & Розово', theme: '#1E3A5F', text: '#FFFFFF', accent: '#2D4A6F', secondary: '#94A3B8', section: '#162D4A', button: '#F472B6' },
+            { name: 'Тъмно (по подр.)', theme: '', text: '', accent: '', secondary: '', section: '', button: '' },
+            { name: 'Океан', theme: '#0C4A6E', text: '#E0F2FE', accent: '#155E75', secondary: '#7DD3FC', section: '#0E3D5C', button: '#22D3EE' },
+            { name: 'Лилаво & Злато', theme: '#2E1065', text: '#FAF5FF', accent: '#3B0764', secondary: '#C084FC', section: '#1E0A47', button: '#F59E0B' },
+            { name: 'Смарагд', theme: '#022C22', text: '#ECFDF5', accent: '#064E3B', secondary: '#6EE7B7', section: '#01231A', button: '#10B981' },
+            { name: 'Залез', theme: '#431407', text: '#FFF7ED', accent: '#7C2D12', secondary: '#FDBA74', section: '#351005', button: '#F97316' },
+            { name: 'Среднощно синьо', theme: '#0F172A', text: '#F8FAFC', accent: '#1E293B', secondary: '#94A3B8', section: '#0B1120', button: '#3B82F6' },
+            { name: 'Розов бриз', theme: '#500724', text: '#FDF2F8', accent: '#831843', secondary: '#F9A8D4', section: '#3D051B', button: '#EC4899' },
+            { name: 'Кафе & Крем', theme: '#292524', text: '#FAFAF9', accent: '#44403C', secondary: '#A8A29E', section: '#1C1917', button: '#D4A574' },
+          ] as const).map((preset) => (
+            <button
+              key={preset.name}
+              onClick={async () => {
+                setThemeColor(preset.theme);
+                setTextColor(preset.text);
+                setAccentColor(preset.accent);
+                setSecondaryColor(preset.secondary);
+                setSectionColor(preset.section);
+                setButtonColor(preset.button);
+                await updateCommunity(communityId, {
+                  theme_color: preset.theme || null,
+                  text_color: preset.text || null,
+                  accent_color: preset.accent || null,
+                  secondary_color: preset.secondary || null,
+                  section_color: preset.section || null,
+                  button_color: preset.button || null,
+                });
+              }}
+              className="relative flex items-center gap-2 p-3 rounded-lg border border-[var(--fc-section-border,#1F1F1F)] hover:border-[#555555] transition-all group"
+              style={{ backgroundColor: preset.theme || '#0A0A0A' }}
+            >
+              <div className="flex gap-1">
+                <div className="w-4 h-4 rounded-full border border-white/20" style={{ backgroundColor: preset.button || '#FFFFFF' }} />
+                <div className="w-4 h-4 rounded-full border border-white/20" style={{ backgroundColor: preset.accent || '#1F1F1F' }} />
+                <div className="w-4 h-4 rounded-full border border-white/20" style={{ backgroundColor: preset.section || '#0A0A0A' }} />
+              </div>
+              <span className="text-xs font-medium truncate" style={{ color: preset.text || '#FAFAFA' }}>
+                {preset.name}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Page Theme Color */}
       <div>
         <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-2">
