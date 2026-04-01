@@ -8,7 +8,7 @@ interface ImageCropModalProps {
   onClose: () => void;
 }
 
-const MIN_ZOOM = 0.5;
+const MIN_ZOOM = 0.2;
 const MAX_ZOOM = 3;
 const ZOOM_STEP = 0.1;
 const CROP_SIZE = 256; // Output size in pixels
@@ -237,11 +237,8 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
                 marginTop: '-50%',
                 maxWidth: 'none',
                 maxHeight: 'none',
-                width: 'auto',
+                width: '100%',
                 height: 'auto',
-                minWidth: '100%',
-                minHeight: '100%',
-                objectFit: 'cover',
               }}
               draggable={false}
             />
