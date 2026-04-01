@@ -229,12 +229,10 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
               onLoad={handleImageLoad}
               className="absolute select-none"
               style={{
-                transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) scale(${zoom})`,
                 transformOrigin: 'center center',
                 left: '50%',
                 top: '50%',
-                marginLeft: '-50%',
-                marginTop: '-50%',
                 maxWidth: 'none',
                 maxHeight: 'none',
                 width: '100%',

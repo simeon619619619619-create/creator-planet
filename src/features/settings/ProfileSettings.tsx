@@ -60,6 +60,9 @@ const ProfileSettings: React.FC = () => {
   const handleCropComplete = async (croppedBlob: Blob, mimeType: string) => {
     if (!user?.id) return;
 
+    // Save scroll position before state updates that cause re-render
+    const scrollY = window.scrollY;
+
     setCropModalFile(null);
     setUploading(true);
     setMessage(null);
@@ -73,11 +76,19 @@ const ProfileSettings: React.FC = () => {
       setMessage({ type: 'error', text: t('creatorSettings.profile.avatar.uploadFailed') });
     } finally {
       setUploading(false);
+      // Restore scroll position after upload completes
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
     }
   };
 
   const handleCropCancel = () => {
+    const scrollY = window.scrollY;
     setCropModalFile(null);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+    });
   };
 
   const handleSave = async () => {
