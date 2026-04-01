@@ -153,10 +153,6 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
         sourceImg.src = imageUrl!;
       });
 
-      // Fill background (for logos with transparency or zoom < 1)
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, CROP_SIZE, CROP_SIZE);
-
       // Draw the cropped portion
       ctx.drawImage(
         sourceImg,
