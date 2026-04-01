@@ -237,8 +237,11 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
                 marginTop: '-50%',
                 maxWidth: 'none',
                 maxHeight: 'none',
-                width: '100%',
+                width: 'auto',
                 height: 'auto',
+                minWidth: '100%',
+                minHeight: '100%',
+                objectFit: 'cover',
               }}
               draggable={false}
             />
