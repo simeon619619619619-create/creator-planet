@@ -35,8 +35,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return fallback ? <>{fallback}</> : null;
   }
 
-  // If allowedRoles is specified, check if user's role is allowed
-  if (allowedRoles && (!role || !allowedRoles.includes(role))) {
+  // Superadmin has full access to everything
+  // For other roles, check if user's role is in the allowed list
+  if (allowedRoles && role !== 'superadmin' && (!role || !allowedRoles.includes(role))) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0A0A0A]">
         <div className="bg-[#0A0A0A] rounded-xl border border-[#1F1F1F] p-8 max-w-md text-center">
