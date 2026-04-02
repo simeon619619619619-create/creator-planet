@@ -6,6 +6,7 @@ import { useAuth } from '../../core/contexts/AuthContext';
 import { UserRole } from '../../core/types';
 import { Logo } from '../../shared/Logo';
 import LanguageSwitcher from '../../shared/LanguageSwitcher';
+import { supabase } from '../../core/supabase/client';
 
 const SignupPage: React.FC = () => {
   const { t } = useTranslation();
@@ -60,16 +61,47 @@ const SignupPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const { error: signUpError } = await signUp(email, password, fullName, role, marketingOptIn, phone, returnUrl ? decodeURIComponent(returnUrl) : undefined);
+      // Extract community slug from returnUrl (e.g. /community/bosy-club?action=join)
+      const decodedReturn = returnUrl ? decodeURIComponent(returnUrl) : '';
+      const communityMatch = decodedReturn.match(/\/community\/([^/?]+)/);
+      const communitySlug = communityMatch ? communityMatch[1] : null;
 
-      if (signUpError) {
-        setError(signUpError.message);
+      if (communitySlug) {
+        // Use custom signup edge function for per-community branded emails
+        const { data: fnData, error: fnError } = await supabase.functions.invoke('custom-signup', {
+          body: {
+            email,
+            password,
+            fullName: fullName.trim(),
+            phone: phone.trim(),
+            marketingOptIn,
+            communitySlug,
+            redirectPath: decodedReturn,
+          },
+        });
+
+        if (fnError) {
+          setError(fnError.message || 'Възникна грешка при регистрацията.');
+        } else if (fnData?.error) {
+          setError(fnData.error);
+        } else {
+          setSuccess(true);
+          setFullName('');
+          setEmail('');
+          setPassword('');
+        }
       } else {
-        setSuccess(true);
-        // Clear form
-        setFullName('');
-        setEmail('');
-        setPassword('');
+        // Default signup for non-community registrations
+        const { error: signUpError } = await signUp(email, password, fullName, role, marketingOptIn, phone, decodedReturn || undefined);
+
+        if (signUpError) {
+          setError(signUpError.message);
+        } else {
+          setSuccess(true);
+          setFullName('');
+          setEmail('');
+          setPassword('');
+        }
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
