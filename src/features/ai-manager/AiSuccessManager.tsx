@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Send, Bot, User, Sparkles, AlertTriangle, FileText, Loader2, RefreshCw, CheckCircle, Star, Users, Plus, History, X, PenTool } from 'lucide-react';
+import { Send, Bot, User, Sparkles, AlertTriangle, FileText, Loader2, RefreshCw, CheckCircle, Star, Users, Plus, History, X, PenTool, Settings2 } from 'lucide-react';
 import { sendMentorMessage, analyzeStudentRisks } from './geminiService';
 import { AIMessage, Student, RiskLevel, AIConversation, AIMessageRecord } from '../../core/types';
 import { getAtRiskStudents, getStudentsByStatus, getAllStudents, AtRiskStudent } from '../dashboard/dashboardService';
@@ -12,6 +12,7 @@ import AiResponseText from '../../components/ui/AiResponseText';
 import { StudentStatus } from '../../core/supabase/database.types';
 
 const GhostWriterTab = lazy(() => import('../ghost-writer/components/GhostWriterTab'));
+const GhostWriterSettings = lazy(() => import('../ghost-writer/components/GhostWriterSettings'));
 
 const AiSuccessManager: React.FC = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const AiSuccessManager: React.FC = () => {
   const effectiveCreatorId = isTeamMemberOnly && selectedCommunity
     ? selectedCommunity.creator_id
     : profile?.id;
-  const [activeTab, setActiveTab] = useState<'chat' | 'report' | 'ai-author'>('chat');
+  const [activeTab, setActiveTab] = useState<'chat' | 'report' | 'ai-author' | 'bot-settings'>('chat');
 
   const showAiAuthorTab = role === 'creator' || role === 'superadmin';
 
@@ -417,11 +418,30 @@ const AiSuccessManager: React.FC = () => {
                 {t('aiManager.buttons.aiAuthor', { defaultValue: 'AI Автор' })}
               </button>
             )}
+            {showAiAuthorTab && (
+              <button
+                onClick={() => setActiveTab('bot-settings')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-1.5 ${activeTab === 'bot-settings' ? 'bg-[var(--fc-section,#0A0A0A)] text-[var(--fc-section-text,#FAFAFA)]' : 'text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)]'}`}
+              >
+                <Bot size={14} />
+                {t('aiManager.buttons.botSettings', { defaultValue: 'Бот' })}
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {activeTab === 'ai-author' ? (
+      {activeTab === 'bot-settings' ? (
+        <Suspense
+          fallback={
+            <div className="flex-1 flex items-center justify-center">
+              <Loader2 className="animate-spin text-[var(--fc-section-muted,#666666)]" />
+            </div>
+          }
+        >
+          <GhostWriterSettings />
+        </Suspense>
+      ) : activeTab === 'ai-author' ? (
         <Suspense
           fallback={
             <div className="flex-1 flex items-center justify-center">

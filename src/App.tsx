@@ -560,7 +560,7 @@ const AppRoutes: React.FC = () => {
       <Route
         path="/ai-manager"
         element={
-          <ProtectedRouteWrapper allowedRoles={['creator']}>
+          <ProtectedRouteWrapper allowedRoles={['creator', 'superadmin']}>
             <CommunityProvider>
               <AppLayout />
             </CommunityProvider>
