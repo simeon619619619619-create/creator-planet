@@ -272,7 +272,7 @@ const AppLayout: React.FC = () => {
         return <AiSuccessManager />;
       case View.STUDENT_MANAGER:
         // Student Manager - creators only (shows all students across all communities)
-        if (role !== 'creator') {
+        if (role !== 'creator' && role !== 'superadmin') {
           return <div className="p-8 text-center text-[#A0A0A0]">Access restricted to creators.</div>;
         }
         if (!profile?.id) {
@@ -281,13 +281,13 @@ const AppLayout: React.FC = () => {
         return <StudentManagerPage creatorId={profile.id} />;
       case View.DISCOUNTS:
         // Discounts page - creators only
-        if (role !== 'creator') {
+        if (role !== 'creator' && role !== 'superadmin') {
           return <div className="p-8 text-center text-[#A0A0A0]">Access restricted to creators.</div>;
         }
         return <DiscountsPage />;
       case View.SURVEYS:
         // Surveys page - creators only
-        if (role !== 'creator') {
+        if (role !== 'creator' && role !== 'superadmin') {
           return <div className="p-8 text-center text-[#A0A0A0]">Access restricted to creators.</div>;
         }
         if (!profile?.id) {
