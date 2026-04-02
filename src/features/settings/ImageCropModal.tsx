@@ -8,10 +8,10 @@ interface ImageCropModalProps {
   onClose: () => void;
 }
 
-const MIN_ZOOM = 0.2;
-const MAX_ZOOM = 3;
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 5;
 const ZOOM_STEP = 0.1;
-const CROP_SIZE = 256; // Output size in pixels
+const CROP_SIZE = 256;
 
 const ImageCropModal: React.FC<ImageCropModalProps> = ({
   imageFile,
@@ -24,172 +24,149 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+  const [naturalSize, setNaturalSize] = useState({ w: 0, h: 0 });
   const [processing, setProcessing] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
 
-  // Load image from file
   useEffect(() => {
     const url = URL.createObjectURL(imageFile);
     setImageUrl(url);
     return () => URL.revokeObjectURL(url);
   }, [imageFile]);
 
-  // Get image dimensions when loaded — fit the image to cover the circle
   const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget;
-    const { naturalWidth, naturalHeight } = img;
-    setImageSize({ width: naturalWidth, height: naturalHeight });
-
-    // Auto-zoom so the shorter side fills the 256px circle
-    if (containerRef.current) {
-      const containerSize = containerRef.current.offsetWidth;
-      const scaleToFill = Math.max(
-        containerSize / naturalWidth,
-        containerSize / naturalHeight
-      );
-      // Convert to a zoom relative to the CSS width:100% baseline
-      const baseScale = containerSize / naturalWidth;
-      setZoom(scaleToFill / baseScale);
-    }
+    setNaturalSize({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight });
   }, []);
 
-  // Handle zoom controls
+  // Zoom controls
   const handleZoomIn = () => setZoom(prev => Math.min(prev + ZOOM_STEP, MAX_ZOOM));
   const handleZoomOut = () => setZoom(prev => Math.max(prev - ZOOM_STEP, MIN_ZOOM));
-  const handleReset = () => {
-    setZoom(1);
-    setPosition({ x: 0, y: 0 });
-  };
+  const handleReset = () => { setZoom(1); setPosition({ x: 0, y: 0 }); };
 
-  // Handle zoom with mouse wheel
   const handleWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault();
     const delta = e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP;
     setZoom(prev => Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, prev + delta)));
   }, []);
 
-  // Handle drag start
+  // Drag
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     setIsDragging(true);
     setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
   }, [position]);
 
-  // Handle drag move
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isDragging) return;
-    const newX = e.clientX - dragStart.x;
-    const newY = e.clientY - dragStart.y;
-    setPosition({ x: newX, y: newY });
+    setPosition({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
   }, [isDragging, dragStart]);
 
-  // Handle drag end
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
+  const handleMouseUp = useCallback(() => setIsDragging(false), []);
 
-  // Handle touch events for mobile
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     if (e.touches.length === 1) {
-      const touch = e.touches[0];
+      const t = e.touches[0];
       setIsDragging(true);
-      setDragStart({ x: touch.clientX - position.x, y: touch.clientY - position.y });
+      setDragStart({ x: t.clientX - position.x, y: t.clientY - position.y });
     }
   }, [position]);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (!isDragging || e.touches.length !== 1) return;
-    const touch = e.touches[0];
-    const newX = touch.clientX - dragStart.x;
-    const newY = touch.clientY - dragStart.y;
-    setPosition({ x: newX, y: newY });
+    const t = e.touches[0];
+    setPosition({ x: t.clientX - dragStart.x, y: t.clientY - dragStart.y });
   }, [isDragging, dragStart]);
 
-  const handleTouchEnd = useCallback(() => {
-    setIsDragging(false);
-  }, []);
+  const handleTouchEnd = useCallback(() => setIsDragging(false), []);
 
-  // Generate cropped image — pure math, no getBoundingClientRect
+  /*
+   * Crop logic:
+   * The image is rendered with object-fit: cover inside a 256x256 circle.
+   * "cover" means the image is scaled so its shorter side matches 256px,
+   * then centered. zoom and position are applied on top of that.
+   *
+   * We replicate this math to find the source rect in natural pixels.
+   */
   const handleCrop = useCallback(async () => {
-    if (!containerRef.current || !imageSize.width) return;
-
+    if (!naturalSize.w || !imageUrl) return;
     setProcessing(true);
 
     try {
-      const containerSize = containerRef.current.offsetWidth; // 256 css px
+      const { w: nw, h: nh } = naturalSize;
+      const container = 256; // display px
 
-      // The image is rendered with CSS width:100% of container, height:auto
-      const displayW = containerSize;
-      const displayH = containerSize * (imageSize.height / imageSize.width);
+      // "cover" base scale: scale so shorter side fills container
+      const baseScale = Math.max(container / nw, container / nh);
+      const effectiveScale = baseScale * zoom;
 
-      // After scale(zoom), the rendered size is:
-      const scaledW = displayW * zoom;
-      const scaledH = displayH * zoom;
+      // Scaled image size in display px
+      const scaledW = nw * effectiveScale;
+      const scaledH = nh * effectiveScale;
 
-      // The image center sits at (containerSize/2 + position.x, containerSize/2 + position.y)
-      // So image top-left is:
-      const imgLeft = containerSize / 2 + position.x - scaledW / 2;
-      const imgTop = containerSize / 2 + position.y - scaledH / 2;
+      // Image is centered, then offset by position
+      const imgLeft = (container - scaledW) / 2 + position.x;
+      const imgTop = (container - scaledH) / 2 + position.y;
 
-      // Map the container (crop) rect to natural image coordinates
-      const srcX = (0 - imgLeft) * (imageSize.width / scaledW);
-      const srcY = (0 - imgTop) * (imageSize.height / scaledH);
-      const srcW = containerSize * (imageSize.width / scaledW);
-      const srcH = containerSize * (imageSize.height / scaledH);
+      // Map container rect (0,0,container,container) to natural coords
+      const srcX = (0 - imgLeft) / effectiveScale;
+      const srcY = (0 - imgTop) / effectiveScale;
+      const srcW = container / effectiveScale;
+      const srcH = container / effectiveScale;
 
-      // Create canvas
       const canvas = document.createElement('canvas');
       canvas.width = CROP_SIZE;
       canvas.height = CROP_SIZE;
       const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Could not get canvas context');
+      if (!ctx) throw new Error('No canvas context');
 
-      // Load source image
       const sourceImg = new Image();
       sourceImg.crossOrigin = 'anonymous';
       await new Promise<void>((resolve, reject) => {
         sourceImg.onload = () => resolve();
-        sourceImg.onerror = () => reject(new Error('Failed to load image'));
-        sourceImg.src = imageUrl!;
+        sourceImg.onerror = () => reject(new Error('Failed to load'));
+        sourceImg.src = imageUrl;
       });
 
-      // Draw the cropped square
       ctx.drawImage(
         sourceImg,
-        Math.max(0, srcX),
-        Math.max(0, srcY),
-        srcW,
-        srcH,
-        0,
-        0,
-        CROP_SIZE,
-        CROP_SIZE
+        Math.max(0, srcX), Math.max(0, srcY), srcW, srcH,
+        0, 0, CROP_SIZE, CROP_SIZE
       );
 
-      // Convert to blob
       const mimeType = imageFile.type === 'image/png' ? 'image/png' : 'image/jpeg';
-      const quality = mimeType === 'image/jpeg' ? 0.9 : undefined;
-
       canvas.toBlob(
         (blob) => {
-          if (blob) {
-            onCropComplete(blob, mimeType);
-          } else {
-            console.error('Failed to create blob');
-          }
+          if (blob) onCropComplete(blob, mimeType);
           setProcessing(false);
         },
         mimeType,
-        quality
+        mimeType === 'image/jpeg' ? 0.9 : undefined
       );
     } catch (error) {
-      console.error('Error cropping image:', error);
+      console.error('Crop error:', error);
       setProcessing(false);
     }
-  }, [imageFile, imageUrl, imageSize, zoom, position, onCropComplete]);
+  }, [imageFile, imageUrl, naturalSize, zoom, position, onCropComplete]);
+
+  // Compute inline styles for the preview image to match "cover" + zoom + pan
+  const previewStyle = (): React.CSSProperties => {
+    if (!naturalSize.w) return {};
+    const container = 256;
+    const baseScale = Math.max(container / naturalSize.w, container / naturalSize.h);
+    const s = baseScale * zoom;
+    const w = naturalSize.w * s;
+    const h = naturalSize.h * s;
+    return {
+      position: 'absolute',
+      left: (container - w) / 2 + position.x,
+      top: (container - h) / 2 + position.y,
+      width: w,
+      height: h,
+      maxWidth: 'none',
+      maxHeight: 'none',
+    };
+  };
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm">
@@ -197,10 +174,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--fc-section-border,#1F1F1F)]">
           <h3 className="text-lg font-semibold text-[var(--fc-section-text,#FAFAFA)]">{t('imageCrop.title')}</h3>
-          <button
-            onClick={onClose}
-            className="p-1 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors"
-          >
+          <button onClick={onClose} className="p-1 text-[var(--fc-section-muted,#666666)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -226,24 +200,13 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
             onTouchEnd={handleTouchEnd}
           >
             <img
-              ref={imageRef}
               src={imageUrl}
               alt={t('imageCrop.cropPreviewAlt')}
               onLoad={handleImageLoad}
-              className="absolute select-none"
-              style={{
-                transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) scale(${zoom})`,
-                transformOrigin: 'center center',
-                left: '50%',
-                top: '50%',
-                maxWidth: 'none',
-                maxHeight: 'none',
-                width: '100%',
-                height: 'auto',
-              }}
+              className="select-none"
+              style={previewStyle()}
               draggable={false}
             />
-            {/* Circular overlay guide */}
             <div className="absolute inset-0 pointer-events-none border-4 border-white/30 rounded-full" />
           </div>
 
@@ -253,41 +216,16 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
 
           {/* Zoom Controls */}
           <div className="flex items-center justify-center gap-4 mt-4">
-            <button
-              onClick={handleZoomOut}
-              disabled={zoom <= MIN_ZOOM}
-              className="p-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              title={t('imageCrop.zoomOut')}
-            >
+            <button onClick={handleZoomOut} disabled={zoom <= MIN_ZOOM} className="p-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed" title={t('imageCrop.zoomOut')}>
               <ZoomOut size={20} />
             </button>
-
             <div className="flex items-center gap-2 min-w-[120px]">
-              <input
-                type="range"
-                min={MIN_ZOOM}
-                max={MAX_ZOOM}
-                step={ZOOM_STEP}
-                value={zoom}
-                onChange={(e) => setZoom(parseFloat(e.target.value))}
-                className="w-full h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg appearance-none cursor-pointer accent-white"
-              />
+              <input type="range" min={MIN_ZOOM} max={MAX_ZOOM} step={ZOOM_STEP} value={zoom} onChange={(e) => setZoom(parseFloat(e.target.value))} className="w-full h-2 bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg appearance-none cursor-pointer accent-white" />
             </div>
-
-            <button
-              onClick={handleZoomIn}
-              disabled={zoom >= MAX_ZOOM}
-              className="p-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              title={t('imageCrop.zoomIn')}
-            >
+            <button onClick={handleZoomIn} disabled={zoom >= MAX_ZOOM} className="p-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed" title={t('imageCrop.zoomIn')}>
               <ZoomIn size={20} />
             </button>
-
-            <button
-              onClick={handleReset}
-              className="p-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors"
-              title={t('imageCrop.reset')}
-            >
+            <button onClick={handleReset} className="p-2 text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] hover:bg-[var(--fc-section-hover,#151515)] rounded-lg transition-colors" title={t('imageCrop.reset')}>
               <RotateCcw size={20} />
             </button>
           </div>
@@ -297,17 +235,10 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
 
         {/* Footer */}
         <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[var(--fc-section-border,#1F1F1F)]">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors"
-          >
+          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] hover:text-[var(--fc-section-text,#FAFAFA)] transition-colors">
             {t('imageCrop.cancelButton')}
           </button>
-          <button
-            onClick={handleCrop}
-            disabled={processing}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-black bg-white rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+          <button onClick={handleCrop} disabled={processing} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-black bg-white rounded-lg hover:bg-[var(--fc-button-hover,#E0E0E0)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
             {processing ? (
               <>
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
