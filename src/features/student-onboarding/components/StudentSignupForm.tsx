@@ -70,10 +70,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
         setError(signUpError.message);
       } else {
         setSuccess(true);
-        // Call success handler after a brief delay to show success message
-        setTimeout(() => {
-          onSignupSuccess();
-        }, 1500);
+        // Don't redirect — user needs to confirm email first
       }
     } catch (err) {
       setError(t('studentOnboarding.signup.errors.unexpectedError'));
@@ -114,11 +111,11 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
           {/* Success Message */}
           {success && (
             <div className="mb-4 p-3 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg flex items-start gap-2">
-              <CheckCircle className="text-[#22C55E] mt-0.5 flex-shrink-0" size={16} />
+              <Mail className="text-[#22C55E] mt-0.5 flex-shrink-0" size={16} />
               <div>
                 <p className="text-[#22C55E] text-xs font-medium">{t('studentOnboarding.signup.successTitle')}</p>
                 <p className="text-[#22C55E]/80 text-[11px] mt-0.5">
-                  {t('studentOnboarding.signup.successMessage')}
+                  {t('auth.checkEmailToConfirm', { defaultValue: 'Изпратихме ви имейл за потвърждение. Моля, проверете пощата си и кликнете на линка, за да активирате акаунта си.' })}
                 </p>
               </div>
             </div>

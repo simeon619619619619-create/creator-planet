@@ -25,7 +25,7 @@ interface AuthStateContextType {
 
 interface AuthActionsContextType {
   signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
-  signUp: (email: string, password: string, fullName: string, role: UserRole, marketingOptIn?: boolean, phone?: string) => Promise<{ error: AuthError | null }>;
+  signUp: (email: string, password: string, fullName: string, role: UserRole, marketingOptIn?: boolean, phone?: string, redirectPath?: string) => Promise<{ error: AuthError | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>;
   updatePassword: (newPassword: string) => Promise<{ error: AuthError | null }>;
@@ -258,12 +258,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const signUp = useCallback(async (email: string, password: string, fullName: string, role: UserRole, marketingOptIn: boolean = false, phone?: string) => {
+  const signUp = useCallback(async (email: string, password: string, fullName: string, role: UserRole, marketingOptIn: boolean = false, phone?: string, redirectPath?: string) => {
     try {
       // Determine the redirect URL based on environment
-      const redirectUrl = import.meta.env.PROD
+      const baseUrl = import.meta.env.PROD
         ? window.location.origin
         : 'http://localhost:5173';
+      const redirectUrl = redirectPath ? `${baseUrl}${redirectPath}` : baseUrl;
 
       // First, create the auth user
       const { data: authData, error: authError } = await supabase.auth.signUp({

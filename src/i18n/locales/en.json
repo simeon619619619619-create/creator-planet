@@ -260,6 +260,7 @@
     "accountCreated": "Account created successfully!",
     "checkEmail": "Your account has been created. You can now sign in.",
     "accountCreatedRedirecting": "Account created! Redirecting...",
+    "checkEmailToConfirm": "We sent you a confirmation email. Please check your inbox and click the link to activate your account.",
     "forgotPassword": "Forgot password?",
     "forgotPasswordTitle": "Reset your password",
     "forgotPasswordSubtitle": "Enter your email address and we'll send you a link to reset your password.",

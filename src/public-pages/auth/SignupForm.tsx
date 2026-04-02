@@ -59,7 +59,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onToggleForm }) => {
     setIsLoading(true);
 
     try {
-      const { error: signUpError } = await signUp(email, password, fullName, role);
+      const { error: signUpError } = await signUp(email, password, fullName, role, false, undefined, returnUrl ? decodeURIComponent(returnUrl) : undefined);
 
       if (signUpError) {
         setError(signUpError.message);
@@ -108,11 +108,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onToggleForm }) => {
         {/* Success Message */}
         {success && (
           <div className="mb-6 p-4 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg flex items-start gap-3">
-            <CheckCircle className="text-[#22C55E] mt-0.5 flex-shrink-0" size={20} />
+            <Mail className="text-[#22C55E] mt-0.5 flex-shrink-0" size={20} />
             <div>
               <p className="text-[#22C55E] text-sm font-medium">{t('auth.accountCreated')}</p>
               <p className="text-[#22C55E]/80 text-xs mt-1">
-                {t('auth.accountCreatedRedirecting')}
+                {t('auth.checkEmailToConfirm', { defaultValue: 'Изпратихме ви имейл за потвърждение. Моля, проверете пощата си и кликнете на линка, за да активирате акаунта си.' })}
               </p>
             </div>
           </div>
