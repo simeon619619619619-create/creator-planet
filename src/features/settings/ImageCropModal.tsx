@@ -37,10 +37,23 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
     return () => URL.revokeObjectURL(url);
   }, [imageFile]);
 
-  // Get image dimensions when loaded
+  // Get image dimensions when loaded — fit the image to cover the circle
   const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget;
-    setImageSize({ width: img.naturalWidth, height: img.naturalHeight });
+    const { naturalWidth, naturalHeight } = img;
+    setImageSize({ width: naturalWidth, height: naturalHeight });
+
+    // Auto-zoom so the shorter side fills the 256px circle
+    if (containerRef.current) {
+      const containerSize = containerRef.current.offsetWidth;
+      const scaleToFill = Math.max(
+        containerSize / naturalWidth,
+        containerSize / naturalHeight
+      );
+      // Convert to a zoom relative to the CSS width:100% baseline
+      const baseScale = containerSize / naturalWidth;
+      setZoom(scaleToFill / baseScale);
+    }
   }, []);
 
   // Handle zoom controls
