@@ -112,67 +112,57 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
     setIsDragging(false);
   }, []);
 
-  // Generate cropped image
+  // Generate cropped image — pure math, no getBoundingClientRect
   const handleCrop = useCallback(async () => {
-    if (!imageRef.current || !containerRef.current) return;
+    if (!containerRef.current || !imageSize.width) return;
 
     setProcessing(true);
 
     try {
-      const container = containerRef.current;
-      const img = imageRef.current;
+      const containerSize = containerRef.current.offsetWidth; // 256 css px
 
-      // Calculate the visible area of the image
-      const containerRect = container.getBoundingClientRect();
-      const containerSize = Math.min(containerRect.width, containerRect.height);
+      // The image is rendered with CSS width:100% of container, height:auto
+      const displayW = containerSize;
+      const displayH = containerSize * (imageSize.height / imageSize.width);
 
-      // Calculate the scale factor between display and natural image size
-      const displayWidth = img.offsetWidth * zoom;
-      const displayHeight = img.offsetHeight * zoom;
-      const scaleX = img.naturalWidth / displayWidth;
-      const scaleY = img.naturalHeight / displayHeight;
+      // After scale(zoom), the rendered size is:
+      const scaledW = displayW * zoom;
+      const scaledH = displayH * zoom;
 
-      // Calculate the center of the crop area in the display
-      const cropCenterX = containerSize / 2;
-      const cropCenterY = containerSize / 2;
+      // The image center sits at (containerSize/2 + position.x, containerSize/2 + position.y)
+      // So image top-left is:
+      const imgLeft = containerSize / 2 + position.x - scaledW / 2;
+      const imgTop = containerSize / 2 + position.y - scaledH / 2;
 
-      // Calculate the top-left of the crop area relative to the image
-      const imgRect = img.getBoundingClientRect();
-      const imgDisplayX = imgRect.left - containerRect.left;
-      const imgDisplayY = imgRect.top - containerRect.top;
+      // Map the container (crop) rect to natural image coordinates
+      const srcX = (0 - imgLeft) * (imageSize.width / scaledW);
+      const srcY = (0 - imgTop) * (imageSize.height / scaledH);
+      const srcW = containerSize * (imageSize.width / scaledW);
+      const srcH = containerSize * (imageSize.height / scaledH);
 
-      // Source coordinates in the natural image
-      const srcX = (cropCenterX - imgDisplayX - containerSize / 2) * scaleX;
-      const srcY = (cropCenterY - imgDisplayY - containerSize / 2) * scaleY;
-      const srcSize = containerSize * Math.min(scaleX, scaleY);
-
-      // Create canvas for cropping
+      // Create canvas
       const canvas = document.createElement('canvas');
       canvas.width = CROP_SIZE;
       canvas.height = CROP_SIZE;
       const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Could not get canvas context');
 
-      if (!ctx) {
-        throw new Error('Could not get canvas context');
-      }
-
-      // Create a new image element to ensure it's fully loaded
+      // Load source image
       const sourceImg = new Image();
       sourceImg.crossOrigin = 'anonymous';
-
       await new Promise<void>((resolve, reject) => {
         sourceImg.onload = () => resolve();
         sourceImg.onerror = () => reject(new Error('Failed to load image'));
         sourceImg.src = imageUrl!;
       });
 
-      // Draw the cropped portion
+      // Draw the cropped square
       ctx.drawImage(
         sourceImg,
         Math.max(0, srcX),
         Math.max(0, srcY),
-        srcSize,
-        srcSize,
+        srcW,
+        srcH,
         0,
         0,
         CROP_SIZE,
@@ -199,7 +189,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
       console.error('Error cropping image:', error);
       setProcessing(false);
     }
-  }, [imageFile, imageUrl, zoom, onCropComplete]);
+  }, [imageFile, imageUrl, imageSize, zoom, position, onCropComplete]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm">
