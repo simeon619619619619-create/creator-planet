@@ -154,6 +154,19 @@ export async function createCommunityCheckout(
   try {
     validateCommunityId(request.communityId, 'createCommunityCheckout');
 
+    // Explicitly fetch current session so we can pass the JWT in headers.
+    // Without this, supabase.functions.invoke() sometimes fails to attach the
+    // Authorization header and the Supabase gateway rejects the request with 401.
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData?.session?.access_token;
+
+    if (!accessToken) {
+      return {
+        success: false,
+        error: 'Not authenticated. Please sign in and try again.',
+      };
+    }
+
     // Call Edge Function to create checkout session
     const { data, error } = await supabase.functions.invoke('community-checkout', {
       body: {
@@ -163,6 +176,9 @@ export async function createCommunityCheckout(
         discountCode: request.discountCode,
         checkoutMode: request.checkoutMode, // Required when pricing_type is 'both'
         useWalletBalance: request.useWalletBalance,
+      },
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 
