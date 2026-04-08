@@ -154,11 +154,15 @@ export async function createCommunityCheckout(
   try {
     validateCommunityId(request.communityId, 'createCommunityCheckout');
 
-    // Explicitly fetch current session so we can pass the JWT in headers.
-    // Without this, supabase.functions.invoke() sometimes fails to attach the
-    // Authorization header and the Supabase gateway rejects the request with 401.
+    // Use a direct fetch() instead of supabase.functions.invoke() so we have
+    // complete control over the request headers. The Supabase gateway requires
+    // BOTH `apikey` AND `Authorization: Bearer <jwt>` to be present; if either
+    // is missing or empty it rejects the request with 401 before the edge
+    // function ever runs.
     const { data: sessionData } = await supabase.auth.getSession();
     const accessToken = sessionData?.session?.access_token;
+    const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
 
     if (!accessToken) {
       return {
@@ -167,45 +171,42 @@ export async function createCommunityCheckout(
       };
     }
 
-    // Call Edge Function to create checkout session
-    const { data, error } = await supabase.functions.invoke('community-checkout', {
-      body: {
+    const response = await fetch(`${supabaseUrl}/functions/v1/community-checkout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: anonKey,
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
         communityId: request.communityId,
         successUrl: request.successUrl,
         cancelUrl: request.cancelUrl,
         discountCode: request.discountCode,
         checkoutMode: request.checkoutMode, // Required when pricing_type is 'both'
         useWalletBalance: request.useWalletBalance,
-      },
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+      }),
     });
 
-    // Check for error in response data first (edge function returns JSON error body)
-    if (data?.error) {
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok) {
       return {
         success: false,
-        error: data.error,
+        error:
+          (data && (data.error || data.message)) ||
+          `Checkout request failed with status ${response.status}`,
       };
     }
 
-    // Then check for invoke error (network/auth issues)
-    if (error) {
-      return {
-        success: false,
-        error: error.message || 'Failed to create checkout session',
-      };
+    if (data?.error) {
+      return { success: false, error: data.error };
     }
 
     if (!data) {
-      return {
-        success: false,
-        error: 'No response from checkout service',
-      };
+      return { success: false, error: 'No response from checkout service' };
     }
 
-    // Success - return checkout URL (handle both naming conventions)
     return {
       success: true,
       checkoutUrl: data.checkout_url || data.checkoutUrl || data.url,
