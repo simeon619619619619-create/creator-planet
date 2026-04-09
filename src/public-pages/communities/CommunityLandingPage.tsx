@@ -76,7 +76,7 @@ const CreatorBioModal: React.FC<CreatorBioModalProps> = ({ creator, isOpen, onCl
             <img
               src={creator.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(creator.full_name)}&background=1F1F1F&color=FAFAFA&size=128`}
               alt={creator.full_name}
-              className="w-28 h-28 rounded-full object-cover border-4 border-[#0A0A0A] bg-[var(--fc-surface,#0A0A0A)]"
+              className="w-28 h-28 rounded-full object-contain border-4 border-[#0A0A0A] bg-white p-1.5"
             />
           </div>
         </div>
@@ -607,7 +607,7 @@ export const CommunityLandingPage: React.FC = () => {
                 <img
                   src={creator.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(creator.full_name)}&background=1F1F1F&color=FAFAFA&size=64`}
                   alt={creator.full_name}
-                  className="w-16 h-16 rounded-full object-cover ring-2 ring-transparent group-hover:ring-[#333333] transition-all duration-150"
+                  className="w-16 h-16 rounded-full object-contain bg-white p-1 ring-2 ring-transparent group-hover:ring-[#333333] transition-all duration-150"
                 />
                 <div>
                   <h4 className="font-semibold text-[var(--fc-text,#FAFAFA)] group-hover:text-white transition-colors duration-150">
