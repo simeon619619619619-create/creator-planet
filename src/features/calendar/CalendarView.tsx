@@ -468,13 +468,21 @@ const CalendarView: React.FC = () => {
               return (
                 <div key={event.id} className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
                   {event.cover_image_url && (
-                    <img src={event.cover_image_url} alt="" className="w-full h-48 object-cover" />
+                    <div className="relative">
+                      <img src={event.cover_image_url} alt="" className="w-full h-48 object-cover" />
+                      <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1.5 text-white text-center">
+                        <span className="block text-[10px] font-bold uppercase leading-tight">{dateInfo.month}</span>
+                        <span className="block text-lg font-bold leading-tight">{dateInfo.day}</span>
+                      </div>
+                    </div>
                   )}
-                  <div className="p-6 flex flex-col md:flex-row gap-6">
-                  <div className="bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg p-4 flex flex-col items-center justify-center min-w-[100px] text-[var(--fc-section-text,#FAFAFA)]">
-                    <span className="text-xs font-bold uppercase">{dateInfo.month}</span>
-                    <span className="text-2xl font-bold">{dateInfo.day}</span>
-                  </div>
+                  <div className="p-6 flex gap-6">
+                  {!event.cover_image_url && (
+                    <div className="bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg p-4 flex flex-col items-center justify-center min-w-[80px] text-[var(--fc-section-text,#FAFAFA)]">
+                      <span className="text-xs font-bold uppercase">{dateInfo.month}</span>
+                      <span className="text-2xl font-bold">{dateInfo.day}</span>
+                    </div>
+                  )}
 
                   <div className="flex-1">
                     <div className="flex justify-between items-start">
