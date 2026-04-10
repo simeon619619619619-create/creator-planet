@@ -469,7 +469,7 @@ const CalendarView: React.FC = () => {
                 <div key={event.id} className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
                   {event.cover_image_url && (
                     <div className="relative">
-                      <img src={event.cover_image_url} alt="" className="w-full h-48 object-cover" />
+                      <img src={event.cover_image_url} alt="" className="w-full h-64 object-cover" />
                       <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1.5 text-white text-center">
                         <span className="block text-[10px] font-bold uppercase leading-tight">{dateInfo.month}</span>
                         <span className="block text-lg font-bold leading-tight">{dateInfo.day}</span>
