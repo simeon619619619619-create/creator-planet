@@ -736,9 +736,9 @@ const CalendarView: React.FC = () => {
 
               {/* Cover Image Upload */}
               <div>
-                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
+                <span className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.createEventModal.coverImageLabel')}
-                </label>
+                </span>
                 {newEventCoverPreview ? (
                   <div className="relative rounded-lg overflow-hidden">
                     <img src={newEventCoverPreview} alt="" className="w-full h-32 object-cover rounded-lg" />
@@ -751,10 +751,14 @@ const CalendarView: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg cursor-pointer hover:border-[#555555] transition-colors">
+                  <div
+                    onClick={() => document.getElementById('create-event-cover')?.click()}
+                    className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg cursor-pointer hover:border-[#555555] transition-colors"
+                  >
                     <ImagePlus size={20} className="text-[var(--fc-section-muted,#666666)] mb-1" />
                     <span className="text-xs text-[var(--fc-section-muted,#666666)]">{t('calendar.createEventModal.coverImagePlaceholder')}</span>
                     <input
+                      id="create-event-cover"
                       type="file"
                       accept="image/*"
                       className="hidden"
@@ -766,7 +770,7 @@ const CalendarView: React.FC = () => {
                         }
                       }}
                     />
-                  </label>
+                  </div>
                 )}
               </div>
 
@@ -1084,9 +1088,9 @@ const CalendarView: React.FC = () => {
 
               {/* Cover Image Upload */}
               <div>
-                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
+                <span className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
                   {t('calendar.editEventModal.coverImageLabel')}
-                </label>
+                </span>
                 {newEventCoverPreview ? (
                   <div className="relative rounded-lg overflow-hidden">
                     <img src={newEventCoverPreview} alt="" className="w-full h-32 object-cover rounded-lg" />
@@ -1099,10 +1103,14 @@ const CalendarView: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg cursor-pointer hover:border-[#555555] transition-colors">
+                  <div
+                    onClick={() => document.getElementById('edit-event-cover')?.click()}
+                    className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg cursor-pointer hover:border-[#555555] transition-colors"
+                  >
                     <ImagePlus size={20} className="text-[var(--fc-section-muted,#666666)] mb-1" />
                     <span className="text-xs text-[var(--fc-section-muted,#666666)]">{t('calendar.editEventModal.coverImagePlaceholder')}</span>
                     <input
+                      id="edit-event-cover"
                       type="file"
                       accept="image/*"
                       className="hidden"
@@ -1114,7 +1122,7 @@ const CalendarView: React.FC = () => {
                         }
                       }}
                     />
-                  </label>
+                  </div>
                 )}
               </div>
 
