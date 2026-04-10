@@ -296,7 +296,7 @@
     "courses": "Курсове",
     "homework": "Домашни",
     "aiChat": "AI Чат",
-    "calendar": "Календар",
+    "calendar": "Събития",
     "aiManager": "AI Мениджър",
     "studentManager": "Студенти",
     "surveys": "Анкети",
@@ -381,7 +381,7 @@
     }
   },
   "calendar": {
-    "title": "Календар на общността",
+    "title": "Събития на общността",
     "subtitleCreator": "Управлявайте вашите сесии и уъркшопи.",
     "subtitleStudent": "Предстоящи сесии и уъркшопи.",
     "listViewTooltip": "Списъчен изглед",
@@ -690,7 +690,7 @@
       "dashboard": "Табло",
       "community": "Общност",
       "courses": "Курсове",
-      "calendar": "Календар",
+      "calendar": "Събития",
       "aiManager": "AI Мениджър",
       "welcomeBack": "Добре дошли отново!",
       "businessDoingToday": "Ето как се справя вашият {{niche}} бизнес днес",
