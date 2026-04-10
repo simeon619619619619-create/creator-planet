@@ -466,15 +466,14 @@ const CalendarView: React.FC = () => {
               const isAttending = event.user_status === 'attending';
 
               return (
-                <div key={event.id} className="bg-[var(--fc-section,#0A0A0A)] p-6 rounded-xl border border-[var(--fc-section-border,#1F1F1F)] flex flex-col md:flex-row gap-6">
-                  <div className="relative bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg min-w-[100px] min-h-[100px] flex flex-col items-center justify-center overflow-hidden text-[var(--fc-section-text,#FAFAFA)]">
-                    {event.cover_image_url && (
-                      <img src={event.cover_image_url} alt="" className="absolute inset-0 w-full h-full object-cover" />
-                    )}
-                    <div className={`relative z-10 flex flex-col items-center p-4 ${event.cover_image_url ? 'bg-black/50 rounded-lg px-3 py-2' : ''}`}>
-                      <span className="text-xs font-bold uppercase">{dateInfo.month}</span>
-                      <span className="text-2xl font-bold">{dateInfo.day}</span>
-                    </div>
+                <div key={event.id} className="bg-[var(--fc-section,#0A0A0A)] rounded-xl border border-[var(--fc-section-border,#1F1F1F)] overflow-hidden">
+                  {event.cover_image_url && (
+                    <img src={event.cover_image_url} alt="" className="w-full h-48 object-cover" />
+                  )}
+                  <div className="p-6 flex flex-col md:flex-row gap-6">
+                  <div className="bg-[var(--fc-section-hover,#1F1F1F)] rounded-lg p-4 flex flex-col items-center justify-center min-w-[100px] text-[var(--fc-section-text,#FAFAFA)]">
+                    <span className="text-xs font-bold uppercase">{dateInfo.month}</span>
+                    <span className="text-2xl font-bold">{dateInfo.day}</span>
                   </div>
 
                   <div className="flex-1">
@@ -598,6 +597,7 @@ const CalendarView: React.FC = () => {
                         )
                       )}
                     </div>
+                  </div>
                   </div>
                 </div>
               );
