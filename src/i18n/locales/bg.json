@@ -450,6 +450,8 @@
       "addressLabel": "Адрес на локацията",
       "addressPlaceholder": "Въведете адрес или Google Maps линк",
       "addressHelpText": "Поставете Google Maps линк или въведете адреса",
+      "coverImageLabel": "Снимка на събитието",
+      "coverImagePlaceholder": "Натиснете за качване на снимка",
       "cancelButton": "Отказ",
       "createButton": "Създай събитие",
       "creatingButton": "Създаване..."
@@ -475,6 +477,8 @@
       "addressLabel": "Адрес на локацията",
       "addressPlaceholder": "Въведете адрес или Google Maps линк",
       "addressHelpText": "Поставете Google Maps линк или въведете адреса",
+      "coverImageLabel": "Снимка на събитието",
+      "coverImagePlaceholder": "Натиснете за качване на снимка",
       "cancelButton": "Отказ",
       "saveButton": "Запази промените",
       "savingButton": "Запазване..."

@@ -397,6 +397,24 @@ export async function getEventById(eventId: string, userId?: string): Promise<Ev
   };
 }
 
+export async function uploadEventCoverImage(file: File, eventId?: string): Promise<string | null> {
+  const fileExt = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+  const fileName = `events/${eventId || crypto.randomUUID()}/cover-${Date.now()}.${fileExt}`;
+
+  const { data, error } = await supabase.storage.from('avatars').upload(fileName, file, {
+    cacheControl: '3600',
+    upsert: true,
+  });
+
+  if (error) {
+    console.error('Error uploading event cover image:', error);
+    return null;
+  }
+
+  const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(data.path);
+  return urlData.publicUrl;
+}
+
 export async function createEvent(
   creatorId: string,
   title: string,
@@ -409,7 +427,8 @@ export async function createEvent(
   communityId?: string,
   groupId?: string | null,
   locationType: LocationType = 'online',
-  address?: string
+  address?: string,
+  coverImageUrl?: string
 ): Promise<DbEvent | null> {
   const { data, error } = await supabase
     .from('events')
@@ -426,6 +445,7 @@ export async function createEvent(
       meeting_link: locationType === 'online' ? meetingLink : null,
       address: locationType === 'in_person' ? address : null,
       max_attendees: maxAttendees,
+      cover_image_url: coverImageUrl || null,
     })
     .select()
     .single();
@@ -449,6 +469,7 @@ export async function updateEvent(
     address: string | null;
     max_attendees: number;
     group_id: string | null;
+    cover_image_url: string | null;
   }>
 ): Promise<boolean> {
   const { error } = await supabase

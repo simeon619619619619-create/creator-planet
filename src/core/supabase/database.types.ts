@@ -289,6 +289,7 @@ export interface DbEvent {
   address: string | null;
   max_attendees: number | null;
   group_id: string | null;
+  cover_image_url: string | null;
   created_at: string;
   updated_at: string;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Calendar as CalendarIcon, Clock, Users, Video, Plus, ChevronLeft, ChevronRight, Loader2, X, Download, User, Pencil, Trash2, AlertTriangle, List, CalendarDays, Building2, MapPin, UserCheck, History } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, Users, Video, Plus, ChevronLeft, ChevronRight, Loader2, X, Download, User, Pencil, Trash2, AlertTriangle, List, CalendarDays, Building2, MapPin, UserCheck, History, ImagePlus } from 'lucide-react';
 import { useAuth } from '../../core/contexts/AuthContext';
 // Team permission checks are handled by canManageCalendar computed value
 import {
@@ -22,6 +22,7 @@ import {
   updateEventAttendee,
   addOneOnOneAttendee,
   getEventLocationUrl,
+  uploadEventCoverImage,
 } from './eventService';
 import { getCreatorCommunities } from '../community/communityService';
 import { EventType, LocationType, DbCommunity } from '../../core/supabase/database.types';
@@ -63,6 +64,8 @@ const CalendarView: React.FC = () => {
   const [newEventAddress, setNewEventAddress] = useState('');
   const [newEventCommunityId, setNewEventCommunityId] = useState<string>('');
   const [newEventAttendeeId, setNewEventAttendeeId] = useState<string>('');
+  const [newEventCoverFile, setNewEventCoverFile] = useState<File | null>(null);
+  const [newEventCoverPreview, setNewEventCoverPreview] = useState<string>('');
 
   const isCreator = role === 'creator' || role === 'superadmin';
 
@@ -155,6 +158,13 @@ const CalendarView: React.FC = () => {
       const startDateTime = new Date(`${newEventDate}T${newEventStartTime}`);
       const endDateTime = new Date(`${newEventDate}T${newEventEndTime}`);
 
+      // Upload cover image if selected
+      let coverImageUrl: string | undefined;
+      if (newEventCoverFile) {
+        const url = await uploadEventCoverImage(newEventCoverFile);
+        if (url) coverImageUrl = url;
+      }
+
       // Use profile.id because events.creator_id references profiles.id
       const event = await createEvent(
         profile.id,
@@ -168,7 +178,8 @@ const CalendarView: React.FC = () => {
         newEventCommunityId || undefined,
         undefined, // groupId
         newEventLocationType,
-        newEventLocationType === 'in_person' ? (newEventAddress || undefined) : undefined
+        newEventLocationType === 'in_person' ? (newEventAddress || undefined) : undefined,
+        coverImageUrl
       );
 
       if (event) {
@@ -227,6 +238,8 @@ const CalendarView: React.FC = () => {
     setNewEventLink(event.meeting_link || '');
     setNewEventAddress(event.address || '');
     setNewEventCommunityId(event.community_id || '');
+    setNewEventCoverPreview(event.cover_image_url || '');
+    setNewEventCoverFile(null);
     // Set the current attendee for 1:1 events
     setNewEventAttendeeId(event.attendee?.id || '');
     setEditingEvent(event);
@@ -248,7 +261,17 @@ const CalendarView: React.FC = () => {
       const startDateTime = new Date(`${newEventDate}T${newEventStartTime}`);
       const endDateTime = new Date(`${newEventDate}T${newEventEndTime}`);
 
-      const success = await updateEvent(editingEvent.id, {
+      // Upload new cover image if selected
+      let coverImageUrl: string | null | undefined;
+      if (newEventCoverFile) {
+        const url = await uploadEventCoverImage(newEventCoverFile, editingEvent.id);
+        if (url) coverImageUrl = url;
+      } else if (!newEventCoverPreview && editingEvent.cover_image_url) {
+        // Cover was removed
+        coverImageUrl = null;
+      }
+
+      const updates: Parameters<typeof updateEvent>[1] = {
         title: newEventTitle,
         description: newEventDescription || undefined,
         start_time: startDateTime.toISOString(),
@@ -256,7 +279,12 @@ const CalendarView: React.FC = () => {
         location_type: newEventLocationType,
         meeting_link: newEventLocationType === 'online' ? (newEventLink || null) : null,
         address: newEventLocationType === 'in_person' ? (newEventAddress || null) : null,
-      });
+      };
+      if (coverImageUrl !== undefined) {
+        updates.cover_image_url = coverImageUrl;
+      }
+
+      const success = await updateEvent(editingEvent.id, updates);
 
       // Update attendee for 1:1 events if changed
       if (editingEvent.event_type === 'one_on_one' && newEventAttendeeId && profile?.id) {
@@ -305,6 +333,8 @@ const CalendarView: React.FC = () => {
     setNewEventAddress('');
     setNewEventCommunityId('');
     setNewEventAttendeeId('');
+    setNewEventCoverFile(null);
+    setNewEventCoverPreview('');
     setCommunityMembers([]);
   };
 
@@ -704,6 +734,42 @@ const CalendarView: React.FC = () => {
                 />
               </div>
 
+              {/* Cover Image Upload */}
+              <div>
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
+                  {t('calendar.createEventModal.coverImageLabel')}
+                </label>
+                {newEventCoverPreview ? (
+                  <div className="relative rounded-lg overflow-hidden">
+                    <img src={newEventCoverPreview} alt="" className="w-full h-32 object-cover rounded-lg" />
+                    <button
+                      type="button"
+                      onClick={() => { setNewEventCoverFile(null); setNewEventCoverPreview(''); }}
+                      className="absolute top-2 right-2 bg-black/60 rounded-full p-1 hover:bg-black/80"
+                    >
+                      <X size={14} className="text-white" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg cursor-pointer hover:border-[#555555] transition-colors">
+                    <ImagePlus size={20} className="text-[var(--fc-section-muted,#666666)] mb-1" />
+                    <span className="text-xs text-[var(--fc-section-muted,#666666)]">{t('calendar.createEventModal.coverImagePlaceholder')}</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={e => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setNewEventCoverFile(file);
+                          setNewEventCoverPreview(URL.createObjectURL(file));
+                        }
+                      }}
+                    />
+                  </label>
+                )}
+              </div>
+
               {/* Community Selector */}
               {communities.length > 0 && (
                 <div>
@@ -1014,6 +1080,42 @@ const CalendarView: React.FC = () => {
                   rows={3}
                   className="w-full border border-[var(--fc-section-border,#1F1F1F)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white/10"
                 />
+              </div>
+
+              {/* Cover Image Upload */}
+              <div>
+                <label className="block text-sm font-medium text-[var(--fc-section-muted,#A0A0A0)] mb-1">
+                  {t('calendar.editEventModal.coverImageLabel')}
+                </label>
+                {newEventCoverPreview ? (
+                  <div className="relative rounded-lg overflow-hidden">
+                    <img src={newEventCoverPreview} alt="" className="w-full h-32 object-cover rounded-lg" />
+                    <button
+                      type="button"
+                      onClick={() => { setNewEventCoverFile(null); setNewEventCoverPreview(''); }}
+                      className="absolute top-2 right-2 bg-black/60 rounded-full p-1 hover:bg-black/80"
+                    >
+                      <X size={14} className="text-white" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--fc-section-border,#1F1F1F)] rounded-lg cursor-pointer hover:border-[#555555] transition-colors">
+                    <ImagePlus size={20} className="text-[var(--fc-section-muted,#666666)] mb-1" />
+                    <span className="text-xs text-[var(--fc-section-muted,#666666)]">{t('calendar.editEventModal.coverImagePlaceholder')}</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={e => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setNewEventCoverFile(file);
+                          setNewEventCoverPreview(URL.createObjectURL(file));
+                        }
+                      }}
+                    />
+                  </label>
+                )}
               </div>
 
               <div>

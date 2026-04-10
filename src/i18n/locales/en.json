@@ -479,6 +479,8 @@
       "addressLabel": "Location Address",
       "addressPlaceholder": "Enter address or Google Maps link",
       "addressHelpText": "Paste a Google Maps link or enter the address",
+      "coverImageLabel": "Event Cover Image",
+      "coverImagePlaceholder": "Click to upload an image",
       "cancelButton": "Cancel",
       "createButton": "Create Event",
       "creatingButton": "Creating..."
@@ -504,6 +506,8 @@
       "addressLabel": "Location Address",
       "addressPlaceholder": "Enter address or Google Maps link",
       "addressHelpText": "Paste a Google Maps link or enter the address",
+      "coverImageLabel": "Event Cover Image",
+      "coverImagePlaceholder": "Click to upload an image",
       "cancelButton": "Cancel",
       "saveButton": "Save Changes",
       "savingButton": "Saving..."
