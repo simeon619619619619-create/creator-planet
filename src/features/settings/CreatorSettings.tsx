@@ -1,11 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Loader2, Save, Sparkles, Wallet, CheckCircle, Clock, AlertTriangle, ArrowRight, Info } from 'lucide-react';
+import {
+  Loader2, Save, Sparkles, Wallet, CheckCircle, Clock, AlertTriangle, ArrowRight, Info,
+  LayoutDashboard, Users, GraduationCap, ClipboardList, MessageSquare, Bot, Calendar, BrainCircuit,
+} from 'lucide-react';
 import { useAuth } from '../../core/contexts/AuthContext';
+import { useCommunity } from '../../core/contexts/CommunityContext';
 import { getCreatorProfile, updateCreatorProfile, CreatorProfile } from './profileService';
 import { getConnectAccountStatus, createConnectAccount, getConnectOnboardingLink } from '../billing';
 import type { ConnectAccountStatus } from '../billing';
+import {
+  HIDEABLE_SIDEBAR_SECTIONS,
+  HideableSidebarSection,
+  updateCommunitySidebarHiddenSections,
+} from '../community/communityService';
+
+const SECTION_ICON_MAP: Record<string, React.ReactNode> = {
+  DASHBOARD: <LayoutDashboard size={18} />,
+  COMMUNITY: <Users size={18} />,
+  COURSES: <GraduationCap size={18} />,
+  homework: <ClipboardList size={18} />,
+  messages: <MessageSquare size={18} />,
+  ai_chat: <Bot size={18} />,
+  CALENDAR: <Calendar size={18} />,
+  AI_MANAGER: <BrainCircuit size={18} />,
+};
 
 // Common timezones
 const TIMEZONES = [
@@ -41,6 +61,31 @@ const CreatorSettings: React.FC = () => {
   });
   const [connectStatus, setConnectStatus] = useState<ConnectAccountStatus | null>(null);
   const [connectLoading, setConnectLoading] = useState(false);
+  const { selectedCommunity, setSelectedCommunity } = useCommunity();
+  const [savingNav, setSavingNav] = useState<HideableSidebarSection | null>(null);
+  const [navError, setNavError] = useState<string | null>(null);
+
+  const toggleSectionVisibility = async (section: HideableSidebarSection, visible: boolean) => {
+    if (!selectedCommunity) return;
+    const current = selectedCommunity.sidebar_hidden_sections ?? [];
+    const next = visible
+      ? current.filter((s) => s !== section)
+      : Array.from(new Set([...current, section]));
+
+    setSavingNav(section);
+    setNavError(null);
+    const updated = await updateCommunitySidebarHiddenSections(
+      selectedCommunity.id,
+      next as HideableSidebarSection[],
+    );
+    setSavingNav(null);
+
+    if (!updated) {
+      setNavError(t('creatorSettings.navigation.saveError'));
+      return;
+    }
+    setSelectedCommunity(updated);
+  };
 
   useEffect(() => {
     if (profile?.id) {
@@ -365,6 +410,58 @@ const CreatorSettings: React.FC = () => {
           {t('creatorSettings.creator.aiInstructions.hint')}
         </p>
       </div>
+
+      {/* Navigation Visibility */}
+      {selectedCommunity && (
+        <div className="pt-6 border-t border-[var(--fc-border,#1F1F1F)]">
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold text-[var(--fc-text,#FAFAFA)]">
+              {t('creatorSettings.navigation.title')}
+            </h3>
+            <p className="text-sm text-[var(--fc-muted,#A0A0A0)] mt-1">
+              {t('creatorSettings.navigation.description')}
+            </p>
+          </div>
+
+          <ul className="divide-y divide-[var(--fc-border,#1F1F1F)]">
+            {HIDEABLE_SIDEBAR_SECTIONS.map((section) => {
+              const hidden = (selectedCommunity.sidebar_hidden_sections ?? []).includes(section);
+              const visible = !hidden;
+              const isSaving = savingNav === section;
+              return (
+                <li key={section} className="flex items-center gap-3 py-3">
+                  <span className="text-[var(--fc-muted,#A0A0A0)]">{SECTION_ICON_MAP[section]}</span>
+                  <span className="flex-1 text-sm text-[var(--fc-text,#FAFAFA)]">
+                    {t(`creatorSettings.navigation.sections.${section}`)}
+                  </span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={visible}
+                    disabled={isSaving}
+                    onClick={() => toggleSectionVisibility(section, !visible)}
+                    className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
+                      visible ? 'bg-[#7C3AED]' : 'bg-[var(--fc-border,#333333)]'
+                    } ${isSaving ? 'opacity-60 cursor-wait' : 'cursor-pointer'}`}
+                  >
+                    <span
+                      className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                        visible ? 'translate-x-5' : 'translate-x-1'
+                      }`}
+                    />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          <p className="text-xs text-[var(--fc-muted,#666666)] mt-4">
+            {t('creatorSettings.navigation.helper')}
+          </p>
+
+          {navError && <p className="text-xs text-[#EF4444] mt-2">{navError}</p>}
+        </div>
+      )}
 
       {/* Success/Error Message - hide raw technical errors */}
       {message && !message.text.includes('non-2xx') && !message.text.includes('Edge Function') && (
