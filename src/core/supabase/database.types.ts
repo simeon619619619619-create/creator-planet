@@ -149,6 +149,8 @@ export interface DbCommunity {
   logo_url?: string | null;
   // Override displayed member count (null = show real count)
   display_member_count?: number | null;
+  // Sidebar section IDs hidden from members (creators always see all)
+  sidebar_hidden_sections?: string[];
 }
 
 // Community Channels
