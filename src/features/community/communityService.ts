@@ -151,7 +151,7 @@ export async function createCommunity(
 
 export async function updateCommunity(
   communityId: string,
-  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color' | 'text_color' | 'accent_color' | 'secondary_color' | 'section_color' | 'button_color' | 'background_elements' | 'display_member_count'>>
+  updates: Partial<Pick<DbCommunity, 'name' | 'description' | 'thumbnail_url' | 'is_public' | 'category' | 'thumbnail_focal_x' | 'thumbnail_focal_y' | 'theme_color' | 'text_color' | 'accent_color' | 'secondary_color' | 'section_color' | 'button_color' | 'background_elements' | 'display_member_count' | 'sidebar_hidden_sections'>>
 ): Promise<DbCommunity | null> {
   const { data, error } = await supabase
     .from('communities')
@@ -162,6 +162,47 @@ export async function updateCommunity(
 
   if (error) {
     console.error('Error updating community:', error);
+    return null;
+  }
+  return data;
+}
+
+/**
+ * Sidebar section IDs that creators may hide from members. Values match
+ * the View enum used as nav item IDs in src/shared/Sidebar.tsx.
+ */
+export const HIDEABLE_SIDEBAR_SECTIONS = [
+  'DASHBOARD',
+  'COMMUNITY',
+  'COURSES',
+  'homework',
+  'messages',
+  'ai_chat',
+  'CALENDAR',
+  'AI_MANAGER',
+] as const;
+
+export type HideableSidebarSection = typeof HIDEABLE_SIDEBAR_SECTIONS[number];
+
+export async function updateCommunitySidebarHiddenSections(
+  communityId: string,
+  hiddenSections: HideableSidebarSection[]
+): Promise<DbCommunity | null> {
+  const allowed = new Set<string>(HIDEABLE_SIDEBAR_SECTIONS);
+  const sanitized = hiddenSections.filter((s) => allowed.has(s));
+
+  const { data, error } = await supabase
+    .from('communities')
+    .update({
+      sidebar_hidden_sections: sanitized,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', communityId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error updating sidebar hidden sections:', error);
     return null;
   }
   return data;
