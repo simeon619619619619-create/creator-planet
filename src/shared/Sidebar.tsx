@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, GraduationCap, Calendar, BrainCircuit, Settings, LogOut, ClipboardList, Bot, UserCog, Tag, ClipboardCheck, MessageSquare, UserCircle, ShoppingBag } from 'lucide-react';
+import { LayoutDashboard, Users, GraduationCap, Calendar, BrainCircuit, Settings, LogOut, ClipboardList, Bot, UserCog, Tag, ClipboardCheck, MessageSquare, UserCircle, ShoppingBag, EyeOff } from 'lucide-react';
 import { View } from '../core/types';
 import { NAV_ITEMS, CREATOR_NAV_ITEMS, TEAM_MEMBER_NAV_ITEMS } from '../core/constants';
 import { useAuth } from '../core/contexts/AuthContext';
@@ -82,30 +82,32 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
     [View.MEMBERS]: 'sidebar.members',
   };
 
-  // Filter and modify nav items based on role
+  const hiddenFromMembers = selectedCommunity?.sidebar_hidden_sections ?? [];
+
+  // Returns nav items annotated with `hiddenFromMembers`. Creators keep hidden
+  // items visible (badged); non-creators have them filtered out entirely.
   const getNavItems = () => {
-    // Team-only users get the team member nav items (AI Manager only for lecturers)
     if (isTeamMemberOnly) {
       const teamRole = teamMemberships?.[0]?.role;
-      return TEAM_MEMBER_NAV_ITEMS.filter(item => {
-        if (item.id === View.AI_MANAGER && teamRole !== 'lecturer') return false;
-        return true;
-      });
+      return TEAM_MEMBER_NAV_ITEMS
+        .filter((item) => {
+          if (item.id === View.AI_MANAGER && teamRole !== 'lecturer') return false;
+          return true;
+        })
+        .map((item) => ({ ...item, hiddenFromMembers: hiddenFromMembers.includes(item.id) }))
+        .filter((item) => !item.hiddenFromMembers);
     }
 
-    const baseItems = NAV_ITEMS
-      .filter(item => {
-        // Hide AI Success Manager for students
-        if (isStudent && item.id === View.AI_MANAGER) return false;
-        return true;
-      });
+    const baseItems = NAV_ITEMS.filter((item) => {
+      if (isStudent && item.id === View.AI_MANAGER) return false;
+      return true;
+    });
 
-    // Add creator-only nav items for creators
-    if (isCreator) {
-      return [...baseItems, ...CREATOR_NAV_ITEMS];
-    }
+    const combined = isCreator ? [...baseItems, ...CREATOR_NAV_ITEMS] : baseItems;
 
-    return baseItems;
+    return combined
+      .map((item) => ({ ...item, hiddenFromMembers: hiddenFromMembers.includes(item.id) }))
+      .filter((item) => isCreator || !item.hiddenFromMembers);
   };
 
   const handleSignOut = async () => {
@@ -196,15 +198,18 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, isOpen, 
                 setCurrentView(item.id);
                 setIsOpen(false);
               }}
+              title={item.hiddenFromMembers ? t('creatorSettings.navigation.hiddenTooltip') : undefined}
               className={`
                 w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors
+                ${item.hiddenFromMembers ? 'opacity-60' : ''}
                 ${currentView === item.id
                   ? 'bg-[var(--fc-surface-hover,#151515)] text-[var(--fc-surface-text,#FAFAFA)] border-l-2 border-[var(--fc-surface-text,#FAFAFA)]'
                   : 'text-[var(--fc-surface-muted,#A0A0A0)] hover:bg-[var(--fc-surface-hover,#151515)] hover:text-[var(--fc-surface-text,#FAFAFA)]'}
               `}
             >
               {iconMap[item.icon]}
-              {t(labelTranslationMap[item.id] || item.label)}
+              <span className="flex-1 text-left">{t(labelTranslationMap[item.id] || item.label)}</span>
+              {item.hiddenFromMembers && <EyeOff size={14} className="shrink-0" />}
             </button>
           ))}
 
