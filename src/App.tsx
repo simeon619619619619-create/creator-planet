@@ -167,6 +167,17 @@ const AppLayout: React.FC = () => {
     }
   }, [location.pathname]);
 
+  // Redirect non-creators away from sections the creator has hidden for members.
+  useEffect(() => {
+    const isCreator = role === 'creator' || role === 'superadmin';
+    if (isCreator) return;
+    const hidden = selectedCommunity?.sidebar_hidden_sections ?? [];
+    if (hidden.includes(currentView)) {
+      navigate('/dashboard');
+      setCurrentView(View.DASHBOARD);
+    }
+  }, [currentView, selectedCommunity?.sidebar_hidden_sections, role, navigate]);
+
   // Check if user is a student (not creator)
   const isStudent = role === 'student' || role === 'member';
 
