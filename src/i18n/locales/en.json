@@ -3046,6 +3046,24 @@
       "creator": "Creator Settings",
       "chatbots": "Community Chatbots"
     },
+    "navigation": {
+      "title": "Navigation / Menu",
+      "description": "Choose which sections are visible to members of this community.",
+      "helper": "Hidden sections stay visible to you, marked with an icon.",
+      "hiddenTooltip": "Hidden from members",
+      "saved": "Saved",
+      "saveError": "Save failed. Please try again.",
+      "sections": {
+        "DASHBOARD": "Dashboard",
+        "COMMUNITY": "Community",
+        "COURSES": "Classroom",
+        "homework": "Homework",
+        "messages": "Messages",
+        "ai_chat": "AI Chat",
+        "CALENDAR": "Calendar",
+        "AI_MANAGER": "AI Success Manager"
+      }
+    },
     "languageDescription": "Select your preferred language for the interface",
     "profile": {
       "avatar": {
