@@ -2,6 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LayoutDashboard, GraduationCap, ClipboardList, Users, Menu } from 'lucide-react';
 import { View } from '../core/types';
+import { useAuth } from '../core/contexts/AuthContext';
+import { useCommunity } from '../core/contexts/CommunityContext';
 
 interface MobileBottomNavProps {
   currentView: View;
@@ -11,13 +13,21 @@ interface MobileBottomNavProps {
 
 const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ currentView, onNavigate, onOpenMenu }) => {
   const { t } = useTranslation();
+  const { role } = useAuth();
+  const { selectedCommunity } = useCommunity();
+  const isCreator = role === 'creator' || role === 'superadmin';
+  const hiddenSections = selectedCommunity?.sidebar_hidden_sections ?? [];
 
-  const tabs = [
+  const allTabs = [
     { view: View.DASHBOARD, icon: LayoutDashboard, label: t('sidebar.dashboard') },
     { view: View.COURSES, icon: GraduationCap, label: t('sidebar.courses') },
     { view: View.HOMEWORK, icon: ClipboardList, label: t('sidebar.homework') },
     { view: View.COMMUNITY, icon: Users, label: t('sidebar.community') },
   ];
+
+  const tabs = isCreator
+    ? allTabs
+    : allTabs.filter((tab) => !hiddenSections.includes(tab.view));
 
   return (
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[var(--fc-surface,#0A0A0A)] border-t border-[var(--fc-border,#1F1F1F)] safe-area-bottom">
