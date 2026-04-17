@@ -66,42 +66,29 @@ const SignupPage: React.FC = () => {
       const communityMatch = decodedReturn.match(/\/community\/([^/?]+)/);
       const communitySlug = communityMatch ? communityMatch[1] : null;
 
-      if (communitySlug) {
-        // Use custom signup edge function for per-community branded emails
-        const { data: fnData, error: fnError } = await supabase.functions.invoke('custom-signup', {
-          body: {
-            email,
-            password,
-            fullName: fullName.trim(),
-            phone: phone.trim(),
-            marketingOptIn,
-            communitySlug,
-            redirectPath: decodedReturn,
-          },
-        });
+      // Use custom signup edge function (auto-confirms, no email verification)
+      const { data: fnData, error: fnError } = await supabase.functions.invoke('custom-signup', {
+        body: {
+          email,
+          password,
+          fullName: fullName.trim(),
+          phone: phone.trim(),
+          marketingOptIn,
+          communitySlug,
+        },
+      });
 
-        if (fnError) {
-          setError(fnError.message || 'Възникна грешка при регистрацията.');
-        } else if (fnData?.error) {
-          setError(fnData.error);
-        } else {
-          setSuccess(true);
-          setFullName('');
-          setEmail('');
-          setPassword('');
-        }
+      if (fnError) {
+        setError(fnError.message || 'Възникна грешка при регистрацията.');
+      } else if (fnData?.error) {
+        setError(fnData.error);
       } else {
-        // Default signup for non-community registrations
-        const { error: signUpError } = await signUp(email, password, fullName, role, marketingOptIn, phone, decodedReturn || undefined);
-
-        if (signUpError) {
-          setError(signUpError.message);
-        } else {
-          setSuccess(true);
-          setFullName('');
-          setEmail('');
-          setPassword('');
+        // Auto-login after successful signup
+        const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+        if (loginError) {
+          setError(loginError.message);
         }
+        // useEffect on `user` will handle redirect to /app
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
@@ -133,18 +120,7 @@ const SignupPage: React.FC = () => {
             <p className="text-[var(--fc-section-muted,#A0A0A0)]">{t('auth.signupSubtitle')}</p>
           </div>
 
-          {/* Success Message */}
-          {success && (
-            <div className="mb-6 p-4 bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-lg flex items-start gap-3">
-              <Mail className="text-[#22C55E] mt-0.5 flex-shrink-0" size={20} />
-              <div>
-                <p className="text-[#22C55E] text-sm font-medium">{t('common.success')}!</p>
-                <p className="text-[#22C55E] text-xs mt-1">
-                  {t('auth.checkEmailToConfirm')}
-                </p>
-              </div>
-            </div>
-          )}
+          {/* Success message removed — auto-login after signup */}
 
           {/* Error Message */}
           {error && (
