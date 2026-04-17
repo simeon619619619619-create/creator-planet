@@ -399,6 +399,7 @@
     "emptyStateStudent": "Няма предстоящи събития за показване.",
     "eventTypeLabel": "ТИП_СЪБИТИЕ",
     "attendingText": "{{count}} присъстващи",
+    "attendeesPreview": "{{count}} записали се",
     "withAttendeeText": "с {{name}}",
     "joinOnlineButton": "Присъедини се онлайн",
     "viewLocationButton": "Виж локацията",

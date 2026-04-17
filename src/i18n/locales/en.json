@@ -428,6 +428,7 @@
     "emptyStateStudent": "No upcoming events to display.",
     "eventTypeLabel": "EVENT_TYPE",
     "attendingText": "{{count}} Attending",
+    "attendeesPreview": "{{count}} registered",
     "withAttendeeText": "with {{name}}",
     "joinOnlineButton": "Join Online",
     "viewLocationButton": "View Location",

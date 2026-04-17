@@ -28,6 +28,7 @@ import { getCreatorCommunities } from '../community/communityService';
 import { EventType, LocationType, DbCommunity } from '../../core/supabase/database.types';
 import ExpandedMonthView from './components/ExpandedMonthView';
 import AttendanceModal from './components/AttendanceModal';
+import EventAttendeesPreview from './components/EventAttendeesPreview';
 import { CalendarViewMode } from './components/CalendarHeader';
 
 const CalendarView: React.FC = () => {
@@ -605,6 +606,14 @@ const CalendarView: React.FC = () => {
                         )
                       )}
                     </div>
+
+                    {/* Attendees preview - show who registered */}
+                    {event.event_type === 'group' && event.attendee_count > 0 && (
+                      <EventAttendeesPreview
+                        eventId={event.id}
+                        attendeeCount={event.attendee_count}
+                      />
+                    )}
                   </div>
                   </div>
                 </div>
