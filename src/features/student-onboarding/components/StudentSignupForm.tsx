@@ -17,6 +17,7 @@ import {
   Trophy,
 } from 'lucide-react';
 import { useAuth } from '../../../core/contexts/AuthContext';
+import { supabase } from '../../../core/supabase/client';
 
 interface StudentSignupFormProps {
   onSignupSuccess: () => void;
@@ -63,14 +64,23 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
     setIsLoading(true);
 
     try {
-      // Sign up as student
-      const { error: signUpError } = await signUp(email, password, fullName.trim(), 'student');
+      // Sign up as student (auto-confirm, no email verification)
+      const { data: fnData, error: fnError } = await supabase.functions.invoke('custom-signup', {
+        body: { email, password, fullName: fullName.trim(), marketingOptIn: false },
+      });
 
-      if (signUpError) {
-        setError(signUpError.message);
+      if (fnError) {
+        setError(fnError.message || t('studentOnboarding.signup.errors.unexpectedError'));
+      } else if (fnData?.error) {
+        setError(fnData.error);
       } else {
-        setSuccess(true);
-        // Don't redirect — user needs to confirm email first
+        const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+        if (loginError) {
+          setError(loginError.message);
+        } else {
+          setSuccess(true);
+          onSignupSuccess();
+        }
       }
     } catch (err) {
       setError(t('studentOnboarding.signup.errors.unexpectedError'));
@@ -108,18 +118,7 @@ const StudentSignupForm: React.FC<StudentSignupFormProps> = ({
             <p className="text-[#666666] text-sm mt-1">{t('studentOnboarding.signup.subtitle')}</p>
           </div>
 
-          {/* Success Message */}
-          {success && (
-            <div className="mb-4 p-3 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg flex items-start gap-2">
-              <Mail className="text-[#22C55E] mt-0.5 flex-shrink-0" size={16} />
-              <div>
-                <p className="text-[#22C55E] text-xs font-medium">{t('studentOnboarding.signup.successTitle')}</p>
-                <p className="text-[#22C55E]/80 text-[11px] mt-0.5">
-                  {t('auth.checkEmailToConfirm', { defaultValue: 'Изпратихме ви имейл за потвърждение. Моля, проверете пощата си и кликнете на линка, за да активирате акаунта си.' })}
-                </p>
-              </div>
-            </div>
-          )}
+          {/* Success message removed — auto-login after signup */}
 
           {/* Error Message */}
           {error && (

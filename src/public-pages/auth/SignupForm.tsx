@@ -7,6 +7,7 @@ import { UserRole } from '../../core/types';
 import { getDefaultRedirectPath } from '../../App';
 import { Logo } from '../../shared/Logo';
 import LanguageSwitcher from '../../shared/LanguageSwitcher';
+import { supabase } from '../../core/supabase/client';
 
 interface SignupFormProps {
   onToggleForm?: () => void;
@@ -59,17 +60,19 @@ const SignupForm: React.FC<SignupFormProps> = ({ onToggleForm }) => {
     setIsLoading(true);
 
     try {
-      const { error: signUpError } = await signUp(email, password, fullName, role, false, undefined, returnUrl ? decodeURIComponent(returnUrl) : undefined);
+      const { data: fnData, error: fnError } = await supabase.functions.invoke('custom-signup', {
+        body: { email, password, fullName: fullName.trim(), marketingOptIn: false },
+      });
 
-      if (signUpError) {
-        setError(signUpError.message);
+      if (fnError) {
+        setError(fnError.message || 'Възникна грешка при регистрацията.');
+      } else if (fnData?.error) {
+        setError(fnData.error);
       } else {
-        setSuccess(true);
-        // Clear form
-        setFullName('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+        const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+        if (loginError) {
+          setError(loginError.message);
+        }
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
@@ -105,18 +108,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onToggleForm }) => {
           <p className="text-[#666666] mt-2">{t('auth.createAccountToStart')}</p>
         </div>
 
-        {/* Success Message */}
-        {success && (
-          <div className="mb-6 p-4 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg flex items-start gap-3">
-            <Mail className="text-[#22C55E] mt-0.5 flex-shrink-0" size={20} />
-            <div>
-              <p className="text-[#22C55E] text-sm font-medium">{t('auth.accountCreated')}</p>
-              <p className="text-[#22C55E]/80 text-xs mt-1">
-                {t('auth.checkEmailToConfirm', { defaultValue: 'Изпратихме ви имейл за потвърждение. Моля, проверете пощата си и кликнете на линка, за да активирате акаунта си.' })}
-              </p>
-            </div>
-          </div>
-        )}
+        {/* Success message removed — auto-login after signup */}
 
         {/* Error Message */}
         {error && (

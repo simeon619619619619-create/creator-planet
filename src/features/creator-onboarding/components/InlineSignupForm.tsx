@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { User, Mail, Lock, AlertCircle, CheckCircle, Shield, Zap, Users } from 'lucide-react';
 import { useAuth } from '../../../core/contexts/AuthContext';
+import { supabase } from '../../../core/supabase/client';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 
 interface InlineSignupFormProps {
@@ -55,15 +56,23 @@ export const InlineSignupForm: React.FC<InlineSignupFormProps> = ({
     setIsLoading(true);
 
     try {
-      // Always sign up as creator - no role selection needed
-      const { error: signUpError } = await signUp(email, password, fullName.trim(), 'creator');
+      // Auto-confirm signup, no email verification
+      const { data: fnData, error: fnError } = await supabase.functions.invoke('custom-signup', {
+        body: { email, password, fullName: fullName.trim(), marketingOptIn: false },
+      });
 
-      if (signUpError) {
-        setError(signUpError.message);
+      if (fnError) {
+        setError(fnError.message || t('onboarding.signup.errors.unexpectedError'));
+      } else if (fnData?.error) {
+        setError(fnData.error);
       } else {
-        setSuccess(true);
-        // User is auto-confirmed (no email verification required)
-        // Auth state change will trigger redirect automatically
+        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+        if (loginError) {
+          setError(loginError.message);
+        } else if (loginData?.user) {
+          setSuccess(true);
+          onSignupSuccess(loginData.user);
+        }
       }
     } catch (err) {
       setError(t('onboarding.signup.errors.unexpectedError'));
