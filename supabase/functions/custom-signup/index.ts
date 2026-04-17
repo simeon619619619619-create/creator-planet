@@ -41,9 +41,15 @@ Deno.serve(async (req: Request) => {
 
     if (createError) {
       console.error('Create user error:', createError);
+      // Map common errors to Bulgarian
+      let errorMsg = createError.message;
+      if (errorMsg.includes('already been registered')) {
+        errorMsg = 'Вече съществува акаунт с този имейл. Опитайте с Вход.';
+      }
+      // Return 200 so supabase.functions.invoke passes the body to fnData
       return new Response(
-        JSON.stringify({ error: createError.message }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ success: false, error: errorMsg }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -68,8 +74,8 @@ Deno.serve(async (req: Request) => {
   } catch (error) {
     console.error('Custom signup error:', error);
     return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      JSON.stringify({ success: false, error: 'Възникна грешка. Моля, опитайте отново.' }),
+      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
 });
