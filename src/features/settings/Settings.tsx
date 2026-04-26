@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { User, Sparkles, Shield, Bot, CreditCard, Globe, Bell } from 'lucide-react';
+import { User, Sparkles, Shield, Bot, CreditCard, Globe, Bell, Users } from 'lucide-react';
 import { useAuth } from '../../core/contexts/AuthContext';
 import { useCommunity } from '../../core/contexts/CommunityContext';
 import ProfileSettings from './ProfileSettings';
 import CreatorSettings from './CreatorSettings';
 import AccountSettings from './AccountSettings';
 import { ChatbotSettings } from '../chatbots';
+import { ResidentsSettings } from '../residents';
 import { BillingSettingsPage } from '../billing';
 import NotificationSettings from './NotificationSettings';
 import LanguageSwitcher from '../../shared/LanguageSwitcher';
 
-type SettingsTab = 'profile' | 'creator' | 'billing' | 'chatbots' | 'account' | 'language' | 'notifications';
+type SettingsTab = 'profile' | 'creator' | 'billing' | 'chatbots' | 'residents' | 'account' | 'language' | 'notifications';
 
 const LanguageSettings: React.FC = () => {
   const { t } = useTranslation();
@@ -75,6 +76,12 @@ const Settings: React.FC = () => {
       visible: canAccessCreatorSettings && !!selectedCommunity,
     },
     {
+      id: 'residents' as SettingsTab,
+      label: 'Резиденти',
+      icon: Users,
+      visible: canAccessCreatorSettings && !!selectedCommunity,
+    },
+    {
       id: 'notifications' as SettingsTab,
       label: t('settings.notifications'),
       icon: Bell,
@@ -103,6 +110,14 @@ const Settings: React.FC = () => {
           <ChatbotSettings communityId={selectedCommunity.id} />
         ) : (
           <div className="text-center py-8 text-[var(--fc-section-muted,#666666)]">
+            {t('errors.selectCommunity')}
+          </div>
+        );
+      case 'residents':
+        return selectedCommunity ? (
+          <ResidentsSettings communityId={selectedCommunity.id} />
+        ) : (
+          <div className="text-center py-8 text-[#666666]">
             {t('errors.selectCommunity')}
           </div>
         );
