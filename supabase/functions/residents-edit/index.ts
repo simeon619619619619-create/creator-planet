@@ -1,7 +1,7 @@
 // ============================================================================
 // RESIDENTS-EDIT
-// One-shot edits for an existing persona — rename + avatar regen.
-// Inputs: { persona_id, new_display_name?, regen_avatar?: 'realistic'|'cartoon'|'fiction' }
+// One-shot edits for an existing persona — rename, avatar regen, bio regen.
+// Inputs: { persona_id, new_display_name?, regen_avatar?: 'realistic'|'cartoon'|'fiction', regen_bio?: boolean }
 // ============================================================================
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
@@ -13,6 +13,53 @@ const json = (b: unknown, s = 200, req?: Request) =>
     status: s,
     headers: { ...(req ? corsHeaders(req) : {}), 'Content-Type': 'application/json' },
   });
+
+const ARCHETYPE_ROLE: Record<string, string> = {
+  newbie: 'нов човек в темата, още не е сигурен дали ще се справи. Притеснен. Задава „глупави" въпроси.',
+  rising_star: 'току-що започнал, но вече вижда напредък, споделя малки победи и моментум.',
+  skeptic: 'прагматик, който задава твърди реалистични въпроси. Не атакува — пита.',
+  empath: 'емоционално зрял човек, минал през трудни моменти, кратко подкрепя другите.',
+  expert: 'някой с опит в съседна област, който споделя съвети по аналогия, без надменност.',
+  lurker: 'тих наблюдател. Рядко пише. Когато пише — е дълго и рефлексивно.',
+  connector: 'социален човек който свързва хора и теми. Често тагва другите.',
+};
+
+async function generateBio(archetype: string, displayName: string, communityName: string, communityDesc: string, geminiKey: string): Promise<string | null> {
+  const role = ARCHETYPE_ROLE[archetype] ?? '';
+  const prompt = `Ти си creative director, който създава реалистична персона за онлайн общност.
+
+Общност: "${communityName}"
+Описание на общността: ${communityDesc?.slice(0, 1500) ?? '(няма описание)'}
+
+Архетип на персоната: ${archetype}
+Роля на този архетип: ${role}
+Име: ${displayName}
+
+Напиши КРАТКО био (1-2 изречения, max 200 знака) на български, което:
+- Описва кой е този човек СПЕЦИФИЧНО за тази общност (демография, защо е тук)
+- Звучи като реален участник, не CV или продаваща визитка
+- Отразява ролята на архетипа в темата на общността
+- Без емоджи, без титли, без курсови продажби
+- Първо лице („Аз съм..." или просто описание)
+
+Върни САМО био-то. Без обяснения, без markdown.`;
+
+  const r = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.9, maxOutputTokens: 400, thinkingConfig: { thinkingBudget: 0 } },
+      }),
+    },
+  );
+  if (!r.ok) return null;
+  const d = await r.json();
+  const text: string | undefined = d?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+  return text ?? null;
+}
 
 type AvatarStyle = 'realistic' | 'cartoon' | 'fiction';
 
@@ -75,7 +122,7 @@ async function generateAvatar(archetype: string, style: AvatarStyle, geminiKey: 
 Deno.serve(async (req: Request): Promise<Response> => {
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders(req) });
   try {
-    const { persona_id, new_display_name, regen_avatar } = await req.json();
+    const { persona_id, new_display_name, regen_avatar, regen_bio } = await req.json();
     if (!persona_id) return json({ error: 'persona_id required' }, 400, req);
 
     const supabase = createClient(
@@ -86,12 +133,28 @@ Deno.serve(async (req: Request): Promise<Response> => {
 
     const { data: persona, error: pErr } = await supabase
       .from('community_personas')
-      .select('id, archetype, profile_id, display_name')
+      .select('id, archetype, profile_id, display_name, community_id, communities(name, description)')
       .eq('id', persona_id)
       .single();
     if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 404, req);
 
     const updates: Record<string, unknown> = {};
+
+    let newBio: string | null = null;
+    if (regen_bio) {
+      const geminiKey = Deno.env.get('GEMINI_API_KEY');
+      if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500, req);
+      const community: any = persona.communities;
+      newBio = await generateBio(
+        persona.archetype,
+        new_display_name ?? persona.display_name,
+        community?.name ?? '',
+        community?.description ?? '',
+        geminiKey,
+      );
+      if (!newBio) return json({ error: 'bio generation failed' }, 500, req);
+      updates.bio = newBio;
+    }
     if (new_display_name) {
       updates.display_name = new_display_name;
       const { error: pUErr } = await supabase
@@ -124,7 +187,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       if (cuErr) return json({ error: `personas update: ${cuErr.message}` }, 500, req);
     }
 
-    return json({ ok: true, persona_id, updates, avatar_url: avatarUrl });
+    return json({ ok: true, persona_id, updates, avatar_url: avatarUrl, bio: newBio }, 200, req);
   } catch (err) {
     return json({ error: (err as Error).message }, 500, req);
   }

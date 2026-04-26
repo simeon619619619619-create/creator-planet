@@ -12,6 +12,54 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.0';
 import { ARCHETYPES, type Archetype, pickName } from '../_residents/archetypes.ts';
 import { corsHeaders } from '../_residents/cors.ts';
 
+const ARCHETYPE_ROLE: Record<Archetype, string> = {
+  newbie: 'нов човек, още не сигурен дали ще се справи. Пита „глупави" въпроси.',
+  rising_star: 'току-що започнал, споделя малки победи и моментум.',
+  skeptic: 'прагматик, задава твърди реалистични въпроси без злоба.',
+  empath: 'емоционално зрял, минал през трудни моменти, кратко подкрепя другите.',
+  expert: 'опит в съседна област, споделя съвети по аналогия без надменност.',
+  lurker: 'тих наблюдател, рядко пише, но дълго и рефлексивно когато пише.',
+  connector: 'социален, свързва хора и теми. Тагва често.',
+};
+
+async function generateBio(archetype: Archetype, displayName: string, communityName: string, communityDesc: string, geminiKey: string): Promise<string> {
+  const fallback = ARCHETYPES[archetype].bio_template;
+  try {
+    const prompt = `Ти си creative director, който създава реалистична персона за онлайн общност.
+
+Общност: "${communityName}"
+Описание: ${communityDesc?.slice(0, 1500) ?? ''}
+
+Архетип: ${archetype}
+Роля: ${ARCHETYPE_ROLE[archetype]}
+Име: ${displayName}
+
+Напиши КРАТКО био (1-2 изречения, max 200 знака) на български което:
+- Описва кой е този човек СПЕЦИФИЧНО за тази общност (демография, защо е тук)
+- Звучи като реален участник, не като CV
+- Без емоджи, без титли, без продаваща визитка
+
+Върни САМО био-то.`;
+    const r = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.9, maxOutputTokens: 400, thinkingConfig: { thinkingBudget: 0 } },
+        }),
+      },
+    );
+    if (!r.ok) return fallback;
+    const d = await r.json();
+    const text: string | undefined = d?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    return text || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
 const json = (b: unknown, s = 200, req?: Request) =>
   new Response(JSON.stringify(b, null, 2), {
     status: s,
@@ -82,6 +130,13 @@ Deno.serve(async (req: Request): Promise<Response> => {
       { auth: { autoRefreshToken: false, persistSession: false } },
     );
 
+    // Read community context for bio generation
+    const { data: community } = await supabase
+      .from('communities')
+      .select('name, description')
+      .eq('id', community_id)
+      .single();
+
     // Prevent duplicate archetype per community
     const { data: existing } = await supabase
       .from('community_personas')
@@ -136,7 +191,10 @@ Deno.serve(async (req: Request): Promise<Response> => {
       }
     }
 
-    const bio = seed.bio_template;
+    const geminiKeyForBio = Deno.env.get('GEMINI_API_KEY');
+    const bio = geminiKeyForBio
+      ? await generateBio(archetype as Archetype, displayName, community?.name ?? '', community?.description ?? '', geminiKeyForBio)
+      : seed.bio_template;
 
     const { data: persona, error: pErr } = await supabase
       .from('community_personas')
