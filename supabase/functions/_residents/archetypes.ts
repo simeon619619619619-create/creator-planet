@@ -35,7 +35,7 @@ export interface ArchetypeSeed {
 export const ARCHETYPES: Record<Archetype, ArchetypeSeed> = {
   newbie: {
     archetype: 'newbie',
-    display_names: ['Мария Петрова', 'Десислава Иванова', 'Веселина Колева', 'Йорданка Стоянова'],
+    display_names: ['Мария', 'Десислава', 'Веси', 'Йорданка'],
     email_local: 'newbie',
     bio_template: 'Опитвам се да си направя малък онлайн бизнес покрай работата. Нова съм с тия инструменти, уча колкото мога вечер.',
     topics: ['първи стъпки', 'съмнения', 'мотивация'],
@@ -56,7 +56,7 @@ export const ARCHETYPES: Record<Archetype, ArchetypeSeed> = {
   },
   rising_star: {
     archetype: 'rising_star',
-    display_names: ['Никола Митев', 'Кристиян Тодоров', 'Стефан Илиев', 'Александър Димов'],
+    display_names: ['Stef', 'Niki', 'Kris', 'Alex'],
     email_local: 'rising',
     bio_template: 'В IT 4та година, опитвам се да правя страничен проект. Тук съм да прилагам нещата от курса и да виждам прогрес.',
     topics: ['малки победи', 'приложения на практика', 'мотивация'],
@@ -98,7 +98,7 @@ export const ARCHETYPES: Record<Archetype, ArchetypeSeed> = {
   },
   empath: {
     archetype: 'empath',
-    display_names: ['Цвета Найденова', 'Илияна Стоянова', 'Магдалена Петрова', 'Розалина Андреева'],
+    display_names: ['Цвета', 'Илияна', 'Магдалена', 'Розалина'],
     email_local: 'empath',
     bio_template: 'Мама на две деца, в момент на пренастройка след дълга кариера. Тук съм да ви слушам и да си помагаме.',
     topics: ['емоции', 'подкрепа', 'процеси'],
@@ -140,7 +140,7 @@ export const ARCHETYPES: Record<Archetype, ArchetypeSeed> = {
   },
   lurker: {
     archetype: 'lurker',
-    display_names: ['Калоян Петров', 'Светлозар Колев', 'Деян Радославов', 'Чавдар Маринов'],
+    display_names: ['Калоян', 'Светлозар', 'Деян', 'Чавдар'],
     email_local: 'lurker',
     bio_template: 'Тук съм от месец, чета. Понякога споделям като ме е напекло.',
     topics: ['рефлексия', 'дълги мисли', 'личен прогрес'],
@@ -161,7 +161,7 @@ export const ARCHETYPES: Record<Archetype, ArchetypeSeed> = {
   },
   connector: {
     archetype: 'connector',
-    display_names: ['Гери Стойнева', 'Биляна Колева', 'Мира Танева', 'Силвия Радева'],
+    display_names: ['Geri', 'Bili', 'Mira', 'Silvi'],
     email_local: 'connector',
     bio_template: 'PR, events, обичам да свързвам хора. Тук съм да си направя network и да си помагаме.',
     topics: ['свързване', 'community', 'collaboration'],

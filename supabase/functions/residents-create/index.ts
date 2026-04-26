@@ -19,7 +19,18 @@ const json = (b: unknown, s = 200) =>
   new Response(JSON.stringify(b, null, 2), { status: s, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
 
 async function generateAvatar(personaName: string, archetype: Archetype, geminiKey: string): Promise<Uint8Array | null> {
-  const desc: Record<Archetype, string> = {
+  // rising_star and connector use cartoon avatars (younger, casual personas)
+  const useCartoon = archetype === 'rising_star' || archetype === 'connector';
+  const cartoonDesc: Record<Archetype, string> = {
+    newbie: 'young woman cartoon avatar, soft watercolor style, gentle expression',
+    rising_star: 'energetic young man cartoon avatar, anime style, casual outfit, slight smile, hoodie or t-shirt, modern coloring',
+    skeptic: 'man cartoon avatar, comic book style, slight smirk, glasses optional, plain background',
+    empath: 'woman cartoon avatar, warm pastel colors, kind eyes, simple flat illustration',
+    expert: 'man cartoon avatar, professional style illustration, glasses, calm expression',
+    lurker: 'man cartoon avatar, minimalist line art style, thoughtful expression, cool tones',
+    connector: 'young woman cartoon avatar, anime style, bright eyes, stylish outfit, friendly happy expression, vibrant colors',
+  };
+  const realisticDesc: Record<Archetype, string> = {
     newbie: 'a 32-year-old Bulgarian woman, kind face, slightly tired smile, simple clothes, soft natural lighting, mom-energy',
     rising_star: 'a 28-year-old Bulgarian man, casual t-shirt, slight smile, modern apartment background',
     skeptic: 'a 42-year-old Bulgarian man, salt-and-pepper hair, serious but kind face, business casual',
@@ -28,6 +39,9 @@ async function generateAvatar(personaName: string, archetype: Archetype, geminiK
     lurker: 'a 30-year-old Bulgarian man, bookish, glasses, slightly serious face',
     connector: 'a 30-year-old Bulgarian woman, bright smile, stylish casual look, energetic vibe',
   };
+  const prompt = useCartoon
+    ? `Square cartoon avatar illustration of ${cartoonDesc[archetype]}. Stylized, NOT photorealistic. Clean simple background. Profile picture style, head and shoulders.`
+    : `Realistic candid portrait photo of ${realisticDesc[archetype]}. Phone selfie style, slight grain, natural pose, looking at camera. Square crop. NOT studio. NOT model. Like a real person's profile photo.`;
   try {
     const r = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${geminiKey}`,
@@ -35,16 +49,7 @@ async function generateAvatar(personaName: string, archetype: Archetype, geminiK
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [
-            {
-              role: 'user',
-              parts: [
-                {
-                  text: `Realistic candid portrait photo of ${desc[archetype]}. Phone selfie style, slight grain, natural pose, looking at camera. Square crop. NOT studio. NOT model. Like a real person's profile photo.`,
-                },
-              ],
-            },
-          ],
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
           generationConfig: { responseModalities: ['IMAGE'] },
         }),
       },
