@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Loader2, Sparkles, Power, AlertTriangle } from 'lucide-react';
+import { Loader2, Sparkles, Power, AlertTriangle, Plus } from 'lucide-react';
 import {
   Persona,
   ScheduleConfig,
@@ -13,6 +13,7 @@ import {
   getUsageSummary,
   bootstrapNewbie,
 } from './residentsService';
+import AddPersonaModal from './AddPersonaModal';
 
 interface ResidentsSettingsProps {
   communityId: string;
@@ -33,6 +34,18 @@ const ResidentsSettings: React.FC<ResidentsSettingsProps> = ({ communityId }) =>
   const [notesDraft, setNotesDraft] = useState('');
   const [notesSaved, setNotesSaved] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [bootstrapResult, setBootstrapResult] = useState<{ ok: boolean; msg: string } | null>(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  const refreshAll = async () => {
+    const [p, a, u] = await Promise.all([
+      getPersonas(communityId),
+      getRecentActivity(communityId, 15),
+      getUsageSummary(communityId, 30),
+    ]);
+    setPersonas(p);
+    setActivity(a);
+    setUsage(u);
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -153,13 +166,13 @@ const ResidentsSettings: React.FC<ResidentsSettingsProps> = ({ communityId }) =>
       <div>
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-[#FAFAFA] font-medium">Персони ({personas.length}/7)</h3>
-          {personas.length === 0 && (
+          {personas.length < 7 && (
             <button
-              onClick={handleBootstrapNewbie}
+              onClick={() => setShowAddModal(true)}
               disabled={busyKey === 'bootstrap'}
-              className="text-xs font-medium px-3 py-1.5 rounded-md bg-[#FAFAFA] text-[#0A0A0A] hover:bg-[#E0E0E0] disabled:opacity-50"
+              className="text-xs font-medium px-3 py-1.5 rounded-md bg-[#FAFAFA] text-[#0A0A0A] hover:bg-[#E0E0E0] disabled:opacity-50 flex items-center gap-1"
             >
-              {busyKey === 'bootstrap' ? 'Стартирам...' : '+ Започни с Новакът'}
+              <Plus className="w-3 h-3" /> Добави Резидент
             </button>
           )}
         </div>
@@ -263,6 +276,15 @@ const ResidentsSettings: React.FC<ResidentsSettingsProps> = ({ communityId }) =>
           на платформата ти. Не публикувай и не препоръчвай продукти/услуги чрез тях.
         </p>
       </div>
+
+      {showAddModal && (
+        <AddPersonaModal
+          communityId={communityId}
+          existingArchetypes={personas.map((p) => p.archetype)}
+          onClose={() => setShowAddModal(false)}
+          onCreated={refreshAll}
+        />
+      )}
     </div>
   );
 };
