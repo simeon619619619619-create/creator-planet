@@ -10,12 +10,12 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.0';
 
 type Mode = 'post' | 'comment' | 'auto';
-const corsHeaders = {
-  'Access-Control-Allow-Origin': Deno.env.get('ALLOWED_ORIGIN') || 'https://founderclub.bg',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
-const json = (b: unknown, s = 200) =>
-  new Response(JSON.stringify(b, null, 2), { status: s, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+import { corsHeaders } from "../_residents/cors.ts";
+const json = (b: unknown, s = 200, req?: Request) =>
+  new Response(JSON.stringify(b, null, 2), {
+    status: s,
+    headers: { ...(req ? corsHeaders(req) : {}), 'Content-Type': 'application/json' },
+  });
 
 async function embed(text: string, key: string): Promise<number[]> {
   const r = await fetch(
@@ -84,10 +84,10 @@ function injectTypos(text: string, rate: number): string {
 }
 
 Deno.serve(async (req: Request): Promise<Response> => {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders(req) });
   try {
     const { persona_id, mode = 'auto', target_post_id } = await req.json();
-    if (!persona_id) return json({ error: 'persona_id required' }, 400);
+    if (!persona_id) return json({ error: 'persona_id required' }, 400, req);
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
@@ -95,15 +95,15 @@ Deno.serve(async (req: Request): Promise<Response> => {
       { auth: { autoRefreshToken: false, persistSession: false } },
     );
     const geminiKey = Deno.env.get('GEMINI_API_KEY');
-    if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500);
+    if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500, req);
 
     const { data: persona, error: pErr } = await supabase
       .from('community_personas')
       .select('*, communities(name)')
       .eq('id', persona_id)
       .single();
-    if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 404);
-    if (!persona.is_active) return json({ ok: false, reason: 'persona inactive' }, 200);
+    if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 404, req);
+    if (!persona.is_active) return json({ ok: false, reason: 'persona inactive' }, 200, req);
 
     const { data: cfg } = await supabase
       .from('persona_schedule_config')
@@ -111,7 +111,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       .eq('community_id', persona.community_id)
       .maybeSingle();
     if (cfg && !cfg.master_enabled && req.headers.get('x-force') !== '1') {
-      return json({ ok: false, reason: 'master disabled' }, 200);
+      return json({ ok: false, reason: 'master disabled' }, 200, req);
     }
 
     const { data: channels } = await supabase
@@ -120,7 +120,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       .eq('community_id', persona.community_id)
       .order('position', { ascending: true });
     const generalChannel = channels?.find((c: any) => c.name === 'General') ?? channels?.[0];
-    if (!generalChannel) return json({ error: 'no channels' }, 404);
+    if (!generalChannel) return json({ error: 'no channels' }, 404, req);
 
     // Decide mode
     let actualMode: Mode = mode;
@@ -157,7 +157,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
         action_type: 'tick_skipped',
         metadata: { reason: 'real_user_recent_post' },
       });
-      return json({ ok: false, reason: 'yielded to real user' });
+      return json({ ok: false, reason: "yielded to real user" }, 200, req);
     }
 
     // Pick target for comment mode
@@ -279,7 +279,7 @@ ${lengthInstr}
 Върни САМО текста на ${actualMode === 'post' ? 'поста' : 'коментара'}. Без заглавие, без markdown, без обяснения.`;
 
     const { text: rawText, input, output } = await gemini(prompt, geminiKey, length === 'short' ? 600 : 1500);
-    if (!rawText) return json({ error: 'gemini empty' }, 500);
+    if (!rawText) return json({ error: 'gemini empty' }, 500, req);
 
     const finalText = injectTypos(rawText, styleHints.typo_rate ?? 0.02);
 
@@ -292,7 +292,7 @@ ${lengthInstr}
         .insert({ channel_id: generalChannel.id, author_id: persona.profile_id, content: finalText })
         .select('id')
         .single();
-      if (piErr || !post) return json({ error: `post insert: ${piErr?.message}` }, 500);
+      if (piErr || !post) return json({ error: `post insert: ${piErr?.message}` }, 500, req);
       insertedId = post.id;
       refField = 'ref_post_id';
     } else {
@@ -301,7 +301,7 @@ ${lengthInstr}
         .insert({ post_id: targetPost.id, author_id: persona.profile_id, content: finalText })
         .select('id')
         .single();
-      if (ciErr || !comment) return json({ error: `comment insert: ${ciErr?.message}` }, 500);
+      if (ciErr || !comment) return json({ error: `comment insert: ${ciErr?.message}` }, 500, req);
       insertedId = comment.id;
       refField = 'ref_comment_id';
     }
@@ -342,6 +342,6 @@ ${lengthInstr}
       tokens: { input, output, cost_usd: cost },
     });
   } catch (err) {
-    return json({ error: (err as Error).message }, 500);
+    return json({ error: (err as Error).message }, 500, req);
   }
 });

@@ -7,12 +7,12 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.0';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': Deno.env.get('ALLOWED_ORIGIN') || 'https://founderclub.bg',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
-const json = (b: unknown, s = 200) =>
-  new Response(JSON.stringify(b, null, 2), { status: s, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+import { corsHeaders } from "../_residents/cors.ts";
+const json = (b: unknown, s = 200, req?: Request) =>
+  new Response(JSON.stringify(b, null, 2), {
+    status: s,
+    headers: { ...(req ? corsHeaders(req) : {}), 'Content-Type': 'application/json' },
+  });
 
 type AvatarStyle = 'realistic' | 'cartoon' | 'fiction';
 
@@ -73,10 +73,10 @@ async function generateAvatar(archetype: string, style: AvatarStyle, geminiKey: 
 }
 
 Deno.serve(async (req: Request): Promise<Response> => {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders(req) });
   try {
     const { persona_id, new_display_name, regen_avatar } = await req.json();
-    if (!persona_id) return json({ error: 'persona_id required' }, 400);
+    if (!persona_id) return json({ error: 'persona_id required' }, 400, req);
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
@@ -89,7 +89,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       .select('id, archetype, profile_id, display_name')
       .eq('id', persona_id)
       .single();
-    if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 404);
+    if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 404, req);
 
     const updates: Record<string, unknown> = {};
     if (new_display_name) {
@@ -98,21 +98,21 @@ Deno.serve(async (req: Request): Promise<Response> => {
         .from('profiles')
         .update({ full_name: new_display_name })
         .eq('id', persona.profile_id);
-      if (pUErr) return json({ error: `profiles update: ${pUErr.message}` }, 500);
+      if (pUErr) return json({ error: `profiles update: ${pUErr.message}` }, 500, req);
     }
 
     let avatarUrl: string | null = null;
     if (regen_avatar) {
       const geminiKey = Deno.env.get('GEMINI_API_KEY');
-      if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500);
+      if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500, req);
       const bytes = await generateAvatar(persona.archetype, regen_avatar as AvatarStyle, geminiKey);
-      if (!bytes) return json({ error: 'avatar generation failed' }, 500);
+      if (!bytes) return json({ error: 'avatar generation failed' }, 500, req);
       const path = `residents/${persona.profile_id}.png`;
       const { error: upErr } = await supabase.storage.from('avatars').upload(path, bytes, {
         contentType: 'image/png',
         upsert: true,
       });
-      if (upErr) return json({ error: `storage: ${upErr.message}` }, 500);
+      if (upErr) return json({ error: `storage: ${upErr.message}` }, 500, req);
       const cacheBust = `?v=${Date.now()}`;
       const { data: pub } = supabase.storage.from('avatars').getPublicUrl(path);
       avatarUrl = pub.publicUrl + cacheBust;
@@ -121,11 +121,11 @@ Deno.serve(async (req: Request): Promise<Response> => {
 
     if (Object.keys(updates).length) {
       const { error: cuErr } = await supabase.from('community_personas').update(updates).eq('id', persona_id);
-      if (cuErr) return json({ error: `personas update: ${cuErr.message}` }, 500);
+      if (cuErr) return json({ error: `personas update: ${cuErr.message}` }, 500, req);
     }
 
     return json({ ok: true, persona_id, updates, avatar_url: avatarUrl });
   } catch (err) {
-    return json({ error: (err as Error).message }, 500);
+    return json({ error: (err as Error).message }, 500, req);
   }
 });

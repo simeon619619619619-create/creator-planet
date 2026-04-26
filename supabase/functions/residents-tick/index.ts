@@ -8,12 +8,12 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.0';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': Deno.env.get('ALLOWED_ORIGIN') || 'https://founderclub.bg',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
-const json = (b: unknown, s = 200) =>
-  new Response(JSON.stringify(b, null, 2), { status: s, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+import { corsHeaders } from "../_residents/cors.ts";
+const json = (b: unknown, s = 200, req?: Request) =>
+  new Response(JSON.stringify(b, null, 2), {
+    status: s,
+    headers: { ...(req ? corsHeaders(req) : {}), 'Content-Type': 'application/json' },
+  });
 
 function currentWindow(d: Date): 'morning' | 'midday' | 'evening' | 'night' {
   // Server time is UTC. BG is UTC+3 (summer) / UTC+2 (winter). Use UTC+2 baseline.
@@ -32,7 +32,7 @@ function intensityMultiplier(intensity: string, globalIntensity: string): number
 const BASE_TICK_PROBABILITY = 0.18; // ~1 action per 5 ticks for normal intensity in window
 
 Deno.serve(async (req: Request): Promise<Response> => {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders(req) });
   try {
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
@@ -45,7 +45,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
     const dayOfWeek = (now.getUTCDay() + (now.getUTCHours() + 3 >= 24 ? 1 : 0)) % 7;
 
     const { data: due, error } = await supabase.rpc('get_personas_due_for_tick');
-    if (error) return json({ error: `rpc: ${error.message}` }, 500);
+    if (error) return json({ error: `rpc: ${error.message}` }, 500, req);
     const personas = due ?? [];
 
     const decisions: any[] = [];
@@ -100,6 +100,6 @@ Deno.serve(async (req: Request): Promise<Response> => {
       decisions,
     });
   } catch (err) {
-    return json({ error: (err as Error).message }, 500);
+    return json({ error: (err as Error).message }, 500, req);
   }
 });

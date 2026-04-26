@@ -10,13 +10,13 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.0';
 import { ARCHETYPES, type Archetype, pickName } from '../_residents/archetypes.ts';
+import { corsHeaders } from '../_residents/cors.ts';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': Deno.env.get('ALLOWED_ORIGIN') || 'https://founderclub.bg',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
-const json = (b: unknown, s = 200) =>
-  new Response(JSON.stringify(b, null, 2), { status: s, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+const json = (b: unknown, s = 200, req?: Request) =>
+  new Response(JSON.stringify(b, null, 2), {
+    status: s,
+    headers: { ...(req ? corsHeaders(req) : {}), 'Content-Type': 'application/json' },
+  });
 
 async function generateAvatar(personaName: string, archetype: Archetype, geminiKey: string): Promise<Uint8Array | null> {
   // rising_star and connector use cartoon avatars (younger, casual personas)
@@ -69,11 +69,11 @@ async function generateAvatar(personaName: string, archetype: Archetype, geminiK
 }
 
 Deno.serve(async (req: Request): Promise<Response> => {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders(req) });
   try {
     const { community_id, archetype } = await req.json();
-    if (!community_id) return json({ error: 'community_id required' }, 400);
-    if (!archetype || !ARCHETYPES[archetype as Archetype]) return json({ error: 'invalid archetype' }, 400);
+    if (!community_id) return json({ error: 'community_id required' }, 400, req);
+    if (!archetype || !ARCHETYPES[archetype as Archetype]) return json({ error: 'invalid archetype' }, 400, req);
 
     const seed = ARCHETYPES[archetype as Archetype];
     const supabase = createClient(
@@ -89,7 +89,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       .eq('community_id', community_id)
       .eq('archetype', archetype)
       .maybeSingle();
-    if (existing) return json({ error: `archetype already exists: ${existing.display_name}`, persona_id: existing.id }, 409);
+    if (existing) return json({ error: `archetype already exists: ${existing.display_name}`, persona_id: existing.id }, 409, req);
 
     const displayName = pickName(archetype as Archetype, community_id);
     const personaEmail = `${seed.email_local}+${community_id.slice(0, 8)}@residents.founderclub.bg`;
@@ -101,7 +101,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       email_confirm: true,
       user_metadata: { full_name: displayName, is_resident: true },
     });
-    if (cuErr || !created?.user) return json({ error: `auth: ${cuErr?.message}` }, 500);
+    if (cuErr || !created?.user) return json({ error: `auth: ${cuErr?.message}` }, 500, req);
     const userId = created.user.id;
 
     let profileId: string;
@@ -115,7 +115,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
         .insert({ user_id: userId, email: personaEmail, full_name: displayName, is_persona: true, role: 'student' })
         .select('id')
         .single();
-      if (pErr || !prof) return json({ error: `profile: ${pErr?.message}` }, 500);
+      if (pErr || !prof) return json({ error: `profile: ${pErr?.message}` }, 500, req);
       profileId = prof.id;
     }
 
@@ -155,7 +155,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       })
       .select('id')
       .single();
-    if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 500);
+    if (pErr || !persona) return json({ error: `persona: ${pErr?.message}` }, 500, req);
 
     // Ensure schedule config exists (master_enabled stays whatever it was)
     await supabase.from('persona_schedule_config').upsert(
@@ -166,8 +166,8 @@ Deno.serve(async (req: Request): Promise<Response> => {
     return json({
       ok: true,
       persona: { id: persona.id, archetype, display_name: displayName, profile_id: profileId },
-    });
+    }, 200, req);
   } catch (err) {
-    return json({ error: (err as Error).message, stack: (err as Error).stack }, 500);
+    return json({ error: (err as Error).message, stack: (err as Error).stack }, 500, req);
   }
 });

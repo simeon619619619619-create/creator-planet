@@ -11,19 +11,16 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.0';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': Deno.env.get('ALLOWED_ORIGIN') || 'https://founderclub.bg',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+import { corsHeaders } from "../_residents/cors.ts";
 
 const CHUNK_CHAR_SIZE = 2000;
 const CHUNK_OVERLAP = 200;
 const EMBED_DIM = 768;
 
-function json(body: unknown, status = 200) {
+function json(body: unknown, status = 200, req?: Request) {
   return new Response(JSON.stringify(body, null, 2), {
     status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: { ...(req ? corsHeaders(req) : {}), 'Content-Type': 'application/json' },
   });
 }
 
@@ -81,12 +78,12 @@ async function embedBatch(texts: string[], geminiKey: string): Promise<number[][
 }
 
 Deno.serve(async (req: Request): Promise<Response> => {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders(req) });
   try {
     const body = await req.json();
     const { community_id, source_type, gdoc_url, content, title, source_ref } = body;
-    if (!community_id) return json({ error: 'community_id required' }, 400);
-    if (!source_type) return json({ error: 'source_type required' }, 400);
+    if (!community_id) return json({ error: 'community_id required' }, 400, req);
+    if (!source_type) return json({ error: 'source_type required' }, 400, req);
 
     let rawText = content as string | undefined;
     let resolvedRef = source_ref as string | undefined;
@@ -96,7 +93,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       resolvedRef = resolvedRef ?? gdoc_url;
       resolvedTitle = resolvedTitle ?? `gdoc:${gdoc_url.split('/').pop()}`;
     }
-    if (!rawText) return json({ error: 'no content or gdoc_url' }, 400);
+    if (!rawText) return json({ error: 'no content or gdoc_url' }, 400, req);
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
@@ -104,7 +101,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       { auth: { autoRefreshToken: false, persistSession: false } },
     );
     const geminiKey = Deno.env.get('GEMINI_API_KEY');
-    if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500);
+    if (!geminiKey) return json({ error: 'GEMINI_API_KEY missing' }, 500, req);
 
     if (resolvedRef) {
       await supabase
@@ -116,7 +113,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
     }
 
     const chunks = chunkText(rawText);
-    if (!chunks.length) return json({ error: 'no chunks after split' }, 400);
+    if (!chunks.length) return json({ error: 'no chunks after split' }, 400, req);
 
     const embeddings = await embedBatch(chunks, geminiKey);
 
@@ -130,7 +127,7 @@ Deno.serve(async (req: Request): Promise<Response> => {
       chunk_index: i,
     }));
     const { error: insErr } = await supabase.from('community_knowledge').insert(rows);
-    if (insErr) return json({ error: `insert: ${insErr.message}` }, 500);
+    if (insErr) return json({ error: `insert: ${insErr.message}` }, 500, req);
 
     const totalChars = chunks.reduce((s, c) => s + c.length, 0);
     const approxTokens = Math.round(totalChars / 4);
@@ -145,6 +142,6 @@ Deno.serve(async (req: Request): Promise<Response> => {
 
     return json({ ok: true, chunks: chunks.length, total_chars: totalChars, approx_tokens: approxTokens });
   } catch (err) {
-    return json({ error: (err as Error).message }, 500);
+    return json({ error: (err as Error).message }, 500, req);
   }
 });
